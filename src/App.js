@@ -1,17 +1,17 @@
 import Loading from './components/loading/loading';
 import './reset.scss';
 
-function App() {
+const App = () => {
     return (
         <div className="App">
             {/* <Loading></Loading> */}
-            <header className="App-header">
+            <header id="app-header">
                 
             </header>
             <div>
 
             </div>
-            <footer>
+            <footer id="app-footer">
 
             </footer>
         </div>
