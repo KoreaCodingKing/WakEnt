@@ -4,7 +4,7 @@ import './reset.scss';
 const App = () => {
     return (
         <div className="App">
-            {/* <Loading></Loading> */}
+            <Loading></Loading>
             <header id="app-header">
                 
             </header>
