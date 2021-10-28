@@ -1,13 +1,14 @@
-import logo from '../../assets/images/logo_square.png';
+import { useState } from 'react';
 import './loading.scss';
 
 const Loading = () => {
+    const [isFinishLoding, setIsFinishLoding] = useState(false);
+
     return (
-        <div>
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-                Edit <code>src/App.js</code> and save to reload.
-            </p>
+        <div className="loading_container">
+            <div className={isFinishLoding ? "finish_loding":"logo"}
+                onClick={() => setIsFinishLoding(true)}
+            ></div>
         </div>
     )
 }

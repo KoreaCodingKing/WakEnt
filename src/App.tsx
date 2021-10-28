@@ -1,9 +1,8 @@
 import Loading from './components/loading/loading';
-import './reset.scss';
 
 const App = () => {
     return (
-        <div className="App">
+        <div id="App">
             <Loading></Loading>
             <header id="app-header">
                 
