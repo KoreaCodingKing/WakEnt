@@ -5,6 +5,8 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    color: white;
 }
 
 code {
@@ -12,6 +14,14 @@ code {
         monospace;
 }
 
+
 #App {
     position: relative;
+    background: black;
+}
+
+.app_contents {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }

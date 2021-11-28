@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import '../../assets/styles/home.scss';
 
 const Home = () => {
     return (
-        <div>
-            aaa
+        <div className="home_container">
+            <div className="first_section">
+
+            </div>
         </div>
     )
 }

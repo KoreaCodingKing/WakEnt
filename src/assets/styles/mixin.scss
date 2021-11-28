@@ -1,0 +1,8 @@
+@mixin componentContainer {
+    display: flex;
+    max-width: 1000px;
+    height: calc(100vh - 80px);
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+}
