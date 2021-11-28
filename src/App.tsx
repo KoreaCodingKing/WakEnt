@@ -6,7 +6,7 @@ import Loading from "./components/loading/loading";
 import Home from "./components/main/Home";
 
 const App = () => {
-    const [content, setContent] = useState(<div>defualt</div>);
+    const [contents, setContents] = useState(<div>defualt</div>);
     const [showHomePage, setShowHomePage] = useState(false);
     
     const onClickLoadingPage = () => {
@@ -15,9 +15,9 @@ const App = () => {
 
     useEffect(() => {
         if (!showHomePage) {
-            setContent(<Loading onClick={onClickLoadingPage}/>);
+            setContents(<Loading onClick={onClickLoadingPage}/>);
         } else {
-            setContent(
+            setContents(
                 <div className="app_contents">
                     <header id="app-header">
                         <Header />
@@ -36,7 +36,7 @@ const App = () => {
 
     return (
         <div id="App">
-            {content}
+            {contents}
         </div>
     );
 }
