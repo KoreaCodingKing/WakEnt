@@ -12,7 +12,7 @@ const Loading = (props: LoadingProps) => {
         setIsFinishLoding(true);
         setTimeout(() => {
             props.onClick();
-        }, 1000);
+        }, 900);
     }
 
     return (
