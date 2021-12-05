@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import '../../assets/styles/home.scss';
+import Footer from '../footer/footer';
 
 const Home = () => {
     //const [scrollIndex, setScrollIndex] = useState(1);
@@ -25,30 +26,34 @@ const Home = () => {
                         left: 0,
                         behavior: 'smooth'
                     });
-                } else {
+                } else if(scrollTop >= pageHeight && scrollTop < pageHeight * 3) {
                     console.log('마지막')
                     homeRef.current.scrollTo({
-                        top: pageHeight*2,
+                        top: pageHeight*3,
                         left: 0,
                         behavior: "smooth"
                     })
+                } else {
+                    return;
                 }
             } else {
                 if(scrollTop >=0 && scrollTop < pageHeight) {
-                    homeRef.current.scrollTo({
-                        top: 0,
-                        left: 0,
-                        behavior: "smooth"
-                    })
+                    return;
                 } else if(scrollTop >= pageHeight && scrollTop < pageHeight * 2) {
                     homeRef.current.scrollTo({
                         top: 0,
                         left: 0,
                         behavior: 'smooth'
                     });
-                } else {
+                } else if(scrollTop >= pageHeight && scrollTop < pageHeight * 3) {
                     homeRef.current.scrollTo({
                         top: pageHeight,
+                        left: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    homeRef.current.scrollTo({
+                        top: pageHeight*2,
                         left: 0,
                         behavior: 'smooth'
                     });
@@ -119,6 +124,9 @@ const Home = () => {
                 
             </div>
              */}
+             <section className="forth_section">
+                 <Footer />
+             </section>
         </div>
     )
 }
