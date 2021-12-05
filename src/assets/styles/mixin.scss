@@ -1,8 +1,11 @@
+$maxWeb: 1920px;
+$maxTablet: 1024px;
+$maxMobile: 575px;
+
 @mixin componentContainer {
     display: flex;
-    max-width: 1000px;
-    height: calc(100vh - 80px);
-    margin: 0 auto;
+    flex-direction: column;
+    max-width: $maxWeb;
     text-align: center;
     align-items: center;
 }

@@ -1,3 +1,5 @@
+@import 'assets/styles/mixin.scss';
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -14,7 +16,6 @@ code {
         monospace;
 }
 
-
 #App {
     position: relative;
     background: black;
@@ -23,5 +24,8 @@ code {
 .app_contents {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+}
+
+.contents {
+    @include componentContainer;
 }

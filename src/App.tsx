@@ -22,9 +22,11 @@ const App = () => {
                     <header id="app-header">
                         <Header />
                     </header>
+                    <div className="contents">
                         <BrowserRouter>
                             <Route exact path="/" component={Home} />
                         </BrowserRouter>
+                    </div>
                     <footer id="app-footer">
                         <Footer />
                     </footer>

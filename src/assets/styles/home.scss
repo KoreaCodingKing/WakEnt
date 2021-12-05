@@ -1,3 +1,13 @@
-.first_section {
-    height: calc(100vh - 104px);
+@import '../../assets/styles/mixin.scss';
+
+.home_container {
+    overflow-y: auto;
+    height: 100vh;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    section {
+        height: 100%;
+    }
 }
