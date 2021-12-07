@@ -5,7 +5,7 @@ $maxMobile: 575px;
 @mixin componentContainer {
     display: flex;
     flex-direction: column;
-    max-width: $maxWeb;
+    width: 100%;
     text-align: center;
     align-items: center;
 }

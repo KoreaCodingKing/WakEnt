@@ -2,6 +2,7 @@
 
 .home_container {
     overflow-y: auto;
+    width: 100%;
     height: 100vh;
 
     &::-webkit-scrollbar {
@@ -10,4 +11,14 @@
     section {
         height: 100%;
     }
+}
+
+.section_inner_container {
+    width: 100%;
+    height: 100%;
+}
+
+.first_section_inner {
+    background: url('../images/bg_home_first_section.jpg') no-repeat;
+    background-size: cover;
 }

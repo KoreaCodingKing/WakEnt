@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     min-width: 300px;
-    max-width: 1920px;
+    max-width: 1400px;
     height: 158px;
     margin: 0 auto;
     padding: 0 30px;
@@ -38,19 +38,22 @@
 }
 
 .menu_box {
+    text-align: center;
+
+    button {
+        width: 148px;
+    }
+
     .btn_about {
-        width: 200px;
         min-width: 68px;
         animation: show_menu 0.7s ease-in-out;
     }
     .btn_contact {
-        width: 200px;
         min-width: 68px;
         animation: show_menu 0.9s ease-in-out;
     }
     .btn_members {
         position: relative;
-        width: 200px;
         min-width: 68px;
         animation: show_menu 1.1s ease-in-out;
 

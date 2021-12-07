@@ -71,7 +71,7 @@ const Home = () => {
     return (
         <div className="home_container" ref={homeRef}>
             <section className="first_section">
-                <div className="section_inner_container">
+                <div className="section_inner_container first_section_inner">
                     <div className="title_wrapper">
                         <h2>WAK<small>.ENT</small></h2>
                         <div className="subtitle_wrapper">
@@ -119,14 +119,14 @@ const Home = () => {
                     <div className="background"></div>
                 </div>
             </section>
+             <section className="forth_section">
+                 <Footer />
+             </section>
             {/* todo: create navigation bar
             <div className="navigations">
                 
             </div>
              */}
-             <section className="forth_section">
-                 <Footer />
-             </section>
         </div>
     )
 }
