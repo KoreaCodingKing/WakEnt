@@ -9,13 +9,13 @@ const App = () => {
     const [contents, setContents] = useState(<div>defualt</div>);
     const [showHomePage, setShowHomePage] = useState(false);
     
-    const onClickLoadingPage = () => {
+    setTimeout(() => {
         setShowHomePage(true);
-    }
+    }, 3800)
 
     useEffect(() => {
         if (!showHomePage) {
-            setContents(<Loading onClick={onClickLoadingPage}/>);
+            setContents(<Loading/>);
         } else {
             setContents(
                 <div className="app_contents">

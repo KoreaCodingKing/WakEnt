@@ -7,17 +7,6 @@
     margin: 0 auto;
     padding: 0 30px;
     align-items: center;
-    animation: move_header 1s ease-in-out
-}
-
-@keyframes move_header {
-    0% {
-        min-width: 164px;
-        width: 10px;
-    }
-    100% {
-        width: 100%;
-    }
 }
 
 .logo_box {

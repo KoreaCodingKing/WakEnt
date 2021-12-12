@@ -6,7 +6,6 @@
   min-height: 900px;
   justify-content: center;
   align-items: center;
-  background: black;
 }
 
 .loading_box {
@@ -19,92 +18,72 @@
 }
 
 .loading_logo {
+  z-index: 999;
   position: relative;
   display: inline-block;
   align-self: center;
   width: 300px;
   height: 300px;
-  background: url('../../assets/images/logo_black_background.png') no-repeat top right 50%;
+  background: url('../../assets/images/logo_loading.png') no-repeat top right 50%;
   background-size: cover;
-  border: 4px solid #fff;
   border-radius: 100%;
-
-  &:hover {
-    cursor: pointer;
-    animation: up_scale 0.5s ease-in-out 0s infinite alternate-reverse none;
-  }
-
-  &::after {
-    position: absolute;
-    content: "";
-    display: block;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: auto;
-    height: auto;
-    border: 4px solid #fff;
-    border-radius: 100%;
-    transform: scale(1);
-    transform-origin: center center;
-    animation: 1300ms pulse forwards infinite ease-in-out;
-    opacity: 0;
-    pointer-events: none;
-  }
+  transform: scale(100px, 100px);
 }
 
-@keyframes up_scale {
-  0% {}
-  100% {
-    width: 340px;
-    height: 340px;
-  }
+.pulse {
+	z-index: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	
+	circle {
+		fill: #d40d0d;
+		transform: scale(0);
+		opacity: 0;
+		transform-origin: 50% 50%;
+		animation: pulse 3s cubic-bezier(.5,.5,0,1);
+		
+		&:nth-child(2) {
+			fill: #d80e73;
+			animation: pulse 3s 1s cubic-bezier(.5,.5,0,1);
+		}
+		
+		&:nth-child(3) {
+			fill: #e019a4;
+			animation: pulse 3s 2s cubic-bezier(.5,.5,0,1);
+		}
+	}
 }
+
 
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: .5;
-  }
-  0% {
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
+  25% {
+		opacity: 0.4;
+	}
+	100% {
+		transform: scale(1);
+	}
 }
 
 .finish_loding {
-  position: absolute;
-  top: 34%;
-  width: 300px;
-  height: 300px;
-  background: url('../../assets/images/logo_black_background.png') no-repeat top right 50%;
+  z-index: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: #000;
   background-size: cover;
   border: 4px solid #fff;
   border-radius: 100%;
-  animation: spinLogo infinite 0.9s ease-in-out;
+  animation: fillBackground infinite 0.9s ease-in-out;
 }
 
-@keyframes spinLogo {
-  0% {
-    transform: scale(1);
-  }
-  25% {
-    transform: scale(0.33334);
-  }
-  50% {
-    transform: scale(0.33334);
-    background: url('../../assets/images/logo_loading_change.png') no-repeat no-repeat bottom -24px left -72px;
-    background-size: cover;
-  }
-  100% {
-    top: -70px;
-    transform: scale(0.33334);
-    background: url('../../assets/images/logo_loading_change.png') no-repeat no-repeat bottom -24px left -72px;
-    background-size: cover;
+@keyframes fillBackground {
+  0%{
+    transform: scale(100%, 100%);
   }
 }
 
