@@ -21,6 +21,7 @@ const Home = () => {
             if (mainSubTitleRef.current.classList.contains('down_scroll_subtitle')) {
                 mainSubTitleRef.current.classList.remove('down_scroll_subtitle');
             }
+
             if(deltaY > 0) {
                 if(scrollTop >= 0 && scrollTop < pageHeight) {
                     mainTitleRef.current.classList.add('down_scroll_title')
@@ -78,6 +79,7 @@ const Home = () => {
 
         return () => {
             homeCurrentRef.removeEventListener("wheel", wheelHandler);
+            clearTimeout();
         }
     }, []);
 
