@@ -23,10 +23,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "typeRoots" : ["node_modules/@types", "src/types"]
   },
   "compileOnSave": true,
   "include": [
-    "src"
+    "src",
+    "react-app-env.d.ts"
   ]
 }

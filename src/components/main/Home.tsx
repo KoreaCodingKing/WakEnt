@@ -2,6 +2,13 @@ import { useEffect, useRef } from 'react';
 import '../../assets/styles/home.scss';
 import Footer from '../footer/footer';
 
+import bgIne from '../../assets/images/bg_ine.jpg';
+import bgJing from '../../assets/images/bg_jingburger.jpg';
+import bgLilpa from '../../assets/images/bg_lilpa.jpg';
+import bgJururu from '../../assets/images/bg_jururu.jpg';
+import bgGosegu from '../../assets/images/bg_gosegu.jpg';
+import bgVichan from '../../assets/images/bg_vichan.jpg';
+
 const Home = () => {
     const homeRef = useRef(undefined);
     const mainTitleRef = useRef(undefined);
@@ -97,28 +104,19 @@ const Home = () => {
                                         <p>WOOWAKGOOD WITH METABUS</p>
                                     </li>
                                     <li className="subtitle_wrapper">
-                                        <p>다양한 컨텐츠 세상</p>
+                                        <p className="subtitle_first_line">다양한 컨텐츠 세상</p>
                                         <p>컨텐츠를 만들어가고 다양한 컨텐츠를 창조합니다.</p>
                                     </li>
                                     <li className="subtitle_wrapper">
-                                        <p>미래 지향 컨텐츠들</p>
+                                        <p className="subtitle_first_line">미래 지향 컨텐츠들</p>
                                         <p>메타버스의 시대를 맞춘 새로운 컨텐츠를 선사드립니다.</p>
                                     </li>
                                     <li className="subtitle_wrapper">
-                                        <p>누구나 즐기는 컨텐츠</p>
+                                        <p className="subtitle_first_line">누구나 즐기는 컨텐츠</p>
                                         <p>남녀노소 누구나 즐길 수 있는 창조적인 컨텐츠를 만들어갑니다.</p>
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        <div className="subtitle_image_container">
-                            <div className="subtitle_first_image"></div>
-                            <div className="subtitle_second_image"></div>
-                            <div className="subtitle_third_image"></div>
-                        </div>
-                        <div className="title_btn">
-                            <div className="prev_btn"></div>
-                            <div className="next_btn"></div>
                         </div>
                         <div className="background_wrapper"></div>
                     </div>
@@ -126,11 +124,32 @@ const Home = () => {
             </section>
             <section className="second_section">
                 <div className="section_inner_container">
-                    <div className="second_section_title">
-                        <p>이세계 아이돌</p>
-                        <button>보러가기</button>
+                    <div className="right_images_wrapper">
+                        <div className="upper_wrapper">
+                            <img src={bgIne} alt="아이네 캐릭터 아트" />
+                            <div className="blank"></div>
+                            <img src={bgJing} alt="징버거 캐릭터 아트" />
+                        </div>
+                        <div className="lower_wrapper">
+                            <div className="blank"></div>
+                            <img src={bgGosegu} alt="고세구 캐릭터 아트" />
+                            <div className="blank"></div>
+                        </div>
                     </div>
+                    <div className="second_section_title"></div>
                     <div className="background"></div>
+                    <div className="left_images_wrapper">
+                        <div className="upper_wrapper">
+                            <div className="blank"></div>
+                            <img src={bgLilpa} alt="고세구 캐릭터 아트" />
+                            <div className="blank"></div>
+                        </div>
+                        <div className="lower_wrapper">
+                            <img src={bgJururu} alt="아이네 캐릭터 아트" />
+                            <div className="blank"></div>
+                            <img src={bgVichan} alt="징버거 캐릭터 아트" />
+                        </div>
+                    </div>
                 </div>
             </section>
             <section className="third_section">
