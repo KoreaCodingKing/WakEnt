@@ -35,34 +35,19 @@
 
     .btn_about {
         min-width: 68px;
-        animation: show_menu 0.7s ease-in-out;
     }
     .btn_contact {
         min-width: 68px;
-        animation: show_menu 0.9s ease-in-out;
     }
     .btn_members {
         position: relative;
         min-width: 68px;
-        animation: show_menu 1.1s ease-in-out;
 
         &:hover + .members_group_box  {
             position: absolute;
             display: flex;
             flex-direction: column;
         }
-    }
-}
-
-@keyframes show_menu {
-    0% {
-        display: none;
-        opacity: 0;
-        transform: translate3d(0, -80%, 0);
-    }
-    100% {
-        opacity: 1;
-        transform: translateZ(0);
     }
 }
 
