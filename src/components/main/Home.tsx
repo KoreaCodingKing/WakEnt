@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import '../../assets/styles/home.scss';
-import Footer from '../footer/footer';
 
 import bgIne from '../../assets/images/bg_ine.jpg';
 import bgJing from '../../assets/images/bg_jingburger.jpg';
@@ -161,9 +160,6 @@ const Home = () => {
                     <div className="background"></div>
                 </div>
             </section>
-             <section className="forth_section">
-                 <Footer />
-             </section>
             {/* todo: create navigation bar
             <div className="navigations">
                 

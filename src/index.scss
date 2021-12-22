@@ -29,3 +29,7 @@ code {
 .contents {
     @include componentContainer;
 }
+
+#app-footer {
+    height: 158px;
+}
