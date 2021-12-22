@@ -30,7 +30,7 @@ const Home = () => {
 
             if(deltaY > 0) {
                 if(scrollTop >= 0 && scrollTop < pageHeight) {
-                    mainTitleRef.current.classList.add('down_scroll_title')
+                    mainTitleRef.current.classList.add('down_scroll_title');
                     mainSubTitleRef.current.classList.add('down_scroll_subtitle');
 
                     setTimeout(() => {
@@ -51,7 +51,7 @@ const Home = () => {
                         top: pageHeight*3,
                         left: 0,
                         behavior: "smooth"
-                    })
+                    });
                 } else {
                     return;
                 }
@@ -86,7 +86,7 @@ const Home = () => {
         return () => {
             homeCurrentRef.removeEventListener("wheel", wheelHandler);
             clearTimeout();
-        }
+        };
     }, []);
 
     return (
@@ -166,7 +166,7 @@ const Home = () => {
             </div>
              */}
         </div>
-    )
-}
+    );
+};
 
 export default Home;

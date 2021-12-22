@@ -11,7 +11,7 @@ const App = () => {
     
     setTimeout(() => {
         setShowHomePage(true);
-    }, 3800)
+    }, 3800);
 
     useEffect(() => {
         if (!showHomePage) {
@@ -31,13 +31,13 @@ const App = () => {
             );
         }
 
-    }, [showHomePage])
+    }, [showHomePage]);
 
     return (
         <div id="App">
             {contents}
         </div>
     );
-}
+};
 
 export default App;

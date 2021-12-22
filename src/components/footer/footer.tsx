@@ -1,4 +1,5 @@
-import '../../assets/styles/footer.scss'
+import '../../assets/styles/footer.scss';
+
 const Footer = () => {
     return (
         <div className="footer">
@@ -14,7 +15,7 @@ const Footer = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Footer;

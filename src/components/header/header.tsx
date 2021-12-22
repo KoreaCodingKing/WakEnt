@@ -1,7 +1,6 @@
 import '../../assets/styles/header.scss';
 
 const Header = () => {
-
     return (
         <div className="header_container">
             <h1 className="logo_box">
@@ -20,7 +19,7 @@ const Header = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Header;
