@@ -1,101 +1,101 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react';
 
-import { NextComponentType, NextPage } from 'next'
+import { NextComponentType, NextPage } from 'next';
 // import Head from 'next/head'
-import Image from 'next/image'
+import Image from 'next/image';
 
-import appStyles from '../styles/App.module.scss'
-import styles from '../styles/Home.module.scss'
+import appStyles from '../styles/App.module.scss';
+import styles from '../styles/Home.module.scss';
 
-import bgIne from '../public/images/bg_ine.jpg'
-import bgJing from '../public/images/bg_jingburger.jpg'
-import bgLilpa from '../public/images/bg_lilpa.jpg'
-import bgJururu from '../public/images/bg_jururu.jpg'
-import bgGosegu from '../public/images/bg_gosegu.jpg'
-import bgVichan from '../public/images/bg_vichan.jpg'
+import bgIne from '../public/images/bg_ine.jpg';
+import bgJing from '../public/images/bg_jingburger.jpg';
+import bgLilpa from '../public/images/bg_lilpa.jpg';
+import bgJururu from '../public/images/bg_jururu.jpg';
+import bgGosegu from '../public/images/bg_gosegu.jpg';
+import bgVichan from '../public/images/bg_vichan.jpg';
 
-import Header from '../components/Header'
+import Header from '../components/Header';
 
 const HomeInner: NextComponentType = () => {
-  const homeRef = useRef<HTMLDivElement>(null)
-  const mainTitleRef = useRef<HTMLHeadingElement>(null)
-  const mainSubTitleRef = useRef<HTMLDivElement>(null)
+  const homeRef = useRef<HTMLDivElement>(null);
+  const mainTitleRef = useRef<HTMLHeadingElement>(null);
+  const mainSubTitleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const wheelHandler = (event: any) => {
-      event.preventDefault()
-      const { deltaY } = event
-      const { scrollTop } = homeRef.current!
-      const pageHeight = window.innerHeight
+      event.preventDefault();
+      const { deltaY } = event;
+      const { scrollTop } = homeRef.current!;
+      const pageHeight = window.innerHeight;
 
       if (mainTitleRef.current!.classList.contains('down_scroll_title')) {
-        mainTitleRef.current!.classList.remove('down_scroll_title')
+        mainTitleRef.current!.classList.remove('down_scroll_title');
       }
 
       if (mainSubTitleRef.current!.classList.contains('down_scroll_subtitle')) {
-        mainSubTitleRef.current!.classList.remove('down_scroll_subtitle')
+        mainSubTitleRef.current!.classList.remove('down_scroll_subtitle');
       }
 
       if (deltaY > 0) {
         if (scrollTop >= 0 && scrollTop < pageHeight) {
-          mainTitleRef.current!.classList.add('down_scroll_title')
-          mainSubTitleRef.current!.classList.add('down_scroll_subtitle')
+          mainTitleRef.current!.classList.add('down_scroll_title');
+          mainSubTitleRef.current!.classList.add('down_scroll_subtitle');
 
           setTimeout(() => {
             homeRef.current!.scrollTo({
               top: pageHeight,
               left: 0,
               behavior: 'smooth',
-            })
-          }, 500)
+            });
+          }, 500);
         } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 2) {
           homeRef.current!.scrollTo({
             top: pageHeight * 2,
             left: 0,
             behavior: 'smooth',
-          })
+          });
         } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 3) {
           homeRef.current!.scrollTo({
             top: pageHeight * 3,
             left: 0,
             behavior: 'smooth',
-          })
+          });
         } else {
-          return
+          return;
         }
       } else {
         if (scrollTop >= 0 && scrollTop < pageHeight) {
-          return
+          return;
         } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 2) {
           homeRef.current!.scrollTo({
             top: 0,
             left: 0,
             behavior: 'smooth',
-          })
+          });
         } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 3) {
           homeRef.current!.scrollTo({
             top: pageHeight,
             left: 0,
             behavior: 'smooth',
-          })
+          });
         } else {
           homeRef.current!.scrollTo({
             top: pageHeight * 2,
             left: 0,
             behavior: 'smooth',
-          })
+          });
         }
       }
-    }
+    };
 
-    const homeCurrentRef = homeRef.current
-    homeCurrentRef!.addEventListener('wheel', wheelHandler)
+    const homeCurrentRef = homeRef.current;
+    homeCurrentRef!.addEventListener('wheel', wheelHandler);
 
     return () => {
-      homeCurrentRef!.removeEventListener('wheel', wheelHandler)
-      clearTimeout()
-    }
-  }, [])
+      homeCurrentRef!.removeEventListener('wheel', wheelHandler);
+      clearTimeout();
+    };
+  }, []);
 
   return (
     <div className={styles.home_container} ref={homeRef}>
@@ -184,8 +184,8 @@ const HomeInner: NextComponentType = () => {
             </div>
              */}
     </div>
-  )
-}
+  );
+};
 
 const Home: NextPage = () => {
   return (
@@ -197,7 +197,7 @@ const Home: NextPage = () => {
         <HomeInner></HomeInner>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
