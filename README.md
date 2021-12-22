@@ -16,4 +16,5 @@ yarn
 yarn dev # 개발 서버 실행
 yarn start # 서버 실행
 yarn build # 빌드
+yarn lint # 린트 체크
 ```
