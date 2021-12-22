@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import IsedolHeader from '../components/isedol/IsedolHeader';
+import IsedolHeader from '../../components/isedol/IsedolHeader';
 
 const IsedolPage: NextPage = () => {
   return <div className='main'>
