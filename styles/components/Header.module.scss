@@ -1,56 +1,10 @@
 .header_container {
     display: flex;
     justify-content: space-between;
-    min-width: 300px;
-    max-width: 1400px;
-    height: 158px;
-    margin: 0 auto;
+    min-width: 1024px; // ToDo: 반응형 태블릿 or 모바일 최대사이즈 적용해야함.
+    max-width: 1280px;
+    height: 38px;
+    margin: 40px auto;
     padding: 0 30px;
     align-items: center;
-}
-
-.logo_box {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    
-    .logo {
-        display: inline-block;
-        width: 100%;
-        height: 100%;
-        border: 2px solid #fff ;
-        border-radius: 100%;
-        background: url('../public/images/logo_loading_change.png') no-repeat no-repeat bottom -9px left -24px;
-        background-size: cover;
-        background-color: #000;
-    }
-}
-
-.menu_box {
-    text-align: center;
-
-    button {
-        width: 148px;
-    }
-
-    .btn_about {
-        min-width: 68px;
-    }
-    .btn_contact {
-        min-width: 68px;
-    }
-    .btn_members {
-        position: relative;
-        min-width: 68px;
-
-        &:hover + .members_group_box  {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-        }
-    }
-}
-
-.members_group_box {
-    display: none;
 }

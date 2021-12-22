@@ -1,22 +1,22 @@
-import styles from '../styles/Header.module.scss';
+import { ReactNode } from 'react';
+import Image from 'next/image';
+import styles from '../styles/components/Header.module.scss';
 
-export const Header = () => {
+interface HeaderProps {
+  imgPath?: string,
+  children: ReactNode
+}
+
+export const Header = (props: HeaderProps) => {
   return (
     <div className={styles.header_container}>
-      <h1 className={styles.logo_box}>
-        <div className={styles.logo}></div>
-      </h1>
-      <div className={styles.menu_box}>
-        <button className={styles.btn_about}>ABOUT</button>
-        <button className={styles.btn_contact}>CONTACT</button>
-        <button className={styles.btn_members}>MEMBERS</button>
-        <div className={styles.members_group_box}>
-          <p>GROUP</p>
-          <p>이세돌</p>
-          <p>STATICMEMBER</p>
-          <p>고멤시즌1</p>
-          <p>고멤시즌2</p>
-        </div>
+      <div className={styles.header_left}>
+        <h1 className={styles.logo_wrapper}>
+          {props.imgPath && <Image src={props.imgPath} alt='왁엔터테인먼트' />}
+        </h1>
+      </div>
+      <div className={styles.header_right}>
+        {props.children}
       </div>
     </div>
   );
