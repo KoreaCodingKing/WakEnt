@@ -140,13 +140,13 @@ const Home = () => {
                     <div className="left_images_wrapper">
                         <div className="upper_wrapper">
                             <div className="blank"></div>
-                            <img src={bgLilpa} alt="고세구 캐릭터 아트" />
+                            <img src={bgLilpa} alt="릴파 캐릭터 아트" />
                             <div className="blank"></div>
                         </div>
                         <div className="lower_wrapper">
-                            <img src={bgJururu} alt="아이네 캐릭터 아트" />
+                            <img src={bgJururu} alt="주르르 캐릭터 아트" />
                             <div className="blank"></div>
-                            <img src={bgVichan} alt="징버거 캐릭터 아트" />
+                            <img src={bgVichan} alt="비챤 캐릭터 아트" />
                         </div>
                     </div>
                 </div>
