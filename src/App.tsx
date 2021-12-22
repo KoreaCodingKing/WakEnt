@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 import Header from './components/header/header';
 import Loading from "./components/loading/loading";
-import Home from "./components/main/Home";
+import Home from "./components/pages/home/Home";
 
 const App = () => {
     const [contents, setContents] = useState(<div>defualt</div>);
