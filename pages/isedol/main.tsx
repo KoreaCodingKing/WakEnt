@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import styles from '../../styles/components/isedol/main.module.scss';
+import styles from '../../styles/components/isedol/isedolmain.module.scss';
 
 export const Main = () => {
   // ToDo: 클릭때마다 setCurrentIndex로 currentIndex 변경
