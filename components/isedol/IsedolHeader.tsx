@@ -24,9 +24,9 @@ export const IsedolLogo = ({ big }: IsedolLogoProps) => {
 export const MenuBtn = ():JSX.Element => {
   return (
     <div className={styles.menu_wrapper}>
-        <span></span>
-        <span></span>
-        <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   );
 };
