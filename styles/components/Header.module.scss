@@ -1,4 +1,5 @@
 .header {
+    z-index: 9999;
     display: flex;
     justify-content: space-between;
     min-width: 1024px; // ToDo: 반응형 태블릿 or 모바일 최대사이즈 적용해야함.

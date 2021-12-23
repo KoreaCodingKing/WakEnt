@@ -30,33 +30,44 @@
   position: relative;
   width: 16px;
   height: 15px;
-
   cursor: pointer;
-
+  
   span {
     position: absolute;
     display: block;
+    width:100%;
+    height: 2px;
+    background: #ffffff;
   }
-  
-  span:nth-child(1) {
+
+  &.open {
+    span:nth-child(1) {
+      top: 13px;
+      transform: rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity:0;
+    }
+    span:nth-child(3) {
+      top: 13px;
+      transform: rotate(-45deg);
+    }
+  }
+  .menu_wrapper span:nth-child(1) {
     top: 0;
     left: 0;
-    width: 100%;
-    height: 2px;
     background: #ffffff;
   }
-  span:nth-child(2) {
+  .menu_wrapper span:nth-child(2) {
     top: 6px;
     left: 0;
-    width: 100%;
-    height: 2px;
+    opacity:1;
     background: #ffffff;
   }
-  span:nth-child(3) {
-    top: 12px;
+  .menu_wrapper span:nth-child(3) {
+    bottom: 0;
     left: 0;
-    width: 100%;
-    height: 2px;
     background: #ffffff;
   }
+
 }
