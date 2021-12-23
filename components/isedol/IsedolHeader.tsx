@@ -5,6 +5,7 @@ import { concatClass } from '../../utils/class';
 
 interface IsedolHeaderProps {
   isOpenMenu: boolean;
+  onMenuClick?: () => void
 }
 
 interface IsedolLogoProps {
@@ -21,9 +22,13 @@ export const IsedolLogo = ({ big }: IsedolLogoProps) => {
   );
 };
 
-export const MenuBtn = ():JSX.Element => {
+interface MenuButtonProps {
+  onClick?: () => void
+}
+
+export const MenuButton = ({ onClick } : MenuButtonProps) : JSX.Element => {
   return (
-    <div className={styles.menu_wrapper}>
+    <div className={styles.menu_wrapper} onClick={() => onClick && onClick()}>
       <span></span>
       <span></span>
       <span></span>
@@ -33,7 +38,7 @@ export const MenuBtn = ():JSX.Element => {
 
 export const IsedolHeader = (props: IsedolHeaderProps) => {
   const Left = <IsedolLogo></IsedolLogo>;
-  const Right = <MenuBtn></MenuBtn>; // TODO : 오른쪽 부분 추가하기
+  const Right = <MenuButton onClick={props.onMenuClick}></MenuButton>;
 
   return <HeaderBase {...props} left={Left} right={Right}></HeaderBase>;
 };
