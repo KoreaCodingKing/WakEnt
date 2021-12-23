@@ -39,6 +39,8 @@ module.exports = {
             "error",
             "always"
         ],
+        "indent": ["error", 2],
+        "no-trailing-spaces": "error",
         "no-extra-semi": "error",
         "no-console": isProd ? ["error", { allow: ["warn", "error"] }] : "off",
         "curly": "error",
