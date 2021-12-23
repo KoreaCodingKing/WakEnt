@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import styles from '../../styles/components/isedol/isedolmain.module.scss';
+
+import styles from '../../styles/components/isedol/isedolMain.module.scss';
 
 export const Main = () => {
   // ToDo: 클릭때마다 setCurrentIndex로 currentIndex 변경
@@ -17,22 +18,15 @@ export const Main = () => {
   return (
     <div className={styles.isedol_main__container} ref={containerRef}>
       <h2 className={styles.isedol_main__title}>
-        <p>RE</p>
-        <div className={styles.mark}>
-          <span></span>
-          <span></span>
-        </div>
-        <p>WIND</p>
+        RE<span>:</span>WIND
       </h2>
       <div className={styles.isedol_main__subtitle_box}>
-        <p>2021.12.22 MV Released</p>
-        <button className={styles.play_btn}>
-          <div className={styles.play_icon}></div>
-        </button>
+        <p className={styles.subtitle}>2021.12.22 MV Released</p>
+        <button className={styles.play_btn}></button>
       </div>
       <div className={styles.isedol_main__slide_box}>
         {/* ToDo: backgroundImagesPath length마다 버튼 보여주깅~ */}
-        <button></button>
+        <button className={styles.selected}></button>
         <button></button>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { useState } from 'react';
 
-import styles from '../../styles/components/isedol/isedoleMain.module.scss';
+import styles from '../../styles/components/isedol/isedoleIndex.module.scss';
 import IsedolHeader from '../../components/isedol/IsedolHeader';
 import Main from './main';
 
