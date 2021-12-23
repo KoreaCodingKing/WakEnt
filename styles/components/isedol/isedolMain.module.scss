@@ -41,14 +41,16 @@
   position: absolute;
   width: 100%;
   opacity: 0;
+  transform: translateY(30px);
   pointer-events: none;
   visibility: hidden;
-  transition: 0.23s all cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.64s all cubic-bezier(0.19, 1, 0.22, 1);
 
   &[data-current='true'] {
     opacity: 1;
     pointer-events: all;
     visibility: visible;
+    transform: translateY(0px);
   }
 
   font-family: Pretendard Variable, Pretendard, Inter, Noto Sans CJK KR,
@@ -121,6 +123,8 @@
     margin-right: 10px;
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.32);
+
+    transition: 0.23s background cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   button[data-current='true'] {
