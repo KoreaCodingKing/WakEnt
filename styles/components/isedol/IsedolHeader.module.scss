@@ -24,6 +24,13 @@
   span {
     margin: auto;
   }
+
+  transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
+  cursor: pointer;
+
+  &:hover, &:focus {
+    opacity: 0.9;
+  }
 }
 
 .menu_wrapper {

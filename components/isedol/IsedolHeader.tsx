@@ -1,11 +1,13 @@
-import HeaderBase, { HeaderBaseProps } from '../common/Header';
+import { useRef } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
+import HeaderBase from '../common/Header';
 import styles from '../../styles/components/isedol/IsedolHeader.module.scss';
 import { concatClass } from '../../utils/class';
-import { useRef } from 'react';
 
 interface IsedolHeaderProps {
-  isOpenMenu: boolean;
+  isOpenMenu: boolean
   onMenuClick?: () => void
 }
 
@@ -18,24 +20,33 @@ interface MenuButtonProps {
 }
 
 export const IsedolLogo = ({ big }: IsedolLogoProps) => {
+  const router = useRouter();
+
   return (
     <div className={concatClass(styles.logo, big && styles.big)}>
-      <div className={styles.logoText}>
-        <span>ISEGYE IDOL</span>
-      </div>
+      <Link href='/isedol' passHref>
+        <div
+          className={styles.logoText}
+          tabIndex={90}
+          onKeyDown={ev =>
+            ev.key === 'Enter' && router.push('/isedol')
+          }
+        >
+          <span>ISEGYE IDOL</span>
+        </div>
+      </Link>
     </div>
   );
 };
-
-
-export const MenuButton = ({ onMenuClick, isOpenMenu } : IsedolHeaderProps) : JSX.Element => {
+  
+export const MenuButton = ({ onClick }: MenuButtonProps): JSX.Element => {
   const menuWrapperRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className={styles.menu_wrapper}
       ref={menuWrapperRef}
       onClick={() => {
-        onMenuClick && onMenuClick();
+        onClick && onClick();
         menuWrapperRef.current!.classList.toggle('open');
       }}>
       <span></span>
@@ -47,7 +58,7 @@ export const MenuButton = ({ onMenuClick, isOpenMenu } : IsedolHeaderProps) : JS
 
 export const IsedolHeader = (props: IsedolHeaderProps) => {
   const Left = <IsedolLogo></IsedolLogo>;
-  const Right = <MenuButton onMenuClick={props.onMenuClick} isOpenMenu={props.isOpenMenu}></MenuButton>;
+  const Right = <MenuButton onClick={props.onMenuClick}></MenuButton>;
 
   return <HeaderBase {...props} left={Left} right={Right}></HeaderBase>;
 };
