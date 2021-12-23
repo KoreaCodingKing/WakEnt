@@ -58,7 +58,7 @@
 
 .isedol_main__title {
   height: fit-content;
-  margin: 344px 0 15px;
+  margin: 334px 0 15px;
   margin-bottom: 15px;
   font-size: 80px;
   font-style: normal;
@@ -129,5 +129,19 @@
 
   button:last-of-type {
     margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .isedol_main__title {
+    margin-top: 308px;
+  }
+
+  .isedol_main__subtitle_box {
+    margin-bottom: 188px;
+  }
+
+  .page_indicator {
+    margin-bottom: 154px;
   }
 }
