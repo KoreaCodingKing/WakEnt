@@ -9,6 +9,16 @@
       letter-spacing: -0.7px;
     }
   }
+
+  .logoText {
+    color: black;
+  }
+
+  &.white {
+    .logoText {
+      color: white;
+    }
+  }
 }
 
 .logoText {
@@ -25,7 +35,7 @@
     margin: auto;
   }
 
-  transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1), 0.23s color cubic-bezier(0.19, 1, 0.22, 1);
   cursor: pointer;
 
   &:hover, &:focus {
@@ -44,9 +54,15 @@
     display: block;
     width:100%;
     height: 2px;
-    background: #ffffff;
+    background: #000;
     transition: .3s cubic-bezier(.8, .5, .2, 1.4);
     transition-duration: 500ms;
+  }
+
+  &.white {
+    span {
+      background: white;
+    }
   }
   
   span:nth-child(1) {

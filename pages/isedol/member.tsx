@@ -13,7 +13,11 @@ const IsedolPage: NextPage = (): JSX.Element => {
     <div className={styles.isedol__container}>
       <IsedolMenuOverlay open={isOpenMenu}></IsedolMenuOverlay>
       <div className={styles.isedol_header}>
-        <IsedolHeader isOpenMenu={isOpenMenu} onMenuClick={() => setIsOpenMenu(true)}></IsedolHeader>
+        <IsedolHeader
+          isOpenMenu={isOpenMenu}
+          onMenuClick={() => setIsOpenMenu(!isOpenMenu)}
+          white={!isOpenMenu}
+        ></IsedolHeader>
       </div>
       <div className={styles.isedol_contents}>
         <IsedolMembers></IsedolMembers>

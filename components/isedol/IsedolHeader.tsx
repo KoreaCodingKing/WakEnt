@@ -7,24 +7,33 @@ import styles from '../../styles/components/isedol/IsedolHeader.module.scss';
 import { concatClass } from '../../utils/class';
 
 interface IsedolHeaderProps {
+  white?: boolean
   isOpenMenu: boolean
   onMenuClick?: () => void
 }
 
 interface IsedolLogoProps {
+  white?: boolean
   big?: boolean
 }
 
 interface MenuButtonProps {
+  white?: boolean
   open?: boolean
   onClick?: () => void
 }
 
-export const IsedolLogo = ({ big }: IsedolLogoProps) => {
+export const IsedolLogo = ({ big, white }: IsedolLogoProps) => {
   const router = useRouter();
 
   return (
-    <div className={concatClass(styles.logo, big && styles.big)}>
+    <div
+      className={concatClass(
+        styles.logo,
+        big && styles.big,
+        white && styles.white
+      )}
+    >
       <Link href='/isedol' passHref>
         <div
           className={styles.logoText}
@@ -38,10 +47,18 @@ export const IsedolLogo = ({ big }: IsedolLogoProps) => {
   );
 };
 
-export const MenuButton = ({ onClick, open }: MenuButtonProps): JSX.Element => {
+export const MenuButton = ({
+  onClick,
+  open,
+  white,
+}: MenuButtonProps): JSX.Element => {
   return (
     <div
-      className={concatClass(styles.menu_wrapper, open && styles.open)}
+      className={concatClass(
+        styles.menu_wrapper,
+        open && styles.open,
+        white && styles.white
+      )}
       onClick={() => onClick && onClick()}
     >
       <span></span>
@@ -52,9 +69,10 @@ export const MenuButton = ({ onClick, open }: MenuButtonProps): JSX.Element => {
 };
 
 export const IsedolHeader = (props: IsedolHeaderProps) => {
-  const Left = <IsedolLogo></IsedolLogo>;
+  const Left = <IsedolLogo white={props.white}></IsedolLogo>;
   const Right = (
     <MenuButton
+      white={props.white}
       open={props.isOpenMenu}
       onClick={props.onMenuClick}
     ></MenuButton>
