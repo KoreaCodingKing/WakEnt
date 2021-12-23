@@ -1,9 +1,12 @@
 import { NextPage } from 'next';
+import { useState } from 'react';
 import IsedolHeader from '../../components/isedol/IsedolHeader';
 
-const IsedolPage: NextPage = () => {
+const IsedolPage: NextPage = (): JSX.Element => {
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+
   return <div className='main'>
-    <IsedolHeader></IsedolHeader>
+    <IsedolHeader isOpenMenu={isOpenMenu}></IsedolHeader>
   </div>;
 };
 

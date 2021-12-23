@@ -16,3 +16,36 @@
     margin: auto;
   }
 }
+
+.menu_wrapper {
+  position: relative;
+  width: 16px;
+  height: 15px;
+
+  span {
+    position: absolute;
+    display: block;
+  }
+  
+  span:nth-child(1) {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #000;
+  }
+  span:nth-child(2) {
+    top: 6px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #000;
+  }
+  span:nth-child(3) {
+    top: 12px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #000;
+  }
+}
