@@ -14,13 +14,7 @@ const IsedolPage: NextPage = (): JSX.Element => {
       <IsedolMenuOverlay open={isOpenMenu}></IsedolMenuOverlay>
       <div className={styles.isedol_header}>
         <IsedolHeader isOpenMenu={isOpenMenu}
-          onMenuClick={() => {
-            if (isOpenMenu) {
-              setIsOpenMenu(false);
-            } else {
-              setIsOpenMenu(true);
-            }
-          }}></IsedolHeader>
+          onMenuClick={() => setIsOpenMenu(!isOpenMenu)}></IsedolHeader>
       </div>
       <div className={styles.isedol_contents}>
         <Main></Main>

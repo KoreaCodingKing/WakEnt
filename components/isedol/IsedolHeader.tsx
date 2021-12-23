@@ -16,6 +16,7 @@ interface IsedolLogoProps {
 }
 
 interface MenuButtonProps {
+  open?: boolean
   onClick?: () => void
 }
 
@@ -28,9 +29,7 @@ export const IsedolLogo = ({ big }: IsedolLogoProps) => {
         <div
           className={styles.logoText}
           tabIndex={90}
-          onKeyDown={ev =>
-            ev.key === 'Enter' && router.push('/isedol')
-          }
+          onKeyDown={ev => ev.key === 'Enter' && router.push('/isedol')}
         >
           <span>ISEGYE IDOL</span>
         </div>
@@ -39,16 +38,12 @@ export const IsedolLogo = ({ big }: IsedolLogoProps) => {
   );
 };
 
-export const MenuButton = ({ onClick }: MenuButtonProps): JSX.Element => {
-  const menuWrapperRef = useRef<HTMLDivElement>(null);
-
+export const MenuButton = ({ onClick, open }: MenuButtonProps): JSX.Element => {
   return (
-    <div className={styles.menu_wrapper}
-      ref={menuWrapperRef}
-      onClick={() => {
-        onClick && onClick();
-        menuWrapperRef.current!.classList.toggle(styles.open);
-      }}>
+    <div
+      className={concatClass(styles.menu_wrapper, open && styles.open)}
+      onClick={() => onClick && onClick()}
+    >
       <span></span>
       <span></span>
       <span></span>
@@ -58,7 +53,12 @@ export const MenuButton = ({ onClick }: MenuButtonProps): JSX.Element => {
 
 export const IsedolHeader = (props: IsedolHeaderProps) => {
   const Left = <IsedolLogo></IsedolLogo>;
-  const Right = <MenuButton onClick={props.onMenuClick}></MenuButton>;
+  const Right = (
+    <MenuButton
+      open={props.isOpenMenu}
+      onClick={props.onMenuClick}
+    ></MenuButton>
+  );
 
   return <HeaderBase {...props} left={Left} right={Right}></HeaderBase>;
 };
