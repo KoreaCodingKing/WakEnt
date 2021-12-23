@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import styles from '../../styles/components/isedol/isedoleMain.module.scss';
 import IsedolHeader from '../../components/isedol/IsedolHeader';
+import Main from './main';
 
 const IsedolPage: NextPage = (): JSX.Element => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -11,7 +12,7 @@ const IsedolPage: NextPage = (): JSX.Element => {
     <div className={styles.isedol_container}>
       <IsedolHeader isOpenMenu={isOpenMenu}></IsedolHeader>
       <div className={styles.isedol_contents}>
-        {/* ToDo: 메인, 멤버, discography등 보여주는 콘텐츠 */}
+        <Main></Main>
       </div>
     </div>
   );

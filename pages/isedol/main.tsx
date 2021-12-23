@@ -1,13 +1,18 @@
-import Image from 'next/image';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from '../../styles/components/isedol/main.module.scss';
 
 export const Main = () => {
-  // ToDo: useEffect 이용 index바뀔때마다 ref에 background 접근하여 backgroundImagesPath 경로 변경
-  const containerRef = useRef(null);
+  // ToDo: 클릭때마다 setCurrentIndex로 currentIndex 변경
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   const backgroundImagesPath = [
-    { index: 0, path: '/images/wak-enter-centered.png'}
-  ]
+    { index: 0, path: '/images/bg_isedol_rewind.png'}
+  ];
+
+  useEffect(() => {
+    const currentImagePath = backgroundImagesPath[currentIndex].path;
+    containerRef.current!.style.backgroundImage = `url(${currentImagePath})`;
+  }, [currentIndex]);
 
   return (
     <div className={styles.isedol_main__container} ref={containerRef}>
