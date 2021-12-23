@@ -1,3 +1,5 @@
+const isProd = process.env.NODE_ENV === 'production';
+
 module.exports = {
     "env": {
         "browser": true,
@@ -37,8 +39,10 @@ module.exports = {
             "error",
             "always"
         ],
+        "indent": ["error", 2],
+        "no-trailing-spaces": "error",
         "no-extra-semi": "error",
-        "no-console": ["error", { allow: ["warn", "error"] }],
+        "no-console": isProd ? ["error", { allow: ["warn", "error"] }] : "off",
         "curly": "error",
         "comma-spacing": [
             "error",
@@ -47,5 +51,6 @@ module.exports = {
         "no-var": "error",
         "prefer-const": "error",
         "space-in-parens": ["error", "never"]
-    }
+    },
+    "ignorePatterns": ['.eslintrc.js']
 };

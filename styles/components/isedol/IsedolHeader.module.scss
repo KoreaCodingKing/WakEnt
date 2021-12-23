@@ -1,6 +1,14 @@
 .logo {
   display: flex;
   justify-content: center;
+
+  &.big {
+    .logoText {
+      font-size: 3em;
+      font-weight: bold;
+      letter-spacing: -0.7px;
+    }
+  }
 }
 
 .logoText {

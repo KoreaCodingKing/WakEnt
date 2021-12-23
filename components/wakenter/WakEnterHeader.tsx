@@ -3,10 +3,15 @@ import HeaderBase, { HeaderBaseProps } from '../common/Header';
 import Image from 'next/image';
 
 import styles from '../../styles/components/wakenter/WakEnterHeader.module.scss';
+import { concatClass } from '../../utils/class';
 
-export const WakEnterLogo = () => {
+interface WakEnterLogoProps {
+  white?: boolean
+}
+
+export const WakEnterLogo = ({ white }: WakEnterLogoProps) => {
   return (
-    <div className={styles.logo}>
+    <div className={concatClass(styles.logo, white && styles.white)}>
       <div className={styles.logoImage}>
         <Image src='/images/wak-enter-centered.png' layout='fill' alt='WAK'></Image>
       </div>
@@ -18,7 +23,7 @@ export const WakEnterLogo = () => {
 };
 
 export const WakEnterHeader = (props: HeaderBaseProps) => {
-  const Left = <WakEnterLogo></WakEnterLogo>;
+  const Left = <WakEnterLogo white={props.white}></WakEnterLogo>;
   const Right = <></>; // TODO : 오른쪽 부분 추가하기
 
   return (
