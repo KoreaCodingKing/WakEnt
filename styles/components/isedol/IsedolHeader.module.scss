@@ -60,21 +60,23 @@
       transform: rotate(-45deg);
     }
   }
-  .menu_wrapper span:nth-child(1) {
+  
+  span:nth-child(1) {
     top: 0;
     left: 0;
     background: #ffffff;
   }
-  .menu_wrapper span:nth-child(2) {
+
+  span:nth-child(2) {
     top: 6px;
     left: 0;
     opacity:1;
     background: #ffffff;
   }
-  .menu_wrapper span:nth-child(3) {
+  
+  span:nth-child(3) {
     bottom: 0;
     left: 0;
     background: #ffffff;
   }
-
 }

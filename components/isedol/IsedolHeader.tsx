@@ -47,7 +47,7 @@ export const MenuButton = ({ onClick }: MenuButtonProps): JSX.Element => {
       ref={menuWrapperRef}
       onClick={() => {
         onClick && onClick();
-        menuWrapperRef.current!.classList.toggle('open');
+        menuWrapperRef.current!.classList.toggle(styles.open);
       }}>
       <span></span>
       <span></span>
