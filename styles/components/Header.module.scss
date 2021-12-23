@@ -1,15 +1,32 @@
+@import "../mixin.scss";
+
 .header {
     z-index: 9999;
     display: flex;
     justify-content: space-between;
-    min-width: 1024px; // ToDo: 반응형 태블릿 or 모바일 최대사이즈 적용해야함.
-    max-width: 1280px;
     height: 38px;
     margin: 40px auto;
     align-items: center;
 
     &.fixed {
         position: fixed;
+    }
+
+    width: 90%;
+
+    @media screen and (min-width: #{$maxTablet + 100px}) {
+        min-width: 1024px; // ToDo: 반응형 태블릿 or 모바일 최대사이즈 적용해야함.
+        max-width: $maxPage;
+    }
+
+    @media screen and (max-width: #{$maxTablet + 100px}) {
+        max-width: unset;
+        min-width: 90%;
+        width: 90%;
+    }
+
+    @media screen and (max-width: #{$maxMobile + 100px}) {
+        min-width: 90%;
     }
 }
 
