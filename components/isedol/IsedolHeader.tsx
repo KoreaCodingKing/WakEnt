@@ -28,7 +28,7 @@ export const MenuBtn = ():JSX.Element => {
 
 export const IsedolHeader = (props: IsedolHeaderProps) => {
   const Left = <IsedolLogo></IsedolLogo>;
-  const Right = <MenuBtn ></MenuBtn>; // TODO : 오른쪽 부분 추가하기
+  const Right = <MenuBtn></MenuBtn>; // TODO : 오른쪽 부분 추가하기
 
   return (
     <HeaderBase

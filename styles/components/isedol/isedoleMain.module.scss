@@ -1,3 +1,12 @@
-.isedol_main__container {
+.isedol__container {
+  position: relative;
   width: 100vw;
+}
+
+.isedol_header {
+  position: absolute;
+  left: 50%;
+  z-index: 9999;
+  height: 18px;
+  transform: translate(-50%, 0);
 }
