@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "NODE_ENV=development next lint",
+    "lint:prod": "NODE_ENV=production next lint"
   },
   "dependencies": {
     "eslint-plugin-jsdoc": "^37.4.0",
