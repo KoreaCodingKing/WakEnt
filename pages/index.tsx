@@ -29,7 +29,7 @@ const Groups = [
     link: '/isedol',
     image: '/images/bg_rewind.jpg',
     disabled: false,
-    logo: <IsedolLogo big></IsedolLogo>,
+    logo: <IsedolLogo big white></IsedolLogo>,
   },
   {
     name: '고정 멤버',
@@ -81,7 +81,7 @@ const Home: NextPage = () => {
             </div>
           </section>
           <section
-            className={concatClass(styles.page, styles.flex)}
+            className={concatClass(styles.page, styles.flex, styles.mobileColumn)}
             data-page={2}
           >
             {Groups.map((v, i) => (

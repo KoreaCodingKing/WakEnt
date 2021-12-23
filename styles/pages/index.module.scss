@@ -42,6 +42,21 @@
   &.flex {
     display: flex;
   }
+
+  &.mobileColumn {
+    @media screen and (max-width: $maxTablet) {
+      flex-direction: column;
+
+      .card {
+        .background {
+          height: unset;
+          position: absolute;
+          aspect-ratio: 16 / 9;
+          left: unset;
+        }
+      }
+    }
+  }
 }
 
 .representInner {
@@ -72,6 +87,32 @@
     font-weight: normal;
     letter-spacing: -2px;
   }
+
+  @media screen and (max-width: $maxTablet) {
+    h1 {
+      font-size: 4.5em;
+      letter-spacing: -3px;
+    }    
+
+    p {
+      font-size: 1.5em;
+      font-weight: normal;
+      letter-spacing: -2px;
+    }
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    h1 {
+      font-size: 3em;
+      letter-spacing: -2.5px;
+    }    
+
+    p {
+      font-size: 1.25em;
+      font-weight: normal;
+      letter-spacing: -1.5px;
+    }
+  }
 }
 
 $link-color: #1667e0;
@@ -87,6 +128,20 @@ $link-color: #1667e0;
     font-size: 2em;
     letter-spacing: -1px;
     width: fit-content;
+
+    @media screen and (max-width: $maxTablet) {
+      font-size: 1.5em;
+
+      svg {
+        margin-left: 6px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+  
+    @media screen and (max-width: $maxMobile) {
+      font-size: 1.25em;
+    }
 
     transition: color 0.23s cubic-bezier(0.19, 1, 0.22, 1);
 
@@ -132,10 +187,10 @@ $link-color: #1667e0;
   }
 
   .background {
-    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
     position: absolute;
     aspect-ratio: 16 / 9;
-    left: -50%;
 
     &::before {
       position: absolute;
