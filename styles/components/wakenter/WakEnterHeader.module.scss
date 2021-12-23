@@ -1,6 +1,16 @@
 .logo {
   display: flex;
   justify-content: center;
+
+  &.white {
+    .logoImage {
+      filter: invert(1);
+    }
+
+    .logoText {
+      color: white;
+    }
+  }
 }
 
 .logoImage {

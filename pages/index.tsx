@@ -1,15 +1,16 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useRef } from 'react';
-import HorizonalScroller, {
-  useHorizonalScroller,
-} from '../components/common/HorizonalScroller';
+import Image from 'next/image';
+
 import LinkToIcon from '../components/common/icons/LinkTo';
+import { IsedolLogo } from '../components/isedol/IsedolHeader';
 
 import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import styles from '../styles/pages/index.module.scss';
 import { concatClass } from '../utils/class';
+import { useScrollPage } from '../components/common/ScrollPage';
+import { useRef } from 'react';
 
 const Links = [
   {
@@ -22,16 +23,26 @@ const Links = [
   },
 ];
 
-const Home: NextPage = () => {
-  const scroller = useRef<HTMLDivElement>(null);
+const Groups = [
+  {
+    name: '이세계 아이돌',
+    link: '/isedol',
+    image: '/images/bg_rewind.jpg',
+    disabled: false,
+    logo: <IsedolLogo big></IsedolLogo>,
+  },
+  {
+    name: '고정 멤버',
+    link: '/gomem',
+    image: '/images/bg_gomem.jpg',
+    disabled: true,
+    logo: <h1>고정 멤버</h1>,
+  },
+];
 
-  /**
-   * Next.JS는 서버사이드, 클라이언트 사이드 둘 다 사용하는 구조이니 window가 없는 서버 사이드에서는 null을 사용
-   */
-  const [page, setPage] = useHorizonalScroller(
-    typeof window !== 'undefined' ? document.body : null,
-    scroller
-  );
+const Home: NextPage = () => {
+  const scroll = useRef<HTMLDivElement>(null);
+  const page = useScrollPage(scroll, process.browser ? window.innerHeight : 1, 0.05);
 
   return (
     <>
@@ -40,46 +51,53 @@ const Home: NextPage = () => {
       </Head>
       <div className={styles.main}>
         <header>
-          <WakEnterHeader></WakEnterHeader>
+          <WakEnterHeader white={page === 1}></WakEnterHeader>
         </header>
-        <div className='page-scroll' ref={scroller}>
-          <section
-            className={concatClass(styles.page, styles.flex, styles.column)}
-            data-page={1}
-          >
-            <div className={styles.hero}>
-              <h1>WAKTAVERSE.</h1>
-              <p>WAK Entertainment, we are break-through.</p>
-            </div>
-            <div className={styles.links}>
-              {Links.map(v => (
-                <p
-                  className={styles.link}
-                  tabIndex={100}
-                  onKeyDown={ev =>
-                    ev.key === 'Enter' && (window.location.href = v.link)
-                  }
-                >
-                  <Link href={v.link} passHref>
-                    <span>
-                      {v.name} <LinkToIcon width={22}></LinkToIcon>
-                    </span>
-                  </Link>
-                </p>
-              ))}
+        <div className={styles.pages} ref={scroll}>
+          <section className={concatClass(styles.page)} data-page={1}>
+            <div className={styles.representInner}>
+              <div className={styles.hero}>
+                <h1>WAKTAVERSE.</h1>
+                <p>WAK Entertainment, we are break-through.</p>
+              </div>
+              <div className={styles.links}>
+                {Links.map((v, i) => (
+                  <p
+                    key={`main-link-${i}`}
+                    className={styles.link}
+                    tabIndex={100}
+                    onKeyDown={ev =>
+                      ev.key === 'Enter' && (window.location.href = v.link)
+                    }
+                  >
+                    <Link href={v.link} passHref>
+                      <span>
+                        {v.name} <LinkToIcon width={22}></LinkToIcon>
+                      </span>
+                    </Link>
+                  </p>
+                ))}
+              </div>
             </div>
           </section>
-          <section className={styles.page} data-page={2}>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: '100%',
-              }}
-            >
-              <h1 style={{ marginBottom: 'auto' }}>두번째 페이지</h1>
-              <p style={{ marginTop: 'auto' }}>페이지 마지막</p>
-            </div>
+          <section
+            className={concatClass(styles.page, styles.flex)}
+            data-page={2}
+          >
+            {Groups.map((v, i) => (
+              <Link key={`subsite-link-${i}`} href={v.link} passHref>
+                <div className={styles.card}>
+                  <div className={styles.background}>
+                    <Image
+                      className={styles.image}
+                      src={v.image}
+                      layout='fill'
+                    />
+                  </div>
+                  <div className={styles.contents}>{v.logo}</div>
+                </div>
+              </Link>
+            ))}
           </section>
         </div>
       </div>
