@@ -1,37 +1,71 @@
 import { NextPage } from 'next';
-import { useEffect, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import Image from 'next/image';
 
 import styles from '../../styles/components/isedol/isedolMain.module.scss';
+import { concatClass } from '../../utils/class';
+
+const usePageAutoScroll = (
+  paused: boolean,
+  set: Dispatch<SetStateAction<number>>,
+  current: number,
+  max: number,
+  rate: number
+) => {
+  useEffect(() => {
+    if (paused) {
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      set(current + 1 > max ? 0 : current + 1);
+    }, rate);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [current, paused]);
+};
 
 export const Main: NextPage = () => {
-  // ToDo: 클릭때마다 setCurrentIndex로 currentIndex 변경
+  const [pauseAutoScroll, setPauseAutoScroll] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const slides = [
     {
       image: '/images/bg_rewind.jpg',
       title: 'RE : WIND',
       subtitle: '2021.12.22 MV Released',
-      youtube: 'fgSXAKsq-Vo'
+      youtube: 'fgSXAKsq-Vo',
     },
     {
       image: '/images/bg_christmas_cover.jpg',
       title: `It's Beginning To Look A Lot Like Christmas`,
-      subtitle: '2021.12.23 christmas special cover',
+      subtitle: '2021.12.23 Christmas Special Cover',
       youtube: 'kNPykP_9wOQ',
     },
   ];
 
+  usePageAutoScroll(pauseAutoScroll, setCurrentIndex, currentIndex, slides.length - 1, 5000);
+
   /**
    * TODO : 재생 버튼을 누르면 YouTube 플레이어 열기 (이동이 아님!)
-   * TODO : 페이지 전환 트렌지션
    */
 
   return (
     <div className={styles.isedol_main__container}>
       <div className={styles.background}>
-        <Image layout='fill' src={slides[currentIndex].image} />
+        {slides.map((v, i) => (
+          <Image
+            className={concatClass(
+              styles.backgroundImage,
+              currentIndex === i && styles.active
+            )}
+            layout='fill'
+            key={`background-image-${i}`}
+            src={v.image}
+          />
+        ))}
       </div>
       {slides.map((v, i) => (
         <section
@@ -42,15 +76,14 @@ export const Main: NextPage = () => {
           <h2 className={styles.isedol_main__title}>{v.title}</h2>
           <div className={styles.isedol_main__subtitle_box}>
             <p className={styles.subtitle}>{v.subtitle}</p>
-            {
-              v.youtube && <button className={styles.play_btn}></button>
-            }
+            {v.youtube && <button className={styles.play_btn}></button>}
           </div>
         </section>
       ))}
       <div className={styles.page_indicator}>
         {slides.map((_, i) => (
           <button
+            key={`page-indicator-${i}`}
             data-current={currentIndex === i}
             onClick={() => setCurrentIndex(i)}
           ></button>
