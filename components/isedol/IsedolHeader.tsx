@@ -38,7 +38,7 @@ export const IsedolLogo = ({ big }: IsedolLogoProps) => {
     </div>
   );
 };
-  
+
 export const MenuButton = ({ onClick }: MenuButtonProps): JSX.Element => {
   const menuWrapperRef = useRef<HTMLDivElement>(null);
 
