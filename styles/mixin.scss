@@ -2,6 +2,8 @@ $maxWeb: 1920px;
 $maxTablet: 1024px;
 $maxMobile: 575px;
 
+$maxPage: 1280px;
+
 @mixin componentContainer {
     display: flex;
     flex-direction: column;

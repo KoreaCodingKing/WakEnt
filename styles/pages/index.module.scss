@@ -1,0 +1,84 @@
+@import "../mixin.scss";
+
+.main {
+  max-width: $maxTablet;
+  min-width: 90%;
+  margin: auto;
+
+  header {
+    position: absolute;
+  }
+
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+  }
+
+  font-family: 'Pretendard', 'Pretendard Variable';
+}
+
+.page {
+  width: 100%;
+  height: 100vh;
+
+  &.flex {
+    display: flex;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  margin-bottom: 10vh;
+
+  h1 {
+    font-size: 6em;
+    font-weight: bold;
+    letter-spacing: -4px;
+  }
+
+  p {
+    font-size: 2em;
+    font-weight: normal;
+    letter-spacing: -2px;
+  }
+}
+
+$link-color: #1667e0;
+.links {
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .link {
+    display: flex;
+    font-weight: bold;
+    font-size: 2em;
+    letter-spacing: -1px;
+    width: fit-content;
+
+    transition: color 0.23s cubic-bezier(0.19, 1, 0.22, 1);
+
+    &:hover, &:focus, &:active {
+      color: $link-color;
+      cursor: pointer;
+
+      svg {
+        stroke: $link-color;
+
+        transform: scale(1.15);
+      }
+    }
+
+    svg {
+      margin: auto;
+      margin-left: 10px;
+      transition: stroke 0.23s cubic-bezier(0.19, 1, 0.22, 1), transform 0.23s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+  }
+}
