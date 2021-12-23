@@ -12,14 +12,58 @@
   background-position: center;
 }
 
-.isedol_main__title { 
-  height: fit-content;  
+.background {
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
+  aspect-ratio: 16 / 9;
+
+  img {
+    height: 100%;
+    min-width: 100%;
+  }
+
+  &::after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: ' ';
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.32);
+    left: 0;
+    top: 0;
+  }
+}
+
+.page {
+  z-index: 100;
+
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: 0.23s all cubic-bezier(0.19, 1, 0.22, 1);
+
+  &[data-current='true'] {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+  }
+
+  font-family: Pretendard Variable, Pretendard, Inter, Noto Sans CJK KR,
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.isedol_main__title {
+  height: fit-content;
   margin: 344px 0 15px;
   margin-bottom: 15px;
-  font-family: Inter;
   font-size: 80px;
   font-style: normal;
   font-weight: 700;
+  letter-spacing: -1px;
   color: #ffffff;
   line-height: 100%;
 
@@ -36,10 +80,10 @@
 
   .subtitle {
     margin-bottom: 32px;
-    font-family: Noto Sans CJK KR;
     font-style: 700;
     font-weight: bold;
     font-size: 16px;
+    letter-spacing: -0.7px;
     color: #999999;
   }
 
@@ -48,7 +92,7 @@
     width: 41px;
     height: 41px;
     align-self: center;
-    border: 1px solid #FFFFFF;
+    border: 1px solid #ffffff;
     box-sizing: border-box;
     border-radius: 58px;
     background: none;
@@ -66,7 +110,11 @@
   }
 }
 
-.isedol_main__slide_box {
+.page_indicator {
+  z-index: 100;
+  margin-top: auto;
+  margin-bottom: 15%;
+
   button {
     width: 10px;
     height: 10px;
@@ -75,7 +123,7 @@
     background: rgba(255, 255, 255, 0.32);
   }
 
-  .selected {
+  button[data-current='true'] {
     background: #ffffff;
   }
 
