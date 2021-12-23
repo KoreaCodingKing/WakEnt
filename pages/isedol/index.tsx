@@ -1,10 +1,23 @@
 import { NextPage } from 'next';
-import IsedolHeader from '../../components/isedol/IsedolHeader';
+import { useState } from 'react';
 
-const IsedolPage: NextPage = () => {
-  return <div className='main'>
-    <IsedolHeader></IsedolHeader>
-  </div>;
+import styles from '../../styles/components/isedol/isedoleIndex.module.scss';
+import IsedolHeader from '../../components/isedol/IsedolHeader';
+import Main from './main';
+
+const IsedolPage: NextPage = (): JSX.Element => {
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+
+  return (
+    <div className={styles.isedol__container}>
+      <div className={styles.isedol_header}>
+        <IsedolHeader isOpenMenu={isOpenMenu}></IsedolHeader>
+      </div>
+      <div className={styles.isedol_contents}>
+        <Main></Main>
+      </div>
+    </div>
+  );
 };
 
 export default IsedolPage;
