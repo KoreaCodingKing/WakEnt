@@ -16,9 +16,10 @@ export const Main: NextPage = () => {
       youtube: 'fgSXAKsq-Vo'
     },
     {
-      image: '/images/bg_gomem.jpg',
-      title: '2 Page',
-      subtitle: 'For test',
+      image: '/images/bg_christmas_cover.jpg',
+      title: `It's Beginning To Look A Lot Like Christmas`,
+      subtitle: '2021.12.23 christmas special cover',
+      youtube: 'kNPykP_9wOQ',
     },
   ];
 
