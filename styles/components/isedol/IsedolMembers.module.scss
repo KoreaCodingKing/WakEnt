@@ -36,3 +36,38 @@
     top: 0;
   }
 }
+
+.isedol_members__container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  .inner_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.inner_container {
+  transition: background-color 500ms linear;
+}
+
+.members_contents {
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+  width: 1165px;
+  height: 100%;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.member_card_box {
+  position: relative;
+  width: 175px;
+  height: 480px;
+  margin: 0 11px;
+}
