@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { useState } from 'react';
 
-import styles from '../../styles/components/isedol/isedoleIndex.module.scss';
+import styles from '../../styles/components/isedol/IsedolIndex.module.scss';
 import IsedolHeader from '../../components/isedol/IsedolHeader';
 import IsedolMembers from '../../components/isedol/IsedolMembers';
 import IsedolMenuOverlay from '../../components/isedol/IsedolMenuOverlay';
@@ -10,7 +10,7 @@ const IsedolPage: NextPage = (): JSX.Element => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (
-    <div className={styles.isedol_main__container}>
+    <div className={styles.isedol__container}>
       <IsedolMenuOverlay open={isOpenMenu}></IsedolMenuOverlay>
       <div className={styles.isedol_header}>
         <IsedolHeader

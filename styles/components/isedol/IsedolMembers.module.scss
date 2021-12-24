@@ -52,7 +52,33 @@
 }
 
 .inner_container {
-  transition: background-color 250ms linear;
+  transition: background-color 360ms cubic-bezier(0.19, 1, 0.22, 1);
+
+  background-color: #0A0A0B;
+
+  &[data-member="ine"] {
+    background-color: #210C28;
+  }
+
+  &[data-member="jingburger"] {
+    background-color: #1A1506;
+  }
+
+  &[data-member="lilpa"] {
+    background-color: #0E0A24;
+  }
+
+  &[data-member="jururu"] {
+    background-color: #1B0A1C;
+  }
+
+  &[data-member="gosegu"] {
+    background-color: #05171D;
+  }
+
+  &[data-member="viichan"] {
+    background-color: #081607;
+  }
 }
 
 .members_contents {

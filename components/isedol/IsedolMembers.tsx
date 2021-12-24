@@ -4,77 +4,87 @@ import Image from 'next/image';
 import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
 
 interface Member {
-  name: string;
-  image: string;
-  signImage: string;
-  color: string;
+  id: string
+  name: string
+  image: string
+  signImage: string
+  color: string
 }
 
-const members = [
+const Members: Member[] = [
   {
-    name: 'empty',
-    image: '',
-    signImage: '',
-    color: '#0A0A0B'
+    id: 'INE',
+    name: '아이네',
+    image: '/images/member/ine.png',
+    signImage: '/images/sign/ine.png',
+    color: '#210C28',
   },
   {
-    name: 'ine',
-    image: '/images/bg_ine.png',
-    signImage: '/images/sign_ine.png',
-    color: '#210C28'
+    id: 'Jingburger',
+    name: '징버거',
+    image: '/images/member/jingburger.png',
+    signImage: '/images/sign/jingburger.png',
+    color: '#1A1506',
   },
   {
-    name: 'jingburger',
-    image: '/images/bg_jingburger.png',
-    signImage: '/images/sign_jingburger.png',
-    color: '#1A1506'
+    id: 'LILPA',
+    name: '릴파',
+    image: '/images/member/lilpa.png',
+    signImage: '/images/sign/lilpa.png',
+    color: '#0E0A24',
   },
   {
-    name: 'lilpa',
-    image: '/images/bg_lilpa.png',
-    signImage: '/images/sign_lilpa.png',
-    color: '#0E0A24'
+    id: 'Jururu',
+    name: '주르르',
+    image: '/images/member/jururu.png',
+    signImage: '/images/sign/jururu.png',
+    color: '#1B0A1C',
   },
   {
-    name: 'jururu',
-    image: '/images/bg_jururu.png',
-    signImage: '/images/sign_jururu.png',
-    color: '#1B0A1C'
+    id: 'GOSEGU',
+    name: '고세구',
+    image: '/images/member/gosegu.png',
+    signImage: '/images/sign/gosegu.png',
+    color: '#05171D',
   },
   {
-    name: 'gosegu',
-    image: '/images/bg_gosegu.png',
-    signImage: '/images/sign_gosegu.png',
-    color: '#05171D'
-  },
-  {
-    name: 'vichan',
-    image: '/images/bg_vichan.png',
-    signImage: '/images/sign_vichan.png',
-    color: '#081607'
+    id: 'Viichan',
+    name: '비챤',
+    image: '/images/member/viichan.png',
+    signImage: '/images/sign/viichan.png',
+    color: '#081607',
   },
 ];
 
 export const IsedolMembers: NextPage = () => {
-  const [selectMember, setSelectMember] = useState(members[0]);
-  const [memberColor, setMemberColor] = useState(members[0].color);
+  const [chosenMember, setChosenMember] = useState<Member | null>(null);
+  const [currentHoverMember, setCurrentHoverMember] = useState<string | null>(null);
 
   return (
     <div className={styles.isedol_members__container}>
-      <div className={styles.inner_container} style={{backgroundColor: `${memberColor}`}}></div>
+      <div
+        className={styles.inner_container}
+        data-member={currentHoverMember}
+      ></div>
       <div className={styles.members_contents}>
-        {(selectMember.name === members[0].name) && members.map((member, i) => {
-          if (i === 0) {return;}
-          return (
-            <div className={styles.member_card_box}
-              onMouseOver={() => setMemberColor(member.color)}
-              onMouseOut={() => setMemberColor(members[0].color)}>
-              <Image className={styles.member_card}
-                src={member.image}
-                alt={member.name}></Image>
-            </div>
-          );
-        })}
+        {!chosenMember &&
+          Members.map((member, i) => {
+            return (
+              <div
+                key={member.id}
+                className={styles.member_card_box}
+                onMouseEnter={() => setCurrentHoverMember(member.id.toLowerCase())}
+                onMouseOut={() => setCurrentHoverMember(null)}
+              >
+                <Image
+                  className={styles.member_card}
+                  src={member.image}
+                  layout='fill'
+                  alt={member.name}
+                ></Image>
+              </div>
+            );
+          })}
       </div>
       {/* ToDo: 멤버별 소개 화면 */}
     </div>

@@ -1,0 +1,53 @@
+.card {
+  position: relative;
+  display: block;
+
+  padding: 16px 24px;
+  border-radius: 16px;
+
+  .image_wrapper {
+    position: relative;
+    min-width: 200px;
+    min-height: 200px;
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+
+    img {
+      border-radius: 16px;
+    }
+  }
+
+  .youtube_wrapper {
+    position: relative;
+    min-width: 200px;
+    min-height: 100px;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+
+    img {
+      border-radius: 16px;
+    }
+  }
+
+  background: #fff;
+
+  transition: 0.23s box-shadow cubic-bezier(0.19, 1, 0.22, 1), 0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
+
+  box-shadow: 0px 0px 16px rgba(0,0,0,0.16);
+  transform: scale(1);
+
+  &:hover {
+    box-shadow: 0px 0px 16px rgba(0,0,0,0.32);
+    transform: scale(1.01);
+  }
+}
+
+.title {
+  font-size: 1.25em;
+  letter-spacing: -1px;
+
+  text-align: center;
+
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
