@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useEffect } from 'react';
 import styles from '../../styles/components/isedol/IsedolMenuOverlay.module.scss';
 import { concatClass } from '../../utils/class';
 import LinkToIcon from '../common/icons/LinkTo';
@@ -27,14 +28,26 @@ const Links = [
   }
 ];
 
+const useBodyLock = (lock: boolean) => {
+  useEffect(() => {
+    document.body.classList[lock ? 'add' : 'remove'](styles.bodyScrollLock);
+
+    return () => {
+      document.body.classList.remove(styles.bodyScrollLock);
+    };
+  }, [lock]);
+};
+
 export const IsedolMenuOverlay = ({ open }: IsedolMenuOverlayProps) => {
+  useBodyLock(open);
+
   return (
     <div className={concatClass(styles.overlay, open && styles.open)}>
       <div className={styles.contents}>
         <div className={styles.links}>
           {
-            Links.map(v => <Link href={v.page} passHref>
-              <div className={styles.link}>
+            Links.map((v, i) => <Link href={v.page} passHref>
+              <div key={`menu-link-${i}`} className={styles.link}>
                 <h1>{v.name}</h1>
                 {
                   v.page[0] !== '/' && <LinkToIcon></LinkToIcon>

@@ -1,5 +1,10 @@
 @import '../../mixin.scss';
 
+.bodyScrollLock {
+  position: fixed;
+  overflow: hidden !important;
+}
+
 .overlay {
   position: fixed;
   left: 0;
@@ -67,7 +72,6 @@ $link-color: #1667e0;
   display: flex;
   gap: 10px;
 
-
   h1 {
     font-size: 5vmin;
     margin: 0;
@@ -90,7 +94,8 @@ $link-color: #1667e0;
   svg {
     margin-top: auto;
     margin-bottom: auto;
-    transition: stroke 0.23s cubic-bezier(0.19, 1, 0.22, 1), transform 0.23s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: stroke 0.23s cubic-bezier(0.19, 1, 0.22, 1),
+      transform 0.23s cubic-bezier(0.19, 1, 0.22, 1);
 
     width: 4vmin;
     height: 4vmin;
@@ -111,7 +116,9 @@ $link-color: #1667e0;
 
   transition: color 0.23s cubic-bezier(0.19, 1, 0.22, 1);
 
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     color: $link-color;
     cursor: pointer;
 
@@ -149,7 +156,7 @@ $link-color: #1667e0;
   }
 }
 
-.logo  {
+.logo {
   position: relative;
   margin-left: auto;
   opacity: 0.3;
