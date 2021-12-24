@@ -20,13 +20,16 @@
   }
 
   @media screen and (max-width: #{$maxTablet + 100px}) {
+    margin: 36px auto;
     max-width: unset;
     min-width: 90%;
     width: 90%;
   }
 
   @media screen and (max-width: #{$maxMobile + 100px}) {
-    min-width: 90%;
+    margin: 32px auto;
+    min-width: 85%;
+    width: 85%;
   }
 }
 
