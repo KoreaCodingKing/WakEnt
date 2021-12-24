@@ -71,6 +71,7 @@ export const IsedolMembers: NextPage = () => {
               onMouseOut={() => setMemberColor(members[0].color)}>
               <Image className={styles.member_card}
                 src={member.image}
+                layout='fill'
                 alt={member.name}></Image>
             </div>
           );
