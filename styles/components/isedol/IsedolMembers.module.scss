@@ -51,6 +51,10 @@
   }
 }
 
+.inner_container {
+  transition: background-color 500ms linear;
+}
+
 .members_contents {
   display: flex;
   justify-content: center;
