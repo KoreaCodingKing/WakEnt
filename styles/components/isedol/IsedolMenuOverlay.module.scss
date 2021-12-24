@@ -136,7 +136,6 @@ $link-color: #1667e0;
   margin-left: unset;
   margin-right: auto;
   opacity: 0.3;
-  cursor: pointer;
   margin-bottom: 16px;
 
   p {
@@ -145,10 +144,6 @@ $link-color: #1667e0;
   }
 
   transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
-
-  &:hover {
-    opacity: 1;
-  }
 
   @media screen and (max-width: #{$maxTablet + 100px}) {
     margin-left: auto;
@@ -165,7 +160,7 @@ $link-color: #1667e0;
 
   transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
 
-  &:hover {
+  &:hover, &:focus {
     opacity: 0.6;
   }
 

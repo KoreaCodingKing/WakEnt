@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import styles from '../../styles/components/isedol/IsedolMenuOverlay.module.scss';
 import { concatClass } from '../../utils/class';
@@ -16,16 +17,16 @@ const Links = [
   },
   {
     name: 'DISCOGRAPHY',
-    page: '/isedol/discography'
+    page: '/isedol/discography',
   },
   {
     name: 'YouTube',
-    page: 'https://youtube.com/c/welshcorgimessi'
+    page: 'https://youtube.com/c/welshcorgimessi',
   },
   {
     name: 'WAKZOO',
-    page: 'https://cafe.naver.com/steamindiegame'
-  }
+    page: 'https://cafe.naver.com/steamindiegame',
+  },
 ];
 
 const useBodyLock = (lock: boolean) => {
@@ -39,29 +40,37 @@ const useBodyLock = (lock: boolean) => {
 };
 
 export const IsedolMenuOverlay = ({ open }: IsedolMenuOverlayProps) => {
+  const router = useRouter();
+
   useBodyLock(open);
 
   return (
     <div className={concatClass(styles.overlay, open && styles.open)}>
       <div className={styles.contents}>
         <div className={styles.links}>
-          {
-            Links.map((v, i) => <Link href={v.page} key={`menu-link-${i}-${v.name}`} passHref>
-              <div className={styles.link}>
+          {Links.map((v, i) => (
+            <Link href={v.page} key={`menu-link-${i}-${v.name}`} passHref>
+              <div
+                className={styles.link}
+                tabIndex={100}
+                onKeyDown={ev => ev.key === 'Enter' && router.push(v.page)}
+              >
                 <h1>{v.name}</h1>
-                {
-                  v.page[0] !== '/' && <LinkToIcon></LinkToIcon>
-                }
+                {v.page[0] !== '/' && <LinkToIcon></LinkToIcon>}
               </div>
-            </Link>)
-          }
+            </Link>
+          ))}
         </div>
         <div className={styles.attribution}>
           <p>Background Illustration by SE2RA on WAKZOO.</p>
           <p>Profile Photo by 여비날 on WAKZOO.</p>
         </div>
         <Link key={'link-wak-enter'} href={'/'} passHref>
-          <div className={styles.logo}>
+          <div
+            className={styles.logo}
+            tabIndex={100}
+            onKeyDown={ev => ev.key === 'Enter' && router.push('/')}
+          >
             <WakEnterLogo></WakEnterLogo>
           </div>
         </Link>

@@ -54,11 +54,13 @@ export const MenuButton = ({
 }: MenuButtonProps): JSX.Element => {
   return (
     <div
+      tabIndex={100}
       className={concatClass(
         styles.menu_wrapper,
         open && styles.open,
         white && styles.white
       )}
+      onKeyDown={(ev) => ev.key === 'Enter' && onClick && onClick()}
       onClick={() => onClick && onClick()}
     >
       <span></span>
