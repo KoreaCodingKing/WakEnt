@@ -64,16 +64,17 @@ export const IsedolMembers: NextPage = () => {
     <div className={styles.isedol_members__container}>
       <div
         className={styles.inner_container}
-        data-member={currentHoverMember}
+        data-member={currentHoverMember?.toLowerCase()}
       ></div>
       <div className={styles.members_contents}>
         {!chosenMember &&
-          Members.map((member, i) => {
+          Members.map(member => {
             return (
               <div
-                key={member.id}
+                key={`member-card-${member.id}`}
                 className={styles.member_card_box}
-                onMouseEnter={() => setCurrentHoverMember(member.id.toLowerCase())}
+                data-active={member.id === currentHoverMember}
+                onMouseEnter={() => setCurrentHoverMember(member.id)}
                 onMouseOut={() => setCurrentHoverMember(null)}
               >
                 <Image
