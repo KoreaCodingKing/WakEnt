@@ -1,0 +1,78 @@
+@import "../../mixin.scss";
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    font-size: 3.5em;
+    letter-spacing: -1px;
+    margin-top: calc(80px + 10vh);
+    margin-bottom: calc(40px + 5vh);
+
+    margin-left: auto;
+    margin-right: auto;
+
+    @media screen and (max-width: $maxTablet) {
+      font-size: 3em;
+    }
+
+    @media screen and (max-width: $maxMobile) {
+      font-size: 2.5em;
+    }
+  } 
+}
+
+.section {
+  width: 90%;
+  margin-bottom: 32px;
+
+  @media screen and (min-width: #{$maxTablet + 100px}) {
+    min-width: $maxTablet;
+    max-width: $maxPage;
+  }
+
+  @media screen and (max-width: #{$maxTablet + 100px}) {
+    max-width: unset;
+    min-width: 90%;
+    width: 90%;
+  }
+
+  @media screen and (max-width: #{$maxMobile + 100px}) {
+    min-width: 85%;
+    width: 85%;
+  }
+
+  margin-left: auto;
+  margin-right: auto;
+
+  .sectionTitle {
+    font-size: 2em;
+    letter-spacing: -1px;
+    font-weight: normal;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr; 
+  grid-column-gap: 32px;
+  grid-row-gap: 32px; 
+
+  @media screen and (min-width: #{$maxTablet + 100px}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: #{$maxTablet + 100px}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: #{$maxMobile + 100px}) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
