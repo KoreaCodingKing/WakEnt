@@ -73,7 +73,7 @@ export const IsedolMembers: NextPage = () => {
               <div
                 key={`member-card-${member.id}`}
                 className={styles.member_card_box}
-                data-active={member.id === currentHoverMember}
+                data-active={currentHoverMember === null || member.id === currentHoverMember}
                 onMouseEnter={() => setCurrentHoverMember(member.id)}
                 onMouseOut={() => setCurrentHoverMember(null)}
               >
