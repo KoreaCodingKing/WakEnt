@@ -75,8 +75,8 @@ export const IsedolMembers: NextPage = () => {
             </div>
           );
         })}
-        {/* ToDo: 멤버별 소개 화면 */}
       </div>
+      {/* ToDo: 멤버별 소개 화면 */}
     </div>
   );
 };
