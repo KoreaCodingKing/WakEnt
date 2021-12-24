@@ -11,6 +11,7 @@
   "dependencies": {
     "eslint-plugin-jsdoc": "^37.4.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
+    "framer-motion": "^5.5.5",
     "next": "12.0.7",
     "normalize.css": "^8.0.1",
     "react": "17.0.2",

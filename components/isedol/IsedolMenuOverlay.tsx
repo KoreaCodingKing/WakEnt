@@ -46,8 +46,8 @@ export const IsedolMenuOverlay = ({ open }: IsedolMenuOverlayProps) => {
       <div className={styles.contents}>
         <div className={styles.links}>
           {
-            Links.map((v, i) => <Link href={v.page} passHref>
-              <div key={`menu-link-${i}`} className={styles.link}>
+            Links.map((v, i) => <Link href={v.page} key={`menu-link-${i}-${v.name}`} passHref>
+              <div className={styles.link}>
                 <h1>{v.name}</h1>
                 {
                   v.page[0] !== '/' && <LinkToIcon></LinkToIcon>
@@ -60,7 +60,7 @@ export const IsedolMenuOverlay = ({ open }: IsedolMenuOverlayProps) => {
           <p>Background Illustration by SE2RA on WAKZOO.</p>
           <p>Profile Photo by 여비날 on WAKZOO.</p>
         </div>
-        <Link href={'/'} passHref>
+        <Link key={'link-wak-enter'} href={'/'} passHref>
           <div className={styles.logo}>
             <WakEnterLogo></WakEnterLogo>
           </div>
