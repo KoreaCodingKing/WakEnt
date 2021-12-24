@@ -81,14 +81,14 @@
 
   &.open {
     span:nth-child(1) {
-      top: 13px;
+      top: 7px;
       transform: rotate(45deg);
     }
     span:nth-child(2) {
       opacity:0;
     }
     span:nth-child(3) {
-      top: 13px;
+      top: 7px;
       transform: rotate(-45deg);
     }
   }
