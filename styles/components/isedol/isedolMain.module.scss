@@ -85,7 +85,7 @@
 .isedol_main__title {
   height: fit-content;
   margin: auto 0 15px;
-  font-size: 4rem;
+  font-size: 5rem;
   font-style: normal;
   font-weight: 700;
   letter-spacing: -1px;
@@ -118,10 +118,10 @@
   .subtitle {
     margin-bottom: 32px;
     font-style: 700;
-    font-weight: bold;
+    font-weight: thin;
     font-size: 1rem;
     letter-spacing: -0.7px;
-    color: #999999;
+    color: #ffffff;
 
     @media screen and (max-width: $maxTablet) {
       font-size: 0.95rem;
@@ -146,6 +146,12 @@
     border-radius: 58px;
     background: none;
     cursor: pointer;
+
+    transition: 0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   .play_btn::after {
