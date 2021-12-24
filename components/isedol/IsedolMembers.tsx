@@ -63,17 +63,17 @@ export const IsedolMembers: NextPage = () => {
     <div className={styles.isedol_members__container}>
       <div className={styles.inner_container}>
         {selectMember.name === members[0].name && members.map((member, i) => {
-          if (i === 0) return;
+          if (i === 0) {return;}
           <div className={styles.member}
             style={{backgroundColor: `${memberColor}`}}
-            onMouseEnter={() => setMemberColor(members[i].color)}
+            onMouseEnter={() => setMemberColor(member.color)}
             onMouseOut={() => setMemberColor(members[0].color)}>
-              <div className={styles.member_card_box}>
-                <Image className={styles.member_card}
-                  src={members[i].image}
-                  alt={members[i].name}></Image>
-              </div>
+            <div className={styles.member_card_box}>
+              <Image className={styles.member_card}
+                src={member.image}
+                alt={member.name}></Image>
             </div>
+          </div>;
         })}
         {/* ToDo: 멤버별 소개 화면 */}
       </div>
