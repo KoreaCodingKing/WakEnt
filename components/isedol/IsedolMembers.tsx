@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NextPage } from 'next';
 import Image from 'next/image';
-import styles from '../../styles/components/isedol/isedolMembers.module.scss';
+import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
 
 interface Member {
   name: string;
