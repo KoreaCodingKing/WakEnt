@@ -56,24 +56,24 @@ const members = [
 ];
 
 export const IsedolMembers: NextPage = () => {
-  const [selectMember, setSelectMember] = useState<Member>(members[0]);
+  const [selectMember, setSelectMember] = useState(members[0]);
   const [memberColor, setMemberColor] = useState(members[0].color);
 
   return (
     <div className={styles.isedol_members__container}>
-      <div className={styles.inner_container}>
-        {selectMember.name === members[0].name && members.map((member, i) => {
+      <div className={styles.inner_container} style={{backgroundColor: `${memberColor}`}}></div>
+      <div className={styles.members_contents}>
+        {(selectMember.name === members[0].name) && members.map((member, i) => {
           if (i === 0) {return;}
-          <div className={styles.member}
-            style={{backgroundColor: `${memberColor}`}}
-            onMouseEnter={() => setMemberColor(member.color)}
-            onMouseOut={() => setMemberColor(members[0].color)}>
-            <div className={styles.member_card_box}>
+          return (
+            <div className={styles.member_card_box}
+              onMouseEnter={() => setMemberColor(member.color)}
+              onMouseLeave={() => setMemberColor(members[0].color)}>
               <Image className={styles.member_card}
                 src={member.image}
                 alt={member.name}></Image>
             </div>
-          </div>;
+          );
         })}
         {/* ToDo: 멤버별 소개 화면 */}
       </div>
