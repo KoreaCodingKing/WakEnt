@@ -23,7 +23,7 @@
     min-width: 100%;
   }
 
-  background: #0A0A0B;
+  background: #0a0a0b;
 
   &::after {
     position: absolute;
@@ -54,29 +54,29 @@
 .inner_container {
   transition: background-color 360ms cubic-bezier(0.19, 1, 0.22, 1);
 
-  background-color: #0A0A0B;
+  background-color: #0a0a0b;
 
-  &[data-member="ine"] {
-    background-color: #210C28;
+  &[data-member='ine'] {
+    background-color: #210c28;
   }
 
-  &[data-member="jingburger"] {
-    background-color: #1A1506;
+  &[data-member='jingburger'] {
+    background-color: #1a1506;
   }
 
-  &[data-member="lilpa"] {
-    background-color: #0E0A24;
+  &[data-member='lilpa'] {
+    background-color: #0e0a24;
   }
 
-  &[data-member="jururu"] {
-    background-color: #1B0A1C;
+  &[data-member='jururu'] {
+    background-color: #1b0a1c;
   }
 
-  &[data-member="gosegu"] {
-    background-color: #05171D;
+  &[data-member='gosegu'] {
+    background-color: #05171d;
   }
 
-  &[data-member="viichan"] {
+  &[data-member='viichan'] {
     background-color: #081607;
   }
 }
@@ -96,4 +96,22 @@
   width: 175px;
   height: 480px;
   margin: 0 11px;
+  cursor: pointer;
+
+  &[data-active="true"] {
+    &::after {
+      opacity: 0;
+    }
+  }
+
+  &::after {
+    position: absolute;
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.64);
+    transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
+    pointer-events: none;
+    border-radius: 16px;
+  }
 }
