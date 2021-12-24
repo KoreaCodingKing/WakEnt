@@ -15,7 +15,7 @@ const members = [
     name: 'empty',
     image: '',
     signImage: '',
-    color: '0A0A0B'
+    color: '#0A0A0B'
   },
   {
     name: 'ine',
@@ -67,8 +67,8 @@ export const IsedolMembers: NextPage = () => {
           if (i === 0) {return;}
           return (
             <div className={styles.member_card_box}
-              onMouseEnter={() => setMemberColor(member.color)}
-              onMouseLeave={() => setMemberColor(members[0].color)}>
+              onMouseOver={() => setMemberColor(member.color)}
+              onMouseOut={() => setMemberColor(members[0].color)}>
               <Image className={styles.member_card}
                 src={member.image}
                 alt={member.name}></Image>
