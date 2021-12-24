@@ -20,12 +20,13 @@
   visibility: hidden;
 
   background: rgba(255, 255, 255, 0.8);
-  transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1), 0.23s visibility cubic-bezier(0.19, 1, 0.22, 1);
 
   &.open {
     opacity: 1;
     pointer-events: auto;
     visibility: visible;
+    transition: 0.4s opacity cubic-bezier(0.19, 1, 0.22, 1), 0.4s visibility cubic-bezier(0.19, 1, 0.22, 1);
   }
 }
 
