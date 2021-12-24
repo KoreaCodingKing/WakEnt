@@ -10,7 +10,7 @@ const IsedolPage: NextPage = (): JSX.Element => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (
-    <div className={styles.isedol__container}>
+    <div className={styles.isedol_main__container}>
       <IsedolMenuOverlay open={isOpenMenu}></IsedolMenuOverlay>
       <div className={styles.isedol_header}>
         <IsedolHeader
