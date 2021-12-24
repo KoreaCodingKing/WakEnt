@@ -5,6 +5,7 @@ import Image from 'next/image';
 
 import styles from '../../styles/components/isedol/isedolMain.module.scss';
 import { concatClass } from '../../utils/class';
+import Head from 'next/head';
 
 const usePageAutoScroll = (
   paused: boolean,
@@ -29,7 +30,7 @@ const usePageAutoScroll = (
 };
 
 export const Main: NextPage = () => {
-  const [pauseAutoScroll, setPauseAutoScroll] = useState(false);
+  const [pauseAutoScroll, setPauseAutoScroll] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
   const slides = [
     {
@@ -37,12 +38,14 @@ export const Main: NextPage = () => {
       title: 'RE : WIND',
       subtitle: '2021.12.22 MV Released',
       youtube: 'fgSXAKsq-Vo',
+      color: '#222121'
     },
     {
       image: '/images/bg_christmas_cover.jpg',
       title: `It's Beginning To Look A Lot Like Christmas`,
       subtitle: '2021.12.23 Christmas Special Cover',
       youtube: 'kNPykP_9wOQ',
+      color: '#221511'
     },
   ];
 
@@ -54,6 +57,9 @@ export const Main: NextPage = () => {
 
   return (
     <div className={styles.isedol_main__container}>
+      <Head>
+        <meta name='theme-color' content={slides[currentIndex].color}></meta>
+      </Head>
       <div className={styles.background}>
         {slides.map((v, i) => (
           <Image

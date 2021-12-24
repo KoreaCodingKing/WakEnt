@@ -1,6 +1,7 @@
 .isedol__container {
   position: relative;
   width: 100vw;
+  height: fit-content;
 }
 
 .isedol_header {
@@ -8,6 +9,11 @@
   z-index: 9999;
   left: 50%;
   width: 100%;
-  height: 18px;
   transform: translate(-50%, 0);
+}
+
+.isedol_contents {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
