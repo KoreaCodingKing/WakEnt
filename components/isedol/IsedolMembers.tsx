@@ -3,7 +3,6 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
 import Head from 'next/head';
-import { concatClass } from '../../utils/class';
 
 interface Member {
   name: {
