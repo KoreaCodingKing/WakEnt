@@ -93,7 +93,7 @@ export const IsedolMembers: NextPage = () => {
       ></div>
       <div className={styles.members_contents}>
         {!chosenMember &&
-          Object.keys(Members).map(id => {
+          Object.keys(Members).map((id, i) => {
             const member = Members[id as MemberID];
 
             return (
@@ -112,6 +112,27 @@ export const IsedolMembers: NextPage = () => {
                   layout='fill'
                   alt={member.name.ko}
                 ></Image>
+                {(currentHoverMember === id) &&
+                  <div
+                    className={styles.sign_box}
+                    data-member={currentHoverMember}>
+                    <div className={styles.arrow_wrapper}>
+                      <Image
+                        className={styles.sign_arrow}
+                        src={(i%2 === 0) ? '/images/icons/ico_card_arrow_tail.png' : '/images/icons/ico_card_arrow.png' }
+                        layout='fill'
+                        alt='사인 arrow'></Image>
+                    </div>
+                    <p className={styles.sign_name}>{member.name.ko}</p>
+                    <div className={styles.sign_wrapper}>
+                      <Image
+                        className={styles.member_sign}
+                        src={member.signImage}
+                        layout='fill'
+                        alt={`${member.name.ko} 싸인`}></Image>
+                    </div>
+                  </div>
+                }
               </div>
             );
           })}

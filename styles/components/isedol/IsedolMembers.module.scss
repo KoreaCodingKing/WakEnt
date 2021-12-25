@@ -126,3 +126,190 @@
   position: absolute;
   z-index: 10;
 }
+
+.sign_box {
+  position: relative;
+  bottom: -220px;
+  // ToDo: 부드럽게 나오기 처리
+  transition: 0.64s all cubic-bezier(0.19, 1, 0.22, 1);
+
+  .sign_name {
+    width: fit-content;
+    color: #ffffff;
+  }
+
+  &[data-member='ine'] {
+    .arrow_wrapper {
+      position: absolute;
+      top: 272px;
+      left: 68px;
+      width: 27.7px;
+      height: 57.8px;
+    }
+
+    .sign_name {
+      position: absolute;
+      top: 250px;
+      left: 120px;
+      font-family: 'nanumson-middleschool';
+      // ToDo: 적용이 안되고 있음
+      // src: url('/fonts/nanumson-middleschool.ttf') format('truetype');
+      font-size: 32px;
+    }
+
+    .sign_wrapper {
+      position: absolute;
+      top: 234px;
+      left: 148px;
+      width: 147px;
+      height: 147px;
+    }
+  }
+
+  &[data-member='jingburger'] {
+    .arrow_wrapper {
+      position: absolute;
+      top: -264px;
+      left: 68px;
+      width: 55.1px;
+      height: 35.8px;
+      transform: scaleX(-1);
+    }
+
+    .sign_name {
+      position: absolute;
+      top: -315px;
+      left: 130px;
+      font-family: 'nanumson-middleschool';
+      // ToDo: 적용이 안되고 있음
+      // src: url('/fonts/nanumson-middleschool.ttf') format('truetype');
+      font-size: 32px;
+    }
+
+    .sign_wrapper {
+      position: absolute;
+      top: -374px;
+      left: 63px;
+      width: 147px;
+      height: 147px;
+      transform: rotate(-7.1deg);
+    }
+  }
+
+  &[data-member='lilpa'] {
+    .arrow_wrapper {
+      position: absolute;
+      top: 272px;
+      left: 68px;
+      width: 39.8px;
+      height: 46.7px;
+    }
+
+    .sign_name {
+      position: absolute;
+      top: 250px;
+      left: 120px;
+      font-family: 'nanumson-middleschool';
+      // ToDo: 적용이 안되고 있음
+      // src: url('/fonts/nanumson-middleschool.ttf') format('truetype');
+      font-size: 32px;
+    }
+
+    .sign_wrapper {
+      position: absolute;
+      top: 268px;
+      left: 114px;
+      width: 172px;
+      height: 88px;
+      transform: rotate(-13.2deg);
+    }
+  }
+
+  &[data-member='jururu'] {
+    .arrow_wrapper {
+      position: absolute;
+      top: -264px;
+      left: 36px;
+      width: 55.1px;
+      height: 35.8px;
+    }
+
+    .sign_name {
+      position: absolute;
+      top: -315px;
+      left: -68px;
+      font-family: 'nanumson-middleschool';
+      // ToDo: 적용이 안되고 있음
+      // src: url('/fonts/nanumson-middleschool.ttf') format('truetype');
+      font-size: 32px;
+    }
+
+    .sign_wrapper {
+      position: absolute;
+      top: -345px;
+      left: -141px;
+      width: 147px;
+      height: 147px;
+      transform: rotate(22.01deg);
+    }
+  }
+
+  &[data-member='gosegu'] {
+    .arrow_wrapper {
+      position: absolute;
+      top: 272px;
+      left: 68px;
+      width: 39.8px;
+      height: 46.7px;
+      transform: scaleX(-1);
+    }
+
+    .sign_name {
+      position: absolute;
+      top: 268px;
+      left: -32px;
+      font-family: 'nanumson-middleschool';
+      // ToDo: 적용이 안되고 있음
+      // src: url('/fonts/nanumson-middleschool.ttf') format('truetype');
+      font-size: 32px;
+    }
+
+    .sign_wrapper {
+      position: absolute;   
+      top: 278px;
+      left: -160px;
+      width: 212.46px;
+      height: 157.79px;
+      transform: rotate(36.78deg);
+    }
+  }
+
+  &[data-member='viichan'] {
+    .arrow_wrapper {
+      position: absolute;
+      top: -264px;
+      left: 36px;
+      width: 55.1px;
+      height: 35.8px;
+    }
+
+    .sign_name {
+      position: absolute;
+      top: -315px;
+      left: -32px;
+      font-family: 'nanumson-middleschool';
+      // ToDo: 적용이 안되고 있음
+      // src: url('/fonts/nanumson-middleschool.ttf') format('truetype');
+      font-size: 32px;
+    }
+
+    .sign_wrapper {
+      position: absolute;
+      top: -345px;
+      left: -141px;
+      width: 188.62px;
+      height: 188.62px;
+      transform: rotate(-23.31deg);
+    }
+  }
+}
