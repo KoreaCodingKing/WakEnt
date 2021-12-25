@@ -112,6 +112,20 @@ export const IsedolMembers: NextPage = () => {
                   layout='fill'
                   alt={member.name.ko}
                 ></Image>
+                {!currentHoverMember && 
+                  <div className={styles.sign_box}>
+                    <Image
+                      className={styles.sign_arrow}
+                      src='/images/icons/ico_card_arrow.png'
+                      layout='fill'
+                      alt='사인 arrow'></Image>
+                    <Image
+                      className={styles.member_sign}
+                      src={member.signImage}
+                      layout='fill'
+                      alt={`${member.name.ko} 싸인`}></Image>
+                  </div>
+                }
               </div>
             );
           })}
