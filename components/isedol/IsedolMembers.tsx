@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
@@ -78,9 +78,27 @@ export const IsedolMembers: NextPage = () => {
   const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
     null
   );
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const wheelEventHandler = (event: any) => {
+      event.preventDefault();
+
+      containerRef.current!.scrollBy({
+        left: event.deltaY < 0 ? -30 : 30
+      });
+    };
+
+    const containerCurrentRef = containerRef.current;
+    containerCurrentRef!.addEventListener('wheel', wheelEventHandler);
+    return () => {
+      containerCurrentRef!.removeEventListener('wheel', () => wheelEventHandler);
+    };
+  }, []);
 
   return (
-    <div className={styles.isedol_members__container}>
+    <div className={styles.isedol_members__container}
+      ref={containerRef}>
       <Head>
         <meta
           name='theme-color'
