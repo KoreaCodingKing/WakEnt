@@ -94,7 +94,7 @@ export const IsedolMembers: NextPage = () => {
       ></div>
       <div className={styles.members_contents}>
         {!chosenMember &&
-          Object.keys(Members).map(id => {
+          Object.keys(Members).map((id, i) => {
             const member = Members[id as MemberID];
 
             return (
@@ -117,11 +117,11 @@ export const IsedolMembers: NextPage = () => {
                 {true &&
                   <div
                     className={styles.sign_box}
-                    data-member={'11'}>
+                    data-member={'22'}>
                     <div className={styles.arrow_wrapper}>
                       <Image
                         className={styles.sign_arrow}
-                        src='/images/icons/ico_card_arrow.png'
+                        src={(i%2 === 0) ? '/images/icons/ico_card_arrow_tail.png' : '/images/icons/ico_card_arrow.png' }
                         layout='fill'
                         alt='사인 arrow'></Image>
                     </div>
