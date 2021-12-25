@@ -9,6 +9,7 @@
     "lint:prod": "NODE_ENV=production next lint"
   },
   "dependencies": {
+    "blurhash": "^1.1.4",
     "eslint-plugin-jsdoc": "^37.4.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "framer-motion": "^5.5.5",

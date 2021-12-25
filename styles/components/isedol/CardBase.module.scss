@@ -13,6 +13,13 @@
     aspect-ratio: 1 / 1;
     border-radius: 16px;
 
+    background: #ddd;
+
+    canvas {
+      border-radius: 16px;
+      z-index: 100;
+    }
+
     img {
       border-radius: 16px;
     }
@@ -24,6 +31,12 @@
     min-height: 100px;
     aspect-ratio: 16 / 9;
     border-radius: 16px;
+
+    background: #ddd;
+
+    canvas {
+      border-radius: 16px;
+    }
 
     img {
       border-radius: 16px;
