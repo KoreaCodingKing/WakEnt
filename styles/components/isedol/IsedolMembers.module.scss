@@ -248,7 +248,7 @@
       left: -141px;
       width: 147px;
       height: 147px;
-      transform: rotate(-23.31deg);
+      transform: rotate(22.01deg);
     }
   }
 
@@ -278,7 +278,36 @@
       left: -160px;
       width: 212.46px;
       height: 157.79px;
-      transform: rotate(7deg);
+      transform: rotate(36.78deg);
+    }
+  }
+
+  &[data-member='66'] {
+    .arrow_wrapper {
+      position: absolute;
+      top: -264px;
+      left: 36px;
+      width: 55.1px;
+      height: 35.8px;
+    }
+
+    .sign_name {
+      position: absolute;
+      top: -315px;
+      left: -32px;
+      font-family: 'nanumson-middleschool';
+      // ToDo: 적용이 안되고 있음
+      // src: url('/fonts/nanumson-middleschool.ttf') format('truetype');
+      font-size: 32px;
+    }
+
+    .sign_wrapper {
+      position: absolute;
+      top: -345px;
+      left: -141px;
+      width: 188.62px;
+      height: 188.62px;
+      transform: rotate(-23.31deg);
     }
   }
 }
