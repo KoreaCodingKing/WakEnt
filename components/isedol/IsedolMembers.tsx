@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
 import Head from 'next/head';
+import { concatClass } from '../../utils/class';
 
 interface Member {
   name: {
@@ -112,18 +113,26 @@ export const IsedolMembers: NextPage = () => {
                   layout='fill'
                   alt={member.name.ko}
                 ></Image>
-                {!currentHoverMember && 
-                  <div className={styles.sign_box}>
-                    <Image
-                      className={styles.sign_arrow}
-                      src='/images/icons/ico_card_arrow.png'
-                      layout='fill'
-                      alt='사인 arrow'></Image>
-                    <Image
-                      className={styles.member_sign}
-                      src={member.signImage}
-                      layout='fill'
-                      alt={`${member.name.ko} 싸인`}></Image>
+                {/* ToDo: 조건식 변경 및 data-member 값 변경(현재 테스트로 열어 놓고 커밋함) */}
+                {true &&
+                  <div
+                    className={styles.sign_box}
+                    data-member={'11'}>
+                    <div className={styles.arrow_wrapper}>
+                      <Image
+                        className={styles.sign_arrow}
+                        src='/images/icons/ico_card_arrow.png'
+                        layout='fill'
+                        alt='사인 arrow'></Image>
+                    </div>
+                    <p className={styles.sign_name}>{member.name.ko}</p>
+                    <div className={styles.sign_wrapper}>
+                      <Image
+                        className={styles.member_sign}
+                        src={member.signImage}
+                        layout='fill'
+                        alt={`${member.name.ko} 싸인`}></Image>
+                    </div>
                   </div>
                 }
               </div>

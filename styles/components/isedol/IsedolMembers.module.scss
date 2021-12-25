@@ -126,3 +126,31 @@
   position: absolute;
   z-index: 10;
 }
+
+.sign_box {
+  position: relative;
+  bottom: -220px;
+
+  &[data-member='11'] {
+    .arrow_wrapper {
+      position: absolute;
+      top: 272px;
+      left: 68px;
+      width: 27.7px;
+      height: 57.8px;
+    }
+
+    .sign_name {
+      position: absolute;
+      top: 250px;
+      left: 120px;
+    }
+    .sign_wrapper {
+      position: absolute;
+      top: 234px;
+      left: 148px;
+      width: 147px;
+      height: 147px;
+    }
+  }
+}
