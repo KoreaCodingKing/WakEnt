@@ -28,7 +28,6 @@ export const IsedolDiscography: NextPage = () => {
           <AlbumCard
             title='RE : WIND'
             image='/images/album/rewind.jpg'
-            // blurhash='UJHn~i-V00oe_N%MsAs:00%M_Nt7sBt7j?oe'
             link='/isedol/discography/rewind'
           ></AlbumCard>
         </div>
@@ -40,12 +39,10 @@ export const IsedolDiscography: NextPage = () => {
             title='장난기 기능'
             id='fU8picIMbSk'
             onClick={id => openYouTube(id)}
-            // blurhash='UVNK9g|=T,j:?bopTDf~Grs+r;SyIUVur?V]'
           ></YouTubeCard>
           <YouTubeCard
             title="It's Beginning To Look A Lot Like Christmas"
             id='kNPykP_9wOQ'
-            // blurhash='UMG[DsRj9iS}_KM{NNba?sa1N0s,OFV[njsS'
             onClick={id => openYouTube(id)}
           ></YouTubeCard>
         </div>

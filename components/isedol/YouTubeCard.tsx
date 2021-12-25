@@ -4,12 +4,11 @@ import { concatClass } from '../../utils/class';
 
 interface YouTubeCardProps {
   title: string
-  blurhash?: string
   id: string
   onClick?: (id: string) => void
 }
 
-export const YouTubeCard = ({ title, id, onClick, blurhash }: YouTubeCardProps) => {
+export const YouTubeCard = ({ title, id, onClick }: YouTubeCardProps) => {
   return (
     <div
       className={concatClass(styles.card, onClick && styles.clickable)}

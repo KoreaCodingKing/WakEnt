@@ -5,10 +5,9 @@ interface AlbumCardProps {
   title: string
   image: string
   link: string
-  blurhash?: string
 }
 
-export const AlbumCard = ({ title, link, image, blurhash }: AlbumCardProps) => {
+export const AlbumCard = ({ title, link, image }: AlbumCardProps) => {
   return <div className={styles.card}>
     <div className={styles.image_wrapper}>
       <Image src={image} layout='fill'></Image>

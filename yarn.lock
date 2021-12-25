@@ -1094,13 +1094,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"blurhash@npm:^1.1.4":
-  version: 1.1.4
-  resolution: "blurhash@npm:1.1.4"
-  checksum: 99a521ff35076f9182cd1c4d458a7aeac43cc101f13cc79f9cfdb8e6c97da6e33963496a1f5c950168b79001d0f17c97d0d57e75703363c3c4c31f97b28008f8
-  languageName: node
-  linkType: hard
-
 "bn.js@npm:^4.0.0, bn.js@npm:^4.1.0, bn.js@npm:^4.11.9":
   version: 4.12.0
   resolution: "bn.js@npm:4.12.0"
@@ -5501,7 +5494,6 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.8.0
     "@typescript-eslint/parser": ^5.8.0
     "@yarnpkg/sdks": ^2.5.1-rc.6
-    blurhash: ^1.1.4
     eslint: ^8.5.0
     eslint-config-next: 12.0.7
     eslint-plugin-jsdoc: ^37.4.0
