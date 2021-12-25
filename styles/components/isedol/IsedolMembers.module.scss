@@ -190,6 +190,36 @@
       left: 63px;
       width: 147px;
       height: 147px;
+      transform: rotate(-7.1deg);
+    }
+  }
+
+  &[data-member='33'] {
+    .arrow_wrapper {
+      position: absolute;
+      top: 272px;
+      left: 68px;
+      width: 39.8px;
+      height: 46.7px;
+    }
+
+    .sign_name {
+      position: absolute;
+      top: 250px;
+      left: 120px;
+      font-family: 'nanumson-middleschool';
+      // ToDo: 적용이 안되고 있음
+      // src: url('/fonts/nanumson-middleschool.ttf') format('truetype');
+      font-size: 32px;
+    }
+
+    .sign_wrapper {
+      position: absolute;
+      top: 268px;
+      left: 114px;
+      width: 172px;
+      height: 88px;
+      transform: rotate(-13.2deg);
     }
   }
 }
