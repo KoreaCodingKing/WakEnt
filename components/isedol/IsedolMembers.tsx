@@ -113,11 +113,10 @@ export const IsedolMembers: NextPage = () => {
                   layout='fill'
                   alt={member.name.ko}
                 ></Image>
-                {/* ToDo: 조건식 변경 및 data-member 값 변경(현재 테스트로 열어 놓고 커밋함) */}
-                {true &&
+                {(currentHoverMember === id) &&
                   <div
                     className={styles.sign_box}
-                    data-member={'66'}>
+                    data-member={currentHoverMember}>
                     <div className={styles.arrow_wrapper}>
                       <Image
                         className={styles.sign_arrow}
