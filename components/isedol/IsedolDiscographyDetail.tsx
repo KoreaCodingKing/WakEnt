@@ -1,11 +1,11 @@
-import { NextPage } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ReactNode, useState } from 'react'
-import styles from '../../styles/components/isedol/IsedolDiscographyDetail.module.scss'
-import { concatClass } from '../../utils/class'
-import LinkToIcon from '../common/icons/LinkTo'
-import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay'
+import { NextPage } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ReactNode, useState } from 'react';
+import styles from '../../styles/components/isedol/IsedolDiscographyDetail.module.scss';
+import { concatClass } from '../../utils/class';
+import LinkToIcon from '../common/icons/LinkTo';
+import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
 
 export interface AlbumDetail {
   title: string
@@ -27,8 +27,8 @@ export interface DiscographyDetailProps {
 }
 
 export const IsedolDiscographyDetail = ({ data }: DiscographyDetailProps) => {
-  const [openPlayer, setOpenPlayer] = useState<boolean>(false)
-  const [youtubeID, setYoutubeID] = useState<string>('')
+  const [openPlayer, setOpenPlayer] = useState<boolean>(false);
+  const [youtubeID, setYoutubeID] = useState<string>('');
 
   // const openYouTube = (id: string) => {
   //   setYoutubeID(id);
@@ -82,7 +82,7 @@ export const IsedolDiscographyDetail = ({ data }: DiscographyDetailProps) => {
         <div className={styles.description}>{data.staff}</div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default IsedolDiscographyDetail
+export default IsedolDiscographyDetail;
