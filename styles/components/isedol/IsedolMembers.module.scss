@@ -144,7 +144,12 @@
       position: absolute;
       top: 250px;
       left: 120px;
+      font-family: 'nanumson-middleschool';
+      // ToDo: 적용이 안되고 있음
+      // src: url('/fonts/nanumson-middleschool.ttf') format('truetype');
+      font-size: 32px;
     }
+
     .sign_wrapper {
       position: absolute;
       top: 234px;
