@@ -251,4 +251,34 @@
       transform: rotate(-23.31deg);
     }
   }
+
+  &[data-member='55'] {
+    .arrow_wrapper {
+      position: absolute;
+      top: 272px;
+      left: 68px;
+      width: 39.8px;
+      height: 46.7px;
+      transform: scaleX(-1);
+    }
+
+    .sign_name {
+      position: absolute;
+      top: 268px;
+      left: -32px;
+      font-family: 'nanumson-middleschool';
+      // ToDo: 적용이 안되고 있음
+      // src: url('/fonts/nanumson-middleschool.ttf') format('truetype');
+      font-size: 32px;
+    }
+
+    .sign_wrapper {
+      position: absolute;   
+      top: 278px;
+      left: -160px;
+      width: 212.46px;
+      height: 157.79px;
+      transform: rotate(7deg);
+    }
+  }
 }

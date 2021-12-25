@@ -117,7 +117,7 @@ export const IsedolMembers: NextPage = () => {
                 {true &&
                   <div
                     className={styles.sign_box}
-                    data-member={'44'}>
+                    data-member={'55'}>
                     <div className={styles.arrow_wrapper}>
                       <Image
                         className={styles.sign_arrow}
