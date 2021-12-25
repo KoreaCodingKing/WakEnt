@@ -130,6 +130,8 @@
 .sign_box {
   position: relative;
   bottom: -220px;
+  // ToDo: 부드럽게 나오기 처리
+  transition: 0.64s all cubic-bezier(0.19, 1, 0.22, 1);
 
   .sign_name {
     width: fit-content;
