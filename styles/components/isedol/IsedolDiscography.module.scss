@@ -55,6 +55,10 @@
     letter-spacing: -1px;
     font-weight: normal;
   }
+
+  &:last-child {
+    margin-bottom: 10vh;
+  }
 }
 
 .grid {

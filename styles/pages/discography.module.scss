@@ -1,0 +1,44 @@
+.isedol__container {
+  position: relative;
+  width: 100vw;
+  height: fit-content;
+}
+
+.isedol_header {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+
+  &::before {
+    position: absolute;
+    content: ' ';
+    background: linear-gradient(
+      to bottom,
+      hsl(0, 0%, 100%) 0%,
+      hsla(0, 0%, 100%, 0.982) 15.1%,
+      hsla(0, 0%, 100%, 0.954) 27.8%,
+      hsla(0, 0%, 100%, 0.916) 38.3%,
+      hsla(0, 0%, 100%, 0.869) 47%,
+      hsla(0, 0%, 100%, 0.814) 54.1%,
+      hsla(0, 0%, 100%, 0.752) 60%,
+      hsla(0, 0%, 100%, 0.683) 64.8%,
+      hsla(0, 0%, 100%, 0.608) 68.8%,
+      hsla(0, 0%, 100%, 0.529) 72.4%,
+      hsla(0, 0%, 100%, 0.446) 75.9%,
+      hsla(0, 0%, 100%, 0.36) 79.4%,
+      hsla(0, 0%, 100%, 0.271) 83.3%,
+      hsla(0, 0%, 100%, 0.181) 87.8%,
+      hsla(0, 0%, 100%, 0.09) 93.3%,
+      hsla(0, 0%, 100%, 0) 100%
+    );
+    width: 100%;
+    height: 140%;
+    top: 0;
+  }
+}
+
+.isedol_contents {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}

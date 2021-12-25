@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -46,12 +47,20 @@ export const IsedolMenuOverlay = ({ open }: IsedolMenuOverlayProps) => {
 
   return (
     <div className={concatClass(styles.overlay, open && styles.open)}>
+      {open && (
+        <Head>
+          <meta name='theme-color' content={'#FFFFFF'}></meta>
+        </Head>
+      )}
       <div className={styles.contents}>
         <div className={styles.links}>
           {Links.map((v, i) => (
             <Link href={v.page} key={`menu-link-${i}-${v.name}`} passHref>
               <div
-                className={styles.link}
+                className={concatClass(
+                  styles.link,
+                  v.page === router.route && styles.current
+                )}
                 tabIndex={100}
                 onKeyDown={ev => ev.key === 'Enter' && router.push(v.page)}
               >

@@ -8,6 +8,7 @@ import { concatClass } from '../../utils/class';
 
 interface IsedolHeaderProps {
   white?: boolean
+  fixed?: boolean
   isOpenMenu: boolean
   onMenuClick?: () => void
 }

@@ -2,8 +2,9 @@
   position: relative;
   display: block;
 
-  padding: 16px 24px;
+  padding: 0px 0px 16px 0;
   border-radius: 16px;
+
 
   .image_wrapper {
     position: relative;
@@ -31,14 +32,20 @@
 
   background: #fff;
 
-  transition: 0.23s box-shadow cubic-bezier(0.19, 1, 0.22, 1), 0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.23s background cubic-bezier(0.19, 1, 0.22, 1), 0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
+  // box-shadow: 0px 0px 16px rgba(0,0,0,0.16);
 
-  box-shadow: 0px 0px 16px rgba(0,0,0,0.16);
-  transform: scale(1);
 
-  &:hover {
-    box-shadow: 0px 0px 16px rgba(0,0,0,0.32);
-    transform: scale(1.01);
+  &.clickable {
+    cursor: pointer;
+    
+    transform: scale(1);
+
+    &:hover {
+      // box-shadow: 0px 0px 16px rgba(0,0,0,0.32);
+      transform: scale(1.01);
+      background: rgba(0,0,0,0.06);
+    }
   }
 }
 
