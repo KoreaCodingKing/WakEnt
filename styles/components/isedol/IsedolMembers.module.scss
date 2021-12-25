@@ -131,6 +131,11 @@
   position: relative;
   bottom: -220px;
 
+  .sign_name {
+    width: fit-content;
+    color: #ffffff;
+  }
+
   &[data-member='11'] {
     .arrow_wrapper {
       position: absolute;
@@ -171,8 +176,8 @@
 
     .sign_name {
       position: absolute;
-      top: 250px;
-      left: 120px;
+      top: -315px;
+      left: 130px;
       font-family: 'nanumson-middleschool';
       // ToDo: 적용이 안되고 있음
       // src: url('/fonts/nanumson-middleschool.ttf') format('truetype');
@@ -181,8 +186,8 @@
 
     .sign_wrapper {
       position: absolute;
-      top: 234px;
-      left: 148px;
+      top: -374px;
+      left: 63px;
       width: 147px;
       height: 147px;
     }
