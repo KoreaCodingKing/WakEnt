@@ -168,9 +168,46 @@ export const IsedolMembers: NextPage = () => {
                 </div>
               );
             })}
+          {chosenMember &&
+            <div className={styles.chosen_member}>
+              <div className={styles.chosen_member__image_wrapper}>
+                <Image className={styles.chosen_member__image}
+                  src={Members[chosenMember].image}
+                  layout='fill'
+                  alt={`${Members[chosenMember].name.ko} 이미지`}></Image>
+              </div>
+              <div className={styles.chosen_member__profile}>
+                <div className={styles.profile_name}>
+                  <p></p>
+                  <p></p>
+                </div>
+                <div className={styles.profile_detail}>
+                  <dl>
+                    <dt>Color</dt>
+                    <dd></dd>
+                    <dt>Birth</dt>
+                    <dd></dd>
+                    <dt>Height</dt>
+                    <dd></dd>
+                    <dt>Blood</dt>
+                    <dd></dd>
+                    <dt>MBTI</dt>
+                    <dd></dd>
+                    <dt>Fandom</dt>
+                    <dd></dd>
+                  </dl>
+                  <div className={styles.social_box}>
+                  </div>
+                  <div className={styles.sign_wrapper}>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.chosen_member__charator}>
+              </div>
+            </div>
+          }
         </div>
       </div>
-      {/* ToDo: 멤버별 소개 화면 */}
     </div>
   );
 };

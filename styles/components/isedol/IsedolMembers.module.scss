@@ -140,7 +140,7 @@
   aspect-ratio: 6 / 16;
 
   @media screen and (max-width: #{$maxTablet + 100px}) {
-    width: 30vmin;
+    width: 300px;
 
     .sign_box {
       display: none;
@@ -344,4 +344,9 @@
       transform: rotate(5.31deg);
     }
   }
+}
+
+// 멤버별 페이지 스타일
+.chosen_member {
+  display: flex;
 }
