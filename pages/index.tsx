@@ -48,6 +48,8 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>WAK Entertainment</title>
+        <meta name='description' content='WAKTAVERSE, 왁타버스 세상을 만들어 갑니다. No.1 Entertainment in Metaverse.'></meta>
+        <meta name='tags' content='왁 엔터테인먼트,메타버스,왁타버스,Metaverse,우왁굳,이세계 아이돌,ISEGYE IDOL,고정 멤버'></meta>
       </Head>
       <div className={styles.main}>
         <header>
