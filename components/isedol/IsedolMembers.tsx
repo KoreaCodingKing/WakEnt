@@ -80,7 +80,8 @@ export const IsedolMembers: NextPage = () => {
     null
   );
   const containerRef = useRef<HTMLDivElement>(null);
-  const membersRef = useRef<HTMLDivElement[]>([]);
+
+  const membersCardCache: HTMLElement[]= [];
 
   useEffect(() => {
     const wheelEventHandler = (event: any) => {
@@ -98,17 +99,18 @@ export const IsedolMembers: NextPage = () => {
     };
   }, []);
 
-  const memberOnClick = useCallback((index: number) => {
-    membersRef.current.forEach((memberRef: any, refIndex: number) => {
+  const memberOnClick = (index: number) => {
+    membersCardCache.forEach((memberCard: HTMLElement, refIndex: number) => {
+      memberCard.style.animationDelay = 'unset';
+
       if (refIndex === index) {
-        memberRef.style.animation = 'move 250ms linear ease-out';
-        memberRef.style.animationDelay = '100ms';
+        memberCard.style.animation = 'move 250ms linear';
+        memberCard.style.animationDelay = '100ms';
       } else {
-        memberRef.style.animation = 'remove 100ms linear ease-out';
+        memberCard.style.animation = 'remove 100ms linear';
       }
     });
-  }, [chosenMember]
-  );
+  };
 
   return (
     <div className={styles.isedol_members__container}>
@@ -133,7 +135,7 @@ export const IsedolMembers: NextPage = () => {
               <div
                 key={`member-card-${id}`}
                 className={styles.member}
-                ref={(element: HTMLDivElement) => membersRef.current.push(element)}
+                ref={(element: HTMLDivElement) => element && membersCardCache.push(element)}
                 data-active={
                   currentHoverMember === null || id === currentHoverMember
                 }
