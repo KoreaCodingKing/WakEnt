@@ -65,6 +65,7 @@
     background: #000;
     transition: .0.23s cubic-bezier(.8, .5, .2, 1.4);
     transition-duration: 250ms;
+    transform: translateY(0px);
   }
 
   &.white {
