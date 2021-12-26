@@ -141,6 +141,7 @@
   aspect-ratio: 6 / 16;
 
   @media screen and (max-width: #{$maxTablet + 100px}) {
+    width: unset;
     height: 70vh;
 
     .sign_box {
@@ -149,6 +150,7 @@
   }
 
   @media screen and (max-width: #{$maxMobile + 100px}) {
+    width: unset;
     height: 60vh;
 
     .sign_box {
