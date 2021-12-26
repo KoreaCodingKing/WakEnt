@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
@@ -80,6 +80,7 @@ export const IsedolMembers: NextPage = () => {
     null
   );
   const containerRef = useRef<HTMLDivElement>(null);
+  const membersRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     const wheelEventHandler = (event: any) => {
@@ -97,6 +98,18 @@ export const IsedolMembers: NextPage = () => {
     };
   }, []);
 
+  const memberOnClick = useCallback((index: number) => {
+    membersRef.current.forEach((memberRef: any, refIndex: number) => {
+      if (refIndex === index) {
+        memberRef.style.animation = 'move 250ms linear ease-out';
+        memberRef.style.animationDelay = '100ms';
+      } else {
+        memberRef.style.animation = 'remove 100ms linear ease-out';
+      }
+    });
+  }, [chosenMember]
+  );
+
   return (
     <div className={styles.isedol_members__container}>
       <Head>
@@ -113,68 +126,72 @@ export const IsedolMembers: NextPage = () => {
         ref={containerRef}
       >
         <div className={styles.members_contents}>
-          {!chosenMember &&
-            Object.keys(Members).map((id, i) => {
-              const member = Members[id as MemberID];
+          {Object.keys(Members).map((id, i) => {
+            const member = Members[id as MemberID];
 
-              return (
+            return (
+              <div
+                key={`member-card-${id}`}
+                className={styles.member}
+                ref={(element: HTMLDivElement) => membersRef.current.push(element)}
+                data-active={
+                  currentHoverMember === null || id === currentHoverMember
+                }
+                onMouseEnter={() => setCurrentHoverMember(id as MemberID)}
+                onMouseOut={() => setCurrentHoverMember(null)}
+                onClick={(event: any) => {
+                  event.preventDefault();
+                  memberOnClick(i);
+                }}
+              >
+                <div className={styles.background}>
+                  <Centerize>
+                    <div className={styles.member_image_wrapper}>
+                      <Image
+                        className={styles.member_image}
+                        src={member.image}
+                        layout='fill'
+                        alt={member.name.ko}
+                      ></Image>
+                    </div>
+                  </Centerize>
+                </div>
                 <div
-                  key={`member-card-${id}`}
-                  className={styles.member}
-                  data-active={
-                    currentHoverMember === null || id === currentHoverMember
-                  }
-                  onMouseEnter={() => setCurrentHoverMember(id as MemberID)}
-                  onMouseOut={() => setCurrentHoverMember(null)}
+                  className={styles.sign_box}
+                  data-member={id}
                 >
-                  <div className={styles.background}>
-                    <Centerize>
-                      <div className={styles.member_image_wrapper}>
-                        <Image
-                          className={styles.member_image}
-                          src={member.image}
-                          layout='fill'
-                          alt={member.name.ko}
-                        ></Image>
-                      </div>
-                    </Centerize>
+                  <div className={styles.arrow_wrapper}>
+                    <Image
+                      className={styles.sign_arrow}
+                      src={
+                        i % 2 === 0
+                          ? '/images/icons/ico_card_arrow_tail.svg'
+                          : '/images/icons/ico_card_arrow.svg'
+                      }
+                      layout='fill'
+                      alt='사인 arrow'
+                    ></Image>
                   </div>
-                  <div
-                    className={styles.sign_box}
-                    data-member={id}
-                  >
-                    <div className={styles.arrow_wrapper}>
-                      <Image
-                        className={styles.sign_arrow}
-                        src={
-                          i % 2 === 0
-                            ? '/images/icons/ico_card_arrow_tail.svg'
-                            : '/images/icons/ico_card_arrow.svg'
-                        }
-                        layout='fill'
-                        alt='사인 arrow'
-                      ></Image>
-                    </div>
-                    <p className={styles.sign_name}>{member.name.ko}</p>
-                    <div className={styles.sign_wrapper}>
-                      <Image
-                        className={styles.member_sign}
-                        src={member.signImage}
-                        layout='fill'
-                        alt={`${member.name.ko} 싸인`}
-                      ></Image>
-                    </div>
+                  <p className={styles.sign_name}>{member.name.ko}</p>
+                  <div className={styles.sign_wrapper}>
+                    <Image
+                      className={styles.member_sign}
+                      src={member.signImage}
+                      layout='fill'
+                      alt={`${member.name.ko} 싸인`}
+                    ></Image>
                   </div>
                 </div>
-              );
-            })}
-          {chosenMember &&
+              </div>
+            );
+          })}
+          {false &&
             <div className={styles.chosen_member}>
               <div className={styles.chosen_member__image_wrapper}>
                 <Image className={styles.chosen_member__image}
-                  src={Members[chosenMember].image}
+                  src={Members[chosenMember!].image}
                   layout='fill'
-                  alt={`${Members[chosenMember].name.ko} 이미지`}></Image>
+                  alt={`${Members[chosenMember!].name.ko} 이미지`}></Image>
               </div>
               <div className={styles.chosen_member__profile}>
                 <div className={styles.profile_name}>

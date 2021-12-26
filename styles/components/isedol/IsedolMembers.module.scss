@@ -353,3 +353,31 @@
 .chosen_member {
   display: flex;
 }
+
+.click_animation {
+  animation: move 250ms linear ease-out;
+  animation-duration: 100ms;
+}
+
+.click_remove_animation {
+  animation: remove 100ms linear ease-out;
+}
+
+@keyframes move {
+  0% {}
+  50% {
+    align-items: flex-start;
+  }
+  100% {
+    width: 273px;
+  }
+}
+
+@keyframes remove {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
