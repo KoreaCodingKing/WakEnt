@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
 import Head from 'next/head';
+import Centerize from '../common/Centerize';
 
 interface Member {
   name: {
@@ -22,7 +23,7 @@ const Members: Record<MemberID, Member> = {
       en: 'INE',
       ko: '아이네',
     },
-    image: '/images/member/ine.png',
+    image: '/images/member/ine.jpg',
     signImage: '/images/sign/ine.png',
     color: '#210C28',
   },
@@ -31,7 +32,7 @@ const Members: Record<MemberID, Member> = {
       en: 'Jingburger',
       ko: '징버거',
     },
-    image: '/images/member/jingburger.png',
+    image: '/images/member/jingburger.jpg',
     signImage: '/images/sign/jingburger.png',
     color: '#1A1506',
   },
@@ -40,7 +41,7 @@ const Members: Record<MemberID, Member> = {
       en: 'LILPA',
       ko: '릴파',
     },
-    image: '/images/member/lilpa.png',
+    image: '/images/member/lilpa.jpg',
     signImage: '/images/sign/lilpa.png',
     color: '#0E0A24',
   },
@@ -49,7 +50,7 @@ const Members: Record<MemberID, Member> = {
       en: 'Jururu',
       ko: '주르르',
     },
-    image: '/images/member/jururu.png',
+    image: '/images/member/jururu.jpg',
     signImage: '/images/sign/jururu.png',
     color: '#1B0A1C',
   },
@@ -58,7 +59,7 @@ const Members: Record<MemberID, Member> = {
       en: 'GOSEGU',
       ko: '고세구',
     },
-    image: '/images/member/gosegu.png',
+    image: '/images/member/gosegu.jpg',
     signImage: '/images/sign/gosegu.png',
     color: '#05171D',
   },
@@ -67,7 +68,7 @@ const Members: Record<MemberID, Member> = {
       en: 'Viichan',
       ko: '비챤',
     },
-    image: '/images/member/viichan.png',
+    image: '/images/member/viichan.jpg',
     signImage: '/images/sign/viichan.png',
     color: '#081607',
   },
@@ -85,7 +86,7 @@ export const IsedolMembers: NextPage = () => {
       event.preventDefault();
 
       containerRef.current!.scrollBy({
-        left: event.deltaY < 0 ? -30 : 30
+        left: event.deltaY < 0 ? -30 : 30,
       });
     };
 
@@ -97,49 +98,62 @@ export const IsedolMembers: NextPage = () => {
   }, []);
 
   return (
-    <div className={styles.isedol_members__container}
-      ref={containerRef}>
+    <div className={styles.isedol_members__container}>
       <Head>
         <meta
           name='theme-color'
-          content={currentHoverMember ? Members[currentHoverMember].color : '#0A0A0B'}
+          content={
+            currentHoverMember ? Members[currentHoverMember].color : '#0A0A0B'
+          }
         ></meta>
       </Head>
       <div
         className={styles.inner_container}
         data-member={currentHoverMember || chosenMember}
-      ></div>
-      <div className={styles.members_contents}>
-        {!chosenMember &&
-          Object.keys(Members).map((id, i) => {
-            const member = Members[id as MemberID];
+        ref={containerRef}
+      >
+        <div className={styles.members_contents}>
+          {!chosenMember &&
+            Object.keys(Members).map((id, i) => {
+              const member = Members[id as MemberID];
 
-            return (
-              <div
-                key={`member-card-${id}`}
-                className={styles.member_card_box}
-                data-active={
-                  currentHoverMember === null || id === currentHoverMember
-                }
-                onMouseEnter={() => setCurrentHoverMember(id as MemberID)}
-                onMouseOut={() => setCurrentHoverMember(null)}
-              >
-                <Image
-                  className={styles.member_card}
-                  src={member.image}
-                  layout='fill'
-                  alt={member.name.ko}
-                ></Image>
-                {(currentHoverMember === id) &&
+              return (
+                <div
+                  key={`member-card-${id}`}
+                  className={styles.member}
+                  data-active={
+                    currentHoverMember === null || id === currentHoverMember
+                  }
+                  onMouseEnter={() => setCurrentHoverMember(id as MemberID)}
+                  onMouseOut={() => setCurrentHoverMember(null)}
+                >
+                  <div className={styles.background}>
+                    <Centerize>
+                      <div className={styles.member_image_wrapper}>
+                        <Image
+                          className={styles.member_image}
+                          src={member.image}
+                          layout='fill'
+                          alt={member.name.ko}
+                        ></Image>
+                      </div>
+                    </Centerize>
+                  </div>
                   <div
                     className={styles.sign_box}
-                    data-member={currentHoverMember}>
+                    data-member={id}
+                  >
                     <div className={styles.arrow_wrapper}>
                       <Image
                         className={styles.sign_arrow}
-                        src={(i%2 === 0) ? '/images/icons/ico_card_arrow_tail.png' : '/images/icons/ico_card_arrow.png' }
+                        src={
+                          i % 2 === 0
+                            ? '/images/icons/ico_card_arrow_tail.png'
+                            : '/images/icons/ico_card_arrow.png'
+                        }
                         layout='fill'
-                        alt='사인 arrow'></Image>
+                        alt='사인 arrow'
+                      ></Image>
                     </div>
                     <p className={styles.sign_name}>{member.name.ko}</p>
                     <div className={styles.sign_wrapper}>
@@ -147,13 +161,14 @@ export const IsedolMembers: NextPage = () => {
                         className={styles.member_sign}
                         src={member.signImage}
                         layout='fill'
-                        alt={`${member.name.ko} 싸인`}></Image>
+                        alt={`${member.name.ko} 싸인`}
+                      ></Image>
                     </div>
                   </div>
-                }
-              </div>
-            );
-          })}
+                </div>
+              );
+            })}
+        </div>
       </div>
       {/* ToDo: 멤버별 소개 화면 */}
     </div>
