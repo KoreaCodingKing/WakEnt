@@ -98,6 +98,7 @@
   margin: 0 auto;
   align-items: center;
   overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .member {
@@ -140,7 +141,8 @@
   aspect-ratio: 6 / 16;
 
   @media screen and (max-width: #{$maxTablet + 100px}) {
-    width: 300px;
+    width: unset;
+    height: 70vh;
 
     .sign_box {
       display: none;
@@ -148,7 +150,8 @@
   }
 
   @media screen and (max-width: #{$maxMobile + 100px}) {
-    width: 60vw;
+    width: unset;
+    height: 60vh;
 
     .sign_box {
       display: none;
