@@ -148,8 +148,8 @@ export const IsedolMembers: NextPage = () => {
                         className={styles.sign_arrow}
                         src={
                           i % 2 === 0
-                            ? '/images/icons/ico_card_arrow_tail.png'
-                            : '/images/icons/ico_card_arrow.png'
+                            ? '/images/icons/ico_card_arrow_tail.svg'
+                            : '/images/icons/ico_card_arrow.svg'
                         }
                         layout='fill'
                         alt='사인 arrow'
