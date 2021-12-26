@@ -16,7 +16,7 @@
 
   .title {
     font-size: 2.5em;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
 
     margin: 0;
     margin-left: auto;
@@ -28,7 +28,7 @@
     }
 
     @media screen and (max-width: $maxMobile) {
-      font-size: 2.25em;
+      font-size: 2em;
     }
   } 
 
@@ -78,6 +78,15 @@
 
   .sectionTitle {
     font-size: 2em;
+
+    @media screen and (max-width: $maxMobile) {
+      font-size: 1.6em;
+    }
+
+    @media screen and (max-width: $maxTablet) {
+      font-size: 1.6em;
+    }
+
     letter-spacing: -1px;
     font-weight: normal;
     margin: 0;
@@ -135,6 +144,16 @@
   font-size: 1.18em;
   letter-spacing: -0.3px;
   line-height: 1.35;
+
+  @media screen and (max-width: $maxTablet) {
+    font-size: 1.1em;
+    line-height: 1.45;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    font-size: 1em;
+    line-height: 1.55;
+  }
 
   p {
     margin: 0;

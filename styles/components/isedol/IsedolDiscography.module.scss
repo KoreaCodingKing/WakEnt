@@ -52,6 +52,16 @@
 
   .sectionTitle {
     font-size: 2em;
+
+    @media screen and (max-width: $maxMobile) {
+      font-size: 1.6em;
+    }
+
+    @media screen and (max-width: $maxTablet) {
+      font-size: 1.6em;
+    }
+
+    
     letter-spacing: -1px;
     font-weight: normal;
   }

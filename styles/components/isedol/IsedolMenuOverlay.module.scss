@@ -77,13 +77,16 @@ $link-current: #0b397e;
   h1 {
     font-size: 5vmin;
     margin: 0;
+    letter-spacing: -1px;
 
     @media screen and (max-width: #{$maxTablet + 100px}) {
       font-size: 6vmin;
+      letter-spacing: -1px;
     }
 
     @media screen and (max-width: #{$maxMobile + 100px}) {
       font-size: 2rem;
+      letter-spacing: -0.3px;
     }
   }
 
