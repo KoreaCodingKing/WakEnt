@@ -4,6 +4,7 @@ import Image from 'next/image';
 import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
 import Head from 'next/head';
 import Centerize from '../common/Centerize';
+import { concatClass } from '../../utils/class';
 
 interface Member {
   name: {
@@ -99,19 +100,6 @@ export const IsedolMembers: NextPage = () => {
     };
   }, []);
 
-  const memberOnClick = (index: number) => {
-    membersCardCache.forEach((memberCard: HTMLElement, refIndex: number) => {
-      memberCard.style.animationDelay = 'unset';
-
-      if (refIndex === index) {
-        memberCard.style.animation = 'move 250ms linear';
-        memberCard.style.animationDelay = '100ms';
-      } else {
-        memberCard.style.animation = 'remove 100ms linear';
-      }
-    });
-  };
-
   return (
     <div className={styles.isedol_members__container}>
       <Head>
@@ -128,66 +116,69 @@ export const IsedolMembers: NextPage = () => {
         ref={containerRef}
       >
         <div className={styles.members_contents}>
-          {Object.keys(Members).map((id, i) => {
-            const member = Members[id as MemberID];
+          {true &&
+            Object.keys(Members).map((id, i) => {
+              const member = Members[id as MemberID];
 
-            return (
-              <div
-                key={`member-card-${id}`}
-                className={styles.member}
-                ref={(element: HTMLDivElement) => element && membersCardCache.push(element)}
-                data-active={
-                  currentHoverMember === null || id === currentHoverMember
-                }
-                onMouseEnter={() => setCurrentHoverMember(id as MemberID)}
-                onMouseOut={() => setCurrentHoverMember(null)}
-                onClick={(event: any) => {
-                  event.preventDefault();
-                  memberOnClick(i);
-                }}
-              >
-                <div className={styles.background}>
-                  <Centerize>
-                    <div className={styles.member_image_wrapper}>
+              return (
+                <div
+                  key={`member-card-${id}`}
+                  className={styles.member}
+                  data-member={chosenMember ? chosenMember : ''}
+                  ref={(element: HTMLDivElement) => element && membersCardCache.push(element)}
+                  data-active={
+                    currentHoverMember === null || id === currentHoverMember
+                  }
+                  onMouseEnter={() => setCurrentHoverMember(id as MemberID)}
+                  onMouseOut={() => setCurrentHoverMember(null)}
+                  onClick={(event: any) => {
+                    event.preventDefault();
+                    setChosenMember(currentHoverMember);
+                  }}
+                >
+                  <div className={styles.background}>
+                    <Centerize>
+                      <div className={styles.member_image_wrapper}>
+                        <Image
+                          className={styles.member_image}
+                          src={member.image}
+                          layout='fill'
+                          alt={member.name.ko}
+                        ></Image>
+                      </div>
+                    </Centerize>
+                  </div>
+                  <div
+                    className={styles.sign_box}
+                    data-member={id}
+                  >
+                    <div className={styles.arrow_wrapper}>
                       <Image
-                        className={styles.member_image}
-                        src={member.image}
+                        className={styles.sign_arrow}
+                        src={
+                          i % 2 === 0
+                            ? '/images/icons/ico_card_arrow_tail.svg'
+                            : '/images/icons/ico_card_arrow.svg'
+                        }
                         layout='fill'
-                        alt={member.name.ko}
+                        alt='사인 arrow'
                       ></Image>
                     </div>
-                  </Centerize>
-                </div>
-                <div
-                  className={styles.sign_box}
-                  data-member={id}
-                >
-                  <div className={styles.arrow_wrapper}>
-                    <Image
-                      className={styles.sign_arrow}
-                      src={
-                        i % 2 === 0
-                          ? '/images/icons/ico_card_arrow_tail.svg'
-                          : '/images/icons/ico_card_arrow.svg'
-                      }
-                      layout='fill'
-                      alt='사인 arrow'
-                    ></Image>
-                  </div>
-                  <p className={styles.sign_name}>{member.name.ko}</p>
-                  <div className={styles.sign_wrapper}>
-                    <Image
-                      className={styles.member_sign}
-                      src={member.signImage}
-                      layout='fill'
-                      alt={`${member.name.ko} 싸인`}
-                    ></Image>
+                    <p className={styles.sign_name}>{member.name.ko}</p>
+                    <div className={styles.sign_wrapper}>
+                      <Image
+                        className={styles.member_sign}
+                        src={member.signImage}
+                        layout='fill'
+                        alt={`${member.name.ko} 싸인`}
+                      ></Image>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
           {false &&
+          setTimeout(() => {
             <div className={styles.chosen_member}>
               <div className={styles.chosen_member__image_wrapper}>
                 <Image className={styles.chosen_member__image}
@@ -223,8 +214,8 @@ export const IsedolMembers: NextPage = () => {
               </div>
               <div className={styles.chosen_member__charator}>
               </div>
-            </div>
-          }
+            </div>;
+          }, 3000)}
         </div>
       </div>
     </div>
