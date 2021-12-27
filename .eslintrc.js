@@ -7,6 +7,8 @@ module.exports = {
     },
     "extends": [
         "plugin:@next/next/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -16,7 +18,7 @@ module.exports = {
     "plugins": [
         "eslint-plugin-jsdoc",
         "eslint-plugin-prefer-arrow",
-        "@typescript-eslint"
+        "@typescript-eslint",
     ],
     "rules": {
         "eqeqeq": [
@@ -42,7 +44,10 @@ module.exports = {
         "indent": ["error", 2],
         "no-trailing-spaces": "error",
         "no-extra-semi": "error",
-        //"no-console": isProd ? ["error", { allow: ["warn", "error"] }] : "off",
+        "no-console": isProd ? ["error", { allow: ["warn", "error"] }] : "off",
+        "@typescript-eslint/no-explicit-any": "error",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
         "curly": "error",
         "comma-spacing": [
             "error",

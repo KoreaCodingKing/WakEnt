@@ -31,7 +31,7 @@ const usePageAutoScroll = (
 };
 
 export const Main: NextPage = () => {
-  const [pauseAutoScroll, setPauseAutoScroll] = useState(false);
+  const [pauseAutoScroll] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const slides = [
     {
@@ -58,12 +58,14 @@ export const Main: NextPage = () => {
     setOpenPlayer(true);
   };
 
+  const scrollDelay = 7500;
+
   usePageAutoScroll(
     openPlayer || pauseAutoScroll,
     setCurrentIndex,
     currentIndex,
     slides.length - 1,
-    5000
+    scrollDelay
   );
 
   return (
@@ -113,7 +115,12 @@ export const Main: NextPage = () => {
             key={`page-indicator-${i}`}
             data-current={currentIndex === i}
             onClick={() => setCurrentIndex(i)}
-          ></button>
+          >
+            <span
+              className={openPlayer || pauseAutoScroll ? styles.paused : styles.active}
+              style={{ animationDuration: `${scrollDelay}ms` }}
+            ></span>
+          </button>
         ))}
       </div>
     </div>
