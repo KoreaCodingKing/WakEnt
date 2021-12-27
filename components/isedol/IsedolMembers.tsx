@@ -83,6 +83,7 @@ export const IsedolMembers: NextPage = () => {
   const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
     null
   );
+  const [showMemberDetail, setShowMemberDetail] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const membersCardCache: HTMLElement[]= [];
@@ -119,7 +120,8 @@ export const IsedolMembers: NextPage = () => {
         data-member={currentHoverMember || chosenMember}
         ref={containerRef}
       >
-        <div className={styles.members_contents}>
+        {/* ToDo: styles.members_contents대신 member_detail을 넣어 화면 전환시 width: fit-content; 대신 min, max-width값을 지정한다.(overflow 방지) */}
+        <div className={(showMemberDetail) ? styles.member_detail : styles.members_contents}>
           {true &&
             Object.keys(Members).map((id, i) => {
               const member = Members[id as MemberID];
