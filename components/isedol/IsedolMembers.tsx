@@ -80,7 +80,7 @@ const Members: Record<MemberID, Member> = {
 };
 
 export const IsedolMembers: NextPage = () => {
-  const [chosenMember, setChosenMember] = useState<MemberID | null>(null);
+  const [chosenMember] = useState<MemberID | null>(null);
   const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
     null
   );
