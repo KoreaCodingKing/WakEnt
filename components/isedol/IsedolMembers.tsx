@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
@@ -79,7 +79,7 @@ const Members: Record<MemberID, Member> = {
 };
 
 export const IsedolMembers: NextPage = () => {
-  const [chosenMember] = useState<MemberID | null>(null);
+  const [chosenMember,  setChosenMember] = useState<MemberID | null>(null);
   const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
     null
   );
@@ -146,7 +146,7 @@ export const IsedolMembers: NextPage = () => {
                     }
                     onMouseEnter={() => setCurrentHoverMember(id as MemberID)}
                     onMouseOut={() => setCurrentHoverMember(null)}
-                    onClick={(event: any) => {
+                    onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
                       event.preventDefault();
                       setChosenMember(id as MemberID);
                     }}
