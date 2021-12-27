@@ -180,6 +180,7 @@ export const IsedolMembers: NextPage = () => {
                       </div>
                     </div>
                   </div>
+                  {/* ToDo: animation 마친 후 이 화면을 보여주도록 한다. 이때 sign box는 display: none으로 처리되어 컷함. */}
                   {false &&
                     <div className={styles.chosen_member}>
                       <div className={styles.chosen_member__image_wrapper}>

@@ -201,6 +201,7 @@
   &[data-member='ine'] {
     transition: transform 1s ease-in-out 0.25ms;
     transform: translateX(0);
+    cursor: default;
 
     .sign_box {
       display: none;
@@ -210,6 +211,7 @@
   &[data-member='jingburger'] {
     transition: transform 1s ease-in-out 0.25ms;
     transform: translateX(-114%);
+    cursor: default;
 
     .sign_box {
       display: none;
@@ -219,6 +221,7 @@
   &[data-member='lilpa'] {
     transition: transform 1s ease-in-out 0.25ms;
     transform: translateX(-226%);
+    cursor: default;
 
     .sign_box {
       display: none;
@@ -228,6 +231,7 @@
   &[data-member='jururu'] {
     transition: transform 1s ease-in-out 0.25ms;
     transform: translateX(-338%);
+    cursor: default;
 
     .sign_box {
       display: none;
@@ -237,6 +241,7 @@
   &[data-member='gosegu'] {
     transition: transform 1s ease-in-out 0.25ms;
     transform: translateX(-450%);
+    cursor: default;
 
     .sign_box {
       display: none;
@@ -246,6 +251,7 @@
   &[data-member='viichan'] {
     transition: transform 1s ease-in-out 0.25ms;
     transform: translateX(-560%);
+    cursor: default;
 
     .sign_box {
       display: none;
