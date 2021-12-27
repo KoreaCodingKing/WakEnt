@@ -9,7 +9,7 @@ import { IsedolLogo } from '../components/isedol/IsedolHeader';
 import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import styles from '../styles/pages/index.module.scss';
 import { concatClass } from '../utils/class';
-import { useScrollPage } from '../components/common/ScrollPage';
+import { useScrollPage } from '../components/common/Scroll';
 import { useRef } from 'react';
 
 const Links = [

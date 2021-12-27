@@ -8,6 +8,7 @@ import { WakEnterLogo } from '../wakenter/WakEnterHeader';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { concatClass } from '../../utils/class';
+import { useHorizonalPageScroller } from '../common/Scroll';
 
 interface Member {
   name: {
@@ -86,32 +87,22 @@ export const IsedolMembers: NextPage = () => {
   const [showMemberDetail, setShowMemberDetail] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const membersCardCache: HTMLElement[]= [];
+  const membersCardCache: HTMLElement[] = [];
   const router = useRouter();
 
+  const [mobileActive, mobilePage] = useHorizonalPageScroller(
+    containerRef,
+    675,
+    membersCardCache
+  );
+
   useEffect(() => {
-    if (!containerRef.current) {
+    if (!mobileActive) {
       return;
     }
 
-    const wheelEventHandler = (event: WheelEvent) => {
-      if (!containerRef.current) {
-        return;
-      }
-
-      event.preventDefault();
-
-      containerRef.current.scrollBy({
-        left: event.deltaY < 0 ? -30 : 30,
-      });
-    };
-
-    const containerCurrentRef = containerRef.current;
-    containerCurrentRef.addEventListener('wheel', wheelEventHandler);
-    return () => {
-      containerCurrentRef.removeEventListener('wheel', wheelEventHandler);
-    };
-  }, []);
+    setCurrentHoverMember(Object.keys(Members)[mobilePage] as MemberID);
+  }, [mobileActive, mobilePage]);
 
   return (
     <div className={styles.isedol_members__container}>
@@ -128,8 +119,13 @@ export const IsedolMembers: NextPage = () => {
         data-member={currentHoverMember || chosenMember}
         ref={containerRef}
       >
-        {/* ToDo: styles.members_contents대신 member_detail을 넣어 화면 전환시 width: fit-content; 대신 min, max-width값을 지정한다.(overflow 방지) */}
-        <div className={(showMemberDetail) ? styles.member_detail : styles.members_contents}>
+        <div
+          className={concatClass(
+            (showMemberDetail) ? styles.member_detail : styles.members_contents,
+            mobileActive && styles.mobile
+          )}
+          data-member={chosenMember}
+        >
           {true &&
             Object.keys(Members).map((id, i) => {
               const member = Members[id as MemberID];
@@ -138,14 +134,21 @@ export const IsedolMembers: NextPage = () => {
                 <>
                   <div
                     key={`member-card-${id}`}
-                    className={concatClass(styles.member, (!!chosenMember && chosenMember !== id) && styles.disapear)}
-                    data-member={chosenMember}
-                    ref={(element: HTMLDivElement) => element && membersCardCache.push(element)}
-                    data-active={
-                      currentHoverMember === null || id === currentHoverMember
+                    className={concatClass(
+                      styles.member,
+                      !!chosenMember && chosenMember !== id && styles.disapear
+                    )}
+                    data-member={id}
+                    ref={(element: HTMLDivElement) =>
+                      element && membersCardCache.push(element)
                     }
-                    onMouseEnter={() => setCurrentHoverMember(id as MemberID)}
-                    onMouseOut={() => setCurrentHoverMember(null)}
+                    data-active={
+                      (!mobileActive && currentHoverMember === null) ||
+                      (mobileActive && mobilePage === i) ||
+                      id === currentHoverMember
+                    }
+                    onMouseEnter={() => !mobileActive && setCurrentHoverMember(id as MemberID)}
+                    onMouseOut={() => !mobileActive && setCurrentHoverMember(null)}
                     onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
                       event.preventDefault();
                       if (chosenMember) {
@@ -166,10 +169,7 @@ export const IsedolMembers: NextPage = () => {
                         </div>
                       </Centerize>
                     </div>
-                    <div
-                      className={styles.sign_box}
-                      data-member={id}
-                    >
+                    <div className={styles.sign_box} data-member={id}>
                       <div className={styles.arrow_wrapper}>
                         <Image
                           className={styles.sign_arrow}
@@ -194,13 +194,15 @@ export const IsedolMembers: NextPage = () => {
                     </div>
                   </div>
                   {/* ToDo: animation 마친 후 이 화면을 보여주도록 한다. 이때 sign box는 display: none으로 처리되어 컷함. */}
-                  {false &&
+                  {false && (
                     <div className={styles.chosen_member}>
                       <div className={styles.chosen_member__image_wrapper}>
-                        <Image className={styles.chosen_member__image}
+                        <Image
+                          className={styles.chosen_member__image}
                           src={Members[chosenMember!].image}
                           layout='fill'
-                          alt={`${Members[chosenMember!].name.ko} 이미지`}></Image>
+                          alt={`${Members[chosenMember!].name.ko} 이미지`}
+                        ></Image>
                       </div>
                       <div className={styles.chosen_member__profile}>
                         <div className={styles.profile_name}>
@@ -222,23 +224,21 @@ export const IsedolMembers: NextPage = () => {
                             <dt>Fandom</dt>
                             <dd></dd>
                           </dl>
-                          <div className={styles.social_box}>
-                          </div>
-                          <div className={styles.sign_wrapper}>
-                          </div>
+                          <div className={styles.social_box}></div>
+                          <div className={styles.sign_wrapper}></div>
                         </div>
                       </div>
-                      <div className={styles.chosen_member__charator}>
-                      </div>
+                      <div className={styles.chosen_member__charator}></div>
                     </div>
-                  }
+                  )}
                 </>
               );
             })}
         </div>
       </div>
       <Link key={'link-wak-enter'} href={'/'} passHref>
-        <div className={styles.logo}
+        <div
+          className={styles.logo}
           tabIndex={100}
           onKeyDown={ev => ev.key === 'Enter' && router.push('/')}
         >
