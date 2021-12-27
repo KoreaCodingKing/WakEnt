@@ -1,5 +1,15 @@
 @import '../../mixin.scss';
 
+@mixin selectMemberTransition() {
+  transition: transform 1s ease-in-out 0.25ms;
+  cursor: default;
+
+  .sign_box {
+    display: none;
+  }
+
+}
+
 .isedol_main__container {
   display: flex;
   position: relative;
@@ -257,7 +267,7 @@
 
   
   &.disapear {
-    transition: 100ms opacity linear;
+    transition: 0.5ms opacity linear;
     opacity: 0;
   }
 }

@@ -84,6 +84,7 @@ export const IsedolMembers: NextPage = () => {
   const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
     null
   );
+  const [showMemberDetail, setShowMemberDetail] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const membersCardCache: HTMLElement[] = [];
@@ -120,7 +121,7 @@ export const IsedolMembers: NextPage = () => {
       >
         <div
           className={concatClass(
-            styles.members_contents,
+            (showMemberDetail) ? styles.member_detail : styles.members_contents,
             mobileActive && styles.mobile
           )}
           data-member={chosenMember}
