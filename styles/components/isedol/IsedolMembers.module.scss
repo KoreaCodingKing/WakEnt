@@ -54,6 +54,10 @@
     overflow-x: auto;
     overflow-y: hidden;
 
+    @media screen and (max-width: $maxMobile) {
+      scroll-snap-type: x mandatory;
+    }
+
     &::-webkit-scrollbar {
       display: none;
     }
@@ -104,6 +108,16 @@
 
   transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
 
+  @media screen and (max-width: $maxTablet) {
+    bottom: 3vh;
+    right: 5vw;
+    transform: scale(0.8);
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    transform: scale(0.7);
+  }
+
   &:hover, &:focus {
     opacity: 0.6;
   }
@@ -118,6 +132,38 @@
   align-items: center;
   overflow-x: auto;
   overflow-y: hidden;
+
+  &[data-member] {
+    transition: transform 1s ease-in-out 0.25ms;
+    .sign_box {
+      display: none;
+    }
+    cursor: default;
+  }
+
+  &[data-member='ine'] {
+    transform: translateX(0);
+  }
+
+  &[data-member='jingburger'] {
+    transform: translateX(-114%);
+  }
+
+  &[data-member='lilpa'] {
+    transform: translateX(-226%);
+  }
+
+  &[data-member='jururu'] {
+    transform: translateX(-338%);
+  }
+
+  &[data-member='gosegu'] {
+    transform: translateX(-450%);
+  }
+
+  &[data-member='viichan'] {
+    transform: translateX(-560%);
+  }
 }
 
 .member {
@@ -159,7 +205,7 @@
 
   aspect-ratio: 6 / 16;
 
-  @media screen and (max-width: #{$maxTablet + 100px}) {
+  @media screen and (max-width: $maxTablet) {
     width: unset;
     height: 70vh;
 
@@ -168,9 +214,20 @@
     }
   }
 
-  @media screen and (max-width: #{$maxMobile + 100px}) {
-    width: unset;
-    height: 60vh;
+  @media screen and (max-width: $maxMobile) {
+    width: 70vw;
+    max-height: calc(80vh - 100px);
+    margin: 0 5vw;
+
+    &:first-child {
+      margin-left: 15vw;
+    }
+
+    &:last-child {
+      margin-right: 15vw;
+    }
+
+    scroll-snap-type: center;
 
     .sign_box {
       display: none;
@@ -198,65 +255,7 @@
     }
   }
 
-  &[data-member='ine'] {
-    transition: transform 1s ease-in-out 0.25ms;
-    transform: translateX(0);
-    cursor: default;
-
-    .sign_box {
-      display: none;
-    }
-  }
-
-  &[data-member='jingburger'] {
-    transition: transform 1s ease-in-out 0.25ms;
-    transform: translateX(-114%);
-    cursor: default;
-
-    .sign_box {
-      display: none;
-    }
-  }
-
-  &[data-member='lilpa'] {
-    transition: transform 1s ease-in-out 0.25ms;
-    transform: translateX(-226%);
-    cursor: default;
-
-    .sign_box {
-      display: none;
-    }
-  }
-
-  &[data-member='jururu'] {
-    transition: transform 1s ease-in-out 0.25ms;
-    transform: translateX(-338%);
-    cursor: default;
-
-    .sign_box {
-      display: none;
-    }
-  }
-
-  &[data-member='gosegu'] {
-    transition: transform 1s ease-in-out 0.25ms;
-    transform: translateX(-450%);
-    cursor: default;
-
-    .sign_box {
-      display: none;
-    }
-  }
-
-  &[data-member='viichan'] {
-    transition: transform 1s ease-in-out 0.25ms;
-    transform: translateX(-560%);
-    cursor: default;
-
-    .sign_box {
-      display: none;
-    }
-  }
+  
   &.disapear {
     transition: 100ms opacity linear;
     opacity: 0;

@@ -36,18 +36,18 @@
   display: flex;
   flex-direction: column;
 
-  @media screen and (min-width: #{$maxTablet + 100px}) {
+  @media screen and (min-width: $maxTablet) {
     min-width: $maxTablet;
     max-width: $maxPage;
   }
 
-  @media screen and (max-width: #{$maxTablet + 100px}) {
+  @media screen and (max-width: $maxTablet) {
     max-width: unset;
     min-width: 90%;
     width: 90%;
   }
 
-  @media screen and (max-width: #{$maxMobile + 100px}) {
+  @media screen and (max-width: $maxMobile) {
     min-width: 85%;
     width: 85%;
   }
@@ -65,7 +65,7 @@ $link-current: #0b397e;
 
   margin: auto auto auto 0;
 
-  @media screen and (max-width: #{$maxMobile + 100px}) {
+  @media screen and (max-width: $maxMobile) {
     margin: auto;
   }
 }
@@ -79,18 +79,18 @@ $link-current: #0b397e;
     margin: 0;
     letter-spacing: -1px;
 
-    @media screen and (max-width: #{$maxTablet + 100px}) {
+    @media screen and (max-width: $maxTablet) {
       font-size: 6vmin;
       letter-spacing: -1px;
     }
 
-    @media screen and (max-width: #{$maxMobile + 100px}) {
+    @media screen and (max-width: $maxMobile) {
       font-size: 2rem;
       letter-spacing: -0.3px;
     }
   }
 
-  @media screen and (max-width: #{$maxMobile + 100px}) {
+  @media screen and (max-width: $maxMobile) {
     margin: auto;
     justify-content: center;
     text-align: center;
@@ -106,13 +106,13 @@ $link-current: #0b397e;
     height: 4vmin;
     margin-left: 24px;
 
-    @media screen and (max-width: #{$maxTablet + 100px}) {
+    @media screen and (max-width: $maxTablet) {
       width: 4.5vmin;
       height: 4.5vmin;
       margin-left: 8px;
     }
 
-    @media screen and (max-width: #{$maxMobile + 100px}) {
+    @media screen and (max-width: $maxMobile) {
       width: 1.5em;
       height: 1.5em;
       margin-left: unset;
@@ -154,7 +154,7 @@ $link-current: #0b397e;
 
   transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
 
-  @media screen and (max-width: #{$maxTablet + 100px}) {
+  @media screen and (max-width: $maxTablet) {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -173,7 +173,7 @@ $link-current: #0b397e;
     opacity: 0.6;
   }
 
-  @media screen and (max-width: #{$maxTablet + 100px}) {
+  @media screen and (max-width: $maxTablet) {
     margin-left: unset;
   }
 }

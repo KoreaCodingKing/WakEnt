@@ -14,19 +14,19 @@
 
   width: 90%;
 
-  @media screen and (min-width: #{$maxTablet + 100px}) {
+  @media screen and (min-width: $maxTablet) {
     min-width: $maxTablet;
     max-width: $maxPage;
   }
 
-  @media screen and (max-width: #{$maxTablet + 100px}) {
+  @media screen and (max-width: $maxTablet) {
     margin: 36px auto;
     max-width: unset;
     min-width: 90%;
     width: 90%;
   }
 
-  @media screen and (max-width: #{$maxMobile + 100px}) {
+  @media screen and (max-width: $maxMobile) {
     margin: 32px auto;
     min-width: 85%;
     width: 85%;

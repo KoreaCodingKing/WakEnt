@@ -31,18 +31,18 @@
   width: 90%;
   margin-bottom: 32px;
 
-  @media screen and (min-width: #{$maxTablet + 100px}) {
+  @media screen and (min-width: $maxTablet) {
     min-width: $maxTablet;
     max-width: $maxPage;
   }
 
-  @media screen and (max-width: #{$maxTablet + 100px}) {
+  @media screen and (max-width: $maxTablet) {
     max-width: unset;
     min-width: 90%;
     width: 90%;
   }
 
-  @media screen and (max-width: #{$maxMobile + 100px}) {
+  @media screen and (max-width: $maxMobile) {
     min-width: 85%;
     width: 85%;
   }
@@ -78,15 +78,15 @@
   grid-column-gap: 32px;
   grid-row-gap: 32px; 
 
-  @media screen and (min-width: #{$maxTablet + 100px}) {
+  @media screen and (min-width: $maxTablet) {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media screen and (max-width: #{$maxTablet + 100px}) {
+  @media screen and (max-width: $maxTablet) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media screen and (max-width: #{$maxMobile + 100px}) {
+  @media screen and (max-width: $maxMobile) {
     grid-template-columns: repeat(1, 1fr);
   }
 }
