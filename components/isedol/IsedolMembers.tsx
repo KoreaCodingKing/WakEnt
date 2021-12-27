@@ -176,7 +176,7 @@ export const IsedolMembers: NextPage = () => {
                       </div>
                     </div>
                   </div>
-                  {false && 
+                  {false &&
                     <div className={styles.chosen_member}>
                       <div className={styles.chosen_member__image_wrapper}>
                         <Image className={styles.chosen_member__image}

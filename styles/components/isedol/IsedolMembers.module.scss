@@ -182,26 +182,46 @@
   &[data-member='ine'] {
     transition: transform 1s ease-in-out 0.25ms;
     transform: translateX(0);
+
+    .sign_box {
+      display: none;
+    }
   }
 
   &[data-member='jingburger'] {
     transition: transform 1s ease-in-out 0.25ms;
     transform: translateX(-110%);
+
+    .sign_box {
+      display: none;
+    }
   }
 
   &[data-member='lilpa'] {
     transition: transform 1s ease-in-out 0.25ms;
     transform: translateX(-222%);
+
+    .sign_box {
+      display: none;
+    }
   }
 
   &[data-member='jururu'] {
     transition: transform 1s ease-in-out 0.25ms;
     transform: translateX(-334%);
+
+    .sign_box {
+      display: none;
+    }
   }
 
   &[data-member='gosegu'] {
     transition: transform 1s ease-in-out 0.25ms;
     transform: translateX(-446%);
+
+    .sign_box {
+      display: none;
+    }
   }
 
   &[data-member='viichan'] {
