@@ -31,7 +31,7 @@ const usePageAutoScroll = (
 };
 
 export const Main: NextPage = () => {
-  const [pauseAutoScroll, setPauseAutoScroll] = useState(false);
+  const [pauseAutoScroll] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const slides = [
     {

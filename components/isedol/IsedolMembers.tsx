@@ -75,25 +75,33 @@ const Members: Record<MemberID, Member> = {
 };
 
 export const IsedolMembers: NextPage = () => {
-  const [chosenMember, setChosenMember] = useState<MemberID | null>(null);
+  const [chosenMember] = useState<MemberID | null>(null);
   const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
     null
   );
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const wheelEventHandler = (event: any) => {
+    if (!containerRef.current) {
+      return;
+    }
+
+    const wheelEventHandler = (event: WheelEvent) => {
+      if (!containerRef.current) {
+        return;
+      }
+
       event.preventDefault();
 
-      containerRef.current!.scrollBy({
+      containerRef.current.scrollBy({
         left: event.deltaY < 0 ? -30 : 30,
       });
     };
 
     const containerCurrentRef = containerRef.current;
-    containerCurrentRef!.addEventListener('wheel', wheelEventHandler);
+    containerCurrentRef.addEventListener('wheel', wheelEventHandler);
     return () => {
-      containerCurrentRef!.removeEventListener('wheel', () => wheelEventHandler);
+      containerCurrentRef.removeEventListener('wheel', wheelEventHandler);
     };
   }, []);
 

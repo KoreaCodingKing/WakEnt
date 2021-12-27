@@ -1,4 +1,3 @@
-import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode, useState } from 'react';
@@ -28,7 +27,7 @@ export interface DiscographyDetailProps {
 
 export const IsedolDiscographyDetail = ({ data }: DiscographyDetailProps) => {
   const [openPlayer, setOpenPlayer] = useState<boolean>(false);
-  const [youtubeID, setYoutubeID] = useState<string>('');
+  const [youtubeID] = useState<string>('');
 
   // const openYouTube = (id: string) => {
   //   setYoutubeID(id);
