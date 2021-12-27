@@ -98,7 +98,11 @@ export const useHorizonalPageScroller = (
 
   useEffect(() => {
     const nonActiveHandler = (event: WheelEvent) => {
-      parent.current!.scrollBy({
+      if (!parent.current) {
+        return;
+      }
+
+      parent.current.scrollBy({
         left: event.deltaY < 0 ? -30 : 30,
       });
     };
@@ -129,7 +133,11 @@ export const useHorizonalPageScroller = (
       active ? activeHandler(event) : nonActiveHandler(event);
     };
 
-    parent.current!.addEventListener('wheel', wheelEventHandler);
+    if (!parent.current) {
+      return;
+    }
+
+    parent.current.addEventListener('wheel', wheelEventHandler);
     return () => {
       clearTimeout(timeout);
 

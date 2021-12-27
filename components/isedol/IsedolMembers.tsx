@@ -79,8 +79,12 @@ const Members: Record<MemberID, Member> = {
   },
 };
 
+const isNotNull = <T extends unknown>(elem: T | null): elem is T => {
+  return typeof elem === 'string';
+};
+
 export const IsedolMembers: NextPage = () => {
-  const [chosenMember,  setChosenMember] = useState<MemberID | null>(null);
+  const [chosenMember, setChosenMember] = useState<MemberID | null>(null);
   const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
     null
   );
@@ -121,7 +125,7 @@ export const IsedolMembers: NextPage = () => {
       >
         <div
           className={concatClass(
-            (showMemberDetail) ? styles.member_detail : styles.members_contents,
+            showMemberDetail ? styles.member_detail : styles.members_contents,
             mobileActive && styles.mobile
           )}
           data-member={chosenMember}
@@ -147,9 +151,15 @@ export const IsedolMembers: NextPage = () => {
                       (mobileActive && mobilePage === i) ||
                       id === currentHoverMember
                     }
-                    onMouseEnter={() => !mobileActive && setCurrentHoverMember(id as MemberID)}
-                    onMouseOut={() => !mobileActive && setCurrentHoverMember(null)}
-                    onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+                    onMouseEnter={() =>
+                      !mobileActive && setCurrentHoverMember(id as MemberID)
+                    }
+                    onMouseOut={() =>
+                      !mobileActive && setCurrentHoverMember(null)
+                    }
+                    onClick={(
+                      event: React.MouseEvent<HTMLDivElement, MouseEvent>
+                    ) => {
                       event.preventDefault();
                       if (chosenMember) {
                         return;
@@ -194,14 +204,16 @@ export const IsedolMembers: NextPage = () => {
                     </div>
                   </div>
                   {/* ToDo: animation 마친 후 이 화면을 보여주도록 한다. 이때 sign box는 display: none으로 처리되어 컷함. */}
-                  {false && (
+                  {false && isNotNull(chosenMember) && (
                     <div className={styles.chosen_member}>
                       <div className={styles.chosen_member__image_wrapper}>
                         <Image
                           className={styles.chosen_member__image}
-                          src={Members[chosenMember!].image}
+                          src={Members[chosenMember as MemberID].image}
                           layout='fill'
-                          alt={`${Members[chosenMember!].name.ko} 이미지`}
+                          alt={`${
+                            Members[chosenMember as MemberID].name.ko
+                          } 이미지`}
                         ></Image>
                       </div>
                       <div className={styles.chosen_member__profile}>
