@@ -90,6 +90,25 @@
   }
 }
 
+.logo_container {
+  display: flex;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  bottom: 10vh;
+  right: 10vw;
+  opacity: 0.3;
+  cursor: pointer;
+
+  transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
+
+  &:hover, &:focus {
+    opacity: 0.6;
+  }
+}
+
 .members_contents {
   display: flex;
   justify-content: center;

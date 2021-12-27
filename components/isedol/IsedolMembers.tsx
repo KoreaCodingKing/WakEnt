@@ -4,6 +4,9 @@ import Image from 'next/image';
 import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
 import Head from 'next/head';
 import Centerize from '../common/Centerize';
+import { WakEnterLogo } from '../wakenter/WakEnterHeader';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { concatClass } from '../../utils/class';
 
 interface Member {
@@ -83,6 +86,7 @@ export const IsedolMembers: NextPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const membersCardCache: HTMLElement[]= [];
+  const router = useRouter();
 
   useEffect(() => {
     const wheelEventHandler = (event: any) => {
@@ -219,6 +223,14 @@ export const IsedolMembers: NextPage = () => {
             })}
         </div>
       </div>
+      <Link key={'link-wak-enter'} href={'/'} passHref>
+        <div className={styles.logo}
+          tabIndex={100}
+          onKeyDown={ev => ev.key === 'Enter' && router.push('/')}
+        >
+          <WakEnterLogo white></WakEnterLogo>
+        </div>
+      </Link>
     </div>
   );
 };
