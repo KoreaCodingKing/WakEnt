@@ -33,9 +33,9 @@
     height: 100%;
     content: ' ';
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.32);
     left: 0;
     top: 0;
+    background-color: rgba(0, 0, 0, 0.32);
   }
 }
 
@@ -196,6 +196,44 @@
     &::after {
       opacity: 0;
     }
+  }
+
+  &[data-member='ine'] {
+    transition: transform 1s ease-in-out 0.25ms;
+    transform: translateX(0);
+  }
+
+  &[data-member='jingburger'] {
+    transition: transform 1s ease-in-out 0.25ms;
+    transform: translateX(-110%);
+  }
+
+  &[data-member='lilpa'] {
+    transition: transform 1s ease-in-out 0.25ms;
+    transform: translateX(-222%);
+  }
+
+  &[data-member='jururu'] {
+    transition: transform 1s ease-in-out 0.25ms;
+    transform: translateX(-334%);
+  }
+
+  &[data-member='gosegu'] {
+    transition: transform 1s ease-in-out 0.25ms;
+    transform: translateX(-446%);
+  }
+
+  &[data-member='viichan'] {
+    transition: transform 1s ease-in-out 0.25ms;
+    transform: translateX(-523%);
+
+    .sign_box {
+      display: none;
+    }
+  }
+  &.disapear {
+    transition: 100ms opacity linear;
+    opacity: 0;
   }
 }
 
@@ -371,32 +409,4 @@
 // 멤버별 페이지 스타일
 .chosen_member {
   display: flex;
-}
-
-.click_animation {
-  animation: move 250ms linear ease-out;
-  animation-duration: 100ms;
-}
-
-.click_remove_animation {
-  animation: remove 100ms linear ease-out;
-}
-
-@keyframes move {
-  0% {}
-  50% {
-    align-items: flex-start;
-  }
-  100% {
-    width: 100vw;
-  }
-}
-
-@keyframes remove {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
 }

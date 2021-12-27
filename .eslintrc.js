@@ -42,7 +42,7 @@ module.exports = {
         "indent": ["error", 2],
         "no-trailing-spaces": "error",
         "no-extra-semi": "error",
-        "no-console": isProd ? ["error", { allow: ["warn", "error"] }] : "off",
+        //"no-console": isProd ? ["error", { allow: ["warn", "error"] }] : "off",
         "curly": "error",
         "comma-spacing": [
             "error",

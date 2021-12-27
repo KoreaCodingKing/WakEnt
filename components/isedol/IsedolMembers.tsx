@@ -7,6 +7,7 @@ import Centerize from '../common/Centerize';
 import { WakEnterLogo } from '../wakenter/WakEnterHeader';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { concatClass } from '../../utils/class';
 
 interface Member {
   name: {
@@ -103,19 +104,6 @@ export const IsedolMembers: NextPage = () => {
     };
   }, []);
 
-  const memberOnClick = (index: number) => {
-    membersCardCache.forEach((memberCard: HTMLElement, refIndex: number) => {
-      memberCard.style.animationDelay = 'unset';
-
-      if (refIndex === index) {
-        memberCard.style.animation = 'move 250ms linear';
-        memberCard.style.animationDelay = '100ms';
-      } else {
-        memberCard.style.animation = 'remove 100ms linear';
-      }
-    });
-  };
-
   return (
     <div className={styles.isedol_members__container}>
       <Head>
@@ -132,103 +120,107 @@ export const IsedolMembers: NextPage = () => {
         ref={containerRef}
       >
         <div className={styles.members_contents}>
-          {Object.keys(Members).map((id, i) => {
-            const member = Members[id as MemberID];
+          {true &&
+            Object.keys(Members).map((id, i) => {
+              const member = Members[id as MemberID];
 
-            return (
-              <div
-                key={`member-card-${id}`}
-                className={styles.member}
-                ref={(element: HTMLDivElement) => element && membersCardCache.push(element)}
-                data-active={
-                  currentHoverMember === null || id === currentHoverMember
-                }
-                onMouseEnter={() => setCurrentHoverMember(id as MemberID)}
-                onMouseOut={() => setCurrentHoverMember(null)}
-                onClick={(event: any) => {
-                  event.preventDefault();
-                  memberOnClick(i);
-                }}
-              >
-                <div className={styles.background}>
-                  <Centerize>
-                    <div className={styles.member_image_wrapper}>
-                      <Image
-                        className={styles.member_image}
-                        src={member.image}
-                        layout='fill'
-                        alt={member.name.ko}
-                      ></Image>
+              return (
+                <>
+                  <div
+                    key={`member-card-${id}`}
+                    className={concatClass(styles.member, (!!chosenMember && chosenMember !== id) && styles.disapear)}
+                    data-member={chosenMember}
+                    ref={(element: HTMLDivElement) => element && membersCardCache.push(element)}
+                    data-active={
+                      currentHoverMember === null || id === currentHoverMember
+                    }
+                    onMouseEnter={() => setCurrentHoverMember(id as MemberID)}
+                    onMouseOut={() => setCurrentHoverMember(null)}
+                    onClick={(event: any) => {
+                      event.preventDefault();
+                      setChosenMember(id as MemberID);
+                    }}
+                  >
+                    <div className={styles.background}>
+                      <Centerize>
+                        <div className={styles.member_image_wrapper}>
+                          <Image
+                            className={styles.member_image}
+                            src={member.image}
+                            layout='fill'
+                            alt={member.name.ko}
+                          ></Image>
+                        </div>
+                      </Centerize>
                     </div>
-                  </Centerize>
-                </div>
-                <div
-                  className={styles.sign_box}
-                  data-member={id}
-                >
-                  <div className={styles.arrow_wrapper}>
-                    <Image
-                      className={styles.sign_arrow}
-                      src={
-                        i % 2 === 0
-                          ? '/images/icons/ico_card_arrow_tail.svg'
-                          : '/images/icons/ico_card_arrow.svg'
-                      }
-                      layout='fill'
-                      alt='사인 arrow'
-                    ></Image>
+                    <div
+                      className={styles.sign_box}
+                      data-member={id}
+                    >
+                      <div className={styles.arrow_wrapper}>
+                        <Image
+                          className={styles.sign_arrow}
+                          src={
+                            i % 2 === 0
+                              ? '/images/icons/ico_card_arrow_tail.svg'
+                              : '/images/icons/ico_card_arrow.svg'
+                          }
+                          layout='fill'
+                          alt='사인 arrow'
+                        ></Image>
+                      </div>
+                      <p className={styles.sign_name}>{member.name.ko}</p>
+                      <div className={styles.sign_wrapper}>
+                        <Image
+                          className={styles.member_sign}
+                          src={member.signImage}
+                          layout='fill'
+                          alt={`${member.name.ko} 싸인`}
+                        ></Image>
+                      </div>
+                    </div>
                   </div>
-                  <p className={styles.sign_name}>{member.name.ko}</p>
-                  <div className={styles.sign_wrapper}>
-                    <Image
-                      className={styles.member_sign}
-                      src={member.signImage}
-                      layout='fill'
-                      alt={`${member.name.ko} 싸인`}
-                    ></Image>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-          {false &&
-            <div className={styles.chosen_member}>
-              <div className={styles.chosen_member__image_wrapper}>
-                <Image className={styles.chosen_member__image}
-                  src={Members[chosenMember!].image}
-                  layout='fill'
-                  alt={`${Members[chosenMember!].name.ko} 이미지`}></Image>
-              </div>
-              <div className={styles.chosen_member__profile}>
-                <div className={styles.profile_name}>
-                  <p></p>
-                  <p></p>
-                </div>
-                <div className={styles.profile_detail}>
-                  <dl>
-                    <dt>Color</dt>
-                    <dd></dd>
-                    <dt>Birth</dt>
-                    <dd></dd>
-                    <dt>Height</dt>
-                    <dd></dd>
-                    <dt>Blood</dt>
-                    <dd></dd>
-                    <dt>MBTI</dt>
-                    <dd></dd>
-                    <dt>Fandom</dt>
-                    <dd></dd>
-                  </dl>
-                  <div className={styles.social_box}>
-                  </div>
-                  <div className={styles.sign_wrapper}>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.chosen_member__charator}>
-              </div>
-            </div>
-          }
+                  {false &&
+                    <div className={styles.chosen_member}>
+                      <div className={styles.chosen_member__image_wrapper}>
+                        <Image className={styles.chosen_member__image}
+                          src={Members[chosenMember!].image}
+                          layout='fill'
+                          alt={`${Members[chosenMember!].name.ko} 이미지`}></Image>
+                      </div>
+                      <div className={styles.chosen_member__profile}>
+                        <div className={styles.profile_name}>
+                          <p></p>
+                          <p></p>
+                        </div>
+                        <div className={styles.profile_detail}>
+                          <dl>
+                            <dt>Color</dt>
+                            <dd></dd>
+                            <dt>Birth</dt>
+                            <dd></dd>
+                            <dt>Height</dt>
+                            <dd></dd>
+                            <dt>Blood</dt>
+                            <dd></dd>
+                            <dt>MBTI</dt>
+                            <dd></dd>
+                            <dt>Fandom</dt>
+                            <dd></dd>
+                          </dl>
+                          <div className={styles.social_box}>
+                          </div>
+                          <div className={styles.sign_wrapper}>
+                          </div>
+                        </div>
+                      </div>
+                      <div className={styles.chosen_member__charator}>
+                      </div>
+                    </div>
+                  }
+                </>
+              );
+            })}
         </div>
       </div>
       <Link key={'link-wak-enter'} href={'/'} passHref>
