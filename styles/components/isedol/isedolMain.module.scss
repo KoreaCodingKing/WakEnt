@@ -193,6 +193,11 @@
     width: 40px;
     // background: #ffffff;
 
+    .paused {
+      opacity: 1;
+      transform: scaleX(0);
+    }
+
     .active {
       opacity: 1;
       animation: pageIndicator 5s linear;

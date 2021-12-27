@@ -116,7 +116,10 @@ export const Main: NextPage = () => {
             data-current={currentIndex === i}
             onClick={() => setCurrentIndex(i)}
           >
-            <span className={styles.active} style={{ animationDuration: `${scrollDelay}ms`}}></span>
+            <span
+              className={openPlayer || pauseAutoScroll ? styles.paused : styles.active}
+              style={{ animationDuration: `${scrollDelay}ms` }}
+            ></span>
           </button>
         ))}
       </div>
