@@ -180,33 +180,41 @@
   }
 
   &[data-member='ine'] {
-    transition: 100ms transform cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 1s ease-in-out 0.25ms;
     transform: translateX(0);
   }
 
   &[data-member='jingburger'] {
-    transition: 100ms transform cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 1s ease-in-out 0.25ms;
     transform: translateX(-110%);
   }
 
   &[data-member='lilpa'] {
-    transition: 100ms transform cubic-bezier(0.19, 1, 0.22, 1);
-    transform: translateX(-220%);
+    transition: transform 1s ease-in-out 0.25ms;
+    transform: translateX(-222%);
   }
 
   &[data-member='jururu'] {
-    transition: 100ms transform cubic-bezier(0.19, 1, 0.22, 1);
-    transform: translateX(-330%);
+    transition: transform 1s ease-in-out 0.25ms;
+    transform: translateX(-334%);
   }
 
   &[data-member='gosegu'] {
-    transition: 100ms transform cubic-bezier(0.19, 1, 0.22, 1);
-    transform: translateX(-440%);
+    transition: transform 1s ease-in-out 0.25ms;
+    transform: translateX(-446%);
   }
 
   &[data-member='viichan'] {
-    transition: 100ms transform cubic-bezier(0.19, 1, 0.22, 1);
-    transform: translateX(-550%);
+    transition: transform 1s ease-in-out 0.25ms;
+    transform: translateX(-523%);
+
+    .sign_box {
+      display: none;
+    }
+  }
+  &.disapear {
+    transition: 100ms opacity linear;
+    opacity: 0;
   }
 }
 

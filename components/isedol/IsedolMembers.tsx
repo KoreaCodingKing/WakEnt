@@ -123,8 +123,8 @@ export const IsedolMembers: NextPage = () => {
               return (
                 <div
                   key={`member-card-${id}`}
-                  className={styles.member}
-                  data-member={chosenMember ? chosenMember : ''}
+                  className={concatClass(styles.member, (!!chosenMember && chosenMember !== id) && styles.disapear)}
+                  data-member={chosenMember}
                   ref={(element: HTMLDivElement) => element && membersCardCache.push(element)}
                   data-active={
                     currentHoverMember === null || id === currentHoverMember
@@ -133,7 +133,7 @@ export const IsedolMembers: NextPage = () => {
                   onMouseOut={() => setCurrentHoverMember(null)}
                   onClick={(event: any) => {
                     event.preventDefault();
-                    setChosenMember(currentHoverMember);
+                    setChosenMember(id as MemberID);
                   }}
                 >
                   <div className={styles.background}>
