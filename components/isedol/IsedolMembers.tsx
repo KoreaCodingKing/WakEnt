@@ -90,7 +90,7 @@ export const IsedolMembers: NextPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const wheelEventHandler = (event: any) => {
+    const wheelEventHandler = (event: WheelEvent) => {
       event.preventDefault();
 
       containerRef.current!.scrollBy({
@@ -138,8 +138,11 @@ export const IsedolMembers: NextPage = () => {
                     }
                     onMouseEnter={() => setCurrentHoverMember(id as MemberID)}
                     onMouseOut={() => setCurrentHoverMember(null)}
-                    onClick={(event: any) => {
+                    onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
                       event.preventDefault();
+                      if (chosenMember) {
+                        return;
+                      }
                       setChosenMember(id as MemberID);
                     }}
                   >
