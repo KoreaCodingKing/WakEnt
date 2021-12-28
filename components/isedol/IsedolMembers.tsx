@@ -222,6 +222,9 @@ export const IsedolMembers: NextPage = () => {
                         className={styles.member_image}
                         src={member.image}
                         layout='fill'
+                        priority
+                        placeholder='blur'
+                        blurDataURL={member.image}
                         alt={member.name.ko}
                       ></Image>
                     </div>

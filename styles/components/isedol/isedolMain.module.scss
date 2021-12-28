@@ -169,6 +169,7 @@
   z-index: 100;
   margin-top: auto;
   margin-bottom: 15%;
+  isolation: isolate;
 
   button {
     position: relative;

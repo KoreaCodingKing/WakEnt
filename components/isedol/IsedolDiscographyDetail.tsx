@@ -8,7 +8,7 @@ import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
 
 export interface AlbumDetail {
   title: string
-  image: string
+  image: string | StaticImageData
   links?: {
     title: string
     link: string
@@ -43,7 +43,7 @@ export const IsedolDiscographyDetail = ({ data }: DiscographyDetailProps) => {
       ></YouTubePlayerOverlay>
       <section className={concatClass(styles.section, styles.brief)}>
         <div className={styles.image}>
-          <Image src={data.image} layout='fill'></Image>
+          <Image src={data.image} layout='fill' placeholder={typeof data.image === 'string' ? 'empty' : 'blur'}></Image>
         </div>
         <div className={styles.right_wrap}>
           <h1 className={styles.title}>{data.title}</h1>
