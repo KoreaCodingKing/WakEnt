@@ -127,7 +127,7 @@ export const IsedolMembers: NextPage = () => {
   const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
     null
   );
-  const [showMemberDetail, setShowMemberDetail] = useState<boolean>(false);
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   const membersCardCache: HTMLElement[] = [];
@@ -168,136 +168,123 @@ export const IsedolMembers: NextPage = () => {
       >
         <div
           className={concatClass(
-            showMemberDetail ? styles.member_detail : styles.members_contents,
+            styles.members_list,
             isNotNull(chosenMember) && styles.chosen,
             mobileActive && styles.mobile
           )}
           data-member={chosenMember}
         >
-          {
-            Object.keys(Members).map((id, i) => {
-              const member = Members[id as MemberID];
+          {Object.keys(Members).map((id, i) => {
+            const member = Members[id as MemberID];
 
-              return (
-                <div key={`member-card-${id}`}>
-                  <div
-                    className={concatClass(
-                      styles.member,
-                      !!chosenMember && chosenMember !== id && styles.disapear
-                    )}
-                    data-member={id}
-                    ref={(element: HTMLDivElement) =>
-                      element && membersCardCache.push(element)
-                    }
-                    data-active={
-                      (!mobileActive && currentHoverMember === null) ||
-                      (mobileActive && mobilePage === i) ||
-                      id === currentHoverMember
-                    }
-                    onMouseEnter={() =>
-                      !mobileActive && setCurrentHoverMember(id as MemberID)
-                    }
-                    onMouseOut={() =>
-                      !mobileActive && setCurrentHoverMember(null)
-                    }
-                    onClick={(
-                      event: React.MouseEvent<HTMLDivElement, MouseEvent>
-                    ) => {
-                      event.preventDefault();
-                      if (chosenMember) {
-                        setChosenMember(null);
-                        return;
-                      }
+            return (
+              <div
+                key={`member-card-${id}`}
+                className={concatClass(
+                  styles.member,
+                  !!chosenMember && chosenMember !== id && styles.disapear
+                )}
+                data-member={id}
+                ref={(element: HTMLDivElement) =>
+                  element && membersCardCache.push(element)
+                }
+                data-active={
+                  (!mobileActive && currentHoverMember === null) ||
+                  (mobileActive && mobilePage === i) ||
+                  id === currentHoverMember
+                }
+                onMouseEnter={() =>
+                  !mobileActive && setCurrentHoverMember(id as MemberID)
+                }
+                onMouseOut={() => !mobileActive && setCurrentHoverMember(null)}
+                onClick={(
+                  event: React.MouseEvent<HTMLDivElement, MouseEvent>
+                ) => {
+                  event.preventDefault();
+                  if (chosenMember) {
+                    setChosenMember(null);
+                    return;
+                  }
 
-                      if (mobileActive && containerRef.current) {
-                        containerRef.current.scrollTo({
-                          left: 0,
-                        });
-                      }
+                  if (mobileActive && containerRef.current) {
+                    containerRef.current.scrollTo({
+                      left: 0,
+                    });
+                  }
 
-                      setChosenMember(id as MemberID);
-                    }}
-                  >
-                    <div className={styles.background}>
-                      <Centerize>
-                        <div className={styles.member_image_wrapper}>
-                          <Image
-                            className={styles.member_image}
-                            src={member.image}
-                            layout='fill'
-                            alt={member.name.ko}
-                          ></Image>
-                        </div>
-                      </Centerize>
+                  setChosenMember(id as MemberID);
+                }}
+              >
+                <div className={styles.background}>
+                  <Centerize>
+                    <div className={styles.member_image_wrapper}>
+                      <Image
+                        className={styles.member_image}
+                        src={member.image}
+                        layout='fill'
+                        alt={member.name.ko}
+                      ></Image>
                     </div>
-                    <div className={styles.sign_box} data-member={id}>
-                      <div className={styles.arrow_wrapper}>
-                        <Image
-                          className={styles.sign_arrow}
-                          src={
-                            i % 2 === 0
-                              ? '/images/icons/ico_card_arrow_tail.svg'
-                              : '/images/icons/ico_card_arrow.svg'
-                          }
-                          layout='fill'
-                          alt='사인 arrow'
-                        ></Image>
-                      </div>
-                      <p className={styles.sign_name}>{member.name.ko}</p>
-                      <div className={styles.sign_wrapper}>
-                        <Image
-                          className={styles.member_sign}
-                          src={member.signImage}
-                          layout='fill'
-                          alt={`${member.name.ko} 싸인`}
-                        ></Image>
-                      </div>
-                    </div>
-                  </div>
-                  {/* ToDo: animation 마친 후 이 화면을 보여주도록 한다. 이때 sign box는 display: none으로 처리되어 컷함. */}
-                  {false && isNotNull(chosenMember) && (
-                    <div className={styles.chosen_member}>
-                      <div className={styles.chosen_member__image_wrapper}>
-                        <Image
-                          className={styles.chosen_member__image}
-                          src={Members[chosenMember as MemberID].image}
-                          layout='fill'
-                          alt={`${
-                            Members[chosenMember as MemberID].name.ko
-                          } 이미지`}
-                        ></Image>
-                      </div>
-                      <div className={styles.chosen_member__profile}>
-                        <div className={styles.profile_name}>
-                          <p></p>
-                          <p></p>
-                        </div>
-                        <div className={styles.profile_detail}>
-                          <dl>
-                            <dt>Color</dt>
-                            <dd></dd>
-                            <dt>Birth</dt>
-                            <dd></dd>
-                            <dt>Height</dt>
-                            <dd></dd>
-                            <dt>Blood</dt>
-                            <dd></dd>
-                            <dt>MBTI</dt>
-                            <dd></dd>
-                            <dt>Fandom</dt>
-                            <dd></dd>
-                          </dl>
-                          <div className={styles.social_box}></div>
-                          <div className={styles.sign_wrapper}></div>
-                        </div>
-                      </div>
-                      <div className={styles.chosen_member__charator}></div>
-                    </div>
-                  )}
+                  </Centerize>
                 </div>
-              );
-            })}
+                <div className={styles.sign_box} data-member={id}>
+                  <div className={styles.arrow_wrapper}>
+                    <Image
+                      className={styles.sign_arrow}
+                      src={
+                        i % 2 === 0
+                          ? '/images/icons/ico_card_arrow_tail.svg'
+                          : '/images/icons/ico_card_arrow.svg'
+                      }
+                      layout='fill'
+                      alt='사인 arrow'
+                    ></Image>
+                  </div>
+                  <p className={styles.sign_name}>{member.name.ko}</p>
+                  <div className={styles.sign_wrapper}>
+                    <Image
+                      className={styles.member_sign}
+                      src={member.signImage}
+                      layout='fill'
+                      alt={`${member.name.ko} 싸인`}
+                    ></Image>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
+        {chosenMember && (
+          <div className={concatClass(styles.member_detail)} style={{
+            left: `${rect?.width}px`
+          }}>
+            <div className={styles.profile}>
+              <div className={styles.profile_name}>
+                <p></p>
+                <p></p>
+              </div>
+              <div className={styles.profile_detail}>
+                <dl>
+                  <dt>Color</dt>
+                  <dd></dd>
+                  <dt>Birth</dt>
+                  <dd></dd>
+                  <dt>Height</dt>
+                  <dd></dd>
+                  <dt>Blood</dt>
+                  <dd></dd>
+                  <dt>MBTI</dt>
+                  <dd></dd>
+                  <dt>Fandom</dt>
+                  <dd></dd>
+                </dl>
+                <div className={styles.social_box}></div>
+                <div className={styles.sign_wrapper}></div>
+              </div>
+            </div>
+            <div className={styles.member_detail__charator}></div>
+          </div>
+        )}
       </div>
       <Link key={'link-wak-enter'} href={'/'} passHref>
         <div
