@@ -95,8 +95,7 @@ const useHashState = <S extends string | null>(
   const [state, setState] = useState<S>(initialState);
 
   useEffect(() => {
-    // @ts-expect-error : Weird TS behavior?
-    const hashChangeHandler = () => setState(location.hash.replace(/\#/, ''));
+    const hashChangeHandler = () => setState(location.hash.replace(/\#/, '') as S);
 
     window.addEventListener('hashchange', hashChangeHandler);
 
