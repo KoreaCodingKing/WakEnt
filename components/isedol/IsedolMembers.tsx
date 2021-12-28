@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
@@ -83,8 +89,35 @@ const isNotNull = <T extends unknown>(elem: T | null): elem is T => {
   return typeof elem === 'string';
 };
 
+const useHashState = <S extends string | null>(
+  initialState: S | (() => S)
+): [S, Dispatch<SetStateAction<S>>] => {
+  const [state, setState] = useState<S>(initialState);
+
+  useEffect(() => {
+    // @ts-expect-error : Weird TS behavior?
+    const hashChangeHandler = () => setState(location.hash.replace(/\#/, ''));
+
+    window.addEventListener('hashchange', hashChangeHandler);
+
+    return () => {
+      window.removeEventListener('hashchange', hashChangeHandler);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (location.hash === state || (state === null && location.hash === '')) {
+      return;
+    }
+
+    location.hash = state === null ? '' : `${state}`;
+  }, [state]);
+
+  return [state, setState];
+};
+
 export const IsedolMembers: NextPage = () => {
-  const [chosenMember, setChosenMember] = useState<MemberID | null>(null);
+  const [chosenMember, setChosenMember] = useHashState<MemberID | null>(null);
   const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
     null
   );
@@ -130,6 +163,7 @@ export const IsedolMembers: NextPage = () => {
         <div
           className={concatClass(
             showMemberDetail ? styles.member_detail : styles.members_contents,
+            isNotNull(chosenMember) && styles.chosen,
             mobileActive && styles.mobile
           )}
           data-member={chosenMember}
@@ -166,8 +200,16 @@ export const IsedolMembers: NextPage = () => {
                     ) => {
                       event.preventDefault();
                       if (chosenMember) {
+                        setChosenMember(null);
                         return;
                       }
+
+                      if (mobileActive && containerRef.current) {
+                        containerRef.current.scrollTo({
+                          left: 0,
+                        });
+                      }
+
                       setChosenMember(id as MemberID);
                     }}
                   >
