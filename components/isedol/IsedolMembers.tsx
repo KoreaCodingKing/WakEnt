@@ -96,12 +96,16 @@ export const IsedolMembers: NextPage = () => {
 
   const [mobileActive, mobilePage] = useHorizonalPageScroller(
     containerRef,
-    675,
+    1124,
     membersCardCache
   );
 
   useEffect(() => {
     if (!mobileActive) {
+      if (currentHoverMember) {
+        setCurrentHoverMember(null);
+      }
+
       return;
     }
 

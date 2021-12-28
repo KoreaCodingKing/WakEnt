@@ -59,7 +59,7 @@ export const useHorizonalPageScroller = (
     !threshold || window.matchMedia(query).matches
   );
 
-  const [page, setPage] = useState<number>(0);
+  const [page, setPage] = useState<number>(-1);
 
   /**
    * 화면 가로 크기가 threshold를 넘었을 경우 active 처리
@@ -79,71 +79,63 @@ export const useHorizonalPageScroller = (
     return () => {
       matches.removeEventListener('change', resizeHandler);
     };
-  }, [threshold]);
+  }, [threshold, active]);
 
   useEffect(() => {
-    if (!active) {
-      return;
-    }
-
-    if (!pages[page]) {
-      return;
-    }
-
-    pages[page].scrollIntoView({
-      block: 'nearest',
-      behavior: 'smooth'
-    });
-  }, [active, page, pages]);
-
-  useEffect(() => {
-    const nonActiveHandler = (event: WheelEvent) => {
-      if (!parent.current) {
-        return;
-      }
-
-      parent.current.scrollBy({
-        left: event.deltaY < 0 ? -30 : 30,
-      });
-    };
-
-    let timeout = 0;
-
-    const activeHandler = (event: WheelEvent) => {
-      if (timeout) {
-        clearTimeout(timeout);
-      }
-
-      /**
-       * TODO : Should fix with better threshold handler.
-       */
-      timeout = setTimeout(() => {
-        setPage(
-          Math.max(
-            0,
-            Math.min(pages.length, event.deltaX > 0 ? page + 1 : page - 1)
-          )
-        );
-      }, 300) as unknown as number;
-    };
-
-    const wheelEventHandler = (event: WheelEvent) => {
-      event.preventDefault();
-
-      active ? activeHandler(event) : nonActiveHandler(event);
-    };
-
     if (!parent.current) {
       return;
     }
 
+    const getCurrentPage = () => {
+      const indexes: number[] = [];
+
+      pages.map((elem, index) => {
+        const { width, left } = elem.getBoundingClientRect();
+
+        const condition = left + width / 3 > 0 &&
+          left + width / 1.5 <= window.innerWidth;
+
+        if (condition) {
+          indexes.push(index);
+        }
+      });
+
+      if (indexes.length) {
+        setPage(indexes[indexes.length - 1]);
+      }
+    };
+
+    const wheelEventHandler = (event: WheelEvent) => {
+      if (!parent.current) {
+        return;
+      }
+
+      event.preventDefault();
+
+      if (event.deltaX) {
+        parent.current.scrollBy({
+          left: event.deltaX,
+        });
+      } else if (event.deltaY && Math.abs(event.deltaY) > 1) {
+        parent.current.scrollBy({
+          left: event.deltaY,
+        });
+      }
+    };
+
+    getCurrentPage();
+
+    const scrollHandler = () => requestAnimationFrame(getCurrentPage);
+
+    parent.current.addEventListener('scroll', scrollHandler);
     parent.current.addEventListener('wheel', wheelEventHandler);
     return () => {
-      clearTimeout(timeout);
-
-      if (parent.current) {
-        parent.current.removeEventListener('wheel', () => wheelEventHandler);
+      if (!parent.current) {
+        return;
       }
+
+      parent.current.removeEventListener('scroll', scrollHandler);
+      parent.current.removeEventListener('wheel', wheelEventHandler);
     };
   }, [active, parent.current, page, pages]);
 

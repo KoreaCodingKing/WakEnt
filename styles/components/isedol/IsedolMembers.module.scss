@@ -1,15 +1,5 @@
 @import '../../mixin.scss';
 
-@mixin selectMemberTransition() {
-  transition: transform 1s ease-in-out 0.25ms;
-  cursor: default;
-
-  .sign_box {
-    display: none;
-  }
-
-}
-
 .isedol_main__container {
   display: flex;
   position: relative;
@@ -224,7 +214,7 @@
     }
   }
 
-  @media screen and (max-width: $maxMobile) {
+  @media screen and (max-width: $maxTablet) {
     width: 70vw;
     max-height: calc(80vh - 100px);
     margin: 0 5vw;
@@ -235,12 +225,6 @@
 
     &:last-child {
       margin-right: 15vw;
-    }
-
-    scroll-snap-type: center;
-
-    .sign_box {
-      display: none;
     }
   }
 
@@ -286,6 +270,10 @@
   transition: 0.64s all cubic-bezier(0.19, 1, 0.22, 1);
   opacity: 0;
 
+  .arrow_wrapper, .sign_name, .sign_wrapper {
+    position: absolute;
+  }
+
   .sign_name {
     width: fit-content;
     color: #ffffff;
@@ -303,7 +291,6 @@
 
   &[data-member='ine'] {
     .arrow_wrapper {
-      position: absolute;
       top: 105%;
       left: 38px;
       width: 27.7px;
@@ -311,13 +298,11 @@
     }
 
     .sign_name {
-      position: absolute;
       top: calc(105% - 25px);
       left: 80px;
     }
 
     .sign_wrapper {
-      position: absolute;
       top: calc(100%);
       left: 118px;
     }
@@ -325,7 +310,6 @@
 
   &[data-member='jingburger'] {
     .arrow_wrapper {
-      position: absolute;
       top: -50px;
       left: 38px;
       width: 55.1px;
@@ -334,13 +318,11 @@
     }
 
     .sign_name {
-      position: absolute;
       top: -130px;
       left: 105px;
     }
 
     .sign_wrapper {
-      position: absolute;
       top: -250px;
       left: 143px;
       transform: rotate(-7.1deg);
@@ -349,7 +331,6 @@
 
   &[data-member='lilpa'] {
     .arrow_wrapper {
-      position: absolute;
       top: 103%;
       left: 68px;
       width: 39.8px;
@@ -357,13 +338,11 @@
     }
 
     .sign_name {
-      position: absolute;
       top: calc(103% - 30px);
       left: 120px;
     }
 
     .sign_wrapper {
-      position: absolute;
       top: 103%;
       left: 114px;
       transform: rotate(-13.2deg);
@@ -372,7 +351,6 @@
 
   &[data-member='jururu'] {
     .arrow_wrapper {
-      position: absolute;
       top: -54px;
       left: 36px;
       width: 55.1px;
@@ -380,13 +358,11 @@
     }
 
     .sign_name {
-      position: absolute;
       top: -135px;
       left: -35px;
     }
 
     .sign_wrapper {
-      position: absolute;
       top: -260px;
       left: -30px;
       transform: rotate(5.01deg);
@@ -395,7 +371,6 @@
 
   &[data-member='gosegu'] {
     .arrow_wrapper {
-      position: absolute;
       top: 104%;
       left: 68px;
       width: 39.8px;
@@ -404,13 +379,11 @@
     }
 
     .sign_name {
-      position: absolute;
       top: calc(104% - 30px);
       left: -6px;
     }
 
     .sign_wrapper {
-      position: absolute;   
       top: 104%;
       left: -200px;
       transform: rotate(10deg);
@@ -419,7 +392,6 @@
 
   &[data-member='viichan'] {
     .arrow_wrapper {
-      position: absolute;
       top: -64px;
       left: 36px;
       width: 55.1px;
@@ -427,13 +399,11 @@
     }
 
     .sign_name {
-      position: absolute;
       top: -145px;
       left: -26px;
     }
 
     .sign_wrapper {
-      position: absolute;
       top: -265px;
       left: -141px;
       transform: rotate(5.31deg);
