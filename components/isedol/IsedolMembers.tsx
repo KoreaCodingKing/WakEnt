@@ -255,9 +255,7 @@ export const IsedolMembers: NextPage = () => {
           })}
         </div>
         {chosenMember && (
-          <div className={concatClass(styles.member_detail)} style={{
-            left: `${rect?.width}px`
-          }}>
+          <div className={concatClass(styles.member_detail)}>
             <div className={styles.profile}>
               <div className={styles.profile_name}>
                 <p></p>
