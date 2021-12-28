@@ -95,6 +95,10 @@ const useHashState = <S extends string | null>(
   const [state, setState] = useState<S>(initialState);
 
   useEffect(() => {
+    if (location.hash) {
+      setState(location.hash.replace(/\#/, '') as S);
+    }
+
     const hashChangeHandler = () =>
       setState(
         (location.hash === '' ? null : location.hash.replace(/\#/, '')) as S
