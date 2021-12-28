@@ -89,7 +89,7 @@ export const useHorizonalPageScroller = (
     const getCurrentPage = () => {
       const indexes: number[] = [];
 
-      pages.map((elem, index) => {
+      pages.forEach((elem, index) => {
         const { width, left } = elem.getBoundingClientRect();
 
         const condition = left + width / 3 > 0 &&

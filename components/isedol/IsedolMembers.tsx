@@ -86,7 +86,7 @@ const Members: Record<MemberID, Member> = {
 };
 
 const isNotNull = <T extends unknown>(elem: T | null): elem is T => {
-  return typeof elem === 'string';
+  return typeof elem !== null;
 };
 
 const useHashState = <S extends string | null>(
@@ -95,7 +95,10 @@ const useHashState = <S extends string | null>(
   const [state, setState] = useState<S>(initialState);
 
   useEffect(() => {
-    const hashChangeHandler = () => setState(location.hash.replace(/\#/, '') as S);
+    const hashChangeHandler = () =>
+      setState(
+        (location.hash === '' ? null : location.hash.replace(/\#/, '')) as S
+      );
 
     window.addEventListener('hashchange', hashChangeHandler);
 
@@ -167,14 +170,13 @@ export const IsedolMembers: NextPage = () => {
           )}
           data-member={chosenMember}
         >
-          {true &&
+          {
             Object.keys(Members).map((id, i) => {
               const member = Members[id as MemberID];
 
               return (
-                <>
+                <div key={`member-card-${id}`}>
                   <div
-                    key={`member-card-${id}`}
                     className={concatClass(
                       styles.member,
                       !!chosenMember && chosenMember !== id && styles.disapear
@@ -288,7 +290,7 @@ export const IsedolMembers: NextPage = () => {
                       <div className={styles.chosen_member__charator}></div>
                     </div>
                   )}
-                </>
+                </div>
               );
             })}
         </div>
