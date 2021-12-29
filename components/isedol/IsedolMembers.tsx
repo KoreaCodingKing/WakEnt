@@ -185,7 +185,7 @@ export const IsedolMembers: NextPage = () => {
                 key={`member-card-${id}`}
                 className={concatClass(
                   styles.member,
-                  !!chosenMember && chosenMember !== id && styles.disapear
+                  !!chosenMember && chosenMember !== id && styles.disappear
                 )}
                 data-member={id}
                 ref={(element: HTMLDivElement) =>
