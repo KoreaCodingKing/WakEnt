@@ -48,7 +48,8 @@ export const useScrollPage = (
 export const useHorizonalPageScroller = (
   parent: RefObject<HTMLElement>,
   threshold: number,
-  pages: HTMLElement[]
+  pages: HTMLElement[],
+  activeOn?: () => boolean
 ): [boolean, number] => {
   if (!process.browser) {
     return [false, 0];
@@ -107,6 +108,10 @@ export const useHorizonalPageScroller = (
 
     const wheelEventHandler = (event: WheelEvent) => {
       if (!parent.current) {
+        return;
+      }
+
+      if (activeOn && !activeOn()) {
         return;
       }
 
