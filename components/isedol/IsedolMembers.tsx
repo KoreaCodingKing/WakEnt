@@ -154,6 +154,8 @@ export const IsedolMembers: NextPage = () => {
     setCurrentHoverMember(Object.keys(Members)[mobilePage] as MemberID);
   }, [mobileActive, mobilePage]);
 
+  let hoverTimeout = 0;
+
   return (
     <div className={styles.isedol_members__container}>
       <Head>
@@ -197,9 +199,20 @@ export const IsedolMembers: NextPage = () => {
                   id === currentHoverMember
                 }
                 onMouseEnter={() =>
-                  !mobileActive && setCurrentHoverMember(id as MemberID)
+                  !mobileActive &&
+                  chosenMember === null &&
+                  clearTimeout(hoverTimeout) ||
+                  setCurrentHoverMember(id as MemberID)
                 }
-                onMouseOut={() => !mobileActive && setCurrentHoverMember(null)}
+                onMouseOut={() =>
+                  !mobileActive &&
+                  chosenMember === null &&
+                  (() => {
+                    hoverTimeout = setTimeout(() => {
+                      setCurrentHoverMember(null);
+                    }, 60) as unknown as number;
+                  })()
+                }
                 onClick={(
                   event: React.MouseEvent<HTMLDivElement, MouseEvent>
                 ) => {

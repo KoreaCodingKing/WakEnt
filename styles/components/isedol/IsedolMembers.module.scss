@@ -142,8 +142,11 @@
 
   &[data-member] {
     .sign_box {
-      display: none;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.23s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.23s cubic-bezier(0.19, 1, 0.22, 1);
     }
+
     cursor: default;
   }
 
@@ -152,23 +155,23 @@
   }
 
   &[data-member='jingburger'] .member[data-member='jingburger'] {
-    transform: translateX(-100%);
+    transform: translateX(-114%);
   }
 
   &[data-member='lilpa'] .member[data-member='lilpa'] {
-    transform: translateX(-226%);
+    transform: translateX(-222%);
   }
 
   &[data-member='jururu'] .member[data-member='jururu'] {
-    transform: translateX(-338%);
+    transform: translateX(-333%);
   }
 
   &[data-member='gosegu'] .member[data-member='gosegu'] {
-    transform: translateX(-450%);
+    transform: translateX(-444%);
   }
 
   &[data-member='viichan'] .member[data-member='viichan'] {
-    transform: translateX(-560%);
+    transform: translateX(-553%);
   }
 }
 
@@ -249,6 +252,7 @@
     border-radius: 16px;
     z-index: 100;
     opacity: 1;
+    visibility: visible;
     top: 0;
     left: 0;
   }
