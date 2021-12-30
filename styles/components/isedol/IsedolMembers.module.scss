@@ -278,11 +278,6 @@
   }
 }
 
-@font-face {
-  font-family: 'NanumSon';
-  src: url('/fonts/nanumson-middleschool.ttf') format('truetype');
-}
-
 .sign_box {
   position: absolute;
   width: 100%;
@@ -299,13 +294,12 @@
   .sign_name {
     width: fit-content;
     color: #ffffff;
-    font-family: 'NanumSon';
     font-size: 48px;
   }
 
   .sign_wrapper {
-    min-width: 300px;
-    min-height: 200px;
+    min-width: 250px;
+    min-height: 150px;
 
     aspect-ratio: 1 / 0.9;
     opacity: 0.16;
@@ -320,8 +314,10 @@
     }
 
     .sign_name {
-      top: calc(105% - 25px);
+      top: calc(105% - 9px);
       left: 80px;
+      width: 76px;
+      height: 32px;
     }
 
     .sign_wrapper {
@@ -340,8 +336,10 @@
     }
 
     .sign_name {
-      top: -130px;
+      top: -114px;
       left: 105px;
+      width: 70px;
+      height: 32px;
     }
 
     .sign_wrapper {
@@ -360,8 +358,10 @@
     }
 
     .sign_name {
-      top: calc(103% - 30px);
+      top: calc(103% - 17px);
       left: 120px;
+      width: 50px;
+      height: 32px;
     }
 
     .sign_wrapper {
@@ -380,12 +380,14 @@
     }
 
     .sign_name {
-      top: -135px;
+      top: -116px;
       left: -35px;
+      width: 60px;
+      height: 30px;
     }
 
     .sign_wrapper {
-      top: -260px;
+      top: -230px;
       left: -30px;
       transform: rotate(5.01deg);
     }
@@ -401,8 +403,10 @@
     }
 
     .sign_name {
-      top: calc(104% - 30px);
-      left: -6px;
+      top: calc(104% - 18px);
+      left: 0px;
+      width: 63px;
+      height: 32px;      
     }
 
     .sign_wrapper {
@@ -421,12 +425,14 @@
     }
 
     .sign_name {
-      top: -145px;
-      left: -26px;
+      top: -127px;
+      left: -24px;
+      width: 50px;
+      height: 32px;
     }
 
     .sign_wrapper {
-      top: -265px;
+      top: -235px;
       left: -141px;
       transform: rotate(5.31deg);
     }

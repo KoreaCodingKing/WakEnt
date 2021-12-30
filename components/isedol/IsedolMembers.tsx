@@ -22,6 +22,7 @@ interface Member {
     ko: string
   }
   image: string
+  signNameImage: string
   signImage: string
   color: string
 }
@@ -35,6 +36,7 @@ const Members: Record<MemberID, Member> = {
       ko: '아이네',
     },
     image: '/images/member/ine.jpg',
+    signNameImage: '/images/member/text/ine.svg',
     signImage: '/images/sign/ine.png',
     color: '#210C28',
   },
@@ -44,6 +46,7 @@ const Members: Record<MemberID, Member> = {
       ko: '징버거',
     },
     image: '/images/member/jingburger.jpg',
+    signNameImage: '/images/member/text/jingburger.svg',
     signImage: '/images/sign/jingburger.png',
     color: '#1A1506',
   },
@@ -53,6 +56,7 @@ const Members: Record<MemberID, Member> = {
       ko: '릴파',
     },
     image: '/images/member/lilpa.jpg',
+    signNameImage: '/images/member/text/lilpa.svg',
     signImage: '/images/sign/lilpa.png',
     color: '#0E0A24',
   },
@@ -62,6 +66,7 @@ const Members: Record<MemberID, Member> = {
       ko: '주르르',
     },
     image: '/images/member/jururu.jpg',
+    signNameImage: '/images/member/text/jururu.svg',
     signImage: '/images/sign/jururu.png',
     color: '#1B0A1C',
   },
@@ -71,6 +76,7 @@ const Members: Record<MemberID, Member> = {
       ko: '고세구',
     },
     image: '/images/member/gosegu.jpg',
+    signNameImage: '/images/member/text/gosegu.svg',
     signImage: '/images/sign/gosegu.png',
     color: '#05171D',
   },
@@ -80,6 +86,7 @@ const Members: Record<MemberID, Member> = {
       ko: '비챤',
     },
     image: '/images/member/viichan.jpg',
+    signNameImage: '/images/member/text/viichan.svg',
     signImage: '/images/sign/viichan.png',
     color: '#081607',
   },
@@ -259,7 +266,14 @@ export const IsedolMembers: NextPage = () => {
                       alt='사인 arrow'
                     ></Image>
                   </div>
-                  <p className={styles.sign_name}>{member.name.ko}</p>
+                  <p className={styles.sign_name}>
+                    <Image
+                      className={styles.member_sign_name}
+                      src={member.signNameImage}
+                      layout='fill'
+                      alt={`${member.name.ko}`}
+                    ></Image>
+                  </p>
                   <div className={styles.sign_wrapper}>
                     <Image
                       className={styles.member_sign}
