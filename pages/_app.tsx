@@ -22,7 +22,8 @@ function MyApp ({ Component, pageProps, router }: AppProps) {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
         <link rel="manifest" href="/site.webmanifest"/>
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"/>
-        <meta name="msapplication-TileColor" content="#1e3c34"/>
+        <meta name="msapplication-TileColor" content="#1e3c34" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
       </Head>
       <motion.div
         key={router.route}

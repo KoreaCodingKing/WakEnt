@@ -85,7 +85,10 @@ export const Main: NextPage = () => {
               styles.backgroundImage,
               currentIndex === i && styles.active
             )}
+            blurDataURL={v.image}
+            placeholder='blur'
             layout='fill'
+            priority
             key={`background-image-${i}`}
             src={v.image}
           />
