@@ -9,12 +9,14 @@ import IsedolDiscographyDetail, {
   AlbumDetail,
 } from '../../../components/isedol/IsedolDiscographyDetail';
 
+import RewindImage from '../../../public/images/album/rewind.jpg';
+
 const IsedolPage: NextPage = (): JSX.Element => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const details: AlbumDetail = {
     title: 'RE : WIND',
-    image: '/images/album/rewind.jpg',
+    image: RewindImage,
     description: (
       <p>
         오디션 부터 활동까지 전부 가상의 세계에서 진행된 메타버스 프로젝트 6인조

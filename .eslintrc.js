@@ -45,6 +45,7 @@ module.exports = {
         "no-trailing-spaces": "error",
         "no-extra-semi": "error",
         "no-console": isProd ? ["error", { allow: ["warn", "error"] }] : "off",
+        "@typescript-eslint/no-unnecessary-type-constraint": "off",
         "@typescript-eslint/no-explicit-any": "error",
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": "warn",

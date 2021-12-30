@@ -33,9 +33,9 @@
     height: 100%;
     content: ' ';
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.32);
     left: 0;
     top: 0;
+    background-color: rgba(0, 0, 0, 0.32);
   }
 }
 
@@ -53,6 +53,10 @@
 
     overflow-x: auto;
     overflow-y: hidden;
+
+    @media screen and (max-width: $maxMobile) {
+      scroll-snap-type: x mandatory;
+    }
 
     &::-webkit-scrollbar {
       display: none;
@@ -90,16 +94,90 @@
   }
 }
 
-.members_contents {
+.logo_container {
+  display: flex;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  bottom: 10vh;
+  right: 10vw;
+  opacity: 0.3;
+  cursor: pointer;
+
+  transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
+
+  @media screen and (max-width: $maxTablet) {
+    bottom: 3vh;
+    right: 5vw;
+    transform: scale(0.8);
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    transform: scale(0.7);
+  }
+
+  &:hover, &:focus {
+    opacity: 0.6;
+  }
+}
+
+.members_list {
   display: flex;
   justify-content: center;
   width: fit-content;
   height: 100%;
   margin: 0 auto;
   align-items: center;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
+  position: relative;
+
+  // @media screen and (max-width: $maxTablet) {
+  //   &.chosen {
+  //     width: 90vw;
+  //   }
+  // }
+
+
+  &[data-member] {
+    .sign_box {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.23s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.23s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    cursor: default;
+  }
+
+  &[data-member='ine'] .member[data-member='ine'] {
+    transform: translateX(0);
+  }
+
+  &[data-member='jingburger'] .member[data-member='jingburger'] {
+    transform: translateX(-114%);
+  }
+
+  &[data-member='lilpa'] .member[data-member='lilpa'] {
+    transform: translateX(-222%);
+  }
+
+  &[data-member='jururu'] .member[data-member='jururu'] {
+    transform: translateX(-333%);
+  }
+
+  &[data-member='gosegu'] .member[data-member='gosegu'] {
+    transform: translateX(-444%);
+  }
+
+  &[data-member='viichan'] .member[data-member='viichan'] {
+    transform: translateX(-553%);
+  }
 }
+
+// .member_wrapper {
+//   position: relative;
+// }
 
 .member {
   position: relative;
@@ -109,12 +187,6 @@
   margin: 0 12px;
   cursor: pointer;
   z-index: 10;
-
-  &:hover {
-    .sign_box {
-      opacity: 1;
-    }
-  }
 
   .background, .member_image_wrapper {
     position: absolute;
@@ -140,7 +212,7 @@
 
   aspect-ratio: 6 / 16;
 
-  @media screen and (max-width: #{$maxTablet + 100px}) {
+  @media screen and (max-width: $maxTablet) {
     width: unset;
     height: 70vh;
 
@@ -149,12 +221,23 @@
     }
   }
 
-  @media screen and (max-width: #{$maxMobile + 100px}) {
-    width: unset;
-    height: 60vh;
+  @media screen and (max-width: $maxTablet) {
+    width: 70vw;
+    max-height: calc(80vh - 100px);
+    margin: 0 5vw;
 
+    &:first-child {
+      margin-left: 15vw;
+    }
+
+    &:last-child {
+      margin-right: 15vw;
+    }
+  }
+
+  &:hover {
     .sign_box {
-      display: none;
+      opacity: 1;
     }
   }
 
@@ -164,11 +247,12 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.64);
-    transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1) 16ms;
+    transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1) 100ms;
     pointer-events: none;
     border-radius: 16px;
     z-index: 100;
     opacity: 1;
+    visibility: visible;
     top: 0;
     left: 0;
   }
@@ -176,13 +260,22 @@
   &[data-active='true'] {
     &::after {
       opacity: 0;
+      visibility: hidden;
     }
   }
-}
 
-@font-face {
-  font-family: 'NanumSon';
-  src: url('/fonts/nanumson-middleschool.ttf') format('truetype');
+  transition: transform 0.4s cubic-bezier(.22,.61,.36,1), opacity 0.3s cubic-bezier(.65,.05,.36,1), visibility 0.3s cubic-bezier(.65,.05,.36,1);
+  visibility: visible;
+
+  &.disappear {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+
+    transition: transform 0.3s cubic-bezier(0.47, 0, 0.745, 0.715), opacity 0.23s cubic-bezier(0.785, 0.135, 0.15, 0.86), visibility 0.23s cubic-bezier(.73,-0.55,.2,1.51);
+
+    transform: rotateZ(-5deg) translateY(10px) scale(0.9);
+  }
 }
 
 .sign_box {
@@ -194,16 +287,19 @@
   transition: 0.64s all cubic-bezier(0.19, 1, 0.22, 1);
   opacity: 0;
 
+  .arrow_wrapper, .sign_name, .sign_wrapper {
+    position: absolute;
+  }
+
   .sign_name {
     width: fit-content;
     color: #ffffff;
-    font-family: 'NanumSon';
     font-size: 48px;
   }
 
   .sign_wrapper {
-    min-width: 300px;
-    min-height: 200px;
+    min-width: 250px;
+    min-height: 150px;
 
     aspect-ratio: 1 / 0.9;
     opacity: 0.16;
@@ -211,7 +307,6 @@
 
   &[data-member='ine'] {
     .arrow_wrapper {
-      position: absolute;
       top: 105%;
       left: 38px;
       width: 27.7px;
@@ -219,13 +314,13 @@
     }
 
     .sign_name {
-      position: absolute;
-      top: calc(105% - 25px);
+      top: calc(105% - 9px);
       left: 80px;
+      width: 76px;
+      height: 32px;
     }
 
     .sign_wrapper {
-      position: absolute;
       top: calc(100%);
       left: 118px;
     }
@@ -233,7 +328,6 @@
 
   &[data-member='jingburger'] {
     .arrow_wrapper {
-      position: absolute;
       top: -50px;
       left: 38px;
       width: 55.1px;
@@ -242,13 +336,13 @@
     }
 
     .sign_name {
-      position: absolute;
-      top: -130px;
+      top: -114px;
       left: 105px;
+      width: 70px;
+      height: 32px;
     }
 
     .sign_wrapper {
-      position: absolute;
       top: -250px;
       left: 143px;
       transform: rotate(-7.1deg);
@@ -257,7 +351,6 @@
 
   &[data-member='lilpa'] {
     .arrow_wrapper {
-      position: absolute;
       top: 103%;
       left: 68px;
       width: 39.8px;
@@ -265,13 +358,13 @@
     }
 
     .sign_name {
-      position: absolute;
-      top: calc(103% - 30px);
+      top: calc(103% - 17px);
       left: 120px;
+      width: 50px;
+      height: 32px;
     }
 
     .sign_wrapper {
-      position: absolute;
       top: 103%;
       left: 114px;
       transform: rotate(-13.2deg);
@@ -280,7 +373,6 @@
 
   &[data-member='jururu'] {
     .arrow_wrapper {
-      position: absolute;
       top: -54px;
       left: 36px;
       width: 55.1px;
@@ -288,14 +380,14 @@
     }
 
     .sign_name {
-      position: absolute;
-      top: -135px;
+      top: -116px;
       left: -35px;
+      width: 60px;
+      height: 30px;
     }
 
     .sign_wrapper {
-      position: absolute;
-      top: -260px;
+      top: -230px;
       left: -30px;
       transform: rotate(5.01deg);
     }
@@ -303,7 +395,6 @@
 
   &[data-member='gosegu'] {
     .arrow_wrapper {
-      position: absolute;
       top: 104%;
       left: 68px;
       width: 39.8px;
@@ -312,13 +403,13 @@
     }
 
     .sign_name {
-      position: absolute;
-      top: calc(104% - 30px);
-      left: -6px;
+      top: calc(104% - 18px);
+      left: 0px;
+      width: 63px;
+      height: 32px;      
     }
 
     .sign_wrapper {
-      position: absolute;   
       top: 104%;
       left: -200px;
       transform: rotate(10deg);
@@ -327,7 +418,6 @@
 
   &[data-member='viichan'] {
     .arrow_wrapper {
-      position: absolute;
       top: -64px;
       left: 36px;
       width: 55.1px;
@@ -335,14 +425,14 @@
     }
 
     .sign_name {
-      position: absolute;
-      top: -145px;
-      left: -26px;
+      top: -127px;
+      left: -24px;
+      width: 50px;
+      height: 32px;
     }
 
     .sign_wrapper {
-      position: absolute;
-      top: -265px;
+      top: -235px;
       left: -141px;
       transform: rotate(5.31deg);
     }
@@ -350,6 +440,32 @@
 }
 
 // 멤버별 페이지 스타일
-.chosen_member {
+.member_detail {
   display: flex;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+
+  transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+
+    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1) 0.7s, visibility 1s cubic-bezier(0.19, 1, 0.22, 1) 0.7s;
+  }
+
+  .profile {
+    position: absolute;
+    left: calc(5vw + 10vw);
+    top: 20vh;
+
+    color: white;
+  }
 }
