@@ -1,0 +1,25 @@
+.button {
+  display: block;
+  width: fit-content;
+  padding: 8px 16px;
+  border-radius: 8px;
+
+  transition: 0.23s background cubic-bezier(0.19, 1, 0.22, 1);
+  cursor: pointer;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #f3f3f3;
+  }
+
+  &:active {
+    background-color: #d8d8d8;
+  }
+
+  &[data-active="true"] {
+    background-color: #D0F3E2;
+    color: #108B2B;
+
+    cursor: unset;
+  }
+}
