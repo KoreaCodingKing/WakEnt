@@ -127,6 +127,7 @@ export const IsedolMembers: NextPage = () => {
   const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
     null
   );
+  const [memberDetailOpen, setMemberDetailOpen] = useState<boolean>(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -169,7 +170,7 @@ export const IsedolMembers: NextPage = () => {
         <div
           className={concatClass(
             styles.members_list,
-            isNotNull(chosenMember) && styles.chosen,
+            memberDetailOpen && styles.chosen,
             mobileActive && styles.mobile
           )}
           data-member={chosenMember}
@@ -202,6 +203,7 @@ export const IsedolMembers: NextPage = () => {
                 ) => {
                   event.preventDefault();
                   if (chosenMember) {
+                    setMemberDetailOpen(false);
                     setChosenMember(null);
                     return;
                   }
@@ -213,6 +215,7 @@ export const IsedolMembers: NextPage = () => {
                   }
 
                   setChosenMember(id as MemberID);
+                  setMemberDetailOpen(true);
                 }}
               >
                 <div className={styles.background}>
@@ -253,36 +256,36 @@ export const IsedolMembers: NextPage = () => {
               </div>
             );
           })}
-        </div>
-        {chosenMember && (
-          <div className={concatClass(styles.member_detail)}>
-            <div className={styles.profile}>
-              <div className={styles.profile_name}>
-                <p></p>
-                <p></p>
+          {isNotNull(chosenMember) && memberDetailOpen && (
+            <div className={concatClass(styles.member_detail, styles.active)}>
+              <div className={styles.profile}>
+                <div className={styles.profile_name}>
+                  <p></p>
+                  <p></p>
+                </div>
+                <div className={styles.profile_detail}>
+                  <dl>
+                    <dt>Color</dt>
+                    <dd></dd>
+                    <dt>Birth</dt>
+                    <dd></dd>
+                    <dt>Height</dt>
+                    <dd></dd>
+                    <dt>Blood</dt>
+                    <dd></dd>
+                    <dt>MBTI</dt>
+                    <dd></dd>
+                    <dt>Fandom</dt>
+                    <dd></dd>
+                  </dl>
+                  <div className={styles.social_box}></div>
+                  <div className={styles.sign_wrapper}></div>
+                </div>
               </div>
-              <div className={styles.profile_detail}>
-                <dl>
-                  <dt>Color</dt>
-                  <dd></dd>
-                  <dt>Birth</dt>
-                  <dd></dd>
-                  <dt>Height</dt>
-                  <dd></dd>
-                  <dt>Blood</dt>
-                  <dd></dd>
-                  <dt>MBTI</dt>
-                  <dd></dd>
-                  <dt>Fandom</dt>
-                  <dd></dd>
-                </dl>
-                <div className={styles.social_box}></div>
-                <div className={styles.sign_wrapper}></div>
-              </div>
+              <div className={styles.member_detail__charator}></div>
             </div>
-            <div className={styles.member_detail__charator}></div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
       <Link key={'link-wak-enter'} href={'/'} passHref>
         <div
