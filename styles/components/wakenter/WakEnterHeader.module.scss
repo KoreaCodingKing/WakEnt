@@ -1,6 +1,20 @@
+@import "../../mixin.scss";
+
 .logo {
   display: flex;
   justify-content: center;
+
+  &.clickable {
+    &:hover, &:focus {
+      opacity: 0.8;
+    }
+  
+    &:active {
+      opacity: 0.6;
+    }
+
+    cursor: pointer;
+  }
 
   &.white {
     .logoImage {
@@ -32,5 +46,47 @@
 
   span {
     margin: auto;
+  }
+}
+
+.menu {
+  margin-left: auto;
+  display: flex;
+  gap: 32px;
+
+  @media screen and (max-width: $maxTablet) {
+    gap: 16px;
+  }
+
+  &.white {
+    a {
+      color: white;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 1.1em;
+    letter-spacing: -0.5px;
+
+    transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
+
+    &:hover, &:focus {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
+
+    @media screen and (max-width: $maxTablet) {
+      font-size: 1em;
+    }
+
+    @media screen and (max-width: $maxMobile) {
+      font-size: 0.95em;
+    }
   }
 }

@@ -128,8 +128,14 @@
   font-size: 1.15em;
   font-weight: bold;
 
+  word-break: keep-all;
+
   margin: 0;
   margin-right: 5vw;
+
+  @media screen and (max-width: $maxTablet) {
+    font-size: 1em;
+  }
 
   @media screen and (max-width: $maxMobile) {
     font-size: 0.95em;
@@ -140,10 +146,14 @@
   font-size: 0.85em;
   gap: 2em;
 
-  @media screen and (max-width: $maxMobile) {
-    font-size: 0.85em;
-    gap: 0.5em;
+  white-space: nowrap;
 
+  @media screen and (max-width: $maxTablet) {
+    font-size: 0.8em;
+    gap: 0.5em;
+  }
+
+  @media screen and (max-width: $maxMobile) {
     .comments {
       display: none;
     }

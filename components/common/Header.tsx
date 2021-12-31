@@ -7,6 +7,7 @@ export interface HeaderBaseProps {
   left?: ReactNode
   right?: ReactNode
   white?: boolean
+  full?: boolean
 }
 
 export const HeaderBase = (props: HeaderBaseProps) => {
@@ -15,7 +16,8 @@ export const HeaderBase = (props: HeaderBaseProps) => {
       className={concatClass(
         styles.header,
         props.fixed && styles.fixed,
-        props.white && styles.white
+        props.white && styles.white,
+        props.full && styles.full
       )}
     >
       <div className={styles.left}>{props.left}</div>
