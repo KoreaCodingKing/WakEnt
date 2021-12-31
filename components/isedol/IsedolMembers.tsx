@@ -202,7 +202,7 @@ const useNonNullState = <T extends unknown>(state: T) => {
 const useRect = (ref: React.RefObject<HTMLDivElement>) => {
   const [elem, setElem] = useState<HTMLDivElement | null>(null);
   const [rect, setRect] = useState<
-    [DOMRect | undefined, DOMRect | undefined] | null
+    [DOMRect | undefined, DOMRect | undefined]
   >([undefined, undefined]);
 
   useEffect(() => {
@@ -355,6 +355,7 @@ export const IsedolMembers: NextPage = () => {
                   if (mobileActive && containerRef.current) {
                     containerRef.current.scrollTo({
                       left: 0,
+                      behavior: 'smooth'
                     });
                   }
 
