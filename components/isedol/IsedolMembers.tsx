@@ -1,6 +1,4 @@
 import React, {
-  Dispatch,
-  SetStateAction,
   useEffect,
   useRef,
   useState,
@@ -15,6 +13,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { concatClass } from '../../utils/class';
 import { useHorizonalPageScroller } from '../common/Scroll';
+import { useHashState } from '../../utils/hashState';
 
 interface Member {
   name: {
@@ -94,39 +93,6 @@ const Members: Record<MemberID, Member> = {
 
 const isNotNull = <T extends unknown>(elem: T | null): elem is T => {
   return typeof elem !== null;
-};
-
-const useHashState = <S extends string | null>(
-  initialState: S | (() => S)
-): [S, Dispatch<SetStateAction<S>>] => {
-  const [state, setState] = useState<S>(initialState);
-
-  useEffect(() => {
-    if (location.hash) {
-      setState(location.hash.replace(/\#/, '') as S);
-    }
-
-    const hashChangeHandler = () =>
-      setState(
-        (location.hash === '' ? null : location.hash.replace(/\#/, '')) as S
-      );
-
-    window.addEventListener('hashchange', hashChangeHandler);
-
-    return () => {
-      window.removeEventListener('hashchange', hashChangeHandler);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (location.hash === state || (state === null && location.hash === '')) {
-      return;
-    }
-
-    location.hash = state === null ? '' : `${state}`;
-  }, [state]);
-
-  return [state, setState];
 };
 
 export const IsedolMembers: NextPage = () => {

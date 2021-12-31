@@ -5,6 +5,7 @@ import { NoticesAPI } from '../../structs/notices';
 
 import styles from '../../styles/components/isedol/IsedolNotices.module.scss';
 import { concatClass } from '../../utils/class';
+import { useHashState } from '../../utils/hashState';
 import Button from '../common/Button';
 import { LoadSpinner } from '../common/LoadSpinner';
 import Pagination from '../common/Pagination';
@@ -46,9 +47,9 @@ const useNoticesAPI = (
 };
 
 export const Notices: NextPage = () => {
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useHashState<string>("1");
 
-  const [notices, error, retry] = useNoticesAPI(page);
+  const [notices, error, retry] = useNoticesAPI(Number(page));
 
   return (
     <div className={styles.container}>
@@ -85,6 +86,9 @@ export const Notices: NextPage = () => {
                       <span className={concatClass(styles.item, styles.likes)}>
                         {v.likes} 좋아요
                       </span>
+                      <span className={concatClass(styles.item, styles.date)}>
+                        {v.date}
+                      </span>
                       <span className={styles.item}>{v.writer}</span>
                     </div>
                   </a>
@@ -98,7 +102,7 @@ export const Notices: NextPage = () => {
                 previous={notices.previous}
                 next={notices.next}
                 movePage={to => {
-                  setPage(to);
+                  setPage(to.toString());
                 }}
               ></Pagination>
             </div>
