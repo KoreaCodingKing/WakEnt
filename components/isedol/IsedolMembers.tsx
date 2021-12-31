@@ -4,17 +4,17 @@ import React, {
   useEffect,
   useRef,
   useState,
-} from 'react'
-import { NextPage } from 'next'
-import Image from 'next/image'
-import styles from '../../styles/components/isedol/IsedolMembers.module.scss'
-import Head from 'next/head'
-import Centerize from '../common/Centerize'
-import { WakEnterLogo } from '../wakenter/WakEnterHeader'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { concatClass } from '../../utils/class'
-import { useHorizonalPageScroller } from '../common/Scroll'
+} from 'react';
+import { NextPage } from 'next';
+import Image from 'next/image';
+import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
+import Head from 'next/head';
+import Centerize from '../common/Centerize';
+import { WakEnterLogo } from '../wakenter/WakEnterHeader';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { concatClass } from '../../utils/class';
+import { useHorizonalPageScroller } from '../common/Scroll';
 
 interface Member {
   name: {
@@ -146,96 +146,96 @@ const Members: Record<MemberID, Member> = {
       fandom: '고라니단',
     },
   },
-}
+};
 
 const isNotNull = <T extends unknown>(elem: T | null): elem is T => {
-  return elem !== null
-}
+  return elem !== null;
+};
 
 const useHashState = <S extends string | null>(
   initialState: S | (() => S)
 ): [S, Dispatch<SetStateAction<S>>] => {
-  const [state, setState] = useState<S>(initialState)
+  const [state, setState] = useState<S>(initialState);
 
   useEffect(() => {
     if (location.hash) {
-      setState(location.hash.replace(/\#/, '') as S)
+      setState(location.hash.replace(/\#/, '') as S);
     }
 
     const hashChangeHandler = () =>
       setState(
         (location.hash === '' ? null : location.hash.replace(/\#/, '')) as S
-      )
+      );
 
-    window.addEventListener('hashchange', hashChangeHandler)
+    window.addEventListener('hashchange', hashChangeHandler);
 
     return () => {
-      window.removeEventListener('hashchange', hashChangeHandler)
-    }
-  }, [])
+      window.removeEventListener('hashchange', hashChangeHandler);
+    };
+  }, []);
 
   useEffect(() => {
     if (location.hash === state || (state === null && location.hash === '')) {
-      return
+      return;
     }
 
-    location.hash = state === null ? '' : `${state}`
-  }, [state])
+    location.hash = state === null ? '' : `${state}`;
+  }, [state]);
 
-  return [state, setState]
-}
+  return [state, setState];
+};
 
 const useNonNullState = <T extends unknown>(state: T) => {
-  const [nstate, setNState] = useState<T>(state)
+  const [nstate, setNState] = useState<T>(state);
 
   useEffect(() => {
     if (state === null) {
-      return
+      return;
     }
 
-    setNState(state)
-  }, [state])
+    setNState(state);
+  }, [state]);
 
-  return nstate
-}
+  return nstate;
+};
 
 const useRect = (ref: React.RefObject<HTMLDivElement>) => {
-  const [elem, setElem] = useState<HTMLDivElement | null>(null)
+  const [elem, setElem] = useState<HTMLDivElement | null>(null);
   const [rect, setRect] = useState<
     [DOMRect | undefined, DOMRect | undefined] | null
-  >([undefined, undefined])
+  >([undefined, undefined]);
 
   useEffect(() => {
     if (!ref.current) {
-      return
+      return;
     }
 
-    setElem(ref.current)
-  }, [ref.current])
+    setElem(ref.current);
+  }, [ref.current]);
 
   useEffect(() => {
     if (!elem) {
-      return
+      return;
     }
 
     const handler = () => {
       setRect([
         elem.getBoundingClientRect(),
         elem.querySelector(`.${styles.member}`)?.getBoundingClientRect(),
-      ])
-    }
+      ]);
+    };
 
-    handler()
+    handler();
 
-    window.addEventListener('resize', handler)
+    window.addEventListener('resize', handler);
 
     return () => {
-      window.removeEventListener('resize', handler)
-    }
-  }, [elem])
+      window.removeEventListener('resize', handler);
+    };
+  }, [elem]);
 
-  return rect
-}
+  return rect;
+};
 
 interface DetailMemberCSS extends React.CSSProperties {
   '--left': string
@@ -244,43 +244,43 @@ interface DetailMemberCSS extends React.CSSProperties {
 }
 
 export const IsedolMembers: NextPage = () => {
-  const [chosenMember, setChosenMember] = useHashState<MemberID | null>(null)
-  const previousMember = useNonNullState(chosenMember)
+  const [chosenMember, setChosenMember] = useHashState<MemberID | null>(null);
+  const previousMember = useNonNullState(chosenMember);
 
   const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
     null
-  )
+  );
 
-  const containerRef = useRef<HTMLDivElement>(null)
-  const memberRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
+  const memberRef = useRef<HTMLDivElement>(null);
 
-  const membersCardCache: HTMLElement[] = []
-  const router = useRouter()
+  const membersCardCache: HTMLElement[] = [];
+  const router = useRouter();
 
-  const [parentRect, cardRect] = useRect(memberRef)
+  const [parentRect, cardRect] = useRect(memberRef);
 
   const [mobileActive, mobilePage] = useHorizonalPageScroller(
     containerRef,
     1124,
     membersCardCache,
     () => {
-      return chosenMember === null
+      return chosenMember === null;
     }
-  )
+  );
 
   useEffect(() => {
     if (!mobileActive) {
       if (currentHoverMember) {
-        setCurrentHoverMember(null)
+        setCurrentHoverMember(null);
       }
 
-      return
+      return;
     }
 
-    setCurrentHoverMember(Object.keys(Members)[mobilePage] as MemberID)
-  }, [mobileActive, mobilePage])
+    setCurrentHoverMember(Object.keys(Members)[mobilePage] as MemberID);
+  }, [mobileActive, mobilePage]);
 
-  let hoverTimeout = 0
+  let hoverTimeout = 0;
 
   return (
     <div className={styles.isedol_members__container}>
@@ -310,7 +310,7 @@ export const IsedolMembers: NextPage = () => {
           data-member={chosenMember}
         >
           {Object.keys(Members).map((id, i) => {
-            const member = Members[id as MemberID]
+            const member = Members[id as MemberID];
 
             return (
               <div
@@ -339,26 +339,26 @@ export const IsedolMembers: NextPage = () => {
                   chosenMember === null &&
                   (() => {
                     hoverTimeout = (setTimeout(() => {
-                      setCurrentHoverMember(null)
-                    }, 60) as unknown) as number
+                      setCurrentHoverMember(null);
+                    }, 60) as unknown) as number;
                   })()
                 }
                 onClick={(
                   event: React.MouseEvent<HTMLDivElement, MouseEvent>
                 ) => {
-                  event.preventDefault()
+                  event.preventDefault();
                   if (chosenMember) {
-                    setChosenMember(null)
-                    return
+                    setChosenMember(null);
+                    return;
                   }
 
                   if (mobileActive && containerRef.current) {
                     containerRef.current.scrollTo({
                       left: 0,
-                    })
+                    });
                   }
 
-                  setChosenMember(id as MemberID)
+                  setChosenMember(id as MemberID);
                 }}
               >
                 <div className={styles.background}>
@@ -407,7 +407,7 @@ export const IsedolMembers: NextPage = () => {
                   </div>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
         {previousMember && (
@@ -475,7 +475,7 @@ export const IsedolMembers: NextPage = () => {
         </div>
       </Link>
     </div>
-  )
-}
+  );
+};
 
-export default IsedolMembers
+export default IsedolMembers;
