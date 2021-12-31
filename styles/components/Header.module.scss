@@ -19,6 +19,11 @@
     max-width: $maxPage;
   }
 
+  &.full {
+    min-width: unset;
+    max-width: unset;
+  }
+
   @media screen and (max-width: $maxTablet) {
     margin: 36px auto;
     max-width: unset;
