@@ -16,6 +16,11 @@ import { useRouter } from 'next/router';
 import { concatClass } from '../../utils/class';
 import { useHorizonalPageScroller } from '../common/Scroll';
 
+interface model {
+  type: string
+  image: string
+}
+
 interface Member {
   name: {
     en: string
@@ -32,7 +37,8 @@ interface Member {
     blood: string
     mbti: string
     fandom: string
-  }
+  },
+  modelImages: Array<model>
 }
 
 type MemberID = 'ine' | 'jingburger' | 'lilpa' | 'jururu' | 'gosegu' | 'viichan'
@@ -55,6 +61,36 @@ const Members: Record<MemberID, Member> = {
       mbti: 'INFP',
       fandom: '둘기',
     },
+    modelImages: [
+      {
+        type: 'pose1',
+        image: '/images/model/ine/pose_1.png'
+      },
+      {
+        type: 'pose2',
+        image: '/images/model/ine/pose_2.png'
+      },
+      {
+        type: 'pose3',
+        image: '/images/model/ine/pose_3.png'
+      },
+      {
+        type: 'front',
+        image: '/images/model/ine/front.png'
+      },
+      {
+        type: 'left',
+        image: '/images/model/ine/left.png'
+      },
+      {
+        type: 'back',
+        image: '/images/model/ine/back.png'
+      },
+      {
+        type: 'right',
+        image: '/images/model/ine/right.png'
+      },
+    ]
   },
   jingburger: {
     name: {
@@ -73,6 +109,32 @@ const Members: Record<MemberID, Member> = {
       mbti: 'INFJ',
       fandom: '똥강아지',
     },
+    modelImages: [
+      {
+        type: 'pose1',
+        image: '/images/model/jingburger/pose_1.png'
+      },
+      {
+        type: 'pose2',
+        image: '/images/model/jingburger/pose_2.png'
+      },
+      {
+        type: 'front',
+        image: '/images/model/jingburger/front.png'
+      },
+      {
+        type: 'left',
+        image: '/images/model/jingburger/left.png'
+      },
+      {
+        type: 'back',
+        image: '/images/model/jingburger/back.png'
+      },
+      {
+        type: 'right',
+        image: '/images/model/jingburger/right.png'
+      },
+    ]
   },
   lilpa: {
     name: {
@@ -91,6 +153,28 @@ const Members: Record<MemberID, Member> = {
       mbti: 'ENFP',
       fandom: '박쥐단',
     },
+    modelImages: [
+      {
+        type: 'pose1',
+        image: '/images/model/lilpa/pose_1.png'
+      },
+      {
+        type: 'front',
+        image: '/images/model/lilpa/front.png'
+      },
+      {
+        type: 'left',
+        image: '/images/model/lilpa/left.png'
+      },
+      {
+        type: 'back',
+        image: '/images/model/lilpa/back.png'
+      },
+      {
+        type: 'right',
+        image: '/images/model/lilpa/right.png'
+      },
+    ]
   },
   jururu: {
     name: {
@@ -109,6 +193,28 @@ const Members: Record<MemberID, Member> = {
       mbti: 'ENFP, INTP',
       fandom: '주폭도',
     },
+    modelImages: [
+      {
+        type: 'pose1',
+        image: '/images/model/jururu/pose_1.png'
+      },
+      {
+        type: 'front',
+        image: '/images/model/jururu/front.png'
+      },
+      {
+        type: 'left',
+        image: '/images/model/jururu/left.png'
+      },
+      {
+        type: 'back',
+        image: '/images/model/jururu/back.png'
+      },
+      {
+        type: 'right',
+        image: '/images/model/jururu/right.png'
+      },
+    ]
   },
   gosegu: {
     name: {
@@ -127,6 +233,32 @@ const Members: Record<MemberID, Member> = {
       mbti: 'ENTJ',
       fandom: '세균단',
     },
+    modelImages: [
+      {
+        type: 'pose1',
+        image: '/images/model/gosegu/pose_1.png'
+      },
+      {
+        type: 'pose2',
+        image: '/images/model/gosegu/pose_2.png'
+      },
+      {
+        type: 'front',
+        image: '/images/model/gosegu/front.png'
+      },
+      {
+        type: 'left',
+        image: '/images/model/gosegu/left.png'
+      },
+      {
+        type: 'back',
+        image: '/images/model/gosegu/back.png'
+      },
+      {
+        type: 'right',
+        image: '/images/model/gosegu/right.png'
+      },
+    ]
   },
   viichan: {
     name: {
@@ -145,6 +277,28 @@ const Members: Record<MemberID, Member> = {
       mbti: 'INFJ',
       fandom: '고라니단',
     },
+    modelImages: [
+      {
+        type: 'pose1',
+        image: '/images/model/viichan/pose_1.png'
+      },
+      {
+        type: 'front',
+        image: '/images/model/viichan/front.png'
+      },
+      {
+        type: 'left',
+        image: '/images/model/viichan/left.png'
+      },
+      {
+        type: 'back',
+        image: '/images/model/viichan/back.png'
+      },
+      {
+        type: 'right',
+        image: '/images/model/viichan/right.png'
+      },
+    ]
   },
 };
 
@@ -486,7 +640,15 @@ export const IsedolMembers: NextPage = () => {
                 ></Image>
               </div>
             </div>
-            <div className={styles.member_detail__charator}></div>
+            <div className={styles.member_detail__character}>
+              <div className={styles.character_slide_wrapper}>
+                <button className={styles.prev_character}></button>
+                <div className={styles.character_wrapper}></div>
+                <button className={styles.prev_character}></button>
+              </div>
+              <div className={styles.page_indicator}>
+              </div>
+            </div>
           </div>
         )}
       </div>
