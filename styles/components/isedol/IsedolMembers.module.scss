@@ -617,14 +617,43 @@
 }
 
 .member_detail__character {
-
+  
   .character_slide_box {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+
+    button {
+      z-index: 9999;
+      width: 34px;
+      height: 40px;
+      
+      &:hover {
+        cursor: pointer;
+        
+        .prev_icon {
+          fill: #fff;
+        }
+
+        .next_icon {
+          fill: #fff;
+        }
+      }
+
+      .next_button {
+        width: fit-content;
+        height: fit-content;
+      }
+    }
+
+    .prev_button {
+      transform: rotateY(180deg);
+    }
 
     .character_wrapper_box {
       overflow-x: hidden;
       width: 300px;
+
 
       .character_wrapper {
         display: flex;

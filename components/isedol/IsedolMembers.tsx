@@ -408,6 +408,7 @@ export const IsedolMembers: NextPage = () => {
   const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
     null
   );
+  const [currentIndex, setCurrentIndex] = useState<number>(1);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const memberRef = useRef<HTMLDivElement>(null);
@@ -643,9 +644,25 @@ export const IsedolMembers: NextPage = () => {
               </div>
               <div className={styles.member_detail__character}>
                 <div className={styles.character_slide_box}>
-                  <button className={styles.prev_character}></button>
+                  <button className={styles.prev_button}
+                    onClick={() => {
+                      if (currentIndex === 0) {
+                        setCurrentIndex(Members[previousMember].modelImages.length - 1);
+                        return;
+                      }
+
+                      setCurrentIndex(currentIndex - 1);
+                    }}>
+                    <svg width="22" height="39" viewBox="0 0 22 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1.20525 4.74036C0.244072 3.74915 0.268421 2.16643 1.25963 1.20525C2.25085 0.244072 3.83357 0.268422 4.79475 1.25964L1.20525 4.74036ZM19 19.5L20.7948 17.7596C21.7351 18.7294 21.7351 20.2706 20.7948 21.2404L19 19.5ZM4.79475 37.7404C3.83357 38.7316 2.25085 38.7559 1.25963 37.7948C0.268421 36.8336 0.244072 35.2509 1.20525 34.2596L4.79475 37.7404ZM4.79475 1.25964L20.7948 17.7596L17.2052 21.2404L1.20525 4.74036L4.79475 1.25964ZM20.7948 21.2404L4.79475 37.7404L1.20525 34.2596L17.2052 17.7596L20.7948 21.2404Z"
+                        transform="translateY(-180deg)"
+                        className={styles.prev_icon}
+                        fill="rgba(126, 125, 125, 0.452)"/>
+                    </svg>
+                  </button>
                   <div className={styles.character_wrapper_box}>
-                    <div className={styles.character_wrapper}>
+                    <div className={styles.character_wrapper}
+                      style={{ transform: `transitionX(${currentIndex}00%)` }}>
                       {Members[previousMember].modelImages.map((model: CharacterModel, index: number) => {
                         return (
                           <div key={`model-image-${index}`}
@@ -662,7 +679,21 @@ export const IsedolMembers: NextPage = () => {
                       })}
                     </div>
                   </div>
-                  <button className={styles.prev_character}></button>
+                  <button className={styles.next_button}
+                    onClick={() => {
+                      if (currentIndex === (Members[previousMember].modelImages.length - 1)) {
+                        setCurrentIndex(0);
+                        return;
+                      }
+
+                      setCurrentIndex(currentIndex + 1);
+                    }}>
+                    <svg width="22" height="39" viewBox="0 0 22 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M1.20525 4.74036C0.244072 3.74915 0.268421 2.16643 1.25963 1.20525C2.25085 0.244072 3.83357 0.268422 4.79475 1.25964L1.20525 4.74036ZM19 19.5L20.7948 17.7596C21.7351 18.7294 21.7351 20.2706 20.7948 21.2404L19 19.5ZM4.79475 37.7404C3.83357 38.7316 2.25085 38.7559 1.25963 37.7948C0.268421 36.8336 0.244072 35.2509 1.20525 34.2596L4.79475 37.7404ZM4.79475 1.25964L20.7948 17.7596L17.2052 21.2404L1.20525 4.74036L4.79475 1.25964ZM20.7948 21.2404L4.79475 37.7404L1.20525 34.2596L17.2052 17.7596L20.7948 21.2404Z"
+                        className={styles.next_icon}
+                        fill="rgba(126, 125, 125, 0.452)"/>
+                    </svg>
+                  </button>
                 </div>
                 <div className={styles.page_indicator}>
                 </div>
