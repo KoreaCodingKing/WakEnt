@@ -227,6 +227,10 @@ const useRect = (ref: React.RefObject<HTMLDivElement>) => {
 
     handler();
 
+    requestAnimationFrame(() => {
+      handler();
+    });
+
     window.addEventListener('resize', handler);
 
     return () => {
@@ -354,6 +358,7 @@ export const IsedolMembers: NextPage = () => {
 
                   if (mobileActive && containerRef.current) {
                     containerRef.current.scrollTo({
+                      top: 0,
                       left: 0,
                       behavior: 'smooth'
                     });
@@ -419,7 +424,7 @@ export const IsedolMembers: NextPage = () => {
             )}
             style={
               {
-                '--left': parentRect && `${parentRect?.left}px`,
+                '--left': parentRect && `${parentRect.left + 16}px`,
                 '--top': cardRect && `${cardRect.top}px`,
                 '--width': cardRect && `${cardRect.width}px`,
                 '--height': cardRect && `${cardRect.height}px`,
@@ -459,7 +464,14 @@ export const IsedolMembers: NextPage = () => {
                   </tr>
                 </table>
                 <div className={styles.social_box}></div>
-                <div className={styles.sign_wrapper}></div>
+              </div>
+              <div className={styles.profile_sign_wrapper}>
+                <Image
+                  className={styles.member_sign}
+                  src={Members[previousMember].signImage}
+                  layout='fill'
+                  alt={`${Members[previousMember].name.ko} 싸인`}
+                ></Image>
               </div>
             </div>
             <div className={styles.member_detail__charator}></div>
