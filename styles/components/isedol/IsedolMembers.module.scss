@@ -514,9 +514,10 @@
 
   @media screen and (max-width: $maxTablet) {
     top: 90%;
-    width: 90%;
+    width: calc(100% - calc((100% - var(--width)) / 1.5));
+    max-width: 95%;
     min-height: 90vh;
-    left: 5%;
+    left: calc((100% - var(--width)) / 3);
     min-width: unset;
     margin-left: unset;
   }
@@ -536,7 +537,16 @@
   display: flex;
   font-size: 1.4em;
 
+  @media screen and (max-width: $maxTablet) {
+    font-size: 1.2em;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    font-size: 1em;
+  }
+
   h1 {
+    letter-spacing: -2px;
     margin: 0;
   }
 
@@ -558,6 +568,14 @@
   font-size: 1.3em;
   position: absolute;
   width: 100%;
+
+  @media screen and (max-width: $maxTablet) {
+    font-size: 1.15em;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    font-size: 0.9em;
+  }
 
   table {
     width: 300px;

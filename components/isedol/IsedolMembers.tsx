@@ -273,6 +273,18 @@ export const IsedolMembers: NextPage = () => {
   );
 
   useEffect(() => {
+    if (!containerRef.current) {
+      return;
+    }
+
+    containerRef.current.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, [chosenMember]);
+
+  useEffect(() => {
     if (!mobileActive) {
       if (currentHoverMember) {
         setCurrentHoverMember(null);
