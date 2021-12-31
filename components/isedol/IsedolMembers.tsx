@@ -16,7 +16,7 @@ import { useRouter } from 'next/router';
 import { concatClass } from '../../utils/class';
 import { useHorizonalPageScroller } from '../common/Scroll';
 
-interface model {
+interface CharacterModel {
   type: string
   image: string
 }
@@ -38,7 +38,7 @@ interface Member {
     mbti: string
     fandom: string
   },
-  modelImages: Array<model>
+  modelImages: Array<CharacterModel>
 }
 
 type MemberID = 'ine' | 'jingburger' | 'lilpa' | 'jururu' | 'gosegu' | 'viichan'
@@ -598,38 +598,40 @@ export const IsedolMembers: NextPage = () => {
             }
           >
             <div className={styles.profile}>
-              <div className={styles.profile_name}>
-                <h1>{Members[previousMember].name.ko}</h1>
-                <p className={styles.sub}>{Members[previousMember].name.en}</p>
-              </div>
-              <div className={styles.profile_detail}>
-                <table>
-                  <tr>
-                    <td>Color</td>
-                    <td>{Members[previousMember].metadata?.color}</td>
-                  </tr>
-                  <tr>
-                    <td>Birth</td>
-                    <td>{Members[previousMember].metadata?.birth}</td>
-                  </tr>
-                  <tr>
-                    <td>Height</td>
-                    <td>{Members[previousMember].metadata?.height}cm</td>
-                  </tr>
-                  <tr>
-                    <td>Blood</td>
-                    <td>{Members[previousMember].metadata?.blood}</td>
-                  </tr>
-                  <tr>
-                    <td>MBTI</td>
-                    <td>{Members[previousMember].metadata?.mbti}</td>
-                  </tr>
-                  <tr>
-                    <td>Fandom</td>
-                    <td>{Members[previousMember].metadata?.fandom}</td>
-                  </tr>
-                </table>
-                <div className={styles.social_box}></div>
+              <div className={styles.profile_box}>
+                <div className={styles.profile_name}>
+                  <h1>{Members[previousMember].name.ko}</h1>
+                  <p className={styles.sub}>{Members[previousMember].name.en}</p>
+                </div>
+                <div className={styles.profile_detail}>
+                  <table>
+                    <tr>
+                      <td>Color</td>
+                      <td>{Members[previousMember].metadata?.color}</td>
+                    </tr>
+                    <tr>
+                      <td>Birth</td>
+                      <td>{Members[previousMember].metadata?.birth}</td>
+                    </tr>
+                    <tr>
+                      <td>Height</td>
+                      <td>{Members[previousMember].metadata?.height}cm</td>
+                    </tr>
+                    <tr>
+                      <td>Blood</td>
+                      <td>{Members[previousMember].metadata?.blood}</td>
+                    </tr>
+                    <tr>
+                      <td>MBTI</td>
+                      <td>{Members[previousMember].metadata?.mbti}</td>
+                    </tr>
+                    <tr>
+                      <td>Fandom</td>
+                      <td>{Members[previousMember].metadata?.fandom}</td>
+                    </tr>
+                  </table>
+                  <div className={styles.social_box}></div>
+                </div>
               </div>
               <div className={styles.profile_sign_wrapper}>
                 <Image
@@ -639,14 +641,31 @@ export const IsedolMembers: NextPage = () => {
                   alt={`${Members[previousMember].name.ko} 싸인`}
                 ></Image>
               </div>
-            </div>
-            <div className={styles.member_detail__character}>
-              <div className={styles.character_slide_wrapper}>
-                <button className={styles.prev_character}></button>
-                <div className={styles.character_wrapper}></div>
-                <button className={styles.prev_character}></button>
-              </div>
-              <div className={styles.page_indicator}>
+              <div className={styles.member_detail__character}>
+                <div className={styles.character_slide_box}>
+                  <button className={styles.prev_character}></button>
+                  <div className={styles.character_wrapper_box}>
+                    <div className={styles.character_wrapper}>
+                      {Members[previousMember].modelImages.map((model: CharacterModel, index: number) => {
+                        return (
+                          <div key={`model-image-${index}`}
+                            className={styles.image_wrapper}>
+                            <Image
+                              src={model.image}
+                              layout='fill'
+                              priority
+                              placeholder='blur'
+                              blurDataURL={model.image}
+                              alt={`${Members[previousMember].name.ko} 이미지`}></Image>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <button className={styles.prev_character}></button>
+                </div>
+                <div className={styles.page_indicator}>
+                </div>
               </div>
             </div>
           </div>
