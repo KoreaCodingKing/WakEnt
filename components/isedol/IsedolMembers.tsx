@@ -1,8 +1,4 @@
-import React, {
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
@@ -13,23 +9,107 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { concatClass } from '../../utils/class';
 import { useHorizonalPageScroller } from '../common/Scroll';
+
 import { useHashState } from '../../utils/hashState';
 import { MemberID, Members } from '../../structs/member';
+import ModelSlider from '../common/ModelSlider';
+
+import InstagramIcon from '../../public/images/icons/services/instagram.png';
+import SoundCloudIcon from '../../public/images/icons/services/soundcloud.png';
+import TwitchIcon from '../../public/images/icons/services/twitch.png';
+import TwitterIcon from '../../public/images/icons/services/twitter.png';
+import YouTubeIcon from '../../public/images/icons/services/youtube.png';
 
 const isNotNull = <T extends unknown>(elem: T | null): elem is T => {
-  return typeof elem !== null;
+  return elem !== null;
+};
+
+const useNonNullState = <T extends unknown>(state: T) => {
+  const [nstate, setNState] = useState<T>(state);
+
+  useEffect(() => {
+    if (state === null) {
+      return;
+    }
+
+    setNState(state);
+  }, [state]);
+
+  return nstate;
+};
+
+const useRect = (ref: React.RefObject<HTMLDivElement>) => {
+  const [elem, setElem] = useState<HTMLDivElement | null>(null);
+  const [rect, setRect] = useState<[DOMRect | undefined, DOMRect | undefined]>([
+    undefined,
+    undefined,
+  ]);
+
+  useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
+
+    setElem(ref.current);
+  }, [ref.current]);
+
+  useEffect(() => {
+    if (!elem) {
+      return;
+    }
+
+    const handler = () => {
+      setRect([
+        elem.getBoundingClientRect(),
+        elem.querySelector(`.${styles.member}`)?.getBoundingClientRect(),
+      ]);
+    };
+
+    handler();
+
+    requestAnimationFrame(() => {
+      handler();
+    });
+
+    window.addEventListener('resize', handler);
+
+    return () => {
+      window.removeEventListener('resize', handler);
+    };
+  }, [elem]);
+
+  return rect;
+};
+
+interface DetailMemberCSS extends React.CSSProperties {
+  '--left': string
+  '--top': string
+  '--width': string
+}
+
+const SocialIcons: Record<string, StaticImageData> = {
+  instagram: InstagramIcon,
+  soundcloud: SoundCloudIcon,
+  twitch: TwitchIcon,
+  twitter: TwitterIcon,
+  youtube: YouTubeIcon,
 };
 
 export const IsedolMembers: NextPage = () => {
   const [chosenMember, setChosenMember] = useHashState<MemberID | null>(null);
+  const previousMember = useNonNullState(chosenMember);
+
   const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
     null
   );
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const memberRef = useRef<HTMLDivElement>(null);
 
   const membersCardCache: HTMLElement[] = [];
   const router = useRouter();
+
+  const [parentRect, cardRect] = useRect(memberRef);
 
   const [mobileActive, mobilePage] = useHorizonalPageScroller(
     containerRef,
@@ -39,6 +119,18 @@ export const IsedolMembers: NextPage = () => {
       return chosenMember === null;
     }
   );
+
+  useEffect(() => {
+    if (!containerRef.current) {
+      return;
+    }
+
+    // containerRef.current.scrollTo({
+    //   top: 0,
+    //   left: 0,
+    //   behavior: 'smooth',
+    // });
+  }, [chosenMember]);
 
   useEffect(() => {
     if (!mobileActive) {
@@ -65,16 +157,20 @@ export const IsedolMembers: NextPage = () => {
         ></meta>
       </Head>
       <div
-        className={styles.inner_container}
+        className={concatClass(
+          styles.inner_container,
+          chosenMember !== null && styles.active
+        )}
         data-member={currentHoverMember || chosenMember}
         ref={containerRef}
       >
         <div
           className={concatClass(
             styles.members_list,
-            isNotNull(chosenMember) && styles.chosen,
+            chosenMember !== null && styles.chosen,
             mobileActive && styles.mobile
           )}
+          ref={memberRef}
           data-member={chosenMember}
         >
           {Object.keys(Members).map((id, i) => {
@@ -97,18 +193,18 @@ export const IsedolMembers: NextPage = () => {
                   id === currentHoverMember
                 }
                 onMouseEnter={() =>
-                  !mobileActive &&
-                  chosenMember === null &&
-                  clearTimeout(hoverTimeout) ||
+                  (!mobileActive &&
+                    chosenMember === null &&
+                    clearTimeout(hoverTimeout)) ||
                   setCurrentHoverMember(id as MemberID)
                 }
                 onMouseOut={() =>
                   !mobileActive &&
                   chosenMember === null &&
                   (() => {
-                    hoverTimeout = setTimeout(() => {
+                    hoverTimeout = (setTimeout(() => {
                       setCurrentHoverMember(null);
-                    }, 60) as unknown as number;
+                    }, 60) as unknown) as number;
                   })()
                 }
                 onClick={(
@@ -122,7 +218,9 @@ export const IsedolMembers: NextPage = () => {
 
                   if (mobileActive && containerRef.current) {
                     containerRef.current.scrollTo({
+                      top: 0,
                       left: 0,
+                      behavior: 'smooth',
                     });
                   }
 
@@ -178,33 +276,97 @@ export const IsedolMembers: NextPage = () => {
             );
           })}
         </div>
-        {chosenMember && (
-          <div className={concatClass(styles.member_detail)}>
+        {previousMember && (
+          <div
+            className={concatClass(
+              styles.member_detail,
+              isNotNull(chosenMember) && styles.active
+            )}
+            style={
+              {
+                '--left': parentRect && `${parentRect.left + 16}px`,
+                '--top': cardRect && `${cardRect.top}px`,
+                '--width': cardRect && `${cardRect.width}px`,
+                '--height': cardRect && `${cardRect.height}px`,
+              } as DetailMemberCSS
+            }
+          >
             <div className={styles.profile}>
-              <div className={styles.profile_name}>
-                <p></p>
-                <p></p>
+              <div className={styles.profile_box}>
+                <div className={styles.profile_name}>
+                  <h1>{Members[previousMember].name.ko}</h1>
+                  <p className={styles.sub}>
+                    {Members[previousMember].name.en}
+                  </p>
+                </div>
+                <div className={styles.profile_detail}>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>Color</td>
+                        <td>{Members[previousMember].metadata.color}</td>
+                      </tr>
+                      <tr>
+                        <td>Birth</td>
+                        <td>{Members[previousMember].metadata.birth}</td>
+                      </tr>
+                      <tr>
+                        <td>Height</td>
+                        <td>{Members[previousMember].metadata.height}cm</td>
+                      </tr>
+                      <tr>
+                        <td>Blood</td>
+                        <td>{Members[previousMember].metadata.blood}</td>
+                      </tr>
+                      <tr>
+                        <td>MBTI</td>
+                        <td>{Members[previousMember].metadata.mbti}</td>
+                      </tr>
+                      <tr>
+                        <td>Fandom</td>
+                        <td>{Members[previousMember].metadata.fandom}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className={styles.social_box}></div>
+                </div>
+                <div className={styles.social_links}>
+                  {Members[previousMember].links.map(link =>
+                    link.icon ? (
+                      <Link key={`social-link-${link.link}-${link.icon}`} href={link.link}>
+                        <a className={styles.icon} target='_blank'>
+                          {(SocialIcons[link.icon] && (
+                            <Image
+                              src={SocialIcons[link.icon]}
+                              width={30}
+                              height={30}
+                              alt={`${link.name} 링크`}
+                            ></Image>
+                          )) ??
+                            link.name}
+                        </a>
+                      </Link>
+                    ) : (
+                      <div key={`social-link-${link.link}-${link.icon}`} className={styles.link}>{link.name}</div>
+                    )
+                  )}
+                </div>
               </div>
-              <div className={styles.profile_detail}>
-                <dl>
-                  <dt>Color</dt>
-                  <dd></dd>
-                  <dt>Birth</dt>
-                  <dd></dd>
-                  <dt>Height</dt>
-                  <dd></dd>
-                  <dt>Blood</dt>
-                  <dd></dd>
-                  <dt>MBTI</dt>
-                  <dd></dd>
-                  <dt>Fandom</dt>
-                  <dd></dd>
-                </dl>
-                <div className={styles.social_box}></div>
-                <div className={styles.sign_wrapper}></div>
+              <div className={styles.profile_sign_wrapper}>
+                <Image
+                  className={styles.member_sign}
+                  src={Members[previousMember].signImage}
+                  layout='fill'
+                  alt={`${Members[previousMember].name.ko} 싸인`}
+                ></Image>
+              </div>
+              <div className={styles.model_viewer}>
+                <ModelSlider
+                  models={Members[previousMember].modelImages}
+                  white
+                ></ModelSlider>
               </div>
             </div>
-            <div className={styles.member_detail__charator}></div>
           </div>
         )}
       </div>

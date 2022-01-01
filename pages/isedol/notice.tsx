@@ -13,7 +13,7 @@ const IsedolPage: NextPage = (): JSX.Element => {
   return (
     <div className={styles.isedol__container}>
       <Head>
-        <title>NOTICES - ISEGYE IDOL</title>
+        <title>NOTICE - ISEGYE IDOL</title>
       </Head>
       <IsedolMenuOverlay open={isOpenMenu}></IsedolMenuOverlay>
       <div className={styles.isedol_header}>
