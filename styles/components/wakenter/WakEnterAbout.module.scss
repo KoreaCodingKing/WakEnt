@@ -13,6 +13,7 @@
     max-width: 633px;
     min-height: 356px;
     margin-right: 80px;
+    margin-left: 1vw;
     aspect-ratio: 16 / 9;
   }
 
@@ -24,15 +25,8 @@
       margin-bottom: 20px;
       font-size: 3.5em;
       letter-spacing: -1px;
-  
-      @media screen and (max-width: $maxTablet) {
-        font-size: 3em;
-      }
-  
-      @media screen and (max-width: $maxMobile) {
-        font-size: 2.5em;
-      }
     }
+
     .introduce_subtitle {
       max-width: 567px;
       align-self: center;
@@ -42,14 +36,56 @@
       letter-spacing: -0.3px;
       line-height: 1.35;
       word-break: keep-all;
-    
-      @media screen and (max-width: $maxTablet) {
+    }
+  }
+
+  @media screen and (max-width: $maxTablet) {
+    flex-direction: column;
+    min-width: 0px;
+    margin-top: 150px;
+
+    .first_section__img {
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .first_section__introduce {
+      align-self: flex-end;
+      margin-right: 2vw;
+
+      .introduce_title {
+        font-size: 3em;
+      }
+
+      .introduce_subtitle {
+        width: fit-content;
         font-size: 1.1em;
         line-height: 1.45;
       }
-    
-      @media screen and (max-width: $maxMobile) {
-        font-size: 1em;
+    }
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    .first_section__img {
+      max-width: none;
+      width: 100%;
+      min-height: auto;
+      margin-left: none;
+      margin: 0 auto;
+      margin-bottom: 28px;
+    }
+
+    .first_section__introduce {
+      min-width: 200px;
+      max-width: 400px;
+      margin-left: 20px;
+
+      .introduce_title {
+        font-size: 1.5em;
+      }
+
+      .introduce_subtitle {
+        font-size: 0.8em;
         line-height: 1.55;
       }
     }
