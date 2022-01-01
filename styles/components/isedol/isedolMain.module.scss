@@ -166,73 +166,14 @@
 }
 
 .page_indicator {
-  z-index: 100;
   margin-top: auto;
   margin-bottom: 15%;
+  z-index: 100;
   isolation: isolate;
-
-  button {
-    position: relative;
-    width: 10px;
-    height: 10px;
-    margin-right: 10px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.32);
-    overflow: hidden;
-
-    transition: 0.23s background cubic-bezier(0.19, 1, 0.22, 1);
-
-    @media screen and (max-width: $maxTablet) {
-      width: 14px;
-      height: 14px;
-    }
-
-    transition: 0.23s all cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-  button[data-current='true'] {
-    width: 40px;
-    // background: #ffffff;
-
-    .paused {
-      opacity: 1;
-      transform: scaleX(0);
-    }
-
-    .active {
-      opacity: 1;
-      animation: pageIndicator 5s linear;
-    }
-  }
-
-  button:last-of-type {
-    margin-right: 0;
-  }
-
-  .active {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background: #ffffff;
-    opacity: 0;
-    transform-origin: left;
-  }
 }
 
 @media screen and (min-width: 1024px) {
   .page_indicator {
     margin-bottom: 154px;
-  }
-}
-
-@keyframes pageIndicator {
-  0% {
-    transform: scaleX(0);
-  }
-
-  100% {
-    transform: scaleX(1);
   }
 }
