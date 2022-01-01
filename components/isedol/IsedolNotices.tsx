@@ -53,7 +53,7 @@ export const Notices: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>NOTICES</h1>
+      <h1 className={styles.title}>NOTICE</h1>
       <section className={styles.section}>
         {error ? (
           <div className={styles.error}>

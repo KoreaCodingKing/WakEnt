@@ -123,8 +123,7 @@ export const useHorizonalPageScroller = (
         });
       } else if (event.deltaY && Math.abs(event.deltaY) > 1) {
         parent.current.scrollBy({
-          left: event.deltaY,
-          behavior: 'smooth'
+          left: event.deltaY
         });
       }
     };
