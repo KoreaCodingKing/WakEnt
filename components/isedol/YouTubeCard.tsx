@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { ReactEventHandler, useState } from 'react';
 import styles from '../../styles/components/isedol/CardBase.module.scss';
 import { concatClass } from '../../utils/class';
 

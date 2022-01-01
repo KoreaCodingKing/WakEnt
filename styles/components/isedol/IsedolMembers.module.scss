@@ -54,6 +54,11 @@
     overflow-x: auto;
     overflow-y: hidden;
 
+    &.active {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
     @media screen and (max-width: $maxMobile) {
       scroll-snap-type: x mandatory;
     }
@@ -133,44 +138,57 @@
   overflow: hidden;
   position: relative;
 
-  // @media screen and (max-width: $maxTablet) {
-  //   &.chosen {
-  //     width: 90vw;
-  //   }
-  // }
-
-
   &[data-member] {
     .sign_box {
       visibility: hidden;
       opacity: 0;
-      transition: opacity 0.23s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.23s cubic-bezier(0.19, 1, 0.22, 1);
+      transition: opacity 0s cubic-bezier(0.19, 1, 0.22, 1), visibility 0s cubic-bezier(0.19, 1, 0.22, 1);
     }
 
     cursor: default;
   }
 
   &[data-member='ine'] .member[data-member='ine'] {
-    transform: translateX(0);
+    transform: translateX(0%);
   }
 
   &[data-member='jingburger'] .member[data-member='jingburger'] {
-    transform: translateX(-114%);
+    @media screen and (max-width: $maxTablet) {
+      transform: translateX(-115%);
+    }
+
+    transform: translateX(-111%);
   }
 
   &[data-member='lilpa'] .member[data-member='lilpa'] {
+    @media screen and (max-width: $maxTablet) {
+      transform: translateX(-230%);
+    }
+
     transform: translateX(-222%);
   }
 
   &[data-member='jururu'] .member[data-member='jururu'] {
+    @media screen and (max-width: $maxTablet) {
+      transform: translateX(-344%);
+    }
+
     transform: translateX(-333%);
   }
 
   &[data-member='gosegu'] .member[data-member='gosegu'] {
+    @media screen and (max-width: $maxTablet) {
+      transform: translateX(-455%);
+    }
+
     transform: translateX(-444%);
   }
 
   &[data-member='viichan'] .member[data-member='viichan'] {
+    @media screen and (max-width: $maxTablet) {
+      transform: translateX(-570%);
+    }
+
     transform: translateX(-553%);
   }
 }
@@ -440,32 +458,207 @@
 }
 
 // 멤버별 페이지 스타일
+.chosen {
+  .disapear {
+    transition: width 0s ease-in-out, min-width 0s ease-in-out, transform 0s ease-in-out;
+    &[data-member='gosegu'] {
+      width: 0px !important;
+      min-width: 0px !important;
+      max-width: 0px !important;
+    }
+    &[data-member='jingburger'] {
+      width: 0px !important;
+      min-width: 0px !important;
+      max-width: 0px !important;
+    }
+    &[data-member='lilpa'] {
+      width: 0px !important;
+      min-width: 0px !important;
+      max-width: 0px !important;
+    }
+    &[data-member='jururu'] {
+      width: 0px !important;
+      min-width: 0px !important;
+      max-width: 0px !important;
+    }
+    &[data-member='gosegu'] {
+      width: 0px !important;
+      min-width: 0px !important;
+      max-width: 0px !important;
+    }
+    &[data-member='viichan'] {
+      width: 0px !important;
+      min-width: 0px !important;
+      max-width: 0px !important;
+    }
+  }
+}
+
 .member_detail {
-  display: flex;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
+  position: absolute;
+  width: 100%;
+  top: 0;
 
-  transition: opacity 0.5s cubic-bezier(0.19, 1, 0.22, 1), visibility 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  top: var(--top);
+  left: calc(var(--left) + var(--width));
+  width: calc(100% - var(--left) * 1.5 - var(--width) * 1.5);
+  height: calc(var(--height));
+  margin-left: 2em;
+
+  min-width: 700px;
+
+  transition: 0.5s opacity cubic-bezier(0.19, 1, 0.22, 1), 0.5s visibility cubic-bezier(0.19, 1, 0.22, 1);
+
+  @media screen and (max-width: $maxTablet) {
+    top: 90%;
+    width: calc(100% - calc((100% - var(--width)) / 1.5));
+    max-width: 95%;
+    min-height: 90vh;
+    left: calc((100% - var(--width)) / 3);
+    min-width: unset;
+    margin-left: unset;
+  }
 
   &.active {
     opacity: 1;
     pointer-events: auto;
     visibility: visible;
-
-    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1) 0.7s, visibility 1s cubic-bezier(0.19, 1, 0.22, 1) 0.7s;
   }
 
   .profile {
-    position: absolute;
-    left: calc(5vw + 10vw);
-    top: 20vh;
-
+    display: flex;
+    justify-content: space-between;
     color: white;
+  }
+}
+
+.profile_name {
+  display: flex;
+  font-size: 1.4em;
+
+  @media screen and (max-width: $maxTablet) {
+    font-size: 1.2em;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    font-size: 1em;
+  }
+
+  h1 {
+    letter-spacing: -2px;
+    margin: 0;
+  }
+
+  margin-bottom: 1em;
+
+  .sub {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 16px;
+    font-size: 1em;
+
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.3;
+  }
+}
+
+.profile_detail {
+  font-size: 1.3em;
+  position: relative;
+  width: 100%;
+
+  @media screen and (max-width: $maxTablet) {
+    font-size: 1.15em;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    font-size: 0.9em;
+  }
+
+  table {
+    border-spacing: 0px 12px;
+    width: 300px;
+
+    @media screen and (max-width: $maxTablet) {
+      width: 100%;
+    }
+  }
+
+  td:first-child {
+    font-weight: bold;
+  }
+
+  td:last-child {
+    text-align: right;
+  }
+}
+
+.profile_box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.profile_sign_wrapper {
+  position: absolute;
+  opacity: 0.08;
+
+  aspect-ratio: 1 / 1;
+  pointer-events: none;
+  user-select: none;
+  height: 400px;
+  bottom: -100px;
+
+  @media screen and (max-width: $maxTablet) {
+    top: 0;
+    left: 20%;
+    width: 80%;
+    height: unset;
+    bottom: unset;
+  }
+
+}
+
+.model_viewer {
+  position: absolute;
+  right: 0;
+  height: 80%;
+
+  width: 360px;
+
+  @media screen and (max-width: $maxTablet) {
+    display: flex;
+    width: 100%;
+
+    & > div {
+      margin: auto;
+    }
+
+    margin-top: 400px;
+    margin-bottom: 200px;
+  }
+}
+
+.social_links {
+  display: flex;
+  gap: 32px;
+  margin-top: 16px;
+
+  .icon {
+    filter: invert(1);
+    transition: 0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
   }
 }

@@ -7,6 +7,7 @@ import styles from '../../styles/components/isedol/isedolMain.module.scss';
 import { concatClass } from '../../utils/class';
 import Head from 'next/head';
 import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
+import PageIndicator from '../common/PageIndicator';
 
 const usePageAutoScroll = (
   paused: boolean,
@@ -113,18 +114,13 @@ export const Main: NextPage = () => {
         </section>
       ))}
       <div className={styles.page_indicator}>
-        {slides.map((_, i) => (
-          <button
-            key={`page-indicator-${i}`}
-            data-current={currentIndex === i}
-            onClick={() => setCurrentIndex(i)}
-          >
-            <span
-              className={openPlayer || pauseAutoScroll ? styles.paused : styles.active}
-              style={{ animationDuration: `${scrollDelay}ms` }}
-            ></span>
-          </button>
-        ))}
+        <PageIndicator
+          page={currentIndex}
+          pageCount={slides.length}
+          setPage={to => setCurrentIndex(to)}
+          slide={scrollDelay}
+          playSlide={!openPlayer && !pauseAutoScroll}
+        ></PageIndicator>
       </div>
     </div>
   );
