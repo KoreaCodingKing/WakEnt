@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
@@ -333,7 +333,7 @@ export const IsedolMembers: NextPage = () => {
                 <div className={styles.social_links}>
                   {Members[previousMember].links.map(link =>
                     link.icon ? (
-                      <Link href={link.link}>
+                      <Link key={`social-link-${link.link}-${link.icon}`} href={link.link}>
                         <a className={styles.icon} target='_blank'>
                           {(SocialIcons[link.icon] && (
                             <Image
@@ -347,7 +347,7 @@ export const IsedolMembers: NextPage = () => {
                         </a>
                       </Link>
                     ) : (
-                      <div className={styles.link}>{link.name}</div>
+                      <div key={`social-link-${link.link}-${link.icon}`} className={styles.link}>{link.name}</div>
                     )
                   )}
                 </div>
