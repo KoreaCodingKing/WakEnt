@@ -9,6 +9,7 @@
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.32);
     overflow: hidden;
+    isolation: isolate;
 
     transition: 0.23s background cubic-bezier(0.19, 1, 0.22, 1);
 
