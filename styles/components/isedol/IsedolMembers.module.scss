@@ -568,7 +568,7 @@
 
 .profile_detail {
   font-size: 1.3em;
-  position: absolute;
+  position: relative;
   width: 100%;
 
   @media screen and (max-width: $maxTablet) {
@@ -595,6 +595,12 @@
   td:last-child {
     text-align: right;
   }
+}
+
+.profile_box {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .profile_sign_wrapper {
@@ -632,7 +638,27 @@
       margin: auto;
     }
 
-    margin-top: 70%;
+    margin-top: 400px;
     margin-bottom: 200px;
+  }
+}
+
+.social_links {
+  display: flex;
+  gap: 32px;
+  margin-top: 16px;
+
+  .icon {
+    filter: invert(1);
+    transition: 0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
   }
 }

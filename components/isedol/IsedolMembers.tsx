@@ -1,79 +1,85 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { NextPage } from 'next';
-import Image from 'next/image';
-import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
-import Head from 'next/head';
-import Centerize from '../common/Centerize';
-import { WakEnterLogo } from '../wakenter/WakEnterHeader';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { concatClass } from '../../utils/class';
-import { useHorizonalPageScroller } from '../common/Scroll';
+import React, { ReactNode, useEffect, useRef, useState } from 'react'
+import { NextPage } from 'next'
+import Image from 'next/image'
+import styles from '../../styles/components/isedol/IsedolMembers.module.scss'
+import Head from 'next/head'
+import Centerize from '../common/Centerize'
+import { WakEnterLogo } from '../wakenter/WakEnterHeader'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { concatClass } from '../../utils/class'
+import { useHorizonalPageScroller } from '../common/Scroll'
 
-import { useHashState } from '../../utils/hashState';
-import { CharacterModel, MemberID, Members } from '../../structs/member';
-import ModelSlider from '../common/ModelSlider';
+import { useHashState } from '../../utils/hashState'
+import { MemberID, Members } from '../../structs/member'
+import ModelSlider from '../common/ModelSlider'
+
+import InstagramIcon from '../../public/images/icons/services/instagram.png'
+import SoundCloudIcon from '../../public/images/icons/services/soundcloud.png'
+import TwitchIcon from '../../public/images/icons/services/twitch.png'
+import TwitterIcon from '../../public/images/icons/services/twitter.png'
+import YouTubeIcon from '../../public/images/icons/services/youtube.png'
 
 const isNotNull = <T extends unknown>(elem: T | null): elem is T => {
-  return elem !== null;
-};
+  return elem !== null
+}
 
 const useNonNullState = <T extends unknown>(state: T) => {
-  const [nstate, setNState] = useState<T>(state);
+  const [nstate, setNState] = useState<T>(state)
 
   useEffect(() => {
     if (state === null) {
-      return;
+      return
     }
 
-    setNState(state);
-  }, [state]);
+    setNState(state)
+  }, [state])
 
-  return nstate;
-};
+  return nstate
+}
 
 const useRect = (ref: React.RefObject<HTMLDivElement>) => {
-  const [elem, setElem] = useState<HTMLDivElement | null>(null);
+  const [elem, setElem] = useState<HTMLDivElement | null>(null)
   const [rect, setRect] = useState<[DOMRect | undefined, DOMRect | undefined]>([
     undefined,
     undefined,
-  ]);
+  ])
 
   useEffect(() => {
     if (!ref.current) {
-      return;
+      return
     }
 
-    setElem(ref.current);
-  }, [ref.current]);
+    setElem(ref.current)
+  }, [ref.current])
 
   useEffect(() => {
     if (!elem) {
-      return;
+      return
     }
 
     const handler = () => {
       setRect([
         elem.getBoundingClientRect(),
         elem.querySelector(`.${styles.member}`)?.getBoundingClientRect(),
-      ]);
-    };
+      ])
+    }
 
-    handler();
+    handler()
 
     requestAnimationFrame(() => {
-      handler();
-    });
+      handler()
+    })
 
-    window.addEventListener('resize', handler);
+    window.addEventListener('resize', handler)
 
     return () => {
-      window.removeEventListener('resize', handler);
-    };
-  }, [elem]);
+      window.removeEventListener('resize', handler)
+    }
+  }, [elem])
 
-  return rect;
-};
+  return rect
+}
 
 interface DetailMemberCSS extends React.CSSProperties {
   '--left': string
@@ -81,57 +87,64 @@ interface DetailMemberCSS extends React.CSSProperties {
   '--width': string
 }
 
+const SocialIcons: Record<string, StaticImageData> = {
+  instagram: InstagramIcon,
+  soundcloud: SoundCloudIcon,
+  twitch: TwitchIcon,
+  twitter: TwitterIcon,
+  youtube: YouTubeIcon,
+}
+
 export const IsedolMembers: NextPage = () => {
-  const [chosenMember, setChosenMember] = useHashState<MemberID | null>(null);
-  const previousMember = useNonNullState(chosenMember);
+  const [chosenMember, setChosenMember] = useHashState<MemberID | null>(null)
+  const previousMember = useNonNullState(chosenMember)
 
   const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
     null
-  );
-  const [currentIndex, setCurrentIndex] = useState<number>(1);
+  )
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const memberRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null)
+  const memberRef = useRef<HTMLDivElement>(null)
 
-  const membersCardCache: HTMLElement[] = [];
-  const router = useRouter();
+  const membersCardCache: HTMLElement[] = []
+  const router = useRouter()
 
-  const [parentRect, cardRect] = useRect(memberRef);
+  const [parentRect, cardRect] = useRect(memberRef)
 
   const [mobileActive, mobilePage] = useHorizonalPageScroller(
     containerRef,
     1124,
     membersCardCache,
     () => {
-      return chosenMember === null;
+      return chosenMember === null
     }
-  );
+  )
 
   useEffect(() => {
     if (!containerRef.current) {
-      return;
+      return
     }
 
     containerRef.current.scrollTo({
       top: 0,
       left: 0,
       behavior: 'smooth',
-    });
-  }, [chosenMember]);
+    })
+  }, [chosenMember])
 
   useEffect(() => {
     if (!mobileActive) {
       if (currentHoverMember) {
-        setCurrentHoverMember(null);
+        setCurrentHoverMember(null)
       }
 
-      return;
+      return
     }
 
-    setCurrentHoverMember(Object.keys(Members)[mobilePage] as MemberID);
-  }, [mobileActive, mobilePage]);
+    setCurrentHoverMember(Object.keys(Members)[mobilePage] as MemberID)
+  }, [mobileActive, mobilePage])
 
-  let hoverTimeout = 0;
+  let hoverTimeout = 0
 
   return (
     <div className={styles.isedol_members__container}>
@@ -161,7 +174,7 @@ export const IsedolMembers: NextPage = () => {
           data-member={chosenMember}
         >
           {Object.keys(Members).map((id, i) => {
-            const member = Members[id as MemberID];
+            const member = Members[id as MemberID]
 
             return (
               <div
@@ -190,17 +203,17 @@ export const IsedolMembers: NextPage = () => {
                   chosenMember === null &&
                   (() => {
                     hoverTimeout = (setTimeout(() => {
-                      setCurrentHoverMember(null);
-                    }, 60) as unknown) as number;
+                      setCurrentHoverMember(null)
+                    }, 60) as unknown) as number
                   })()
                 }
                 onClick={(
                   event: React.MouseEvent<HTMLDivElement, MouseEvent>
                 ) => {
-                  event.preventDefault();
+                  event.preventDefault()
                   if (chosenMember) {
-                    setChosenMember(null);
-                    return;
+                    setChosenMember(null)
+                    return
                   }
 
                   if (mobileActive && containerRef.current) {
@@ -208,10 +221,10 @@ export const IsedolMembers: NextPage = () => {
                       top: 0,
                       left: 0,
                       behavior: 'smooth',
-                    });
+                    })
                   }
 
-                  setChosenMember(id as MemberID);
+                  setChosenMember(id as MemberID)
                 }}
               >
                 <div className={styles.background}>
@@ -260,7 +273,7 @@ export const IsedolMembers: NextPage = () => {
                   </div>
                 </div>
               </div>
-            );
+            )
           })}
         </div>
         {previousMember && (
@@ -291,31 +304,52 @@ export const IsedolMembers: NextPage = () => {
                     <tbody>
                       <tr>
                         <td>Color</td>
-                        <td>{Members[previousMember].metadata?.color}</td>
+                        <td>{Members[previousMember].metadata.color}</td>
                       </tr>
                       <tr>
                         <td>Birth</td>
-                        <td>{Members[previousMember].metadata?.birth}</td>
+                        <td>{Members[previousMember].metadata.birth}</td>
                       </tr>
                       <tr>
                         <td>Height</td>
-                        <td>{Members[previousMember].metadata?.height}cm</td>
+                        <td>{Members[previousMember].metadata.height}cm</td>
                       </tr>
                       <tr>
                         <td>Blood</td>
-                        <td>{Members[previousMember].metadata?.blood}</td>
+                        <td>{Members[previousMember].metadata.blood}</td>
                       </tr>
                       <tr>
                         <td>MBTI</td>
-                        <td>{Members[previousMember].metadata?.mbti}</td>
+                        <td>{Members[previousMember].metadata.mbti}</td>
                       </tr>
                       <tr>
                         <td>Fandom</td>
-                        <td>{Members[previousMember].metadata?.fandom}</td>
+                        <td>{Members[previousMember].metadata.fandom}</td>
                       </tr>
                     </tbody>
                   </table>
                   <div className={styles.social_box}></div>
+                </div>
+                <div className={styles.social_links}>
+                  {Members[previousMember].links.map(link =>
+                    link.icon ? (
+                      <Link href={link.link}>
+                        <a className={styles.icon} target='_blank'>
+                          {(SocialIcons[link.icon] && (
+                            <Image
+                              src={SocialIcons[link.icon]}
+                              width={30}
+                              height={30}
+                              alt={`${link.name} 링크`}
+                            ></Image>
+                          )) ??
+                            link.name}
+                        </a>
+                      </Link>
+                    ) : (
+                      <div className={styles.link}>{link.name}</div>
+                    )
+                  )}
                 </div>
               </div>
               <div className={styles.profile_sign_wrapper}>
@@ -346,7 +380,7 @@ export const IsedolMembers: NextPage = () => {
         </div>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default IsedolMembers;
+export default IsedolMembers
