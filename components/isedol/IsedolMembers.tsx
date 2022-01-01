@@ -125,11 +125,11 @@ export const IsedolMembers: NextPage = () => {
       return;
     }
 
-    containerRef.current.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
+    // containerRef.current.scrollTo({
+    //   top: 0,
+    //   left: 0,
+    //   behavior: 'smooth',
+    // });
   }, [chosenMember]);
 
   useEffect(() => {
