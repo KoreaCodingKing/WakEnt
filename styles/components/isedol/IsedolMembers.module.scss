@@ -149,11 +149,19 @@
   }
 
   &[data-member='ine'] .member[data-member='ine'] {
+    @media screen and (max-width: $maxMobile) {
+      transform: translateX(2%);
+    }
+
     transform: translateX(0%);
   }
 
   &[data-member='jingburger'] .member[data-member='jingburger'] {
     @media screen and (max-width: $maxTablet) {
+      transform: translateX(-100%);
+    }
+
+    @media screen and (max-width: $maxMobile) {
       transform: translateX(-115%);
     }
 
@@ -162,7 +170,11 @@
 
   &[data-member='lilpa'] .member[data-member='lilpa'] {
     @media screen and (max-width: $maxTablet) {
-      transform: translateX(-230%);
+      transform: translateX(-225%);
+    }
+
+    @media screen and (max-width: $maxMobile) {
+      transform: translateX(-228%);
     }
 
     transform: translateX(-222%);
@@ -170,7 +182,11 @@
 
   &[data-member='jururu'] .member[data-member='jururu'] {
     @media screen and (max-width: $maxTablet) {
-      transform: translateX(-344%);
+      transform: translateX(-340%);
+    }
+
+    @media screen and (max-width: $maxMobile) {
+      transform: translateX(-342%);
     }
 
     transform: translateX(-333%);
@@ -531,6 +547,8 @@
     display: flex;
     justify-content: space-between;
     color: white;
+
+    flex-direction: column;
   }
 }
 
@@ -630,6 +648,8 @@
   width: 360px;
 
   @media screen and (max-width: $maxTablet) {
+    position: relative;
+
     display: flex;
     width: 100%;
 
@@ -637,7 +657,7 @@
       margin: auto;
     }
 
-    margin-top: 400px;
+    margin-top: 100px;
     margin-bottom: 200px;
   }
 }
