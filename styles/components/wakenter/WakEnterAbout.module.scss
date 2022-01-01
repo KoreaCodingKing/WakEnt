@@ -1,0 +1,57 @@
+@import "../../mixin.scss";
+
+.first_section {
+  display: flex;
+  justify-content: space-between;
+  min-width: 1000px;
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-top: 254px;
+
+  .first_section__img {
+    position: relative;
+    max-width: 633px;
+    min-height: 356px;
+    margin-right: 80px;
+    aspect-ratio: 16 / 9;
+  }
+
+  // ToDo maxTablet 화면 위치 아래로 조정 필요.(좁아보임.)
+  .first_section__introduce {
+    align-self: center;
+
+    .introduce_title {
+      margin-bottom: 20px;
+      font-size: 3.5em;
+      letter-spacing: -1px;
+  
+      @media screen and (max-width: $maxTablet) {
+        font-size: 3em;
+      }
+  
+      @media screen and (max-width: $maxMobile) {
+        font-size: 2.5em;
+      }
+    }
+    .introduce_subtitle {
+      max-width: 567px;
+      align-self: center;
+
+      font-weight: 300;
+      font-size: 1.18em;
+      letter-spacing: -0.3px;
+      line-height: 1.35;
+      word-break: keep-all;
+    
+      @media screen and (max-width: $maxTablet) {
+        font-size: 1.1em;
+        line-height: 1.45;
+      }
+    
+      @media screen and (max-width: $maxMobile) {
+        font-size: 1em;
+        line-height: 1.55;
+      }
+    }
+  }
+}

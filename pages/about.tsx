@@ -30,7 +30,9 @@ const About: NextPage = () => {
         <header>
           <WakEnterHeader></WakEnterHeader>
         </header>
-        <WakEnterAbout></WakEnterAbout>
+        <div className={styles.pages}>
+          <WakEnterAbout></WakEnterAbout>
+        </div>
       </div>
     </>
   );
