@@ -3,26 +3,13 @@ import { NextPage } from 'next';
 import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import parentStyles from '../styles/pages/index.module.scss';
 import styles from '../styles/components/wakenter/WakEnterRecruit.module.scss';
-import { ReactNode, RefObject, useEffect, useRef } from 'react';
+import { ReactNode, useRef } from 'react';
 import {
   useDynamicPageScroll,
-  useScrollPage,
 } from '../components/common/Scroll';
 import Image from 'next/image';
 import WakEnterMetadata from '../components/wakenter/Meta';
 import Centerize from '../components/common/Centerize';
-
-const useScrollEffect = (parent: RefObject<HTMLDivElement>) => {
-  useEffect(() => {
-    if (!parent.current) {
-      return;
-    }
-
-    parent.current.addEventListener('scroll', ev => {
-      console.log(ev);
-    });
-  }, [parent.current]);
-};
 
 interface SectionProps {
   index: number
