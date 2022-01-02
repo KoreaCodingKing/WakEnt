@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useState } from 'react';
 
 /**
- * Native 스크롤을 활용한 페이지 전환 감지 함수입니다.
+ * Native 스크롤을 활용한 페이지 전환 감지 함수입니다. 각 페이지 사이즈가 고정되어 있을 때 사용합니다.
  * @param parent
  * @param pageHeight
  * @param threshold
@@ -35,6 +35,59 @@ export const useScrollPage = (
     target.addEventListener('scroll', wheelHandler);
 
     wheelHandler();
+
+    return () => {
+      target.removeEventListener('wheel', wheelHandler);
+      target.removeEventListener('scroll', wheelHandler);
+    };
+  }, [parent.current, page]);
+
+  return page;
+};
+
+/**
+ * Native 스크롤을 활용한 페이지 전환 감지 함수입니다. 각 페이지 사이즈가 유동적일때 사용합니다.
+ * @param parent
+ * @param pageSelector
+ * @param threshold
+ * @returns
+ */
+export const useDynamicPageScroll = (
+  parent: RefObject<HTMLElement>,
+  pageSelector: string,
+  threshold: number
+) => {
+  const [page, setPage] = useState<number>(0);
+
+  useEffect(() => {
+    if (!parent.current) {
+      return;
+    }
+
+    const target = parent.current;
+    const childs = target.querySelectorAll(pageSelector) as NodeListOf<HTMLElement>;
+
+    const wheelHandler = () => {
+      for (let i = 0; i < childs.length; i++) {
+        const nextChild = childs[i + 1];
+
+        /**
+         * FIXME : .offsetHeight 메소드는 margin을 계산하지 않으니 margin까지 계산이 필요한 경우 그 때 따로 구현하기
+         */
+        if (nextChild && target.scrollTop < nextChild.offsetTop - (target.offsetHeight * threshold)) {
+          if (i !== page) {
+            setPage(i);
+          }
+
+          return;
+        }
+      }
+    };
+
+    wheelHandler();
+
+    target.addEventListener('wheel', wheelHandler);
+    target.addEventListener('scroll', wheelHandler);
 
     return () => {
       target.removeEventListener('wheel', wheelHandler);
@@ -93,8 +146,8 @@ export const useHorizonalPageScroller = (
       pages.forEach((elem, index) => {
         const { width, left } = elem.getBoundingClientRect();
 
-        const condition = left + width / 3 > 0 &&
-          left + width / 1.5 <= window.innerWidth;
+        const condition =
+          left + width / 3 > 0 && left + width / 1.5 <= window.innerWidth;
 
         if (condition) {
           indexes.push(index);
@@ -123,7 +176,7 @@ export const useHorizonalPageScroller = (
         });
       } else if (event.deltaY && Math.abs(event.deltaY) > 1) {
         parent.current.scrollBy({
-          left: event.deltaY
+          left: event.deltaY,
         });
       }
     };

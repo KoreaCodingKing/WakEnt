@@ -38,12 +38,12 @@ export const WakEnterAbout: NextPage = () => {
       }
     };
 
-    containerCurrent.addEventListener('scroll', scrollHandler);
-    containerCurrent.addEventListener('wheel', scrollHandler);
+    window.addEventListener('scroll', scrollHandler);
+    window.addEventListener('wheel', scrollHandler);
 
     return () => {
-      containerCurrent.removeEventListener('scroll', scrollHandler);
-      containerCurrent.removeEventListener('wheel', scrollHandler);
+      window.removeEventListener('scroll', scrollHandler);
+      window.removeEventListener('wheel', scrollHandler);
     };
   }, []);
 

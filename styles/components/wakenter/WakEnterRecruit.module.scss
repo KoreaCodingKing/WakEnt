@@ -1,0 +1,80 @@
+@import '../../mixin.scss';
+
+.container {
+  position: relative;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.section {
+  display: flex;
+  position: relative;
+  min-width: 100%;
+  min-height: 100%;
+
+  .center {
+    margin: auto;
+    margin-top: 50vh;
+  }
+
+  .contents {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+
+    @media screen and (max-width: $maxTablet) {
+        width: 90%;
+        height: 90%;
+    }
+  }
+}
+
+.section[data-index="0"] {
+  height: 120%;
+  color: white;
+
+  .title {
+    margin-top: -10%;
+    font-size: 4em;
+  }
+
+  .joojeori {
+    margin-top: 10%;
+  }
+
+  .moongtengee {
+    display: flex;
+    flex-direction: column;
+    margin: 8% 0;
+
+    p {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin: auto;
+    }
+  }
+}
+
+.background {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  z-index: -1;
+
+  .image_wrapper {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  &::after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.50);
+    content: " ";
+  }
+}
