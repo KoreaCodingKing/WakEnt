@@ -8,10 +8,9 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 const About: NextPage = () => {
-  // const scroll = useRef<HTMLDivElement>(null);
-
   const [currentLocationY, setCurrentLocationY] = useState<number>(0);
-  const containerRef = useRef<HTMLDivElement>(null);
+
+  const aboutPageRef = useRef<HTMLDivElement>(null);
   const firstSectionRef = useRef<HTMLDivElement>(null);
   const firstSectionImageRef = useRef<HTMLDivElement>(null);
 
@@ -23,43 +22,34 @@ const About: NextPage = () => {
       console.log(2);
       return;
     }
-    if (
-      !firstSectionRef.current ||
-      !firstSectionImageRef.current ||
-      !containerRef.current
-    ) {
+    if (!firstSectionRef.current || !firstSectionImageRef.current || !aboutPageRef.current) {
       console.log(3);
       return;
     }
 
     const firstSectionCurrent = firstSectionRef.current;
     const firstSectionImageCurrent = firstSectionImageRef.current;
-    const containerCurrent = containerRef.current;
+    const aboutPageCurrent = aboutPageRef.current;
     const { bottom } = firstSectionCurrent.getBoundingClientRect();
 
     const scrollHandler = () => {
       setCurrentLocationY(window.scrollY);
+      console.log(window.scrollY);
       if (currentLocationY > bottom / 2) {
-        firstSectionImageCurrent.style.transform = `translateX(100% - ${currentLocationY -
-          bottom / 2}%)`;
-        firstSectionImageCurrent.style.opacity = `${currentLocationY /
-          bottom /
-          2}`;
+        firstSectionImageCurrent.style.transform = `translateX(100% - ${currentLocationY - bottom / 2}%)`;
+        firstSectionImageCurrent.style.opacity = `${currentLocationY / bottom / 2}`;
       } else if (currentLocationY < bottom / 2) {
-        firstSectionImageCurrent.style.transform = `translateX(${currentLocationY -
-          bottom / 2}% - 100%)`;
-        firstSectionImageCurrent.style.opacity = `${bottom /
-          2 /
-          currentLocationY}`;
+        firstSectionImageCurrent.style.transform = `translateX(${currentLocationY - bottom / 2}% - 100%)`;
+        firstSectionImageCurrent.style.opacity = `${bottom / 2 / currentLocationY}`;
       }
     };
 
-    window.addEventListener('scroll', scrollHandler);
-    window.addEventListener('wheel', scrollHandler);
+    aboutPageCurrent.addEventListener('scroll', scrollHandler);
+    aboutPageCurrent.addEventListener('wheel', scrollHandler);
 
     return () => {
-      window.removeEventListener('scroll', scrollHandler);
-      window.removeEventListener('wheel', scrollHandler);
+      aboutPageCurrent.removeEventListener('scroll', scrollHandler);
+      aboutPageCurrent.removeEventListener('wheel', scrollHandler);
     };
   }, []);
 
@@ -70,8 +60,8 @@ const About: NextPage = () => {
         <header>
           <WakEnterHeader></WakEnterHeader>
         </header>
-        <div className={parentStyles.pages}>
-          <div className={styles.about_container} ref={containerRef}>
+        <div className={parentStyles.page__container} ref={aboutPageRef}>
+          <div className={styles.about_container}>
             <section className={styles.first_section} ref={firstSectionRef}>
               <div
                 className={styles.first_section__img}
