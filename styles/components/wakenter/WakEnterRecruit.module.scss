@@ -12,31 +12,49 @@
   min-width: 100%;
   min-height: 100%;
 
+  .sectionTitle {
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: -1px;
+
+    margin-left: 5vw;
+  }
+
   .center {
-    margin: auto;
+    margin: 30vh auto;
     margin-top: 50vh;
   }
 
   .contents {
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     margin: auto;
 
     @media screen and (max-width: $maxTablet) {
-        width: 90%;
-        height: 90%;
+      width: 90%;
+      height: 90%;
     }
   }
 }
 
 .section[data-index="0"] {
-  height: 120%;
+  height: fit-content;
   color: white;
 
   .title {
     margin-top: -10%;
     font-size: 4em;
+    text-align: center;
+
+    @media screen and (max-width: $maxTablet) {
+      font-size: 3em;
+    }
+
+    @media screen and (max-width: $maxMobile) {
+      font-size: 1.5em;
+    }
   }
 
   .joojeori {
@@ -46,13 +64,102 @@
   .moongtengee {
     display: flex;
     flex-direction: column;
-    margin: 8% 0;
+    margin: 10% 0;
 
     p {
       font-size: 1.3em;
       font-weight: bold;
       margin: auto;
+
+      @media screen and (max-width: $maxTablet) {
+        font-size: 1.1em;
+      }
+
+      @media screen and (max-width: $maxMobile) {
+        font-size: 0.9em;
+      }
     }
+  }
+}
+
+.section[data-index="1"] {
+  @media screen and (max-width: $maxTablet) {
+    padding: 64px 0;
+  }
+
+  .grid {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 64px;
+
+    display: grid;
+    grid-template-columns: repeat(1fr, 3fr);
+    grid-template-rows: 1fr; 
+    grid-column-gap: 16px;
+    grid-row-gap: 16px; 
+
+    @media screen and (max-width: $maxTablet) {
+      width: 90%;
+      height: 90%;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+  }
+
+  .card {
+    position: relative;
+    flex: 1;
+    border-radius: 16px;
+    min-height: 125px;
+    display: flex;
+    color: white;
+    overflow: hidden;
+    aspect-ratio: 21 / 9;
+    isolation: isolate;
+
+    background-color: var(--color, #000);
+
+    @media screen and (max-width: $maxTablet) {
+      min-width: 50%;
+    }
+
+    &::after {
+      content: " ";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.32);
+    }
+
+    .cardBackground {
+      position: absolute;
+      min-width: 100%;
+      height: 100%;
+
+      z-index: -1;
+      left: 0;
+      top: 0;
+    }
+
+    .title {
+      margin: auto;
+      font-weight: bold;
+      letter-spacing: -1px;
+      font-size: 1.3em;
+
+      z-index: 10;
+    }
+  }
+
+  .mute {
+    font-size: 12px;
+    color: #ccc;
   }
 }
 
