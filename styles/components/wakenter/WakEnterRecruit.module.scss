@@ -16,8 +16,6 @@
     font-size: 2em;
     font-weight: bold;
     letter-spacing: -1px;
-
-    margin-left: 5vw;
   }
 
   .center {
@@ -32,6 +30,8 @@
     height: 100%;
     margin: auto;
 
+    max-width: $maxPage;
+
     @media screen and (max-width: $maxTablet) {
       width: 90%;
       height: 90%;
@@ -39,7 +39,7 @@
   }
 }
 
-.section[data-index="0"] {
+.section[data-index='0'] {
   height: fit-content;
   color: white;
 
@@ -82,22 +82,22 @@
   }
 }
 
-.section[data-index="1"] {
+.section[data-index='1'] {
   @media screen and (max-width: $maxTablet) {
     padding: 64px 0;
   }
 
   .grid {
-    width: 90%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 64px;
 
     display: grid;
     grid-template-columns: repeat(1fr, 3fr);
-    grid-template-rows: 1fr; 
+    grid-template-rows: 1fr;
     grid-column-gap: 16px;
-    grid-row-gap: 16px; 
+    grid-row-gap: 16px;
 
     @media screen and (max-width: $maxTablet) {
       width: 90%;
@@ -130,11 +130,11 @@
     }
 
     &::after {
-      content: " ";
+      content: ' ';
       position: absolute;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.32);
+      background-color: rgba(0, 0, 0, 0.32);
     }
 
     .cardBackground {
@@ -170,7 +170,13 @@
   overflow: hidden;
   z-index: -1;
 
-  .image_wrapper {
+  .backgroundParallax {
+    background-image: url('/images/building/bg_studio_mixer.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
     position: absolute;
     min-width: 100%;
     min-height: 100%;
@@ -181,7 +187,54 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.50);
-    content: " ";
+    background-color: rgba(0, 0, 0, 0.5);
+    content: ' ';
+  }
+}
+
+.alzaltak {
+  font-size: 28vw;
+  font-weight: bold;
+
+  white-space: nowrap;
+
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+
+  video {
+    width: 100%;
+  }
+
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    text {
+      left: 0;
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 40px;
+    }
+
+    & > rect {
+      -webkit-mask: url(#alzaltak-mask);
+      mask: url(#alzaltak-mask);
+    }
+
+    rect {
+      fill: #fff;
+    }
+  }
+}
+
+
+.section[data-index='2'] {
+  .alzaltak {
+    margin-top: 64px;
   }
 }

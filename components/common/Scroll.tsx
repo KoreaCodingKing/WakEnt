@@ -55,7 +55,8 @@ export const useScrollPage = (
 export const useDynamicPageScroll = (
   parent: RefObject<HTMLElement>,
   pageSelector: string,
-  threshold: number
+  threshold: number,
+  scroll?: (page: number, top: number, height: number) => void
 ) => {
   const [page, setPage] = useState<number>(0);
 
@@ -75,6 +76,10 @@ export const useDynamicPageScroll = (
          * FIXME : .offsetHeight 메소드는 margin을 계산하지 않으니 margin까지 계산이 필요한 경우 그 때 따로 구현하기
          */
         if (nextChild && target.scrollTop < nextChild.offsetTop - (target.offsetHeight * threshold)) {
+          if (scroll) {
+            scroll(i, nextChild.offsetTop - target.scrollTop, target.offsetHeight);
+          }
+
           if (i !== page) {
             setPage(i);
           }

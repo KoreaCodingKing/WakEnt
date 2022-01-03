@@ -7,7 +7,6 @@ import { ReactNode, useRef } from 'react';
 import { useDynamicPageScroll } from '../components/common/Scroll';
 import Image from 'next/image';
 import WakEnterMetadata from '../components/wakenter/Meta';
-import Centerize from '../components/common/Centerize';
 
 interface SectionProps {
   index: number
@@ -77,6 +76,36 @@ interface CardCSS extends React.CSSProperties {
   '--color': string
 }
 
+const AlzaltakText = () => {
+  return (
+    <div className={styles.alzaltak}>
+      <video
+        autoPlay
+        playsInline
+        muted
+        loop
+      >
+        <source src='/videos/blur.webm' />
+      </video>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 285 80'
+        preserveAspectRatio='xMidYMid slice'
+      >
+        <defs>
+          <mask id='alzaltak-mask' x='0' y='0' width='100%' height='100%'>
+            <rect x='0' y='0' width='100%' height='100%' />
+            <text x='30%' y='33' text-anchor="start">
+              알잘딱.
+            </text>
+          </mask>
+        </defs>
+        <rect x='0' y='0' width='100%' height='100%' />
+      </svg>
+    </div>
+  );
+};
+
 const About: NextPage = () => {
   const container = useRef<HTMLDivElement>(null);
   const page = useDynamicPageScroll(container, `.${styles.section}`, 0.05);
@@ -85,24 +114,14 @@ const About: NextPage = () => {
     <>
       <WakEnterMetadata title='채용'></WakEnterMetadata>
       <div className={parentStyles.main}>
-        <header>
+        <header className={parentStyles.whiteBackground}>
           <WakEnterHeader white={page === 0}></WakEnterHeader>
         </header>
         <div className={parentStyles.pages}>
           <div className={styles.container} ref={container}>
             <Section index={0}>
               <div className={styles.background}>
-                <Centerize>
-                  <div className={styles.image_wrapper}>
-                    <Image
-                      src='/images/building/bg_studio_mixer.png'
-                      layout='fill'
-                      placeholder='blur'
-                      blurDataURL='/images/building/bg_studio_mixer.png'
-                      alt='왁엔터 사옥'
-                    ></Image>
-                  </div>
-                </Centerize>
+                <div className={styles.backgroundParallax}></div>
               </div>
               <div className={styles.contents}>
                 <div className={styles.center}>
@@ -139,10 +158,11 @@ const About: NextPage = () => {
               <div className={styles.contents}>
                 <h1 className={styles.sectionTitle}>복리후생</h1>
                 <div className={styles.grid}>
-                  {Welfares.map(v => (
-                    <div className={styles.column}>
+                  {Welfares.map((v, wi) => (
+                    <div key={`welfare-column-${wi}`} className={styles.column}>
                       {v.map(card => (
                         <div
+                          key={`welfare-card-${card.title}`}
                           className={styles.card}
                           style={
                             {
@@ -155,22 +175,34 @@ const About: NextPage = () => {
                               <Image src={card.image} layout='fill'></Image>
                             </div>
                           )}
-                          <span className={styles.title}>
-                            {card.title}
-                          </span>
+                          <span className={styles.title}>{card.title}</span>
                         </div>
                       ))}
                     </div>
                   ))}
                   <div className={styles.mute}>
-                    <p>* 입사 시점의 “송도사는 30대 웰시코기 견주가 운영하는 메타버스 버츄얼 엔터테인먼트" 업계 최고 임금을 보장합니다.</p>
-                    <p>** 국내 주식 중 상장 폐지를 앞둔 주식과 1000원 이하의 주식 1주를 무작위로 선정하여 드립니다.</p>
-                    <p>*** 법인 카드를 사용할 수 있는 부분은 다음과 같습니다: 책 구매 (뇌절하지 않는 대화법)</p>
+                    <p>
+                      * 입사 시점의 “송도사는 30대 웰시코기 견주가 운영하는
+                      메타버스 버츄얼 엔터테인먼트" 업계 최고 임금을 보장합니다.
+                    </p>
+                    <p>
+                      ** 국내 주식 중 상장 폐지를 앞둔 주식과 1000원 이하의 주식
+                      1주를 무작위로 선정하여 드립니다.
+                    </p>
+                    <p>
+                      *** 법인 카드를 사용할 수 있는 부분은 다음과 같습니다: 책
+                      구매 (뇌절하지 않는 대화법)
+                    </p>
                   </div>
                 </div>
               </div>
             </Section>
-            <Section index={2}></Section>
+            <Section index={2}>
+              <div className={styles.contents}>
+                <h1 className={styles.sectionTitle}>인재상</h1>
+                <AlzaltakText></AlzaltakText>
+              </div>
+            </Section>
             <Section index={3}></Section>
           </div>
         </div>
