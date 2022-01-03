@@ -33,6 +33,16 @@
   height: 55px;
 
   margin-right: 6px;
+
+  @media screen and (max-width: $maxTablet) {
+    width: 45px;
+    height: 45px;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .logoText {
@@ -43,6 +53,14 @@
   font-size: 0.9rem;
   font-weight: bold;
   letter-spacing: -0.4px;
+
+  @media screen and (max-width: $maxTablet) {
+    font-size: 0.8rem;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    font-size: 0.75rem;
+  }
 
   span {
     margin: auto;

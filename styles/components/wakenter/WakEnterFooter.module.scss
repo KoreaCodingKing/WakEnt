@@ -1,0 +1,65 @@
+@import "../../mixin.scss";
+
+.footer {
+  min-height: 350px;
+  width: 100%;
+  background: #F5F5F5;
+
+  display: flex;
+  overflow: hidden;
+}
+
+.contents {
+  margin: auto;
+  display: flex;
+  gap: 10%;
+  width: 80%;
+  letter-spacing: -1px;
+  opacity: 0.5;
+  font-size: 1.05em;
+
+  max-width: $maxPage;
+
+  @media screen and (max-width: $maxTablet) {
+    flex-direction: column;
+    gap: 32px;
+
+    font-size: 1.05em;
+    max-width: unset;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    font-size: 0.95em;
+  }
+}
+
+.logo {
+  transform: scale(1.5);
+
+  @media screen and (max-width: $maxTablet) {
+    transform: scale(1);
+  }
+}
+
+.location, .disclaimer {
+  margin: auto;
+}
+
+.location {
+  text-align: left;
+
+  @media screen and (max-width: $maxTablet) {
+    text-align: center;
+  }
+}
+
+.disclaimer {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+
+  @media screen and (max-width: $maxTablet) {
+    margin: auto;
+    text-align: center;
+  }
+}

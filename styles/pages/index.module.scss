@@ -6,13 +6,22 @@
   margin: auto;
 
   header {
-    position: absolute;
+    position: fixed;
     width: 100%;
+    top: 0;
 
     z-index: 10000;
 
     & > div {
       margin: 38px 5%;
+
+      @media screen and (max-width: $maxTablet) {
+        margin: 32px 5%;
+      }
+
+      @media screen and (max-width: $maxMobile) {
+        margin: 26px 5%;
+      }
     }
   }
 
