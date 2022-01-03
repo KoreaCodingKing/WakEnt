@@ -73,7 +73,7 @@ const About: NextPage = () => {
                 <div className={styles.sticky_contents}>
                   <div className={styles.sticky_contents_inner}>
                     <div className={styles.video_cover}
-                      // transform scoll마다 크기 수정
+                      // transform 스크롤마다 크기 바꾸기.(0.5 부분)
                       style={{transform: 'matrix(0.5, 0, 0, 0.5, 0, 0)'}}>
                       <Image src={'/images/temp/진짜로.png'} alt='왁타버스'></Image>
                     </div>

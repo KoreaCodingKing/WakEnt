@@ -23,10 +23,14 @@
 
 .sticky_contents_inner {
   overflow: hidden;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
 
   .video_cover {
+    z-index: 2;
     position: relative;
+    width: inherit;
+    height: inherit;
   }
 
   .masked {
