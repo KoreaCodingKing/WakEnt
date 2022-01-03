@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   height: 38px;
-  margin: 40px auto;
+  margin: 38px auto;
   align-items: center;
 
   &.fixed {
@@ -25,14 +25,14 @@
   }
 
   @media screen and (max-width: $maxTablet) {
-    margin: 36px auto;
+    margin: 32px auto;
     max-width: unset;
     min-width: 90%;
     width: 90%;
   }
 
   @media screen and (max-width: $maxMobile) {
-    margin: 32px auto;
+    margin: 28px auto;
     min-width: 85%;
     width: 85%;
   }

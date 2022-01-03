@@ -14,6 +14,14 @@
 
     & > div {
       margin: 38px 5%;
+
+      @media screen and (max-width: $maxTablet) {
+        margin: 32px 5%;
+      }
+
+      @media screen and (max-width: $maxMobile) {
+        margin: 26px 5%;
+      }
     }
   }
 
