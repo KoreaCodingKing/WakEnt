@@ -18,9 +18,7 @@ const About: NextPage = () => {
   // ToDo Scroll.tsx파일로 옮기기.
   // 현재 firstSection에 대한 내용 처리중. 다른 섹션은 useEffect 추가 Scroll.tsx파일로 옮기기
   useEffect(() => {
-    console.log(1);
     if (!process.browser) {
-      console.log(2);
       return;
     }
     if (
@@ -28,7 +26,6 @@ const About: NextPage = () => {
       !firstSectionImageRef.current ||
       !containerRef.current
     ) {
-      console.log(3);
       return;
     }
 
