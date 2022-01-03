@@ -2,51 +2,77 @@
 
 .page__container {
   width: 100vw;
-  overflow: auto;
 }
 
 .first_section {
-  display: flex;
-  justify-content: space-between;
-  min-width: 1000px;
-  max-width: 1440px;
+  height: fit-content;
   margin: 0 auto;
-  margin-top: 254px;
 
-  .first_section__img {
+  .first_section_inner{
+    min-height: 140vh;
+
+    .sticky_contents {
+      display: flex;
+      position: sticky;
+      justify-content: space-between;
+      overflow: hidden;
+      top: 0;
+    }
+  }
+}
+
+.sticky_contents_inner {
+  overflow: hidden;
+  width: 100%;
+
+  .video_cover {
     position: relative;
-    max-width: 633px;
-    min-height: 356px;
-    margin-right: 80px;
-    margin-left: 1vw;
-    aspect-ratio: 16 / 9;
   }
 
-  // ToDo maxTablet 화면 위치 아래로 조정 필요.(좁아보임.)
-  .first_section__introduce {
+  .masked {
+    z-index: 1;
+    overflow: hidden;
+    .inline_video_container {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.first_section__img {
+  position: relative;
+  max-width: 633px;
+  height: 356px;
+  margin-right: 80px;
+  margin-left: 1vw;
+  align-self: center;
+  aspect-ratio: 16 / 9;
+  opacity: 0;
+}
+.first_section__introduce {
+  align-self: center;
+
+  .introduce_title {
+    margin-bottom: 20px;
+    font-size: 3.5em;
+    letter-spacing: -1px;
+  }
+
+  .introduce_subtitle {
+    max-width: 567px;
     align-self: center;
 
-    .introduce_title {
-      margin-bottom: 20px;
-      font-size: 3.5em;
-      letter-spacing: -1px;
-    }
-
-    .introduce_subtitle {
-      max-width: 567px;
-      align-self: center;
-
-      font-weight: 300;
-      font-size: 1.18em;
-      letter-spacing: -0.3px;
-      line-height: 1.35;
-      word-break: keep-all;
-    }
+    font-weight: 300;
+    font-size: 1.18em;
+    letter-spacing: -0.3px;
+    line-height: 1.35;
+    word-break: keep-all;
   }
 
   @media screen and (max-width: $maxTablet) {
     flex-direction: column;
     min-width: 0px;
+    height: 100%;
     margin-top: 150px;
 
     .first_section__img {
@@ -71,10 +97,12 @@
   }
 
   @media screen and (max-width: $maxMobile) {
+    height: 100%;
+
     .first_section__img {
       max-width: none;
       width: 100%;
-      min-height: auto;
+      height: auto;
       margin-left: none;
       margin: 0 auto;
       margin-bottom: 28px;
@@ -97,6 +125,17 @@
   }
 }
 
+
 .second_section {
-  min-height: 100vh;
+  display: flex;
+  position: sticky;
+  justify-content: space-between;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  min-width: 1000px;
+  max-width: 1440px;
+  height: 100vh;
+  margin: 0 auto;
 }
