@@ -3,19 +3,25 @@ import { NextPage } from 'next';
 import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import parentStyles from '../styles/pages/index.module.scss';
 import styles from '../styles/components/wakenter/WakEnterRecruit.module.scss';
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useDynamicPageScroll } from '../components/common/Scroll';
 import Image from 'next/image';
 import WakEnterMetadata from '../components/wakenter/Meta';
+import { concatClass } from '../utils/class';
+import Footer from '../components/wakenter/WakEnterFooter';
 
 interface SectionProps {
   index: number
   children?: ReactNode
+  full?: boolean
 }
 
-const Section = ({ index, children }: SectionProps) => {
+const Section = ({ index, children, full }: SectionProps) => {
   return (
-    <section className={styles.section} data-index={index}>
+    <section
+      className={concatClass(styles.section, full && styles.full)}
+      data-index={index}
+    >
       {children}
     </section>
   );
@@ -79,12 +85,7 @@ interface CardCSS extends React.CSSProperties {
 const AlzaltakText = () => {
   return (
     <div className={styles.alzaltak}>
-      <video
-        autoPlay
-        playsInline
-        muted
-        loop
-      >
+      <video autoPlay playsInline muted loop>
         <source src='/videos/blur.webm' />
       </video>
       <svg
@@ -95,20 +96,84 @@ const AlzaltakText = () => {
         <defs>
           <mask id='alzaltak-mask' x='0' y='0' width='100%' height='100%'>
             <rect x='0' y='0' width='100%' height='100%' />
-            <text x='30%' y='33' text-anchor="start">
+            <text x='30%' y='55%' textAnchor='start'>
               알잘딱.
             </text>
           </mask>
         </defs>
         <rect x='0' y='0' width='100%' height='100%' />
       </svg>
+      <div className={styles.notSupport}>
+        <h1>알잘딱.</h1>
+      </div>
     </div>
   );
 };
 
+const PositionCategory = [
+  'Legal',
+  'Business',
+  'Engineering',
+  'Design',
+  'Compliance',
+  'Assets',
+] as const;
+
+type CategoryKeys = typeof PositionCategory[number]
+interface Position {
+  title: string
+  category: CategoryKeys
+}
+
+const Positions: Position[] = [
+  {
+    title: 'Alzartak Manager',
+    category: 'Business',
+  },
+  {
+    title: 'Mixing Engineer',
+    category: 'Engineering',
+  },
+  {
+    title: 'Human Resource Manager',
+    category: 'Business',
+  },
+  {
+    title: 'Legal Counsel',
+    category: 'Legal',
+  },
+  {
+    title: 'Asset Manager',
+    category: 'Assets',
+  },
+  {
+    title: 'Brand Value Designer',
+    category: 'Design',
+  },
+];
+
+const useIsSafari = () => {
+  const [safari, setSafari] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!process.browser) {
+      return;
+    }
+
+    setSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
+  }, []);
+
+  return safari;
+};
+
 const About: NextPage = () => {
-  const container = useRef<HTMLDivElement>(null);
-  const page = useDynamicPageScroll(container, `.${styles.section}`, 0.05);
+  const page = useDynamicPageScroll(null, `.${styles.section}`, 0.05);
+
+  const [positionCategory, setPositionCategory] = useState<CategoryKeys | null>(
+    null
+  );
+
+  const isSafari = useIsSafari();
 
   return (
     <>
@@ -117,11 +182,16 @@ const About: NextPage = () => {
         <header className={parentStyles.whiteBackground}>
           <WakEnterHeader white={page === 0}></WakEnterHeader>
         </header>
-        <div className={parentStyles.pages}>
-          <div className={styles.container} ref={container}>
-            <Section index={0}>
+        <div>
+          <div className={styles.container}>
+            <Section index={0} full>
               <div className={styles.background}>
-                <div className={styles.backgroundParallax}></div>
+                <div
+                  className={concatClass(
+                    styles.backgroundParallax,
+                    isSafari && styles.safari
+                  )}
+                ></div>
               </div>
               <div className={styles.contents}>
                 <div className={styles.center}>
@@ -154,7 +224,7 @@ const About: NextPage = () => {
                 </div>
               </div>
             </Section>
-            <Section index={1}>
+            <Section index={1} full>
               <div className={styles.contents}>
                 <h1 className={styles.sectionTitle}>복리후생</h1>
                 <div className={styles.grid}>
@@ -203,7 +273,61 @@ const About: NextPage = () => {
                 <AlzaltakText></AlzaltakText>
               </div>
             </Section>
-            <Section index={3}></Section>
+            <Section index={3}>
+              <div className={styles.contents}>
+                <h1 className={styles.sectionTitle}>채용 분야</h1>
+                <div className={styles.buttonGroup}>
+                  <button
+                    className={
+                      positionCategory === null ? styles.active : undefined
+                    }
+                    onClick={() => setPositionCategory(null)}
+                  >
+                    전체
+                  </button>
+                  {PositionCategory.map(v => (
+                    <button
+                      className={
+                        positionCategory === v ? styles.active : undefined
+                      }
+                      onClick={() => setPositionCategory(v)}
+                    >
+                      {v}
+                    </button>
+                  ))}
+                </div>
+                <div className={styles.positions}>
+                  {Positions.map(
+                    v =>
+                      (positionCategory === null ||
+                        positionCategory === v.category) && (
+                        <div className={styles.position}>
+                          <p>{v.title}</p>
+                          <p>{v.category}</p>
+                        </div>
+                      )
+                  )}
+                  {positionCategory === null ||
+                    (!Positions.filter(v => v.category === positionCategory)
+                      .length && (
+                      <div className={styles.position}>
+                        <p>해당 포지션은 모집하고 있지 않습니다.</p>
+                      </div>
+                    ))}
+                </div>
+                <div className={styles.alert}>
+                  <p>
+                    WAK Entertainment는 오프라인 접수를 항상 기다리고 있습니다.
+                  </p>
+                  <p>
+                    오프라인 접수: 인천광역시 송도 왁엔터로 1-1 1층 안내데스크
+                  </p>
+                </div>
+              </div>
+            </Section>
+            <Section index={4}>
+              <Footer></Footer>
+            </Section>
           </div>
         </div>
       </div>

@@ -70,7 +70,7 @@ const About: NextPage = () => {
         <header>
           <WakEnterHeader></WakEnterHeader>
         </header>
-        <div className={parentStyles.pages}>
+        <div>
           <div className={styles.about_container} ref={containerRef}>
             <section className={styles.first_section} ref={firstSectionRef}>
               <div
