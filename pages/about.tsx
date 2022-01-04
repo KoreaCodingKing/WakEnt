@@ -72,7 +72,7 @@ const About: NextPage = () => {
                   <div className={styles.video_contents_inner}>
                     <div className={styles.video_cover}
                       style={{transform: 'matrix(0.5, 0, 0, 0.5, 0, 0)'}}>
-                      <Image src={'/images/temp/진짜로.png'} alt='왁타버스'></Image>
+                      <Image src={'/images/temp/진짜로.png'} alt='왁타버스' layout='fill'></Image>
                     </div>
                     <div className={styles.masked}>
                       <div className={styles.inline_video_container}>
