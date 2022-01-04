@@ -68,10 +68,9 @@ const About: NextPage = () => {
           <div className={styles.about_container}>
             <section className={styles.first_section} ref={firstSectionRef}>
               <div className={styles.first_section_inner}>
-                <div className={styles.sticky_contents}>
-                  <div className={styles.sticky_contents_inner}>
+                <div className={styles.video_contents}>
+                  <div className={styles.video_contents_inner}>
                     <div className={styles.video_cover}
-                      // transform 스크롤마다 크기 바꾸기.(0.5 부분)
                       style={{transform: 'matrix(0.5, 0, 0, 0.5, 0, 0)'}}>
                       <Image src={'/images/temp/진짜로.png'} alt='왁타버스'></Image>
                     </div>
@@ -88,26 +87,27 @@ const About: NextPage = () => {
                     </div>
                   </div>
                 </div>
-                <div className={styles.sticky_contents}>
-                  <div
-                    className={styles.first_section__img}
-                    ref={firstSectionImageRef}
-                  >
-                    <Image
-                      src={'/images/building/bg_introduce_main_img.png'}
-                      layout='fill'
-                      placeholder='blur'
-                      blurDataURL={'/images/building/bg_introduce_main_img.png'}
-                      alt='왁엔터 사옥'
-                    ></Image>
-                  </div>
-                  <div className={styles.first_section__introduce} ref={firstSectionDescRef}>
-                    <h2 className={styles.introduce_title}>Who are we?</h2>
-                    <p className={styles.introduce_subtitle}>
-                      WAK Entertainment는 인천 송도 왁엔터로에 위치한 엔터테이먼트
-                      회사로, 2021년 8월에 설립되어 현재까지 다양한 컨텐츠로 보는
-                      이들을 하여금 즐거움을 선사하고 있습니다.
-                    </p>
+                <div className={styles.about_desc}>
+                  <div className={styles.about_desc_inner}>
+                    <div
+                      className={styles.first_section__img}
+                      ref={firstSectionImageRef}>
+                      <Image
+                        src={'/images/building/bg_introduce_main_img.png'}
+                        layout='fill'
+                        placeholder='blur'
+                        blurDataURL={'/images/building/bg_introduce_main_img.png'}
+                        alt='왁엔터 사옥'
+                      ></Image>
+                    </div>
+                    <div className={styles.first_section__introduce} ref={firstSectionDescRef}>
+                      <h2 className={styles.introduce_title}>Who are we?</h2>
+                      <p className={styles.introduce_subtitle}>
+                        WAK Entertainment는 인천 송도 왁엔터로에 위치한 엔터테이먼트
+                        회사로, 2021년 8월에 설립되어 현재까지 다양한 컨텐츠로 보는
+                        이들을 하여금 즐거움을 선사하고 있습니다.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
