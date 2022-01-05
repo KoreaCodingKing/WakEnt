@@ -5,7 +5,7 @@
   margin: 0 auto;
 
   .first_section_inner{
-    min-height: 300vh;
+    min-height: 460vh;
   }
 }
 
@@ -16,7 +16,7 @@
   top: 0;
 
   .video_contents_inner {
-    overflow: hidden;
+    overflow: auto;
     width: 100vw;
     height: 100vh;
   
@@ -42,13 +42,16 @@
   position: sticky;
   justify-content: space-between;
   top: 400vh;
-  min-height: 100vh;
-
+  opacity: 0;
+  background: #ffffff;
+  
   .about_desc_inner {
     display: flex;
     justify-content: space-between;
     overflow: hidden;
     width: 100%;
+    min-height: 200vh;
+    align-self: center;
 
     .first_section__img {
       position: relative;
