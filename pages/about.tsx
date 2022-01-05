@@ -16,6 +16,7 @@ const About: NextPage = () => {
   const firstSectionDescRef = useRef<HTMLDivElement>(null);
   const firstSectionDescTitleRef = useRef<HTMLDivElement>(null);
 
+  // ToDo: scroll.ts 파일로 이동.
   useEffect(() => {
     if (!sectionInnerRef.current
       || !firstSectionCoverRef.current
