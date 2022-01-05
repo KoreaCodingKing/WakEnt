@@ -1,5 +1,22 @@
 import { RefObject, useEffect, useState } from 'react';
 
+import styles from '../../styles/components/common/Scroll.module.scss';
+
+/**
+ * body 스크롤을 잠금할 때 사용하는 Hook입니다.
+ *
+ * @param lock Body Scroll을 비활성화 할 지에 대한 여부
+ */
+export const useBodyLock = (lock: boolean) => {
+  useEffect(() => {
+    document.body.classList[lock ? 'add' : 'remove'](styles.bodyScrollLock);
+
+    return () => {
+      document.body.classList.remove(styles.bodyScrollLock);
+    };
+  }, [lock]);
+};
+
 /**
  * Native 스크롤을 활용한 페이지 전환 감지 함수입니다. 각 페이지 사이즈가 고정되어 있을 때 사용합니다.
  * @param parent
@@ -53,46 +70,50 @@ export const useScrollPage = (
  * @returns
  */
 export const useDynamicPageScroll = (
-  parent: HTMLElement | null,
+  parent: RefObject<HTMLElement> | null,
   pageSelector: string,
   threshold: number,
-  scroll?: (page: number, top: number, height: number) => void
+  scroll?: (pages: [number, number, number][]) => void
 ) => {
   const [page, setPage] = useState<number>(0);
 
   useEffect(() => {
-    const target = parent ?? document.body;
+    const target = parent?.current ?? document.body;
+
+    if (!target) {
+      return;
+    }
 
     const childs = target.querySelectorAll(pageSelector) as NodeListOf<
       HTMLElement
     >;
 
     const wheelHandler = () => {
+      const top = target.scrollTop || window.scrollY;
+
+      const scrolls: [number, number, number][] = [];
+
       for (let i = 0; i < childs.length; i++) {
         const nextChild = childs[i + 1];
 
-        /**
-         * FIXME : .offsetHeight 메소드는 margin을 계산하지 않으니 margin까지 계산이 필요한 경우 그 때 따로 구현하기
-         */
+        if (top < childs[i].offsetTop + childs[i].scrollHeight) {
+          scrolls.push([i, top - childs[i].offsetTop, childs[i].scrollHeight]);
+        }
+
         if (
           nextChild &&
-          (target.scrollTop || window.scrollY) <
-            nextChild.offsetTop - target.offsetHeight * threshold
+          top < nextChild.offsetTop - target.scrollHeight * threshold
         ) {
-          if (scroll) {
-            scroll(
-              i,
-              nextChild.offsetTop - (target.scrollTop || window.scrollY),
-              target.offsetHeight
-            );
-          }
-
           if (i !== page) {
             setPage(i);
           }
 
-          return;
+          break;
         }
+      }
+
+      if (scroll) {
+        scroll(scrolls);
       }
     };
 
@@ -107,7 +128,7 @@ export const useDynamicPageScroll = (
       evTarget.removeEventListener('wheel', wheelHandler);
       evTarget.removeEventListener('scroll', wheelHandler);
     };
-  }, [parent, page]);
+  }, [parent?.current, page]);
 
   return page;
 };

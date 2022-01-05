@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import parentStyles from '../styles/pages/index.module.scss';
 import styles from '../styles/components/wakenter/WakEnterRecruit.module.scss';
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useDynamicPageScroll } from '../components/common/Scroll';
 import Image from 'next/image';
 import WakEnterMetadata from '../components/wakenter/Meta';

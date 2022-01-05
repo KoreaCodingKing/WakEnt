@@ -47,6 +47,7 @@ module.exports = {
         //"no-console": isProd ? ["error", { allow: ["warn", "error"] }] : "off",
         "@typescript-eslint/no-unnecessary-type-constraint": "off",
         "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-non-null-assertion": "off",
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": "warn",
         "curly": "error",

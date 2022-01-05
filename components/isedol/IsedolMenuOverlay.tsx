@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import styles from '../../styles/components/isedol/IsedolMenuOverlay.module.scss';
 import { concatClass } from '../../utils/class';
 import LinkToIcon from '../common/icons/LinkTo';
+import { useBodyLock } from '../common/Scroll';
 import { WakEnterLogo } from '../wakenter/WakEnterHeader';
 
 interface IsedolMenuOverlayProps {
@@ -33,16 +33,6 @@ const Links = [
     page: 'https://cafe.naver.com/steamindiegame',
   },
 ];
-
-const useBodyLock = (lock: boolean) => {
-  useEffect(() => {
-    document.body.classList[lock ? 'add' : 'remove'](styles.bodyScrollLock);
-
-    return () => {
-      document.body.classList.remove(styles.bodyScrollLock);
-    };
-  }, [lock]);
-};
 
 export const IsedolMenuOverlay = ({ open }: IsedolMenuOverlayProps) => {
   const router = useRouter();

@@ -1,10 +1,13 @@
 @import "../../mixin.scss";
 
-.first_section {
+.section {
+  min-height: 100vh;
   height: fit-content;
   margin: 0 auto;
+}
 
-  .first_section_inner{
+.section[data-index="0"] {
+  .inner {
     min-height: 460vh;
   }
 }
@@ -16,15 +19,16 @@
   top: 0;
 
   .video_contents_inner {
-    overflow: auto;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
   
     .video_cover {
-      z-index: 2;
       position: relative;
-      width: inherit;
-      height: inherit;
+      width: 100%;
+      height: 100%;
+
+      z-index: 2;
     }
   
     .masked {
@@ -53,7 +57,7 @@
     min-height: 200vh;
     align-self: center;
 
-    .first_section__img {
+    .about_image {
       position: relative;
       max-width: 633px;
       height: 356px;
@@ -61,23 +65,26 @@
       margin-left: 1vw;
       align-self: center;
       aspect-ratio: 16 / 9;
-      opacity: 0;
+      // opacity: 0;
+
+      // transform: translateX(calc(300px * var(--scroll)));
   
       img {
         height: 100%;
         min-width: 100%;
       }
     }
-    .first_section__introduce {
+
+    .about_text {
       align-self: center;
   
-      .introduce_title {
+      .title {
         margin-bottom: 20px;
         font-size: 3.5em;
         letter-spacing: -1px;
       }
   
-      .introduce_subtitle {
+      .subtitle {
         max-width: 567px;
         align-self: center;
   
@@ -99,20 +106,20 @@
       height: 100%;
       margin-top: 150px;
 
-      .first_section__img {
+      .about_image {
         align-items: center;
         margin-bottom: 20px;
       }
 
-      .first_section__introduce {
+      .about_text {
         align-self: flex-end;
         margin-right: 2vw;
 
-        .introduce_title {
+        .title {
           font-size: 3em;
         }
 
-        .introduce_subtitle {
+        .subtitle {
           width: fit-content;
           font-size: 1.1em;
           line-height: 1.45;
@@ -153,10 +160,4 @@
       }
     }
   }
-}
-
-
-.second_section {
-  height: fit-content;
-  margin: 0 auto;
 }
