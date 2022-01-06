@@ -16,7 +16,6 @@ const About: NextPage = () => {
   const firstSection = useRef<HTMLDivElement>(null);
   const coverRef = useRef<HTMLDivElement>(null);
   const descRef = useRef<HTMLDivElement>(null);
-  const videoBackgroundRef = useRef<HTMLDivElement>(null);
 
   const [descOpacity, setDescOpacity] = useState<number>(0);
   const [coverMatrix, setCoverMatrix] = useState<number>(0.5);
@@ -30,9 +29,6 @@ const About: NextPage = () => {
       /**
        * FIXME : 변수 명은 알아볼 수 있으면 좋습니다. setProperty 성능 문제도 개선하기
        */
-
-      // firstSection.current!.style.setProperty('--scroll', `${top / height}`);
-
 
       setDescOpacity(easeOutExpo(clamp(top / (height * 0.75), 0, 1)));
       setCoverMatrix(top);
