@@ -13,8 +13,9 @@ type scrollHandlersType = ((top: number, height: number) => void)[]
 
 const About: NextPage = () => {
   const firstSection = useRef<HTMLDivElement>(null);
-  const cover = useRef<HTMLDivElement>(null);
-  const desc = useRef<HTMLDivElement>(null);
+  const coverRef = useRef<HTMLDivElement>(null);
+  const descRef = useRef<HTMLDivElement>(null);
+  const videoBackgroundRef = useRef<HTMLDivElement>(null);
 
   /**
    * 페이지가 스크롤 될 때마다 실행될 콜백을 지정합니다.
@@ -28,27 +29,17 @@ const About: NextPage = () => {
 
       // firstSection.current!.style.setProperty('--scroll', `${top / height}`);
 
-      desc.current!.style.opacity = `${easeOutExpo(
-        clamp(top / (height * 0.75), 0, 1)
-      )}`;
+      const imageSize = Math.min(2, top);
+      coverRef.current!.style.transform = `matrix(${top+0.5}, 0, 0, ${top+0.5}, 0, 0)`;
 
-      const t = Math.min(1.5, top / 1000);
-      cover.current!.style.transform = `matrix(${t}, 0, 0, ${t}, 0, 0)`;
-
-      const descTop = desc.current!.offsetTop;
+      const descTop = descRef.current!.offsetTop;
       const descTopThreshold = threshold(descTop, 0.05);
 
-      if (top >= descTopThreshold) {
-        desc.current!.style.setProperty(
-          '--image-opacity',
-          `${clamp(
-            (top - descTopThreshold) / (window.innerHeight / 1.5),
-            0,
-            1
-          )}`
-        );
-      }
-    },
+      descRef.current!.style.setProperty(
+        '--image-opacity',
+        `${clamp((top - descTopThreshold) / (window.innerHeight * 0.07), 0, 1)}`
+      );
+    }
   ];
 
   const aboutContainer = useRef<HTMLDivElement>(null);
@@ -76,31 +67,19 @@ const About: NextPage = () => {
             <div className={styles.first_section_inner}>
               <div className={styles.video_contents}>
                 <div className={styles.video_contents_inner}>
-                  <div className={styles.video_cover} ref={cover}>
-                    <Image
-                      src={'/images/temp/진짜로.png'}
-                      alt='왁타버스'
-                      layout='fill'
-                    ></Image>
+                  <div className={styles.video_cover} ref={coverRef}>
+                    <p className={styles.cover}>WAK Entertainment</p>
                   </div>
                   <div className={styles.masked}>
                     <div className={styles.inline_video_container}>
                       <div className={styles.inline_video_media}>
-                        <Image
-                          src={'/images/temp/영국_바스_신호등.png'}
-                          layout='fill'
-                          placeholder='blur'
-                          blurDataURL={
-                            '/images/building/bg_introduce_main_img.png'
-                          }
-                          alt='wakenter about video'
-                        ></Image>
+                        {/* ToDo: 이미지 삽입 */}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className={styles.about_desc} ref={desc}>
+              <div className={styles.about_desc} ref={descRef}>
                 <div className={styles.about_desc_inner}>
                   <div className={styles.about_image}>
                     <Image
