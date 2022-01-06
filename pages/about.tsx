@@ -4,10 +4,11 @@ import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import parentStyles from '../styles/pages/index.module.scss';
 import styles from '../styles/components/wakenter/WakEnterAbout.module.scss';
 import WakEnterMetadata from '../components/wakenter/Meta';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useDynamicPageScroll } from '../components/common/Scroll';
 import { clamp, easeOutExpo, threshold } from '../utils/number';
+import { motion } from 'framer-motion';
 
 type scrollHandlersType = ((top: number, height: number) => void)[]
 
@@ -16,6 +17,9 @@ const About: NextPage = () => {
   const coverRef = useRef<HTMLDivElement>(null);
   const descRef = useRef<HTMLDivElement>(null);
   const videoBackgroundRef = useRef<HTMLDivElement>(null);
+
+  const [descOpacity, setDescOpacity] = useState<number>(0);
+  const [coverMatrix, setCoverMatrix] = useState<number>(0.5);
 
   /**
    * 페이지가 스크롤 될 때마다 실행될 콜백을 지정합니다.
@@ -29,8 +33,9 @@ const About: NextPage = () => {
 
       // firstSection.current!.style.setProperty('--scroll', `${top / height}`);
 
-      const imageSize = Math.min(2, top);
-      coverRef.current!.style.transform = `matrix(${top+0.5}, 0, 0, ${top+0.5}, 0, 0)`;
+
+      setDescOpacity(easeOutExpo(clamp(top / (height * 0.75), 0, 1)));
+      setCoverMatrix(top);
 
       const descTop = descRef.current!.offsetTop;
       const descTopThreshold = threshold(descTop, 0.05);
@@ -57,8 +62,7 @@ const About: NextPage = () => {
   return (
     <>
       <WakEnterMetadata title='About us'></WakEnterMetadata>
-      <div className={parentStyles.main}
-      >
+      <div className={parentStyles.main}>
         <header>
           <WakEnterHeader></WakEnterHeader>
         </header>
@@ -67,9 +71,16 @@ const About: NextPage = () => {
             <div className={styles.first_section_inner}>
               <div className={styles.video_contents}>
                 <div className={styles.video_contents_inner}>
-                  <div className={styles.video_cover} ref={coverRef}>
+                  <motion.div
+                    className={styles.video_cover}
+                    ref={coverRef}
+                    animate={{
+                      transform: `matrix(${coverMatrix+0.5}, 0, 0, ${coverMatrix+0.5}, 0, 0)`,
+                    }}
+                    transition={{ type: 'tween' }}
+                  >
                     <p className={styles.cover}>WAK Entertainment</p>
-                  </div>
+                  </motion.div>
                   <div className={styles.masked}>
                     <div className={styles.inline_video_container}>
                       <div className={styles.inline_video_media}>
@@ -79,7 +90,12 @@ const About: NextPage = () => {
                   </div>
                 </div>
               </div>
-              <div className={styles.about_desc} ref={descRef}>
+              <motion.div
+                className={styles.about_desc}
+                ref={descRef}
+                animate={{ opacity: descOpacity }}
+                transition={{ type: 'spring', stiffness: 200 }}
+              >
                 <div className={styles.about_desc_inner}>
                   <div className={styles.about_image}>
                     <Image
@@ -99,7 +115,7 @@ const About: NextPage = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </section>
           <section className={styles.section} data-index={1}></section>
