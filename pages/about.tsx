@@ -7,14 +7,14 @@ import WakEnterMetadata from '../components/wakenter/Meta';
 import { useRef } from 'react';
 import Image from 'next/image';
 import { useDynamicPageScroll } from '../components/common/Scroll';
-import { easeOutExpo } from '../utils/number';
+import { clamp, easeOutExpo, threshold } from '../utils/number';
 
 type scrollHandlersType = ((top: number, height: number) => void)[]
 
 const About: NextPage = () => {
   const firstSection = useRef<HTMLDivElement>(null);
-  const firstSectionCoverRef = useRef<HTMLDivElement>(null);
-  const firstSectionDescRef = useRef<HTMLDivElement>(null);
+  const cover = useRef<HTMLDivElement>(null);
+  const desc = useRef<HTMLDivElement>(null);
 
   /**
    * 페이지가 스크롤 될 때마다 실행될 콜백을 지정합니다.
@@ -22,14 +22,32 @@ const About: NextPage = () => {
    */
   const scrollHandlers: scrollHandlersType = [
     (top, height) => {
-      firstSection.current!.style.setProperty('--scroll', `${top / height}`);
+      /**
+       * FIXME : 변수 명은 알아볼 수 있으면 좋습니다. setProperty 성능 문제도 개선하기
+       */
 
-      firstSectionDescRef.current!.style.opacity = `${easeOutExpo(
-        Math.max(0, Math.min(1, top / (height * 0.75)))
+      // firstSection.current!.style.setProperty('--scroll', `${top / height}`);
+
+      desc.current!.style.opacity = `${easeOutExpo(
+        clamp(top / (height * 0.75), 0, 1)
       )}`;
 
       const t = Math.min(1.5, top / 1000);
-      firstSectionCoverRef.current!.style.transform = `matrix(${t}, 0, 0, ${t}, 0, 0)`;
+      cover.current!.style.transform = `matrix(${t}, 0, 0, ${t}, 0, 0)`;
+
+      const descTop = desc.current!.offsetTop;
+      const descTopThreshold = threshold(descTop, 0.05);
+
+      if (top >= descTopThreshold) {
+        desc.current!.style.setProperty(
+          '--image-opacity',
+          `${clamp(
+            (top - descTopThreshold) / (window.innerHeight / 1.5),
+            0,
+            1
+          )}`
+        );
+      }
     },
   ];
 
@@ -48,7 +66,8 @@ const About: NextPage = () => {
   return (
     <>
       <WakEnterMetadata title='About us'></WakEnterMetadata>
-      <div className={parentStyles.main}>
+      <div className={parentStyles.main}
+      >
         <header>
           <WakEnterHeader></WakEnterHeader>
         </header>
@@ -57,10 +76,7 @@ const About: NextPage = () => {
             <div className={styles.first_section_inner}>
               <div className={styles.video_contents}>
                 <div className={styles.video_contents_inner}>
-                  <div
-                    className={styles.video_cover}
-                    ref={firstSectionCoverRef}
-                  >
+                  <div className={styles.video_cover} ref={cover}>
                     <Image
                       src={'/images/temp/진짜로.png'}
                       alt='왁타버스'
@@ -84,7 +100,7 @@ const About: NextPage = () => {
                   </div>
                 </div>
               </div>
-              <div className={styles.about_desc} ref={firstSectionDescRef}>
+              <div className={styles.about_desc} ref={desc}>
                 <div className={styles.about_desc_inner}>
                   <div className={styles.about_image}>
                     <Image

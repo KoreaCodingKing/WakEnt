@@ -88,41 +88,42 @@ export const useDynamicPageScroll = (
       HTMLElement
     >;
 
-    const wheelHandler = () => {
-      const top = target.scrollTop || window.scrollY;
+    const wheelHandler = () =>
+      requestAnimationFrame(() => {
+        const top = target.scrollTop || window.scrollY;
 
-      const scrolls: [number, number, number][] = [];
+        const scrolls: [number, number, number][] = [];
 
-      for (let i = 0; i < childs.length; i++) {
-        const nextChild = childs[i + 1];
+        for (let i = 0; i < childs.length; i++) {
+          const nextChild = childs[i + 1];
 
-        if (top < childs[i].offsetTop + childs[i].scrollHeight) {
-          scrolls.push([i, top - childs[i].offsetTop, childs[i].scrollHeight]);
-        }
-
-        if (
-          nextChild &&
-          top < nextChild.offsetTop - target.scrollHeight * threshold
-        ) {
-          if (i !== page) {
-            setPage(i);
+          if (top < childs[i].offsetTop + childs[i].scrollHeight) {
+            scrolls.push([i, top - childs[i].offsetTop, childs[i].scrollHeight]);
           }
 
-          break;
-        }
-      }
+          if (
+            nextChild &&
+            top < nextChild.offsetTop - target.scrollHeight * threshold
+          ) {
+            if (i !== page) {
+              setPage(i);
+            }
 
-      if (scroll) {
-        scroll(scrolls);
-      }
-    };
+            break;
+          }
+        }
+
+        if (scroll && scrolls.length) {
+          scroll(scrolls);
+        }
+      });
 
     const evTarget = parent === null ? window : target;
 
     wheelHandler();
 
-    evTarget.addEventListener('wheel', wheelHandler);
-    evTarget.addEventListener('scroll', wheelHandler);
+    evTarget.addEventListener('wheel', wheelHandler, { passive: true });
+    evTarget.addEventListener('scroll', wheelHandler, { passive: true });
 
     return () => {
       evTarget.removeEventListener('wheel', wheelHandler);

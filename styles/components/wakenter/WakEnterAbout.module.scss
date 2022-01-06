@@ -1,4 +1,4 @@
-@import "../../mixin.scss";
+@import '../../mixin.scss';
 
 .section {
   min-height: 100vh;
@@ -6,7 +6,7 @@
   margin: 0 auto;
 }
 
-.section[data-index="0"] {
+.section[data-index='0'] {
   .inner {
     min-height: 460vh;
   }
@@ -22,7 +22,7 @@
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
-  
+
     .video_cover {
       position: relative;
       width: 100%;
@@ -30,7 +30,7 @@
 
       z-index: 2;
     }
-  
+
     .masked {
       z-index: 1;
       overflow: hidden;
@@ -48,7 +48,7 @@
   top: 400vh;
   opacity: 0;
   background: #ffffff;
-  
+
   .about_desc_inner {
     display: flex;
     justify-content: space-between;
@@ -65,10 +65,10 @@
       margin-left: 1vw;
       align-self: center;
       aspect-ratio: 16 / 9;
-      // opacity: 0;
+      opacity: var(--image-opacity, 1);
 
-      // transform: translateX(calc(300px * var(--scroll)));
-  
+      transform: translateX(calc(-300px * (1 - var(--image-opacity))));
+
       img {
         height: 100%;
         min-width: 100%;
@@ -77,17 +77,17 @@
 
     .about_text {
       align-self: center;
-  
+
       .title {
         margin-bottom: 20px;
         font-size: 3.5em;
         letter-spacing: -1px;
       }
-  
+
       .subtitle {
         max-width: 567px;
         align-self: center;
-  
+
         font-weight: 300;
         font-size: 1.18em;
         letter-spacing: -0.3px;
