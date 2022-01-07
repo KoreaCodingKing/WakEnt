@@ -53,6 +53,25 @@
 $link-color: #1667e0;
 $link-current: #0b397e;
 
+@keyframes linkIn {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(300px * var(--index, 1)));
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.overlay.open {
+  .link {
+    transform: translateY(0px);
+    animation: linkIn calc(1250ms * var(--index, 1)) cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
+
 .links {
   display: flex;
   flex-direction: column;

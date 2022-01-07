@@ -34,6 +34,11 @@ const Links = [
   },
 ];
 
+
+interface LinkStyles extends React.CSSProperties {
+  '--index': string
+}
+
 export const IsedolMenuOverlay = ({ open }: IsedolMenuOverlayProps) => {
   const router = useRouter();
 
@@ -55,6 +60,9 @@ export const IsedolMenuOverlay = ({ open }: IsedolMenuOverlayProps) => {
                   styles.link,
                   v.page === router.route && styles.current
                 )}
+                style={{
+                  '--index': `${(i + 1) / (Links.length + 1)}`
+                } as LinkStyles}
                 tabIndex={100}
                 onKeyDown={ev => ev.key === 'Enter' && router.push(v.page)}
               >
