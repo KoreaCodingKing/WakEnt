@@ -1,7 +1,24 @@
 import { RefObject, useEffect, useState } from 'react';
 
+import styles from '../../styles/components/common/Scroll.module.scss';
+
 /**
- * Native 스크롤을 활용한 페이지 전환 감지 함수입니다.
+ * body 스크롤을 잠금할 때 사용하는 Hook입니다.
+ *
+ * @param lock Body Scroll을 비활성화 할 지에 대한 여부
+ */
+export const useBodyLock = (lock: boolean) => {
+  useEffect(() => {
+    document.body.classList[lock ? 'add' : 'remove'](styles.bodyScrollLock);
+
+    return () => {
+      document.body.classList.remove(styles.bodyScrollLock);
+    };
+  }, [lock]);
+};
+
+/**
+ * Native 스크롤을 활용한 페이지 전환 감지 함수입니다. 각 페이지 사이즈가 고정되어 있을 때 사용합니다.
  * @param parent
  * @param pageHeight
  * @param threshold
@@ -41,6 +58,98 @@ export const useScrollPage = (
       target.removeEventListener('scroll', wheelHandler);
     };
   }, [parent.current, page]);
+
+  return page;
+};
+
+interface DynamicScrollOption {
+  debounce?: number
+  callback?: (pages: [number, number, number][]) => void
+}
+
+/**
+ * Native 스크롤을 활용한 페이지 전환 감지 함수입니다. 각 페이지 사이즈가 유동적일때 사용합니다.
+ * @param parent 스크롤을 감시할 요소입니다. null 값이 지정되는 경우 자동으로 body의 스크롤을 감지합니다.
+ * @param pageSelector
+ * @param threshold
+ * @returns
+ */
+export const useDynamicPageScroll = (
+  parent: RefObject<HTMLElement> | null,
+  pageSelector: string,
+  threshold: number,
+  options?: DynamicScrollOption
+) => {
+  const [page, setPage] = useState<number>(0);
+
+  useEffect(() => {
+    const target = parent?.current ?? document.body;
+
+    if (!target) {
+      return;
+    }
+
+    const childs = target.querySelectorAll(pageSelector) as NodeListOf<
+      HTMLElement
+    >;
+
+    const processScroll = () => {
+      const top = target.scrollTop || window.scrollY;
+
+      const scrolls: [number, number, number][] = [];
+
+      for (let i = 0; i < childs.length; i++) {
+        const nextChild = childs[i + 1];
+
+        if (top < childs[i].offsetTop + childs[i].scrollHeight) {
+          scrolls.push([i, top - childs[i].offsetTop, childs[i].scrollHeight]);
+        }
+
+        if (
+          nextChild &&
+          top < nextChild.offsetTop - target.scrollHeight * threshold
+        ) {
+          if (i !== page) {
+            setPage(i);
+          }
+
+          break;
+        }
+      }
+
+      if (options?.callback && scrolls.length) {
+        options.callback(scrolls);
+      }
+    };
+
+    let bounce = 0;
+
+    const wheelHandler = () => {
+      if (options?.debounce) {
+        if (bounce) {
+          clearTimeout(bounce);
+        }
+
+        bounce = setTimeout(processScroll, options.debounce) as unknown as number;
+
+        return;
+      }
+
+      processScroll();
+    };
+
+    const evTarget = parent === null ? window : target;
+
+    wheelHandler();
+
+    evTarget.addEventListener('wheel', wheelHandler, { passive: true });
+    evTarget.addEventListener('scroll', wheelHandler, { passive: true });
+
+    return () => {
+      evTarget.removeEventListener('wheel', wheelHandler);
+      evTarget.removeEventListener('scroll', wheelHandler);
+    };
+  }, [parent?.current, page]);
 
   return page;
 };
@@ -93,8 +202,8 @@ export const useHorizonalPageScroller = (
       pages.forEach((elem, index) => {
         const { width, left } = elem.getBoundingClientRect();
 
-        const condition = left + width / 3 > 0 &&
-          left + width / 1.5 <= window.innerWidth;
+        const condition =
+          left + width / 3 > 0 && left + width / 1.5 <= window.innerWidth;
 
         if (condition) {
           indexes.push(index);
@@ -123,7 +232,7 @@ export const useHorizonalPageScroller = (
         });
       } else if (event.deltaY && Math.abs(event.deltaY) > 1) {
         parent.current.scrollBy({
-          left: event.deltaY
+          left: event.deltaY,
         });
       }
     };

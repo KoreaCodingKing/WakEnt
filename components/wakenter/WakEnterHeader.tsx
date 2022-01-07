@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 interface WakEnterElementProps {
+  className?: string
   clickable?: boolean
   white?: boolean
 }
@@ -23,13 +24,14 @@ const Menus = [
   },
 ];
 
-export const WakEnterLogo = ({ white, clickable }: WakEnterElementProps) => {
+export const WakEnterLogo = ({ white, clickable, className }: WakEnterElementProps) => {
   return (
     <div
       className={concatClass(
         styles.logo,
         white && styles.white,
-        clickable && styles.clickable
+        clickable && styles.clickable,
+        className
       )}
     >
       <div className={styles.logoImage}>

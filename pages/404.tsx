@@ -9,6 +9,7 @@ import styles from '../styles/pages/index.module.scss';
 import { concatClass } from '../utils/class';
 import { useScrollPage } from '../components/common/Scroll';
 import { useRef } from 'react';
+import Image from 'next/image';
 
 const Links = [
   {
@@ -39,7 +40,7 @@ const Home: NextPage = () => {
             <div className={styles.representInner}>
               <div className={styles.hero}>
                 <h1>404</h1>
-                <p>이 사이트에 그런 이름을 가진 페이지는 없습니다.</p>
+                <p>이 사이트에 그런 페이지는 없어요! 방문자넴!!</p>
               </div>
               <div className={styles.links}>
                 {Links.map((v, i) => (
@@ -61,6 +62,10 @@ const Home: NextPage = () => {
               </div>
             </div>
           </section>
+        </div>
+        <div className={styles.signature}>
+          <Image
+            src={'/images/door/404.webp'} layout='fill'></Image>
         </div>
       </div>
     </>

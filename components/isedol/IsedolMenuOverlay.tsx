@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import styles from '../../styles/components/isedol/IsedolMenuOverlay.module.scss';
 import { concatClass } from '../../utils/class';
 import LinkToIcon from '../common/icons/LinkTo';
+import { useBodyLock } from '../common/Scroll';
 import { WakEnterLogo } from '../wakenter/WakEnterHeader';
 
 interface IsedolMenuOverlayProps {
@@ -34,15 +34,6 @@ const Links = [
   },
 ];
 
-const useBodyLock = (lock: boolean) => {
-  useEffect(() => {
-    document.body.classList[lock ? 'add' : 'remove'](styles.bodyScrollLock);
-
-    return () => {
-      document.body.classList.remove(styles.bodyScrollLock);
-    };
-  }, [lock]);
-};
 
 interface LinkStyles extends React.CSSProperties {
   '--index': string

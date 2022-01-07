@@ -8,6 +8,7 @@ import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import styles from '../styles/pages/index.module.scss';
 import { concatClass } from '../utils/class';
 import { useRef } from 'react';
+import Image from 'next/image';
 
 const Links = [
   {
@@ -59,6 +60,10 @@ const Home: NextPage = () => {
               </div>
             </div>
           </section>
+        </div>
+        <div className={styles.signature}>
+          <Image
+            src={'/images/door/door.webp'} layout='fill'></Image>
         </div>
       </div>
     </>

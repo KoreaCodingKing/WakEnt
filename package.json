@@ -9,6 +9,8 @@
     "lint:prod": "NODE_ENV=production next lint"
   },
   "dependencies": {
+    "@types/aos": "^3.0.4",
+    "aos": "^3.0.0-beta.6",
     "cheerio": "^1.0.0-rc.10",
     "eslint-plugin-jsdoc": "^37.4.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",

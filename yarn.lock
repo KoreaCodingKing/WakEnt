@@ -429,6 +429,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/aos@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "@types/aos@npm:3.0.4"
+  checksum: 55c54865df6e0758a32c8ab9a617b63318e0d8a7f7f0b6d02747aa541aa2638e3fd57a8d6f3a4277fcf9a0bffabf9d4e8c95b1d7b54f88859a85fbbd7e10bf2a
+  languageName: node
+  linkType: hard
+
 "@types/cacheable-request@npm:^6.0.1":
   version: 6.0.2
   resolution: "@types/cacheable-request@npm:6.0.2"
@@ -919,6 +926,17 @@ __metadata:
     normalize-path: ^3.0.0
     picomatch: ^2.0.4
   checksum: 985163db2292fac9e5a1e072bf99f1b5baccf196e4de25a0b0b81865ebddeb3b3eb4480734ef0a2ac8c002845396b91aa89121f5b84f93981a4658164a9ec6e9
+  languageName: node
+  linkType: hard
+
+"aos@npm:^3.0.0-beta.6":
+  version: 3.0.0-beta.6
+  resolution: "aos@npm:3.0.0-beta.6"
+  dependencies:
+    classlist-polyfill: ^1.2.0
+    lodash.debounce: ^4.0.8
+    lodash.throttle: ^4.1.1
+  checksum: 7d271deed0b129fca570d539c2ec4341997baa2b3cbcbc62edc4638b0746667ef90b00d10d6c9139a70b093b15d3dfc7c1b1028de6eb1a2207063ae06583397e
   languageName: node
   linkType: hard
 
@@ -1478,6 +1496,13 @@ __metadata:
     inherits: ^2.0.1
     safe-buffer: ^5.0.1
   checksum: 47d3568dbc17431a339bad1fe7dff83ac0891be8206911ace3d3b818fc695f376df809bea406e759cdea07fff4b454fa25f1013e648851bec790c1d75763032e
+  languageName: node
+  linkType: hard
+
+"classlist-polyfill@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "classlist-polyfill@npm:1.2.0"
+  checksum: 43ff10af5e75d0347f820d77536a12f981adbf5be9c0ff5c3c4823693c8daacf8aa487eac1a9704b73f4dd74d811e5145b4465fe606926351cdfca5bb9b0914e
   languageName: node
   linkType: hard
 
@@ -3526,6 +3551,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.debounce@npm:^4.0.8":
+  version: 4.0.8
+  resolution: "lodash.debounce@npm:4.0.8"
+  checksum: a3f527d22c548f43ae31c861ada88b2637eb48ac6aa3eb56e82d44917971b8aa96fbb37aa60efea674dc4ee8c42074f90f7b1f772e9db375435f6c83a19b3bc6
+  languageName: node
+  linkType: hard
+
 "lodash.merge@npm:^4.6.2":
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
@@ -3537,6 +3569,13 @@ __metadata:
   version: 4.7.0
   resolution: "lodash.sortby@npm:4.7.0"
   checksum: db170c9396d29d11fe9a9f25668c4993e0c1331bcb941ddbd48fb76f492e732add7f2a47cfdf8e9d740fa59ac41bbfaf931d268bc72aab3ab49e9f89354d718c
+  languageName: node
+  linkType: hard
+
+"lodash.throttle@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "lodash.throttle@npm:4.1.1"
+  checksum: 129c0a28cee48b348aef146f638ef8a8b197944d4e9ec26c1890c19d9bf5a5690fe11b655c77a4551268819b32d27f4206343e30c78961f60b561b8608c8c805
   languageName: node
   linkType: hard
 
@@ -5626,11 +5665,13 @@ __metadata:
   resolution: "wak-enter@workspace:."
   dependencies:
     "@next/eslint-plugin-next": ^12.0.7
+    "@types/aos": ^3.0.4
     "@types/node": 17.0.2
     "@types/react": 17.0.37
     "@typescript-eslint/eslint-plugin": ^5.8.0
     "@typescript-eslint/parser": ^5.8.0
     "@yarnpkg/sdks": ^2.5.1-rc.6
+    aos: ^3.0.0-beta.6
     cheerio: ^1.0.0-rc.10
     eslint: ^8.5.0
     eslint-config-next: 12.0.7
