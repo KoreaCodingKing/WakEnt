@@ -62,6 +62,11 @@ export const useScrollPage = (
   return page;
 };
 
+interface DynamicScrollOption {
+  debounce?: number
+  callback?: (pages: [number, number, number][]) => void
+}
+
 /**
  * Native 스크롤을 활용한 페이지 전환 감지 함수입니다. 각 페이지 사이즈가 유동적일때 사용합니다.
  * @param parent 스크롤을 감시할 요소입니다. null 값이 지정되는 경우 자동으로 body의 스크롤을 감지합니다.
@@ -73,7 +78,7 @@ export const useDynamicPageScroll = (
   parent: RefObject<HTMLElement> | null,
   pageSelector: string,
   threshold: number,
-  scroll?: (pages: [number, number, number][]) => void
+  options?: DynamicScrollOption
 ) => {
   const [page, setPage] = useState<number>(0);
 
@@ -88,35 +93,50 @@ export const useDynamicPageScroll = (
       HTMLElement
     >;
 
-    const wheelHandler = () =>
-      requestAnimationFrame(() => {
-        const top = target.scrollTop || window.scrollY;
+    const processScroll = () => {
+      const top = target.scrollTop || window.scrollY;
 
-        const scrolls: [number, number, number][] = [];
+      const scrolls: [number, number, number][] = [];
 
-        for (let i = 0; i < childs.length; i++) {
-          const nextChild = childs[i + 1];
+      for (let i = 0; i < childs.length; i++) {
+        const nextChild = childs[i + 1];
 
-          if (top < childs[i].offsetTop + childs[i].scrollHeight) {
-            scrolls.push([i, top - childs[i].offsetTop, childs[i].scrollHeight]);
-          }
-
-          if (
-            nextChild &&
-            top < nextChild.offsetTop - target.scrollHeight * threshold
-          ) {
-            if (i !== page) {
-              setPage(i);
-            }
-
-            break;
-          }
+        if (top < childs[i].offsetTop + childs[i].scrollHeight) {
+          scrolls.push([i, top - childs[i].offsetTop, childs[i].scrollHeight]);
         }
 
-        if (scroll && scrolls.length) {
-          scroll(scrolls);
+        if (
+          nextChild &&
+          top < nextChild.offsetTop - target.scrollHeight * threshold
+        ) {
+          if (i !== page) {
+            setPage(i);
+          }
+
+          break;
         }
-      });
+      }
+
+      if (options?.callback && scrolls.length) {
+        options.callback(scrolls);
+      }
+    };
+
+    let bounce = 0;
+
+    const wheelHandler = () => {
+      if (options?.debounce) {
+        if (bounce) {
+          clearTimeout(bounce);
+        }
+
+        bounce = setTimeout(processScroll, options.debounce) as unknown as number;
+
+        return;
+      }
+
+      processScroll();
+    };
 
     const evTarget = parent === null ? window : target;
 
