@@ -20,6 +20,8 @@ const About: NextPage = () => {
 
   const [whiteLogo, setWhiteLogo] = useState<boolean>(true);
 
+  const video = useRef<HTMLVideoElement>(null);
+
   /**
    * 페이지가 스크롤 될 때마다 실행될 콜백을 지정합니다.
    * 배열의 각 인덱스는 페이지의 인덱스입니다.
@@ -30,7 +32,6 @@ const About: NextPage = () => {
         const desc = (easeOutExpo(top / (height)) * 10) - 9 + 0.3;
         const cover = 0.99 - easeOutExpo((top - height / 10) / (height * 0.75));
 
-        console.log(desc);
         descOpacity.set(desc);
         coverOpacity.set(cover);
 
@@ -38,6 +39,14 @@ const About: NextPage = () => {
       }
 
       setWhiteLogo(top < height / 3);
+
+      if (video.current) {
+        if (!video.current.paused && top > window.innerHeight * 1.2) {
+          video.current.pause();
+        } else if (video.current.paused && top < window.innerHeight * 1.2) {
+          video.current.play();
+        }
+      }
     },
   ];
 
@@ -50,7 +59,7 @@ const About: NextPage = () => {
         const [page, top, height] = p;
 
         if (scrollHandlers[page]) {
-          requestAnimationFrame(() => scrollHandlers[page](top, height));
+          scrollHandlers[page](top, height);
         }
       }),
   });
@@ -75,7 +84,7 @@ const About: NextPage = () => {
                 className={styles.video}
                 style={{ opacity: coverOpacity }}
               >
-                <video autoPlay playsInline muted loop>
+                <video autoPlay playsInline muted loop ref={video}>
                   <source src='/videos/wakenter-full.webm'></source>
                 </video>
               </motion.div>

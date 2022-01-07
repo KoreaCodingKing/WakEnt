@@ -118,7 +118,7 @@ export const useDynamicPageScroll = (
       }
 
       if (options?.callback && scrolls.length) {
-        options.callback(scrolls);
+        requestAnimationFrame(() => options.callback!(scrolls));
       }
     };
 
