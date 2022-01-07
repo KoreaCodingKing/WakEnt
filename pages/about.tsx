@@ -7,18 +7,18 @@ import WakEnterMetadata from '../components/wakenter/Meta';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useDynamicPageScroll } from '../components/common/Scroll';
-import { clamp, easeOutExpo, threshold } from '../utils/number';
-import { motion } from 'framer-motion';
+import { clamp, easeInExpo, easeOutExpo, threshold } from '../utils/number';
+import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
+import Centerize from '../components/common/Centerize';
 
 type scrollHandlersType = ((top: number, height: number) => void)[]
 
 const About: NextPage = () => {
-  const firstSection = useRef<HTMLDivElement>(null);
-  const coverRef = useRef<HTMLDivElement>(null);
-  const descRef = useRef<HTMLDivElement>(null);
+  const descOpacity = useMotionValue(0);
+  const coverScale = useMotionValue(1);
+  const coverOpacity = useMotionValue(1);
 
-  const [descOpacity, setDescOpacity] = useState<number>(0);
-  const [coverMatrix, setCoverMatrix] = useState<number>(0.5);
+  const [whiteLogo, setWhiteLogo] = useState<boolean>(true);
 
   /**
    * 페이지가 스크롤 될 때마다 실행될 콜백을 지정합니다.
@@ -26,71 +26,72 @@ const About: NextPage = () => {
    */
   const scrollHandlers: scrollHandlersType = [
     (top, height) => {
-      /**
-       * FIXME : 변수 명은 알아볼 수 있으면 좋습니다. setProperty 성능 문제도 개선하기
-       */
+      if (top < height / 2) {
+        const desc = easeOutExpo(top / (height * 0.75));
+        const cover = 1 - easeOutExpo((top - height / 10) / (height * 0.75));
 
-      setDescOpacity(easeOutExpo(clamp(top / (height * 0.75), 0, 1)));
-      setCoverMatrix(top);
+        descOpacity.set(desc);
+        coverOpacity.set(cover);
 
-      const descTop = descRef.current!.offsetTop;
-      const descTopThreshold = threshold(descTop, 0.05);
+        coverScale.set(0.1 + 30 * easeInExpo(top / height));
+      }
 
-      descRef.current!.style.setProperty(
-        '--image-opacity',
-        `${clamp((top - descTopThreshold) / (window.innerHeight * 0.07), 0, 1)}`
-      );
-    }
+      setWhiteLogo(top < height / 3);
+    },
   ];
 
-  const aboutContainer = useRef<HTMLDivElement>(null);
+  const container = useRef<HTMLDivElement>(null);
 
-  useDynamicPageScroll(aboutContainer, `.${styles.section}`, 0, pages =>
+  useDynamicPageScroll(container, `.${styles.section}`, 0, pages =>
     pages.forEach(p => {
       const [page, top, height] = p;
 
       if (scrollHandlers[page]) {
-        scrollHandlers[page](top, height);
+        requestAnimationFrame(() => scrollHandlers[page](top, height));
       }
     })
   );
+
+  const coverScaleTemplate = useMotionTemplate`scale(${coverScale})`;
 
   return (
     <>
       <WakEnterMetadata title='About us'></WakEnterMetadata>
       <div className={parentStyles.main}>
         <header>
-          <WakEnterHeader></WakEnterHeader>
+          <WakEnterHeader white={whiteLogo}></WakEnterHeader>
         </header>
-        <div className={styles.about_container} ref={aboutContainer}>
-          <section className={styles.section} data-index={0} ref={firstSection}>
+        <div ref={container}>
+          <section className={styles.section} data-index={0}>
+            <Centerize>
+              <motion.div
+                className={styles.video}
+                style={{ opacity: coverOpacity }}
+              >
+                <video autoPlay playsInline muted loop>
+                  <source src='/videos/wakenter-full.webm'></source>
+                </video>
+              </motion.div>
+            </Centerize>
             <div className={styles.first_section_inner}>
-              <div className={styles.video_contents}>
+              <motion.div
+                className={styles.video_contents}
+                style={{ opacity: coverOpacity }}
+              >
                 <div className={styles.video_contents_inner}>
                   <motion.div
                     className={styles.video_cover}
-                    ref={coverRef}
-                    animate={{
-                      transform: `matrix(${coverMatrix+0.5}, 0, 0, ${coverMatrix+0.5}, 0, 0)`,
-                    }}
-                    transition={{ type: 'tween' }}
+                    style={{ transform: coverScaleTemplate }}
+                    transition={{ type: 'tween', duration: 0.05 }}
                   >
                     <p className={styles.cover}>WAK Entertainment</p>
                   </motion.div>
-                  <div className={styles.masked}>
-                    <div className={styles.inline_video_container}>
-                      <div className={styles.inline_video_media}>
-                        {/* ToDo: 이미지 삽입 */}
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
+              </motion.div>
               <motion.div
                 className={styles.about_desc}
-                ref={descRef}
-                animate={{ opacity: descOpacity }}
-                transition={{ type: 'spring', stiffness: 200 }}
+                style={{ opacity: descOpacity }}
+                transition={{ type: 'tween' }}
               >
                 <div className={styles.about_desc_inner}>
                   <div className={styles.about_image}>

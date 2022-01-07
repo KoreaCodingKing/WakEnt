@@ -2,6 +2,9 @@
 export const easeOutExpo = (x: number): number =>
   x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
 
+export const easeInExpo = (x: number): number =>
+  x === 0 ? 0 : Math.pow(2, 10 * x - 10);
+
 /**
  * 어느 숫자의 thres% 만큼을 뺀 값을 반환합니다.
  * ex: threshold(1000, 0.01) === 1000 * 0.99
