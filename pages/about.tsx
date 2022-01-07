@@ -7,16 +7,16 @@ import WakEnterMetadata from '../components/wakenter/Meta';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useDynamicPageScroll } from '../components/common/Scroll';
-import { clamp, easeInExpo, easeOutExpo, threshold } from '../utils/number';
-import { motion, useMotionTemplate, useMotionValue } from 'framer-motion';
+import { easeInExpo, easeOutExpo } from '../utils/number';
+import { motion, useMotionTemplate, useMotionValue, useSpring } from 'framer-motion';
 import Centerize from '../components/common/Centerize';
 
 type scrollHandlersType = ((top: number, height: number) => void)[]
 
 const About: NextPage = () => {
   const descOpacity = useMotionValue(0);
-  const coverScale = useMotionValue(1);
   const coverOpacity = useMotionValue(1);
+  const coverScale = useMotionValue(1);
 
   const [whiteLogo, setWhiteLogo] = useState<boolean>(true);
 
@@ -27,8 +27,8 @@ const About: NextPage = () => {
   const scrollHandlers: scrollHandlersType = [
     (top, height) => {
       if (top < height / 2) {
-        const desc = easeOutExpo(top / (height * 0.75));
-        const cover = 1 - easeOutExpo((top - height / 10) / (height * 0.75));
+        const desc = easeOutExpo(top / (height * 0.75)) + 0.01;
+        const cover = 0.99 - easeOutExpo((top - height / 10) / (height * 0.75));
 
         descOpacity.set(desc);
         coverOpacity.set(cover);
@@ -42,17 +42,23 @@ const About: NextPage = () => {
 
   const container = useRef<HTMLDivElement>(null);
 
-  useDynamicPageScroll(container, `.${styles.section}`, 0, pages =>
-    pages.forEach(p => {
-      const [page, top, height] = p;
+  useDynamicPageScroll(container, `.${styles.section}`, 0, {
+    debounce: 16,
+    callback: pages =>
+      pages.forEach(p => {
+        const [page, top, height] = p;
 
-      if (scrollHandlers[page]) {
-        requestAnimationFrame(() => scrollHandlers[page](top, height));
-      }
-    })
-  );
+        if (scrollHandlers[page]) {
+          requestAnimationFrame(() => scrollHandlers[page](top, height));
+        }
+      }),
+  });
 
-  const coverScaleTemplate = useMotionTemplate`scale(${coverScale})`;
+  const descSpring = useSpring(descOpacity, { stiffness: 1000, damping: 100 });
+  const coverOpacitySpring = useSpring(coverOpacity, { stiffness: 1000, damping: 100 });
+  const coverScaleSpring = useSpring(coverScale, { stiffness: 1000, damping: 100 });
+
+  const coverScaleTemplate = useMotionTemplate`scale(${coverScaleSpring})`;
 
   return (
     <>
@@ -76,13 +82,12 @@ const About: NextPage = () => {
             <div className={styles.first_section_inner}>
               <motion.div
                 className={styles.video_contents}
-                style={{ opacity: coverOpacity }}
+                style={{ opacity: coverOpacitySpring }}
               >
                 <div className={styles.video_contents_inner}>
                   <motion.div
                     className={styles.video_cover}
                     style={{ transform: coverScaleTemplate }}
-                    transition={{ type: 'tween', duration: 0.05 }}
                   >
                     <p className={styles.cover}>WAK Entertainment</p>
                   </motion.div>
@@ -90,8 +95,7 @@ const About: NextPage = () => {
               </motion.div>
               <motion.div
                 className={styles.about_desc}
-                style={{ opacity: descOpacity }}
-                transition={{ type: 'tween' }}
+                style={{ opacity: descSpring }}
               >
                 <div className={styles.about_desc_inner}>
                   <div className={styles.about_image}>
