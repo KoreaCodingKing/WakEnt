@@ -27,9 +27,10 @@ const About: NextPage = () => {
   const scrollHandlers: scrollHandlersType = [
     (top, height) => {
       if (top < height / 2) {
-        const desc = easeOutExpo(top / (height * 0.75)) + 0.01;
+        const desc = (easeOutExpo(top / (height)) * 10) - 9 + 0.3;
         const cover = 0.99 - easeOutExpo((top - height / 10) / (height * 0.75));
 
+        console.log(desc);
         descOpacity.set(desc);
         coverOpacity.set(cover);
 
@@ -107,14 +108,16 @@ const About: NextPage = () => {
                       alt='왁엔터 사옥'
                     ></Image>
                   </div>
-                  <div className={styles.about_text}>
+                  <motion.div
+                    className={styles.about_text}
+                    style={{ opacity: descOpacity }}>
                     <h2 className={styles.title}>Who are we?</h2>
                     <p className={styles.subtitle}>
                       WAK Entertainment는 인천 송도 왁엔터로에 위치한
                       엔터테이먼트 회사로, 2021년 8월에 설립되어 현재까지 다양한
                       컨텐츠로 보는 이들을 하여금 즐거움을 선사하고 있습니다.
                     </p>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
