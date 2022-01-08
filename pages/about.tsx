@@ -1,14 +1,16 @@
 import { NextPage } from 'next';
+import { useRef, useState } from 'react';
+import { useDynamicPageScroll } from '../components/common/Scroll';
 
 import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import parentStyles from '../styles/pages/index.module.scss';
 import styles from '../styles/components/wakenter/WakEnterAbout.module.scss';
 import WakEnterMetadata from '../components/wakenter/Meta';
-import { useRef, useState } from 'react';
-import { useDynamicPageScroll } from '../components/common/Scroll';
-import FirstSection from '../components/wakenter/AboutPageSections/FirstSection';
 
-type scrollHandler = (top: number, height: number) => void
+import FirstSection from '../components/wakenter/AboutPageSections/FirstSection';
+import SecondSection from '../components/wakenter/AboutPageSections/SecondSection';
+
+export type scrollHandler = (top: number, height: number) => void
 
 export interface AboutSectionProps {
   className?: string
@@ -17,7 +19,6 @@ export interface AboutSectionProps {
   setHeaderWhite: (white: boolean) => void
   onScroll: (index: number, callback: scrollHandler) => void
 }
-
 
 const About: NextPage = () => {
   const container = useRef<HTMLDivElement>(null);
@@ -64,7 +65,9 @@ const About: NextPage = () => {
             setHeaderWhite={setWhiteHeader}
             onScroll={listenScrollHandler}
           ></FirstSection>
-          <section className={styles.section} data-index={1}></section>
+          <SecondSection
+            className={styles.section}
+            onScroll={listenScrollHandler}></SecondSection>
           <section className={styles.section} data-index={2}></section>
           <section className={styles.section} data-index={3}></section>
         </div>
