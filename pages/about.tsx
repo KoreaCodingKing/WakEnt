@@ -7,6 +7,7 @@ import WakEnterMetadata from '../components/wakenter/Meta';
 import { useRef, useState } from 'react';
 import { useDynamicPageScroll } from '../components/common/Scroll';
 import FirstSection from '../components/wakenter/AboutPageSections/FirstSection';
+import Footer from '../components/wakenter/WakEnterFooter';
 
 type scrollHandler = (top: number, height: number) => void
 
@@ -26,7 +27,6 @@ const About: NextPage = () => {
   const [scrollHandlers, setScrollHandlers] = useState<scrollHandler[]>([]);
 
   const page = useDynamicPageScroll(container, `.${styles.section}`, 0, {
-    debounce: 16,
     callback: pages => {
       if (!pages[page]) {
         return;
@@ -66,7 +66,7 @@ const About: NextPage = () => {
           ></FirstSection>
           <section className={styles.section} data-index={1}></section>
           <section className={styles.section} data-index={2}></section>
-          <section className={styles.section} data-index={3}></section>
+          <Footer></Footer>
         </div>
       </div>
     </>
