@@ -11,8 +11,12 @@ interface SecondSectionProps {
 }
 
 interface OfficeImages {
-  path: string;
+  path: string,
   desc: string
+}
+
+interface ImageContainerCss extends React.CSSProperties {
+  '--index': string;
 }
 
 const officeImages: OfficeImages[] = [
@@ -40,13 +44,14 @@ const officeImages: OfficeImages[] = [
     path: '/images/building/officetemp/bg_office_audio_visual_room.png',
     desc: '왁엔터테인먼트 시청각실'
   }
-]
+];
 
 const SecondSection = ({className, onScroll}: SecondSectionProps) => {
 
   useEffect(() => {
     onScroll(1, (top, height) => {
-      // ToDo 스크롤 마다 이미지 보여주기.
+      console.log('top', top);
+      console.log('height', height);
     });
   }, []);
 
@@ -55,15 +60,20 @@ const SecondSection = ({className, onScroll}: SecondSectionProps) => {
     <section className={concatClass(className)} data-index={1}>
       <div className={styles.second_section_inner}>
         {officeImages.map((officeImage: OfficeImages, index: number) => {
-          <div
-            key={index}
-            className={styles.image_container}>
-            <div className={styles.image_inner_container}>
-              <Image
-                src={officeImage.path}
-                alt={officeImage.desc}></Image>
+          return (
+            <div
+              key={index}
+              className={styles.image_container}
+              style={{
+                '--index': `${index}`
+              } as ImageContainerCss}>
+              <div className={styles.image_inner_container}>
+                <Image
+                  src={officeImage.path}
+                  alt={officeImage.desc}></Image>
+              </div>
             </div>
-          </div>
+          );
         })}
       </div>
     </section>

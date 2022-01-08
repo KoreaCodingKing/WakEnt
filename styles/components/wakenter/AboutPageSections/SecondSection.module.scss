@@ -1,0 +1,8 @@
+@import '../../../mixin.scss';
+
+.image_inner_container {
+    z-index: var(--index);
+    position: relative;
+    width: 562px;
+    height: 316px;
+}
