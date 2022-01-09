@@ -67,6 +67,7 @@ const About: NextPage = () => {
           ></FirstSection>
           <SecondSection
             className={styles.section}
+            current={page === 1}
             onScroll={listenScrollHandler}></SecondSection>
           <section className={styles.section} data-index={2}></section>
           <section className={styles.section} data-index={3}></section>

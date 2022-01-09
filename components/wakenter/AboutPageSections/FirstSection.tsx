@@ -52,6 +52,10 @@ const FirstSection = ({
    */
   useEffect(() => {
     onScroll(0, (top, height) => {
+      if (!current) {
+        return;
+      }
+
       const progress = top / height;
 
       if (top < height / 2) {
