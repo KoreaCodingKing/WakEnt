@@ -112,7 +112,7 @@ const SecondSection = ({className, current, onScroll}: SecondSectionProps) => {
 
   const imageMotionTemplate = officeImages.map((officeImage: OfficeImage) => {
     return useMotionTemplate`translateX(${officeImage.translateX}%) translateY(${officeImage.translateY}%)`
-  })
+  }) as MotionValue<string>[];
 
   return(
     <section className={concatClass(className)} data-index={1}>
