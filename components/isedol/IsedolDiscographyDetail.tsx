@@ -56,9 +56,9 @@ export const IsedolDiscographyDetail = ({ data }: DiscographyDetailProps) => {
           {data.links &&
             data.links.map((v, i) => (
               <Link key={`album-link-${i}`} href={v.link} passHref>
-                <p className={styles.link}>
+                <a className={styles.link}>
                   <span>{v.title}</span> <LinkToIcon></LinkToIcon>
-                </p>
+                </a>
               </Link>
             ))}
         </div>
@@ -69,9 +69,9 @@ export const IsedolDiscographyDetail = ({ data }: DiscographyDetailProps) => {
           {data.streaming &&
             data.streaming.map((v, i) => (
               <Link key={`album-link-${i}`} href={v.link} passHref>
-                <p className={styles.link}>
+                <a className={styles.link}>
                   <span>{v.title}</span> <LinkToIcon></LinkToIcon>
-                </p>
+                </a>
               </Link>
             ))}
         </div>

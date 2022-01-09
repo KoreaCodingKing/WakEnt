@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 
 import Image from 'next/image';
 
@@ -9,7 +9,7 @@ import Head from 'next/head';
 import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
 import PageIndicator from '../common/PageIndicator';
 
-const usePageAutoScroll = (
+const usePageTurner = (
   paused: boolean,
   set: Dispatch<SetStateAction<number>>,
   current: number,
@@ -31,25 +31,27 @@ const usePageAutoScroll = (
   }, [current, paused]);
 };
 
+
+const slides = [
+  {
+    image: '/images/bg_rewind.jpg',
+    title: 'RE : WIND',
+    subtitle: '2021.12.22 MV Released',
+    youtube: 'fgSXAKsq-Vo',
+    color: '#222121',
+  },
+  {
+    image: '/images/bg_christmas_cover.jpg',
+    title: `It's Beginning To Look A Lot Like Christmas`,
+    subtitle: '2021.12.23 Christmas Special Cover',
+    youtube: 'kNPykP_9wOQ',
+    color: '#221511',
+  },
+];
+
 export const Main: NextPage = () => {
   const [pauseAutoScroll] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const slides = [
-    {
-      image: '/images/bg_rewind.jpg',
-      title: 'RE : WIND',
-      subtitle: '2021.12.22 MV Released',
-      youtube: 'fgSXAKsq-Vo',
-      color: '#222121',
-    },
-    {
-      image: '/images/bg_christmas_cover.jpg',
-      title: `It's Beginning To Look A Lot Like Christmas`,
-      subtitle: '2021.12.23 Christmas Special Cover',
-      youtube: 'kNPykP_9wOQ',
-      color: '#221511',
-    },
-  ];
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const [openPlayer, setOpenPlayer] = useState<boolean>(false);
   const [youtubeID, setYoutubeID] = useState<string>('');
@@ -60,11 +62,12 @@ export const Main: NextPage = () => {
   };
 
   const scrollDelay = 7500;
+  const slidesRef = useRef<HTMLDivElement>(null);
 
-  usePageAutoScroll(
+  usePageTurner(
     openPlayer || pauseAutoScroll,
-    setCurrentIndex,
-    currentIndex,
+    setCurrentSlide,
+    currentSlide,
     slides.length - 1,
     scrollDelay
   );
@@ -72,7 +75,7 @@ export const Main: NextPage = () => {
   return (
     <div className={styles.isedol_main__container}>
       <Head>
-        <meta name='theme-color' content={slides[currentIndex].color}></meta>
+        <meta name='theme-color' content={slides[currentSlide].color}></meta>
       </Head>
       <YouTubePlayerOverlay
         id={youtubeID}
@@ -84,7 +87,7 @@ export const Main: NextPage = () => {
           <Image
             className={concatClass(
               styles.backgroundImage,
-              currentIndex === i && styles.active
+              currentSlide === i && styles.active
             )}
             blurDataURL={v.image}
             placeholder='blur'
@@ -95,29 +98,33 @@ export const Main: NextPage = () => {
           />
         ))}
       </div>
-      {slides.map((v, i) => (
-        <section
-          key={`page-${i}`}
-          data-current={currentIndex === i}
-          className={styles.page}
-        >
-          <h2 className={styles.isedol_main__title}>{v.title}</h2>
-          <div className={styles.isedol_main__subtitle_box}>
-            <p className={styles.subtitle}>{v.subtitle}</p>
-            {v.youtube && (
-              <button
-                className={styles.play_btn}
-                onClick={() => openYouTube(v.youtube)}
-              ></button>
-            )}
-          </div>
-        </section>
-      ))}
+      <div className={styles.slides} ref={slidesRef}>
+        {slides.map((v, i) => (
+          <section
+            key={`page-${i}`}
+            data-current={currentSlide === i}
+            className={styles.page}
+          >
+            <div className={styles.contents}>
+              <h2 className={styles.title}>{v.title}</h2>
+              <div className={styles.subtitleBox}>
+                <p className={styles.subtitle}>{v.subtitle}</p>
+                {v.youtube && (
+                  <button
+                    className={styles.play_btn}
+                    onClick={() => openYouTube(v.youtube)}
+                  ></button>
+                )}
+              </div>
+            </div>
+          </section>
+        ))}
+      </div>
       <div className={styles.page_indicator}>
         <PageIndicator
-          page={currentIndex}
+          page={currentSlide}
           pageCount={slides.length}
-          setPage={to => setCurrentIndex(to)}
+          setPage={to => setCurrentSlide(to)}
           slide={scrollDelay}
           playSlide={!openPlayer && !pauseAutoScroll}
         ></PageIndicator>
