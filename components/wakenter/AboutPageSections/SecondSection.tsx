@@ -65,13 +65,14 @@ const SecondSection = ({className, onScroll}: SecondSectionProps) => {
       console.log('top', top);
       console.log('height', height);
 
-      if ((height / top) * 100 > 80) {
-        officeImages.forEach((officeImage: OfficeImage, index: number) => {
-          // 스크롤 이후 이미지 위치 이동.
-          // transition 속성 추가.
-        });
+      if ((height / top) * 100 < 80) {
         return;
       }
+
+      officeImages.forEach((officeImage: OfficeImage, index: number) => {
+        // 스크롤 이후 이미지 위치 이동.
+        // transition 속성 추가.
+      });
     });
   }, []);
 
