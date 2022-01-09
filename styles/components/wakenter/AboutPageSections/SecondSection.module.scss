@@ -1,12 +1,15 @@
 @import '../../../mixin.scss';
 
 .second_section_inner {
-  position: relative;
-  width: 100%;
-  min-width: 1000px;
-  max-width: 1800px;
-  min-height: 100vh;
-  margin: 0 auto;
+  position: sticky;
+  top: 30%;
+
+  .inner_wrapper {
+    width: 100%;
+    min-width: 1000px;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
 }
 
 .image_container {

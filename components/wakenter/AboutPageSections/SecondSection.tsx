@@ -59,7 +59,7 @@ const SecondSection = ({className, onScroll}: SecondSectionProps) => {
     {
       path: '/images/building/officetemp/bg_office_audio_visual_room.png',
       desc: '왁엔터테인먼트 시청각실',
-      left: useMotionValue(60),
+      left: useMotionValue(70),
       transform: useMotionValue(50),
       top: useMotionValue(20)
     }
@@ -82,29 +82,30 @@ const SecondSection = ({className, onScroll}: SecondSectionProps) => {
     });
   }, []);
 
-  // ToDo: 이미지 디자인 작업
   return(
     <section className={concatClass(className)} data-index={1}>
       <div className={styles.second_section_inner}>
-        {officeImages.map((officeImage: OfficeImage, index: number) => {
-          return (
-            <motion.div
-              key={index}
-              className={styles.image_container}
-              style={{
-                zIndex: index,
-                left: `${officeImages[index].left.get()}%`,
-                translateX: `${-officeImages[index].transform.get()}%`,
-                top: `${officeImages[index].top.get()}vh`
-              }}>
-              <div className={styles.image_inner_container}>
-                <Image
-                  src={officeImage.path}
-                  alt={officeImage.desc}></Image>
-              </div>
-            </motion.div>
-          );
-        })}
+        <div className={styles.inner_wrapper}>
+          {officeImages.map((officeImage: OfficeImage, index: number) => {
+            return (
+              <motion.div
+                key={index}
+                className={styles.image_container}
+                style={{
+                  zIndex: index,
+                  left: `${officeImages[index].left.get()}%`,
+                  translateX: `${-officeImages[index].transform.get()}%`,
+                  top: `${officeImages[index].top.get()}vh`
+                }}>
+                <div className={styles.image_inner_container}>
+                  <Image
+                    src={officeImage.path}
+                    alt={officeImage.desc}></Image>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
