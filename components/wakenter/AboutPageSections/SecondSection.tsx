@@ -15,46 +15,52 @@ interface OfficeImage {
   path: string,
   desc: string,
   left: MotionValue<number>,
+  transform: MotionValue<number>,
   top: MotionValue<number>
 }
 
 const SecondSection = ({className, onScroll}: SecondSectionProps) => {
-  // ToDo: 이미지 기본 위치 지정 필요
   const officeImages: OfficeImage[] = [
     {
       path: '/images/building/officetemp/bg_office_enterance.png',
       desc: '왁엔터테인먼트 입구',
-      left: useMotionValue(15),
+      left: useMotionValue(30),
+      transform: useMotionValue(50),
       top: useMotionValue(0)
     },
     {
       path: '/images/building/officetemp/bg_office_enterance_door.png',
       desc: '왁엔터테인먼트 입구 현관',
-      left: useMotionValue(45),
+      left: useMotionValue(50),
+      transform: useMotionValue(50),
       top: useMotionValue(0)
     },
     {
       path: '/images/building/officetemp/bg_office_info.png',
       desc: '왁엔터테인먼트 안내데스크',
-      left: useMotionValue(75),
+      left: useMotionValue(70),
+      transform: useMotionValue(50),
       top: useMotionValue(0)
     },
     {
       path: '/images/building/officetemp/bg_office_hallway.png',
       desc: '왁엔터테인먼트 사무실 복도',
-      left: useMotionValue(15),
+      left: useMotionValue(30),
+      transform: useMotionValue(50),
       top: useMotionValue(20)
     },
     {
       path: '/images/building/officetemp/bg_office_lounge.png',
       desc: '왁엔터테인먼트 라운지',
-      left: useMotionValue(45),
+      left: useMotionValue(50),
+      transform: useMotionValue(50),
       top: useMotionValue(20)
     },
     {
       path: '/images/building/officetemp/bg_office_audio_visual_room.png',
       desc: '왁엔터테인먼트 시청각실',
-      left: useMotionValue(75),
+      left: useMotionValue(60),
+      transform: useMotionValue(50),
       top: useMotionValue(20)
     }
   ];
@@ -65,7 +71,7 @@ const SecondSection = ({className, onScroll}: SecondSectionProps) => {
       console.log('top', top);
       console.log('height', height);
 
-      if ((height / top) * 100 < 80) {
+      if ((top / height) * 100 < 80) {
         return;
       }
 
@@ -87,8 +93,9 @@ const SecondSection = ({className, onScroll}: SecondSectionProps) => {
               className={styles.image_container}
               style={{
                 zIndex: index,
-                left: officeImages[index].left,
-                top: officeImages[index].top 
+                left: `${officeImages[index].left.get()}%`,
+                translateX: `${-officeImages[index].transform.get()}%`,
+                top: `${officeImages[index].top.get()}vh`
               }}>
               <div className={styles.image_inner_container}>
                 <Image
