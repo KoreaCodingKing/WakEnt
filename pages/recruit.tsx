@@ -167,7 +167,7 @@ const useIsSafari = () => {
 };
 
 const About: NextPage = () => {
-  const page = useDynamicPageScroll(null, `.${styles.section}`, 0.05);
+  const page = useDynamicPageScroll(null, `.${styles.section}`, 0.01);
 
   const [positionCategory, setPositionCategory] = useState<CategoryKeys | null>(
     null

@@ -40,7 +40,7 @@ const Home: NextPage = () => {
             <div className={styles.representInner}>
               <div className={styles.hero}>
                 <h1>404</h1>
-                <p>이 사이트에 그런 페이지는 없어요! 방문자넴!!</p>
+                <p>그런 페이지는 없습니다.</p>
               </div>
               <div className={styles.links}>
                 {Links.map((v, i) => (

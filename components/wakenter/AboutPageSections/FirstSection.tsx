@@ -31,7 +31,7 @@ const FirstSection = ({
    */
   const descOpacity = useMotionValue(0);
   const coverOpacity = useMotionValue(1);
-  const coverScale = useMotionValue(1);
+  const coverScale = useMotionValue(0.1);
 
   const descSpring = useSpring(descOpacity, { stiffness: 1000, damping: 100 });
   const coverOpacitySpring = useSpring(coverOpacity, {
