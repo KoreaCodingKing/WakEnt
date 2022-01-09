@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import { motion, MotionValue, useMotionValue } from 'framer-motion';
 
 import styles from '../../../styles/components/wakenter/AboutPageSections/SecondSection.module.scss';
 import { concatClass } from '../../../utils/class';
@@ -13,10 +14,6 @@ interface SecondSectionProps {
 interface OfficeImages {
   path: string,
   desc: string
-}
-
-interface ImageContainerCss extends React.CSSProperties {
-  '--index': string;
 }
 
 const officeImages: OfficeImages[] = [
@@ -47,11 +44,47 @@ const officeImages: OfficeImages[] = [
 ];
 
 const SecondSection = ({className, onScroll}: SecondSectionProps) => {
+  // ToDo: 이미지 기본 위치 지정 필요
+  const imagesLocation = [
+    {
+      left: useMotionValue(15),
+      top: useMotionValue(0)
+    },
+    {
+      left: useMotionValue(45),
+      top: useMotionValue(0)
+    },
+    {
+      left: useMotionValue(75),
+      top: useMotionValue(0)
+    },
+    {
+      left: useMotionValue(15),
+      top: useMotionValue(20)
+    },
+    {
+      left: useMotionValue(45),
+      top: useMotionValue(20)
+    },
+    {
+      left: useMotionValue(75),
+      top: useMotionValue(20)
+    },
+  ];
 
   useEffect(() => {
     onScroll(1, (top, height) => {
+      // 테스트용 로그 삭제예정
       console.log('top', top);
       console.log('height', height);
+
+      if ((height / top) * 100 > 80) {
+        imagesLocation.forEach((imageLocation, index: number) => {
+          // 스크롤 이후 이미지 위치 이동.
+          // transition 속성 추가.
+        });
+        return;
+      }
     });
   }, []);
 
@@ -61,18 +94,20 @@ const SecondSection = ({className, onScroll}: SecondSectionProps) => {
       <div className={styles.second_section_inner}>
         {officeImages.map((officeImage: OfficeImages, index: number) => {
           return (
-            <div
+            <motion.div
               key={index}
               className={styles.image_container}
               style={{
-                '--index': `${index}`
-              } as ImageContainerCss}>
+                zIndex: index,
+                left: imagesLocation[index].left,
+                top: imagesLocation[index].top 
+              }}>
               <div className={styles.image_inner_container}>
                 <Image
                   src={officeImage.path}
                   alt={officeImage.desc}></Image>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>
