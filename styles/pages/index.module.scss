@@ -98,11 +98,11 @@
 
 @keyframes iconDown {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(-2px);
   }
 
   50% {
-    transform: translateY(5px);
+    transform: translateY(3px);
   }
 }
 
@@ -124,15 +124,22 @@
   transition: 0.23s transform cubic-bezier(0.19, 1, 0.22, 1), 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
 
   @media screen and (max-width: $maxTablet) {
-    font-size: 1.15em;
+    font-size: 1.05em;
   }
 
   @media screen and (max-width: $maxMobile) {
-    font-size: 1.05em;
+    font-size: 0.9em;
 
     width: 100%;
     display: flex;
     right: unset;
+
+    .icon {
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
   }
 
   &:hover {
@@ -229,6 +236,12 @@ $link-color: #1667e0;
         height: 16px;
       }
     }
+
+    a {
+      text-decoration: none;
+      color: #000;
+      transition: color 0.23s cubic-bezier(0.19, 1, 0.22, 1);
+    }
   
     @media screen and (max-width: $maxMobile) {
       font-size: 1.25em;
@@ -239,6 +252,10 @@ $link-color: #1667e0;
     &:hover, &:focus, &:active {
       color: $link-color;
       cursor: pointer;
+
+      a {
+        color: $link-color;
+      }
 
       svg {
         stroke: $link-color;
@@ -264,6 +281,8 @@ $link-color: #1667e0;
   overflow: hidden;
   display: flex;
   cursor: pointer;
+
+  text-decoration: none;
   
   &:hover, &:focus {
     .background {

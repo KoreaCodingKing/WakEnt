@@ -51,9 +51,9 @@ const Home: NextPage = () => {
                     }
                   >
                     <Link href={v.link} passHref>
-                      <span>
+                      <a>
                         {v.name} <LinkToIcon width={22}></LinkToIcon>
-                      </span>
+                      </a>
                     </Link>
                   </p>
                 ))}

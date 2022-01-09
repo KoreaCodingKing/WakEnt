@@ -87,6 +87,8 @@ $link-current: #0b397e;
 .link {
   display: flex;
   gap: 10px;
+  text-decoration: none;
+  color: #000;
 
   h1 {
     font-size: 5vmin;

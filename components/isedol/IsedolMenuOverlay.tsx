@@ -55,7 +55,7 @@ export const IsedolMenuOverlay = ({ open }: IsedolMenuOverlayProps) => {
         <div className={styles.links}>
           {Links.map((v, i) => (
             <Link href={v.page} key={`menu-link-${i}-${v.name}`} passHref>
-              <div
+              <a
                 className={concatClass(
                   styles.link,
                   v.page === router.route && styles.current
@@ -68,7 +68,7 @@ export const IsedolMenuOverlay = ({ open }: IsedolMenuOverlayProps) => {
               >
                 <h1>{v.name}</h1>
                 {v.page[0] !== '/' && <LinkToIcon></LinkToIcon>}
-              </div>
+              </a>
             </Link>
           ))}
         </div>

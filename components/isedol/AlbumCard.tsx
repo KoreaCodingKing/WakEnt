@@ -12,12 +12,12 @@ interface AlbumCardProps {
 export const AlbumCard = ({ title, link, image }: AlbumCardProps) => {
   return (
     <Link href={link} passHref>
-      <div className={concatClass(styles.card, styles.clickable)}>
+      <a className={concatClass(styles.card, styles.clickable)}>
         <div className={styles.image_wrapper}>
           <Image src={image} placeholder='blur' blurDataURL={image} layout='fill'></Image>
         </div>
         <h3 className={styles.title}>{title}</h3>
-      </div>
+      </a>
     </Link>
   );
 };

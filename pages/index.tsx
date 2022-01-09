@@ -95,9 +95,9 @@ const Home: NextPage = () => {
                     }
                   >
                     <Link href={v.link} passHref>
-                      <span>
+                      <a>
                         {v.name} <LinkToIcon width={22}></LinkToIcon>
-                      </span>
+                      </a>
                     </Link>
                   </p>
                 ))}
@@ -118,7 +118,7 @@ const Home: NextPage = () => {
           >
             {Groups.map((v, i) => (
               <Link key={`subsite-link-${i}`} href={v.link} passHref>
-                <div className={styles.card}>
+                <a className={styles.card}>
                   <div className={styles.background}>
                     <Image
                       className={styles.image}
@@ -127,7 +127,7 @@ const Home: NextPage = () => {
                     />
                   </div>
                   <div className={styles.contents}>{v.logo}</div>
-                </div>
+                </a>
               </Link>
             ))}
           </section>

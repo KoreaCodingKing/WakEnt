@@ -35,13 +35,13 @@ export const IsedolLogo = ({ big, white }: IsedolLogoProps) => {
       )}
     >
       <Link href='/isedol' passHref>
-        <div
+        <a
           className={styles.logoText}
           tabIndex={90}
           onKeyDown={ev => ev.key === 'Enter' && router.push('/isedol')}
         >
           <span>ISEGYE IDOL</span>
-        </div>
+        </a>
       </Link>
     </div>
   );
