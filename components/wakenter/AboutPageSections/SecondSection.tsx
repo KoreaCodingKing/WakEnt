@@ -110,7 +110,7 @@ const SecondSection = ({className, current, onScroll}: SecondSectionProps) => {
     });
   }, []);
 
-  const imageMotionTemplate = officeImages.map((officeImage: OfficeImage, index: number) => {
+  const imageMotionTemplate = officeImages.map((officeImage: OfficeImage) => {
     return useMotionTemplate`translateX(${officeImage.translateX}%) translateY(${officeImage.translateY}%)`
   })
 
