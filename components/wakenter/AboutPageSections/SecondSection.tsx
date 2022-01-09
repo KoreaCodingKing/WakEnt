@@ -16,6 +16,11 @@ interface OfficeImages {
   desc: string
 }
 
+interface ImageLocation {
+  left: MotionValue<number>,
+  top: MotionValue<number>
+}
+
 const officeImages: OfficeImages[] = [
   {
     path: '/images/building/officetemp/bg_office_enterance.png',
@@ -70,7 +75,7 @@ const SecondSection = ({className, onScroll}: SecondSectionProps) => {
       left: useMotionValue(75),
       top: useMotionValue(20)
     },
-  ];
+  ] as ImageLocation[];
 
   useEffect(() => {
     onScroll(1, (top, height) => {
@@ -79,7 +84,7 @@ const SecondSection = ({className, onScroll}: SecondSectionProps) => {
       console.log('height', height);
 
       if ((height / top) * 100 > 80) {
-        imagesLocation.forEach((imageLocation, index: number) => {
+        imagesLocation.forEach((imageLocation: ImageLocation, index: number) => {
           // 스크롤 이후 이미지 위치 이동.
           // transition 속성 추가.
         });
