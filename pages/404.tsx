@@ -30,6 +30,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>404 - WAK Entertainment</title>
+        <meta name="robots" content="noindex"></meta>
       </Head>
       <div className={styles.main}>
         <header>
@@ -40,7 +41,7 @@ const Home: NextPage = () => {
             <div className={styles.representInner}>
               <div className={styles.hero}>
                 <h1>404</h1>
-                <p>이 사이트에 그런 페이지는 없어요! 방문자넴!!</p>
+                <p>그런 페이지는 없습니다.</p>
               </div>
               <div className={styles.links}>
                 {Links.map((v, i) => (
@@ -53,9 +54,9 @@ const Home: NextPage = () => {
                     }
                   >
                     <Link href={v.link} passHref>
-                      <span>
+                      <a>
                         {v.name} <LinkToIcon width={22}></LinkToIcon>
-                      </span>
+                      </a>
                     </Link>
                   </p>
                 ))}

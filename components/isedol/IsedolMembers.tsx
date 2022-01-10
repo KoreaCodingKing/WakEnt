@@ -156,6 +156,9 @@ export const IsedolMembers: NextPage = () => {
           }
         ></meta>
       </Head>
+      <div className={styles.preload}>
+        {Object.keys(SocialIcons).map(key => <Image src={SocialIcons[key].src} width={30} height={30}></Image>)}
+      </div>
       <div
         className={concatClass(
           styles.inner_container,
@@ -253,6 +256,7 @@ export const IsedolMembers: NextPage = () => {
                       }
                       layout='fill'
                       alt='사인 arrow'
+                      priority
                     ></Image>
                   </div>
                   <p className={styles.sign_name}>
@@ -261,6 +265,7 @@ export const IsedolMembers: NextPage = () => {
                       src={member.signNameImage}
                       layout='fill'
                       alt={`${member.name.ko}`}
+                      priority
                     ></Image>
                   </p>
                   <div className={styles.sign_wrapper}>
@@ -341,6 +346,7 @@ export const IsedolMembers: NextPage = () => {
                               width={30}
                               height={30}
                               alt={`${link.name} 링크`}
+                              priority
                             ></Image>
                           )) ??
                             link.name}

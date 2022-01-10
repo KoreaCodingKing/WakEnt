@@ -31,7 +31,7 @@ const FirstSection = ({
    */
   const descOpacity = useMotionValue(0);
   const coverOpacity = useMotionValue(1);
-  const coverScale = useMotionValue(1);
+  const coverScale = useMotionValue(0.1);
 
   const descSpring = useSpring(descOpacity, { stiffness: 1000, damping: 100 });
   const coverOpacitySpring = useSpring(coverOpacity, {
@@ -47,7 +47,7 @@ const FirstSection = ({
 
   /**
    * 스크롤이 발생할 때마다 스크롤 값을 받을 콜백을 지정합니다.
-   * 컴포넌트 생성시에 State를 변경하면 오류가 아니 useEffect를 사용하여
+   * 컴포넌트 생성시에 State를 변경하면 오류가 발생하니 useEffect를 사용하여
    * 컴포넌트 생성 후에 호출할 수 있도록 구성했습니다.
    */
   useEffect(() => {

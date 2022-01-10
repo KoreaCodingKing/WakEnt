@@ -28,3 +28,13 @@ button {
   all: unset;
   cursor: pointer;
 }
+
+::-moz-selection {
+  color: rgb(255, 255, 255);
+  background: #00b677;
+}
+
+::selection {
+  color: white;
+  background: #00b677;
+}

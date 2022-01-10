@@ -28,6 +28,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>500 - WAK Entertainment</title>
+        <meta name="robots" content="noindex"></meta>
       </Head>
       <div className={styles.main}>
         <header>
@@ -51,9 +52,9 @@ const Home: NextPage = () => {
                     }
                   >
                     <Link href={v.link} passHref>
-                      <span>
+                      <a>
                         {v.name} <LinkToIcon width={22}></LinkToIcon>
-                      </span>
+                      </a>
                     </Link>
                   </p>
                 ))}

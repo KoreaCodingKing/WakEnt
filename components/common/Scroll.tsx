@@ -140,14 +140,12 @@ export const useDynamicPageScroll = (
 
     const evTarget = parent === null ? window : target;
 
-    wheelHandler();
-
     evTarget.addEventListener('wheel', wheelHandler, { passive: true });
-    evTarget.addEventListener('scroll', wheelHandler, { passive: true });
+    window.addEventListener('scroll', wheelHandler, { passive: true });
 
     return () => {
       evTarget.removeEventListener('wheel', wheelHandler);
-      evTarget.removeEventListener('scroll', wheelHandler);
+      window.removeEventListener('scroll', wheelHandler);
     };
   }, [parent?.current, page]);
 

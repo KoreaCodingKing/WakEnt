@@ -145,6 +145,8 @@
   letter-spacing: -0.3px;
   line-height: 1.35;
 
+  white-space: pre-line;
+
   @media screen and (max-width: $maxTablet) {
     font-size: 1.1em;
     line-height: 1.45;
@@ -197,6 +199,8 @@ $link-color: #1667e0;
     cursor: pointer;
     letter-spacing: -1px;
     margin: 0;
+    text-decoration: none;
+    color: #000;
 
     transition: 0.23s color cubic-bezier(0.19, 1, 0.22, 1);
 

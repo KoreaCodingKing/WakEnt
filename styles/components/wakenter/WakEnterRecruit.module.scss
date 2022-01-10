@@ -15,6 +15,14 @@
     font-size: 2em;
     font-weight: bold;
     letter-spacing: -1px;
+
+    @media screen and (max-width: $maxTablet) {
+      font-size: 1.75em;
+    }
+
+    @media screen and (max-width: $maxMobile) {
+      font-size: 1.5em;
+    }
   }
 
   .center {
@@ -113,6 +121,11 @@
       height: 90%;
     }
 
+    @media screen and (max-width: $maxMobile) {
+      grid-column-gap: 12px;
+      grid-row-gap: 12px;
+    }
+
     .column {
       display: flex;
       flex-direction: row;
@@ -162,13 +175,36 @@
       letter-spacing: -1px;
       font-size: 1.3em;
 
+      @media screen and (max-width: $maxTablet) {
+        font-size: 1.15em;
+      }
+
+      @media screen and (max-width: $maxMobile) {
+        font-size: 1.1em;
+      }
+
       z-index: 10;
     }
   }
 
   .mute {
-    font-size: 12px;
-    color: #ccc;
+    font-size: 1em;
+    color: rgb(170, 170, 170);
+    letter-spacing: -1px;
+
+    @media screen and (max-width: $maxTablet) {
+      font-size: 0.95em;
+    }
+
+    @media screen and (max-width: $maxMobile) {
+      font-size: 0.9em;
+    }
+
+    transition: 0.23s color cubic-bezier(0.19, 1, 0.22, 1);
+
+    &:hover {
+      color: #000;
+    }
   }
 }
 
@@ -275,6 +311,10 @@
     margin-top: 32px;
     overflow-x: auto;
 
+    @media screen and (max-width: $maxMobile) {
+      gap: 8px;
+    }
+
     button {
       position: relative;
       padding: 8px 22px;
@@ -288,7 +328,7 @@
       }
 
       @media screen and (max-width: $maxMobile) {
-        font-size: 0.9em;
+        font-size: 0.8em;
       }
 
       transition: 0.23s background cubic-bezier(0.19, 1, 0.22, 1),
@@ -309,16 +349,16 @@
 
   .alert {
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1.3em;
     margin: 10vh 0;
     letter-spacing: -1px;
 
     @media screen and (max-width: $maxTablet) {
-      font-size: 1.3em;
+      font-size: 1.15em;
     }
 
     @media screen and (max-width: $maxMobile) {
-      font-size: 1.1em;
+      font-size: 0.9em;
     }
   }
 
@@ -345,11 +385,11 @@
       letter-spacing: -1px;
 
       @media screen and (max-width: $maxTablet) {
-        font-size: 1.1em;
+        font-size: 1em;
       }
 
       @media screen and (max-width: $maxMobile) {
-        font-size: 0.9em;
+        font-size: 0.8em;
       }
     }
 

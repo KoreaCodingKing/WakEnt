@@ -38,14 +38,11 @@
   width: 40vw;
   height: 40vw;
 
-  max-height: 600px;
-
   @media screen and (max-width: $maxTablet) {
     width: 40vmax;
     height: 40vmax;
 
-    max-width: 50vw;
-    max-height: 50vh;
+    max-width: 80vw;
   }
 
   right: 0;
@@ -62,6 +59,7 @@
 }
 
 .page {
+  position: relative;
   width: 100%;
   height: 100%;
 
@@ -96,6 +94,78 @@
 
   display: flex;
   flex-direction: column;
+}
+
+@keyframes iconDown {
+  0%, 100% {
+    transform: translateY(-2px);
+  }
+
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+.scrollDown {
+  position: absolute;
+  right: 5vw;
+  bottom: 5vh;
+  
+  letter-spacing: -0.05em;
+  font-weight: bold;
+
+  font-size: 1.25em;
+  display: flex;
+
+  opacity: 0.3;
+
+  cursor: pointer;
+
+  transition: 0.23s transform cubic-bezier(0.19, 1, 0.22, 1), 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
+
+  @media screen and (max-width: $maxTablet) {
+    font-size: 1.05em;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    font-size: 0.9em;
+
+    width: 100%;
+    display: flex;
+    right: unset;
+
+    .icon {
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+
+  .inner {
+    margin: auto;
+    display: flex;
+    gap: 12px;
+  }
+
+  .icon {
+    position: relative;
+    margin: auto;
+    animation: iconDown 3s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
 }
 
 .hero {
@@ -166,6 +236,12 @@ $link-color: #1667e0;
         height: 16px;
       }
     }
+
+    a {
+      text-decoration: none;
+      color: #000;
+      transition: color 0.23s cubic-bezier(0.19, 1, 0.22, 1);
+    }
   
     @media screen and (max-width: $maxMobile) {
       font-size: 1.25em;
@@ -176,6 +252,10 @@ $link-color: #1667e0;
     &:hover, &:focus, &:active {
       color: $link-color;
       cursor: pointer;
+
+      a {
+        color: $link-color;
+      }
 
       svg {
         stroke: $link-color;
@@ -201,6 +281,8 @@ $link-color: #1667e0;
   overflow: hidden;
   display: flex;
   cursor: pointer;
+
+  text-decoration: none;
   
   &:hover, &:focus {
     .background {

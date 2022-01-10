@@ -11,6 +11,8 @@ import styles from '../styles/pages/index.module.scss';
 import { concatClass } from '../utils/class';
 import { useScrollPage } from '../components/common/Scroll';
 import { useRef } from 'react';
+import ChevronIcon from '../components/common/icons/Chevron';
+import Centerize from '../components/common/Centerize';
 
 const Links = [
   {
@@ -43,6 +45,17 @@ const Groups = [
 const Home: NextPage = () => {
   const scroll = useRef<HTMLDivElement>(null);
   const page = useScrollPage(scroll, process.browser ? window.innerHeight : 1, 0.05);
+
+  const goPage = (index: number) => {
+    if (!scroll.current) {
+      return;
+    }
+
+    scroll.current.scrollTo({
+      top: window.innerHeight * (index - 1),
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <>
@@ -83,12 +96,20 @@ const Home: NextPage = () => {
                     }
                   >
                     <Link href={v.link} passHref>
-                      <span>
+                      <a>
                         {v.name} <LinkToIcon width={22}></LinkToIcon>
-                      </span>
+                      </a>
                     </Link>
                   </p>
                 ))}
+              </div>
+            </div>
+            <div className={styles.scrollDown} onClick={() => goPage(2)}>
+              <div className={styles.inner}>
+                <div className={styles.icon}>
+                  <ChevronIcon bottom stroke={1}></ChevronIcon>
+                </div>
+                <p>밑으로 내려 WAKTAVERSE 알아보기</p>
               </div>
             </div>
           </section>
@@ -98,16 +119,18 @@ const Home: NextPage = () => {
           >
             {Groups.map((v, i) => (
               <Link key={`subsite-link-${i}`} href={v.link} passHref>
-                <div className={styles.card}>
-                  <div className={styles.background}>
-                    <Image
-                      className={styles.image}
-                      src={v.image}
-                      layout='fill'
-                    />
-                  </div>
+                <a className={styles.card}>
+                  <Centerize>
+                    <div className={styles.background}>
+                      <Image
+                        className={styles.image}
+                        src={v.image}
+                        layout='fill'
+                      />
+                    </div>
+                  </Centerize>
                   <div className={styles.contents}>{v.logo}</div>
-                </div>
+                </a>
               </Link>
             ))}
           </section>

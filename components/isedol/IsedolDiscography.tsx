@@ -18,6 +18,14 @@ const IsedolCover: YouTubeVideo[] = [
     id: 'fU8picIMbSk',
   },
   {
+    title: '티파리 생제르망 공식 응원가',
+    id: 'XMRzgnqVT5s'
+  },
+  {
+    title: '투니버스 메들리',
+    id: 'OTkFJyn4mvc'
+  },
+  {
     title: "It's Beginning To Look A Lot Like Christmas",
     id: 'kNPykP_9wOQ',
   },

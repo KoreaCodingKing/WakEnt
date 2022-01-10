@@ -14,6 +14,13 @@
   background-position: center;
 }
 
+.preload {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 .background {
   position: absolute;
   min-height: 100%;
@@ -221,6 +228,7 @@
   margin: 0 12px;
   cursor: pointer;
   z-index: 10;
+  isolation: isolate;
 
   .background, .member_image_wrapper {
     position: absolute;
@@ -233,6 +241,7 @@
     height: 100%;
     overflow: hidden;
     border-radius: 16px;
+    isolation: isolate;
   }
 
   .member_image_wrapper {
