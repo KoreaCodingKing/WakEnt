@@ -30,6 +30,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>404 - WAK Entertainment</title>
+        <meta name="robots" content="noindex"></meta>
       </Head>
       <div className={styles.main}>
         <header>

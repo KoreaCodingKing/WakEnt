@@ -28,6 +28,7 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>500 - WAK Entertainment</title>
+        <meta name="robots" content="noindex"></meta>
       </Head>
       <div className={styles.main}>
         <header>
