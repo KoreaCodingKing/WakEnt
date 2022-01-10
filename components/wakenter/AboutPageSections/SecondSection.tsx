@@ -1,15 +1,15 @@
-import { useEffect, useRef } from 'react'
-import Image from 'next/image'
+import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import {
   motion,
   MotionValue,
   useMotionTemplate,
   useMotionValue,
-} from 'framer-motion'
+} from 'framer-motion';
 
-import styles from '../../../styles/components/wakenter/AboutPageSections/SecondSection.module.scss'
-import { concatClass } from '../../../utils/class'
-import { scrollHandler } from '../../../pages/about'
+import styles from '../../../styles/components/wakenter/AboutPageSections/SecondSection.module.scss';
+import { concatClass } from '../../../utils/class';
+import { scrollHandler } from '../../../pages/about';
 
 interface SecondSectionProps {
   className: string
@@ -29,7 +29,6 @@ interface ImageTransformData {
 
 const SecondSection = ({
   className,
-  current,
   onScroll,
 }: SecondSectionProps) => {
   const images: OfficeImage[] = [
@@ -57,37 +56,37 @@ const SecondSection = ({
       path: '/images/building/officetemp/bg_office_audio_visual_room.png',
       desc: '왁엔터테인먼트 시청각실',
     },
-  ]
+  ];
 
   const transforms = useRef<ImageTransformData[]>(
     new Array(6).fill(0).map(() => ({
       x: useMotionValue(-50),
       y: useMotionValue(0),
     }))
-  )
+  );
 
   useEffect(() => {
     onScroll(1, (top, height) => {
-      const threshold = height / 20
+      const threshold = height / 20;
 
       if (top > threshold) {
         for (let i = 0; i < transforms.current.length; i++) {
-          transforms.current[i].x.set(-80 + (i % 3) * 30)
-          transforms.current[i].y.set(-20 + Math.floor(i / 3) * 40)
+          transforms.current[i].x.set(-80 + (i % 3) * 30);
+          transforms.current[i].y.set(-20 + Math.floor(i / 3) * 40);
         }
       } else {
         transforms.current.forEach((d: ImageTransformData) => {
-          d.x.set(-50)
-          d.y.set(0)
-        })
+          d.x.set(-50);
+          d.y.set(0);
+        });
       }
-    })
-  }, [])
+    });
+  }, []);
 
   const imageMotionTemplate = transforms.current.map(
     (d: ImageTransformData) =>
       useMotionTemplate`translateX(${d.x}%) translateY(${d.y}%)`
-  )
+  );
 
   return (
     <section className={concatClass(className)} data-index={1}>
@@ -116,12 +115,12 @@ const SecondSection = ({
                   ></Image>
                 </div>
               </motion.div>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default SecondSection
+export default SecondSection;

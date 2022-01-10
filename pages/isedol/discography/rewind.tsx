@@ -4,7 +4,6 @@ import { useState } from 'react';
 import styles from '../../../styles/pages/discography.module.scss';
 import IsedolHeader from '../../../components/isedol/IsedolHeader';
 import IsedolMenuOverlay from '../../../components/isedol/IsedolMenuOverlay';
-import Head from 'next/head';
 import IsedolDiscographyDetail, {
   AlbumDetail,
 } from '../../../components/isedol/IsedolDiscographyDetail';
