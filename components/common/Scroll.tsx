@@ -152,6 +152,10 @@ export const useDynamicPageScroll = (
     requestAnimationFrame(() => processScroll(true));
 
     return () => {
+      if (bounce) {
+        clearTimeout(bounce);
+      }
+
       evTarget.removeEventListener('wheel', wheelHandler);
       window.removeEventListener('scroll', wheelHandler);
     };
