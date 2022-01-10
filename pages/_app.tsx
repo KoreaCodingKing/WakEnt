@@ -8,8 +8,8 @@ import { motion } from 'framer-motion';
 
 const variants = {
   hidden: { opacity: 0 },
-  enter: { opacity: 1},
-  exit: { opacity: 0 },
+  enter: { opacity: 1 },
+  exit: { opacity: 0  },
 };
 
 function MyApp ({ Component, pageProps, router }: AppProps) {
@@ -32,7 +32,7 @@ function MyApp ({ Component, pageProps, router }: AppProps) {
         initial="hidden"
         animate="enter"
         exit="exit"
-        transition={{ type: 'spring', duration: 0.6, delay: 0.03 }}
+        transition={{ type: 'spring', stiffness: 200, damping: 20 }}
       >
         <Component {...pageProps} />
       </motion.div>

@@ -3,8 +3,10 @@ import Link from 'next/link';
 import { ReactNode, useState } from 'react';
 import styles from '../../styles/components/isedol/IsedolDiscographyDetail.module.scss';
 import { concatClass } from '../../utils/class';
+import { textShorten, trimWhitespace } from '../../utils/string';
 import LinkToIcon from '../common/icons/LinkTo';
 import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
+import WakEnterMetadata from '../wakenter/Meta';
 
 export interface AlbumDetail {
   title: string
@@ -17,7 +19,8 @@ export interface AlbumDetail {
     title: string
     link: string
   }[]
-  description: ReactNode
+  description: string
+  lyrics?: string
   staff: ReactNode
 }
 
@@ -36,6 +39,11 @@ export const IsedolDiscographyDetail = ({ data }: DiscographyDetailProps) => {
 
   return (
     <div className={styles.container}>
+      <WakEnterMetadata
+        title={data.title}
+        scope='ISEGYE IDOL'
+        description={data.description && textShorten(trimWhitespace(data.description), 128)}
+      ></WakEnterMetadata>
       <YouTubePlayerOverlay
         id={youtubeID}
         open={openPlayer}
@@ -43,7 +51,11 @@ export const IsedolDiscographyDetail = ({ data }: DiscographyDetailProps) => {
       ></YouTubePlayerOverlay>
       <section className={concatClass(styles.section, styles.brief)}>
         <div className={styles.image}>
-          <Image src={data.image} layout='fill' placeholder={typeof data.image === 'string' ? 'empty' : 'blur'}></Image>
+          <Image
+            src={data.image}
+            layout='fill'
+            placeholder={typeof data.image === 'string' ? 'empty' : 'blur'}
+          ></Image>
         </div>
         <div className={styles.right_wrap}>
           <h1 className={styles.title}>{data.title}</h1>
@@ -76,6 +88,12 @@ export const IsedolDiscographyDetail = ({ data }: DiscographyDetailProps) => {
             ))}
         </div>
       </section>
+      {data.lyrics && (
+        <section className={concatClass(styles.section)}>
+          <h3 className={styles.sectionTitle}>Lyrics</h3>
+          <div className={styles.description}>{data.lyrics}</div>
+        </section>
+      )}
       <section className={concatClass(styles.section)}>
         <h3 className={styles.sectionTitle}>Staff</h3>
         <div className={styles.description}>{data.staff}</div>

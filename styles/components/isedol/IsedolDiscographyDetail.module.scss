@@ -145,6 +145,8 @@
   letter-spacing: -0.3px;
   line-height: 1.35;
 
+  white-space: pre-line;
+
   @media screen and (max-width: $maxTablet) {
     font-size: 1.1em;
     line-height: 1.45;

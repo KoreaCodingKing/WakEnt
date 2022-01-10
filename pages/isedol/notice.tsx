@@ -5,16 +5,19 @@ import styles from '../../styles/components/isedol/IsedolIndex.module.scss';
 import IsedolHeader from '../../components/isedol/IsedolHeader';
 import IsedolNotices from '../../components/isedol/IsedolNotices';
 import IsedolMenuOverlay from '../../components/isedol/IsedolMenuOverlay';
-import Head from 'next/head';
+import WakEnterMetadata from '../../components/wakenter/Meta';
 
 const IsedolPage: NextPage = (): JSX.Element => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   return (
     <div className={styles.isedol__container}>
-      <Head>
-        <title>NOTICE - ISEGYE IDOL</title>
-      </Head>
+      <WakEnterMetadata
+        title='NOTICE'
+        scope='ISEGYE IDOL'
+      >
+        <meta name="robots" content="noindex"></meta>
+      </WakEnterMetadata>
       <IsedolMenuOverlay open={isOpenMenu}></IsedolMenuOverlay>
       <div className={styles.isedol_header}>
         <IsedolHeader
