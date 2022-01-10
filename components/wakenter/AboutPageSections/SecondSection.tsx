@@ -144,7 +144,9 @@ const SecondSection = ({className, current, onScroll}: SecondSectionProps) => {
                 <div className={styles.image_inner_container}>
                   <Image
                     src={officeImage.path}
-                    alt={officeImage.desc}></Image>
+                    alt={officeImage.desc}
+                    layout='fill'
+                  ></Image>
                 </div>
               </motion.div>
             );
