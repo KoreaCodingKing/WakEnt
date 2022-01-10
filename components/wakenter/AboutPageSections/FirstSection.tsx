@@ -58,8 +58,6 @@ const FirstSection = ({
 
       const progress = top / height;
 
-      console.log('called', top, height);
-
       if (top < height / 2 || renderAll) {
         const desc = easeOutExpo(progress) * 10 - 9 + 0.3;
         const cover = 0.99 - easeOutExpo((top - height / 10) / (height * 0.75));
