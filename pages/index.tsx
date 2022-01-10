@@ -12,6 +12,7 @@ import { concatClass } from '../utils/class';
 import { useScrollPage } from '../components/common/Scroll';
 import { useRef } from 'react';
 import ChevronIcon from '../components/common/icons/Chevron';
+import Centerize from '../components/common/Centerize';
 
 const Links = [
   {
@@ -119,13 +120,15 @@ const Home: NextPage = () => {
             {Groups.map((v, i) => (
               <Link key={`subsite-link-${i}`} href={v.link} passHref>
                 <a className={styles.card}>
-                  <div className={styles.background}>
-                    <Image
-                      className={styles.image}
-                      src={v.image}
-                      layout='fill'
-                    />
-                  </div>
+                  <Centerize>
+                    <div className={styles.background}>
+                      <Image
+                        className={styles.image}
+                        src={v.image}
+                        layout='fill'
+                      />
+                    </div>
+                  </Centerize>
                   <div className={styles.contents}>{v.logo}</div>
                 </a>
               </Link>
