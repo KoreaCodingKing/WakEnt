@@ -5,6 +5,7 @@ import {
   MotionValue,
   useMotionTemplate,
   useMotionValue,
+  useSpring,
 } from 'framer-motion';
 
 import styles from '../../../styles/components/wakenter/AboutPageSections/SecondSection.module.scss';
@@ -25,12 +26,11 @@ interface OfficeImage {
 interface ImageTransformData {
   x: MotionValue<number>
   y: MotionValue<number>
+  springX: MotionValue<number>
+  springY: MotionValue<number>
 }
 
-const SecondSection = ({
-  className,
-  onScroll,
-}: SecondSectionProps) => {
+const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
   const images: OfficeImage[] = [
     {
       path: '/images/building/officetemp/bg_office_enterance.png',
@@ -59,10 +59,27 @@ const SecondSection = ({
   ];
 
   const transforms = useRef<ImageTransformData[]>(
-    new Array(6).fill(0).map(() => ({
-      x: useMotionValue(-50),
-      y: useMotionValue(0),
-    }))
+    new Array(6).fill(0).map(() => {
+      const x = useMotionValue(-50);
+      const y = useMotionValue(0);
+
+      const springX = useSpring(x, {
+        stiffness: 1000,
+        damping: 100,
+      });
+
+      const springY = useSpring(y, {
+        stiffness: 1000,
+        damping: 100,
+      });
+
+      return {
+        x,
+        y,
+        springX,
+        springY,
+      };
+    })
   );
 
   useEffect(() => {
@@ -85,7 +102,7 @@ const SecondSection = ({
 
   const imageMotionTemplate = transforms.current.map(
     (d: ImageTransformData) =>
-      useMotionTemplate`translateX(${d.x}%) translateY(${d.y}%)`
+      useMotionTemplate`translateX(${d.springX}%) translateY(${d.springY}%)`
   );
 
   return (
@@ -102,9 +119,6 @@ const SecondSection = ({
                   top: `${Math.floor(index / 3) * 20}%`,
                   left: `${30 + (index % 3) * 20}%`,
                   transform: imageMotionTemplate[index],
-                  transition: 'ease-in-out',
-                  transitionDuration: '0.26s',
-                  transitionProperty: 'transform'
                 }}
               >
                 <div className={styles.image_inner_container}>
