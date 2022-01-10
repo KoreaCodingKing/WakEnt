@@ -16,7 +16,6 @@ export type scrollHandler = (top: number, height: number) => void
 export interface AboutSectionProps {
   className?: string
   current: boolean
-  // progress: number
   setHeaderWhite: (white: boolean) => void
   onScroll: (index: number, callback: scrollHandler) => void
 }
@@ -25,30 +24,25 @@ const About: NextPage = () => {
   const container = useRef<HTMLDivElement>(null);
 
   const [whiteHeader, setWhiteHeader] = useState<boolean>(true);
-  const [scrollHandlers, setScrollHandlers] = useState<scrollHandler[]>([]);
+  const scrollHandlers = useRef<scrollHandler[]>([]);
 
   const page = useDynamicPageScroll(container, `.${styles.section}`, 0, {
     callback: pages => {
-      if (!pages[page]) {
-        return;
-      }
+      if (!pages[page]) return;
 
-      const [pageIndex, top, height] = pages[page];
+      const [pageIndex, active, top, height] = pages[page];
 
-      if (scrollHandlers[pageIndex]) {
-        scrollHandlers[pageIndex](top, height);
+      if (active && scrollHandlers.current[pageIndex]) {
+        scrollHandlers.current[pageIndex](top, height);
       }
     },
   });
 
   const listenScrollHandler = (index: number, cb: scrollHandler) => {
-    const newHandlers = [...scrollHandlers];
+    const newHandlers = [...scrollHandlers.current];
     newHandlers[index] = cb;
 
-    process.browser &&
-      requestAnimationFrame(() => {
-        setScrollHandlers(newHandlers);
-      });
+    scrollHandlers.current = newHandlers;
   };
 
   return (
@@ -68,7 +62,8 @@ const About: NextPage = () => {
           <SecondSection
             className={styles.section}
             current={page === 1}
-            onScroll={listenScrollHandler}></SecondSection>
+            onScroll={listenScrollHandler}
+          ></SecondSection>
           <section className={styles.section} data-index={2}></section>
           <Footer></Footer>
         </div>

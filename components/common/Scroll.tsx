@@ -64,7 +64,7 @@ export const useScrollPage = (
 
 interface DynamicScrollOption {
   debounce?: number
-  callback?: (pages: [number, number, number][]) => void
+  callback?: (pages: [number, boolean, number, number][]) => void
 }
 
 /**
@@ -96,14 +96,17 @@ export const useDynamicPageScroll = (
     const processScroll = () => {
       const top = target.scrollTop || window.scrollY;
 
-      const scrolls: [number, number, number][] = [];
+      const scrolls: [number, boolean, number, number][] = [];
 
       for (let i = 0; i < childs.length; i++) {
         const nextChild = childs[i + 1];
 
-        if (top < childs[i].offsetTop + childs[i].scrollHeight) {
-          scrolls.push([i, top - childs[i].offsetTop, childs[i].scrollHeight]);
-        }
+        scrolls.push([
+          i,
+          top < childs[i].offsetTop + childs[i].scrollHeight,
+          top - childs[i].offsetTop,
+          childs[i].scrollHeight,
+        ]);
 
         if (
           nextChild &&
@@ -118,7 +121,7 @@ export const useDynamicPageScroll = (
       }
 
       if (options?.callback && scrolls.length) {
-        requestAnimationFrame(() => options.callback!(scrolls));
+        options.callback!(scrolls);
       }
     };
 
@@ -130,7 +133,10 @@ export const useDynamicPageScroll = (
           clearTimeout(bounce);
         }
 
-        bounce = setTimeout(processScroll, options.debounce) as unknown as number;
+        bounce = (setTimeout(
+          processScroll,
+          options.debounce
+        ) as unknown) as number;
 
         return;
       }
