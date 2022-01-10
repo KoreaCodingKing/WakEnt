@@ -11,6 +11,7 @@ import {
 import styles from '../../../styles/components/wakenter/AboutPageSections/SecondSection.module.scss';
 import { concatClass } from '../../../utils/class';
 import { scrollHandler } from '../../../pages/about';
+import Photo from '../Photo';
 
 interface SecondSectionProps {
   className: string
@@ -33,27 +34,27 @@ interface ImageTransformData {
 const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
   const images: OfficeImage[] = [
     {
-      path: '/images/building/officetemp/bg_office_enterance.png',
+      path: '/images/building/entrance.png',
       desc: '왁엔터테인먼트 입구',
     },
     {
-      path: '/images/building/officetemp/bg_office_enterance_door.png',
+      path: '/images/building/entrance_door.png',
       desc: '왁엔터테인먼트 입구 현관',
     },
     {
-      path: '/images/building/officetemp/bg_office_info.png',
-      desc: '왁엔터테인먼트 안내데스크',
+      path: '/images/building/recording_room_mixer.png',
+      desc: '왁엔터테인먼트 스튜디오',
     },
     {
-      path: '/images/building/officetemp/bg_office_hallway.png',
-      desc: '왁엔터테인먼트 사무실 복도',
+      path: '/images/building/member_hall.png',
+      desc: '왁엔터테인먼트 멤버 복도',
     },
     {
-      path: '/images/building/officetemp/bg_office_lounge.png',
-      desc: '왁엔터테인먼트 라운지',
+      path: '/images/building/dance_room.png',
+      desc: '왁엔터테인먼트 안무 연습실',
     },
     {
-      path: '/images/building/officetemp/bg_office_audio_visual_room.png',
+      path: '/images/building/av_room.png',
       desc: '왁엔터테인먼트 시청각실',
     },
   ];
@@ -121,13 +122,7 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
                   transform: imageMotionTemplate[index],
                 }}
               >
-                <div className={styles.image_inner_container}>
-                  <Image
-                    src={officeImage.path}
-                    alt={officeImage.desc}
-                    layout='fill'
-                  ></Image>
-                </div>
+                <Photo src={officeImage.path} rotate></Photo>
               </motion.div>
             );
           })}
