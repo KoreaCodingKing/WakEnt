@@ -11,7 +11,7 @@ import FirstSection from '../components/wakenter/AboutPageSections/FirstSection'
 import SecondSection from '../components/wakenter/AboutPageSections/SecondSection';
 import Footer from '../components/wakenter/WakEnterFooter';
 
-export type scrollHandler = (top: number, height: number) => void
+export type scrollHandler = (top: number, height: number, renderAll?: boolean) => void
 
 export interface AboutSectionProps {
   className?: string
@@ -27,13 +27,13 @@ const About: NextPage = () => {
   const scrollHandlers = useRef<scrollHandler[]>([]);
 
   const page = useDynamicPageScroll(container, `.${styles.section}`, 0, {
-    callback: pages => {
+    callback: (pages, renderAll) => {
       if (!pages[page]) return;
 
       const [pageIndex, active, top, height] = pages[page];
 
-      if (active && scrollHandlers.current[pageIndex]) {
-        scrollHandlers.current[pageIndex](top, height);
+      if ((renderAll || active) && scrollHandlers.current[pageIndex]) {
+        scrollHandlers.current[pageIndex](top, height, renderAll);
       }
     },
   });

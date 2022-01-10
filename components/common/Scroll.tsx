@@ -64,7 +64,7 @@ export const useScrollPage = (
 
 interface DynamicScrollOption {
   debounce?: number
-  callback?: (pages: [number, boolean, number, number][]) => void
+  callback?: (pages: [number, boolean, number, number][], renderAll?: boolean) => void
 }
 
 /**
@@ -93,7 +93,7 @@ export const useDynamicPageScroll = (
       HTMLElement
     >;
 
-    const processScroll = () => {
+    const processScroll = (renderAll?: boolean) => {
       const top = target.scrollTop || window.scrollY;
 
       const scrolls: [number, boolean, number, number][] = [];
@@ -121,7 +121,7 @@ export const useDynamicPageScroll = (
       }
 
       if (options?.callback && scrolls.length) {
-        options.callback!(scrolls);
+        options.callback!(scrolls, renderAll);
       }
     };
 
@@ -148,6 +148,8 @@ export const useDynamicPageScroll = (
 
     evTarget.addEventListener('wheel', wheelHandler, { passive: true });
     window.addEventListener('scroll', wheelHandler, { passive: true });
+
+    requestAnimationFrame(() => processScroll(true));
 
     return () => {
       evTarget.removeEventListener('wheel', wheelHandler);

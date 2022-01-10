@@ -150,6 +150,9 @@ const SecondSection = ({
                   transform: imageMotionTemplate[index],
                   top: `${officeImages[index].top.get()}%`,
                 }}
+                transition={{
+                  type: 'spring'
+                }}
               >
                 <div className={styles.image_inner_container}>
                   <Image
