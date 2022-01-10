@@ -29,6 +29,7 @@ interface ImageTransformData {
   y: MotionValue<number>
   springX: MotionValue<number>
   springY: MotionValue<number>
+  scale: MotionValue<number>
 }
 
 const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
@@ -74,11 +75,14 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
         damping: 100,
       });
 
+      const scale = useSpring(1);
+
       return {
         x,
         y,
         springX,
         springY,
+        scale
       };
     })
   );
@@ -103,7 +107,7 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
 
   const imageMotionTemplate = transforms.current.map(
     (d: ImageTransformData) =>
-      useMotionTemplate`translateX(${d.springX}%) translateY(${d.springY}%)`
+      useMotionTemplate`translateX(${d.springX}%) translateY(${d.springY}%) scale(${d.scale})`
   );
 
   return (
@@ -119,8 +123,10 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
                   zIndex: index,
                   top: `${Math.floor(index / 3) * 20}%`,
                   left: `${30 + (index % 3) * 20}%`,
-                  transform: imageMotionTemplate[index],
+                  transform: imageMotionTemplate[index]
                 }}
+                onHoverStart={() => transforms.current[index].scale.set(1.1)}
+                onHoverEnd={() => transforms.current[index].scale.set(1)}
               >
                 <Photo src={officeImage.path} rotate></Photo>
               </motion.div>
