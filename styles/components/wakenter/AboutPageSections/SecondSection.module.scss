@@ -5,15 +5,15 @@
   width: 100%;
   min-width: 1000px;
   max-width: 1800px;
-  min-height: 300vh;
+  min-height: 140vh;
   margin: 0 auto;
 
   .inner_wrapper {
     display: flex;
     position: sticky;
-    top: 24%;
+    top: 30%;
     justify-content: space-between;
-    min-height: 150vh;
+    min-height: 100vh;
   }
 }
 

@@ -102,9 +102,9 @@ const SecondSection = ({
                   top: `${Math.floor(index / 3) * 20}%`,
                   left: `${30 + (index % 3) * 20}%`,
                   transform: imageMotionTemplate[index],
-                }}
-                transition={{
-                  type: 'spring',
+                  transition: 'ease-in-out',
+                  transitionDuration: '0.26s',
+                  transitionProperty: 'transform'
                 }}
               >
                 <div className={styles.image_inner_container}>
