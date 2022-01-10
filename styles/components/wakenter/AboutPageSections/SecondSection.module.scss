@@ -22,6 +22,11 @@
   width: 562px;
   height: 316px;
   aspect-ratio: 9/16;
+  
+  &:hover {
+    z-index: 10 !important;
+    cursor: pointer;
+  }
 }
 
 .image_inner_container {
