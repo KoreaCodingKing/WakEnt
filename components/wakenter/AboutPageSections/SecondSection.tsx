@@ -1,5 +1,4 @@
-import { useEffect, useRef } from 'react';
-import Image from 'next/image';
+import { MouseEventHandler, useEffect, useRef, useState } from 'react';
 import {
   motion,
   MotionValue,
@@ -33,6 +32,9 @@ interface ImageTransformData {
 }
 
 const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [selectedIndex, setSelectedIndex] = useState<number|null>(null);
+
   const images: OfficeImage[] = [
     {
       path: '/images/building/entrance.png',
@@ -105,9 +107,36 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
     });
   }, []);
 
+  // ToDo 중복된 연산 useMemo로 처리
+  // Math.floor(selectedIndex / 3), selectedIndex % 3 등 style에 있는 연산과 중복
+  useEffect(() => {
+    if (!selectedIndex) {
+      return;
+    }
+
+    const selectedTransform = transforms.current[selectedIndex];
+    selectedTransform.scale.set(2);
+
+    if (selectedIndex % 3 === 0) {
+      transforms.current[selectedIndex].x.set(12);
+    } else if(selectedIndex % 3 === 2) {
+      transforms.current[selectedIndex].x.set(-116);
+    }
+
+    if (Math.floor(selectedIndex / 3) === 0) {
+      transforms.current[selectedIndex].y.set(36);
+    } else if(Math.floor(selectedIndex / 3) === 1) {
+      transforms.current[selectedIndex].y.set(-58);
+    }
+  }, [selectedIndex]);
+
   const imageMotionTemplate = transforms.current.map(
-    (d: ImageTransformData) =>
-      useMotionTemplate`translateX(${d.springX}%) translateY(${d.springY}%) scale(${d.scale})`
+    (d: ImageTransformData) => {
+      return {
+        transform: useMotionTemplate`translateX(${d.springX}%) translateY(${d.springY}%) scale(${d.scale})`,
+        scale: useMotionTemplate`scale(${d.scale})`
+      };
+    }
   );
 
   return (
@@ -123,10 +152,32 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
                   zIndex: index,
                   top: `${Math.floor(index / 3) * 20}%`,
                   left: `${30 + (index % 3) * 20}%`,
-                  transform: imageMotionTemplate[index]
+                  transform: imageMotionTemplate[index].transform
                 }}
                 onHoverStart={() => transforms.current[index].scale.set(1.1)}
                 onHoverEnd={() => transforms.current[index].scale.set(1)}
+                onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+                  event.preventDefault();
+
+                  // ToDo onclick handler로 처리
+                  // transforms.current[index].x.set에 있는 연산 useMemo로 선언.
+
+                  if (selectedIndex && selectedIndex === index) {
+                    transforms.current[index].scale.set(1);
+                    if (isScrolled) {
+                      transforms.current[index].x.set(-80 + (index % 3) * 30);
+                      transforms.current[index].y.set(-20 + Math.floor(index / 3) * 40);
+                    } else  {
+                      transforms.current[index].x.set(-50);
+                      transforms.current[index].y.set(0);
+                    }
+                    setSelectedIndex(null);
+                    return;
+                  }
+
+                  transforms.current[index].scale.set(2);
+                  setSelectedIndex(index);
+                }}
               >
                 <Photo src={officeImage.path} rotate></Photo>
               </motion.div>
