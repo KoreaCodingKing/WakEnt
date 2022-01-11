@@ -15,7 +15,8 @@ const IsedolPage: NextPage = (): JSX.Element => {
       <WakEnterMetadata
         title='DISCOGRAPHY'
         scope='ISEGYE IDOL'
-        description='WAK Entertainment 소속 이세계 아이돌 (ISEGYE IDOL) 의 발매된 음반, 커버 곡을 알아보세요.'
+        description='WAK Entertainment 소속 이세계 아이돌 (ISEGYE IDOL) 의 발매 음반, 커버 곡을 알아보세요.'
+        image='/images/isedol_landing.png'
       ></WakEnterMetadata>
       <IsedolMenuOverlay open={isOpenMenu}></IsedolMenuOverlay>
       <div className={styles.isedol_header}>

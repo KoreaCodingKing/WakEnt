@@ -10,7 +10,7 @@ import WakEnterMetadata from '../wakenter/Meta';
 
 export interface AlbumDetail {
   title: string
-  image: string | StaticImageData
+  image: string
   links?: {
     title: string
     link: string
@@ -43,6 +43,7 @@ export const IsedolDiscographyDetail = ({ data }: DiscographyDetailProps) => {
         title={data.title}
         scope='ISEGYE IDOL'
         description={data.description && textShorten(trimWhitespace(data.description), 128)}
+        image={data.image}
       ></WakEnterMetadata>
       <YouTubePlayerOverlay
         id={youtubeID}

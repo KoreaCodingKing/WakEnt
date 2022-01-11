@@ -16,6 +16,7 @@ const IsedolPage: NextPage = (): JSX.Element => {
         title='MEMBER'
         scope='ISEGYE IDOL'
         description='2021년 8월에 결성된 6인조 버츄얼 아이돌 그룹 이세계 아이돌 멤버 (아이네, 징버거, 릴파, 주르르, 고세구, 비챤) 소개 페이지입니다.'
+        image='/images/isedol_landing.png'
       ></WakEnterMetadata>
       <IsedolMenuOverlay open={isOpenMenu}></IsedolMenuOverlay>
       <div className={styles.isedol_header}>

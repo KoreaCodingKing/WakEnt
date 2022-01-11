@@ -8,14 +8,12 @@ import IsedolDiscographyDetail, {
   AlbumDetail,
 } from '../../../components/isedol/IsedolDiscographyDetail';
 
-import RewindImage from '../../../public/images/album/rewind.jpg';
-
 const IsedolPage: NextPage = (): JSX.Element => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const details: AlbumDetail = {
     title: 'RE : WIND',
-    image: RewindImage,
+    image: '/images/album/rewind.jpg',
     description: `오디션 부터 활동까지 전부 가상의 세계에서 진행된 메타버스 프로젝트 6인조 그룹 '이세계 아이돌'이 정식 데뷔를 확정지었다.\n
       '이세계 아이돌' 은 지난 여름, 유튜브 크리에이터 우왁굳의 버츄얼 아이돌 프로젝트에서 수백명의 경쟁을 뚫고 합격한 최종 6인의 여성 아이돌 그룹이다. 버츄얼 아이돌이 갖추어야 할 다양한 재능을 갖고 있는 아이네, 징버거, 릴파, 주르르, 고세구, 비챤 6명이 이세계 아이돌로 데뷔하는 기쁨을 누렸다.
       이들은 치열한 경쟁을 거쳐 결성된 팀이라는 점 외에 오디션부터 활동까지 가상에서 진행된다는 점에서 데뷔 전부터 큰 관심을 받았다.\n
@@ -101,7 +99,7 @@ const IsedolPage: NextPage = (): JSX.Element => {
         link: 'https://www.youtube.com/watch?v=fgSXAKsq-Vo',
       },
       {
-        title: 'YouTube Color Adjustment MV(4K)',
+        title: 'YouTube Color Corrected MV (4K)',
         link: 'https://www.youtube.com/watch?v=jelNkU4mPuA'
       }
     ],
