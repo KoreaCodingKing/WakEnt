@@ -101,6 +101,10 @@ const IsedolPage: NextPage = (): JSX.Element => {
         title: 'YouTube MV',
         link: 'https://www.youtube.com/watch?v=fgSXAKsq-Vo',
       },
+      {
+        title: 'YouTube Color Adjustment MV(4K)',
+        link: 'https://www.youtube.com/watch?v=jelNkU4mPuA'
+      }
     ],
     streaming: [
       {
