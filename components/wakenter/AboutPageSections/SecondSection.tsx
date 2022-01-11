@@ -29,6 +29,7 @@ interface ImageTransformData {
   springX: MotionValue<number>
   springY: MotionValue<number>
   scale: MotionValue<number>
+  rotate: MotionValue<number>
 }
 
 const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
@@ -63,9 +64,9 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
   ];
 
   const transforms = useRef<ImageTransformData[]>(
-    new Array(6).fill(0).map(() => {
-      const x = useMotionValue(-50);
-      const y = useMotionValue(0);
+    new Array(6).fill(0).map((_, i) => {
+      const x = useMotionValue(-25 - (i % 3) * 30);
+      const y = useMotionValue(0 + Math.floor(i / 3) * 40);
 
       const springX = useSpring(x, {
         stiffness: 1000,
@@ -79,19 +80,22 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
 
       const scale = useSpring(1);
 
+      const rotate = useSpring(Math.random() * (10 - (-10)) + (-10));
+
       return {
         x,
         y,
         springX,
         springY,
-        scale
+        scale,
+        rotate
       };
     })
   );
 
   useEffect(() => {
     onScroll(1, (top, height) => {
-      const threshold = height / 20;
+      const threshold = 50;
 
       if (top > threshold) {
         for (let i = 0; i < transforms.current.length; i++) {
@@ -99,10 +103,10 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
           transforms.current[i].y.set(-20 + Math.floor(i / 3) * 40);
         }
       } else {
-        transforms.current.forEach((d: ImageTransformData) => {
-          d.x.set(-50);
-          d.y.set(0);
-        });
+        for (let i = 0; i < transforms.current.length; i++) {
+          transforms.current[i].x.set(-25 - (i % 3) * 30);
+          transforms.current[i].y.set(0 - Math.floor(i / 3) * 40);
+        }
       }
     });
   }, []);
@@ -133,7 +137,7 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
   const imageMotionTemplate = transforms.current.map(
     (d: ImageTransformData) => {
       return {
-        transform: useMotionTemplate`translateX(${d.springX}%) translateY(${d.springY}%) scale(${d.scale})`,
+        transform: useMotionTemplate`translateX(${d.springX}%) translateY(${d.springY}%) scale(${d.scale}) rotate(${d.rotate}deg)`,
         scale: useMotionTemplate`scale(${d.scale})`
       };
     }
@@ -163,23 +167,26 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
                   // transforms.current[index].x.set에 있는 연산 useMemo로 선언.
 
                   if (selectedIndex && selectedIndex === index) {
+                    transforms.current[index].rotate.set(Math.random() * (10 - (-10)) + (-10));
                     transforms.current[index].scale.set(1);
+
                     if (isScrolled) {
                       transforms.current[index].x.set(-80 + (index % 3) * 30);
                       transforms.current[index].y.set(-20 + Math.floor(index / 3) * 40);
                     } else  {
-                      transforms.current[index].x.set(-50);
-                      transforms.current[index].y.set(0);
+                      transforms.current[index].x.set(-25 - (index % 3) * 30);
+                      transforms.current[index].y.set(0 - Math.floor(index / 3) * 40);
                     }
                     setSelectedIndex(null);
                     return;
                   }
 
+                  transforms.current[index].rotate.set(0);
                   transforms.current[index].scale.set(2);
                   setSelectedIndex(index);
                 }}
               >
-                <Photo src={officeImage.path} rotate></Photo>
+                <Photo src={officeImage.path}></Photo>
               </motion.div>
             );
           })}
