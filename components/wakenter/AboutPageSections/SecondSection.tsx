@@ -121,8 +121,6 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
     });
   }, [selectedIndex]);
 
-  // ToDo 중복된 연산 useMemo로 처리
-  // Math.floor(selectedIndex / 3), selectedIndex % 3 등 style에 있는 연산과 중복
   useEffect(() => {
     if (selectedIndex === null) {
       return;
@@ -159,7 +157,6 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
       photoClickHandler(selectedIndex);
     }
 
-    // transforms.current[index].x.set에 있는 연산 useMemo로 선언.
     if (selectedIndex === index) {
       transforms.current[index].rotate.set(Math.random() * (10 - (-10)) + (-10));
       transforms.current[index].scale.set(1);
