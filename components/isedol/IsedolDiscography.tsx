@@ -150,6 +150,10 @@ const MemberCover: Record<MemberID, YouTubeVideo[]> = {
       title: '천양 다이노스 공식 응원가',
       id: '5aIUBhw7CVc',
     },
+    {
+      title: '팬서비스 - mona [HoneyWorks]',
+      id: 'DPEtmqvaKqY',
+    },
   ],
   viichan: [
     {
