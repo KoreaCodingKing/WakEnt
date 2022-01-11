@@ -64,7 +64,7 @@ export const useScrollPage = (
 
 interface DynamicScrollOption {
   debounce?: number
-  callback?: (pages: [number, number, number][]) => void
+  callback?: (pages: [number, boolean, number, number][], renderAll?: boolean) => void
 }
 
 /**
@@ -93,32 +93,38 @@ export const useDynamicPageScroll = (
       HTMLElement
     >;
 
-    const processScroll = () => {
+    const processScroll = (renderAll?: boolean) => {
       const top = target.scrollTop || window.scrollY;
 
-      const scrolls: [number, number, number][] = [];
+      const scrolls: [number, boolean, number, number][] = [];
 
       for (let i = 0; i < childs.length; i++) {
         const nextChild = childs[i + 1];
 
-        if (top < childs[i].offsetTop + childs[i].scrollHeight) {
-          scrolls.push([i, top - childs[i].offsetTop, childs[i].scrollHeight]);
+        scrolls.push([
+          i,
+          top < childs[i].offsetTop + childs[i].scrollHeight,
+          top - childs[i].offsetTop,
+          childs[i].scrollHeight,
+        ]);
+
+        if (!nextChild) {
+          break;
         }
 
         if (
-          nextChild &&
           top < nextChild.offsetTop - target.scrollHeight * threshold
         ) {
           if (i !== page) {
             setPage(i);
           }
 
-          break;
+          continue;
         }
       }
 
       if (options?.callback && scrolls.length) {
-        requestAnimationFrame(() => options.callback!(scrolls));
+        options.callback!(scrolls, renderAll);
       }
     };
 
@@ -130,7 +136,10 @@ export const useDynamicPageScroll = (
           clearTimeout(bounce);
         }
 
-        bounce = setTimeout(processScroll, options.debounce) as unknown as number;
+        bounce = (setTimeout(
+          processScroll,
+          options.debounce
+        ) as unknown) as number;
 
         return;
       }
@@ -138,14 +147,24 @@ export const useDynamicPageScroll = (
       processScroll();
     };
 
+    const fullHandler = () => processScroll(true);
+
     const evTarget = parent === null ? window : target;
 
     evTarget.addEventListener('wheel', wheelHandler, { passive: true });
     window.addEventListener('scroll', wheelHandler, { passive: true });
+    window.addEventListener('resize', fullHandler, { passive: true });
+
+    // requestAnimationFrame(() => processScroll(true));
 
     return () => {
+      if (bounce) {
+        clearTimeout(bounce);
+      }
+
       evTarget.removeEventListener('wheel', wheelHandler);
       window.removeEventListener('scroll', wheelHandler);
+      window.removeEventListener('resize', fullHandler);
     };
   }, [parent?.current, page]);
 

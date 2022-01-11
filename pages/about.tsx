@@ -1,53 +1,48 @@
 import { NextPage } from 'next';
+import { useRef, useState } from 'react';
+import { useDynamicPageScroll } from '../components/common/Scroll';
 
 import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import parentStyles from '../styles/pages/index.module.scss';
 import styles from '../styles/components/wakenter/WakEnterAbout.module.scss';
 import WakEnterMetadata from '../components/wakenter/Meta';
-import { useRef, useState } from 'react';
-import { useDynamicPageScroll } from '../components/common/Scroll';
+
 import FirstSection from '../components/wakenter/AboutPageSections/FirstSection';
+import SecondSection from '../components/wakenter/AboutPageSections/SecondSection';
 import Footer from '../components/wakenter/WakEnterFooter';
 
-type scrollHandler = (top: number, height: number) => void
+export type scrollHandler = (top: number, height: number, renderAll?: boolean) => void
 
 export interface AboutSectionProps {
   className?: string
   current: boolean
-  // progress: number
   setHeaderWhite: (white: boolean) => void
   onScroll: (index: number, callback: scrollHandler) => void
 }
-
 
 const About: NextPage = () => {
   const container = useRef<HTMLDivElement>(null);
 
   const [whiteHeader, setWhiteHeader] = useState<boolean>(true);
-  const [scrollHandlers, setScrollHandlers] = useState<scrollHandler[]>([]);
+  const scrollHandlers = useRef<scrollHandler[]>([]);
 
   const page = useDynamicPageScroll(container, `.${styles.section}`, 0, {
-    callback: pages => {
-      if (!pages[page]) {
-        return;
-      }
+    callback: (pages, renderAll) => {
+      if (!pages[page]) return;
 
-      const [pageIndex, top, height] = pages[page];
+      const [pageIndex, active, top, height] = pages[page];
 
-      if (scrollHandlers[pageIndex]) {
-        scrollHandlers[pageIndex](top, height);
+      if ((renderAll || active) && scrollHandlers.current[pageIndex]) {
+        scrollHandlers.current[pageIndex](top, height, renderAll);
       }
     },
   });
 
   const listenScrollHandler = (index: number, cb: scrollHandler) => {
-    const newHandlers = [...scrollHandlers];
+    const newHandlers = [...scrollHandlers.current];
     newHandlers[index] = cb;
 
-    process.browser &&
-      requestAnimationFrame(() => {
-        setScrollHandlers(newHandlers);
-      });
+    scrollHandlers.current = newHandlers;
   };
 
   return (
@@ -64,7 +59,11 @@ const About: NextPage = () => {
             setHeaderWhite={setWhiteHeader}
             onScroll={listenScrollHandler}
           ></FirstSection>
-          <section className={styles.section} data-index={1}></section>
+          <SecondSection
+            className={styles.section}
+            current={page === 1}
+            onScroll={listenScrollHandler}
+          ></SecondSection>
           <section className={styles.section} data-index={2}></section>
           <Footer></Footer>
         </div>

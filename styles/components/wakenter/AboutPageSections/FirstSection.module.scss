@@ -133,14 +133,16 @@
   }
 
   @media screen and (max-width: $maxTablet) {
-    min-height: 148vh;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
 
     .about_desc_inner {
       flex-direction: column;
       min-width: 0px;
-      height: 100%;
-      margin-top: 150px;
       max-width: unset;
+      min-height: fit-content;
+      margin-top: 150px;
 
       .about_image {
         align-items: center;
@@ -165,11 +167,13 @@
   }
 
   @media screen and (max-width: $maxMobile) {
-    min-height: 148vh;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
 
     .about_desc_inner {
       flex-direction: column;
-      height: 100%;
+      min-height: fit-content;
 
       .first_section__img {
         max-width: none;

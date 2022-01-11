@@ -50,7 +50,7 @@ module.exports = {
         "@typescript-eslint/no-non-null-assertion": "off",
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": "warn",
-        "curly": "error",
+        "curly": "off",
         "comma-spacing": [
             "error",
             {"before":false, "after": true}

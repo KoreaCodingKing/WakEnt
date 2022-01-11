@@ -51,10 +51,14 @@ const FirstSection = ({
    * 컴포넌트 생성 후에 호출할 수 있도록 구성했습니다.
    */
   useEffect(() => {
-    onScroll(0, (top, height) => {
+    onScroll(0, (top, height, renderAll) => {
+      if (!current) {
+        return;
+      }
+
       const progress = top / height;
 
-      if (top < height / 2) {
+      if (top < height / 2 || renderAll) {
         const desc = easeOutExpo(progress) * 10 - 9 + 0.3;
         const cover = 0.99 - easeOutExpo((top - height / 10) / (height * 0.75));
 
