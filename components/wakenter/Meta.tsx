@@ -18,7 +18,7 @@ export const WakEnterMetadata = ({
   image = '/images/landing.png',
   children
 }: WakEnterMetadataProps) => {
-  const visibleTitle = !scope ? title : `${title} - ${scope}`
+  const visibleTitle = !scope ? title : `${title} - ${scope}`;
 
   return (
     <>
