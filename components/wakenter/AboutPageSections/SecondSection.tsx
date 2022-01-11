@@ -97,29 +97,29 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
     onScroll(1, (top, height) => {
       const threshold = 50;
 
+      setIsScrolled(top > threshold);
+
       if (top > threshold) {
         for (let i = 0; i < transforms.current.length; i++) {
+          if (i === selectedIndex) {
+            continue;
+          }
+
           transforms.current[i].x.set(-80 + (i % 3) * 30);
           transforms.current[i].y.set(-20 + Math.floor(i / 3) * 40);
         }
-
-        if (isScrolled) {
-          return;
-        }
-        setIsScrolled(true);
       } else {
         for (let i = 0; i < transforms.current.length; i++) {
+          if (i === selectedIndex) {
+            continue;
+          }
+
           transforms.current[i].x.set(-25 - (i % 3) * 30);
           transforms.current[i].y.set(0 - Math.floor(i / 3) * 40);
         }
-
-        if (!isScrolled) {
-          return;
-        }
-        setIsScrolled(false);
       }
     });
-  }, []);
+  }, [selectedIndex]);
 
   // ToDo 중복된 연산 useMemo로 처리
   // Math.floor(selectedIndex / 3), selectedIndex % 3 등 style에 있는 연산과 중복
@@ -154,6 +154,32 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
     }
   );
 
+  const photoClickHandler = (index: number) => {
+    if (selectedIndex !== null && selectedIndex !== index) {
+      photoClickHandler(selectedIndex);
+    }
+
+    // transforms.current[index].x.set에 있는 연산 useMemo로 선언.
+    if (selectedIndex === index) {
+      transforms.current[index].rotate.set(Math.random() * (10 - (-10)) + (-10));
+      transforms.current[index].scale.set(1);
+
+      if (isScrolled) {
+        transforms.current[index].x.set(-80 + (index % 3) * 30);
+        transforms.current[index].y.set(-20 + Math.floor(index / 3) * 40);
+      } else {
+        transforms.current[index].x.set(-25 - (index % 3) * 30);
+        transforms.current[index].y.set(0 - Math.floor(index / 3) * 40);
+      }
+      setSelectedIndex(null);
+      return;
+    }
+
+    transforms.current[index].rotate.set(0);
+    transforms.current[index].scale.set(2);
+    setSelectedIndex(index);
+  };
+
   return (
     <section className={concatClass(className)} data-index={1}>
       <div className={styles.second_section_inner}>
@@ -163,37 +189,18 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
               <motion.div
                 key={index}
                 className={styles.image_container}
+                data-active={selectedIndex === index}
                 style={{
                   zIndex: index,
                   top: `${Math.floor(index / 3) * 20}%`,
                   left: `${30 + (index % 3) * 20}%`,
                   transform: imageMotionTemplate[index].transform
                 }}
-                onHoverStart={() => transforms.current[index].scale.set(1.1)}
-                onHoverEnd={() => transforms.current[index].scale.set(1)}
+                onHoverStart={() => selectedIndex === null && transforms.current[index].scale.set(1.1)}
+                onHoverEnd={() => selectedIndex === null && transforms.current[index].scale.set(1)}
                 onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
                   event.preventDefault();
-
-                  // ToDo onclick handler로 처리
-                  // transforms.current[index].x.set에 있는 연산 useMemo로 선언.
-                  if (selectedIndex === index) {
-                    transforms.current[index].rotate.set(Math.random() * (10 - (-10)) + (-10));
-                    transforms.current[index].scale.set(1);
-
-                    if (isScrolled) {
-                      transforms.current[index].x.set(-80 + (index % 3) * 30);
-                      transforms.current[index].y.set(-20 + Math.floor(index / 3) * 40);
-                    } else  {
-                      transforms.current[index].x.set(-25 - (index % 3) * 30);
-                      transforms.current[index].y.set(0 - Math.floor(index / 3) * 40);
-                    }
-                    setSelectedIndex(null);
-                    return;
-                  }
-
-                  transforms.current[index].rotate.set(0);
-                  transforms.current[index].scale.set(2);
-                  setSelectedIndex(index);
+                  photoClickHandler(index);
                 }}
               >
                 <Photo src={officeImage.path}></Photo>

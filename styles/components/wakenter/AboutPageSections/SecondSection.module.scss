@@ -23,9 +23,15 @@
   height: 316px;
   cursor: pointer;
 
-  z-index: var(--z-index);
-  
-  &:hover {
+  &[data-active="false"] {
+    z-index: var(--z-index);
+
+    &:hover {
+      z-index: 10 !important;
+    }
+  }
+
+  &[data-active="true"] {
     z-index: 10 !important;
   }
 

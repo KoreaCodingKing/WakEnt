@@ -108,15 +108,18 @@ export const useDynamicPageScroll = (
           childs[i].scrollHeight,
         ]);
 
+        if (!nextChild) {
+          break;
+        }
+
         if (
-          nextChild &&
           top < nextChild.offsetTop - target.scrollHeight * threshold
         ) {
           if (i !== page) {
             setPage(i);
           }
 
-          break;
+          continue;
         }
       }
 
@@ -144,12 +147,15 @@ export const useDynamicPageScroll = (
       processScroll();
     };
 
+    const fullHandler = () => processScroll(true);
+
     const evTarget = parent === null ? window : target;
 
     evTarget.addEventListener('wheel', wheelHandler, { passive: true });
     window.addEventListener('scroll', wheelHandler, { passive: true });
+    window.addEventListener('resize', fullHandler, { passive: true });
 
-    requestAnimationFrame(() => processScroll(true));
+    // requestAnimationFrame(() => processScroll(true));
 
     return () => {
       if (bounce) {
@@ -158,6 +164,7 @@ export const useDynamicPageScroll = (
 
       evTarget.removeEventListener('wheel', wheelHandler);
       window.removeEventListener('scroll', wheelHandler);
+      window.removeEventListener('resize', fullHandler);
     };
   }, [parent?.current, page]);
 
