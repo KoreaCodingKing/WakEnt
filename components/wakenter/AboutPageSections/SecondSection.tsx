@@ -128,12 +128,13 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
 
     const selectedTransform = transforms.current[selectedIndex];
     selectedTransform.scale.set(2);
+    transforms.current[selectedIndex].rotate.set(0);
 
 
     if (selectedIndex === 0 || selectedIndex % 3 === 0) {
-      transforms.current[selectedIndex].x.set(12);
+      transforms.current[selectedIndex].x.set(2);
     } else if(selectedIndex % 3 === 2) {
-      transforms.current[selectedIndex].x.set(-116);
+      transforms.current[selectedIndex].x.set(-105);
     }
 
     if (selectedIndex === 0 || Math.floor(selectedIndex / 3) === 0) {
@@ -172,8 +173,6 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
       return;
     }
 
-    transforms.current[index].rotate.set(0);
-    transforms.current[index].scale.set(2);
     setSelectedIndex(index);
   };
 
