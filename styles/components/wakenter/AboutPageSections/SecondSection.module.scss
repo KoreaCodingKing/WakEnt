@@ -30,14 +30,14 @@
   }
 
   @media screen and (max-width: $maxTablet) {
-    width: 320px;
+    width: 44vw;
     height: 52px;
     aspect-ratio: 9/16;
   }
 
   @media screen and (max-width: $maxMobile) {
-    width: 100px;
-    height: 30px;
+    width: 58vw;
+    height: 50px;
     aspect-ratio: 9/16;
   }
 }
