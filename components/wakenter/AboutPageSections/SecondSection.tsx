@@ -102,11 +102,21 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
           transforms.current[i].x.set(-80 + (i % 3) * 30);
           transforms.current[i].y.set(-20 + Math.floor(i / 3) * 40);
         }
+
+        if (isScrolled) {
+          return;
+        }
+        setIsScrolled(true);
       } else {
         for (let i = 0; i < transforms.current.length; i++) {
           transforms.current[i].x.set(-25 - (i % 3) * 30);
           transforms.current[i].y.set(0 - Math.floor(i / 3) * 40);
         }
+
+        if (!isScrolled) {
+          return;
+        }
+        setIsScrolled(false);
       }
     });
   }, []);
@@ -114,20 +124,21 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
   // ToDo 중복된 연산 useMemo로 처리
   // Math.floor(selectedIndex / 3), selectedIndex % 3 등 style에 있는 연산과 중복
   useEffect(() => {
-    if (!selectedIndex) {
+    if (selectedIndex === null) {
       return;
     }
 
     const selectedTransform = transforms.current[selectedIndex];
     selectedTransform.scale.set(2);
 
-    if (selectedIndex % 3 === 0) {
+
+    if (selectedIndex === 0 || selectedIndex % 3 === 0) {
       transforms.current[selectedIndex].x.set(12);
     } else if(selectedIndex % 3 === 2) {
       transforms.current[selectedIndex].x.set(-116);
     }
 
-    if (Math.floor(selectedIndex / 3) === 0) {
+    if (selectedIndex === 0 || Math.floor(selectedIndex / 3) === 0) {
       transforms.current[selectedIndex].y.set(36);
     } else if(Math.floor(selectedIndex / 3) === 1) {
       transforms.current[selectedIndex].y.set(-58);
@@ -165,8 +176,7 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
 
                   // ToDo onclick handler로 처리
                   // transforms.current[index].x.set에 있는 연산 useMemo로 선언.
-
-                  if (selectedIndex && selectedIndex === index) {
+                  if (selectedIndex === index) {
                     transforms.current[index].rotate.set(Math.random() * (10 - (-10)) + (-10));
                     transforms.current[index].scale.set(1);
 
