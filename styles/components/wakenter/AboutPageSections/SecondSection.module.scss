@@ -4,7 +4,6 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  min-width: 1000px;
   max-width: 1800px;
   min-height: 140vh;
   margin: 0 auto;
@@ -22,13 +21,24 @@
   position: absolute;
   width: 562px;
   height: 316px;
-  aspect-ratio: 9/16;
   cursor: pointer;
 
   z-index: var(--z-index);
   
   &:hover {
     z-index: 10 !important;
+  }
+
+  @media screen and (max-width: $maxTablet) {
+    width: 320px;
+    height: 52px;
+    aspect-ratio: 9/16;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    width: 100px;
+    height: 30px;
+    aspect-ratio: 9/16;
   }
 }
 
