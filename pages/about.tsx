@@ -9,7 +9,7 @@ import WakEnterMetadata from '../components/wakenter/Meta';
 
 import FirstSection from '../components/wakenter/AboutPageSections/FirstSection';
 import SecondSection from '../components/wakenter/AboutPageSections/SecondSection';
-import ThirdSection from '../components/wakenter/AboutPageSections/thirdSection';
+import ThirdSection from '../components/wakenter/AboutPageSections/ThirdSection';
 import Footer from '../components/wakenter/WakEnterFooter';
 
 export type scrollHandler = (top: number, height: number, renderAll?: boolean) => void

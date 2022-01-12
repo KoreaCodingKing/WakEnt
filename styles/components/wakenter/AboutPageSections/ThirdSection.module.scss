@@ -1,0 +1,16 @@
+.section_container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1800px;
+  min-height: 140vh;
+  margin: 0 auto;
+
+  .contents_wrapper {
+    display: flex;
+    position: sticky;
+    top: 30%;
+    justify-content: space-between;
+    min-height: 100vh;
+  }
+}
