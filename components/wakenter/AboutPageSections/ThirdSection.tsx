@@ -4,6 +4,7 @@ import { concatClass } from '../../../utils/class';
 import { scrollHandler } from '../../../pages/about';
 import styles from '../../../styles/components/wakenter/AboutPageSections/ThirdSection.module.scss';
 import { clamp } from '../../../utils/number';
+import { MotionCSS } from 'framer-motion/types/motion/types';
 
 interface ThirdSectionProps {
   className: string
@@ -19,7 +20,9 @@ const ThirdSection = ({ className, onScroll }: ThirdSectionProps) => {
 
   const opacity = useSpring(0.06, springOptions);
   const letterSpacing = useSpring(3, springOptions);
+  const translate = useSpring(10, springOptions);
   const letterTemplate = useMotionTemplate`${letterSpacing}vw`;
+  const translateTemplate = useMotionTemplate`translateY(${translate}px)`;
 
   useEffect(() => {
     onScroll(2, top => {
@@ -27,6 +30,7 @@ const ThirdSection = ({ className, onScroll }: ThirdSectionProps) => {
 
       opacity.set(clamp(tProgress, 0.06, 1));
       letterSpacing.set((1 - tProgress) * 3 - 0.3);
+      translate.set(clamp(top, 0, 300));
     });
   }, []);
 
@@ -39,7 +43,8 @@ const ThirdSection = ({ className, onScroll }: ThirdSectionProps) => {
             style={{
               opacity: opacity,
               letterSpacing: letterTemplate,
-            }}
+              transform: translateTemplate
+            } as MotionCSS}
           >
             이 세상 어디에도 없는<br></br>신개념 엔터테인먼트
           </motion.p>

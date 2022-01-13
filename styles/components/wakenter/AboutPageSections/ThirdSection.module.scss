@@ -5,6 +5,7 @@
 
   .contents_wrapper {
     overflow: hidden;
+    top: 25%;
     padding-top: 450px;
   }
 
@@ -16,9 +17,11 @@
 }
 
 .content {
-  font-size: 5em;
+  font-size: 6em;
   font-weight: bold;
   word-break: keep-all;
+
+  color: #86a8e7;
 
   @media screen and (max-width: $maxTablet) {
     font-size: 4em;
