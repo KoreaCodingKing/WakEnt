@@ -2,6 +2,11 @@
 
 .section_container {
   @include aboutSectionContainer;
+
+  .contents_wrapper {
+    overflow: hidden;
+    padding-top: 450px;
+  }
 }
 
 .content {

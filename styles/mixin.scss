@@ -13,10 +13,8 @@ $maxPage: 1280px;
   text-align: center;
 
   .contents_wrapper {
-    overflow: hidden;
     position: sticky;
     top: 4%;
-    padding-top: 450px;
     min-height: 100vh;
     align-items: center;
   }
