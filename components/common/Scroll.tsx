@@ -64,7 +64,7 @@ export const useScrollPage = (
 
 interface DynamicScrollOption {
   debounce?: number
-  callback?: (pages: [number, boolean, number, number][], renderAll?: boolean) => void
+  callback?: (pages: [boolean, number, number][], renderAll?: boolean) => void
 }
 
 /**
@@ -96,31 +96,34 @@ export const useDynamicPageScroll = (
     const processScroll = (renderAll?: boolean) => {
       const top = target.scrollTop || window.scrollY;
 
-      const scrolls: [number, boolean, number, number][] = [];
+      const scrolls: [boolean, number, number][] = new Array(
+        childs.length
+      ).fill([false, 0, 0]);
+
+      let finalPage = page;
 
       for (let i = 0; i < childs.length; i++) {
         const nextChild = childs[i + 1];
 
-        scrolls.push([
-          i,
+        scrolls[i] = [
           top < childs[i].offsetTop + childs[i].scrollHeight,
           top - childs[i].offsetTop,
           childs[i].scrollHeight,
-        ]);
-
-        if (!nextChild) {
-          break;
-        }
+        ];
 
         if (
-          top < nextChild.offsetTop - target.scrollHeight * threshold
+          nextChild
+            ? top < nextChild.offsetTop - target.scrollHeight * threshold
+            : top - childs[i].offsetTop - target.scrollHeight * threshold > 0
         ) {
-          if (i !== page) {
-            setPage(i);
-          }
+          finalPage = i;
 
-          continue;
+          break;
         }
+      }
+
+      if (finalPage !== page) {
+        setPage(finalPage);
       }
 
       if (options?.callback && scrolls.length) {
@@ -155,7 +158,7 @@ export const useDynamicPageScroll = (
     window.addEventListener('scroll', wheelHandler, { passive: true });
     window.addEventListener('resize', fullHandler, { passive: true });
 
-    // requestAnimationFrame(() => processScroll(true));
+    requestAnimationFrame(() => processScroll(true));
 
     return () => {
       if (bounce) {

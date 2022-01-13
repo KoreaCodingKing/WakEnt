@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { DetailedHTMLProps, HTMLAttributes, useEffect, useState } from 'react';
+import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import styles from '../../styles/components/wakenter/Photo.module.scss';
 

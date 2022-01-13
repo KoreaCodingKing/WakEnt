@@ -31,10 +31,10 @@ const About: NextPage = () => {
     callback: (pages, renderAll) => {
       if (!pages[page]) return;
 
-      const [pageIndex, active, top, height] = pages[page];
+      const [active, top, height] = pages[page];
 
-      if ((renderAll || active) && scrollHandlers.current[pageIndex]) {
-        scrollHandlers.current[pageIndex](top, height, renderAll);
+      if ((renderAll || active) && scrollHandlers.current[page]) {
+        scrollHandlers.current[page](top, height, renderAll);
       }
     },
   });
