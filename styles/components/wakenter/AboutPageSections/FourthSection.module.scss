@@ -2,5 +2,54 @@
 
 .section_container {
   @include aboutSectionContainer;
+
+  .contents_wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-top: 200px;
+  }
 }
+
+.infra_introduce {
+  margin-bottom: 100px;
+}
+
+.infra_introduce, .crew_container {
+  display: flex;
+  justify-content: center;
+  width: 128%;
+  align-items: center;
   
+  .image_wrapper {
+    position: relative;
+    width: 36vw;
+    max-width: 464px;
+    aspect-ratio: 16 / 9;
+    margin-right: 5%;
+
+    .second_img {
+      top: 64% !important;
+      left: 8% !important;
+    }
+  }
+  .title_wrapper {
+    text-align: left;
+    word-break: break-word;
+    align-self: flex-end;
+  
+    .title {
+      font-size: 3.5em;
+      font-weight: 700;
+    }
+    .subtitle {
+      max-width: 567px;
+      align-self: center;
+
+      font-weight: 300;
+      font-size: 1.18em;
+      letter-spacing: -0.3px;
+      line-height: 1.35;
+      word-break: keep-all;
+    }
+  }
+}
