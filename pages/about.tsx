@@ -11,6 +11,7 @@ import FirstSection from '../components/wakenter/AboutPageSections/FirstSection'
 import SecondSection from '../components/wakenter/AboutPageSections/SecondSection';
 import ThirdSection from '../components/wakenter/AboutPageSections/ThirdSection';
 import Footer from '../components/wakenter/WakEnterFooter';
+import FourthSection from '../components/wakenter/AboutPageSections/FourthSection';
 
 export type scrollHandler = (top: number, height: number, renderAll?: boolean) => void
 
@@ -70,6 +71,11 @@ const About: NextPage = () => {
             current={page === 2}
             onScroll={listenScrollHandler}
           ></ThirdSection>
+          <FourthSection
+            className={styles.section}
+            current={page === 3}
+            onScroll={listenScrollHandler}
+          ></FourthSection>
           <Footer></Footer>
         </div>
       </div>
