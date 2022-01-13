@@ -10,17 +10,18 @@
 
   .contents_wrapper {
     position: sticky;
-    padding-top: 450px;
+    top: 25%;
     min-height: 100vh;
     align-items: center;
-    overflow: hidden;
   }
 }
 
 .content {
-  font-size: 5em;
+  font-size: 6em;
   font-weight: bold;
   word-break: keep-all;
+
+  color: #86a8e7;
 
   @media screen and (max-width: $maxTablet) {
     font-size: 4em;
