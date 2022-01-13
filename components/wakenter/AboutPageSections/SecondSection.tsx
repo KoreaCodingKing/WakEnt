@@ -94,12 +94,12 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
   );
 
   useEffect(() => {
-    onScroll(1, (top, height) => {
+    onScroll(1, (top, height, renderAll) => {
       const threshold = 50;
 
       setIsScrolled(top > threshold);
 
-      if (top > threshold) {
+      if (top > threshold || renderAll) {
         for (let i = 0; i < transforms.current.length; i++) {
           if (i === selectedIndex) {
             continue;
