@@ -1,12 +1,9 @@
-import { useEffect, useRef } from 'react';
-import {
-  motion,
-  MotionValue,
-  useMotionValue,
-} from 'framer-motion';
+import { useEffect } from 'react';
+import { motion, useMotionTemplate, useSpring } from 'framer-motion';
 import { concatClass } from '../../../utils/class';
 import { scrollHandler } from '../../../pages/about';
 import styles from '../../../styles/components/wakenter/AboutPageSections/ThirdSection.module.scss';
+import { clamp } from '../../../utils/number';
 
 interface ThirdSectionProps {
   className: string
@@ -14,32 +11,22 @@ interface ThirdSectionProps {
   onScroll: (index: number, callback: scrollHandler) => void
 }
 
-interface TextTransformData {
-  opacity: MotionValue<number>
-  letterSpacing: MotionValue<number>
-}
-
 const ThirdSection = ({ className, onScroll }: ThirdSectionProps) => {
-  const textMotionValues = useRef<TextTransformData>({
-    opacity: useMotionValue(1),
-    letterSpacing: useMotionValue(10),
-  });
-
-  const textMotionCurrentValues: TextTransformData = {
-    opacity: textMotionValues.current.opacity,
-    letterSpacing: textMotionValues.current.letterSpacing,
+  const springOptions = {
+    stiffness: 1000,
+    damping: 100,
   };
 
+  const opacity = useSpring(0.06, springOptions);
+  const letterSpacing = useSpring(3, springOptions);
+  const letterTemplate = useMotionTemplate`${letterSpacing}vw`;
+
   useEffect(() => {
-    onScroll(2, (top, height, renderAll) => {
-      if (
-        textMotionCurrentValues.opacity.get() === 1 ||
-        textMotionCurrentValues.letterSpacing.get() === 10 ||
-        renderAll
-      ) {
-        textMotionValues.current.opacity.set(top / 100);
-        textMotionValues.current.letterSpacing.set(top / 10);
-      }
+    onScroll(2, top => {
+      const tProgress = clamp(top / 200, 0, 1);
+
+      opacity.set(clamp(tProgress, 0.06, 1));
+      letterSpacing.set((1 - tProgress) * 3 - 0.3);
     });
   }, []);
 
@@ -50,8 +37,8 @@ const ThirdSection = ({ className, onScroll }: ThirdSectionProps) => {
           <motion.p
             className={styles.content}
             style={{
-              opacity: textMotionCurrentValues.opacity,
-              letterSpacing: textMotionCurrentValues.letterSpacing,
+              opacity: opacity,
+              letterSpacing: letterTemplate,
             }}
           >
             이 세상 어디에도 없는<br></br>신개념 엔터테인먼트

@@ -1,7 +1,5 @@
 @import '../../../mixin.scss';
 
-$font-size: 5em;
-
 .section_container {
   position: relative;
   width: 100%;
@@ -12,13 +10,19 @@ $font-size: 5em;
 
   .contents_wrapper {
     position: sticky;
-    top: calc(50% - $font-size);
+    padding-top: 450px;
     min-height: 100vh;
     align-items: center;
+    overflow: hidden;
   }
 }
 
 .content {
-  font-size: $font-size;
-  font-weight: 700;
+  font-size: 5em;
+  font-weight: bold;
+  word-break: keep-all;
+
+  @media screen and (max-width: $maxTablet) {
+    font-size: 4em;
+  }
 }
