@@ -4,10 +4,19 @@ $maxMobile: 675px;
 
 $maxPage: 1280px;
 
-@mixin componentContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
+@mixin aboutSectionContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1800px;
+  min-height: 140vh;
+  margin: 0 auto;
+  text-align: center;
+
+  .contents_wrapper {
+    position: sticky;
+    padding-top: 450px;
+    min-height: 100vh;
     align-items: center;
+    overflow: hidden;
+  }
 }
