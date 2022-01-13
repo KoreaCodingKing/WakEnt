@@ -8,16 +8,21 @@
     flex-direction: column;
     padding-top: 234px;
   }
-}
 
-.infra_introduce {
-  margin-bottom: 100px;
+  @media screen and (max-width: $maxMobile) {
+    min-height: 180vh;
+
+    .contents_wrapper {
+      padding-top: 10vh;
+    }
+  }
 }
 
 .infra_introduce, .crew_container {
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-bottom: 100px;
   align-items: center;
   
   .image_wrapper {
@@ -68,10 +73,11 @@
 
   @media screen and (max-width: $maxMobile) {
     flex-direction: column;
+    margin-bottom: 20px;
     padding: 0px 8px;
 
     .image_wrapper {
-      width: 74vw;
+      width: 58vw;
       margin-bottom: 60px;
     }
 
