@@ -20,7 +20,6 @@ const FifthSection = ({className, current, onScroll}: AboutSectionProps) => {
     onScroll(4, (top) => {
       // ToDo: state가 변환되지 않음. 확인 필요
       if (top === 0 && !showTyped) {
-        console.log('2', showTyped);
         options = {
           strings: [
             '사실 난 메타버스가 뭔지 잘 모른다.'
@@ -28,7 +27,6 @@ const FifthSection = ({className, current, onScroll}: AboutSectionProps) => {
           typeSpeed: 60,
           showCursor: false,
           onComplete: () => {
-            console.log('?');
             setShowTyped(true);
           }
         } as TypedOptions;
