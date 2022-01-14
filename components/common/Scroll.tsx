@@ -64,6 +64,7 @@ export const useScrollPage = (
 };
 
 interface DynamicScrollOption {
+  offset?: number
   debounce?: number
   callback?: (pages: [boolean, number, number][], renderAll?: boolean) => void
 }
@@ -79,7 +80,10 @@ export const useDynamicPageScroll = (
   parent: RefObject<HTMLElement> | null,
   pageSelector: string,
   threshold: number,
-  options?: DynamicScrollOption
+  options: DynamicScrollOption = {
+    offset: 0,
+    debounce: 0
+  }
 ) => {
   const [page, setPage] = useState<number>(0);
 
@@ -92,7 +96,9 @@ export const useDynamicPageScroll = (
 
     const childs = target.querySelectorAll(pageSelector) as NodeListOf<
       HTMLElement
-    >;
+      >;
+
+    const offset = options.offset || 0;
 
     const processScroll = (renderAll?: boolean) => {
       const top = target.scrollTop || window.scrollY;
@@ -107,14 +113,14 @@ export const useDynamicPageScroll = (
         const ot = childs[i].offsetTop;
         const sh = childs[i].scrollHeight;
 
-        scrolls[i] = [top < ot + sh, clamp(top - ot, 0, sh), sh];
+        scrolls[i] = [top < ot + sh - offset, clamp(top - ot - offset, 0, sh), sh];
       }
 
       for (let i = 0; i < childs.length; i++) {
         if (
           childs[i + 1]
-            ? top < childs[i + 1].offsetTop - target.scrollHeight * threshold
-            : top - childs[i].offsetTop - target.scrollHeight * threshold > 0
+            ? top - offset < childs[i + 1].offsetTop - (target.scrollHeight * threshold)
+            : top - childs[i].offsetTop - (target.scrollHeight * threshold) - offset > 0
         ) {
           finalPage = i;
 

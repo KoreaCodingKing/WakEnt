@@ -29,6 +29,7 @@ const About: NextPage = () => {
   const scrollHandlers = useRef<scrollHandler[]>([]);
 
   const page = useDynamicPageScroll(container, `.${styles.section}`, 0, {
+    offset: -50,
     callback: (pages, renderAll) => {
       if (renderAll) {
         for (let i = 0; i < pages.length; i++) {
