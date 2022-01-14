@@ -1,0 +1,97 @@
+@import '../../../mixin.scss';
+
+.section_container {
+  @include aboutSectionContainer;
+
+  .contents_wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-top: 234px;
+    padding-bottom: 234px;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    min-height: 180vh;
+
+    .contents_wrapper {
+      padding-top: 10vh;
+      padding-bottom: 10vh;
+    }
+  }
+}
+
+.infra_introduce, .crew_container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 100px;
+  align-items: center;
+  
+  .image_wrapper {
+    position: relative;
+    width: 36vw;
+    max-width: 464px;
+    aspect-ratio: 16 / 9;
+    margin-right: 5%;
+  }
+
+  .title_wrapper {
+    text-align: left;
+    word-break: break-word;
+    align-self: flex-end;
+
+    margin-top: auto;
+    margin-bottom: auto;
+  
+    .title {
+      font-size: 2em;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .subtitle {
+      max-width: 567px;
+      align-self: center;
+
+      font-weight: 300;
+      font-size: 1.18em;
+      letter-spacing: -0.3px;
+      line-height: 1.35;
+      word-break: keep-all;
+    }
+  }
+
+  @media screen and (max-width: $maxTablet) {
+    padding: 0px 8px;
+
+    .title_wrapper {
+      .title {
+        font-size: 1.75em;
+      }
+
+      .subtitle {
+        font-size: 1.16em;
+      }
+    }
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding: 0px 8px;
+
+    .image_wrapper {
+      width: 58vw;
+      margin-bottom: 60px;
+    }
+
+    .title_wrapper {
+      .title {
+        font-size: 1.5em;
+      }
+      .subtitle {
+        font-size: 1.14em;
+      }
+    }
+  }
+}

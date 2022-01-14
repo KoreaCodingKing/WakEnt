@@ -1,0 +1,36 @@
+@import '../../../mixin.scss';
+
+.section_container {
+  @include aboutSectionContainer;
+
+  background: #000;
+
+  .contents_wrapper {
+    overflow: hidden;
+    top: 25vh;
+    padding-top: 20vh;
+  }
+
+  .contents_wrapper {
+    @media screen and (max-width: $maxTablet) {
+      max-width: 80%;
+      margin: auto;
+    }
+
+    @media screen and (max-width: $maxMobile) {
+      padding-top: 20vh;
+    }
+  }
+}
+
+.content {
+  font-size: 6em;
+  font-weight: bold;
+  word-break: keep-all;
+
+  color: #86a8e7;
+
+  @media screen and (max-width: $maxTablet) {
+    font-size: 4em;
+  }
+}

@@ -1,6 +1,7 @@
 import { RefObject, useEffect, useState } from 'react';
 
 import styles from '../../styles/components/common/Scroll.module.scss';
+import { clamp } from '../../utils/number';
 
 /**
  * body 스크롤을 잠금할 때 사용하는 Hook입니다.
@@ -64,7 +65,7 @@ export const useScrollPage = (
 
 interface DynamicScrollOption {
   debounce?: number
-  callback?: (pages: [number, boolean, number, number][], renderAll?: boolean) => void
+  callback?: (pages: [boolean, number, number][], renderAll?: boolean) => void
 }
 
 /**
@@ -96,31 +97,33 @@ export const useDynamicPageScroll = (
     const processScroll = (renderAll?: boolean) => {
       const top = target.scrollTop || window.scrollY;
 
-      const scrolls: [number, boolean, number, number][] = [];
+      const scrolls: [boolean, number, number][] = new Array(
+        childs.length
+      ).fill([false, 0, 0]);
+
+      let finalPage = page;
 
       for (let i = 0; i < childs.length; i++) {
-        const nextChild = childs[i + 1];
+        const ot = childs[i].offsetTop;
+        const sh = childs[i].scrollHeight;
 
-        scrolls.push([
-          i,
-          top < childs[i].offsetTop + childs[i].scrollHeight,
-          top - childs[i].offsetTop,
-          childs[i].scrollHeight,
-        ]);
+        scrolls[i] = [top < ot + sh, clamp(top - ot, 0, sh), sh];
+      }
 
-        if (!nextChild) {
+      for (let i = 0; i < childs.length; i++) {
+        if (
+          childs[i + 1]
+            ? top < childs[i + 1].offsetTop - target.scrollHeight * threshold
+            : top - childs[i].offsetTop - target.scrollHeight * threshold > 0
+        ) {
+          finalPage = i;
+
           break;
         }
+      }
 
-        if (
-          top < nextChild.offsetTop - target.scrollHeight * threshold
-        ) {
-          if (i !== page) {
-            setPage(i);
-          }
-
-          continue;
-        }
+      if (finalPage !== page) {
+        setPage(finalPage);
       }
 
       if (options?.callback && scrolls.length) {
@@ -155,7 +158,7 @@ export const useDynamicPageScroll = (
     window.addEventListener('scroll', wheelHandler, { passive: true });
     window.addEventListener('resize', fullHandler, { passive: true });
 
-    // requestAnimationFrame(() => processScroll(true));
+    requestAnimationFrame(() => processScroll(true));
 
     return () => {
       if (bounce) {

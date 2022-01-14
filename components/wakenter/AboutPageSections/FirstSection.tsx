@@ -51,24 +51,22 @@ const FirstSection = ({
    * 컴포넌트 생성 후에 호출할 수 있도록 구성했습니다.
    */
   useEffect(() => {
-    onScroll(0, (top, height, renderAll) => {
+    onScroll(0, (top, height) => {
       if (!current) {
         return;
       }
 
       const progress = top / height;
 
-      if (top < height / 2 || renderAll) {
-        const desc = easeOutExpo(progress) * 10 - 9 + 0.3;
-        const cover = 0.99 - easeOutExpo((top - height / 10) / (height * 0.75));
+      const desc = easeOutExpo(progress) * 10 - 9 + 0.3;
+      const cover = 0.99 - easeOutExpo((top - height / 10) / (height * 0.75));
 
-        descOpacity.set(desc);
-        coverOpacity.set(cover);
+      descOpacity.set(desc);
+      coverOpacity.set(cover);
 
-        coverScale.set(0.1 + 30 * easeInExpo(progress));
-      }
+      coverScale.set(0.1 + 30 * easeInExpo(progress));
 
-      setHeaderWhite(top < height / 3);
+      setHeaderWhite && setHeaderWhite(top < height / 3);
 
       if (video.current) {
         if (!video.current.paused && top > window.innerHeight * 1.2) {

@@ -9,14 +9,16 @@ import WakEnterMetadata from '../components/wakenter/Meta';
 
 import FirstSection from '../components/wakenter/AboutPageSections/FirstSection';
 import SecondSection from '../components/wakenter/AboutPageSections/SecondSection';
+import ThirdSection from '../components/wakenter/AboutPageSections/ThirdSection';
 import Footer from '../components/wakenter/WakEnterFooter';
+import FourthSection from '../components/wakenter/AboutPageSections/FourthSection';
 
 export type scrollHandler = (top: number, height: number, renderAll?: boolean) => void
 
 export interface AboutSectionProps {
   className?: string
   current: boolean
-  setHeaderWhite: (white: boolean) => void
+  setHeaderWhite?: (white: boolean) => void
   onScroll: (index: number, callback: scrollHandler) => void
 }
 
@@ -28,12 +30,24 @@ const About: NextPage = () => {
 
   const page = useDynamicPageScroll(container, `.${styles.section}`, 0, {
     callback: (pages, renderAll) => {
+      if (renderAll) {
+        for (let i = 0; i < pages.length; i++) {
+          const [active, top, height] = pages[i];
+
+          if (scrollHandlers.current[i]) {
+            scrollHandlers.current[i](top, height, renderAll);
+          }
+        }
+
+        return;
+      }
+
       if (!pages[page]) return;
 
-      const [pageIndex, active, top, height] = pages[page];
+      const [active, top, height] = pages[page];
 
-      if ((renderAll || active) && scrollHandlers.current[pageIndex]) {
-        scrollHandlers.current[pageIndex](top, height, renderAll);
+      if (active && scrollHandlers.current[page]) {
+        scrollHandlers.current[page](top, height, renderAll);
       }
     },
   });
@@ -64,7 +78,17 @@ const About: NextPage = () => {
             current={page === 1}
             onScroll={listenScrollHandler}
           ></SecondSection>
-          <section className={styles.section} data-index={2}></section>
+          <ThirdSection
+            className={styles.section}
+            current={page === 2}
+            setHeaderWhite={setWhiteHeader}
+            onScroll={listenScrollHandler}
+          ></ThirdSection>
+          <FourthSection
+            className={styles.section}
+            current={page === 3}
+            onScroll={listenScrollHandler}
+          ></FourthSection>
           <Footer></Footer>
         </div>
       </div>

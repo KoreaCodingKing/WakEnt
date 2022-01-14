@@ -1,22 +1,15 @@
-import { MouseEventHandler, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   motion,
   MotionValue,
   useMotionTemplate,
-  useMotionValue,
   useSpring,
 } from 'framer-motion';
 
 import styles from '../../../styles/components/wakenter/AboutPageSections/SecondSection.module.scss';
 import { concatClass } from '../../../utils/class';
-import { scrollHandler } from '../../../pages/about';
+import { AboutSectionProps } from '../../../pages/about';
 import Photo from '../Photo';
-
-interface SecondSectionProps {
-  className: string
-  current: boolean
-  onScroll: (index: number, callback: scrollHandler) => void
-}
 
 interface OfficeImage {
   path: string
@@ -26,13 +19,11 @@ interface OfficeImage {
 interface ImageTransformData {
   x: MotionValue<number>
   y: MotionValue<number>
-  springX: MotionValue<number>
-  springY: MotionValue<number>
   scale: MotionValue<number>
   rotate: MotionValue<number>
 }
 
-const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
+const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [selectedIndex, setSelectedIndex] = useState<number|null>(null);
 
@@ -65,28 +56,22 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
 
   const transforms = useRef<ImageTransformData[]>(
     new Array(6).fill(0).map((_, i) => {
-      const x = useMotionValue(-25 - (i % 3) * 30);
-      const y = useMotionValue(0 + Math.floor(i / 3) * 40);
-
-      const springX = useSpring(x, {
+      const x = useSpring(-25 - (i % 3) * 30, {
         stiffness: 1000,
         damping: 100,
       });
 
-      const springY = useSpring(y, {
+      const y = useSpring(0 + Math.floor(i / 3) * 40, {
         stiffness: 1000,
         damping: 100,
       });
 
       const scale = useSpring(1);
-
       const rotate = useSpring(Math.random() * (10 - (-10)) + (-10));
 
       return {
         x,
         y,
-        springX,
-        springY,
         scale,
         rotate
       };
@@ -147,7 +132,7 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
   const imageMotionTemplate = transforms.current.map(
     (d: ImageTransformData) => {
       return {
-        transform: useMotionTemplate`translateX(${d.springX}%) translateY(${d.springY}%) scale(${d.scale}) rotate(${d.rotate}deg)`,
+        transform: useMotionTemplate`translateX(${d.x}%) translateY(${d.y}%) scale(${d.scale}) rotate(${d.rotate}deg)`,
         scale: useMotionTemplate`scale(${d.scale})`
       };
     }
