@@ -287,6 +287,7 @@ const About: NextPage = () => {
                   </button>
                   {PositionCategory.map(v => (
                     <button
+                      key={`position-category-${v}`}
                       className={
                         positionCategory === v ? styles.active : undefined
                       }
@@ -301,7 +302,10 @@ const About: NextPage = () => {
                     v =>
                       (positionCategory === null ||
                         positionCategory === v.category) && (
-                        <div className={styles.position}>
+                        <div
+                          key={`position-${v.title}`}
+                          className={styles.position}
+                        >
                           <p>{v.title}</p>
                           <p>{v.category}</p>
                         </div>

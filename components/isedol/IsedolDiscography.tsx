@@ -344,6 +344,7 @@ export const IsedolDiscography: NextPage = () => {
         <div className={styles.grid}>
           {IsedolCover.map(cover => (
             <YouTubeCard
+              key={`cover-${cover.id}`}
               title={cover.title}
               thumbnail={cover.thumbnail}
               id={cover.id}
@@ -353,13 +354,14 @@ export const IsedolDiscography: NextPage = () => {
         </div>
       </section>
       {Object.keys(MemberCover).map(member => (
-        <section className={styles.section}>
+        <section className={styles.section} key={`${member}-section`}>
           <h3 className={styles.sectionTitle}>
             {Members[member as MemberID].name.ko}
           </h3>
           <div className={styles.grid}>
             {MemberCover[member as MemberID].map(cover => (
               <YouTubeCard
+                key={`personal-cover-${cover.id}`}
                 title={cover.title}
                 thumbnail={cover.thumbnail}
                 id={cover.id}

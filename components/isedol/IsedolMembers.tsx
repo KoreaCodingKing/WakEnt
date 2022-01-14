@@ -157,7 +157,14 @@ export const IsedolMembers: NextPage = () => {
         ></meta>
       </Head>
       <div className={styles.preload}>
-        {Object.keys(SocialIcons).map(key => <Image src={SocialIcons[key].src} width={30} height={30}></Image>)}
+        {Object.keys(SocialIcons).map(key => (
+          <Image
+            key={`icons-${key}`}
+            src={SocialIcons[key].src}
+            width={30}
+            height={30}
+          ></Image>
+        ))}
       </div>
       <div
         className={concatClass(
@@ -338,7 +345,10 @@ export const IsedolMembers: NextPage = () => {
                 <div className={styles.social_links}>
                   {Members[previousMember].links.map(link =>
                     link.icon ? (
-                      <Link key={`social-link-${link.link}-${link.icon}`} href={link.link}>
+                      <Link
+                        key={`social-link-${link.link}-${link.icon}`}
+                        href={link.link}
+                      >
                         <a className={styles.icon} target='_blank'>
                           {(SocialIcons[link.icon] && (
                             <Image
@@ -353,7 +363,12 @@ export const IsedolMembers: NextPage = () => {
                         </a>
                       </Link>
                     ) : (
-                      <div key={`social-link-${link.link}-${link.icon}`} className={styles.link}>{link.name}</div>
+                      <div
+                        key={`social-link-${link.link}-${link.icon}`}
+                        className={styles.link}
+                      >
+                        {link.name}
+                      </div>
                     )
                   )}
                 </div>
