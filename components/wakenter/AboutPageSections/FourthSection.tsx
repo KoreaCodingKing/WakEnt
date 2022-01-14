@@ -16,11 +16,9 @@ const FourthSection = ({ className, onScroll }: AboutSectionProps) => {
   const secondOpacity = useSpring(0.06, springOptions);
 
   useEffect(() => {
-    onScroll(3, (top, height, renderAll) => {
-      const tProgress = clamp(top / 500, 0, 1);
-
-      firstOpacity.set(clamp(tProgress, 0, 1));
-      secondOpacity.set(clamp(tProgress, 0, 1));
+    onScroll(3, (top, height) => {
+      firstOpacity.set(clamp(top / (height / 10), 0, 1));
+      secondOpacity.set(clamp((top - 100) / (height / 10), 0, 1));
     });
   }, []);
 
@@ -33,12 +31,11 @@ const FourthSection = ({ className, onScroll }: AboutSectionProps) => {
               opacity: firstOpacity
             }}>
             <div className={styles.image_wrapper}>
-              <Image src={'/images/infra/bg_mixer.png'} alt="믹서 기기" layout="fill"></Image>
-              <Image className={styles.second_img} src={'/images/infra/bg_recording_studio.png'} alt="녹음 스튜디오" layout="fill"></Image>
+              <Image src={'/images/building/recording_room_mixer.png'} alt="믹서 기기" layout="fill"></Image>
             </div>
             <div className={styles.title_wrapper}>
               <p className={styles.title}>업계 최고 오디오 장비 도입</p>
-              <p className={styles.subtitle}>회사 스튜디오 내에 업계 최고급 오디오 장비와 악기를 구비하고 있습니다.</p>
+              <p className={styles.subtitle}>회사 스튜디오 내에 업계 최고급 오디오 장비를 구비하여 소비자에게 최고의 경험을 선사하고자 노력하고 있습니다.</p>
             </div>
           </motion.div>
           <motion.div className={styles.crew_container}
@@ -46,12 +43,11 @@ const FourthSection = ({ className, onScroll }: AboutSectionProps) => {
               opacity: secondOpacity
             }}>
             <div className={styles.image_wrapper}>
-              <Image src={'/images/infra/bg_benzenpro_back.png'} alt="팬치" layout="fill"></Image>
-              <Image className={styles.second_img} src={'/images/infra/bg_benzenpro.png'} alt="벤젠프로" layout="fill"></Image>
+              <Image src={'/images/member/benzenpro.jpg'} alt="벤젠프로" layout="fill"></Image>
             </div>
             <div className={styles.title_wrapper}>
               <p className={styles.title}>세계 최고의 스태프</p>
-              <p className={styles.subtitle}>각 분야의 실력자들이 모인 스튜디오에서 원하는 것을 모두 이룰 수 있습니다.</p>
+              <p className={styles.subtitle}>각 분야 극한의 알잘딱 실력자들이 모인 스튜디오에서 원하는 것을 모두 이룰 수 있습니다.</p>
             </div>
           </motion.div>
         </div>

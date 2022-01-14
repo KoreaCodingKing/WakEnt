@@ -58,15 +58,13 @@ const FirstSection = ({
 
       const progress = top / height;
 
-      if (top < height / 2) {
-        const desc = easeOutExpo(progress) * 10 - 9 + 0.3;
-        const cover = 0.99 - easeOutExpo((top - height / 10) / (height * 0.75));
+      const desc = easeOutExpo(progress) * 10 - 9 + 0.3;
+      const cover = 0.99 - easeOutExpo((top - height / 10) / (height * 0.75));
 
-        descOpacity.set(desc);
-        coverOpacity.set(cover);
+      descOpacity.set(desc);
+      coverOpacity.set(cover);
 
-        coverScale.set(0.1 + 30 * easeInExpo(progress));
-      }
+      coverScale.set(0.1 + 30 * easeInExpo(progress));
 
       setHeaderWhite && setHeaderWhite(top < height / 3);
 

@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     padding-top: 234px;
+    padding-bottom: 234px;
   }
 
   @media screen and (max-width: $maxMobile) {
@@ -14,6 +15,7 @@
 
     .contents_wrapper {
       padding-top: 10vh;
+      padding-bottom: 10vh;
     }
   }
 }
@@ -31,12 +33,8 @@
     max-width: 464px;
     aspect-ratio: 16 / 9;
     margin-right: 5%;
-
-    .second_img {
-      top: 64% !important;
-      left: 8% !important;
-    }
   }
+
   .title_wrapper {
     text-align: left;
     word-break: break-word;
