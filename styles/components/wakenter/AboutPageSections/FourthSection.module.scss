@@ -2,12 +2,12 @@
 
 .section_container {
   @include aboutSectionContainer;
+  min-height: 130vh;
 
   .contents_wrapper {
     display: flex;
     flex-direction: column;
     padding-top: 234px;
-    padding-bottom: 234px;
   }
 
   @media screen and (max-width: $maxMobile) {

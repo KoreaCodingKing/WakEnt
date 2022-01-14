@@ -1,1 +1,103 @@
 @import '../../../mixin.scss';
+
+.fifth_section {
+  min-height: 80vh !important;
+}
+
+.section_container {
+  margin-top: 16vh;
+
+  .contents_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    padding: 0px 8px;
+
+    .contents_wrapper {
+      flex-direction: column;
+
+      .image_wrapper {
+        width: 30vw;
+        margin-right: 0px;
+        margin-bottom: 4%;
+      }
+    }
+  }
+}
+
+.image_wrapper {
+  position: relative;
+  width: 20vw;
+  max-width: 284px;
+  margin-right: 12%;
+  aspect-ratio: 10/16;
+}
+
+.motto_container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-weight: 700;
+  word-break: keep-all;
+
+  .motto_top_quote {
+    margin-bottom: 20px;
+    align-self: flex-start;
+    font-size: 2em;
+    color: #999999;
+  }
+  .motto {
+    margin-bottom: 28px;
+    align-items: center;
+    font-size: 2.5em;
+  }
+  .motto_bottom_quote {
+    margin-bottom: 40px;
+    align-self: flex-end;
+    font-size: 2em;
+    color: #999999;
+  }
+  .motto_desc {
+    align-self: flex-end;
+    font-size: 1em;
+    color: #BBBBBB;
+  }
+
+  @media screen and (max-width: $maxTablet) {
+    padding: 0px 8px;
+
+    .motto_top_quote {
+      margin-bottom: 5px;
+    }
+    .motto {
+      font-size: 1.7em;
+    }
+    .motto_desc {
+      font-size: 0.8em;
+    }
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    .motto_top_quote {
+      font-size: 1.5em;
+      margin-bottom: 0px;
+    }
+    .motto {
+      margin-bottom: 6px;
+      font-size: 1em;
+    }
+    .motto_bottom_quote {
+      margin-bottom: 8px;
+      font-size: 1.5em;
+    }
+    .motto_desc {
+      font-size: 0.5em;
+    }
+  }
+}
