@@ -3,20 +3,13 @@ import {
   motion,
   MotionValue,
   useMotionTemplate,
-  useMotionValue,
   useSpring,
 } from 'framer-motion';
 
 import styles from '../../../styles/components/wakenter/AboutPageSections/SecondSection.module.scss';
 import { concatClass } from '../../../utils/class';
-import { scrollHandler } from '../../../pages/about';
+import { AboutSectionProps } from '../../../pages/about';
 import Photo from '../Photo';
-
-interface SecondSectionProps {
-  className: string
-  current: boolean
-  onScroll: (index: number, callback: scrollHandler) => void
-}
 
 interface OfficeImage {
   path: string
@@ -30,7 +23,7 @@ interface ImageTransformData {
   rotate: MotionValue<number>
 }
 
-const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
+const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [selectedIndex, setSelectedIndex] = useState<number|null>(null);
 
@@ -86,12 +79,12 @@ const SecondSection = ({ className, onScroll }: SecondSectionProps) => {
   );
 
   useEffect(() => {
-    onScroll(1, (top, height, renderAll) => {
+    onScroll(1, (top, height) => {
       const threshold = 50;
 
       setIsScrolled(top > threshold);
 
-      if (top > threshold || renderAll) {
+      if (top > threshold) {
         for (let i = 0; i < transforms.current.length; i++) {
           if (i === selectedIndex) {
             continue;

@@ -1,18 +1,12 @@
 import { useEffect } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
-import { scrollHandler } from "../../../pages/about";
+import { motion, useSpring } from "framer-motion";
+import { AboutSectionProps } from "../../../pages/about";
 import { concatClass } from "../../../utils/class";
 import styles from '../../../styles/components/wakenter/AboutPageSections/FourthSection.module.scss';
 import Image from "next/image";
 import { clamp } from "../../../utils/number";
 
-interface FourthSectionProps {
-  className: string,
-  current: boolean,
-  onScroll: (index: number, callback: scrollHandler) => void
-}
-
-const FourthSection = ({ className, onScroll }: FourthSectionProps) => {
+const FourthSection = ({ className, onScroll }: AboutSectionProps) => {
   const springOptions = {
     stiffness: 1000,
     damping: 100,
@@ -39,8 +33,8 @@ const FourthSection = ({ className, onScroll }: FourthSectionProps) => {
               opacity: firstOpacity
             }}>
             <div className={styles.image_wrapper}>
-              <Image src={'/images/infra/bg_mixer.png'} alt="믹서 기기"></Image>
-              <Image className={styles.second_img} src={'/images/infra/bg_recording_studio.png'} alt="녹음 스튜디오"></Image>
+              <Image src={'/images/infra/bg_mixer.png'} alt="믹서 기기" layout="fill"></Image>
+              <Image className={styles.second_img} src={'/images/infra/bg_recording_studio.png'} alt="녹음 스튜디오" layout="fill"></Image>
             </div>
             <div className={styles.title_wrapper}>
               <p className={styles.title}>업계 최고 오디오 장비 도입</p>
@@ -52,8 +46,8 @@ const FourthSection = ({ className, onScroll }: FourthSectionProps) => {
               opacity: secondOpacity
             }}>
             <div className={styles.image_wrapper}>
-              <Image src={'/images/infra/bg_benzenpro_back.png'} alt="팬치"></Image>
-              <Image className={styles.second_img} src={'/images/infra/bg_benzenpro.png'} alt="벤젠프로"></Image>
+              <Image src={'/images/infra/bg_benzenpro_back.png'} alt="팬치" layout="fill"></Image>
+              <Image className={styles.second_img} src={'/images/infra/bg_benzenpro.png'} alt="벤젠프로" layout="fill"></Image>
             </div>
             <div className={styles.title_wrapper}>
               <p className={styles.title}>세계 최고의 스태프</p>

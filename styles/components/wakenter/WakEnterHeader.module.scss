@@ -34,6 +34,8 @@
 
   margin-right: 6px;
 
+  transition: 1s filter cubic-bezier(0.19, 1, 0.22, 1);
+
   @media screen and (max-width: $maxTablet) {
     width: 45px;
     height: 45px;
@@ -61,6 +63,8 @@
   @media screen and (max-width: $maxMobile) {
     font-size: 0.75rem;
   }
+
+  transition: 1s color cubic-bezier(0.19, 1, 0.22, 1);
 
   span {
     margin: auto;

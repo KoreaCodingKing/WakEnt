@@ -3,14 +3,21 @@
 .section_container {
   @include aboutSectionContainer;
 
+  background: #000;
+
   .contents_wrapper {
     overflow: hidden;
-    top: 25%;
-    padding-top: 450px;
+    top: 25vh;
+    padding-top: 20vh;
   }
 
-  @media screen and (max-width: $maxMobile) {
-    .contents_wrapper {
+  .contents_wrapper {
+    @media screen and (max-width: $maxTablet) {
+      max-width: 80%;
+      margin: auto;
+    }
+
+    @media screen and (max-width: $maxMobile) {
       padding-top: 20vh;
     }
   }

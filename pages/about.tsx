@@ -18,7 +18,7 @@ export type scrollHandler = (top: number, height: number, renderAll?: boolean) =
 export interface AboutSectionProps {
   className?: string
   current: boolean
-  setHeaderWhite: (white: boolean) => void
+  setHeaderWhite?: (white: boolean) => void
   onScroll: (index: number, callback: scrollHandler) => void
 }
 
@@ -30,11 +30,23 @@ const About: NextPage = () => {
 
   const page = useDynamicPageScroll(container, `.${styles.section}`, 0, {
     callback: (pages, renderAll) => {
+      if (renderAll) {
+        for (let i = 0; i < pages.length; i++) {
+          const [active, top, height] = pages[i];
+
+          if (scrollHandlers.current[i]) {
+            scrollHandlers.current[i](top, height, renderAll);
+          }
+        }
+
+        return;
+      }
+
       if (!pages[page]) return;
 
       const [active, top, height] = pages[page];
 
-      if ((renderAll || active) && scrollHandlers.current[page]) {
+      if (active && scrollHandlers.current[page]) {
         scrollHandlers.current[page](top, height, renderAll);
       }
     },
@@ -69,6 +81,7 @@ const About: NextPage = () => {
           <ThirdSection
             className={styles.section}
             current={page === 2}
+            setHeaderWhite={setWhiteHeader}
             onScroll={listenScrollHandler}
           ></ThirdSection>
           <FourthSection

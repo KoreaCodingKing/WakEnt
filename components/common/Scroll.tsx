@@ -1,6 +1,7 @@
 import { RefObject, useEffect, useState } from 'react';
 
 import styles from '../../styles/components/common/Scroll.module.scss';
+import { clamp } from '../../utils/number';
 
 /**
  * body 스크롤을 잠금할 때 사용하는 Hook입니다.
@@ -103,17 +104,16 @@ export const useDynamicPageScroll = (
       let finalPage = page;
 
       for (let i = 0; i < childs.length; i++) {
-        const nextChild = childs[i + 1];
+        const ot = childs[i].offsetTop;
+        const sh = childs[i].scrollHeight;
 
-        scrolls[i] = [
-          top < childs[i].offsetTop + childs[i].scrollHeight,
-          top - childs[i].offsetTop,
-          childs[i].scrollHeight,
-        ];
+        scrolls[i] = [top < ot + sh, clamp(top - ot, 0, sh), sh];
+      }
 
+      for (let i = 0; i < childs.length; i++) {
         if (
-          nextChild
-            ? top < nextChild.offsetTop - target.scrollHeight * threshold
+          childs[i + 1]
+            ? top < childs[i + 1].offsetTop - target.scrollHeight * threshold
             : top - childs[i].offsetTop - target.scrollHeight * threshold > 0
         ) {
           finalPage = i;

@@ -32,6 +32,8 @@
   letter-spacing: -0.4px;
   color: #ffffff;
 
+  transition: 1s color cubic-bezier(0.19, 1, 0.22, 1);
+
   span {
     margin: auto;
   }
