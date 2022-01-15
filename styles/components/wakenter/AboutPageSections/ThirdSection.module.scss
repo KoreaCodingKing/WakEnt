@@ -3,6 +3,7 @@
 .section_container {
   @include aboutSectionContainer;
   min-height: 140vh;
+  max-width: unset;
 
   background: #000;
 
@@ -28,6 +29,7 @@
   font-size: 6em;
   font-weight: bold;
   word-break: keep-all;
+  margin: 0;
 
   color: #86a8e7;
 

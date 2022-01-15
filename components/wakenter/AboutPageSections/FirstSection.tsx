@@ -52,10 +52,6 @@ const FirstSection = ({
    */
   useEffect(() => {
     onScroll(0, (top, height) => {
-      if (!current) {
-        return;
-      }
-
       const progress = top / height;
 
       const desc = easeOutExpo(progress) * 10 - 9 + 0.3;

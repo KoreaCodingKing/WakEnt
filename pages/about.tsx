@@ -21,7 +21,7 @@ export type scrollHandler = (top: number, height: number, renderAll?: boolean) =
 
 export interface AboutSectionProps {
   className?: string
-  current: boolean
+  current?: boolean
   setHeaderWhite?: (white: boolean) => void
   onScroll: (index: number, callback: scrollHandler) => void
 }
@@ -74,34 +74,28 @@ const About: NextPage = () => {
         <div ref={container}>
           <FirstSection
             className={styles.section}
-            current={page === 0}
             setHeaderWhite={setWhiteHeader}
             onScroll={listenScrollHandler}
           ></FirstSection>
           <SecondSection
             className={styles.section}
-            current={page === 1}
             onScroll={listenScrollHandler}
           ></SecondSection>
           <ThirdSection
             className={styles.section}
-            current={page === 2}
             setHeaderWhite={setWhiteHeader}
             onScroll={listenScrollHandler}
           ></ThirdSection>
           <FourthSection
             className={styles.section}
-            current={page === 3}
             onScroll={listenScrollHandler}
           ></FourthSection>
           <FifthSection
             className={styles.section}
-            current={page === 4}
             onScroll={listenScrollHandler}
           ></FifthSection>
           <SixthSection
             className={styles.section}
-            current={page === 5}
             onScroll={listenScrollHandler}
           ></SixthSection>
           <Footer></Footer>

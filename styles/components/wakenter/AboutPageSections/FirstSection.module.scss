@@ -117,7 +117,7 @@
 
       .title {
         margin-bottom: 20px;
-        font-size: 3.5em;
+        font-size: 3em;
         letter-spacing: -1px;
       }
 
@@ -149,14 +149,15 @@
       .about_image {
         align-items: center;
         margin-bottom: 20px;
+        margin-right: unset;
       }
 
       .about_text {
-        align-self: flex-end;
-        margin-right: 2vw;
+        align-self: center;
+        max-width: 90vw;
 
         .title {
-          font-size: 3em;
+          font-size: 2.5em;
         }
 
         .subtitle {
@@ -176,6 +177,19 @@
     .about_desc_inner {
       flex-direction: column;
       min-height: fit-content;
+
+      .about_text {
+        margin-right: unset;
+        max-width: 90vw;
+
+        .title {
+          font-size: 2em;
+        }
+
+        .subtitle {
+          font-size: 1em;
+        }
+      }
 
       .first_section__img {
         max-width: none;

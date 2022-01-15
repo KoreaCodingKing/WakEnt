@@ -73,27 +73,31 @@
       }
 
       .subtitle {
-        font-size: 1.16em;
+        font-size: 1.05em;
       }
     }
   }
 
   @media screen and (max-width: $maxMobile) {
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     padding: 0px 8px;
 
     .image_wrapper {
-      width: 58vw;
-      margin-bottom: 60px;
+      width: 90vw;
+      margin-right: unset;
+      margin-bottom: 2em;
     }
 
     .title_wrapper {
+      max-width: 90vw;
+      align-self: center;
+
       .title {
         font-size: 1.5em;
       }
       .subtitle {
-        font-size: 1.14em;
+        font-size: 1em;
       }
     }
   }
