@@ -9,8 +9,6 @@
     "lint:prod": "NODE_ENV=production next lint"
   },
   "dependencies": {
-    "@types/aos": "^3.0.4",
-    "aos": "^3.0.0-beta.6",
     "cheerio": "^1.0.0-rc.10",
     "eslint-plugin-jsdoc": "^37.4.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
@@ -19,8 +17,7 @@
     "normalize.css": "^8.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sass": "^1.45.1",
-    "typed.js": "^2.0.12"
+    "sass": "^1.45.1"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.0.7",

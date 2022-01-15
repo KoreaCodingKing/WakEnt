@@ -1,45 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import Typed, { TypedOptions } from 'typed.js';
 import { AboutSectionProps } from "../../../pages/about";
 import { concatClass } from "../../../utils/class";
 import styles from "../../../styles/components/wakenter/AboutPageSections/FifthSection.module.scss";
+import Typer from "../../common/Typer";
 
-const FifthSection = ({className, current, onScroll}: AboutSectionProps) => {
-  const typedRef = useRef<HTMLParagraphElement>(null);
-  const [showTyped, setShowTyped] = useState(false);
+const FifthSection = ({className, onScroll}: AboutSectionProps) => {
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
 
   useEffect(() => {
-    if (!typedRef || !typedRef.current) {
-      return;
-    }
-
-    const typeEl = typedRef.current;
-    let typed: Typed;
-    let options: TypedOptions;
-    onScroll(4, (top) => {
-      // ToDo: state가 변환되지 않음. 확인 필요
-      if (top === 0 && !showTyped) {
-        options = {
-          strings: [
-            '사실 난 메타버스가 뭔지 잘 모른다.'
-          ],
-          typeSpeed: 60,
-          showCursor: false,
-          onComplete: () => {
-            setShowTyped(true);
-          }
-        } as TypedOptions;
-        typed = new Typed(typeEl, options);
-      }
-      setShowTyped(top > 0 || top === 0);
-
+    onScroll(4, (top, height) => {
+      setScrollProgress(top / (height / 4));
     });
-
-
-    return () => {
-      typed.destroy();
-    };
   }, []);
 
   return (
@@ -51,7 +23,7 @@ const FifthSection = ({className, current, onScroll}: AboutSectionProps) => {
           </div>
           <div className={styles.motto_container}>
             <p className={styles.motto_top_quote}>"</p>
-            <p className={styles.motto} ref={typedRef} />
+            <Typer progress={scrollProgress} className={styles.motto}>사실 난 메타버스가 뭔지 잘 모른다.</Typer>
             <p className={styles.motto_bottom_quote}>"</p>
             <p className={styles.motto_desc}>- 왁엔터테인먼트 대표 우왁굳, 왁타버스에 대한 자신감을 내보이며</p>
           </div>

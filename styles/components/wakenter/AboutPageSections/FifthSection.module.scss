@@ -5,7 +5,7 @@
 }
 
 .section_container {
-  margin-top: 16vh;
+  padding-top: 30vh;
 
   .contents_wrapper {
     display: flex;
@@ -42,6 +42,8 @@
   text-align: center;
   font-weight: 700;
   word-break: keep-all;
+
+  min-width: 40vw;
 
   .motto_top_quote {
     margin-bottom: 20px;
@@ -83,6 +85,7 @@
   @media screen and (max-width: $maxMobile) {
     flex-direction: column;
     margin-bottom: 20px;
+    min-width: 80vw;
 
     .motto_top_quote {
       font-size: 1.5em;
