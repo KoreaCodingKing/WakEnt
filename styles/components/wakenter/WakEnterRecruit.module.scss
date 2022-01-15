@@ -15,6 +15,7 @@
     font-size: 2em;
     font-weight: bold;
     letter-spacing: -1px;
+    margin: 0;
 
     @media screen and (max-width: $maxTablet) {
       font-size: 1.75em;
@@ -109,6 +110,10 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 64px;
+
+    p {
+      margin: 0;
+    }
 
     display: grid;
     grid-template-columns: repeat(1fr, 3fr);
@@ -352,6 +357,10 @@
     font-size: 1.3em;
     margin: 10vh 0;
     letter-spacing: -1px;
+
+    p {
+      margin: 0;
+    }
 
     @media screen and (max-width: $maxTablet) {
       font-size: 1.15em;
