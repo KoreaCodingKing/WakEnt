@@ -10,7 +10,7 @@ export const Typer = ({
   children,
   ...props
 }: TyperProps & HTMLAttributes<HTMLParagraphElement>) => {
-  const [currentText, setCurrentText] = useState('&nbsp;');
+  const [currentText, setCurrentText] = useState('');
 
   useEffect(() => {
     const text = children.toString();
