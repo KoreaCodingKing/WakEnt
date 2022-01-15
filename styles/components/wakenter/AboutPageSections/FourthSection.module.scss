@@ -2,6 +2,7 @@
 
 .section_container {
   @include aboutSectionContainer;
+  min-height: 130vh;
 
   .contents_wrapper {
     display: flex;

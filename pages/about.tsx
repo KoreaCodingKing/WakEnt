@@ -11,6 +11,7 @@ import FirstSection from '../components/wakenter/AboutPageSections/FirstSection'
 import SecondSection from '../components/wakenter/AboutPageSections/SecondSection';
 import ThirdSection from '../components/wakenter/AboutPageSections/ThirdSection';
 import FourthSection from '../components/wakenter/AboutPageSections/FourthSection';
+import FifthSection from '../components/wakenter/AboutPageSections/FifthSection';
 import SixthSection from '../components/wakenter/AboutPageSections/SixthSection';
 
 
@@ -93,6 +94,11 @@ const About: NextPage = () => {
             current={page === 3}
             onScroll={listenScrollHandler}
           ></FourthSection>
+          <FifthSection
+            className={styles.section}
+            current={page === 4}
+            onScroll={listenScrollHandler}
+          ></FifthSection>
           <SixthSection
             className={styles.section}
             current={page === 5}
