@@ -1,0 +1,13 @@
+.loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000;
+
+  display: flex;
+}
+
+.contents {
+  position: relative;
+  margin: auto;
+}

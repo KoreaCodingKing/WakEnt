@@ -9,6 +9,7 @@
     "lint:prod": "NODE_ENV=production next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^8.4.0",
     "@react-three/fiber": "^7.0.24",
     "@react-three/postprocessing": "^2.1.2",
     "@types/three": "^0.136.1",
@@ -16,10 +17,10 @@
     "eslint-plugin-jsdoc": "^37.4.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "framer-motion": "^5.5.5",
-    "next": "12.0.7",
+    "next": "^12.0.8",
     "normalize.css": "^8.0.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "sass": "^1.45.1",
     "three": "^0.136.0"
   },
