@@ -6,6 +6,7 @@
 
 .section_container {
   padding-top: 30vh;
+  padding-bottom: 30vh;
 
   .contents_wrapper {
     display: flex;
@@ -15,12 +16,14 @@
 
   @media screen and (max-width: $maxMobile) {
     padding: 0px 8px;
+    padding-top: 30vh;
+    padding-bottom: 30vh;
 
     .contents_wrapper {
       flex-direction: column;
 
       .image_wrapper {
-        width: 30vw;
+        width: 50vw;
         margin-right: 0px;
         margin-bottom: 4%;
       }
@@ -55,6 +58,7 @@
     margin-bottom: 28px;
     align-items: center;
     font-size: 2.5em;
+    min-height: 1em;
   }
   .motto_bottom_quote {
     margin-bottom: 40px;
@@ -75,17 +79,17 @@
       margin-bottom: 5px;
     }
     .motto {
-      font-size: 1.7em;
+      font-size: 1.5em;
     }
     .motto_desc {
-      font-size: 0.8em;
+      font-size: 0.9em;
     }
   }
 
   @media screen and (max-width: $maxMobile) {
     flex-direction: column;
     margin-bottom: 20px;
-    min-width: 80vw;
+    min-width: 90vw;
 
     .motto_top_quote {
       font-size: 1.5em;
@@ -93,14 +97,14 @@
     }
     .motto {
       margin-bottom: 6px;
-      font-size: 1em;
+      font-size: 1.5em;
     }
     .motto_bottom_quote {
       margin-bottom: 8px;
       font-size: 1.5em;
     }
     .motto_desc {
-      font-size: 0.5em;
+      font-size: 0.75em;
     }
   }
 }
