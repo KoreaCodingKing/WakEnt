@@ -15,7 +15,6 @@
 
     .contents_wrapper {
       padding-top: 10vh;
-      padding-bottom: 10vh;
     }
   }
 }
@@ -47,11 +46,15 @@
       font-size: 2em;
       font-weight: 700;
       letter-spacing: -1px;
+
+      margin: 0;
+      margin-bottom: 0.4em;
     }
 
     .subtitle {
       max-width: 567px;
       align-self: center;
+      margin: 0;
 
       font-weight: 300;
       font-size: 1.18em;

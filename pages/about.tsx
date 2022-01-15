@@ -10,9 +10,12 @@ import WakEnterMetadata from '../components/wakenter/Meta';
 import FirstSection from '../components/wakenter/AboutPageSections/FirstSection';
 import SecondSection from '../components/wakenter/AboutPageSections/SecondSection';
 import ThirdSection from '../components/wakenter/AboutPageSections/ThirdSection';
-import Footer from '../components/wakenter/WakEnterFooter';
 import FourthSection from '../components/wakenter/AboutPageSections/FourthSection';
 import FifthSection from '../components/wakenter/AboutPageSections/FifthSection';
+import SixthSection from '../components/wakenter/AboutPageSections/SixthSection';
+
+
+import Footer from '../components/wakenter/WakEnterFooter';
 
 export type scrollHandler = (top: number, height: number, renderAll?: boolean) => void
 
@@ -96,6 +99,11 @@ const About: NextPage = () => {
             current={page === 4}
             onScroll={listenScrollHandler}
           ></FifthSection>
+          <SixthSection
+            className={styles.section}
+            current={page === 5}
+            onScroll={listenScrollHandler}
+          ></SixthSection>
           <Footer></Footer>
         </div>
       </div>

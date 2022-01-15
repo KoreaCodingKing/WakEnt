@@ -1,0 +1,81 @@
+@import '../../../mixin.scss';
+
+.section_container {
+  width: 90%;
+  margin-bottom: 32px;
+
+  @media screen and (min-width: $maxTablet) {
+    min-width: $maxTablet;
+    max-width: $maxPage;
+  }
+
+  @media screen and (max-width: $maxTablet) {
+    max-width: unset;
+    min-width: 90%;
+    width: 90%;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    min-width: 85%;
+    width: 85%;
+  }
+
+  margin-left: auto;
+  margin-right: auto;
+
+  .contents_wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-top: 234px;
+    padding-bottom: 234px;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    min-height: 180vh;
+
+    .contents_wrapper {
+      padding-top: 10vh;
+      padding-bottom: 10vh;
+    }
+  }
+
+
+  .sectionTitle {
+    font-size: 2em;
+
+    @media screen and (max-width: $maxMobile) {
+      font-size: 1.6em;
+    }
+
+    @media screen and (max-width: $maxTablet) {
+      font-size: 1.6em;
+    }
+
+    
+    letter-spacing: -1px;
+    font-weight: normal;
+
+    margin-bottom: 0.8em;
+  }
+
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr; 
+  grid-column-gap: 32px;
+  grid-row-gap: 32px; 
+
+  @media screen and (min-width: $maxTablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: $maxTablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
