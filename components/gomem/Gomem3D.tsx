@@ -14,7 +14,6 @@ const Globe = (props: JSX.IntrinsicElements['mesh']) => {
   const texture = useLoader(THREE.TextureLoader, WakDoo.src);
 
   useFrame((state, delta) => {
-    mesh.current.rotation.x += 0.01;
     mesh.current.rotation.y += 0.01;
   });
 
@@ -41,7 +40,7 @@ export const Gomem3D = ({
       </Suspense>
       <EffectComposer>
         {/* <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} /> */}
-        <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
+        {/* <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} /> */}
       </EffectComposer>
     </Canvas>
   );
