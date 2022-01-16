@@ -68,7 +68,7 @@ export const Notices: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>
+      <h1 className={concatClass(styles.title, (selectedTab === tabs.notice) && styles.no_subtitle)}>
         <p onClick={() => {
           if (selectedTab === tabs.notice) return;
           setSelectedTab(tabs.notice);
@@ -79,6 +79,18 @@ export const Notices: NextPage = () => {
           setSelectedTab(tabs.members[0]);
         }}>Member Schdule/Notice</p>
       </h1>
+      {selectedTab !== tabs.notice && (
+        <h2 className={styles.subtitle}>
+          {tabs.members.map((member) => {
+            return (
+              <p onClick={() => {
+                if (selectedTab === member) return;
+                setSelectedTab(member);
+              }}>{member}</p>
+            );
+          })}
+        </h2>
+      )}
       <section className={styles.section}>
         {error ? (
           <div className={styles.error}>
@@ -93,20 +105,6 @@ export const Notices: NextPage = () => {
           <LoadSpinner></LoadSpinner>
         ) : (
           <>
-            {selectedTab !== tabs.notice && (
-              <div className={styles.member_list}>
-                <h2>
-                  {tabs.members.map((member) => {
-                    return (
-                      <p onClick={() => {
-                        if (selectedTab === member) return;
-                        setSelectedTab(member);
-                      }}>{member}</p>
-                    );
-                  })}
-                </h2>
-              </div>
-            )}
             <div className={styles.postList}>
               {notices.list.map(v => (
                 <Link

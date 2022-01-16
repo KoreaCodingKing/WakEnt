@@ -16,7 +16,7 @@
     max-width: 1000px;
 
     margin-top: calc(80px + 10vh);
-    margin-bottom: calc(40px + 5vh);
+    margin-bottom: 0px;
     margin-left: 8px;
     margin-right: 8px;
     
@@ -29,6 +29,7 @@
 
     p {
       width: fit-content;
+      cursor: pointer;
     }
   
     span {
@@ -36,17 +37,47 @@
       margin: 0 10px;
       align-self: center;
     }
+  }
 
-    @media screen and (max-width: $maxTablet) {
+  .no_subtitle {
+    margin-bottom: calc(52px + 5vh);
+  }
+
+  .subtitle {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 700px;
+
+    margin: 0 auto;
+    margin-bottom: 20px;
+
+    font-size: 2em;
+    cursor: pointer;
+  }
+
+  
+  @media screen and (max-width: $maxTablet) {
+    .title {
       justify-content: center;
       font-size: 2em;
     }
+    .subtitle {
+      max-width: 480px;
+      font-size: 1.5em;
+    }
+  }
 
-    @media screen and (max-width: $maxMobile) {
+  @media screen and (max-width: $maxMobile) {
+    .title {
       justify-content: center;
       font-size: 1.5em;
     }
-  } 
+    .subtitle {
+      font-size: 1em;
+    }
+  }
 }
 
 .section {
