@@ -93,53 +93,47 @@ export const Notices: NextPage = () => {
           <LoadSpinner></LoadSpinner>
         ) : (
           <>
-            {selectedTab === tabs.notice && (
-              <>
-                <div className={styles.postList}>
-                  {notices.list.map(v => (
-                    <Link
-                      key={v.id}
-                      href={`https://cafe.naver.com/steamindiegame/${v.id}`}
-                      passHref
-                    >
-                      <a className={styles.post}>
-                        <p className={styles.postTitle}>{v.title}</p>
-                        <div className={styles.postDetails}>
-                          <span
-                            className={concatClass(styles.item, styles.comments)}
-                          >
-                            {v.comments} 댓글
-                          </span>
-                          <span className={concatClass(styles.item, styles.likes)}>
-                            {v.likes} 좋아요
-                          </span>
-                          <span className={concatClass(styles.item, styles.date)}>
-                            {v.date}
-                          </span>
-                          <span className={styles.item}>{v.writer}</span>
-                        </div>
-                      </a>
-                    </Link>
-                  ))}
-                </div>
-              </>
-            )}
             {selectedTab !== tabs.notice && (
-              <>
-                <div className={styles.member_list}>
-                  <h2>
-                    {tabs.members.map((member) => {
-                      return (
-                        <p onClick={() => {
-                          if (selectedTab === member) return;
-                          setSelectedTab(member);
-                        }}>{member}</p>
-                      );
-                    })}
-                  </h2>
-                </div>
-              </>
+              <div className={styles.member_list}>
+                <h2>
+                  {tabs.members.map((member) => {
+                    return (
+                      <p onClick={() => {
+                        if (selectedTab === member) return;
+                        setSelectedTab(member);
+                      }}>{member}</p>
+                    );
+                  })}
+                </h2>
+              </div>
             )}
+            <div className={styles.postList}>
+              {notices.list.map(v => (
+                <Link
+                  key={v.id}
+                  href={`https://cafe.naver.com/steamindiegame/${v.id}`}
+                  passHref
+                >
+                  <a className={styles.post}>
+                    <p className={styles.postTitle}>{v.title}</p>
+                    <div className={styles.postDetails}>
+                      <span
+                        className={concatClass(styles.item, styles.comments)}
+                      >
+                        {v.comments} 댓글
+                      </span>
+                      <span className={concatClass(styles.item, styles.likes)}>
+                        {v.likes} 좋아요
+                      </span>
+                      <span className={concatClass(styles.item, styles.date)}>
+                        {v.date}
+                      </span>
+                      <span className={styles.item}>{v.writer}</span>
+                    </div>
+                  </a>
+                </Link>
+              ))}
+            </div>
             <div className={styles.pages}>
               <Pagination
                 current={notices.page}

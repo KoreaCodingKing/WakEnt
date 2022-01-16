@@ -9,31 +9,31 @@ const urls = [
   },
   {
     tab: '전체',
-    url: 'https://cafe.naver.com/steamindiegame?iframe_url=/ArticleList.nhn%3Fsearch.clubid=27842958%26search.menuid=345%26search.boardtype=L'
+    url: 'https://cafe.naver.com/ArticleList.nhn?search.clubid=27842958&search.menuid=345&search.boardtype=L'
   },
   {
     tab: '아이네',
-    url: 'https://cafe.naver.com/steamindiegame?iframe_url=/ArticleSearchList.nhn%3Fsearch.clubid=27842958%26search.menuid=345%26search.media=0%26search.searchdate=all%26search.defaultValue=1%26userDisplay=15%26search.option=0%26search.sortBy=date%26search.searchBy=0%26search.query=%BE%C6%C0%CC%B3%D7%26search.viewtype=title'
+    url: 'https://cafe.naver.com/ArticleSearchList.nhn?search.clubid=27842958&search.menuid=345&search.media=0&search.searchdate=all&search.defaultValue=1&userDisplay=15&search.option=0&search.sortBy=date&search.searchBy=0&search.query=%BE%C6%C0%CC%B3%D7&search.viewtype=title'
   },
   {
     tab: '징버거',
-    url: 'https://cafe.naver.com/steamindiegame?iframe_url=/ArticleSearchList.nhn%3Fsearch.clubid=27842958%26search.menuid=345%26search.media=0%26search.searchdate=all%26search.defaultValue=1%26userDisplay=15%26search.option=0%26search.sortBy=date%26search.searchBy=3%26search.query=%C2%A1%B9%F6%B0%C5%26search.viewtype=title'
+    url: 'https://cafe.naver.com/ArticleSearchList.nhn?search.clubid=27842958&search.menuid=345&search.media=0&search.searchdate=all&search.defaultValue=1&userDisplay=15&search.option=0&search.sortBy=date&search.searchBy=3&search.query=%C2%A1%B9%F6%B0%C5&search.viewtype=title'
   },
   {
     tab: 'lilpa',
-    url: 'https://cafe.naver.com/steamindiegame?iframe_url=/ArticleSearchList.nhn%3Fsearch.clubid=27842958%26search.menuid=345%26search.media=0%26search.searchdate=all%26search.defaultValue=1%26userDisplay=15%26search.option=0%26search.sortBy=date%26search.searchBy=3%26search.query=lilpa%26search.viewtype=title'
+    url: 'https://cafe.naver.com/ArticleSearchList.nhn?search.clubid=27842958&search.menuid=345&search.media=0&search.searchdate=all&search.defaultValue=1&userDisplay=15&search.option=0&search.sortBy=date&search.searchBy=3&search.query=lilpa&search.viewtype=title'
   },
   {
     tab: '주르르',
-    url: 'https://cafe.naver.com/steamindiegame?iframe_url=/ArticleSearchList.nhn%3Fsearch.clubid=27842958%26search.menuid=345%26search.media=0%26search.searchdate=all%26search.defaultValue=1%26userDisplay=15%26search.option=0%26search.sortBy=date%26search.searchBy=3%26search.query=%C1%D6%B8%A3%B8%A3%26search.viewtype=title'
+    url: 'https://cafe.naver.com/ArticleSearchList.nhn?search.clubid=27842958&search.menuid=345&search.media=0&search.searchdate=all&search.defaultValue=1&userDisplay=15&search.option=0&search.sortBy=date&search.searchBy=3&search.query=%C1%D6%B8%A3%B8%A3&search.viewtype=title'
   },
   {
     tab: '고세구',
-    url: 'https://cafe.naver.com/steamindiegame?iframe_url=/ArticleSearchList.nhn%3Fsearch.clubid=27842958%26search.menuid=345%26search.media=0%26search.searchdate=all%26search.defaultValue=1%26userDisplay=15%26search.option=0%26search.sortBy=date%26search.searchBy=3%26search.query=%B0%ED%BC%BC%B1%B8%26search.viewtype=title'
+    url: 'https://cafe.naver.com/ArticleSearchList.nhn?search.clubid=27842958&search.menuid=345&search.media=0&search.searchdate=all&search.defaultValue=1&userDisplay=15&search.option=0&search.sortBy=date&search.searchBy=3&search.query=%B0%ED%BC%BC%B1%B8&search.viewtype=title'
   },
   {
     tab: '비챤',
-    url: 'https://cafe.naver.com/steamindiegame?iframe_url=/ArticleSearchList.nhn%3Fsearch.clubid=27842958%26search.menuid=345%26search.media=0%26search.searchdate=all%26search.defaultValue=1%26userDisplay=15%26search.option=0%26search.sortBy=date%26search.searchBy=3%26search.query=%BA%F1%C3%AE%26search.viewtype=title'
+    url: 'https://cafe.naver.com/ArticleSearchList.nhn?search.clubid=27842958&search.menuid=345&search.media=0&search.searchdate=all&search.defaultValue=1&userDisplay=15&search.option=0&search.sortBy=date&search.searchBy=3&search.query=%BA%F1%C3%AE&search.viewtype=title'
   }
 ];
 
@@ -41,8 +41,7 @@ const urls = [
 const NumberOnly = /[0-9]+/g;
 
 const getPage = async (page = 1, tab: string) => {
-
-  const boardURL = urls.find((url) => url.tab === tab)!.url;
+  const boardURL = urls.find((url) => url.tab === tab)?.url;
 
   const data = await fetch(boardURL + `&search.page=${page}`)
     .then((v) => v.arrayBuffer())
