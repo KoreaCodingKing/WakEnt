@@ -19,6 +19,7 @@ import SoundCloudIcon from '../../public/images/icons/services/soundcloud.png';
 import TwitchIcon from '../../public/images/icons/services/twitch.png';
 import TwitterIcon from '../../public/images/icons/services/twitter.png';
 import YouTubeIcon from '../../public/images/icons/services/youtube.png';
+import { motion } from 'framer-motion';
 
 const isNotNull = <T extends unknown>(elem: T | null): elem is T => {
   return elem !== null;
@@ -187,7 +188,7 @@ export const IsedolMembers: NextPage = () => {
             const member = Members[id as MemberID];
 
             return (
-              <div
+              <motion.div
                 key={`member-card-${id}`}
                 className={concatClass(
                   styles.member,
@@ -284,7 +285,7 @@ export const IsedolMembers: NextPage = () => {
                     ></Image>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
