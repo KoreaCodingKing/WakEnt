@@ -9,20 +9,42 @@
   flex-direction: column;
 
   .title {
-    font-size: 3.5em;
-    letter-spacing: -1px;
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 1000px;
+
     margin-top: calc(80px + 10vh);
     margin-bottom: calc(40px + 5vh);
+    margin-left: 8px;
+    margin-right: 8px;
+    
+    align-items: center;
+    align-self: center;
+    text-align: center;
 
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 3.5em;
+    letter-spacing: -1px;
+
+    p {
+      width: fit-content;
+    }
+  
+    span {
+      display: inline-block;
+      margin: 0 10px;
+      align-self: center;
+    }
 
     @media screen and (max-width: $maxTablet) {
-      font-size: 3em;
+      justify-content: center;
+      font-size: 2em;
     }
 
     @media screen and (max-width: $maxMobile) {
-      font-size: 2.5em;
+      justify-content: center;
+      font-size: 1.5em;
     }
   } 
 }
