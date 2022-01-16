@@ -1,22 +1,10 @@
-import { useEffect } from 'react';
+import { Html, useProgress } from '@react-three/drei';
 import styles from '../../styles/components/gomem/GomemLoading.module.scss';
 
-interface GomemLoadingProps {
-  progress?: number
-}
+export const GomemLoading = () => {
+  const { active, progress, errors, item, loaded, total } = useProgress();
 
-export const GomemLoading = ({
-  progress
-}: GomemLoadingProps) => {
-  useEffect(() => {
-    debugger;
-  }, []);
-
-  return <div className={styles.loading}>
-    <div className={styles.contents}>
-      <h1>Loading {progress}</h1>
-    </div>
-  </div>;
+  return <Html center>{progress} Loaded</Html>;
 };
 
 export default GomemLoading;
