@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NoticeSources } from '../../pages/api/notices';
 import { NoticesAPI } from '../../structs/notices';
 
@@ -10,6 +10,7 @@ import { useHashState } from '../../utils/hashState';
 import Button from '../common/Button';
 import { LoadSpinner } from '../common/LoadSpinner';
 import Pagination from '../common/Pagination';
+import { useHorizonalPageScroller } from '../common/Scroll';
 
 const useNoticesAPI = (
   page = 1,
@@ -51,19 +52,29 @@ const useNoticesAPI = (
 export const Notices: NextPage = () => {
   const [page, setPage] = useHashState<string>('1');
   const [tab, setTab] = useState<number>(0);
+  const tabRef = useRef<HTMLDivElement>(null);
+  const membersTabCache: HTMLElement[] = [];
+
 
   const [notices, error, retry] = useNoticesAPI(Number(page), tab);
+
+  useHorizonalPageScroller(tabRef, 1000, membersTabCache);
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>NOTICE</h1>
       <section className={styles.section}>
-        <div className={styles.tabs}>
+        <div className={styles.tabs}
+          ref={tabRef}>
           {NoticeSources.map((v, i) => (
-            <Button onClick={() => {
-              setTab(i);
-              setPage('1');
-            }} active={tab === i}>{v.name}</Button>
+            <div ref={(element: HTMLDivElement) =>
+              element && membersTabCache.push(element)
+            }>
+              <Button onClick={() => {
+                setTab(i);
+                setPage('1');
+              }} active={tab === i}>{v.name}</Button>
+            </div>
           ))}
         </div>
         {error ? (

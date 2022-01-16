@@ -1,7 +1,20 @@
-.pagination {
+.pagination_container {
+  width: 100%;
   overflow: auto;
+
+  & > div {
+    margin: auto;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.pagination {
   display: flex;
   gap: 8px;
+  align-items: center;
 }
 
 .page {
@@ -21,4 +34,8 @@
     color: #108B2B;
     cursor: unset;
   }
+}
+
+.next_prev_btn {
+  min-width: 64px;
 }

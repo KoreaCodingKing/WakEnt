@@ -33,7 +33,7 @@
 
 .tabs {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 16px;
 
   margin-bottom: 32px;
@@ -42,6 +42,9 @@
 
   & > div {
     white-space: nowrap;
+  }
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -186,11 +189,6 @@
 }
 
 .pages {
-  width: 100%;
   display: flex;
   margin-top: 36px;
-
-  & > div {
-    margin: auto;
-  }
 }
