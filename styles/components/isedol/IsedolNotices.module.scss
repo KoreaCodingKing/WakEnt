@@ -30,6 +30,10 @@
     p {
       width: fit-content;
       cursor: pointer;
+
+      &:hover {
+        color: #0b397e;
+      }
     }
   
     span {
@@ -55,6 +59,10 @@
 
     font-size: 2em;
     cursor: pointer;
+
+    p:hover {
+      color: #0b397e;
+    }
   }
 
   
