@@ -20,8 +20,8 @@ const urls = [
     url: 'https://cafe.naver.com/ArticleSearchList.nhn?search.clubid=27842958&search.menuid=345&search.media=0&search.searchdate=all&search.defaultValue=1&userDisplay=15&search.option=0&search.sortBy=date&search.searchBy=3&search.query=%C2%A1%B9%F6%B0%C5&search.viewtype=title'
   },
   {
-    tab: 'lilpa',
-    url: 'https://cafe.naver.com/ArticleSearchList.nhn?search.clubid=27842958&search.menuid=345&search.media=0&search.searchdate=all&search.defaultValue=1&userDisplay=15&search.option=0&search.sortBy=date&search.searchBy=3&search.query=lilpa&search.viewtype=title'
+    tab: '릴파',
+    url: 'https://cafe.naver.com/ArticleSearchList.nhn?search.clubid=27842958&search.menuid=345&search.media=0&search.searchdate=all&search.defaultValue=1&userDisplay=15&search.option=0&search.sortBy=date&search.searchBy=3&search.query=%B8%B1%C6%C4&search.viewtype=title'
   },
   {
     tab: '주르르',
