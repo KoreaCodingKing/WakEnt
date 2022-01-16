@@ -55,27 +55,12 @@ const useNoticesAPI = (
   ];
 };
 
-const useScheduleNoticesAPI = (): [NoticesAPI | null, Error | null, () => void] => {
-  const [data, setData] = useState<Omit<NoticesAPI, 'error'> | null>(null);
-  const [error, setError] = useState<Error | null>(null);
-  const [retry, setRetry] = useState<number>(0);
-
-  return [
-    data,
-    error,
-    () => {
-      setRetry(Math.random());
-    },
-  ];
-}
-
 export const Notices: NextPage = () => {
   const [page, setPage] = useHashState<string>("1");
   const [currentTab, setCurrentTap] = useState<number>(0);
   const [selectedMember, setSelectedMember] = useState<string>("아이네");
 
-  const [notices, noticeError, noticeRetry] = useNoticesAPI(Number(page));
-  const [schedules, scheduleError, scheduleRetry] = useScheduleNoticesAPI();
+  const [notices, error, retry] = useNoticesAPI(Number(page));
 
   return (
     <div className={styles.container}>
@@ -91,20 +76,14 @@ export const Notices: NextPage = () => {
         }}>Member Schdule/Notice</p>
       </h1>
       <section className={styles.section}>
-        {noticeError || scheduleError ? (
+        {error ? (
           <div className={styles.error}>
             <span className={styles.bold}>게시글을 가져올 수 없습니다.</span>
             <br></br>
-            오류: {noticeError!.message || scheduleError!.message}
+            오류: {error}
             <br></br>
             <br></br>
-            <Button onClick={() => {
-              if (noticeError) {
-                noticeRetry();
-              } else {
-                scheduleRetry();
-              }
-            }}>다시 요청하기</Button>
+            <Button onClick={() => retry()}>다시 요청하기</Button>
           </div>
         ) : !notices ? (
           <LoadSpinner></LoadSpinner>
