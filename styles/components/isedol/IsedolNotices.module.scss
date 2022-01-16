@@ -9,22 +9,39 @@
   flex-direction: column;
 
   .title {
-    font-size: 3.5em;
-    letter-spacing: -1px;
     margin-top: calc(80px + 10vh);
     margin-bottom: calc(40px + 5vh);
-
     margin-left: auto;
     margin-right: auto;
 
-    @media screen and (max-width: $maxTablet) {
-      font-size: 3em;
+    font-size: 3.5em;
+    letter-spacing: -1px;
+  }
+  
+  @media screen and (max-width: $maxTablet) {
+    .title {
+      font-size: 2em;
     }
+  }
 
-    @media screen and (max-width: $maxMobile) {
-      font-size: 2.5em;
+  @media screen and (max-width: $maxMobile) {
+    .title {
+      font-size: 1.5em;
     }
-  } 
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 16px;
+
+  margin-bottom: 32px;
+  margin-left: 10px;
+  overflow: auto;
+
+  & > div {
+    white-space: nowrap;
+  }
 }
 
 .section {

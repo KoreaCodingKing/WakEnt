@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { NoticeSources } from '../../pages/api/notices';
 import { NoticesAPI } from '../../structs/notices';
 
 import styles from '../../styles/components/isedol/IsedolNotices.module.scss';
@@ -11,21 +12,22 @@ import { LoadSpinner } from '../common/LoadSpinner';
 import Pagination from '../common/Pagination';
 
 const useNoticesAPI = (
-  page = 1
+  page = 1,
+  tab = 0
 ): [NoticesAPI | null, Error | null, () => void] => {
   const [data, setData] = useState<Omit<NoticesAPI, 'error'> | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [retry, setRetry] = useState<number>(0);
 
   useEffect(() => {
-    if (data && data.page === page) {
+    if (data && data.page === page && data.tab === tab) {
       return;
     }
 
     setData(null);
     setError(null);
 
-    fetch(`/api/notices?page=${page}`)
+    fetch(`/api/notices?page=${page}&tab=${tab}`)
       .then(v => v.json())
       .then(v => {
         if (v.error) {
@@ -35,7 +37,7 @@ const useNoticesAPI = (
         setData(v);
       })
       .catch(e => setError(e));
-  }, [page, retry]);
+  }, [page, retry, tab]);
 
   return [
     data,
@@ -47,19 +49,28 @@ const useNoticesAPI = (
 };
 
 export const Notices: NextPage = () => {
-  const [page, setPage] = useHashState<string>("1");
+  const [page, setPage] = useHashState<string>('1');
+  const [tab, setTab] = useState<number>(0);
 
-  const [notices, error, retry] = useNoticesAPI(Number(page));
+  const [notices, error, retry] = useNoticesAPI(Number(page), tab);
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>NOTICE</h1>
       <section className={styles.section}>
+        <div className={styles.tabs}>
+          {NoticeSources.map((v, i) => (
+            <Button onClick={() => {
+              setTab(i);
+              setPage('1');
+            }} active={tab === i}>{v.name}</Button>
+          ))}
+        </div>
         {error ? (
           <div className={styles.error}>
             <span className={styles.bold}>게시글을 가져올 수 없습니다.</span>
             <br></br>
-            오류: {error.message}
+            오류: {error}
             <br></br>
             <br></br>
             <Button onClick={() => retry()}>다시 요청하기</Button>
@@ -102,7 +113,7 @@ export const Notices: NextPage = () => {
                 previous={notices.previous}
                 next={notices.next}
                 movePage={to => {
-                  setPage(to.toString());
+                  setPage(`${to}`);
                 }}
               ></Pagination>
             </div>
