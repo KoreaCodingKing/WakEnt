@@ -9,82 +9,38 @@
   flex-direction: column;
 
   .title {
-    display: flex;
-    justify-content: space-between;
-
-    width: 100%;
-    max-width: 1000px;
-
     margin-top: calc(80px + 10vh);
-    margin-bottom: 0px;
-    margin-left: 8px;
-    margin-right: 8px;
-    
-    align-items: center;
-    align-self: center;
-    text-align: center;
+    margin-bottom: calc(40px + 5vh);
+    margin-left: auto;
+    margin-right: auto;
 
     font-size: 3.5em;
     letter-spacing: -1px;
-
-    p {
-      width: fit-content;
-      cursor: pointer;
-
-      &:hover {
-        color: #0b397e;
-      }
-    }
-  
-    span {
-      display: inline-block;
-      margin: 0 10px;
-      align-self: center;
-    }
   }
-
-  .no_subtitle {
-    margin-bottom: calc(52px + 5vh);
-  }
-
-  .subtitle {
-    display: flex;
-    justify-content: space-between;
-
-    width: 100%;
-    max-width: 700px;
-
-    margin: 0 auto;
-    margin-bottom: 20px;
-
-    font-size: 2em;
-    cursor: pointer;
-
-    p:hover {
-      color: #0b397e;
-    }
-  }
-
   
   @media screen and (max-width: $maxTablet) {
     .title {
-      justify-content: center;
       font-size: 2em;
-    }
-    .subtitle {
-      max-width: 480px;
-      font-size: 1.5em;
     }
   }
 
   @media screen and (max-width: $maxMobile) {
     .title {
-      justify-content: center;
       font-size: 1.5em;
     }
-    .subtitle {
-      font-size: 1em;
-    }
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 16px;
+
+  margin-bottom: 32px;
+  margin-left: 10px;
+  overflow: auto;
+
+  & > div {
+    white-space: nowrap;
   }
 }
 

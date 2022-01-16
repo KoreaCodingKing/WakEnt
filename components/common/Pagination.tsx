@@ -38,7 +38,7 @@ export const Pagination = ({
       {next && (
         <span
           className={styles.page}
-          onClick={() => movePage && movePage(pages[pages.length] + 1)}
+          onClick={() => movePage && movePage(pages[pages.length - 1] + 1)}
         >
           다음
         </span>
