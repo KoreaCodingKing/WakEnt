@@ -10,6 +10,7 @@ export interface Notice {
 
 export interface NoticesAPI {
   page: number
+  selectedTab: string
   pages: number[]
   list: Notice[]
   error?: string

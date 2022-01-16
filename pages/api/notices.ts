@@ -2,12 +2,48 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import cheerio from 'cheerio';
 import { Notice } from '../../structs/notices';
 
-const boardURL =
-  'https://cafe.naver.com/ArticleList.nhn?search.clubid=27842958&search.menuid=346&search.boardtype=L';
+const urls = [
+  {
+    tab: '우왁굳',
+    url: 'https://cafe.naver.com/ArticleList.nhn?search.clubid=27842958&search.menuid=346&search.boardtype=L'
+  },
+  {
+    tab: '전체',
+    url: 'https://cafe.naver.com/steamindiegame?iframe_url=/ArticleList.nhn%3Fsearch.clubid=27842958%26search.menuid=345%26search.boardtype=L'
+  },
+  {
+    tab: '아이네',
+    url: 'https://cafe.naver.com/steamindiegame?iframe_url=/ArticleSearchList.nhn%3Fsearch.clubid=27842958%26search.menuid=345%26search.media=0%26search.searchdate=all%26search.defaultValue=1%26userDisplay=15%26search.option=0%26search.sortBy=date%26search.searchBy=0%26search.query=%BE%C6%C0%CC%B3%D7%26search.viewtype=title'
+  },
+  {
+    tab: '징버거',
+    url: 'https://cafe.naver.com/steamindiegame?iframe_url=/ArticleSearchList.nhn%3Fsearch.clubid=27842958%26search.menuid=345%26search.media=0%26search.searchdate=all%26search.defaultValue=1%26userDisplay=15%26search.option=0%26search.sortBy=date%26search.searchBy=3%26search.query=%C2%A1%B9%F6%B0%C5%26search.viewtype=title'
+  },
+  {
+    tab: 'lilpa',
+    url: 'https://cafe.naver.com/steamindiegame?iframe_url=/ArticleSearchList.nhn%3Fsearch.clubid=27842958%26search.menuid=345%26search.media=0%26search.searchdate=all%26search.defaultValue=1%26userDisplay=15%26search.option=0%26search.sortBy=date%26search.searchBy=3%26search.query=lilpa%26search.viewtype=title'
+  },
+  {
+    tab: '주르르',
+    url: 'https://cafe.naver.com/steamindiegame?iframe_url=/ArticleSearchList.nhn%3Fsearch.clubid=27842958%26search.menuid=345%26search.media=0%26search.searchdate=all%26search.defaultValue=1%26userDisplay=15%26search.option=0%26search.sortBy=date%26search.searchBy=3%26search.query=%C1%D6%B8%A3%B8%A3%26search.viewtype=title'
+  },
+  {
+    tab: '고세구',
+    url: 'https://cafe.naver.com/steamindiegame?iframe_url=/ArticleSearchList.nhn%3Fsearch.clubid=27842958%26search.menuid=345%26search.media=0%26search.searchdate=all%26search.defaultValue=1%26userDisplay=15%26search.option=0%26search.sortBy=date%26search.searchBy=3%26search.query=%B0%ED%BC%BC%B1%B8%26search.viewtype=title'
+  },
+  {
+    tab: '비챤',
+    url: 'https://cafe.naver.com/steamindiegame?iframe_url=/ArticleSearchList.nhn%3Fsearch.clubid=27842958%26search.menuid=345%26search.media=0%26search.searchdate=all%26search.defaultValue=1%26userDisplay=15%26search.option=0%26search.sortBy=date%26search.searchBy=3%26search.query=%BA%F1%C3%AE%26search.viewtype=title'
+  }
+];
+
 
 const NumberOnly = /[0-9]+/g;
 
-const getPage = async (page = 1) => {
+const getPage = async (page = 1, tab: string) => {
+
+  const boardURL = urls.find((url) => url.tab === tab)!.url;
+
   const data = await fetch(boardURL + `&search.page=${page}`)
     .then((v) => v.arrayBuffer())
     .then((v) => new TextDecoder('euc-kr').decode(v));
@@ -98,6 +134,7 @@ const getPage = async (page = 1) => {
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const p = req.query['page'];
+    const tab = req.query['tab'].toString();
     const nm = typeof p === 'string' && p.match(NumberOnly);
 
     let page = 1;
@@ -105,7 +142,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       page = Number(p);
     }
 
-    const result = await getPage(page || 1);
+    const result = await getPage(page || 1, tab);
 
     res.setHeader('Cache-Control', 's-maxage=300');
 

@@ -10,31 +10,36 @@ import Button from '../common/Button';
 import { LoadSpinner } from '../common/LoadSpinner';
 import Pagination from '../common/Pagination';
 
-const members = [
-  '아이네',
-  '징버거',
-  '릴파',
-  '주르르',
-  '고세구',
-  '비챤'
-];
+const tabs = {
+  notice: '우왁굳',
+  members: [
+    '전체',
+    '아이네',
+    '징버거',
+    'lilpa',
+    '주르르',
+    '고세구',
+    '비챤'
+  ]
+};
 
 const useNoticesAPI = (
-  page = 1
+  page = 1,
+  selectedTab = '전체'
 ): [NoticesAPI | null, Error | null, () => void] => {
   const [data, setData] = useState<Omit<NoticesAPI, 'error'> | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [retry, setRetry] = useState<number>(0);
 
   useEffect(() => {
-    if (data && data.page === page) {
+    if (data && data.page === page && data.selectedTab === selectedTab) {
       return;
     }
 
     setData(null);
     setError(null);
 
-    fetch(`/api/notices?page=${page}`)
+    fetch(`/api/notices?page=${page}&tab=${selectedTab}`)
       .then(v => v.json())
       .then(v => {
         if (v.error) {
@@ -44,7 +49,7 @@ const useNoticesAPI = (
         setData(v);
       })
       .catch(e => setError(e));
-  }, [page, retry]);
+  }, [page, retry, selectedTab]);
 
   return [
     data,
@@ -57,22 +62,21 @@ const useNoticesAPI = (
 
 export const Notices: NextPage = () => {
   const [page, setPage] = useHashState<string>("1");
-  const [currentTab, setCurrentTap] = useState<number>(0);
-  const [selectedMember, setSelectedMember] = useState<string>("아이네");
+  const [selectedTab, setSelectedTab] = useState<string>(tabs.notice);
 
-  const [notices, error, retry] = useNoticesAPI(Number(page));
+  const [notices, error, retry] = useNoticesAPI(Number(page), selectedTab);
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
         <p onClick={() => {
-          if (currentTab === 0) return;
-          setCurrentTap(0);
+          if (selectedTab === tabs.notice) return;
+          setSelectedTab(tabs.notice);
         }}>NOTICE</p>
         <span>|</span>
         <p onClick={() => {
-          if (currentTab === 1) return;
-          setCurrentTap(1);
+          if (selectedTab !== tabs.notice) return;
+          setSelectedTab(tabs.members[0]);
         }}>Member Schdule/Notice</p>
       </h1>
       <section className={styles.section}>
@@ -89,64 +93,64 @@ export const Notices: NextPage = () => {
           <LoadSpinner></LoadSpinner>
         ) : (
           <>
-            {currentTab === 0 && (
+            {selectedTab === tabs.notice && (
               <>
                 <div className={styles.postList}>
-                {notices.list.map(v => (
-                  <Link
-                    key={v.id}
-                    href={`https://cafe.naver.com/steamindiegame/${v.id}`}
-                    passHref
-                  >
-                    <a className={styles.post}>
-                      <p className={styles.postTitle}>{v.title}</p>
-                      <div className={styles.postDetails}>
-                        <span
-                          className={concatClass(styles.item, styles.comments)}
-                        >
-                          {v.comments} 댓글
-                        </span>
-                        <span className={concatClass(styles.item, styles.likes)}>
-                          {v.likes} 좋아요
-                        </span>
-                        <span className={concatClass(styles.item, styles.date)}>
-                          {v.date}
-                        </span>
-                        <span className={styles.item}>{v.writer}</span>
-                      </div>
-                    </a>
-                  </Link>
-                ))}
-                </div>
-                <div className={styles.pages}>
-                  <Pagination
-                    current={notices.page}
-                    pages={notices.pages}
-                    previous={notices.previous}
-                    next={notices.next}
-                    movePage={to => {
-                      setPage(to.toString());
-                    }}
-                  ></Pagination>
+                  {notices.list.map(v => (
+                    <Link
+                      key={v.id}
+                      href={`https://cafe.naver.com/steamindiegame/${v.id}`}
+                      passHref
+                    >
+                      <a className={styles.post}>
+                        <p className={styles.postTitle}>{v.title}</p>
+                        <div className={styles.postDetails}>
+                          <span
+                            className={concatClass(styles.item, styles.comments)}
+                          >
+                            {v.comments} 댓글
+                          </span>
+                          <span className={concatClass(styles.item, styles.likes)}>
+                            {v.likes} 좋아요
+                          </span>
+                          <span className={concatClass(styles.item, styles.date)}>
+                            {v.date}
+                          </span>
+                          <span className={styles.item}>{v.writer}</span>
+                        </div>
+                      </a>
+                    </Link>
+                  ))}
                 </div>
               </>
             )}
-            {currentTab === 1 && (
+            {selectedTab !== tabs.notice && (
               <>
                 <div className={styles.member_list}>
                   <h2>
-                    {members.map((member) => {
+                    {tabs.members.map((member) => {
                       return (
                         <p onClick={() => {
-                          if (selectedMember === member) return;
-                          setSelectedMember(member);
+                          if (selectedTab === member) return;
+                          setSelectedTab(member);
                         }}>{member}</p>
-                      )
+                      );
                     })}
                   </h2>
                 </div>
               </>
             )}
+            <div className={styles.pages}>
+              <Pagination
+                current={notices.page}
+                pages={notices.pages}
+                previous={notices.previous}
+                next={notices.next}
+                movePage={to => {
+                  setPage(to.toString());
+                }}
+              ></Pagination>
+            </div>
           </>
         )}
       </section>
