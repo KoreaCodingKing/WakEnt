@@ -316,6 +316,10 @@
     margin-top: 32px;
     overflow-x: auto;
 
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
     @media screen and (max-width: $maxMobile) {
       gap: 8px;
     }

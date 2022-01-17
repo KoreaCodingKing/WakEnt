@@ -3,8 +3,8 @@ import { NextPage } from 'next';
 import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import parentStyles from '../styles/pages/index.module.scss';
 import styles from '../styles/components/wakenter/WakEnterRecruit.module.scss';
-import { ReactNode, useEffect, useState } from 'react';
-import { useDynamicPageScroll } from '../components/common/Scroll';
+import { ReactNode, useEffect, useRef, useState } from 'react';
+import { useDynamicPageScroll, useHorizonalPageScroller } from '../components/common/Scroll';
 import Image from 'next/image';
 import WakEnterMetadata from '../components/wakenter/Meta';
 import { concatClass } from '../utils/class';
@@ -168,6 +168,11 @@ const useIsSafari = () => {
 
 const About: NextPage = () => {
   const page = useDynamicPageScroll(null, `.${styles.section}`, 0.01);
+  const recruitFieldsRef = useRef<HTMLDivElement>(null);
+
+  const recruitFieldButtonsRef:HTMLButtonElement[] = [];
+
+  useHorizonalPageScroller(recruitFieldsRef, 950, recruitFieldButtonsRef);
 
   const [positionCategory, setPositionCategory] = useState<CategoryKeys | null>(
     null
@@ -280,10 +285,13 @@ const About: NextPage = () => {
             <Section index={3}>
               <div className={styles.contents}>
                 <h1 className={styles.sectionTitle}>채용 분야</h1>
-                <div className={styles.buttonGroup}>
+                <div className={styles.buttonGroup} ref={recruitFieldsRef}>
                   <button
                     className={
                       positionCategory === null ? styles.active : undefined
+                    }
+                    ref={(element: HTMLButtonElement) =>
+                      element && recruitFieldButtonsRef.push(element)
                     }
                     onClick={() => setPositionCategory(null)}
                   >
@@ -294,6 +302,9 @@ const About: NextPage = () => {
                       key={`position-category-${v}`}
                       className={
                         positionCategory === v ? styles.active : undefined
+                      }
+                      ref={(element: HTMLButtonElement) =>
+                        element && recruitFieldButtonsRef.push(element)
                       }
                       onClick={() => setPositionCategory(v)}
                     >
