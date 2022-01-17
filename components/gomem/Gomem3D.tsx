@@ -77,26 +77,63 @@ const Camera = ({ progress }: CameraProps) => {
   return <></>;
 };
 
-export type PointerUpdateHandler = (active: boolean, x: number, y: number, d: number) => void
+export type GomemPlanetScope = 'isedol' | 'wakgood'
+
+export type PointerUpdateHandler = (
+  scope: GomemPlanetScope | undefined,
+  active: boolean,
+  x: number,
+  y: number,
+  d: number
+) => void
 
 interface Gomem3DProps {
   sceneActive: boolean
-  pointerUpdate: PointerUpdateHandler
+  mainPointerUpdate: PointerUpdateHandler
+  otherPointerUpdate: PointerUpdateHandler
 }
 
-const usePointer = (
-  onUpdate: PointerUpdateHandler
-) => {
-  const pointerEnter = (ev: ThreeEvent<PointerEvent>) => {
-    onUpdate(true, ev.nativeEvent.x, ev.nativeEvent.y, ev.distance);
+const usePointer = (onUpdate: PointerUpdateHandler) => {
+  const pointerEnter = (ev: ThreeEvent<PointerEvent>, scope?: GomemPlanetScope) => {
+    ev.stopPropagation();
+
+    const objectDistance = ev.camera.position.distanceTo(ev.object.position);
+
+    onUpdate(
+      scope,
+      true,
+      ev.nativeEvent.x,
+      ev.nativeEvent.y,
+      objectDistance - ev.distance
+    );
   };
 
-  const pointerMove = (ev: ThreeEvent<PointerEvent>) => {
-    onUpdate(true, ev.nativeEvent.x, ev.nativeEvent.y, ev.distance);
+  const pointerMove = (ev: ThreeEvent<PointerEvent>, scope?: GomemPlanetScope) => {
+    ev.stopPropagation();
+
+    const objectDistance = ev.camera.position.distanceTo(ev.object.position);
+
+    onUpdate(
+      scope,
+      true,
+      ev.nativeEvent.x,
+      ev.nativeEvent.y,
+      objectDistance - ev.distance
+    );
   };
 
-  const pointerOut = (ev: ThreeEvent<PointerEvent>) => {
-    onUpdate(false, ev.nativeEvent.x, ev.nativeEvent.y, ev.distance);
+  const pointerOut = (ev: ThreeEvent<PointerEvent>, scope?: GomemPlanetScope) => {
+    ev.stopPropagation();
+
+    const objectDistance = ev.camera.position.distanceTo(ev.object.position);
+
+    onUpdate(
+      scope,
+      false,
+      ev.nativeEvent.x,
+      ev.nativeEvent.y,
+      objectDistance - ev.distance
+    );
   };
 
   return [pointerEnter, pointerMove, pointerOut];
@@ -104,7 +141,8 @@ const usePointer = (
 
 export const Gomem3D = ({
   sceneActive,
-  pointerUpdate,
+  mainPointerUpdate,
+  otherPointerUpdate,
   ...props
 }: Gomem3DProps & React.RefAttributes<HTMLCanvasElement>) => {
   const progress = useSpring(1, {
@@ -117,7 +155,10 @@ export const Gomem3D = ({
     progress.set(sceneActive ? 0 : 1);
   }, [sceneActive]);
 
-  const [pointerEnter, pointerMove, pointerOut] = usePointer(pointerUpdate);
+  const [planetPointerEnter, planetPointerMove, planetPointerOut] = usePointer(
+    otherPointerUpdate
+  );
+  const [pointerEnter, pointerMove, pointerOut] = usePointer(mainPointerUpdate);
 
   return (
     <Canvas {...props}>
@@ -142,9 +183,18 @@ export const Gomem3D = ({
         />
         <IsedolGlobe
           position={[0, 0, -30]}
+          onPointerEnter={ev => planetPointerEnter(ev, 'isedol')}
+          onPointerMove={ev => planetPointerMove(ev, 'isedol')}
+          onPointerOut={ev => planetPointerOut(ev, 'isedol')}
           onClick={() => router.push('/isedol/')}
         />
-        <Sun position={[0, 0, 100]}></Sun>
+        <Sun
+          position={[0, 0, 100]}
+          onPointerEnter={ev => planetPointerEnter(ev, 'wakgood')}
+          onPointerMove={ev => planetPointerMove(ev, 'wakgood')}
+          onPointerOut={ev => planetPointerOut(ev, 'wakgood')}
+          onClick={() => router.push('https://cafe.naver.com/steamindiegame')}
+        ></Sun>
       </Suspense>
       <EffectComposer>
         {/* <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} /> */}

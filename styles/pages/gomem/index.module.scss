@@ -66,20 +66,27 @@
   background: #000;
 }
 
-.memberPopup {
+
+.popup {
   position: fixed;
   opacity: 0;
+  visibility: hidden;
 
   pointer-events: none;
 
   transform: translateX(calc(var(--x) + 20px)) translateY(calc(var(--y) + 20px))
-    scale(calc(2 + ((var(--d) / 2.8) * -1)));
+    scale(calc((var(--d) / 2)));
 
-  transition: 0.23s transform cubic-bezier(0.19, 1, 0.22, 1),
-    0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
 
   border-radius: 16px;
   padding: 16px 32px;
+
+  max-width: 400px;
+
+  @media screen and (max-width: $maxTablet) {
+    max-width: 80vw;
+  }
 
   background: #000;
   color: #fff;
@@ -89,6 +96,7 @@
 
   &.show {
     opacity: 1;
+    visibility: visible;
   }
 
   .title {
@@ -99,5 +107,6 @@
 
   .description {
     font-size: 1em;
+    line-break: pre;
   }
 }
