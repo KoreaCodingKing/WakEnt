@@ -18,17 +18,17 @@ export const Pagination = ({
   next,
   movePage,
 }: PaginationProps) => {
-  const paginationRef = useRef<HTMLDivElement>(null);
-  const paginationChildRef: HTMLElement[] = [];
+  const wrapper = useRef<HTMLDivElement>(null);
 
-  useHorizonalPageScroller(paginationRef, 690, paginationChildRef);
+  useHorizonalPageScroller(
+    wrapper,
+    690,
+    Array.prototype.slice.call(document.querySelectorAll(styles.pagination))
+  );
 
   return (
-    <div className={styles.pagination_container} ref={paginationRef}>
-      <div className={styles.pagination}
-        ref={(element: HTMLDivElement) => {
-          element && paginationChildRef.push(element);
-        }}>
+    <div className={styles.wrapper} ref={wrapper}>
+      <div className={styles.pagination}>
         {previous && (
           <span
             className={concatClass(styles.page, styles.next_prev_btn)}

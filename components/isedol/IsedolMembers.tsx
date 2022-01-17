@@ -60,13 +60,13 @@ const useRect = (ref: React.RefObject<HTMLDivElement>) => {
     }
 
     const handler = () => {
+      const r = elem.querySelector(`.${styles.member}[data-active="true"]`);
+
       setRect([
         elem.getBoundingClientRect(),
-        elem.querySelector(`.${styles.member}`)?.getBoundingClientRect(),
+        r?.getBoundingClientRect(),
       ]);
     };
-
-    handler();
 
     requestAnimationFrame(() => {
       handler();
@@ -104,16 +104,16 @@ export const IsedolMembers: NextPage = () => {
     null
   );
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const memberRef = useRef<HTMLDivElement>(null);
+  const container = useRef<HTMLDivElement>(null);
+  const member = useRef<HTMLDivElement>(null);
 
   const membersCardCache: HTMLElement[] = [];
   const router = useRouter();
 
-  const [parentRect, cardRect] = useRect(memberRef);
+  const [parentRect, cardRect] = useRect(member);
 
   const [mobileActive, mobilePage] = useHorizonalPageScroller(
-    containerRef,
+    container,
     1124,
     membersCardCache,
     () => {
@@ -122,11 +122,11 @@ export const IsedolMembers: NextPage = () => {
   );
 
   useEffect(() => {
-    if (!containerRef.current) {
+    if (!container.current) {
       return;
     }
 
-    containerRef.current.scrollTo({
+    container.current.scrollTo({
       top: 0,
       left: 0,
       behavior: 'smooth',
@@ -173,7 +173,7 @@ export const IsedolMembers: NextPage = () => {
           chosenMember !== null && styles.active
         )}
         data-member={currentHoverMember || chosenMember}
-        ref={containerRef}
+        ref={container}
       >
         <div
           className={concatClass(
@@ -181,7 +181,7 @@ export const IsedolMembers: NextPage = () => {
             chosenMember !== null && styles.chosen,
             mobileActive && styles.mobile
           )}
-          ref={memberRef}
+          ref={member}
           data-member={chosenMember}
         >
           {Object.keys(Members).map((id, i) => {
@@ -227,8 +227,8 @@ export const IsedolMembers: NextPage = () => {
                     return;
                   }
 
-                  if (mobileActive && containerRef.current) {
-                    containerRef.current.scrollTo({
+                  if (mobileActive && container.current) {
+                    container.current.scrollTo({
                       top: 0,
                       left: 0,
                       behavior: 'smooth',
@@ -297,7 +297,7 @@ export const IsedolMembers: NextPage = () => {
             )}
             style={
               {
-                '--left': parentRect && `${parentRect.left + 16}px`,
+                '--left': parentRect && `${parentRect.left + 32}px`,
                 '--top': cardRect && `${cardRect.top}px`,
                 '--width': cardRect && `${cardRect.width}px`,
                 '--height': cardRect && `${cardRect.height}px`,
