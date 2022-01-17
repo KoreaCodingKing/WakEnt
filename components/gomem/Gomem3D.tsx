@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import React, { Suspense, useEffect, useRef } from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
+import { Canvas, ThreeEvent, useFrame, useLoader } from '@react-three/fiber';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
 
 import WakDooImage from '../../public/images/wakdoo.png';
@@ -10,7 +10,7 @@ import IsedolImage from '../../public/images/logo_isedol.png';
 import { MotionValue, useSpring } from 'framer-motion';
 import { OrbitControls, Stars } from '@react-three/drei';
 
-import { motion } from "framer-motion/three";
+import { motion } from 'framer-motion/three';
 import GomemLoading from './GomemLoading';
 import { useRouter } from 'next/router';
 
@@ -77,12 +77,34 @@ const Camera = ({ progress }: CameraProps) => {
   return <></>;
 };
 
+export type PointerUpdateHandler = (active: boolean, x: number, y: number, d: number) => void
+
 interface Gomem3DProps {
   sceneActive: boolean
+  pointerUpdate: PointerUpdateHandler
 }
+
+const usePointer = (
+  onUpdate: PointerUpdateHandler
+) => {
+  const pointerEnter = (ev: ThreeEvent<PointerEvent>) => {
+    onUpdate(true, ev.nativeEvent.x, ev.nativeEvent.y, ev.distance);
+  };
+
+  const pointerMove = (ev: ThreeEvent<PointerEvent>) => {
+    onUpdate(true, ev.nativeEvent.x, ev.nativeEvent.y, ev.distance);
+  };
+
+  const pointerOut = (ev: ThreeEvent<PointerEvent>) => {
+    onUpdate(false, ev.nativeEvent.x, ev.nativeEvent.y, ev.distance);
+  };
+
+  return [pointerEnter, pointerMove, pointerOut];
+};
 
 export const Gomem3D = ({
   sceneActive,
+  pointerUpdate,
   ...props
 }: Gomem3DProps & React.RefAttributes<HTMLCanvasElement>) => {
   const progress = useSpring(1, {
@@ -95,21 +117,43 @@ export const Gomem3D = ({
     progress.set(sceneActive ? 0 : 1);
   }, [sceneActive]);
 
+  const [pointerEnter, pointerMove, pointerOut] = usePointer(pointerUpdate);
+
   return (
     <Canvas {...props}>
       <Camera progress={progress}></Camera>
       <OrbitControls enableZoom={false} enablePan={false}></OrbitControls>
       {/* <ambientLight intensity={0.05} /> */}
       <pointLight position={[0, 0, 300]} />
-      <Stars radius={250} depth={50} count={5000} factor={4} saturation={0} fade />
+      <Stars
+        radius={250}
+        depth={50}
+        count={5000}
+        factor={4}
+        saturation={0}
+        fade
+      />
       <Suspense fallback={<GomemLoading></GomemLoading>}>
-        <EarthGlobe position={[0, 0, 0]} />
-        <IsedolGlobe position={[0, 0, -30]} onClick={() => router.push('/isedol/')}/>
+        <EarthGlobe
+          position={[0, 0, 0]}
+          onPointerEnter={pointerEnter}
+          onPointerMove={pointerMove}
+          onPointerOut={pointerOut}
+        />
+        <IsedolGlobe
+          position={[0, 0, -30]}
+          onClick={() => router.push('/isedol/')}
+        />
         <Sun position={[0, 0, 100]}></Sun>
       </Suspense>
       <EffectComposer>
         {/* <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} /> */}
-        <Bloom luminanceThreshold={0} luminanceSmoothing={0} intensity={0.2} height={300} />
+        <Bloom
+          luminanceThreshold={0}
+          luminanceSmoothing={0}
+          intensity={0.2}
+          height={300}
+        />
       </EffectComposer>
     </Canvas>
   );
