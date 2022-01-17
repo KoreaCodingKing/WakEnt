@@ -12,6 +12,7 @@ import { OrbitControls, Stars } from '@react-three/drei';
 
 import { motion } from "framer-motion/three";
 import GomemLoading from './GomemLoading';
+import { useRouter } from 'next/router';
 
 const IsedolGlobe = (props: JSX.IntrinsicElements['mesh']) => {
   const mesh = useRef<THREE.Mesh>(null!);
@@ -88,6 +89,8 @@ export const Gomem3D = ({
     duration: 1000,
   });
 
+  const router = useRouter();
+
   useEffect(() => {
     progress.set(sceneActive ? 0 : 1);
   }, [sceneActive]);
@@ -101,7 +104,7 @@ export const Gomem3D = ({
       <Stars radius={250} depth={50} count={5000} factor={4} saturation={0} fade />
       <Suspense fallback={<GomemLoading></GomemLoading>}>
         <EarthGlobe position={[0, 0, 0]} />
-        <IsedolGlobe position={[0, 0, -30]} />
+        <IsedolGlobe position={[0, 0, -30]} onClick={() => router.push('/isedol/')}/>
         <Sun position={[0, 0, 100]}></Sun>
       </Suspense>
       <EffectComposer>
