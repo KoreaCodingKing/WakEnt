@@ -1,10 +1,19 @@
 import * as THREE from 'three';
 import React, { Suspense, useEffect, useRef } from 'react';
-import { Canvas, ThreeEvent, useFrame, useLoader } from '@react-three/fiber';
-import { Bloom, EffectComposer } from '@react-three/postprocessing';
+import {
+  Canvas,
+  ThreeEvent,
+  useFrame,
+  useLoader,
+} from '@react-three/fiber';
+import {
+  Bloom,
+  EffectComposer,
+} from '@react-three/postprocessing';
 
 import WakDooImage from '../../public/images/wakdoo.png';
 import EarthImage from '../../public/images/earth-day-compressed.jpg';
+import CloudImage from '../../public/images/clouds.png';
 import IsedolImage from '../../public/images/logo_isedol.png';
 
 import { MotionValue, useSpring } from 'framer-motion';
@@ -32,19 +41,28 @@ const IsedolGlobe = (props: JSX.IntrinsicElements['mesh']) => {
 };
 
 const EarthGlobe = (props: JSX.IntrinsicElements['mesh']) => {
-  const mesh = useRef<THREE.Mesh>(null!);
+  const globeMesh = useRef<THREE.Mesh>(null!);
+  const cloudsMesh = useRef<THREE.Mesh>(null!);
+
   const texture = useLoader(THREE.TextureLoader, EarthImage.src);
+  const clouds = useLoader(THREE.TextureLoader, CloudImage.src);
 
   useFrame(() => {
-    mesh.current.rotation.y += 0.0005;
+    globeMesh.current.rotation.y += 0.0003;
+    cloudsMesh.current.rotation.y += 0.0005;
   });
 
   return (
-    // @ts-expect-error 타입 찾기 귀찮
-    <motion.mesh {...props} ref={mesh} castShadow whileHover={{ scale: 1.1 }}>
-      <sphereGeometry args={[2, 32, 32]} />
-      <meshPhongMaterial attach='material' map={texture} />
-    </motion.mesh>
+    <group>
+      <mesh {...props} ref={globeMesh} castShadow>
+        <sphereGeometry args={[2, 32, 32]} />
+        <meshPhysicalMaterial attach='material' map={texture} />
+      </mesh>
+      <mesh {...props} ref={cloudsMesh} castShadow>
+        <sphereGeometry args={[2.05, 32, 32]} />
+        <meshPhysicalMaterial attach='material' map={clouds} transparent />
+      </mesh>
+    </group>
   );
 };
 
