@@ -4,7 +4,7 @@ import { Canvas, ThreeEvent, useFrame, useLoader } from '@react-three/fiber';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
 
 import WakDooImage from '../../public/images/wakdoo.png';
-import EarthImage from '../../public/images/earth-day.jpg';
+import EarthImage from '../../public/images/earth-day-compressed.jpg';
 import IsedolImage from '../../public/images/logo_isedol.png';
 
 import { MotionValue, useSpring } from 'framer-motion';
@@ -36,14 +36,14 @@ const EarthGlobe = (props: JSX.IntrinsicElements['mesh']) => {
   const texture = useLoader(THREE.TextureLoader, EarthImage.src);
 
   useFrame(() => {
-    mesh.current.rotation.y += 0.003;
+    mesh.current.rotation.y += 0.0005;
   });
 
   return (
     // @ts-expect-error 타입 찾기 귀찮
     <motion.mesh {...props} ref={mesh} castShadow whileHover={{ scale: 1.1 }}>
       <sphereGeometry args={[2, 32, 32]} />
-      <meshToonMaterial attach='material' map={texture} />
+      <meshPhongMaterial attach='material' map={texture} />
     </motion.mesh>
   );
 };
@@ -70,9 +70,9 @@ interface CameraProps {
 }
 
 const Camera = ({ progress }: CameraProps) => {
-  useFrame(({ camera }) => {
-    camera.rotation.set(90 * progress.get() * (Math.PI / 180), 0, 0);
-  });
+  // useFrame(({ camera }) => {
+  //   camera.rotation.set(90 * progress.get() * (Math.PI / 180), 0, 0);
+  // });
 
   return <></>;
 };
@@ -94,7 +94,10 @@ interface Gomem3DProps {
 }
 
 const usePointer = (onUpdate: PointerUpdateHandler) => {
-  const pointerEnter = (ev: ThreeEvent<PointerEvent>, scope?: GomemPlanetScope) => {
+  const pointerEnter = (
+    ev: ThreeEvent<PointerEvent>,
+    scope?: GomemPlanetScope
+  ) => {
     ev.stopPropagation();
 
     const objectDistance = ev.camera.position.distanceTo(ev.object.position);
@@ -108,7 +111,10 @@ const usePointer = (onUpdate: PointerUpdateHandler) => {
     );
   };
 
-  const pointerMove = (ev: ThreeEvent<PointerEvent>, scope?: GomemPlanetScope) => {
+  const pointerMove = (
+    ev: ThreeEvent<PointerEvent>,
+    scope?: GomemPlanetScope
+  ) => {
     ev.stopPropagation();
 
     const objectDistance = ev.camera.position.distanceTo(ev.object.position);
@@ -122,7 +128,10 @@ const usePointer = (onUpdate: PointerUpdateHandler) => {
     );
   };
 
-  const pointerOut = (ev: ThreeEvent<PointerEvent>, scope?: GomemPlanetScope) => {
+  const pointerOut = (
+    ev: ThreeEvent<PointerEvent>,
+    scope?: GomemPlanetScope
+  ) => {
     ev.stopPropagation();
 
     const objectDistance = ev.camera.position.distanceTo(ev.object.position);
@@ -164,10 +173,10 @@ export const Gomem3D = ({
     <Canvas {...props}>
       <Camera progress={progress}></Camera>
       <OrbitControls enableZoom={false} enablePan={false}></OrbitControls>
-      {/* <ambientLight intensity={0.05} /> */}
+      <ambientLight intensity={0.05} />
       <pointLight position={[0, 0, 300]} />
       <Stars
-        radius={250}
+        radius={200}
         depth={50}
         count={5000}
         factor={4}
@@ -186,14 +195,20 @@ export const Gomem3D = ({
           onPointerEnter={ev => planetPointerEnter(ev, 'isedol')}
           onPointerMove={ev => planetPointerMove(ev, 'isedol')}
           onPointerOut={ev => planetPointerOut(ev, 'isedol')}
-          onClick={() => router.push('/isedol/')}
+          onClick={ev => {
+            ev.stopPropagation();
+            router.push('/isedol/');
+          }}
         />
         <Sun
           position={[0, 0, 100]}
           onPointerEnter={ev => planetPointerEnter(ev, 'wakgood')}
           onPointerMove={ev => planetPointerMove(ev, 'wakgood')}
           onPointerOut={ev => planetPointerOut(ev, 'wakgood')}
-          onClick={() => router.push('https://cafe.naver.com/steamindiegame')}
+          onClick={ev => {
+            ev.stopPropagation();
+            router.push('https://cafe.naver.com/steamindiegame');
+          }}
         ></Sun>
       </Suspense>
       <EffectComposer>
@@ -201,7 +216,7 @@ export const Gomem3D = ({
         <Bloom
           luminanceThreshold={0}
           luminanceSmoothing={0}
-          intensity={0.2}
+          intensity={0.4}
           height={300}
         />
       </EffectComposer>
