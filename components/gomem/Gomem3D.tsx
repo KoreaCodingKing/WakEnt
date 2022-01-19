@@ -1,15 +1,13 @@
 import * as THREE from 'three';
-import React, { Suspense, useEffect, useRef } from 'react';
+import React, { Suspense, useEffect, useRef, useState } from 'react';
 import {
   Canvas,
   ThreeEvent,
   useFrame,
   useLoader,
+  useThree,
 } from '@react-three/fiber';
-import {
-  Bloom,
-  EffectComposer,
-} from '@react-three/postprocessing';
+import { Bloom, EffectComposer } from '@react-three/postprocessing';
 
 import WakDooImage from '../../public/images/wakdoo.png';
 import EarthImage from '../../public/images/earth-day-compressed.jpg';
@@ -17,7 +15,12 @@ import CloudImage from '../../public/images/clouds.png';
 import IsedolImage from '../../public/images/logo_isedol.png';
 
 import { MotionValue, useSpring } from 'framer-motion';
-import { OrbitControls, Stars } from '@react-three/drei';
+import {
+  OrbitControls,
+  OrbitControlsProps,
+  PerspectiveCamera,
+  Stars,
+} from '@react-three/drei';
 
 import { motion } from 'framer-motion/three';
 import GomemLoading from './GomemLoading';
@@ -53,16 +56,14 @@ const EarthGlobe = (props: JSX.IntrinsicElements['mesh']) => {
   });
 
   return (
-    <group>
-      <mesh {...props} ref={globeMesh} castShadow>
-        <sphereGeometry args={[2, 32, 32]} />
-        <meshPhysicalMaterial attach='material' map={texture} />
-      </mesh>
+    <mesh {...props} ref={globeMesh} castShadow>
+      <sphereGeometry args={[2, 32, 32]} />
+      <meshPhysicalMaterial attach='material' map={texture} />
       <mesh {...props} ref={cloudsMesh} castShadow>
         <sphereGeometry args={[2.05, 32, 32]} />
         <meshPhysicalMaterial attach='material' map={clouds} transparent />
       </mesh>
-    </group>
+    </mesh>
   );
 };
 
@@ -84,21 +85,103 @@ const Sun = (props: JSX.IntrinsicElements['mesh']) => {
 };
 
 interface CameraProps {
+  planet: GomemPlanetKeys
   progress: MotionValue<number>
 }
 
-const Camera = ({ progress }: CameraProps) => {
-  // useFrame(({ camera }) => {
-  //   camera.rotation.set(90 * progress.get() * (Math.PI / 180), 0, 0);
-  // });
-
-  return <></>;
+const springOptions = {
+  duration: 280,
 };
 
-export type GomemPlanetScope = 'isedol' | 'wakgood'
+const Camera = ({ planet }: CameraProps) => {
+  const { scene, camera } = useThree();
+
+  const s = (scene as unknown) as THREE.Scene & {
+    orbitControls: OrbitControlsProps
+  };
+
+  const x = useSpring(0, springOptions);
+  const y = useSpring(0, springOptions);
+  const z = useSpring(0, springOptions);
+
+  const targetSizeX = useSpring(0, springOptions);
+  const targetSizeY = useSpring(0, springOptions);
+  const targetSizeZ = useSpring(0, springOptions);
+
+  const [onTransition, setOnTransition] = useState<boolean>(false);
+  // const [targetSizeVector, setTargetSizeVector] = useState<THREE.Vector3>(
+  //   new THREE.Vector3()
+  // );
+
+  useEffect(() => {
+    const object = scene.getObjectByName(planet);
+
+    if (!object) {
+      return;
+    }
+
+    // Object를 감싸는 Box를 만들어 Box의 가로를 측정합니다.
+    const box = new THREE.Box3().setFromObject(object);
+    const sizeVec = new THREE.Vector3();
+    box.getSize(sizeVec);
+
+    // setTargetSizeVector(sizeVec);
+
+    targetSizeX.set(sizeVec.x);
+    targetSizeY.set(sizeVec.y);
+    targetSizeZ.set(sizeVec.z);
+
+    // Object의 절대 위치를 구해 x, y, z Animation을 구현합니다.
+    const vec = new THREE.Vector3();
+    object.getWorldPosition(vec);
+
+    x.set(vec.x);
+    y.set(vec.y);
+    z.set(vec.z);
+
+    setOnTransition(true);
+
+    const timeout = setTimeout(() => {
+      setOnTransition(false);
+    }, 300);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [planet]);
+
+  useFrame(({ camera }) => {
+    if (onTransition) {
+      camera.position.copy(
+        new THREE.Vector3(
+          x.get() + targetSizeX.get(),
+          y.get() + targetSizeY.get() / 2,
+          z.get() + targetSizeZ.get() / 2
+        )
+      );
+      s.orbitControls.target = new THREE.Vector3(x.get(), y.get(), z.get());
+    }
+
+    s.orbitControls.update!();
+  });
+
+  return (
+    <>
+      <OrbitControls
+        attach='orbitControls'
+        camera={camera}
+        enableDamping
+        enableZoom={false}
+        enablePan={false}
+      ></OrbitControls>
+    </>
+  );
+};
+
+export type GomemPlanetKeys = 'isedol' | 'gomem' | 'wakgood'
 
 export type PointerUpdateHandler = (
-  scope: GomemPlanetScope | undefined,
+  scope: GomemPlanetKeys | undefined,
   active: boolean,
   x: number,
   y: number,
@@ -107,6 +190,7 @@ export type PointerUpdateHandler = (
 
 interface Gomem3DProps {
   sceneActive: boolean
+  planet: GomemPlanetKeys
   mainPointerUpdate: PointerUpdateHandler
   otherPointerUpdate: PointerUpdateHandler
 }
@@ -114,7 +198,7 @@ interface Gomem3DProps {
 const usePointer = (onUpdate: PointerUpdateHandler) => {
   const pointerEnter = (
     ev: ThreeEvent<PointerEvent>,
-    scope?: GomemPlanetScope
+    scope?: GomemPlanetKeys
   ) => {
     ev.stopPropagation();
 
@@ -131,7 +215,7 @@ const usePointer = (onUpdate: PointerUpdateHandler) => {
 
   const pointerMove = (
     ev: ThreeEvent<PointerEvent>,
-    scope?: GomemPlanetScope
+    scope?: GomemPlanetKeys
   ) => {
     ev.stopPropagation();
 
@@ -148,7 +232,7 @@ const usePointer = (onUpdate: PointerUpdateHandler) => {
 
   const pointerOut = (
     ev: ThreeEvent<PointerEvent>,
-    scope?: GomemPlanetScope
+    scope?: GomemPlanetKeys
   ) => {
     ev.stopPropagation();
 
@@ -168,6 +252,7 @@ const usePointer = (onUpdate: PointerUpdateHandler) => {
 
 export const Gomem3D = ({
   sceneActive,
+  planet,
   mainPointerUpdate,
   otherPointerUpdate,
   ...props
@@ -189,8 +274,7 @@ export const Gomem3D = ({
 
   return (
     <Canvas {...props}>
-      <Camera progress={progress}></Camera>
-      <OrbitControls enableZoom={false} enablePan={false}></OrbitControls>
+      <Camera progress={progress} planet={planet}></Camera>
       <ambientLight intensity={0.05} />
       <pointLight position={[0, 0, 300]} />
       <Stars
@@ -201,14 +285,16 @@ export const Gomem3D = ({
         saturation={0}
         fade
       />
-      <Suspense fallback={<GomemLoading></GomemLoading>}>
+      <Suspense fallback={null}>
         <EarthGlobe
+          name='gomem'
           position={[0, 0, 0]}
           onPointerEnter={pointerEnter}
           onPointerMove={pointerMove}
           onPointerOut={pointerOut}
         />
         <IsedolGlobe
+          name='isedol'
           position={[0, 0, -30]}
           onPointerEnter={ev => planetPointerEnter(ev, 'isedol')}
           onPointerMove={ev => planetPointerMove(ev, 'isedol')}
@@ -219,6 +305,7 @@ export const Gomem3D = ({
           }}
         />
         <Sun
+          name='wakgood'
           position={[0, 0, 100]}
           onPointerEnter={ev => planetPointerEnter(ev, 'wakgood')}
           onPointerMove={ev => planetPointerMove(ev, 'wakgood')}

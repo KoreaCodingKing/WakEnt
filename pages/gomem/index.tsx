@@ -3,13 +3,15 @@ import {
   useSpring,
   motion,
   MotionValue,
+  AnimatePresence,
 } from 'framer-motion';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
+import ChevronIcon from '../../components/common/icons/Chevron';
 import Gomem3D, {
-  GomemPlanetScope,
+  GomemPlanetKeys,
   PointerUpdateHandler,
 } from '../../components/gomem/Gomem3D';
 import WakEnterMetadata from '../../components/wakenter/Meta';
@@ -20,20 +22,28 @@ import { concatClass } from '../../utils/class';
 import { clamp } from '../../utils/number';
 
 const PlanetMetadata: {
-  [key in GomemPlanetScope]: {
+  [key in GomemPlanetKeys]: {
     name: string
     desc: string
   }
 } = {
   isedol: {
     name: '이세계 아이돌',
-    desc: '2021년 8월에 혜성같이 등장한 행성. 여섯 생명체가 거주하는 것으로 알려져 있는데, 이들의 특이 사항으로는 노래를 잘한다는 점이 있다.',
+    desc:
+      '2021년 8월에 혜성같이 등장한 행성. 여섯 생명체가 거주하는 것으로 알려져 있는데, 이들의 특이 사항으로는 노래를 잘한다는 점이 있다.',
+  },
+  gomem: {
+    name: '고정멤버 시즌 2',
+    desc: '앙~ 킹아~',
   },
   wakgood: {
     name: '왁물원',
-    desc: '침팬치와 유사한 생명체가 거주한다. 이들은 "자유 게시판"이라는 분지에 배변 활동을 하는 것으로 알려져 있다.'
-  }
+    desc:
+      '침팬치와 유사한 생명체가 거주한다. 이들은 "자유 게시판"이라는 분지에 배변 활동을 하는 것으로 알려져 있다.',
+  },
 };
+
+const PlanetKeys = Object.keys(PlanetMetadata) as GomemPlanetKeys[];
 
 interface PopupStyles extends React.CSSProperties {
   '--x': MotionValue<string>
@@ -44,6 +54,24 @@ const springOptions: Parameters<typeof useSpring>[1] = {
   stiffness: 1000,
   damping: 100,
 };
+
+const usePlanetSlider: () => [GomemPlanetKeys, () => void, () => void] = () => {
+  const [index, setIndex] = useState<number>(1);
+
+  const prev = () => {
+    setIndex(index - 1 < 0 ? PlanetKeys.length - 1 : index - 1);
+  };
+
+  const next = () => {
+    setIndex(index + 1 >= PlanetKeys.length ? 0 : index + 1);
+  };
+
+  return [PlanetKeys[index], prev, next];
+};
+
+/**
+ * FIXME : 코드가 너무 중구난방
+ */
 
 const Gomem: NextPage = () => {
   const [sceneActive, setSceneActive] = useState<boolean>(false);
@@ -60,7 +88,9 @@ const Gomem: NextPage = () => {
   const [showMemberPopup, setShowMemberPopup] = useState<boolean>(false);
   const [showPlanetPopup, setShowPlanetPopup] = useState<boolean>(false);
 
-  const [planetScope, setPlanetScope] = useState<GomemPlanetScope | null>(null);
+  const [planet, prev, next] = usePlanetSlider();
+
+  const [planetScope, setPlanetScope] = useState<GomemPlanetKeys | null>(null);
 
   const x = useSpring(0, springOptions);
   const y = useSpring(0, springOptions);
@@ -119,10 +149,35 @@ const Gomem: NextPage = () => {
         <div className={styles.gomem3D}>
           <Gomem3D
             mainPointerUpdate={mainPointerUpdate}
+            planet={planet}
             otherPointerUpdate={otherPointerUpdate}
             sceneActive={sceneActive}
           ></Gomem3D>
         </div>
+      </div>
+      <motion.div className={styles.planetName}>
+        <AnimatePresence>
+          <motion.p
+            key={planet}
+            initial={{ opacity: 0, translateX: -10 }}
+            animate={{ opacity: 1, translateX: 0 }}
+            exit={{ opacity: 0, translateX: 10 }}
+          >
+            {PlanetMetadata[planet].name}
+          </motion.p>
+        </AnimatePresence>
+      </motion.div>
+      <div
+        className={concatClass(styles.navigateButton, styles.left)}
+        onClick={prev}
+      >
+        <ChevronIcon width={32} stroke={0}></ChevronIcon>
+      </div>
+      <div
+        className={concatClass(styles.navigateButton, styles.right)}
+        onClick={next}
+      >
+        <ChevronIcon right width={32} stroke={0}></ChevronIcon>
       </div>
       <motion.div
         className={concatClass(
@@ -163,7 +218,8 @@ const Gomem: NextPage = () => {
           <>
             <h1 className={styles.title}>{PlanetMetadata[planetScope].name}</h1>
             <p className={styles.description}>
-              {PlanetMetadata[planetScope].desc}<br></br>
+              {PlanetMetadata[planetScope].desc}
+              <br></br>
               행성간 이동은 현재 탭에서 진행됩니다.
             </p>
           </>
