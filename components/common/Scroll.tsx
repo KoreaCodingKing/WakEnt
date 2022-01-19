@@ -116,7 +116,7 @@ export const useDynamicPageScroll = (
         scrolls[i] = [top < ot + sh - offset, clamp(top - ot - offset, 0, sh), sh];
       }
 
-      for (let i = 0; i < childs.length; i++) {
+      for (let i = 0; i < childs.length - 1; i++) {
         if (
           childs[i + 1]
             ? top - offset < childs[i + 1].offsetTop - (target.scrollHeight * threshold)
