@@ -110,6 +110,18 @@
     font-size: 1em;
     line-break: pre;
   }
+
+  svg {
+    fill: white;
+    stroke: white;
+
+    margin-right: 0.5em;
+  }
+
+  .moveTo {
+    margin-top: 1em;
+    font-weight: bold;
+  }
 }
 
 .navigateButton {
@@ -162,14 +174,26 @@
   bottom: 7vh;
 
   color: white;
-  letter-spacing: 3px;
-  opacity: 0.3;
+  letter-spacing: 0px;
 
   p {
     position: absolute;
     min-width: 300px;
-    font-size: 0.7em;
+    font-size: 0.75em;
     margin: 0;
     font-weight: bold;
+  }
+
+  .title {
+    opacity: 1;
+    margin-right: 1em;
+
+    white-space: nowrap;
+  }
+
+  .description {
+    top: 1em;
+
+    opacity: 0.3;
   }
 }

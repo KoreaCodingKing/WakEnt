@@ -8,42 +8,23 @@ import {
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import ChevronIcon from '../../components/common/icons/Chevron';
-import Gomem3D, {
-  GomemPlanetKeys,
-  PointerUpdateHandler,
-} from '../../components/gomem/Gomem3D';
+import LinkToIcon from '../../components/common/icons/LinkTo';
+import Gomem3D from '../../components/gomem/Gomem3D';
+import { PointerUpdateHandler } from '../../components/gomem/Gomem3DUtils';
+import {
+  PlanetKeys,
+  PlanetKeysArray,
+  Planets,
+} from '../../components/gomem/Planets';
+
 import WakEnterMetadata from '../../components/wakenter/Meta';
 import { WakEnterLogo } from '../../components/wakenter/WakEnterHeader';
 
 import styles from '../../styles/pages/gomem/index.module.scss';
 import { concatClass } from '../../utils/class';
 import { clamp } from '../../utils/number';
-
-const PlanetMetadata: {
-  [key in GomemPlanetKeys]: {
-    name: string
-    desc: string
-  }
-} = {
-  isedol: {
-    name: '이세계 아이돌',
-    desc:
-      '2021년 8월에 혜성같이 등장한 행성. 여섯 생명체가 거주하는 것으로 알려져 있는데, 이들의 특이 사항으로는 노래를 잘한다는 점이 있다.',
-  },
-  gomem: {
-    name: '고정멤버 시즌 2',
-    desc: '앙~ 킹아~',
-  },
-  wakgood: {
-    name: '왁물원',
-    desc:
-      '침팬치와 유사한 생명체가 거주한다. 이들은 "자유 게시판"이라는 분지에 배변 활동을 하는 것으로 알려져 있다.',
-  },
-};
-
-const PlanetKeys = Object.keys(PlanetMetadata) as GomemPlanetKeys[];
 
 interface PopupStyles extends React.CSSProperties {
   '--x': MotionValue<string>
@@ -55,18 +36,18 @@ const springOptions: Parameters<typeof useSpring>[1] = {
   damping: 100,
 };
 
-const usePlanetSlider: () => [GomemPlanetKeys, () => void, () => void] = () => {
+const usePlanetSlider: () => [PlanetKeys, () => void, () => void] = () => {
   const [index, setIndex] = useState<number>(1);
 
   const prev = () => {
-    setIndex(index - 1 < 0 ? PlanetKeys.length - 1 : index - 1);
+    setIndex(index - 1 < 0 ? PlanetKeysArray.length - 1 : index - 1);
   };
 
   const next = () => {
-    setIndex(index + 1 >= PlanetKeys.length ? 0 : index + 1);
+    setIndex(index + 1 >= PlanetKeysArray.length ? 0 : index + 1);
   };
 
-  return [PlanetKeys[index], prev, next];
+  return [PlanetKeysArray[index], prev, next];
 };
 
 /**
@@ -74,23 +55,15 @@ const usePlanetSlider: () => [GomemPlanetKeys, () => void, () => void] = () => {
  */
 
 const Gomem: NextPage = () => {
-  const [sceneActive, setSceneActive] = useState<boolean>(false);
-
   const router = useRouter();
 
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      setSceneActive(true);
-    });
-  }, []);
-
   const popup = useRef<HTMLDivElement>(null!);
-  const [showMemberPopup, setShowMemberPopup] = useState<boolean>(false);
+  // const [showMemberPopup, setShowMemberPopup] = useState<boolean>(false);
   const [showPlanetPopup, setShowPlanetPopup] = useState<boolean>(false);
 
   const [planet, prev, next] = usePlanetSlider();
 
-  const [planetScope, setPlanetScope] = useState<GomemPlanetKeys | null>(null);
+  const [planetScope, setPlanetScope] = useState<PlanetKeys | null>(null);
 
   const x = useSpring(0, springOptions);
   const y = useSpring(0, springOptions);
@@ -99,30 +72,8 @@ const Gomem: NextPage = () => {
   const xt = useMotionTemplate`${x}px`;
   const yt = useMotionTemplate`${y}px`;
 
-  /**
-   *
-   * @param active 요소에 포인터가 있는지에 대한 여부
-   * @param lx local X
-   * @param ly local Y
-   * @param ld local Distance
-   */
-  const mainPointerUpdate: PointerUpdateHandler = (
-    scope,
-    active,
-    lx,
-    ly,
-    ld
-  ) => {
-    if (active !== showMemberPopup) {
-      setShowMemberPopup(active);
-    }
 
-    x.set(lx);
-    y.set(ly);
-    d.set(ld);
-  };
-
-  const otherPointerUpdate: PointerUpdateHandler = (
+  const onPlanetHover: PointerUpdateHandler = (
     scope,
     active,
     lx,
@@ -142,16 +93,21 @@ const Gomem: NextPage = () => {
     d.set(clamp(ld, 0, 2));
   };
 
+  const onPlanetClick = (name: PlanetKeys) => {
+    if (typeof Planets[name].link === 'string') {
+      router.push(Planets[name].link!);
+    }
+  };
+
   return (
     <>
       <WakEnterMetadata title='고정 멤버'></WakEnterMetadata>
       <div className={styles.main}>
         <div className={styles.gomem3D}>
           <Gomem3D
-            mainPointerUpdate={mainPointerUpdate}
             planet={planet}
-            otherPointerUpdate={otherPointerUpdate}
-            sceneActive={sceneActive}
+            onPlanetHover={onPlanetHover}
+            onPlanetClick={onPlanetClick}
           ></Gomem3D>
         </div>
       </div>
@@ -162,8 +118,10 @@ const Gomem: NextPage = () => {
             initial={{ opacity: 0, translateX: -10 }}
             animate={{ opacity: 1, translateX: 0 }}
             exit={{ opacity: 0, translateX: 10 }}
+            transition={{ type: 'spring', stiffness: 1000, damping: 100 }}
           >
-            {PlanetMetadata[planet].name}
+            <span className={styles.title}>{Planets[planet].name}</span>
+            <span className={styles.description}>{Planets[planet].desc}</span>
           </motion.p>
         </AnimatePresence>
       </motion.div>
@@ -179,7 +137,7 @@ const Gomem: NextPage = () => {
       >
         <ChevronIcon right width={32} stroke={0}></ChevronIcon>
       </div>
-      <motion.div
+      {/* <motion.div
         className={concatClass(
           styles.popup,
           styles.member,
@@ -198,7 +156,7 @@ const Gomem: NextPage = () => {
         <p className={styles.description}>
           멤버 설명이 여기에 들어갈 예정입니다.
         </p>
-      </motion.div>
+      </motion.div> */}
       <motion.div
         className={concatClass(
           styles.popup,
@@ -214,16 +172,20 @@ const Gomem: NextPage = () => {
         }
         ref={popup}
       >
-        {planetScope && (
-          <>
-            <h1 className={styles.title}>{PlanetMetadata[planetScope].name}</h1>
-            <p className={styles.description}>
-              {PlanetMetadata[planetScope].desc}
-              <br></br>
+        <motion.h1 className={styles.title}>
+          {planetScope && Planets[planetScope].name}
+        </motion.h1>
+        <motion.p className={styles.description}>
+          {planetScope && Planets[planetScope].desc}
+        </motion.p>
+        <motion.p>
+          {planetScope && Planets[planetScope].link && (
+            <span className={styles.moveTo}>
+              <LinkToIcon></LinkToIcon>
               행성간 이동은 현재 탭에서 진행됩니다.
-            </p>
-          </>
-        )}
+            </span>
+          )}
+        </motion.p>
       </motion.div>
       <Link key={'link-wak-enter'} href={'/'} passHref>
         <div
