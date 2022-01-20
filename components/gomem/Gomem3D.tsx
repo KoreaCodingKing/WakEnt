@@ -11,6 +11,7 @@ import { GomemCamera } from './Elements/Camera';
 import { Sun } from './Elements/Sun';
 import { GomemGlobe } from './Elements/GomemGlobe';
 import { IsedolGlobe } from './Elements/IsedolGlobe';
+import SpecterPlanet from './Elements/Specter';
 
 interface Gomem3DProps {
   planet: PlanetKeys
@@ -54,6 +55,15 @@ export const Gomem3D = ({
           onPointerEnter={ev => planetPointerEnter(ev, 'gomem')}
           onPointerMove={ev => planetPointerMove(ev, 'gomem')}
           onPointerOut={ev => planetPointerOut(ev, 'gomem')}
+          onClick={localPlanetClickHandler}
+        />
+        <SpecterPlanet
+          name='specter'
+          position={[3, 0, -3]}
+          scale={0.3}
+          onPointerEnter={ev => planetPointerEnter(ev, 'specter')}
+          onPointerMove={ev => planetPointerMove(ev, 'specter')}
+          onPointerOut={ev => planetPointerOut(ev, 'specter')}
           onClick={localPlanetClickHandler}
         />
         <IsedolGlobe
