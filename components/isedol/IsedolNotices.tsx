@@ -67,7 +67,7 @@ export const Notices: NextPage = () => {
         <div className={styles.tabs}
           ref={tabRef}>
           {NoticeSources.map((v, i) => (
-            <div ref={(element: HTMLDivElement) =>
+            <div key={`tabs-${v.name}`} ref={(element: HTMLDivElement) =>
               element && membersTabCache.push(element)
             }>
               <Button onClick={() => {

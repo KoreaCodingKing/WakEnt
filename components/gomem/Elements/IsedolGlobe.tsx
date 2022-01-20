@@ -14,7 +14,7 @@ export const IsedolGlobe = (props: JSX.IntrinsicElements['mesh']) => {
 
   return (
     <mesh {...props} ref={mesh} castShadow>
-      <sphereGeometry args={[2, 32, 32]} />
+      <sphereGeometry args={[1.5, 32, 32]} />
       <meshToonMaterial attach='material' map={texture} />
     </mesh>
   );

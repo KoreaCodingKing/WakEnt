@@ -20,7 +20,6 @@ interface Gomem3DProps {
 
 export const Gomem3D = ({
   planet,
-  // mainPointerUpdate,
   onPlanetClick,
   onPlanetHover,
   ...props
@@ -29,9 +28,9 @@ export const Gomem3D = ({
     onPlanetHover
   );
 
-  // const [pointerEnter, pointerMove, pointerOut] = usePointer(mainPointerUpdate);
-
   const localPlanetClickHandler = (ev: ThreeEvent<MouseEvent>) => {
+    ev.stopPropagation();
+
     onPlanetClick && onPlanetClick(ev.object.name as PlanetKeys);
   };
 
@@ -59,7 +58,7 @@ export const Gomem3D = ({
         />
         <IsedolGlobe
           name='isedol'
-          position={[0, 0, -30]}
+          position={[80, 0, 80]}
           onPointerEnter={ev => planetPointerEnter(ev, 'isedol')}
           onPointerMove={ev => planetPointerMove(ev, 'isedol')}
           onPointerOut={ev => planetPointerOut(ev, 'isedol')}
@@ -67,7 +66,7 @@ export const Gomem3D = ({
         />
         <Sun
           name='wakgood'
-          position={[0, 0, 100]}
+          position={[0, 0, 80]}
           onPointerEnter={ev => planetPointerEnter(ev, 'wakgood')}
           onPointerMove={ev => planetPointerMove(ev, 'wakgood')}
           onPointerOut={ev => planetPointerOut(ev, 'wakgood')}
