@@ -133,18 +133,6 @@ export const IsedolMembers: NextPage = () => {
     });
   }, [chosenMember]);
 
-  useEffect(() => {
-    if (!mobileActive) {
-      if (currentHoverMember) {
-        setCurrentHoverMember(null);
-      }
-
-      return;
-    }
-
-    setCurrentHoverMember(Object.keys(Members)[mobilePage] as MemberID);
-  }, [mobileActive, mobilePage]);
-
   let hoverTimeout = 0;
 
   return (
@@ -199,18 +187,17 @@ export const IsedolMembers: NextPage = () => {
                   element && membersCardCache.push(element)
                 }
                 data-active={
-                  (!mobileActive && currentHoverMember === null) ||
-                  (mobileActive && mobilePage === i) ||
+                  (currentHoverMember === null) ||
                   id === currentHoverMember
                 }
                 onMouseEnter={() =>
-                  (!mobileActive &&
+                  (
                     chosenMember === null &&
                     clearTimeout(hoverTimeout)) ||
                   setCurrentHoverMember(id as MemberID)
                 }
                 onMouseOut={() =>
-                  !mobileActive &&
+
                   chosenMember === null &&
                   (() => {
                     hoverTimeout = (setTimeout(() => {
