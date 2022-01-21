@@ -83,14 +83,16 @@ export const Gomem3D = ({
           onClick={localPlanetClickHandler}
         ></Sun>
       </Suspense>
-      <EffectComposer>
-        <Bloom
-          luminanceThreshold={0}
-          luminanceSmoothing={0}
-          intensity={0.4}
-          height={300}
-        />
-      </EffectComposer>
+      <Suspense fallback={null}>
+        <EffectComposer>
+          <Bloom
+            luminanceThreshold={0}
+            luminanceSmoothing={0}
+            intensity={0.4}
+            height={300}
+          />
+        </EffectComposer>
+      </Suspense>
     </Canvas>
   );
 };
