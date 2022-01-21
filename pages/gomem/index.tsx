@@ -8,7 +8,7 @@ import {
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ChevronIcon from '../../components/common/icons/Chevron';
 import LinkToIcon from '../../components/common/icons/LinkTo';
 import Gomem3D from '../../components/gomem/Gomem3D';
@@ -54,6 +54,8 @@ const usePlanetSlider: () => [PlanetKeys, () => void, () => void] = () => {
  * FIXME : 코드가 너무 중구난방
  */
 
+const PopupOffset = 30;
+
 const Gomem: NextPage = () => {
   const router = useRouter();
 
@@ -69,17 +71,10 @@ const Gomem: NextPage = () => {
   const y = useSpring(0, springOptions);
   const d = useSpring(0, springOptions);
 
-  const xt = useMotionTemplate`${x}px`;
-  const yt = useMotionTemplate`${y}px`;
+  const cx = useMotionTemplate`${x}px`;
+  const cy = useMotionTemplate`${y}px`;
 
-
-  const onPlanetHover: PointerUpdateHandler = (
-    scope,
-    active,
-    lx,
-    ly,
-    ld
-  ) => {
+  const onPlanetHover: PointerUpdateHandler = (scope, active, lx, ly, ld) => {
     if (active !== showPlanetPopup) {
       setShowPlanetPopup(active);
     }
@@ -88,8 +83,23 @@ const Gomem: NextPage = () => {
       setPlanetScope(scope ?? null);
     }
 
-    x.set(lx);
-    y.set(ly);
+    const rect = popup.current.getBoundingClientRect();
+
+    const width = rect.width;
+    const height = rect.height;
+
+    x.set(
+      lx + width + PopupOffset > window.innerWidth
+        ? window.innerWidth - width - PopupOffset
+        : lx
+    );
+
+    y.set(
+      ly + height + PopupOffset > window.innerHeight
+        ? window.innerHeight - height - PopupOffset
+        : ly
+    );
+
     d.set(clamp(ld, 0, 2));
   };
 
@@ -165,8 +175,8 @@ const Gomem: NextPage = () => {
         )}
         style={
           {
-            '--x': xt,
-            '--y': yt,
+            '--x': cx,
+            '--y': cy,
             '--d': d,
           } as PopupStyles
         }
@@ -178,9 +188,9 @@ const Gomem: NextPage = () => {
         <motion.p className={styles.description}>
           {planetScope && Planets[planetScope].desc}
         </motion.p>
-        <motion.p>
+        <motion.p className={styles.moveTo}>
           {planetScope && Planets[planetScope].link && (
-            <span className={styles.moveTo}>
+            <span>
               <LinkToIcon></LinkToIcon>
               행성간 이동은 현재 탭에서 진행됩니다.
             </span>
