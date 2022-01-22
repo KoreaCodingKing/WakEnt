@@ -300,11 +300,24 @@ $link-color: #1667e0;
     }
   }
 
+  &:hover {
+    .background {
+      img {
+        transform: scale(1.05);
+        filter: saturate(150%);
+      }
+    }
+  }
+
   .background {
     min-width: 100%;
     min-height: 100%;
     position: absolute;
     aspect-ratio: 16 / 9;
+
+    img {
+      transition: 1s transform cubic-bezier(0.19, 1, 0.22, 1), 1s filter cubic-bezier(0.19, 1, 0.22, 1);
+    }
 
     &::before {
       position: absolute;
