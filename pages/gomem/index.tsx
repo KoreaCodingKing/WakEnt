@@ -8,7 +8,7 @@ import {
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import ChevronIcon from '../../components/common/icons/Chevron';
 import LinkToIcon from '../../components/common/icons/LinkTo';
 import Gomem3D from '../../components/gomem/Gomem3D';
@@ -60,7 +60,6 @@ const Gomem: NextPage = () => {
   const router = useRouter();
 
   const popup = useRef<HTMLDivElement>(null!);
-  // const [showMemberPopup, setShowMemberPopup] = useState<boolean>(false);
   const [showPlanetPopup, setShowPlanetPopup] = useState<boolean>(false);
 
   const [planet, prev, next] = usePlanetSlider();
@@ -113,7 +112,7 @@ const Gomem: NextPage = () => {
     <>
       <WakEnterMetadata title='고정 멤버'></WakEnterMetadata>
       <div className={styles.main}>
-        <div className={styles.gomem3D}>
+        <div className={concatClass(styles.gomem3D, showPlanetPopup && styles.hover)}>
           <Gomem3D
             planet={planet}
             onPlanetHover={onPlanetHover}
@@ -147,26 +146,6 @@ const Gomem: NextPage = () => {
       >
         <ChevronIcon right width={32} stroke={0}></ChevronIcon>
       </div>
-      {/* <motion.div
-        className={concatClass(
-          styles.popup,
-          styles.member,
-          showMemberPopup && styles.show
-        )}
-        style={
-          {
-            '--x': xt,
-            '--y': yt,
-            '--d': d,
-          } as PopupStyles
-        }
-        ref={popup}
-      >
-        <h1 className={styles.title}>멤버 이름</h1>
-        <p className={styles.description}>
-          멤버 설명이 여기에 들어갈 예정입니다.
-        </p>
-      </motion.div> */}
       <motion.div
         className={concatClass(
           styles.popup,
