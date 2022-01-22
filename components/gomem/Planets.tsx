@@ -19,7 +19,7 @@ export const Planets: {
   },
   specter: {
     name: '망령촌',
-    desc: '고멤이었던 자들의 무덤. 이들은 고멤에 한이 맺혀 망령으로 남아 있다.'
+    desc: '고멤이었던 자들의 무덤. 이들은 고멤에 한이 맺혀 망령으로 남아 있다.',
   },
   wakgood: {
     name: '왁물원',
@@ -30,3 +30,6 @@ export const Planets: {
 };
 
 export const PlanetKeysArray = Object.keys(Planets) as PlanetKeys[];
+
+export const isValidPlanetName = (name: string): name is PlanetKeys =>
+  (PlanetKeysArray as string[]).includes(name);

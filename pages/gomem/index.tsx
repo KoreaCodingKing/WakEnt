@@ -103,7 +103,7 @@ const Gomem: NextPage = () => {
   };
 
   const onPlanetClick = (name: PlanetKeys) => {
-    if (typeof Planets[name].link === 'string') {
+    if (Planets[name] && typeof Planets[name].link === 'string') {
       router.push(Planets[name].link!);
     }
   };
