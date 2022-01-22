@@ -38,7 +38,7 @@ const useNoticesAPI = (
         setData(v);
       })
       .catch(e => setError(e));
-  }, [page, retry, tab]);
+  }, [data, page, retry, tab]);
 
   return [
     data,
