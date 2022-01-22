@@ -3,8 +3,9 @@ import { useRef } from "react";
 import { Mesh, TextureLoader } from "three";
 
 import IsedolImage from '../../../public/images/logo_isedol.png';
+import { PlanetProps } from "./PlanetGroup";
 
-export const IsedolGlobe = (props: JSX.IntrinsicElements['mesh']) => {
+export const IsedolGlobe = (props: PlanetProps & JSX.IntrinsicElements['mesh']) => {
   const mesh = useRef<Mesh>(null!);
   const texture = useLoader(TextureLoader, IsedolImage.src);
 

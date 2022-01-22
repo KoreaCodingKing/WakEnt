@@ -3,18 +3,22 @@ import { ReactElement } from "react";
 import { PointerUpdateHandler } from "../Gomem3DUtils";
 import { isValidPlanetName, PlanetKeys } from "../Planets";
 
-interface PlanetProps {
-  children: ReactElement[]
+export interface PlanetProps {
+  name: PlanetKeys
+}
+
+interface PlanetGroupProps {
+  children: ReactElement<PlanetProps>[]
   onPointer?: PointerUpdateHandler
   onClick?: (name: PlanetKeys) => void
 }
 
-export const PlanetGroup = ({ children, onPointer, onClick }: PlanetProps) => {
+export const PlanetGroup = ({ children, onPointer, onClick }: PlanetGroupProps) => {
   const clickHandler = (ev: ThreeEvent<MouseEvent>) => {
     ev.stopPropagation();
 
     if (!isValidPlanetName(ev.eventObject.name)) {
-      throw new Error('Chosen element doesn\'t have a valid object name.');
+      return;
     }
 
     onClick && onClick(ev.eventObject.name);
@@ -30,7 +34,7 @@ export const PlanetGroup = ({ children, onPointer, onClick }: PlanetProps) => {
     const objectDistance = ev.camera.position.distanceTo(ev.object.position);
 
     if (!isValidPlanetName(ev.eventObject.name)) {
-      throw new Error('Chosen element doesn\'t have a valid object name.');
+      return;
     }
 
     onPointer(
@@ -47,6 +51,7 @@ export const PlanetGroup = ({ children, onPointer, onClick }: PlanetProps) => {
       {children.map(planet => (
         <planet.type
           {...planet.props}
+          key={`planet-${planet.props.name}`}
           onPointerEnter={pointerHandler}
           onPointerMove={pointerHandler}
           onPointerOut={(ev: ThreeEvent<PointerEvent>) => pointerHandler(ev, true)}

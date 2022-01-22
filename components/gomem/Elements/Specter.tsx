@@ -1,7 +1,8 @@
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
+import { PlanetProps } from './PlanetGroup';
 
-export const SpecterPlanet = (props: JSX.IntrinsicElements['mesh']) => {
+export const SpecterPlanet = (props: PlanetProps & JSX.IntrinsicElements['mesh']) => {
   const model = useGLTF('/models/grave.glb');
 
   useFrame(({ clock }) => {
