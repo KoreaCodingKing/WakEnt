@@ -1,0 +1,43 @@
+.navigateButton {
+  position: fixed;
+  display: flex;
+  height: 100%;
+
+  &.left {
+    left: 4vw;
+
+    &:hover {
+      transform: translateX(-3px);
+    }
+  }
+
+  &.right {
+    right: 4vw;
+
+    &:hover {
+      transform: translateX(3px);
+    }
+  }
+
+  display: flex;
+
+  transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1),
+    0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 0.3;
+
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+
+  & > svg {
+    margin: auto;
+    fill: rgb(255, 255, 255);
+    width: 32px;
+  }
+}

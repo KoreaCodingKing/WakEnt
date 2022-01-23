@@ -5,7 +5,7 @@ import { Bloom, EffectComposer } from '@react-three/postprocessing';
 import { Stars } from '@react-three/drei';
 
 import { PointerUpdateHandler } from './Gomem3DUtils';
-import { PlanetKeys } from './Planets';
+import { PlanetKeys, Planets } from './Planets';
 
 import { GomemCamera } from './Elements/Camera';
 import { Sun } from './Elements/Sun';
@@ -13,8 +13,51 @@ import { GomemGlobe } from './Elements/GomemGlobe';
 import { IsedolGlobe } from './Elements/IsedolGlobe';
 import SpecterPlanet from './Elements/Specter';
 import { PlanetGroup } from './Elements/PlanetGroup';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { gomemActiveState } from '../../states/gomem/active';
 
-interface Gomem3DProps {
+import styles from '../../styles/components/gomem/Gomem3D.module.scss';
+import { concatClass } from '../../utils/class';
+import { gomemHoverState } from '../../states/gomem/hover';
+
+export const Gomem3DWithEvents = ({
+  onPlanetHover,
+  onPlanetClick
+}: Partial<Pick<Gomem3DProps, 'onPlanetClick' | 'onPlanetHover'>>) => {
+  const activeState = useRecoilValue(gomemActiveState);
+  const [hoverState, setHoverState] = useRecoilState(gomemHoverState);
+
+  const planetHoverHandler: PointerUpdateHandler = (scope, active, lx, ly, ld) => {
+    setHoverState({
+      hover: active,
+      x: lx,
+      y: ly,
+      d: ld,
+      planet: scope ?? null
+    });
+
+    onPlanetHover && onPlanetHover(scope, active, lx, ly, ld);
+  };
+
+  const planetClickHandler = (name: PlanetKeys) => {
+    onPlanetClick && Planets[name] && onPlanetClick(name);
+  };
+
+  return (
+    <div
+      className={concatClass(styles.gomem3D, hoverState.hover && styles.hover)}
+    >
+      <Gomem3D
+        planet={activeState.planet}
+        onPlanetHover={planetHoverHandler}
+        onPlanetClick={planetClickHandler}
+      ></Gomem3D>
+    </div>
+  );
+};
+
+
+export interface Gomem3DProps {
   planet: PlanetKeys
   onPlanetHover: PointerUpdateHandler
   onPlanetClick?: (name: PlanetKeys) => void
