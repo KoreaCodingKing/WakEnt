@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { NoticeSources } from '../../pages/api/notices';
 import { NoticesAPI } from '../../structs/notices';
 
@@ -20,11 +20,7 @@ const useNoticesAPI = (
   const [error, setError] = useState<Error | null>(null);
   const [retry, setRetry] = useState<number>(0);
 
-  useEffect(() => {
-    if (data && data.page === page && data.tab === tab) {
-      return;
-    }
-
+  const requestNotices = useCallback(() => {
     setData(null);
     setError(null);
 
@@ -38,7 +34,11 @@ const useNoticesAPI = (
         setData(v);
       })
       .catch(e => setError(e));
-  }, [data, page, retry, tab]);
+  }, [page, tab]);
+
+  useEffect(() => {
+    requestNotices();
+  }, [requestNotices, retry]);
 
   return [
     data,
@@ -55,7 +55,6 @@ export const Notices: NextPage = () => {
   const tabRef = useRef<HTMLDivElement>(null);
   const membersTabCache: HTMLElement[] = [];
 
-
   const [notices, error, retry] = useNoticesAPI(Number(page), tab);
 
   useHorizonalPageScroller(tabRef, 1000, membersTabCache);
@@ -64,16 +63,23 @@ export const Notices: NextPage = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>NOTICE</h1>
       <section className={styles.section}>
-        <div className={styles.tabs}
-          ref={tabRef}>
+        <div className={styles.tabs} ref={tabRef}>
           {NoticeSources.map((v, i) => (
-            <div key={`tabs-${v.name}`} ref={(element: HTMLDivElement) =>
-              element && membersTabCache.push(element)
-            }>
-              <Button onClick={() => {
-                setTab(i);
-                setPage('1');
-              }} active={tab === i}>{v.name}</Button>
+            <div
+              key={`tabs-${v.name}`}
+              ref={(element: HTMLDivElement) =>
+                element && membersTabCache.push(element)
+              }
+            >
+              <Button
+                onClick={() => {
+                  setTab(i);
+                  setPage('1');
+                }}
+                active={tab === i}
+              >
+                {v.name}
+              </Button>
             </div>
           ))}
         </div>
@@ -81,7 +87,7 @@ export const Notices: NextPage = () => {
           <div className={styles.error}>
             <span className={styles.bold}>게시글을 가져올 수 없습니다.</span>
             <br></br>
-            오류: {error}
+            오류: {error.message}
             <br></br>
             <br></br>
             <Button onClick={() => retry()}>다시 요청하기</Button>
@@ -105,9 +111,13 @@ export const Notices: NextPage = () => {
                       >
                         {v.comments} 댓글
                       </span>
-                      <span className={concatClass(styles.item, styles.likes)}>
-                        {v.likes} 좋아요
-                      </span>
+                      {typeof v.likes !== 'undefined' && (
+                        <span
+                          className={concatClass(styles.item, styles.likes)}
+                        >
+                          {v.likes} 좋아요
+                        </span>
+                      )}
                       <span className={concatClass(styles.item, styles.date)}>
                         {v.date}
                       </span>

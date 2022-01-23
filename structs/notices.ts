@@ -4,7 +4,7 @@ export interface Notice {
   comments?: number
   date: string
   view: number
-  likes: number
+  likes?: number
   writer: string
 }
 

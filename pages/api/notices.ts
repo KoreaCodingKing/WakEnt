@@ -52,6 +52,10 @@ const getPage = async (page = 1, tab: number) => {
 
   const $ = cheerio.load(data);
 
+  if (!$.text().trim().length) {
+    throw new Error('서버에서 빈 페이지를 반환했습니다. 네이버에서 차단당했을 가능성이 있으니 나중에 다시 시도하세요.');
+  }
+
   const pagination = $('.prev-next').find('a');
 
   let currentPage = -1;
@@ -91,9 +95,14 @@ const getPage = async (page = 1, tab: number) => {
       const nel = $(el);
 
       const title = nel.find('.inner_list a:first-child').text().trim();
+
+      if (!title) {
+        return;
+      }
+
       const comments = Number(
         nel
-          .find('.inner_list a:last-child')
+          .find('.inner_list a.cmt')
           .text()
           .trim()
           .replace(/(\[|\])/g, '')
@@ -102,12 +111,8 @@ const getPage = async (page = 1, tab: number) => {
       const id = Number(nel.find('.inner_number').text());
       const date = nel.find('.td_date').text();
       const view = Number(nel.find('.td_view').text());
-      const likes = Number(nel.find('.td_likes').text());
+      const likes = nel.find('.td_likes').text();
       const writer = nel.find('.p-nick').text();
-
-      if (!title) {
-        return;
-      }
 
       const data: Notice = {
         id,
@@ -115,7 +120,7 @@ const getPage = async (page = 1, tab: number) => {
         comments,
         date,
         view,
-        likes,
+        likes: likes.length ? Number(likes) : undefined,
         writer,
       };
 
