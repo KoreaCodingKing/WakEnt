@@ -72,7 +72,7 @@ const FirstSection = ({
         }
       }
     });
-  }, []);
+  }, [coverOpacity, coverScale, descOpacity, onScroll, setHeaderWhite]);
 
   /**
    * 현재 페이지가 아닌 경우 영상 재생을 멈춥니다.

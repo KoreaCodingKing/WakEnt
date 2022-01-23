@@ -55,7 +55,7 @@ export const Centerize = ({ children }: CenterizeProps) => {
     return () => {
       window.removeEventListener('resize', resizeHandler);
     };
-  }, [ref.current]);
+  }, []);
 
   return <>
     <element.type ref={ref} {...element.props}></element.type>
