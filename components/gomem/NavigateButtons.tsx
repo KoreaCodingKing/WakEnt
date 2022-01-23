@@ -1,7 +1,7 @@
 import { useRecoilState } from 'recoil';
 import { concatClass } from '../../utils/class';
 import ChevronIcon from '../common/icons/Chevron';
-import { PlanetKeys, PlanetKeysArray } from './Planets';
+import { PlanetKeysArray } from './Planets';
 
 import styles from '../../styles/components/gomem/NavigateButtons.module.scss';
 import { gomemActiveIndexState } from '../../states/gomem/active';

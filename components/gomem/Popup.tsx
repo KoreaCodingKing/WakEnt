@@ -62,7 +62,6 @@ export const GomemPopup = () => {
     sd.set(clamp(d, 0, 2));
   }, [sd, d]);
 
-
   return (
     <motion.div
       className={concatClass(
@@ -74,7 +73,7 @@ export const GomemPopup = () => {
         {
           '--x': cx,
           '--y': cy,
-          '--d': d,
+          '--d': sd,
         } as PopupStyles
       }
       ref={popup}
