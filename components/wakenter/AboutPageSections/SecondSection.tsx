@@ -25,7 +25,7 @@ interface ImageTransformData {
 
 const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number|null>(null);
 
   const images: OfficeImage[] = [
     {
@@ -56,36 +56,30 @@ const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
 
   const transforms = useRef<ImageTransformData[]>(
     new Array(6).fill(0).map((_, i) => {
-      // FIXME : Hook 꼼수 고치기
-
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       const x = useSpring(-25 - (i % 3) * 30, {
         stiffness: 1000,
         damping: 100,
       });
 
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       const y = useSpring(0 + Math.floor(i / 3) * 40, {
         stiffness: 1000,
         damping: 100,
       });
 
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       const scale = useSpring(1);
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      const rotate = useSpring(Math.random() * (10 - -10) + -10);
+      const rotate = useSpring(Math.random() * (10 - (-10)) + (-10));
 
       return {
         x,
         y,
         scale,
-        rotate,
+        rotate
       };
     })
   );
 
   useEffect(() => {
-    onScroll(1, (top) => {
+    onScroll(1, (top, height) => {
       const threshold = 50;
 
       setIsScrolled(top > threshold);
@@ -110,7 +104,7 @@ const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
         }
       }
     });
-  }, [onScroll, selectedIndex]);
+  }, [selectedIndex]);
 
   useEffect(() => {
     if (selectedIndex === null) {
@@ -121,15 +115,16 @@ const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
     selectedTransform.scale.set(2);
     transforms.current[selectedIndex].rotate.set(0);
 
+
     if (selectedIndex === 0 || selectedIndex % 3 === 0) {
       transforms.current[selectedIndex].x.set(2);
-    } else if (selectedIndex % 3 === 2) {
+    } else if(selectedIndex % 3 === 2) {
       transforms.current[selectedIndex].x.set(-105);
     }
 
     if (selectedIndex === 0 || Math.floor(selectedIndex / 3) === 0) {
       transforms.current[selectedIndex].y.set(36);
-    } else if (Math.floor(selectedIndex / 3) === 1) {
+    } else if(Math.floor(selectedIndex / 3) === 1) {
       transforms.current[selectedIndex].y.set(-58);
     }
   }, [selectedIndex]);
@@ -138,7 +133,7 @@ const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
     (d: ImageTransformData) => {
       return {
         transform: useMotionTemplate`translateX(${d.x}%) translateY(${d.y}%) scale(${d.scale}) rotate(${d.rotate}deg)`,
-        scale: useMotionTemplate`scale(${d.scale})`,
+        scale: useMotionTemplate`scale(${d.scale})`
       };
     }
   );
@@ -149,7 +144,7 @@ const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
     }
 
     if (selectedIndex === index) {
-      transforms.current[index].rotate.set(Math.random() * (10 - -10) + -10);
+      transforms.current[index].rotate.set(Math.random() * (10 - (-10)) + (-10));
       transforms.current[index].scale.set(1);
 
       if (isScrolled) {
@@ -180,19 +175,11 @@ const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
                   zIndex: index,
                   top: `${Math.floor(index / 3) * 20}%`,
                   left: `${30 + (index % 3) * 20}%`,
-                  transform: imageMotionTemplate[index].transform,
+                  transform: imageMotionTemplate[index].transform
                 }}
-                onHoverStart={() =>
-                  selectedIndex === null &&
-                  transforms.current[index].scale.set(1.1)
-                }
-                onHoverEnd={() =>
-                  selectedIndex === null &&
-                  transforms.current[index].scale.set(1)
-                }
-                onClick={(
-                  event: React.MouseEvent<HTMLDivElement, MouseEvent>
-                ) => {
+                onHoverStart={() => selectedIndex === null && transforms.current[index].scale.set(1.1)}
+                onHoverEnd={() => selectedIndex === null && transforms.current[index].scale.set(1)}
+                onClick={(event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
                   event.preventDefault();
                   photoClickHandler(index);
                 }}

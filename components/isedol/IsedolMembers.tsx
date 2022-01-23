@@ -40,6 +40,7 @@ const useNonNullState = <T extends unknown>(state: T) => {
 };
 
 const useRect = (ref: React.RefObject<HTMLDivElement>) => {
+  const [elem, setElem] = useState<HTMLDivElement | null>(null);
   const [rect, setRect] = useState<[DOMRect | undefined, DOMRect | undefined]>([
     undefined,
     undefined,
@@ -50,11 +51,19 @@ const useRect = (ref: React.RefObject<HTMLDivElement>) => {
       return;
     }
 
+    setElem(ref.current);
+  }, [ref.current]);
+
+  useEffect(() => {
+    if (!elem) {
+      return;
+    }
+
     const handler = () => {
-      const r = ref.current!.querySelector(`.${styles.member}[data-active="true"]`);
+      const r = elem.querySelector(`.${styles.member}[data-active="true"]`);
 
       setRect([
-        ref.current!.getBoundingClientRect(),
+        elem.getBoundingClientRect(),
         r?.getBoundingClientRect(),
       ]);
     };
@@ -68,7 +77,7 @@ const useRect = (ref: React.RefObject<HTMLDivElement>) => {
     return () => {
       window.removeEventListener('resize', handler);
     };
-  }, [ref]);
+  }, [elem]);
 
   return rect;
 };

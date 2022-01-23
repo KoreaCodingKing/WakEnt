@@ -15,7 +15,7 @@ export const Typer = ({
   useEffect(() => {
     const text = children.toString();
     setCurrentText(text.substring(0, Math.floor(text.length * progress)) || ' ');
-  }, [children, progress]);
+  }, [progress]);
 
   return <p {...props}>{currentText}</p>;
 };

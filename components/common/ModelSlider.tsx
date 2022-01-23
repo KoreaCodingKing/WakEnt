@@ -33,7 +33,7 @@ export const ModelSlider = ({
 
   useEffect(() => {
     setIndex(initialIndex ?? 0);
-  }, [initialIndex, models]);
+  }, [models]);
 
   return (
     <div className={concatClass(styles.model_slider, white && styles.white)}>

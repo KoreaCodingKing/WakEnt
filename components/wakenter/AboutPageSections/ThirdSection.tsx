@@ -28,7 +28,7 @@ const ThirdSection = ({
       opacity.set(clamp(tProgress, 0.06, 1));
       letterSpacing.set((1 - tProgress) * 3 - 0.3);
     });
-  }, [letterSpacing, onScroll, opacity, setHeaderWhite]);
+  }, []);
 
   return (
     <section className={concatClass(className)} data-index={2}>

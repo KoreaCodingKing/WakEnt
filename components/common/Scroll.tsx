@@ -58,7 +58,7 @@ export const useScrollPage = (
       target.removeEventListener('wheel', wheelHandler);
       target.removeEventListener('scroll', wheelHandler);
     };
-  }, [page, parent, pageHeight, threshold]);
+  }, [parent.current, page]);
 
   return page;
 };
@@ -175,7 +175,7 @@ export const useDynamicPageScroll = (
       window.removeEventListener('scroll', wheelHandler);
       window.removeEventListener('resize', fullHandler);
     };
-  }, [page, parent, pageSelector, options.offset, options.callback, options.debounce, threshold]);
+  }, [parent?.current, page]);
 
   return page;
 };
@@ -186,9 +186,13 @@ export const useHorizonalPageScroller = (
   pages: HTMLElement[],
   activeOn?: () => boolean
 ): [boolean, number] => {
+  if (!process.browser) {
+    return [false, 0];
+  }
+
   const query = `screen and (max-width: ${threshold}px)`;
   const [active, setActive] = useState<boolean>(
-    !threshold || process.browser ? window.matchMedia(query).matches : false
+    !threshold || window.matchMedia(query).matches
   );
 
   const [page, setPage] = useState<number>(-1);
@@ -211,12 +215,10 @@ export const useHorizonalPageScroller = (
     return () => {
       matches.removeEventListener('change', resizeHandler);
     };
-  }, [threshold, active, query]);
+  }, [threshold, active]);
 
   useEffect(() => {
-    const target = parent.current;
-
-    if (!target) {
+    if (!parent.current) {
       return;
     }
 
@@ -251,11 +253,11 @@ export const useHorizonalPageScroller = (
       event.preventDefault();
 
       if (event.deltaX) {
-        target.scrollBy({
+        parent.current.scrollBy({
           left: event.deltaX,
         });
       } else if (event.deltaY && Math.abs(event.deltaY) > 1) {
-        target.scrollBy({
+        parent.current.scrollBy({
           left: event.deltaY,
         });
       }
@@ -265,18 +267,17 @@ export const useHorizonalPageScroller = (
 
     const scrollHandler = () => requestAnimationFrame(getCurrentPage);
 
-    target.addEventListener('scroll', scrollHandler);
-    target.addEventListener('wheel', wheelEventHandler);
-
+    parent.current.addEventListener('scroll', scrollHandler);
+    parent.current.addEventListener('wheel', wheelEventHandler);
     return () => {
-      if (!target) {
+      if (!parent.current) {
         return;
       }
 
-      target.removeEventListener('scroll', scrollHandler);
-      target.removeEventListener('wheel', wheelEventHandler);
+      parent.current.removeEventListener('scroll', scrollHandler);
+      parent.current.removeEventListener('wheel', wheelEventHandler);
     };
-  }, [active, page, pages, parent, activeOn]);
+  }, [active, parent.current, page, pages]);
 
   return [active, page];
 };

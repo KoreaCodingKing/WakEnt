@@ -28,7 +28,7 @@ const usePageTurner = (
     return () => {
       clearTimeout(timeout);
     };
-  }, [current, max, paused, rate, set]);
+  }, [current, paused]);
 };
 
 

@@ -63,7 +63,7 @@ export const GomemCamera = ({ planet }: CameraProps) => {
     return () => {
       clearTimeout(timeout);
     };
-  }, [planet, scene, targetSizeX, targetSizeY, targetSizeZ, x, y, z]);
+  }, [planet]);
 
   useFrame(({ scene, camera }) => {
     if (onTransition) {
