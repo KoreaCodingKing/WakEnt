@@ -11,7 +11,7 @@ import { concatClass } from '../../utils/class';
 import { useHorizonalPageScroller } from '../common/Scroll';
 
 import { useHashState } from '../../utils/hashState';
-import { MemberID, Members } from '../../structs/member';
+import { IsedolMemberID, Members } from '../../structs/member';
 import ModelSlider from '../common/ModelSlider';
 
 import InstagramIcon from '../../public/images/icons/services/instagram.png';
@@ -97,10 +97,10 @@ const SocialIcons: Record<string, StaticImageData> = {
 };
 
 export const IsedolMembers: NextPage = () => {
-  const [chosenMember, setChosenMember] = useHashState<MemberID | null>(null);
+  const [chosenMember, setChosenMember] = useHashState<IsedolMemberID | null>(null);
   const previousMember = useNonNullState(chosenMember);
 
-  const [currentHoverMember, setCurrentHoverMember] = useState<MemberID | null>(
+  const [currentHoverMember, setCurrentHoverMember] = useState<IsedolMemberID | null>(
     null
   );
 
@@ -141,7 +141,7 @@ export const IsedolMembers: NextPage = () => {
         <meta
           name='theme-color'
           content={
-            currentHoverMember ? Members[currentHoverMember].color : '#0A0A0B'
+            currentHoverMember ? Members[currentHoverMember].backgroundColor : '#0A0A0B'
           }
         ></meta>
       </Head>
@@ -173,7 +173,7 @@ export const IsedolMembers: NextPage = () => {
           data-member={chosenMember}
         >
           {Object.keys(Members).map((id, i) => {
-            const member = Members[id as MemberID];
+            const member = Members[id as IsedolMemberID];
 
             return (
               <motion.div
@@ -194,7 +194,7 @@ export const IsedolMembers: NextPage = () => {
                   (
                     chosenMember === null &&
                     clearTimeout(hoverTimeout)) ||
-                  setCurrentHoverMember(id as MemberID)
+                  setCurrentHoverMember(id as IsedolMemberID)
                 }
                 onMouseOut={() =>
 
@@ -222,7 +222,7 @@ export const IsedolMembers: NextPage = () => {
                     });
                   }
 
-                  setChosenMember(id as MemberID);
+                  setChosenMember(id as IsedolMemberID);
                 }}
               >
                 <div className={styles.background}>

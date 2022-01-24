@@ -112,7 +112,7 @@
   display: flex;
   flex-direction: column;
 
-  gap: 16px;
+  gap: 12px;
 }
 
 .bold {
@@ -127,7 +127,7 @@
   display: flex;
   text-decoration: none;
   color: #000;
-  padding: 8px 24px;
+  padding: 6px 24px;
   border-radius: 16px;
 
   @media screen and (max-width: $maxMobile) {
@@ -147,7 +147,9 @@
 
   word-break: keep-all;
 
-  margin: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 0;
   margin-right: 5vw;
 
   @media screen and (max-width: $maxTablet) {
@@ -161,13 +163,18 @@
 
 .postDetails {
   font-size: 0.85em;
-  gap: 2em;
+  gap: 1.7em;
 
   white-space: nowrap;
 
   @media screen and (max-width: $maxTablet) {
     font-size: 0.8em;
     gap: 0.5em;
+  }
+
+  .item {
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   @media screen and (max-width: $maxMobile) {
@@ -187,4 +194,27 @@
 .pages {
   display: flex;
   margin-top: 36px;
+}
+
+.noticeMember {
+  position: relative;
+  display: flex;
+  background-color: var(--bg-color);
+  color: var(--color);
+  padding: 6px 12px;
+  border-radius: 16px;
+  gap: 12px;
+
+  .profile {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--color);
+  }
+
+  .name {
+    margin: auto;
+    font-weight: bold;
+  }
 }

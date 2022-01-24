@@ -1,7 +1,9 @@
 import { NextPage } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { NoticeSources } from '../../pages/api/notices';
+import { IsedolMemberID, Members, WakMemberID } from '../../structs/member';
 import { NoticesAPI } from '../../structs/notices';
 
 import styles from '../../styles/components/isedol/IsedolNotices.module.scss';
@@ -11,6 +13,54 @@ import Button from '../common/Button';
 import { LoadSpinner } from '../common/LoadSpinner';
 import Pagination from '../common/Pagination';
 import { useHorizonalPageScroller } from '../common/Scroll';
+
+import { lighten } from '../../utils/color';
+
+const memberMaps: Record<string, IsedolMemberID | WakMemberID> = {
+  '우왁굳': 'wakgood',
+  '징버거': 'jingburger',
+  '릴파 LILPA': 'lilpa',
+  '고세구': 'gosegu',
+  '비챤': 'viichan',
+  '아이네': 'ine',
+  '주르르': 'jururu'
+};
+
+const parseMemberFromString = (text: string): IsedolMemberID | WakMemberID | null => {
+  if (memberMaps[text]) {
+    return memberMaps[text];
+  }
+
+  return null;
+};
+
+interface NoticeMemberText {
+  member: string
+}
+
+interface MemberColorStyles extends React.CSSProperties {
+  '--color': string
+  '--bg-color': string
+}
+
+const NoticeMember = ({
+  member
+}: NoticeMemberText) => {
+  const memberId = parseMemberFromString(member);
+  const memberColor = memberId && memberId === 'wakgood' ? '#164532' : Members[memberId as IsedolMemberID].color;
+
+  return <div className={styles.noticeMember} style={{
+    '--color': memberColor,
+    '--bg-color': memberColor && lighten(memberColor, 0.8)
+  } as MemberColorStyles}>
+    <div className={styles.profile}>
+      <Image src={`/images/member/front/${memberId || 'unknown'}.png`} width={32} height={32} />
+    </div>
+    <span className={styles.name}>
+      {member}
+    </span>
+  </div>;
+};
 
 const useNoticesAPI = (
   page = 1,
@@ -121,7 +171,9 @@ export const Notices: NextPage = () => {
                       <span className={concatClass(styles.item, styles.date)}>
                         {v.date}
                       </span>
-                      <span className={styles.item}>{v.writer}</span>
+                      <span className={styles.item}>
+                        <NoticeMember member={v.writer}></NoticeMember>
+                      </span>
                     </div>
                   </a>
                 </Link>

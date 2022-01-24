@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { useState } from 'react';
-import { MemberID, Members } from '../../structs/member';
+import { IsedolMemberID, Members } from '../../structs/member';
 import styles from '../../styles/components/isedol/IsedolDiscography.module.scss';
 import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
 import AlbumCard from './AlbumCard';
@@ -31,7 +31,7 @@ const IsedolCover: YouTubeVideo[] = [
   },
 ];
 
-const MemberCover: Record<MemberID, YouTubeVideo[]> = {
+const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ine: [
     {
       title: '아이유 - 봄 안녕 봄',
@@ -360,10 +360,10 @@ export const IsedolDiscography: NextPage = () => {
       {Object.keys(MemberCover).map(member => (
         <section className={styles.section} key={`${member}-section`}>
           <h3 className={styles.sectionTitle}>
-            {Members[member as MemberID].name.ko}
+            {Members[member as IsedolMemberID].name.ko}
           </h3>
           <div className={styles.grid}>
-            {MemberCover[member as MemberID].map(cover => (
+            {MemberCover[member as IsedolMemberID].map(cover => (
               <YouTubeCard
                 key={`personal-cover-${cover.id}`}
                 title={cover.title}

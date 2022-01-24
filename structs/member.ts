@@ -18,6 +18,7 @@ export interface Member {
   signNameImage: string
   signImage: string
   color: string
+  backgroundColor: string
   links: SocialLinks[]
   metadata: {
     color: string
@@ -30,7 +31,7 @@ export interface Member {
   modelImages: CharacterModel[]
 }
 
-export type MemberID =
+export type IsedolMemberID =
   | 'ine'
   | 'jingburger'
   | 'lilpa'
@@ -38,7 +39,12 @@ export type MemberID =
   | 'gosegu'
   | 'viichan'
 
-export const Members: Record<MemberID, Member> = {
+export type GomemMemberID = 'roentgenium'
+export type WakMemberID = 'wakgood'
+
+export type WaktaverseMemberID = IsedolMemberID | GomemMemberID | WakMemberID
+
+export const Members: Record<IsedolMemberID, Member> = {
   ine: {
     name: {
       en: 'INE',
@@ -47,7 +53,8 @@ export const Members: Record<MemberID, Member> = {
     image: '/images/member/ine.jpg',
     signNameImage: '/images/member/text/ine.svg',
     signImage: '/images/sign/ine.png',
-    color: '#210C28',
+    color: '#AB6FE3',
+    backgroundColor: '#210C28',
     metadata: {
       color: 'Purple',
       birth: '1994',
@@ -112,7 +119,8 @@ export const Members: Record<MemberID, Member> = {
     image: '/images/member/jingburger.jpg',
     signNameImage: '/images/member/text/jingburger.svg',
     signImage: '/images/sign/jingburger.png',
-    color: '#1A1506',
+    color: '#F9E467',
+    backgroundColor: '#1A1506',
     metadata: {
       color: 'Yellow',
       birth: '1995.10.08',
@@ -179,7 +187,8 @@ export const Members: Record<MemberID, Member> = {
     image: '/images/member/lilpa.jpg',
     signNameImage: '/images/member/text/lilpa.svg',
     signImage: '/images/sign/lilpa.png',
-    color: '#0E0A24',
+    color: '#221638',
+    backgroundColor: '#0E0A24',
     metadata: {
       color: 'Indigo',
       birth: '1996.03.09',
@@ -241,7 +250,8 @@ export const Members: Record<MemberID, Member> = {
     image: '/images/member/jururu.jpg',
     signNameImage: '/images/member/text/jururu.svg',
     signImage: '/images/sign/jururu.png',
-    color: '#1B0A1C',
+    color: '#A7025A',
+    backgroundColor: '#1B0A1C',
     metadata: {
       color: 'Violet',
       birth: '1997.06.10',
@@ -298,7 +308,8 @@ export const Members: Record<MemberID, Member> = {
     image: '/images/member/gosegu.jpg',
     signNameImage: '/images/member/text/gosegu.svg',
     signImage: '/images/sign/gosegu.png',
-    color: '#05171D',
+    color: '#618EC9',
+    backgroundColor: '#05171D',
     metadata: {
       color: 'Blue',
       birth: '1998',
@@ -359,7 +370,8 @@ export const Members: Record<MemberID, Member> = {
     image: '/images/member/viichan.jpg',
     signNameImage: '/images/member/text/viichan.svg',
     signImage: '/images/sign/viichan.png',
-    color: '#081607',
+    color: '#3B6510',
+    backgroundColor: '#081607',
     metadata: {
       color: 'Green',
       birth: '2000.01.16',
