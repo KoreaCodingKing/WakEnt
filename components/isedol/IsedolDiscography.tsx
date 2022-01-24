@@ -121,6 +121,10 @@ const MemberCover: Record<MemberID, YouTubeVideo[]> = {
       title: '에픽세븐 OST - Promise',
       id: '6hEvgKL0ClA',
     },
+    {
+      title: 'Never Enough (The Greatest Showman OST)',
+      id: 'oRiQHxft2mY'
+    }
   ],
   jururu: [
     {

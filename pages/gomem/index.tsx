@@ -1,100 +1,25 @@
-import {
-  useMotionTemplate,
-  useSpring,
-  motion,
-  MotionValue,
-  AnimatePresence,
-} from 'framer-motion';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useRef, useState } from 'react';
-import ChevronIcon from '../../components/common/icons/Chevron';
-import LinkToIcon from '../../components/common/icons/LinkTo';
-import Gomem3D from '../../components/gomem/Gomem3D';
-import { PointerUpdateHandler } from '../../components/gomem/Gomem3DUtils';
+import GomemPlanetName from '../../components/gomem/CurrentPlanetName';
+import { Gomem3DWithEvents } from '../../components/gomem/Gomem3D';
+import GomemNavigateButton from '../../components/gomem/NavigateButtons';
 import {
   PlanetKeys,
-  PlanetKeysArray,
   Planets,
 } from '../../components/gomem/Planets';
+import GomemPopup from '../../components/gomem/Popup';
 
 import WakEnterMetadata from '../../components/wakenter/Meta';
 import { WakEnterLogo } from '../../components/wakenter/WakEnterHeader';
 
 import styles from '../../styles/pages/gomem/index.module.scss';
-import { concatClass } from '../../utils/class';
-import { clamp } from '../../utils/number';
-
-interface PopupStyles extends React.CSSProperties {
-  '--x': MotionValue<string>
-  '--y': MotionValue<string>
-}
-
-const springOptions: Parameters<typeof useSpring>[1] = {
-  stiffness: 1000,
-  damping: 100,
-};
-
-const usePlanetSlider: () => [PlanetKeys, () => void, () => void] = () => {
-  const [index, setIndex] = useState<number>(1);
-
-  const prev = () => {
-    setIndex(index - 1 < 0 ? PlanetKeysArray.length - 1 : index - 1);
-  };
-
-  const next = () => {
-    setIndex(index + 1 >= PlanetKeysArray.length ? 0 : index + 1);
-  };
-
-  return [PlanetKeysArray[index], prev, next];
-};
-
-/**
- * FIXME : 코드가 너무 중구난방
- */
 
 const Gomem: NextPage = () => {
   const router = useRouter();
 
-  const popup = useRef<HTMLDivElement>(null!);
-  // const [showMemberPopup, setShowMemberPopup] = useState<boolean>(false);
-  const [showPlanetPopup, setShowPlanetPopup] = useState<boolean>(false);
-
-  const [planet, prev, next] = usePlanetSlider();
-
-  const [planetScope, setPlanetScope] = useState<PlanetKeys | null>(null);
-
-  const x = useSpring(0, springOptions);
-  const y = useSpring(0, springOptions);
-  const d = useSpring(0, springOptions);
-
-  const xt = useMotionTemplate`${x}px`;
-  const yt = useMotionTemplate`${y}px`;
-
-
-  const onPlanetHover: PointerUpdateHandler = (
-    scope,
-    active,
-    lx,
-    ly,
-    ld
-  ) => {
-    if (active !== showPlanetPopup) {
-      setShowPlanetPopup(active);
-    }
-
-    if (scope !== planetScope) {
-      setPlanetScope(scope ?? null);
-    }
-
-    x.set(lx);
-    y.set(ly);
-    d.set(clamp(ld, 0, 2));
-  };
-
   const onPlanetClick = (name: PlanetKeys) => {
-    if (typeof Planets[name].link === 'string') {
+    if (Planets[name].link) {
       router.push(Planets[name].link!);
     }
   };
@@ -103,90 +28,11 @@ const Gomem: NextPage = () => {
     <>
       <WakEnterMetadata title='고정 멤버'></WakEnterMetadata>
       <div className={styles.main}>
-        <div className={styles.gomem3D}>
-          <Gomem3D
-            planet={planet}
-            onPlanetHover={onPlanetHover}
-            onPlanetClick={onPlanetClick}
-          ></Gomem3D>
-        </div>
+        <Gomem3DWithEvents onPlanetClick={onPlanetClick}></Gomem3DWithEvents>
       </div>
-      <motion.div className={styles.planetName}>
-        <AnimatePresence>
-          <motion.p
-            key={planet}
-            initial={{ opacity: 0, translateX: -10 }}
-            animate={{ opacity: 1, translateX: 0 }}
-            exit={{ opacity: 0, translateX: 10 }}
-            transition={{ type: 'spring', stiffness: 1000, damping: 100 }}
-          >
-            <span className={styles.title}>{Planets[planet].name}</span>
-            <span className={styles.description}>{Planets[planet].desc}</span>
-          </motion.p>
-        </AnimatePresence>
-      </motion.div>
-      <div
-        className={concatClass(styles.navigateButton, styles.left)}
-        onClick={prev}
-      >
-        <ChevronIcon width={32} stroke={0}></ChevronIcon>
-      </div>
-      <div
-        className={concatClass(styles.navigateButton, styles.right)}
-        onClick={next}
-      >
-        <ChevronIcon right width={32} stroke={0}></ChevronIcon>
-      </div>
-      {/* <motion.div
-        className={concatClass(
-          styles.popup,
-          styles.member,
-          showMemberPopup && styles.show
-        )}
-        style={
-          {
-            '--x': xt,
-            '--y': yt,
-            '--d': d,
-          } as PopupStyles
-        }
-        ref={popup}
-      >
-        <h1 className={styles.title}>멤버 이름</h1>
-        <p className={styles.description}>
-          멤버 설명이 여기에 들어갈 예정입니다.
-        </p>
-      </motion.div> */}
-      <motion.div
-        className={concatClass(
-          styles.popup,
-          styles.planet,
-          showPlanetPopup && styles.show
-        )}
-        style={
-          {
-            '--x': xt,
-            '--y': yt,
-            '--d': d,
-          } as PopupStyles
-        }
-        ref={popup}
-      >
-        <motion.h1 className={styles.title}>
-          {planetScope && Planets[planetScope].name}
-        </motion.h1>
-        <motion.p className={styles.description}>
-          {planetScope && Planets[planetScope].desc}
-        </motion.p>
-        <motion.p>
-          {planetScope && Planets[planetScope].link && (
-            <span className={styles.moveTo}>
-              <LinkToIcon></LinkToIcon>
-              행성간 이동은 현재 탭에서 진행됩니다.
-            </span>
-          )}
-        </motion.p>
-      </motion.div>
+      <GomemPopup></GomemPopup>
+      <GomemPlanetName></GomemPlanetName>
+      <GomemNavigateButton></GomemNavigateButton>
       <Link key={'link-wak-enter'} href={'/'} passHref>
         <div
           className={styles.logo}

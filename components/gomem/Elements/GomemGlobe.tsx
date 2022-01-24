@@ -4,8 +4,9 @@ import EarthImage from '../../../public/images/earth-day-compressed.jpg';
 import CloudImage from '../../../public/images/clouds.png';
 import { useRef } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
+import { PlanetProps } from "./PlanetGroup";
 
-export const GomemGlobe = (props: JSX.IntrinsicElements['mesh']) => {
+export const GomemGlobe = (props: PlanetProps & JSX.IntrinsicElements['mesh']) => {
   const globeMesh = useRef<Mesh>(null!);
   const cloudsMesh = useRef<Mesh>(null!);
 

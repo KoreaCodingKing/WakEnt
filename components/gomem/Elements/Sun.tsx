@@ -3,8 +3,9 @@ import { useRef } from "react";
 import { TextureLoader, Mesh } from "three";
 
 import WakDooImage from '../../../public/images/wakdoo.png';
+import { PlanetProps } from "./PlanetGroup";
 
-export const Sun = (props: JSX.IntrinsicElements['mesh']) => {
+export const Sun = (props: PlanetProps & JSX.IntrinsicElements['mesh']) => {
   const mesh = useRef<Mesh>(null!);
 
   const texture = useLoader(TextureLoader, WakDooImage.src);

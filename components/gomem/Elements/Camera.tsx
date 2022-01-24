@@ -1,10 +1,9 @@
-import * as THREE from 'three';
-
 import { useSpring } from 'framer-motion';
 import { useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, OrbitControlsProps } from '@react-three/drei';
 import { useEffect, useState } from 'react';
 import { PlanetKeys } from '../Planets';
+import { Box3, Scene, Vector3 } from 'three';
 
 const springOptions: Parameters<typeof useSpring>[1] = {
   duration: 280,
@@ -14,12 +13,12 @@ interface CameraProps {
   planet: PlanetKeys
 }
 
+type ExtendedThreeScene = Scene & {
+  orbitControls: OrbitControlsProps
+}
+
 export const GomemCamera = ({ planet }: CameraProps) => {
   const { scene, camera } = useThree();
-
-  const s = (scene as unknown) as THREE.Scene & {
-    orbitControls: OrbitControlsProps
-  };
 
   const x = useSpring(0, springOptions);
   const y = useSpring(0, springOptions);
@@ -30,9 +29,6 @@ export const GomemCamera = ({ planet }: CameraProps) => {
   const targetSizeZ = useSpring(0, springOptions);
 
   const [onTransition, setOnTransition] = useState<boolean>(false);
-  // const [targetSizeVector, setTargetSizeVector] = useState<THREE.Vector3>(
-  //   new THREE.Vector3()
-  // );
 
   useEffect(() => {
     const object = scene.getObjectByName(planet);
@@ -42,18 +38,16 @@ export const GomemCamera = ({ planet }: CameraProps) => {
     }
 
     // Object를 감싸는 Box를 만들어 Box의 가로를 측정합니다.
-    const box = new THREE.Box3().setFromObject(object);
-    const sizeVec = new THREE.Vector3();
+    const box = new Box3().setFromObject(object);
+    const sizeVec = new Vector3();
     box.getSize(sizeVec);
-
-    // setTargetSizeVector(sizeVec);
 
     targetSizeX.set(sizeVec.x);
     targetSizeY.set(sizeVec.y);
     targetSizeZ.set(sizeVec.z);
 
     // Object의 절대 위치를 구해 x, y, z Animation을 구현합니다.
-    const vec = new THREE.Vector3();
+    const vec = new Vector3();
     object.getWorldPosition(vec);
 
     x.set(vec.x);
@@ -71,19 +65,19 @@ export const GomemCamera = ({ planet }: CameraProps) => {
     };
   }, [planet]);
 
-  useFrame(({ camera }) => {
+  useFrame(({ scene, camera }) => {
     if (onTransition) {
       camera.position.copy(
-        new THREE.Vector3(
+        new Vector3(
           x.get() + targetSizeX.get(),
           y.get() + targetSizeY.get() / 2,
           z.get() + targetSizeZ.get() / 2
         )
       );
-      s.orbitControls.target = new THREE.Vector3(x.get(), y.get(), z.get());
+      (scene as ExtendedThreeScene).orbitControls.target = new Vector3(x.get(), y.get(), z.get());
     }
 
-    s.orbitControls.update!();
+    (scene as ExtendedThreeScene).orbitControls.update!();
   });
 
   return (

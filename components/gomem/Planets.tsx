@@ -1,4 +1,4 @@
-export type PlanetKeys = 'isedol' | 'gomem' | 'wakgood'
+export type PlanetKeys = 'isedol' | 'gomem' | 'wakgood' | 'specter'
 
 export const Planets: {
   [key in PlanetKeys]: {
@@ -17,6 +17,10 @@ export const Planets: {
     name: '고정멤버 시즌 2',
     desc: '앙~ 킹아~',
   },
+  specter: {
+    name: '망령촌',
+    desc: '고멤이었던 자들의 무덤. 이들은 고멤에 한이 맺혀 망령으로 남아 있다.',
+  },
   wakgood: {
     name: '왁물원',
     desc:
@@ -26,3 +30,6 @@ export const Planets: {
 };
 
 export const PlanetKeysArray = Object.keys(Planets) as PlanetKeys[];
+
+export const isValidPlanetName = (name: string): name is PlanetKeys =>
+  (PlanetKeysArray as string[]).includes(name);
