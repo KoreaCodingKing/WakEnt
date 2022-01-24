@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
@@ -62,10 +62,7 @@ const useRect = (ref: React.RefObject<HTMLDivElement>) => {
     const handler = () => {
       const r = elem.querySelector(`.${styles.member}[data-active="true"]`);
 
-      setRect([
-        elem.getBoundingClientRect(),
-        r?.getBoundingClientRect(),
-      ]);
+      setRect([elem.getBoundingClientRect(), r?.getBoundingClientRect()]);
     };
 
     requestAnimationFrame(() => {
@@ -96,13 +93,72 @@ const SocialIcons: Record<string, StaticImageData> = {
   youtube: YouTubeIcon,
 };
 
-export const IsedolMembers: NextPage = () => {
-  const [chosenMember, setChosenMember] = useHashState<IsedolMemberID | null>(null);
-  const previousMember = useNonNullState(chosenMember);
+const useIntersectionObserver = (
+  target: React.RefObject<HTMLDivElement>,
+  active: boolean,
+  onIntersect?: (id: IsedolMemberID | null) => void
+): void => {
+  const [observer, setObserver] = useState<IntersectionObserver>(null!);
 
-  const [currentHoverMember, setCurrentHoverMember] = useState<IsedolMemberID | null>(
+  useEffect(() => {
+    if (!process.browser) {
+      return;
+    }
+
+    const localObserver = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          (entry.target as HTMLElement).dataset.active = `${entry.isIntersecting}`;
+
+          if (entry.isIntersecting) {
+            onIntersect &&
+              onIntersect(
+                (entry.target as HTMLElement).dataset.member as IsedolMemberID
+              );
+          }
+        });
+      },
+      {
+        root: target.current,
+        threshold: 0.5,
+      }
+    );
+
+    setObserver(localObserver);
+
+    return () => {
+      localObserver.disconnect();
+    };
+  }, [onIntersect]);
+
+  useEffect(() => {
+    if (!active) {
+      onIntersect && onIntersect(null);
+
+      return;
+    }
+
+    if (!observer) return;
+
+    const childTargets = target.current!.querySelectorAll(`.${styles.member}`);
+    childTargets.forEach(child => observer.observe(child));
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [active, observer]);
+};
+
+export const IsedolMembers: NextPage = () => {
+  const [chosenMember, setChosenMember] = useHashState<IsedolMemberID | null>(
     null
   );
+  const previousMember = useNonNullState(chosenMember);
+
+  const [
+    currentHoverMember,
+    setCurrentHoverMember,
+  ] = useState<IsedolMemberID | null>(null);
 
   const container = useRef<HTMLDivElement>(null);
   const member = useRef<HTMLDivElement>(null);
@@ -121,17 +177,33 @@ export const IsedolMembers: NextPage = () => {
     }
   );
 
-  useEffect(() => {
-    if (!container.current) {
-      return;
-    }
+  const onIntersect = useCallback(id => {
+    setCurrentHoverMember(id);
+  }, []);
 
-    container.current.scrollTo({
+  useIntersectionObserver(container, mobileActive, onIntersect);
+
+  useEffect(() => {
+    container.current!.scrollTo({
       top: 0,
       left: 0,
       behavior: 'smooth',
     });
   }, [chosenMember]);
+
+  useEffect(() => {
+    if (!mobileActive || chosenMember) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      const card = member.current!.querySelector(
+        `.${styles.member}:first-child`
+      ) as HTMLElement;
+      card.dataset.active = 'true';
+      setCurrentHoverMember(card.dataset.member as IsedolMemberID);
+    });
+  }, [chosenMember, mobileActive]);
 
   let hoverTimeout = 0;
 
@@ -141,7 +213,9 @@ export const IsedolMembers: NextPage = () => {
         <meta
           name='theme-color'
           content={
-            currentHoverMember ? Members[currentHoverMember].backgroundColor : '#0A0A0B'
+            currentHoverMember
+              ? Members[currentHoverMember].backgroundColor
+              : '#0A0A0B'
           }
         ></meta>
       </Head>
@@ -187,17 +261,16 @@ export const IsedolMembers: NextPage = () => {
                   element && membersCardCache.push(element)
                 }
                 data-active={
-                  (currentHoverMember === null) ||
-                  id === currentHoverMember
+                  currentHoverMember === null || id === currentHoverMember
                 }
                 onMouseEnter={() =>
-                  (
+                  (!mobileActive &&
                     chosenMember === null &&
                     clearTimeout(hoverTimeout)) ||
                   setCurrentHoverMember(id as IsedolMemberID)
                 }
                 onMouseOut={() =>
-
+                  !mobileActive &&
                   chosenMember === null &&
                   (() => {
                     hoverTimeout = (setTimeout(() => {

@@ -169,12 +169,12 @@
       transform: translateX(2%);
     }
 
-    transform: translateX(0%);
+    transform: translateX(5%);
   }
 
   &[data-member='jingburger'] .member[data-member='jingburger'] {
     @media screen and (max-width: $maxTablet) {
-      transform: translateX(-100%);
+      transform: translateX(-113%);
     }
 
     @media screen and (max-width: $maxMobile) {
