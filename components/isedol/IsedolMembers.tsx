@@ -1,25 +1,25 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { NextPage } from 'next';
-import Image from 'next/image';
-import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
-import Head from 'next/head';
-import Centerize from '../common/Centerize';
-import { WakEnterLogo } from '../wakenter/WakEnterHeader';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { concatClass } from '../../utils/class';
-import { useHorizonalPageScroller } from '../common/Scroll';
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import { NextPage } from "next";
+import Image from "next/image";
+import styles from "../../styles/components/isedol/IsedolMembers.module.scss";
+import Head from "next/head";
+import Centerize from "../common/Centerize";
+import { WakEnterLogo } from "../wakenter/WakEnterHeader";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { concatClass } from "../../utils/class";
+import { useHorizonalPageScroller } from "../common/Scroll";
 
-import { useHashState } from '../../utils/hashState';
-import { MemberID, Members } from '../../structs/member';
-import ModelSlider from '../common/ModelSlider';
+import { useHashState } from "../../utils/hashState";
+import { Member, MemberID, Members } from "../../structs/member";
+import ModelSlider from "../common/ModelSlider";
 
-import InstagramIcon from '../../public/images/icons/services/instagram.png';
-import SoundCloudIcon from '../../public/images/icons/services/soundcloud.png';
-import TwitchIcon from '../../public/images/icons/services/twitch.png';
-import TwitterIcon from '../../public/images/icons/services/twitter.png';
-import YouTubeIcon from '../../public/images/icons/services/youtube.png';
-import { motion } from 'framer-motion';
+import InstagramIcon from "../../public/images/icons/services/instagram.png";
+import SoundCloudIcon from "../../public/images/icons/services/soundcloud.png";
+import TwitchIcon from "../../public/images/icons/services/twitch.png";
+import TwitterIcon from "../../public/images/icons/services/twitter.png";
+import YouTubeIcon from "../../public/images/icons/services/youtube.png";
+import { motion } from "framer-motion";
 
 const isNotNull = <T extends unknown>(elem: T | null): elem is T => {
   return elem !== null;
@@ -62,20 +62,17 @@ const useRect = (ref: React.RefObject<HTMLDivElement>) => {
     const handler = () => {
       const r = elem.querySelector(`.${styles.member}[data-active="true"]`);
 
-      setRect([
-        elem.getBoundingClientRect(),
-        r?.getBoundingClientRect(),
-      ]);
+      setRect([elem.getBoundingClientRect(), r?.getBoundingClientRect()]);
     };
 
     requestAnimationFrame(() => {
       handler();
     });
 
-    window.addEventListener('resize', handler);
+    window.addEventListener("resize", handler);
 
     return () => {
-      window.removeEventListener('resize', handler);
+      window.removeEventListener("resize", handler);
     };
   }, [elem]);
 
@@ -83,9 +80,9 @@ const useRect = (ref: React.RefObject<HTMLDivElement>) => {
 };
 
 interface DetailMemberCSS extends React.CSSProperties {
-  '--left': string
-  '--top': string
-  '--width': string
+  "--left": string;
+  "--top": string;
+  "--width": string;
 }
 
 const SocialIcons: Record<string, StaticImageData> = {
@@ -94,6 +91,64 @@ const SocialIcons: Record<string, StaticImageData> = {
   twitch: TwitchIcon,
   twitter: TwitterIcon,
   youtube: YouTubeIcon,
+};
+
+const useIntersectionObserver = (
+  target: React.RefObject<HTMLDivElement>,
+  active: boolean,
+  onIntersect?: (id: MemberID | null) => void
+): void => {
+  const [observer, setObserver] = useState<IntersectionObserver>(null!);
+
+  useEffect(() => {
+    if (!process.browser) {
+      return;
+    }
+
+    const localObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          (
+            entry.target as HTMLElement
+          ).dataset.active = `${entry.isIntersecting}`;
+
+          if (entry.isIntersecting) {
+            onIntersect &&
+              onIntersect(
+                (entry.target as HTMLElement).dataset.member as MemberID
+              );
+          }
+        });
+      },
+      {
+        root: target.current,
+        threshold: 0.5,
+      }
+    );
+
+    setObserver(localObserver);
+
+    return () => {
+      localObserver.disconnect();
+    }
+  }, [onIntersect]);
+
+  useEffect(() => {
+    if (!active) {
+      onIntersect && onIntersect(null);
+
+      return;
+    }
+
+    if (!observer) return;
+
+    const childTargets = target.current!.querySelectorAll(`.${styles.member}`);
+    childTargets.forEach((child) => observer.observe(child));
+
+    return () => {
+      observer.disconnect()
+    };
+  }, [active, observer]);
 };
 
 export const IsedolMembers: NextPage = () => {
@@ -121,17 +176,31 @@ export const IsedolMembers: NextPage = () => {
     }
   );
 
+  const onIntersect = useCallback((id) => {
+    setCurrentHoverMember(id);
+  }, []);
+
+  useIntersectionObserver(container, mobileActive, onIntersect);
+
   useEffect(() => {
-    if (!container.current) {
+    container.current!.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [chosenMember]);
+
+  useEffect(() => {
+    if (!mobileActive || chosenMember) {
       return;
     }
 
-    container.current.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
+    requestAnimationFrame(() => {
+      const card = (member.current!.querySelector(`.${styles.member}:first-child`) as HTMLElement)
+      card.dataset.active = 'true'
+      setCurrentHoverMember(card.dataset.member as MemberID)
     });
-  }, [chosenMember]);
+  }, [chosenMember, mobileActive])
 
   let hoverTimeout = 0;
 
@@ -139,14 +208,14 @@ export const IsedolMembers: NextPage = () => {
     <div className={styles.isedol_members__container}>
       <Head>
         <meta
-          name='theme-color'
+          name="theme-color"
           content={
-            currentHoverMember ? Members[currentHoverMember].color : '#0A0A0B'
+            currentHoverMember ? Members[currentHoverMember].color : "#0A0A0B"
           }
         ></meta>
       </Head>
       <div className={styles.preload}>
-        {Object.keys(SocialIcons).map(key => (
+        {Object.keys(SocialIcons).map((key) => (
           <Image
             key={`icons-${key}`}
             src={SocialIcons[key].src}
@@ -176,103 +245,104 @@ export const IsedolMembers: NextPage = () => {
             const member = Members[id as MemberID];
 
             return (
-              <motion.div
-                key={`member-card-${id}`}
-                className={concatClass(
-                  styles.member,
-                  !!chosenMember && chosenMember !== id && styles.disappear
-                )}
-                data-member={id}
-                ref={(element: HTMLDivElement) =>
-                  element && membersCardCache.push(element)
-                }
-                data-active={
-                  (currentHoverMember === null) ||
-                  id === currentHoverMember
-                }
-                onMouseEnter={() =>
-                  (
+              <>
+                <motion.div
+                  key={`member-card-${id}`}
+                  className={concatClass(
+                    styles.member,
+                    !!chosenMember && chosenMember !== id && styles.disappear
+                  )}
+                  data-member={id}
+                  ref={(element: HTMLDivElement) =>
+                    element && membersCardCache.push(element)
+                  }
+                  data-active={
+                    currentHoverMember === null || id === currentHoverMember
+                  }
+                  onMouseEnter={() =>
+                    (!mobileActive &&
+                      chosenMember === null &&
+                      clearTimeout(hoverTimeout)) ||
+                    setCurrentHoverMember(id as MemberID)
+                  }
+                  onMouseOut={() =>
+                    !mobileActive &&
                     chosenMember === null &&
-                    clearTimeout(hoverTimeout)) ||
-                  setCurrentHoverMember(id as MemberID)
-                }
-                onMouseOut={() =>
-
-                  chosenMember === null &&
-                  (() => {
-                    hoverTimeout = (setTimeout(() => {
-                      setCurrentHoverMember(null);
-                    }, 60) as unknown) as number;
-                  })()
-                }
-                onClick={(
-                  event: React.MouseEvent<HTMLDivElement, MouseEvent>
-                ) => {
-                  event.preventDefault();
-                  if (chosenMember) {
-                    setChosenMember(null);
-                    return;
+                    (() => {
+                      hoverTimeout = setTimeout(() => {
+                        setCurrentHoverMember(null);
+                      }, 60) as unknown as number;
+                    })()
                   }
+                  onClick={(
+                    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+                  ) => {
+                    event.preventDefault();
+                    if (chosenMember) {
+                      setChosenMember(null);
+                      return;
+                    }
 
-                  if (mobileActive && container.current) {
-                    container.current.scrollTo({
-                      top: 0,
-                      left: 0,
-                      behavior: 'smooth',
-                    });
-                  }
+                    if (mobileActive && container.current) {
+                      container.current.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: "smooth",
+                      });
+                    }
 
-                  setChosenMember(id as MemberID);
-                }}
-              >
-                <div className={styles.background}>
-                  <Centerize>
-                    <div className={styles.member_image_wrapper}>
+                    setChosenMember(id as MemberID);
+                  }}
+                >
+                  <div className={styles.background}>
+                    <Centerize>
+                      <div className={styles.member_image_wrapper}>
+                        <Image
+                          className={styles.member_image}
+                          src={member.image}
+                          layout="fill"
+                          priority
+                          placeholder="blur"
+                          blurDataURL={member.image}
+                          alt={member.name.ko}
+                        ></Image>
+                      </div>
+                    </Centerize>
+                  </div>
+                  <div className={styles.sign_box} data-member={id}>
+                    <div className={styles.arrow_wrapper}>
                       <Image
-                        className={styles.member_image}
-                        src={member.image}
-                        layout='fill'
+                        className={styles.sign_arrow}
+                        src={
+                          i % 2 === 0
+                            ? "/images/icons/ico_card_arrow_tail.svg"
+                            : "/images/icons/ico_card_arrow.svg"
+                        }
+                        layout="fill"
+                        alt="사인 arrow"
                         priority
-                        placeholder='blur'
-                        blurDataURL={member.image}
-                        alt={member.name.ko}
                       ></Image>
                     </div>
-                  </Centerize>
-                </div>
-                <div className={styles.sign_box} data-member={id}>
-                  <div className={styles.arrow_wrapper}>
-                    <Image
-                      className={styles.sign_arrow}
-                      src={
-                        i % 2 === 0
-                          ? '/images/icons/ico_card_arrow_tail.svg'
-                          : '/images/icons/ico_card_arrow.svg'
-                      }
-                      layout='fill'
-                      alt='사인 arrow'
-                      priority
-                    ></Image>
+                    <p className={styles.sign_name}>
+                      <Image
+                        className={styles.member_sign_name}
+                        src={member.signNameImage}
+                        layout="fill"
+                        alt={`${member.name.ko}`}
+                        priority
+                      ></Image>
+                    </p>
+                    <div className={styles.sign_wrapper}>
+                      <Image
+                        className={styles.member_sign}
+                        src={member.signImage}
+                        layout="fill"
+                        alt={`${member.name.ko} 싸인`}
+                      ></Image>
+                    </div>
                   </div>
-                  <p className={styles.sign_name}>
-                    <Image
-                      className={styles.member_sign_name}
-                      src={member.signNameImage}
-                      layout='fill'
-                      alt={`${member.name.ko}`}
-                      priority
-                    ></Image>
-                  </p>
-                  <div className={styles.sign_wrapper}>
-                    <Image
-                      className={styles.member_sign}
-                      src={member.signImage}
-                      layout='fill'
-                      alt={`${member.name.ko} 싸인`}
-                    ></Image>
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </>
             );
           })}
         </div>
@@ -284,10 +354,10 @@ export const IsedolMembers: NextPage = () => {
             )}
             style={
               {
-                '--left': parentRect && `${parentRect.left + 32}px`,
-                '--top': cardRect && `${cardRect.top}px`,
-                '--width': cardRect && `${cardRect.width}px`,
-                '--height': cardRect && `${cardRect.height}px`,
+                "--left": parentRect && `${parentRect.left + 32}px`,
+                "--top": cardRect && `${cardRect.top}px`,
+                "--width": cardRect && `${cardRect.width}px`,
+                "--height": cardRect && `${cardRect.height}px`,
               } as DetailMemberCSS
             }
           >
@@ -331,13 +401,13 @@ export const IsedolMembers: NextPage = () => {
                   <div className={styles.social_box}></div>
                 </div>
                 <div className={styles.social_links}>
-                  {Members[previousMember].links.map(link =>
+                  {Members[previousMember].links.map((link) =>
                     link.icon ? (
                       <Link
                         key={`social-link-${link.link}-${link.icon}`}
                         href={link.link}
                       >
-                        <a className={styles.icon} target='_blank'>
+                        <a className={styles.icon} target="_blank">
                           {(SocialIcons[link.icon] && (
                             <Image
                               src={SocialIcons[link.icon]}
@@ -365,7 +435,7 @@ export const IsedolMembers: NextPage = () => {
                 <Image
                   className={styles.member_sign}
                   src={Members[previousMember].signImage}
-                  layout='fill'
+                  layout="fill"
                   alt={`${Members[previousMember].name.ko} 싸인`}
                 ></Image>
               </div>
@@ -379,11 +449,11 @@ export const IsedolMembers: NextPage = () => {
           </div>
         )}
       </div>
-      <Link key={'link-wak-enter'} href={'/'} passHref>
+      <Link key={"link-wak-enter"} href={"/"} passHref>
         <div
           className={styles.logo}
           tabIndex={100}
-          onKeyDown={ev => ev.key === 'Enter' && router.push('/')}
+          onKeyDown={(ev) => ev.key === "Enter" && router.push("/")}
         >
           <WakEnterLogo white></WakEnterLogo>
         </div>
