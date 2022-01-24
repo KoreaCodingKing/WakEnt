@@ -130,7 +130,7 @@ const useIntersectionObserver = (
 
     return () => {
       localObserver.disconnect();
-    }
+    };
   }, [onIntersect]);
 
   useEffect(() => {
@@ -146,7 +146,7 @@ const useIntersectionObserver = (
     childTargets.forEach((child) => observer.observe(child));
 
     return () => {
-      observer.disconnect()
+      observer.disconnect();
     };
   }, [active, observer]);
 };
@@ -196,11 +196,11 @@ export const IsedolMembers: NextPage = () => {
     }
 
     requestAnimationFrame(() => {
-      const card = (member.current!.querySelector(`.${styles.member}:first-child`) as HTMLElement)
-      card.dataset.active = 'true'
-      setCurrentHoverMember(card.dataset.member as MemberID)
+      const card = (member.current!.querySelector(`.${styles.member}:first-child`) as HTMLElement);
+      card.dataset.active = 'true';
+      setCurrentHoverMember(card.dataset.member as MemberID);
     });
-  }, [chosenMember, mobileActive])
+  }, [chosenMember, mobileActive]);
 
   let hoverTimeout = 0;
 
