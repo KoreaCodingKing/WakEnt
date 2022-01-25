@@ -22,25 +22,14 @@ const Menus = [
   },
 ];
 
-const WakMenus = ({clickable, className}: WakEnterElementProps) => {
+const WakMenus = () => {
   return (
-    <div
-      className={concatClass(
-        styles.logo,
-        clickable && styles.clickable,
-        className
-      )}
-    >
-      <div className={styles.logoImage}>
-        <Image
-          src='/images/zaun/logo_zaun_white.png'
-          layout='fill'
-          alt='WAK'
-        ></Image>
-      </div>
-      <div className={styles.logoText}>
-        <span>ENTERTAINMENT</span>
-      </div>
+    <div className={styles.menu}>
+      {Menus.map(menu => (
+        <Link key={`link-${menu.title}`} href={menu.link}>
+          <a className={styles.link}>{menu.title}</a>
+        </Link>
+      ))}
     </div>
   );
 };
@@ -80,7 +69,7 @@ export const ZaunHeader = () => {
         <ZaunLogo clickable></ZaunLogo>
       </span>
     </Link>
-    );
+  );
   const Right = <WakMenus></WakMenus>;
   return <HeaderBase left={Left} right={Right}></HeaderBase>;
 };
