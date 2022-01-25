@@ -20,8 +20,8 @@ const ThirdSection = ({
   const letterTemplate = useMotionTemplate`${letterSpacing}vw`;
 
   useEffect(() => {
-    onScroll(2, (top, height) => {
-      setHeaderWhite && setHeaderWhite(top > height / 6 && top < height - 100);
+    onScroll(2, (top, height, renderAll) => {
+      setHeaderWhite && !renderAll && setHeaderWhite(top > height / 6 && top < height - 100);
 
       const tProgress = clamp(top / 200, 0, 1);
 

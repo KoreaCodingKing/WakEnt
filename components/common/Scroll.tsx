@@ -66,7 +66,7 @@ export const useScrollPage = (
 interface DynamicScrollOption {
   offset?: number
   debounce?: number
-  callback?: (pages: [boolean, number, number][], renderAll?: boolean) => void
+  callback?: (page: number, pages: [boolean, number, number][], renderAll?: boolean) => void
 }
 
 /**
@@ -133,7 +133,7 @@ export const useDynamicPageScroll = (
       }
 
       if (options?.callback && scrolls.length) {
-        options.callback!(scrolls, renderAll);
+        options.callback!(page, scrolls, renderAll);
       }
     };
 

@@ -35,9 +35,9 @@ const About: NextPage = () => {
   const [whiteHeader, setWhiteHeader] = useState<boolean>(true);
   const scrollHandlers = useRef<scrollHandler[]>([]);
 
-  const page = useDynamicPageScroll(container, `.${styles.section}`, 0, {
+  useDynamicPageScroll(container, `.${styles.section}`, 0, {
     offset: -50,
-    callback: (pages, renderAll) => {
+    callback: useCallback((page, pages, renderAll) => {
       if (renderAll) {
         for (let i = 0; i < pages.length; i++) {
           const [active, top, height] = pages[i];
@@ -57,7 +57,7 @@ const About: NextPage = () => {
       if (active && scrollHandlers.current[page]) {
         scrollHandlers.current[page](top, height, renderAll);
       }
-    },
+    }, []),
   });
 
   const listenScrollHandler = useCallback(
