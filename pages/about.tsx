@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useDynamicPageScroll } from '../components/common/Scroll';
 
 import WakEnterHeader from '../components/wakenter/WakEnterHeader';
@@ -14,10 +14,13 @@ import FourthSection from '../components/wakenter/AboutPageSections/FourthSectio
 import FifthSection from '../components/wakenter/AboutPageSections/FifthSection';
 import SixthSection from '../components/wakenter/AboutPageSections/SixthSection';
 
-
 import Footer from '../components/wakenter/WakEnterFooter';
 
-export type scrollHandler = (top: number, height: number, renderAll?: boolean) => void
+export type scrollHandler = (
+  top: number,
+  height: number,
+  renderAll?: boolean
+) => void
 
 export interface AboutSectionProps {
   className?: string
@@ -57,12 +60,15 @@ const About: NextPage = () => {
     },
   });
 
-  const listenScrollHandler = (index: number, cb: scrollHandler) => {
-    const newHandlers = [...scrollHandlers.current];
-    newHandlers[index] = cb;
+  const listenScrollHandler = useCallback(
+    (index: number, cb: scrollHandler) => {
+      const newHandlers = [...scrollHandlers.current];
+      newHandlers[index] = cb;
 
-    scrollHandlers.current = newHandlers;
-  };
+      scrollHandlers.current = newHandlers;
+    },
+    []
+  );
 
   return (
     <>

@@ -430,4 +430,4 @@ export const Members: Record<IsedolMemberID, Member> = {
       },
     ],
   },
-}
+};

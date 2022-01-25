@@ -79,7 +79,7 @@ const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
   );
 
   useEffect(() => {
-    onScroll(1, (top, height) => {
+    onScroll(1, (top) => {
       const threshold = 50;
 
       setIsScrolled(top > threshold);
@@ -104,7 +104,7 @@ const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
         }
       }
     });
-  }, [selectedIndex]);
+  }, [onScroll, selectedIndex]);
 
   useEffect(() => {
     if (selectedIndex === null) {

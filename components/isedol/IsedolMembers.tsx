@@ -40,7 +40,6 @@ const useNonNullState = <T extends unknown>(state: T) => {
 };
 
 const useRect = (ref: React.RefObject<HTMLDivElement>) => {
-  const [elem, setElem] = useState<HTMLDivElement | null>(null);
   const [rect, setRect] = useState<[DOMRect | undefined, DOMRect | undefined]>([
     undefined,
     undefined,
@@ -51,18 +50,10 @@ const useRect = (ref: React.RefObject<HTMLDivElement>) => {
       return;
     }
 
-    setElem(ref.current);
-  }, [ref.current]);
-
-  useEffect(() => {
-    if (!elem) {
-      return;
-    }
-
     const handler = () => {
-      const r = elem.querySelector(`.${styles.member}[data-active="true"]`);
+      const r = ref.current!.querySelector(`.${styles.member}[data-active="true"]`);
 
-      setRect([elem.getBoundingClientRect(), r?.getBoundingClientRect()]);
+      setRect([ref.current!.getBoundingClientRect(), r?.getBoundingClientRect()]);
     };
 
     requestAnimationFrame(() => {
@@ -74,7 +65,7 @@ const useRect = (ref: React.RefObject<HTMLDivElement>) => {
     return () => {
       window.removeEventListener('resize', handler);
     };
-  }, [elem]);
+  }, [ref]);
 
   return rect;
 };
@@ -129,7 +120,7 @@ const useIntersectionObserver = (
     return () => {
       localObserver.disconnect();
     };
-  }, [onIntersect]);
+  }, [onIntersect, target]);
 
   useEffect(() => {
     if (!active) {
@@ -146,7 +137,7 @@ const useIntersectionObserver = (
     return () => {
       observer.disconnect();
     };
-  }, [active, observer]);
+  }, [active, observer, onIntersect, target]);
 };
 
 export const IsedolMembers: NextPage = () => {
@@ -168,13 +159,15 @@ export const IsedolMembers: NextPage = () => {
 
   const [parentRect, cardRect] = useRect(member);
 
+  const activeOn = useCallback(() => {
+    return chosenMember === null;
+  }, [chosenMember]);
+
   const [mobileActive, mobilePage] = useHorizonalPageScroller(
     container,
     1124,
     membersCardCache,
-    () => {
-      return chosenMember === null;
-    }
+    activeOn
   );
 
   const onIntersect = useCallback(id => {

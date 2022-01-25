@@ -9,11 +9,7 @@ export const Centerize = ({ children }: CenterizeProps) => {
   const ref = useRef<HTMLElement>();
 
   useEffect(() => {
-    if (!ref.current) {
-      return;
-    }
-
-    const child = ref.current;
+    const child = ref.current!;
     const parent = child.parentElement;
 
     if (!parent) {
@@ -55,7 +51,7 @@ export const Centerize = ({ children }: CenterizeProps) => {
     return () => {
       window.removeEventListener('resize', resizeHandler);
     };
-  }, [ref.current]);
+  }, []);
 
   return <>
     <element.type ref={ref} {...element.props}></element.type>

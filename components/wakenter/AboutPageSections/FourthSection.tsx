@@ -20,7 +20,7 @@ const FourthSection = ({ className, onScroll }: AboutSectionProps) => {
       firstOpacity.set(clamp(top / (height / 10), 0, 1));
       secondOpacity.set(clamp((top - 100) / (height / 10), 0, 1));
     });
-  }, []);
+  }, [firstOpacity, onScroll, secondOpacity]);
 
   return (
     <section className={concatClass(className)} data-index={3}>
