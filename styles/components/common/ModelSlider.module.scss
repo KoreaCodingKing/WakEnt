@@ -9,6 +9,10 @@
       stroke: white;
     }
   }
+
+  img {
+    transition: 0.23s cubic-bezier(0.19, 1, 0.22, 1);
+  }
 }
 
 $button-width: 30px;
