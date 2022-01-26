@@ -56,17 +56,21 @@ const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
 
   const transforms = useRef<ImageTransformData[]>(
     new Array(6).fill(0).map((_, i) => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       const x = useSpring(-25 - (i % 3) * 30, {
         stiffness: 1000,
         damping: 100,
       });
 
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       const y = useSpring(0 + Math.floor(i / 3) * 40, {
         stiffness: 1000,
         damping: 100,
       });
 
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       const scale = useSpring(1);
+      // eslint-disable-next-line react-hooks/rules-of-hooks
       const rotate = useSpring(Math.random() * (10 - (-10)) + (-10));
 
       return {
