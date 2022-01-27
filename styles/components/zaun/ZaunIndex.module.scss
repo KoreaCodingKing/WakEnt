@@ -1,0 +1,19 @@
+.zaun__container {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+}
+
+.zaun_header {
+  position: absolute;
+  z-index: 9999;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, 0);
+}
+
+.zaun_contents {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}

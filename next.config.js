@@ -2,6 +2,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['img.youtube.com']
+    domains: ['img.youtube.com', 'universe-meeps.leagueoflegends.com']
   }
 }
