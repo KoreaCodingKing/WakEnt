@@ -1,0 +1,33 @@
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  .logoImage {
+    position: relative;
+    width: 64px;
+    height: 100px;
+  }
+
+  .logoText {
+    color: white;
+  }
+}
+
+.menu {
+  width: fit-content;
+
+  .link:nth-child(1) {
+    position: relative;
+    margin-right: 20px;
+    text-transform: uppercase;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+}
