@@ -8,7 +8,7 @@ export const Main: NextPage = () => {
     <div className={styles.zaun_main__container}>
       <div className={styles.background}>
         <Image
-          src='/images/zaun/logo_zaun_black.png'
+          src='https://universe-meeps.leagueoflegends.com/v1/assets/images/factions/image-gallery/zaun-depths.jpg'
           layout='fill'
           alt='background'
         ></Image>
