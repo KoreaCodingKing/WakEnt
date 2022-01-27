@@ -313,7 +313,7 @@ export const IsedolMembers: NextPage = () => {
                 </div>
                 <div className={styles.social_links}>
                   {Members[previousMember].links.map(link =>
-                    <SocialLink key={`social-link-${link.name}-${link.link}`}  {...link}></SocialLink>
+                    <SocialLink key={`social-link-${link.name}-${link.link}`} {...link} white></SocialLink>
                   )}
                 </div>
               </div>

@@ -9,6 +9,11 @@ import TwitterIcon from '../../../public/images/icons/services/twitter.png';
 import YouTubeIcon from '../../../public/images/icons/services/youtube.png';
 import Image from 'next/image';
 import { SocialLinks } from '../../../structs/member';
+import { concatClass } from '../../../utils/class';
+
+interface SocialLinkProps {
+  white?: boolean
+}
 
 const SocialIcons: Record<string, StaticImageData> = {
   instagram: InstagramIcon,
@@ -18,10 +23,18 @@ const SocialIcons: Record<string, StaticImageData> = {
   youtube: YouTubeIcon,
 };
 
-export const SocialLink = ({ link, name, icon }: SocialLinks) => {
+export const SocialLink = ({
+  link,
+  name,
+  icon,
+  white,
+}: SocialLinks & SocialLinkProps) => {
   return (
     <Link href={link}>
-      <a className={styles.icon} target='_blank'>
+      <a
+        className={concatClass(styles.icon, white && styles.white)}
+        target='_blank'
+      >
         {(icon && SocialIcons[icon] && (
           <Image
             src={SocialIcons[icon]}

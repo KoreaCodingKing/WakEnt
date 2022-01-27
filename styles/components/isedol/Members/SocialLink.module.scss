@@ -1,0 +1,16 @@
+.icon {
+  transition: 0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
+  cursor: pointer;
+
+  &.white {
+    filter: invert(1);
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
