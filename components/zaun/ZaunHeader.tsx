@@ -9,7 +9,7 @@ import styles from '../../styles/components/zaun/ZaunHeader.module.scss';
 interface WakEnterElementProps {
   className?: string
   clickable?: boolean
-};
+}
 
 const Menus = [
   {
