@@ -1,5 +1,4 @@
 import { NextPage } from 'next';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import GomemPlanetName from '../../components/gomem/CurrentPlanetName';
 import { Gomem3DWithEvents } from '../../components/gomem/Gomem3D';
@@ -11,7 +10,7 @@ import {
 import GomemPopup from '../../components/gomem/Popup';
 
 import WakEnterMetadata from '../../components/wakenter/Meta';
-import { WakEnterLogo } from '../../components/wakenter/WakEnterHeader';
+import { WakEnterLogoLink } from '../../components/wakenter/WakEnterHeader';
 
 import styles from '../../styles/pages/gomem/index.module.scss';
 
@@ -33,15 +32,7 @@ const Gomem: NextPage = () => {
       <GomemPopup></GomemPopup>
       <GomemPlanetName></GomemPlanetName>
       <GomemNavigateButton></GomemNavigateButton>
-      <Link key={'link-wak-enter'} href={'/'} passHref>
-        <div
-          className={styles.logo}
-          tabIndex={100}
-          onKeyDown={ev => ev.key === 'Enter' && router.push('/')}
-        >
-          <WakEnterLogo white></WakEnterLogo>
-        </div>
-      </Link>
+      <WakEnterLogoLink className={styles.logo} white></WakEnterLogoLink>
     </>
   );
 };

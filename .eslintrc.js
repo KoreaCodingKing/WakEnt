@@ -1,4 +1,4 @@
-const isProd = process.env.NODE_ENV === 'production';
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   env: {
@@ -24,6 +24,11 @@ module.exports = {
     'react',
     'react-hooks',
   ],
+  settings: {
+    react: {
+      version: 'detect'
+    }
+  },
   rules: {
     eqeqeq: ['error', 'always'],
     'id-blacklist': [
@@ -42,7 +47,7 @@ module.exports = {
     indent: ['error', 2],
     'no-trailing-spaces': 'error',
     'no-extra-semi': 'error',
-    "no-console": isProd ? ["error", { allow: ["warn", "error"] }] : "off",
+    'no-console': isProd ? ['error', { allow: ['warn', 'error'] }] : 'off',
     '@typescript-eslint/no-unnecessary-type-constraint': 'off',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-non-null-assertion': 'off',
@@ -54,7 +59,14 @@ module.exports = {
       },
     ],
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+      },
+    ],
     curly: 'off',
     'comma-spacing': ['error', { before: false, after: true }],
     'no-var': 'error',

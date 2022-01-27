@@ -40,7 +40,7 @@ const About: NextPage = () => {
     callback: useCallback((page, pages, renderAll) => {
       if (renderAll) {
         for (let i = 0; i < pages.length; i++) {
-          const [active, top, height] = pages[i];
+          const [_active, top, height] = pages[i];
 
           if (scrollHandlers.current[i]) {
             scrollHandlers.current[i](top, height, renderAll);

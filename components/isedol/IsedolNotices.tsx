@@ -8,7 +8,7 @@ import { NoticesAPI } from '../../structs/notices';
 
 import styles from '../../styles/components/isedol/IsedolNotices.module.scss';
 import { concatClass } from '../../utils/class';
-import { useHashState } from '../../utils/hashState';
+import { useHashState } from '../../utils/state';
 import Button from '../common/Button';
 import { LoadSpinner } from '../common/LoadSpinner';
 import Pagination from '../common/Pagination';
@@ -54,7 +54,7 @@ const NoticeMember = ({
     '--bg-color': memberColor && lighten(memberColor, 0.8)
   } as MemberColorStyles}>
     <div className={styles.profile}>
-      <Image src={`/images/member/front/${memberId || 'unknown'}.png`} width={32} height={32} />
+      <Image src={`/images/member/front/${memberId || 'unknown'}.png`} width={128} height={128} />
     </div>
     <span className={styles.name}>
       {member}

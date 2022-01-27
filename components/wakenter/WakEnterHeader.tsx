@@ -48,6 +48,20 @@ export const WakEnterLogo = ({ white, clickable, className }: WakEnterElementPro
   );
 };
 
+export const WakEnterLogoLink = ({ className, white }: WakEnterElementProps) => {
+  const router = useRouter();
+
+  return <Link href={'/'} passHref>
+    <div
+      className={className}
+      tabIndex={100}
+      onKeyDown={ev => ev.key === 'Enter' && router.push('/')}
+    >
+      <WakEnterLogo white={white}></WakEnterLogo>
+    </div>
+  </Link>;
+};
+
 const WakMenus = ({ white }: WakEnterElementProps) => {
   return (
     <div className={concatClass(styles.menu, white && styles.white)}>

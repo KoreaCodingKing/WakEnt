@@ -5,7 +5,7 @@ import styles from '../../styles/components/isedol/IsedolMenuOverlay.module.scss
 import { concatClass } from '../../utils/class';
 import LinkToIcon from '../common/icons/LinkTo';
 import { useBodyLock } from '../common/Scroll';
-import { WakEnterLogo } from '../wakenter/WakEnterHeader';
+import { WakEnterLogoLink } from '../wakenter/WakEnterHeader';
 
 interface IsedolMenuOverlayProps {
   open: boolean
@@ -76,15 +76,7 @@ export const IsedolMenuOverlay = ({ open }: IsedolMenuOverlayProps) => {
           <p>Background Illustration by SE2RA on WAKZOO.</p>
           <p>Profile Photo by 여비날 on WAKZOO.</p>
         </div>
-        <Link key={'link-wak-enter'} href={'/'} passHref>
-          <div
-            className={styles.logo}
-            tabIndex={100}
-            onKeyDown={ev => ev.key === 'Enter' && router.push('/')}
-          >
-            <WakEnterLogo></WakEnterLogo>
-          </div>
-        </Link>
+        <WakEnterLogoLink className={styles.logo}></WakEnterLogoLink>
       </div>
     </div>
   );

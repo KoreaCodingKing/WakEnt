@@ -1,43 +1,24 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { NextPage } from 'next';
+
 import Image from 'next/image';
-import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
 import Head from 'next/head';
-import Centerize from '../common/Centerize';
-import { WakEnterLogo } from '../wakenter/WakEnterHeader';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { concatClass } from '../../utils/class';
-import { useHorizonalPageScroller } from '../common/Scroll';
 
-import { useHashState } from '../../utils/hashState';
-import { IsedolMemberID, Members } from '../../structs/member';
-import ModelSlider from '../common/ModelSlider';
-
-import InstagramIcon from '../../public/images/icons/services/instagram.png';
-import SoundCloudIcon from '../../public/images/icons/services/soundcloud.png';
-import TwitchIcon from '../../public/images/icons/services/twitch.png';
-import TwitterIcon from '../../public/images/icons/services/twitter.png';
-import YouTubeIcon from '../../public/images/icons/services/youtube.png';
 import { motion } from 'framer-motion';
 
-const isNotNull = <T extends unknown>(elem: T | null): elem is T => {
-  return elem !== null;
-};
+import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
 
-const useNonNullState = <T extends unknown>(state: T) => {
-  const [nstate, setNState] = useState<T>(state);
+import { IsedolMemberID, Members } from '../../structs/member';
+import Centerize from '../common/Centerize';
+import { useHorizonalPageScroller } from '../common/Scroll';
+import ModelSlider from '../common/ModelSlider';
 
-  useEffect(() => {
-    if (state === null) {
-      return;
-    }
+import { useHashState, useNonNullState } from '../../utils/state';
+import { concatClass } from '../../utils/class';
 
-    setNState(state);
-  }, [state]);
-
-  return nstate;
-};
+import { WakEnterLogoLink } from '../wakenter/WakEnterHeader';
+import { useIntersectionObserver } from './Members/Observer';
+import SocialLink from './Members/SocialLink';
 
 const useRect = (ref: React.RefObject<HTMLDivElement>) => {
   const [rect, setRect] = useState<[DOMRect | undefined, DOMRect | undefined]>([
@@ -51,9 +32,14 @@ const useRect = (ref: React.RefObject<HTMLDivElement>) => {
     }
 
     const handler = () => {
-      const r = ref.current!.querySelector(`.${styles.member}[data-active="true"]`);
+      const r = ref.current!.querySelector(
+        `.${styles.member}[data-active="true"]`
+      );
 
-      setRect([ref.current!.getBoundingClientRect(), r?.getBoundingClientRect()]);
+      setRect([
+        ref.current!.getBoundingClientRect(),
+        r?.getBoundingClientRect(),
+      ]);
     };
 
     requestAnimationFrame(() => {
@@ -76,70 +62,6 @@ interface DetailMemberCSS extends React.CSSProperties {
   '--width': string
 }
 
-const SocialIcons: Record<string, StaticImageData> = {
-  instagram: InstagramIcon,
-  soundcloud: SoundCloudIcon,
-  twitch: TwitchIcon,
-  twitter: TwitterIcon,
-  youtube: YouTubeIcon,
-};
-
-const useIntersectionObserver = (
-  target: React.RefObject<HTMLDivElement>,
-  active: boolean,
-  onIntersect?: (id: IsedolMemberID | null) => void
-): void => {
-  const [observer, setObserver] = useState<IntersectionObserver>(null!);
-
-  useEffect(() => {
-    if (!process.browser) {
-      return;
-    }
-
-    const localObserver = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          (entry.target as HTMLElement).dataset.active = `${entry.isIntersecting}`;
-
-          if (entry.isIntersecting) {
-            onIntersect &&
-              onIntersect(
-                (entry.target as HTMLElement).dataset.member as IsedolMemberID
-              );
-          }
-        });
-      },
-      {
-        root: target.current,
-        threshold: 0.5,
-      }
-    );
-
-    setObserver(localObserver);
-
-    return () => {
-      localObserver.disconnect();
-    };
-  }, [onIntersect, target]);
-
-  useEffect(() => {
-    if (!active) {
-      onIntersect && onIntersect(null);
-
-      return;
-    }
-
-    if (!observer) return;
-
-    const childTargets = target.current!.querySelectorAll(`.${styles.member}`);
-    childTargets.forEach(child => observer.observe(child));
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [active, observer, onIntersect, target]);
-};
-
 export const IsedolMembers: NextPage = () => {
   const [chosenMember, setChosenMember] = useHashState<IsedolMemberID | null>(
     null
@@ -155,7 +77,6 @@ export const IsedolMembers: NextPage = () => {
   const member = useRef<HTMLDivElement>(null);
 
   const membersCardCache: HTMLElement[] = [];
-  const router = useRouter();
 
   const [parentRect, cardRect] = useRect(member);
 
@@ -163,7 +84,7 @@ export const IsedolMembers: NextPage = () => {
     return chosenMember === null;
   }, [chosenMember]);
 
-  const [mobileActive, mobilePage] = useHorizonalPageScroller(
+  const [mobileActive] = useHorizonalPageScroller(
     container,
     1124,
     membersCardCache,
@@ -174,15 +95,24 @@ export const IsedolMembers: NextPage = () => {
     setCurrentHoverMember(id);
   }, []);
 
-  useIntersectionObserver(container, mobileActive, onIntersect);
+  useIntersectionObserver(
+    container,
+    `.${styles.member}`,
+    mobileActive && activeOn(),
+    onIntersect
+  );
 
-  useEffect(() => {
+  const scrollToTop = useCallback(() => {
     container.current!.scrollTo({
       top: 0,
       left: 0,
       behavior: 'smooth',
     });
-  }, [chosenMember]);
+  }, [container]);
+
+  useEffect(() => {
+    scrollToTop();
+  }, [chosenMember, scrollToTop]);
 
   useEffect(() => {
     if (!mobileActive || chosenMember) {
@@ -212,16 +142,6 @@ export const IsedolMembers: NextPage = () => {
           }
         ></meta>
       </Head>
-      <div className={styles.preload}>
-        {Object.keys(SocialIcons).map(key => (
-          <Image
-            key={`icons-${key}`}
-            src={SocialIcons[key].src}
-            width={30}
-            height={30}
-          ></Image>
-        ))}
-      </div>
       <div
         className={concatClass(
           styles.inner_container,
@@ -281,11 +201,7 @@ export const IsedolMembers: NextPage = () => {
                   }
 
                   if (mobileActive && container.current) {
-                    container.current.scrollTo({
-                      top: 0,
-                      left: 0,
-                      behavior: 'smooth',
-                    });
+                    scrollToTop();
                   }
 
                   setChosenMember(id as IsedolMemberID);
@@ -346,7 +262,7 @@ export const IsedolMembers: NextPage = () => {
           <div
             className={concatClass(
               styles.member_detail,
-              isNotNull(chosenMember) && styles.active
+              chosenMember !== null && styles.active
             )}
             style={
               {
@@ -394,36 +310,10 @@ export const IsedolMembers: NextPage = () => {
                       </tr>
                     </tbody>
                   </table>
-                  <div className={styles.social_box}></div>
                 </div>
                 <div className={styles.social_links}>
                   {Members[previousMember].links.map(link =>
-                    link.icon ? (
-                      <Link
-                        key={`social-link-${link.link}-${link.icon}`}
-                        href={link.link}
-                      >
-                        <a className={styles.icon} target='_blank'>
-                          {(SocialIcons[link.icon] && (
-                            <Image
-                              src={SocialIcons[link.icon]}
-                              width={30}
-                              height={30}
-                              alt={`${link.name} 링크`}
-                              priority
-                            ></Image>
-                          )) ??
-                            link.name}
-                        </a>
-                      </Link>
-                    ) : (
-                      <div
-                        key={`social-link-${link.link}-${link.icon}`}
-                        className={styles.link}
-                      >
-                        {link.name}
-                      </div>
-                    )
+                    <SocialLink key={`social-link-${link.name}-${link.link}`}  {...link}></SocialLink>
                   )}
                 </div>
               </div>
@@ -445,15 +335,7 @@ export const IsedolMembers: NextPage = () => {
           </div>
         )}
       </div>
-      <Link key={'link-wak-enter'} href={'/'} passHref>
-        <div
-          className={styles.logo}
-          tabIndex={100}
-          onKeyDown={ev => ev.key === 'Enter' && router.push('/')}
-        >
-          <WakEnterLogo white></WakEnterLogo>
-        </div>
-      </Link>
+      <WakEnterLogoLink className={styles.logo} white></WakEnterLogoLink>
     </div>
   );
 };
