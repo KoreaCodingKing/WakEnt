@@ -22,7 +22,7 @@ const Menus = [
   },
 ];
 
-const WakMenus = () => {
+const LeagueMenus = () => {
   return (
     <div className={styles.menu}>
       {Menus.map(menu => (
@@ -51,7 +51,7 @@ const ZaunLogo = ({clickable, className}: WakEnterElementProps) => {
         ></Image>
       </div>
       <div className={styles.logoText}>
-        <span>League Of Zaun</span>
+        <span>Waktaverse</span>
       </div>
     </div>
   );
@@ -61,16 +61,16 @@ export const ZaunHeader = () => {
   const router = useRouter();
 
   const Left = (
-    <Link href='/' passHref>
+    <Link href='/zaun-league' passHref>
       <span
         tabIndex={100}
-        onKeyDown={ev => ev.key === 'Enter' && router.push('/')}
+        onKeyDown={ev => ev.key === 'Enter' && router.push('/zaun-league')}
       >
         <ZaunLogo clickable></ZaunLogo>
       </span>
     </Link>
   );
-  const Right = <WakMenus></WakMenus>;
+  const Right = <LeagueMenus></LeagueMenus>;
   return <HeaderBase left={Left} right={Right}></HeaderBase>;
 };
 
