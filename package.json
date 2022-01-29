@@ -9,33 +9,38 @@
     "lint:prod": "NODE_ENV=production next lint"
   },
   "dependencies": {
-    "@react-three/drei": "^8.4.0",
-    "@react-three/fiber": "^7.0.24",
+    "@react-three/drei": "^8.8.0",
+    "@react-three/fiber": "7.0.25",
     "@react-three/postprocessing": "^2.1.2",
-    "@types/three": "^0.136.1",
+    "@types/three": "^0.137.0",
     "cheerio": "^1.0.0-rc.10",
-    "eslint-plugin-jsdoc": "^37.4.0",
+    "eslint-plugin-jsdoc": "^37.7.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
-    "framer-motion": "^5.5.5",
-    "next": "^12.0.8",
+    "framer-motion": "^6.2.3",
+    "next": "^12.0.9",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "recoil": "^0.5.2",
-    "sass": "^1.45.1",
-    "three": "^0.136.0"
+    "recoil": "^0.6.0",
+    "sass": "^1.49.0",
+    "three": "^0.137.5"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^12.0.7",
-    "@types/node": "17.0.2",
-    "@types/react": "17.0.37",
-    "@typescript-eslint/eslint-plugin": "^5.8.0",
-    "@typescript-eslint/parser": "^5.8.0",
-    "@yarnpkg/sdks": "^2.5.1-rc.6",
-    "eslint": "^8.5.0",
-    "eslint-config-next": "12.0.7",
-    "eslint-plugin-react": "^7.27.1",
+    "@next/eslint-plugin-next": "^12.0.9",
+    "@types/node": "17.0.13",
+    "@types/react": "17.0.38",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "@yarnpkg/sdks": "^2.6.0-rc.4",
+    "eslint": "^8.8.0",
+    "eslint-config-next": "12.0.9",
+    "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "typescript": "4.5.4"
+    "typescript": "4.5.5"
+  },
+  "dependenciesMeta": {
+    "recoil": {
+      "built": false
+    }
   }
 }
