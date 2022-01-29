@@ -506,43 +506,6 @@
   }
 }
 
-// 멤버별 페이지 스타일
-.chosen {
-  .disapear {
-    transition: width 0s ease-in-out, min-width 0s ease-in-out, transform 0s ease-in-out;
-    &[data-member='ine'] {
-      width: 0px !important;
-      min-width: 0px !important;
-      max-width: 0px !important;
-    }
-    &[data-member='jingburger'] {
-      width: 0px !important;
-      min-width: 0px !important;
-      max-width: 0px !important;
-    }
-    &[data-member='lilpa'] {
-      width: 0px !important;
-      min-width: 0px !important;
-      max-width: 0px !important;
-    }
-    &[data-member='jururu'] {
-      width: 0px !important;
-      min-width: 0px !important;
-      max-width: 0px !important;
-    }
-    &[data-member='gosegu'] {
-      width: 0px !important;
-      min-width: 0px !important;
-      max-width: 0px !important;
-    }
-    &[data-member='viichan'] {
-      width: 0px !important;
-      min-width: 0px !important;
-      max-width: 0px !important;
-    }
-  }
-}
-
 .member_detail {
   opacity: 0;
   pointer-events: none;
