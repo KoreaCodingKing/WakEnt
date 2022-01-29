@@ -15,7 +15,7 @@
   }
 
   .title {
-    font-size: 2.5em;
+    font-size: 2.25em;
     letter-spacing: -1.5px;
 
     margin: 0;
@@ -24,11 +24,11 @@
     margin-bottom: 0.75em;
 
     @media screen and (max-width: $maxTablet) {
-      font-size: 2.5em;
+      font-size: 2em;
     }
 
     @media screen and (max-width: $maxMobile) {
-      font-size: 2em;
+      font-size: 1.75em;
     }
   } 
 
@@ -77,14 +77,14 @@
   margin-right: auto;
 
   .sectionTitle {
-    font-size: 2em;
+    font-size: 1.8em;
 
     @media screen and (max-width: $maxMobile) {
       font-size: 1.6em;
     }
 
     @media screen and (max-width: $maxTablet) {
-      font-size: 1.6em;
+      font-size: 1.4em;
     }
 
     letter-spacing: -1px;
@@ -141,19 +141,19 @@
 .description {
   font-weight: 300;
 
-  font-size: 1.18em;
+  font-size: 1.15em;
   letter-spacing: -0.3px;
   line-height: 1.35;
 
   white-space: pre-line;
 
   @media screen and (max-width: $maxTablet) {
-    font-size: 1.1em;
+    font-size: 1.05em;
     line-height: 1.45;
   }
 
   @media screen and (max-width: $maxMobile) {
-    font-size: 1em;
+    font-size: 0.95em;
     line-height: 1.55;
   }
 
@@ -167,10 +167,8 @@ $link-color: #1667e0;
 .brief {
   display: flex;
 
-
   .image {
     margin-right: 3em;
-
     background: #eee;
   }
 

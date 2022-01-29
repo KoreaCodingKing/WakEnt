@@ -15,6 +15,8 @@ import Pagination from '../common/Pagination';
 import { useHorizonalPageScroller } from '../common/Scroll';
 
 import { lighten } from '../../utils/color';
+import ChatIcon from '../common/icons/Chat';
+import LikeIcon from '../common/icons/Like';
 
 const memberMaps: Record<string, IsedolMemberID | WakMemberID> = {
   '우왁굳': 'wakgood',
@@ -159,13 +161,13 @@ export const Notices: NextPage = () => {
                       <span
                         className={concatClass(styles.item, styles.comments)}
                       >
-                        {v.comments} 댓글
+                        <ChatIcon></ChatIcon> {v.comments}
                       </span>
                       {typeof v.likes !== 'undefined' && (
                         <span
                           className={concatClass(styles.item, styles.likes)}
                         >
-                          {v.likes} 좋아요
+                          <LikeIcon></LikeIcon> {v.likes}
                         </span>
                       )}
                       <span className={concatClass(styles.item, styles.date)}>

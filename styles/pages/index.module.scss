@@ -13,14 +13,14 @@
     z-index: 10000;
 
     & > div {
-      margin: 38px 5%;
+      margin: 38px auto;
 
       @media screen and (max-width: $maxTablet) {
-        margin: 32px 5%;
+        margin: 32px auto;
       }
 
       @media screen and (max-width: $maxMobile) {
-        margin: 26px 5%;
+        margin: 26px auto;
       }
     }
   }
@@ -336,10 +336,22 @@ $link-color: #1667e0;
     z-index: 100;
 
     transition: 0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
+
+    @media screen and (max-width: $maxTablet) {
+      font-size: 0.8em;
+    }
+    
+    @media screen and (max-width: $maxMobile) {
+      font-size: 0.6em;
+    }
   }
 
   .image {
     width: auto;
     height: 100%;
   }
+}
+
+.big {
+  font-size: 2em;
 }

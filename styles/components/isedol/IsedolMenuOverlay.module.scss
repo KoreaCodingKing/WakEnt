@@ -14,7 +14,7 @@
   pointer-events: none;
   visibility: hidden;
 
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.95);
   transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1), 0.23s visibility cubic-bezier(0.19, 1, 0.22, 1);
 
   &.open {
@@ -89,6 +89,7 @@ $link-current: #0b397e;
   gap: 10px;
   text-decoration: none;
   color: #000;
+  outline: none;
 
   h1 {
     font-size: 5vmin;
@@ -162,10 +163,14 @@ $link-current: #0b397e;
   margin-right: auto;
   opacity: 0.3;
   margin-bottom: 16px;
+  font-size: 0.9em;
 
   p {
     margin: 0;
-    font-size: 0.85em;
+
+    @media screen and (max-width: $maxTablet) {
+      font-size: 0.8em;      
+    }
   }
 
   transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);

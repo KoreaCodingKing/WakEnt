@@ -51,14 +51,14 @@
   margin-right: auto;
 
   .sectionTitle {
-    font-size: 2em;
-
-    @media screen and (max-width: $maxMobile) {
-      font-size: 1.6em;
-    }
+    font-size: 1.8em;
 
     @media screen and (max-width: $maxTablet) {
       font-size: 1.6em;
+    }
+
+    @media screen and (max-width: $maxMobile) {
+      font-size: 1.4em;
     }
 
     
@@ -83,10 +83,14 @@
   }
 
   @media screen and (max-width: $maxTablet) {
+    grid-column-gap: 26px;
+    grid-row-gap: 26px; 
     grid-template-columns: repeat(2, 1fr);
   }
 
   @media screen and (max-width: $maxMobile) {
+    grid-column-gap: 20px;
+    grid-row-gap: 20px; 
     grid-template-columns: repeat(1, 1fr);
   }
 }
