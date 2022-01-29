@@ -129,6 +129,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
       title: '호쇼마린 - Ahoy!! 우리는 호쇼해적단☆',
       id: '8kuevWdt01M',
     },
+    {
+      title: '【주르르→??←징버거】Choose me (Korean Cover.)',
+      id: 'G0g3d6b5CZM'
+    }
   ],
   gosegu: [
     {
