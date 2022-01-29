@@ -225,15 +225,12 @@
   }
 }
 
-// .member_wrapper {
-//   position: relative;
-// }
-
 .member {
   position: relative;
   min-width: 200px;
   max-width: 500px;
   width: 10vw;
+  min-height: 598px;
   margin: 0 12px;
   cursor: pointer;
   z-index: 10;
