@@ -29,7 +29,7 @@ export const useIntersectionObserver = (
       },
       {
         root: target.current,
-        threshold: 0.5,
+        threshold: 0.8
       }
     );
 
