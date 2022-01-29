@@ -283,6 +283,16 @@
     margin: 0 5vw;
 
     &:first-child {
+      margin-left: 24vw;
+    }
+
+    &:last-child {
+      margin-right: 24vw;
+    }
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    &:first-child {
       margin-left: 15vw;
     }
 
