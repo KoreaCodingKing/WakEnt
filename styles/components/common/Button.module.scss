@@ -1,3 +1,5 @@
+@import "../../mixin.scss";
+
 .button {
   display: block;
   width: fit-content;
@@ -21,5 +23,14 @@
     color: #108B2B;
 
     cursor: unset;
+  }
+
+  @media screen and (max-width: $maxTablet) {
+    font-size: 0.95em;
+    padding: 6px 14px;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    font-size: 0.9em;
   }
 }

@@ -1,3 +1,5 @@
+@import "../../mixin.scss";
+
 .card {
   position: relative;
   display: block;
@@ -72,4 +74,12 @@
 
   margin-top: 1.5em;
   margin-bottom: 1.5em;
+
+  @media screen and (max-width: $maxTablet) {
+    font-size: 1.25em;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    font-size: 1em;
+  }
 }

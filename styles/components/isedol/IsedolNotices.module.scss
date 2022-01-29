@@ -39,8 +39,13 @@
   & > div {
     white-space: nowrap;
   }
+
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media screen and (max-width: $maxTablet) {
+    gap: 8px;
   }
 }
 
@@ -57,11 +62,6 @@
     max-width: unset;
     min-width: 90%;
     width: 90%;
-  }
-
-  @media screen and (max-width: $maxMobile) {
-    min-width: 85%;
-    width: 85%;
   }
 
   margin-left: auto;
@@ -113,6 +113,10 @@
   flex-direction: column;
 
   gap: 12px;
+
+  @media screen and (max-width: $maxTablet) {
+    gap: 4px;
+  }
 }
 
 .bold {
@@ -130,8 +134,8 @@
   padding: 6px 24px;
   border-radius: 16px;
 
-  @media screen and (max-width: $maxMobile) {
-    padding: 4px 12px;
+  @media screen and (max-width: $maxTablet) {
+    padding: 6px 12px;
   }
 
   transition: 0.23s background cubic-bezier(0.19, 1, 0.22, 1);
@@ -153,11 +157,11 @@
   margin-right: 5vw;
 
   @media screen and (max-width: $maxTablet) {
-    font-size: 1em;
+    font-size: 0.9em;
   }
 
   @media screen and (max-width: $maxMobile) {
-    font-size: 0.95em;
+    font-size: 0.8em;
   }
 }
 
@@ -169,12 +173,20 @@
 
   @media screen and (max-width: $maxTablet) {
     font-size: 0.8em;
-    gap: 0.5em;
+    gap: 1em;
   }
 
   .item {
     margin-top: auto;
     margin-bottom: auto;
+    display: flex;
+
+    svg {
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-right: 0.3em;
+      stroke: none;
+    }
   }
 
   @media screen and (max-width: $maxMobile) {
@@ -185,6 +197,8 @@
     .likes {
       display: none;
     }
+
+    font-size: 0.7em;
   }
 
   display: flex;
@@ -194,6 +208,14 @@
 .pages {
   display: flex;
   margin-top: 36px;
+
+  @media screen and (max-width: $maxTablet) {
+    font-size: 0.95em;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    font-size: 0.9em;
+  }
 }
 
 .noticeMember {
@@ -216,5 +238,20 @@
   .name {
     margin: auto;
     font-weight: bold;
+    font-size: 1em;
+  }
+
+  @media screen and (max-width: $maxTablet) {
+    padding: 4px 8px;
+    gap: 8px;
+
+    .profile {
+      width: 26px;
+      height: 26px;
+    }
+
+    .name {
+      font-size: 0.9em;
+    }
   }
 }
