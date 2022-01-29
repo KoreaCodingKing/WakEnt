@@ -13,14 +13,14 @@
     z-index: 10000;
 
     & > div {
-      margin: 38px 5%;
+      margin: 38px auto;
 
       @media screen and (max-width: $maxTablet) {
-        margin: 32px 5%;
+        margin: 32px auto;
       }
 
       @media screen and (max-width: $maxMobile) {
-        margin: 26px 5%;
+        margin: 26px auto;
       }
     }
   }

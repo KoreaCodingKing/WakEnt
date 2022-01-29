@@ -38,7 +38,7 @@ const Groups = [
     link: '/gomem',
     image: '/images/bg_gomem.jpg',
     disabled: true,
-    logo: <h1>고정 멤버</h1>,
+    logo: <h1 className={styles.big}>고정 멤버</h1>,
   },
 ];
 
@@ -73,7 +73,7 @@ const Home: NextPage = () => {
               </div>
               <div className={styles.links}>
                 {Links.map((v, i) => (
-                  <p
+                  <div
                     key={`main-link-${i}`}
                     className={styles.link}
                     tabIndex={100}
@@ -86,7 +86,7 @@ const Home: NextPage = () => {
                         {v.name} <LinkToIcon width={22}></LinkToIcon>
                       </a>
                     </Link>
-                  </p>
+                  </div>
                 ))}
               </div>
             </div>
@@ -105,7 +105,7 @@ const Home: NextPage = () => {
           >
             {Groups.map((v, i) => (
               <Link key={`subsite-link-${i}`} href={v.link} passHref>
-                <a className={styles.card}>
+                <div className={styles.card}>
                   <Centerize>
                     <div className={styles.background}>
                       <Image
@@ -116,7 +116,7 @@ const Home: NextPage = () => {
                     </div>
                   </Centerize>
                   <div className={styles.contents}>{v.logo}</div>
-                </a>
+                </div>
               </Link>
             ))}
           </section>
