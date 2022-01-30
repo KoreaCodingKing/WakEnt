@@ -64,7 +64,7 @@ const Welfares: WelfareType[][] = [
   ],
   [
     {
-      title: '분기별 성과금',
+      title: '분기별 포상 성과금****',
       image: '/images/money.jpg',
     },
     {

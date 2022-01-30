@@ -25,7 +25,7 @@ const ThirdSection = ({
 
       const tProgress = clamp(top / 200, 0, 1);
 
-      opacity.set(clamp(tProgress, 0.06, 1));
+      opacity.set(clamp(tProgress, 0, 1));
       letterSpacing.set((1 - tProgress) * 3 - 0.3);
     });
   }, [letterSpacing, onScroll, opacity, setHeaderWhite]);
