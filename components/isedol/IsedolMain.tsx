@@ -10,12 +10,17 @@ import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
 import PageIndicator from '../common/PageIndicator';
 
 const usePageTurner = (
+  paused: boolean,
   set: Dispatch<SetStateAction<number>>,
   current: number,
   max: number,
   rate: number
 ) => {
   useEffect(() => {
+    if (paused) {
+      return;
+    }
+
     const timeout = setTimeout(() => {
       set(current + 1 > max ? 0 : current + 1);
     }, rate);
@@ -23,7 +28,7 @@ const usePageTurner = (
     return () => {
       clearTimeout(timeout);
     };
-  }, [current, max, rate, set]);
+  }, [current, max, paused, rate, set]);
 };
 
 
@@ -60,6 +65,7 @@ export const Main: NextPage = () => {
   const slidesRef = useRef<HTMLDivElement>(null);
 
   usePageTurner(
+    openPlayer || pauseAutoScroll,
     setCurrentSlide,
     currentSlide,
     slides.length - 1,
@@ -120,7 +126,7 @@ export const Main: NextPage = () => {
           pageCount={slides.length}
           setPage={to => setCurrentSlide(to)}
           slide={scrollDelay}
-          playSlide={!pauseAutoScroll}
+          playSlide={!openPlayer && !pauseAutoScroll}
         ></PageIndicator>
       </div>
     </div>
