@@ -101,6 +101,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
       title: 'JUST 4 U...',
       id: 'kUxzmSyxwzQ',
     },
+    {
+      title: 'Choose me (Korean Cover.)',
+      id: 'G0g3d6b5CZM'
+    }
   ],
   lilpa: [
     {
@@ -130,7 +134,7 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
       id: '8kuevWdt01M',
     },
     {
-      title: '【주르르→??←징버거】Choose me (Korean Cover.)',
+      title: 'Choose me (Korean Cover.)',
       id: 'G0g3d6b5CZM'
     }
   ],
