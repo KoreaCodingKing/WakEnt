@@ -17,10 +17,6 @@ const usePageTurner = (
   rate: number
 ) => {
   useEffect(() => {
-    if (paused) {
-      return;
-    }
-
     const timeout = setTimeout(() => {
       set(current + 1 > max ? 0 : current + 1);
     }, rate);
@@ -30,7 +26,6 @@ const usePageTurner = (
     };
   }, [current, max, paused, rate, set]);
 };
-
 
 const slides = [
   {
@@ -53,6 +48,10 @@ export const Main: NextPage = () => {
   const [pauseAutoScroll] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const [time, setTime] = useState<NodeJS.Timeout|null>(null);
+  const [start, setStart] = useState<number|null>(null);
+  const [remain, setRemain] = useState<number|null>(null);
+
   const [openPlayer, setOpenPlayer] = useState<boolean>(false);
   const [youtubeID, setYoutubeID] = useState<string>('');
 
@@ -64,13 +63,41 @@ export const Main: NextPage = () => {
   const scrollDelay = 7500;
   const slidesRef = useRef<HTMLDivElement>(null);
 
-  usePageTurner(
-    openPlayer || pauseAutoScroll,
-    setCurrentSlide,
-    currentSlide,
-    slides.length - 1,
-    scrollDelay
-  );
+  useEffect(() => {
+    
+    if (start && openPlayer && time) {
+      setRemain(Math.abs(Date.now() - start - scrollDelay));
+      clearTimeout(time);
+      setTime(null);
+      return;
+    }
+    
+    setStart(Date.now());
+  
+    if (start && !openPlayer && remain) {
+      setTime(
+        setTimeout(() => {
+          setCurrentSlide(currentSlide + 1 > slides.length - 1 ? 0 : currentSlide + 1);
+        }, remain)
+      );
+      setRemain(null);
+      return;
+    }
+    
+    console.log('scrollDelay', time);
+    setTime(
+      setTimeout(() => {
+        setCurrentSlide(currentSlide + 1 > slides.length - 1 ? 0 : currentSlide + 1);
+      }, scrollDelay)
+    );
+
+    return () => {
+      if (!time) {
+        return;
+      }
+      clearTimeout(time);
+    };
+  }, [currentSlide, slides.length - 1, openPlayer, scrollDelay, setCurrentSlide]);
 
   return (
     <div className={styles.isedol_main__container}>
@@ -125,7 +152,7 @@ export const Main: NextPage = () => {
           page={currentSlide}
           pageCount={slides.length}
           setPage={to => setCurrentSlide(to)}
-          slide={scrollDelay}
+          slide={remain ? remain : scrollDelay}
           playSlide={!openPlayer && !pauseAutoScroll}
         ></PageIndicator>
       </div>

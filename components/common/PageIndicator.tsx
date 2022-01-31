@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styles from '../../styles/components/common/PageIndicator.module.scss';
 import { concatClass } from '../../utils/class';
 
@@ -29,7 +30,8 @@ export const PageIndicator = ({
               !slide || playSlide ? styles.active : styles.paused,
               typeof slide === 'number' && styles.animation
             )}
-            style={{ animationDuration: `${slide ?? 0}ms` }}
+            style={{ animationPlayState: playSlide ? 'initial' : 'paused',
+              animationDuration: `${slide}ms` }}
           ></span>
         </button>
       ))}
