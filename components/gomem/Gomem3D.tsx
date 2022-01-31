@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
 
@@ -22,8 +22,9 @@ import { gomemHoverState } from '../../states/gomem/hover';
 
 export const Gomem3DWithEvents = ({
   onPlanetHover,
-  onPlanetClick
-}: Partial<Pick<Gomem3DProps, 'onPlanetClick' | 'onPlanetHover'>>) => {
+  onPlanetClick,
+  renderActive
+}: Partial<Pick<Gomem3DProps, 'onPlanetClick' | 'onPlanetHover' | 'renderActive'>>) => {
   const activeState = useRecoilValue(gomemActiveState);
   const [hoverState, setHoverState] = useRecoilState(gomemHoverState);
 
@@ -51,26 +52,28 @@ export const Gomem3DWithEvents = ({
         planet={activeState.planet}
         onPlanetHover={planetHoverHandler}
         onPlanetClick={planetClickHandler}
+        renderActive={renderActive}
       ></Gomem3D>
     </div>
   );
 };
 
-
 export interface Gomem3DProps {
   planet: PlanetKeys
   onPlanetHover: PointerUpdateHandler
   onPlanetClick?: (name: PlanetKeys) => void
+  renderActive?: boolean
 }
 
 export const Gomem3D = ({
   planet,
   onPlanetClick,
   onPlanetHover,
+  renderActive,
   ...props
-}: Gomem3DProps & React.RefAttributes<HTMLCanvasElement>) => {
+}: Gomem3DProps & Omit<typeof Canvas, '$$typeof'>) => {
   return (
-    <Canvas {...props}>
+    <Canvas frameloop={renderActive ? 'always' : 'never'} performance={{ min: 0.5 }} {...props}>
       <GomemCamera planet={planet}></GomemCamera>
       <ambientLight intensity={0.05} />
       <pointLight position={[0, 0, 300]} />
