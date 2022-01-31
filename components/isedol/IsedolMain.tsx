@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Image from 'next/image';
 
@@ -9,17 +9,6 @@ import Head from 'next/head';
 import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
 import PageIndicator from '../common/PageIndicator';
 
-
-const usePageTurner = (
-  setCurrentSlide: Dispatch<SetStateAction<number>>,
-  currentSlide: number,
-  slideLength: number,
-  delay: number
-): NodeJS.Timeout => {
-  return setTimeout(() => {
-    setCurrentSlide(currentSlide + 1 > slideLength - 1 ? 0 : currentSlide + 1);
-  }, delay)
-}
 const slides = [
   {
     image: '/images/bg_rewind.jpg',
@@ -57,7 +46,6 @@ export const Main: NextPage = () => {
   const slidesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-
     if (start && openPlayer && time) {
       setRemain(Math.abs(Date.now() - start - scrollDelay));
       clearTimeout(time);
@@ -68,14 +56,18 @@ export const Main: NextPage = () => {
 
     if (start && !openPlayer && remain) {
       setTime(
-        usePageTurner(setCurrentSlide, currentSlide, slides.length, remain)
+        setTimeout(() => {
+          setCurrentSlide(currentSlide + 1 > slides.length - 1 ? 0 : currentSlide + 1);
+        }, remain)
       );
       setRemain(null);
       return;
     }
 
     setTime(
-      usePageTurner(setCurrentSlide, currentSlide, slides.length, scrollDelay)
+      setTimeout(() => {
+        setCurrentSlide(currentSlide + 1 > slides.length - 1 ? 0 : currentSlide + 1);
+      }, scrollDelay)
     );
 
     return () => {
