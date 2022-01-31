@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import styles from '../../styles/components/common/PageIndicator.module.scss';
 import { concatClass } from '../../utils/class';
 

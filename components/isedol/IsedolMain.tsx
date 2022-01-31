@@ -9,24 +9,17 @@ import Head from 'next/head';
 import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
 import PageIndicator from '../common/PageIndicator';
 
+
 const usePageTurner = (
-  paused: boolean,
-  set: Dispatch<SetStateAction<number>>,
-  current: number,
-  max: number,
-  rate: number
-) => {
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      set(current + 1 > max ? 0 : current + 1);
-    }, rate);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [current, max, paused, rate, set]);
-};
-
+  setCurrentSlide: Dispatch<SetStateAction<number>>,
+  currentSlide: number,
+  slideLength: number,
+  delay: number
+): NodeJS.Timeout => {
+  return setTimeout(() => {
+    setCurrentSlide(currentSlide + 1 > slideLength - 1 ? 0 : currentSlide + 1);
+  }, delay)
+}
 const slides = [
   {
     image: '/images/bg_rewind.jpg',
@@ -48,9 +41,9 @@ export const Main: NextPage = () => {
   const [pauseAutoScroll] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const [time, setTime] = useState<NodeJS.Timeout|null>(null);
-  const [start, setStart] = useState<number|null>(null);
-  const [remain, setRemain] = useState<number|null>(null);
+  const [time, setTime] = useState<NodeJS.Timeout>();
+  const [start, setStart] = useState<number>();
+  const [remain, setRemain] = useState<number|null>();
 
   const [openPlayer, setOpenPlayer] = useState<boolean>(false);
   const [youtubeID, setYoutubeID] = useState<string>('');
@@ -64,31 +57,25 @@ export const Main: NextPage = () => {
   const slidesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    
+
     if (start && openPlayer && time) {
       setRemain(Math.abs(Date.now() - start - scrollDelay));
       clearTimeout(time);
-      setTime(null);
       return;
     }
-    
+
     setStart(Date.now());
-  
+
     if (start && !openPlayer && remain) {
       setTime(
-        setTimeout(() => {
-          setCurrentSlide(currentSlide + 1 > slides.length - 1 ? 0 : currentSlide + 1);
-        }, remain)
+        usePageTurner(setCurrentSlide, currentSlide, slides.length, remain)
       );
       setRemain(null);
       return;
     }
-    
-    console.log('scrollDelay', time);
+
     setTime(
-      setTimeout(() => {
-        setCurrentSlide(currentSlide + 1 > slides.length - 1 ? 0 : currentSlide + 1);
-      }, scrollDelay)
+      usePageTurner(setCurrentSlide, currentSlide, slides.length, scrollDelay)
     );
 
     return () => {
