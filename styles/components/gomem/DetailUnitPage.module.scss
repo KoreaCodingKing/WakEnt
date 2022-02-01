@@ -2,6 +2,7 @@
 
 $default-background-color: #121415;
 $default-color: #BAD9E9;
+$default-overlay-color: #1B1F21;
 
 .page {
   position: fixed;
@@ -26,39 +27,48 @@ $default-color: #BAD9E9;
     pointer-events: auto;
   }
 
+}
+
+.innerPage {
+  @media screen and (max-width: $maxTablet) {
+    overflow-y: auto;
+    height: 100%;
+  }
+
   & > .contents {
     position: relative;
 
     display: flex;
-    gap: 100px;
+    gap: 40px;
 
     margin-left: auto;
     margin-right: auto;
 
-    @media screen and (min-width: #{$maxTablet * 1.25}) {
-      min-width: #{$maxTablet * 1.25};
-      max-width: $maxPage;
-    }
-  
-    @media screen and (max-width: #{$maxTablet * 1.25}) {
-      max-width: unset;
-      min-width: 90%;
+    width: 75vw;
+    max-width: #{$maxTablet * 2};
+
+    @media screen and (max-width: $maxTablet) {
+      margin-top: 5vh;
       width: 90%;
-    }
-  
-    @media screen and (max-width: $maxMobile) {
-      min-width: 85%;
-      width: 85%;
+      flex-direction: column;
+
+      overflow-y: auto;
     }
   }
 }
 
 .goBack {
   position: absolute;
-  width: 15vw;
+  width: 10vw;
   height: 100%;
   left: 0;
   top: 0;
+
+  @media screen and (max-width: $maxTablet) {
+    position: relative;
+    width: 100%;
+    height: 15vh;
+  }
 
   display: flex;
 
@@ -99,6 +109,13 @@ $default-color: #BAD9E9;
     height: 2em;
 
     margin: auto;
+
+    @media screen and (max-width: $maxTablet) {
+      width: 1.25em;
+      height: 1.25em;
+
+      margin: auto auto auto 5%;
+    }
   }
 }
 
@@ -106,8 +123,6 @@ $default-color: #BAD9E9;
   position: relative;
 
   min-width: 450px;
-  
-
   font-size: 24px;
   margin: auto;
 
@@ -126,11 +141,42 @@ $default-color: #BAD9E9;
   }
 
   .description {
-    font-size: 0.8em;
+    font-size: 0.75em;
     font-weight: 600;
     letter-spacing: -2px;
 
     opacity: 0.5;
+  }
+
+  @media screen and (max-width: $maxTablet) {
+    margin-left: 0;
+    margin-right: 0;
+    width: 90vw;
+
+    .title {
+      font-size: 1.5em;
+    }
+
+    .description {
+      font-size: 0.7em;
+      letter-spacing: -2px;
+    }
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    .title {
+      font-size: 1.25em;
+    }
+
+    .description {
+      font-size: 0.65em;
+      letter-spacing: -1.5px;
+    }
+  }
+
+  @media screen and (min-width: $maxTablet) and (max-width: #{$maxTablet * 1.25}) {
+    min-width: 350px;
+    width: 350px;
   }
 }
 
@@ -142,10 +188,83 @@ $default-color: #BAD9E9;
 
   color: $default-color;
 
+  overflow-x: hidden;
   overflow-y: auto;
 
   & > * {
     margin-top: 15vh;
   }
+
+  @media screen and (max-width: $maxTablet) {
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90vw;
+
+    overflow-y: unset;
+    height: unset;
+  }
 }
 
+.grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr; 
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+
+  @media screen and (max-width: $maxTablet) {
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
+  }
+
+  padding-bottom: 10vh;
+}
+
+.card {
+  background: #1B1F21;
+
+  min-width: 100px;
+  min-height: 100px;
+
+  border-radius: 16px;
+
+  &.padding {
+    padding: 26px 32px;
+
+    @media screen and (max-width: $maxTablet) {
+      padding: 13px 16px;
+    }  
+  }
+
+  &.flex {
+    display: flex;
+  }
+
+  &.flexColumn {
+    flex-direction: column;
+  }
+
+  & > .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+  }
+
+  & > .centerColumn {
+    flex-direction: column;
+  }
+
+  h1, h2, h3, h4, h5, p {
+    margin: 0;
+  }
+}
+
+.memberMeta {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+}
