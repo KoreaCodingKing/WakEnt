@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense, useCallback, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
 
@@ -27,38 +27,44 @@ export const Gomem3DWithEvents = ({
   const [activeState, setActiveState] = useRecoilState(gomemActiveState);
   const [hoverState, setHoverState] = useRecoilState(gomemHoverState);
 
-  const planetHoverHandler: PointerUpdateHandler = (scope, active, lx, ly, ld) => {
-    setHoverState({
-      hover: active,
-      x: lx,
-      y: ly,
-      d: ld,
-      planet: scope ?? null
-    });
-
-    onPlanetHover && onPlanetHover(scope, active, lx, ly, ld);
-  };
-
-  const planetClickHandler = (name: PlanetKeys) => {
-    if (!Planets[name]) {
-      return;
-    }
-
-    if (Planets[name].isGomemUnit) {
-      setActiveState({
-        planet: activeState.planet,
-        detail: !activeState.detail
+  const planetHoverHandler: PointerUpdateHandler = useCallback(
+    (scope, active, lx, ly, ld) => {
+      setHoverState({
+        hover: active,
+        x: lx,
+        y: ly,
+        d: ld,
+        planet: scope ?? null,
       });
-    }
 
-    onPlanetClick && onPlanetClick(name);
-  };
+      onPlanetHover && onPlanetHover(scope, active, lx, ly, ld);
+    },
+    [onPlanetHover, setHoverState]
+  );
+
+  const planetClickHandler = useCallback(
+    (name: PlanetKeys) => {
+      if (!Planets[name]) {
+        return;
+      }
+
+      if (Planets[name].isGomemUnit) {
+        setActiveState({
+          planet: activeState.planet,
+          detail: !activeState.detail,
+        });
+      }
+
+      onPlanetClick && onPlanetClick(name);
+    },
+    [activeState.detail, activeState.planet, onPlanetClick, setActiveState]
+  );
 
   useEffect(() => {
     return () => {
       setActiveState({
         planet: 'gomem',
-        detail: false
+        detail: false,
       });
     };
   }, [setActiveState]);
@@ -92,7 +98,11 @@ export const Gomem3D = ({
   ...props
 }: Gomem3DProps & Omit<typeof Canvas, '$$typeof'>) => {
   return (
-    <Canvas frameloop={renderActive ? 'always' : 'never'} performance={{ min: 0.5 }} {...props}>
+    <Canvas
+      frameloop={renderActive ? 'always' : 'never'}
+      performance={{ min: 0.5 }}
+      {...props}
+    >
       <GomemCamera planet={planet}></GomemCamera>
       <ambientLight intensity={0.05} />
       <pointLight position={[0, 0, 300]} />

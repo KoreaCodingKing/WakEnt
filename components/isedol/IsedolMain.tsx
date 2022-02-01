@@ -76,7 +76,7 @@ export const Main: NextPage = () => {
       }
       clearTimeout(time);
     };
-  }, [currentSlide, slides.length - 1, openPlayer, scrollDelay, setCurrentSlide]);
+  }, [currentSlide, openPlayer, remain, scrollDelay, setCurrentSlide, start, time]);
 
   return (
     <div className={styles.isedol_main__container}>

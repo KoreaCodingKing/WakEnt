@@ -79,7 +79,7 @@ export const GomemPopup = () => {
       ref={popup}
     >
       <motion.h1 className={styles.title}>{planet && Planets[planet].name}</motion.h1>
-      <motion.p className={styles.description}>{planet && Planets[planet].desc}</motion.p>
+      <motion.p className={styles.description}>{planet && Planets[planet].description}</motion.p>
       <motion.p className={styles.moveTo}>
         {planet && Planets[planet].link && (
           <span>

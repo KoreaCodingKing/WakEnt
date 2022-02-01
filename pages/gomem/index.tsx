@@ -1,7 +1,5 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
 import GomemPlanetName from '../../components/gomem/CurrentPlanetName';
 import DetailUnit from '../../components/gomem/DetailUnitPage';
 import { Gomem3DWithEvents } from '../../components/gomem/Gomem3D';

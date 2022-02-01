@@ -19,7 +19,7 @@ export const GomemPlanetName = () => {
           transition={{ type: 'spring', stiffness: 1000, damping: 100 }}
         >
           <span className={styles.title}>{Planets[planet].name}</span>
-          <span className={styles.description}>{Planets[planet].desc}</span>
+          <span className={styles.description}>{Planets[planet].description}</span>
         </motion.p>
       </AnimatePresence>
     </motion.div>

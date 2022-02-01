@@ -8,7 +8,7 @@ interface ChevronIconProps {
 export const ChevronIcon = ({
   width = 16,
   height,
-  stroke = 7,
+  stroke = 1,
   right,
   bottom
 }: IconProps & ChevronIconProps) => {

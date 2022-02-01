@@ -1,5 +1,8 @@
 @import '../../mixin.scss';
 
+$default-background-color: #121415;
+$default-color: #BAD9E9;
+
 .page {
   position: fixed;
   left: 0;
@@ -9,10 +12,10 @@
 
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0s, opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: visibility 0.3s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   pointer-events: none;
 
-  background-color: #000;
+  background-color: $default-background-color;
   z-index: 100000;
 
   color: #FFF;
@@ -27,20 +30,17 @@
     position: relative;
 
     display: flex;
-
-    padding-top: 5vh;
+    gap: 100px;
 
     margin-left: auto;
     margin-right: auto;
 
-    flex-direction: column;
-
-    @media screen and (min-width: $maxTablet) {
-      min-width: $maxTablet;
+    @media screen and (min-width: #{$maxTablet * 1.25}) {
+      min-width: #{$maxTablet * 1.25};
       max-width: $maxPage;
     }
   
-    @media screen and (max-width: $maxTablet) {
+    @media screen and (max-width: #{$maxTablet * 1.25}) {
       max-width: unset;
       min-width: 90%;
       width: 90%;
@@ -54,18 +54,98 @@
 }
 
 .goBack {
-  position: relative;
-  width: 3em;
-  height: 3em;
+  position: absolute;
+  width: 15vw;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  display: flex;
+
+  cursor: pointer;
+
+  transform: translateX(0px);
+
+  transition: 0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    transition: 0.23s opacity cubic-bezier(0.19, 1, 0.22, 1);
+
+    background: rgba(48, 48, 48, 0.06);
+
+    opacity: 0;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 0.5;
+    }
+
+    transform: translateX(-10px);
+  }
 
   svg {
-    fill: white;
-    stroke: white;
+    fill: $default-color;
+    stroke: $default-color;
+
+    width: 2em;
+    height: 2em;
+
+    margin: auto;
   }
 }
 
-.planetTitle {
-  font-size: 3em;
-  font-weight: 900;
-  letter-spacing: -3px;
+.unitBrief {
+  position: relative;
+
+  min-width: 450px;
+  
+
+  font-size: 24px;
+  margin: auto;
+
+  color: $default-color;
+
+  .title, .description {
+    margin: 0;
+  }
+
+  .title {
+    font-size: 1.75em;
+    font-weight: 900;
+    letter-spacing: -3px;
+
+    margin-bottom: 8px;
+  }
+
+  .description {
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: -2px;
+
+    opacity: 0.5;
+  }
 }
+
+.unitContents {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  max-width: 50vw;
+
+  color: $default-color;
+
+  overflow-y: auto;
+
+  & > * {
+    margin-top: 15vh;
+  }
+}
+
