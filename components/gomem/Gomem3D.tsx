@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
 
@@ -13,7 +13,7 @@ import { GomemGlobe } from './Elements/GomemGlobe';
 import { IsedolGlobe } from './Elements/IsedolGlobe';
 import SpecterPlanet from './Elements/Specter';
 import { PlanetGroup } from './Elements/PlanetGroup';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { gomemActiveState } from '../../states/gomem/active';
 
 import styles from '../../styles/components/gomem/Gomem3D.module.scss';
@@ -23,9 +23,8 @@ import { gomemHoverState } from '../../states/gomem/hover';
 export const Gomem3DWithEvents = ({
   onPlanetHover,
   onPlanetClick,
-  renderActive
-}: Partial<Pick<Gomem3DProps, 'onPlanetClick' | 'onPlanetHover' | 'renderActive'>>) => {
-  const activeState = useRecoilValue(gomemActiveState);
+}: Partial<Pick<Gomem3DProps, 'onPlanetClick' | 'onPlanetHover'>>) => {
+  const [activeState, setActiveState] = useRecoilState(gomemActiveState);
   const [hoverState, setHoverState] = useRecoilState(gomemHoverState);
 
   const planetHoverHandler: PointerUpdateHandler = (scope, active, lx, ly, ld) => {
@@ -41,8 +40,28 @@ export const Gomem3DWithEvents = ({
   };
 
   const planetClickHandler = (name: PlanetKeys) => {
-    onPlanetClick && Planets[name] && onPlanetClick(name);
+    if (!Planets[name]) {
+      return;
+    }
+
+    if (Planets[name].isGomemUnit) {
+      setActiveState({
+        planet: activeState.planet,
+        detail: !activeState.detail
+      });
+    }
+
+    onPlanetClick && onPlanetClick(name);
   };
+
+  useEffect(() => {
+    return () => {
+      setActiveState({
+        planet: 'gomem',
+        detail: false
+      });
+    };
+  }, [setActiveState]);
 
   return (
     <div
@@ -52,7 +71,7 @@ export const Gomem3DWithEvents = ({
         planet={activeState.planet}
         onPlanetHover={planetHoverHandler}
         onPlanetClick={planetClickHandler}
-        renderActive={renderActive}
+        renderActive={!activeState.detail}
       ></Gomem3D>
     </div>
   );

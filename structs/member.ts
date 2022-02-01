@@ -39,6 +39,8 @@ export type IsedolMemberID =
   | 'gosegu'
   | 'viichan'
 
+export type GomemUnitID = 'specter' | 'firstQuarter' | 'lastQuarter' | 'science' | 'school'
+
 export type GomemMemberID = 'roentgenium'
 export type WakMemberID = 'wakgood'
 

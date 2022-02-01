@@ -1,4 +1,4 @@
-import { atom, selector } from 'recoil';
+import { atom, DefaultValue, selector } from 'recoil';
 import { PlanetKeys, PlanetKeysArray } from '../../components/gomem/Planets';
 
 interface GomemActiveState {
@@ -12,7 +12,7 @@ export const gomemActiveIndexState = atom<number>({
 });
 
 export const gomemActiveOtherState = atom<Omit<GomemActiveState, 'planet'>>({
-  key: 'gomemActiveotherState',
+  key: 'gomemActiveOtherState',
   default: {
     detail: false,
   },
@@ -28,5 +28,13 @@ export const gomemActiveState = selector<GomemActiveState>({
       planet: PlanetKeysArray[index],
       ...other,
     };
-  }
+  },
+  set: ({ set }, value) => {
+    if (!(value instanceof DefaultValue)) {
+      set(gomemActiveIndexState, PlanetKeysArray.indexOf(value.planet));
+      set(gomemActiveOtherState, {
+        detail: value.detail,
+      });
+    }
+  },
 });
