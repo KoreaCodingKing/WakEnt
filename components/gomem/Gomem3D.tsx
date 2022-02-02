@@ -1,6 +1,5 @@
 import { Suspense, useCallback, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Bloom, EffectComposer } from '@react-three/postprocessing';
 
 import { Stars } from '@react-three/drei';
 
@@ -104,7 +103,7 @@ export const Gomem3D = ({
       {...props}
     >
       <GomemCamera planet={planet}></GomemCamera>
-      <ambientLight intensity={0.05} />
+      <ambientLight intensity={0.1} />
       <pointLight position={[0, 0, 300]} />
       <Stars
         radius={200}
@@ -123,14 +122,14 @@ export const Gomem3D = ({
         </PlanetGroup>
       </Suspense>
       <Suspense fallback={null}>
-        <EffectComposer>
+        {/* <EffectComposer multisampling={0}>
           <Bloom
             luminanceThreshold={0}
             luminanceSmoothing={0}
             intensity={0.4}
             height={300}
           />
-        </EffectComposer>
+        </EffectComposer> */}
       </Suspense>
     </Canvas>
   );

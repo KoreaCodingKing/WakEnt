@@ -26,7 +26,6 @@ $default-overlay-color: #1B1F21;
     visibility: visible;
     pointer-events: auto;
   }
-
 }
 
 .innerPage {
@@ -244,6 +243,10 @@ $default-overlay-color: #1B1F21;
 
   &.flexColumn {
     flex-direction: column;
+  }
+
+  &.thumbnail {
+    aspect-ratio: 16 / 9;
   }
 
   & > .center {

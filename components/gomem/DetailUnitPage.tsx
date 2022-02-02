@@ -46,6 +46,7 @@ interface CardProps {
   flex?: boolean
   flexColumn?: boolean
   center?: boolean
+  thumbnail?: boolean
   centerColumn?: boolean
 }
 
@@ -55,6 +56,7 @@ const Card = ({
   padding,
   flex,
   flexColumn,
+  thumbnail,
   center,
   centerColumn,
 }: CardProps) => {
@@ -68,7 +70,8 @@ const Card = ({
         styles.card,
         padding && styles.padding,
         flex && styles.flex,
-        flexColumn && styles.flexColumn
+        flexColumn && styles.flexColumn,
+        thumbnail && styles.thumbnail
       )}
       whileHover='hover'
     >
@@ -195,13 +198,10 @@ export const DetailUnit = () => {
                 <Card index={5} padding>
                   <p>Fi</p>
                 </Card>
-                <Card index={6} padding>
+                <Card index={6} thumbnail>
                   <p>When?</p>
                 </Card>
-                <Card index={7} padding>
-                  <p>When?</p>
-                </Card>
-                <Card index={8} padding>
+                <Card index={7} thumbnail>
                   <p>When?</p>
                 </Card>
               </motion.div>
