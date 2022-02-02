@@ -91,6 +91,7 @@ const FirstSection = ({
         <motion.div className={styles.video} style={{ opacity: coverOpacity }}>
           <video autoPlay playsInline muted loop ref={video}>
             <source src='/videos/wakenter-full.webm'></source>
+            <source src='/videos/wakenter-full.mp4'></source>
           </video>
         </motion.div>
       </Centerize>
