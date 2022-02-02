@@ -1,5 +1,7 @@
 import { NextPage } from 'next';
-import { useEffect, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+
+import { unstable_batchedUpdates } from 'react-dom';
 
 import Image from 'next/image';
 
@@ -8,6 +10,7 @@ import { concatClass } from '../../utils/class';
 import Head from 'next/head';
 import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
 import PageIndicator from '../common/PageIndicator';
+import { usePageTurner } from '../../utils/state';
 
 const slides = [
   {
@@ -26,14 +29,9 @@ const slides = [
   },
 ];
 
+const slideRate = 7500;
+
 export const Main: NextPage = () => {
-  const [pauseAutoScroll] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const [time, setTime] = useState<NodeJS.Timeout>();
-  const [start, setStart] = useState<number>();
-  const [remain, setRemain] = useState<number|null>();
-
   const [openPlayer, setOpenPlayer] = useState<boolean>(false);
   const [youtubeID, setYoutubeID] = useState<string>('');
 
@@ -42,46 +40,18 @@ export const Main: NextPage = () => {
     setOpenPlayer(true);
   };
 
-  const scrollDelay = 7500;
   const slidesRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (start && openPlayer && time) {
-      setRemain(Math.abs(Date.now() - start - scrollDelay));
-      clearTimeout(time);
-      return;
-    }
-
-    setStart(Date.now());
-
-    if (start && !openPlayer && remain) {
-      setTime(
-        setTimeout(() => {
-          setCurrentSlide(currentSlide + 1 > slides.length - 1 ? 0 : currentSlide + 1);
-        }, remain)
-      );
-      setRemain(null);
-      return;
-    }
-
-    setTime(
-      setTimeout(() => {
-        setCurrentSlide(currentSlide + 1 > slides.length - 1 ? 0 : currentSlide + 1);
-      }, scrollDelay)
-    );
-
-    return () => {
-      if (!time) {
-        return;
-      }
-      clearTimeout(time);
-    };
-  }, [currentSlide, openPlayer, remain, scrollDelay, setCurrentSlide, start, time]);
+  const [slide, setSlide] = usePageTurner(
+    openPlayer,
+    slides.length - 1,
+    slideRate
+  );
 
   return (
     <div className={styles.isedol_main__container}>
       <Head>
-        <meta name='theme-color' content={slides[currentSlide].color}></meta>
+        <meta name='theme-color' content={slides[slide].color}></meta>
       </Head>
       <YouTubePlayerOverlay
         id={youtubeID}
@@ -93,7 +63,7 @@ export const Main: NextPage = () => {
           <Image
             className={concatClass(
               styles.backgroundImage,
-              currentSlide === i && styles.active
+              slide === i && styles.active
             )}
             blurDataURL={v.image}
             placeholder='blur'
@@ -108,7 +78,7 @@ export const Main: NextPage = () => {
         {slides.map((v, i) => (
           <section
             key={`page-${i}`}
-            data-current={currentSlide === i}
+            data-current={slide === i}
             className={styles.page}
           >
             <div className={styles.contents}>
@@ -128,11 +98,11 @@ export const Main: NextPage = () => {
       </div>
       <div className={styles.page_indicator}>
         <PageIndicator
-          page={currentSlide}
+          paused={openPlayer}
+          page={slide}
           pageCount={slides.length}
-          setPage={to => setCurrentSlide(to)}
-          slide={remain ? remain : scrollDelay}
-          playSlide={!openPlayer && !pauseAutoScroll}
+          setPage={to => setSlide(to)}
+          slide={slideRate}
         ></PageIndicator>
       </div>
     </div>

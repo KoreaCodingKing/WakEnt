@@ -1,4 +1,5 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { unstable_batchedUpdates } from "react-dom";
 
 /**
  * URL을 기반으로 상태를 업데이트하는 Hook입니다. React.useState와 같은 기능을 가지고 있습니다.
@@ -86,4 +87,61 @@ export const useNonNullState = <T extends unknown>(state: T): NonNullable<T> => 
   }, [state]);
 
   return nstate as NonNullable<T>;
+};
+
+/**
+ * `rate`에 설정한 시간이 지나면 자동으로 슬라이드를 넘겨주는 State를 구현하는 Hook입니다.
+ * @param paused 자동 슬라이드를 정지할 지에 대한 여부.
+ * @param max 최대 슬라이드 수.
+ * @param rate 자동 슬라이드 시간.
+ * @returns [현재 슬라이드, 슬라이드 Dispatch, 현재 슬라이드가 넘어갈 때까지 남은 시간]
+ */
+export const usePageTurner = (
+  paused: boolean,
+  max: number,
+  rate: number
+): [number, Dispatch<SetStateAction<number>>, number] => {
+  const [slide, setSlide] = useState(0);
+  const [remain, setRemain] = useState(rate);
+  const lastStateChange = useRef(Date.now());
+
+  /**
+   * Paused 상태인 경우 remain 시간을 마지막으로 state가 변경된 시간에서 얼마나 지났는지에 대한 시간으로 설정합니다.
+   */
+  useEffect(() => {
+    if (!paused) {
+      return;
+    }
+
+    if (!lastStateChange.current) {
+      return;
+    }
+
+    setRemain(remain - (Date.now() - lastStateChange.current));
+    lastStateChange.current = 0;
+  }, [paused, lastStateChange, remain]);
+
+  /**
+   * Remain 시간이 지나면 슬라이드를 넘깁니다.
+   */
+  useEffect(() => {
+    if (paused) {
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      unstable_batchedUpdates(() => {
+        setRemain(rate);
+        setSlide(slide + 1 > max ? 0 : slide + 1);
+      });
+    }, remain);
+
+    lastStateChange.current = Date.now();
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [paused, max, remain, slide, rate]);
+
+  return [slide, setSlide, remain];
 };

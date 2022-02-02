@@ -6,7 +6,7 @@ interface PageIndicatorProps {
   pageCount: number
   setPage: (to: number) => void
   slide?: number
-  playSlide?: boolean
+  paused?: boolean
 }
 
 export const PageIndicator = ({
@@ -14,10 +14,10 @@ export const PageIndicator = ({
   pageCount,
   setPage,
   slide,
-  playSlide,
+  paused,
 }: PageIndicatorProps) => {
   return (
-    <div className={styles.page_indicator}>
+    <div className={styles.pageIndicator}>
       {new Array(pageCount).fill(null).map((_, i) => (
         <button
           key={`page-indicator-${i}`}
@@ -26,10 +26,10 @@ export const PageIndicator = ({
         >
           <span
             className={concatClass(
-              !slide || playSlide ? styles.active : styles.paused,
+              !slide || !paused ? styles.active : styles.paused,
               typeof slide === 'number' && styles.animation
             )}
-            style={{ animationPlayState: playSlide ? 'initial' : 'paused',
+            style={{ animationPlayState: paused ? 'paused' : 'running',
               animationDuration: `${slide}ms` }}
           ></span>
         </button>

@@ -1,6 +1,6 @@
 @import "../../mixin.scss";
 
-.page_indicator {
+.pageIndicator {
   button {
     position: relative;
     width: 10px;
@@ -38,6 +38,7 @@
     .animation {
       transform: scaleX(0);
       animation: pageIndicator 5s linear;
+      animation-play-state: initial;
     }
   }
 
