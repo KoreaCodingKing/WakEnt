@@ -1,9 +1,9 @@
 import { NextPage } from 'next';
 
 import styles from '../../styles/components/zaun/ZaunIndex.module.scss';
-import WakEnterMetadata from '../../components/wakenter/Meta';
-import ZaunHeader from '../../components/zaun/ZaunHeader';
-import ZaunMain from '../../components/zaun/ZaunLeagueMain';
+import WakEnterMetadata from '../../../components/wakenter/Meta';
+import ZaunHeader from '../../../components/events/zaun/ZaunHeader';
+import ZaunMain from '../../../components/events/zaun/ZaunLeagueMain';
 
 const ZaunLeague: NextPage = (): JSX.Element => {
   return (

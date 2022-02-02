@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { concatClass } from '../../utils/class';
-import HeaderBase, { HeaderBaseProps } from '../common/Header';
+import { concatClass } from '../../../utils/class';
+import HeaderBase from '../../common/Header';
 
 import styles from '../../styles/components/zaun/ZaunHeader.module.scss';
 
