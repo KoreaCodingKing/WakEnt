@@ -1,7 +1,5 @@
 import { NextPage } from 'next';
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
-
-import { unstable_batchedUpdates } from 'react-dom';
+import { useRef, useState } from 'react';
 
 import Image from 'next/image';
 
