@@ -84,7 +84,7 @@
     .member {
       filter: saturate(50%);
 
-      &[data-active="true"] {
+      &.active {
         filter: saturate(100%);
       }
     }
@@ -313,7 +313,7 @@
     left: 0;
   }
 
-  &[data-active='true'] {
+  &.active {
     &::after {
       opacity: 0;
       visibility: hidden;

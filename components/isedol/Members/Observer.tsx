@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { IsedolMemberID } from "../../../structs/member";
+import { useEffect, useState } from 'react';
+import { IsedolMemberID } from '../../../structs/member';
 
 export const useIntersectionObserver = (
   target: React.RefObject<HTMLDivElement>,
@@ -29,7 +29,7 @@ export const useIntersectionObserver = (
       },
       {
         root: target.current,
-        threshold: 0.8
+        threshold: 0.8,
       }
     );
 
@@ -56,4 +56,41 @@ export const useIntersectionObserver = (
       observer.disconnect();
     };
   }, [active, observer, onIntersect, target, selector]);
+};
+
+export const useRect = (
+  ref: React.RefObject<HTMLDivElement>,
+  query: string
+) => {
+  const [rect, setRect] = useState<[DOMRect | undefined, DOMRect | undefined]>([
+    undefined,
+    undefined,
+  ]);
+
+  useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
+
+    const handler = () => {
+      const r = ref.current!.querySelector(query);
+
+      setRect([
+        ref.current!.getBoundingClientRect(),
+        r?.getBoundingClientRect(),
+      ]);
+    };
+
+    requestAnimationFrame(() => {
+      handler();
+    });
+
+    window.addEventListener('resize', handler);
+
+    return () => {
+      window.removeEventListener('resize', handler);
+    };
+  }, [ref, query]);
+
+  return rect;
 };

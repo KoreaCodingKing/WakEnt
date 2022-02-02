@@ -66,7 +66,11 @@ export const useScrollPage = (
 interface DynamicScrollOption {
   offset?: number
   debounce?: number
-  callback?: (page: number, pages: [boolean, number, number][], renderAll?: boolean) => void
+  callback?: (
+    page: number,
+    pages: [boolean, number, number][],
+    renderAll?: boolean
+  ) => void
 }
 
 /**
@@ -82,7 +86,7 @@ export const useDynamicPageScroll = (
   threshold: number,
   options: DynamicScrollOption = {
     offset: 0,
-    debounce: 0
+    debounce: 0,
   }
 ) => {
   const [page, setPage] = useState<number>(0);
@@ -94,9 +98,9 @@ export const useDynamicPageScroll = (
       return;
     }
 
-    const childs = target.querySelectorAll(pageSelector) as NodeListOf<
-      HTMLElement
-      >;
+    const childs = target.querySelectorAll(
+      pageSelector
+    ) as NodeListOf<HTMLElement>;
 
     const offset = options.offset || 0;
 
@@ -113,14 +117,23 @@ export const useDynamicPageScroll = (
         const ot = childs[i].offsetTop;
         const sh = childs[i].scrollHeight;
 
-        scrolls[i] = [top < ot + sh - offset, clamp(top - ot - offset, 0, sh), sh];
+        scrolls[i] = [
+          top < ot + sh - offset,
+          clamp(top - ot - offset, 0, sh),
+          sh,
+        ];
       }
 
       for (let i = 0; i < childs.length - 1; i++) {
         if (
           childs[i + 1]
-            ? top - offset < childs[i + 1].offsetTop - (target.scrollHeight * threshold)
-            : top - childs[i].offsetTop - (target.scrollHeight * threshold) - offset > 0
+            ? top - offset <
+              childs[i + 1].offsetTop - target.scrollHeight * threshold
+            : top -
+                childs[i].offsetTop -
+                target.scrollHeight * threshold -
+                offset >
+              0
         ) {
           finalPage = i;
 
@@ -145,10 +158,10 @@ export const useDynamicPageScroll = (
           clearTimeout(bounce);
         }
 
-        bounce = (setTimeout(
+        bounce = setTimeout(
           processScroll,
           options.debounce
-        ) as unknown) as number;
+        ) as unknown as number;
 
         return;
       }
@@ -175,9 +188,53 @@ export const useDynamicPageScroll = (
       window.removeEventListener('scroll', wheelHandler);
       window.removeEventListener('resize', fullHandler);
     };
-  }, [parent, page, pageSelector, options.offset, options.callback, options.debounce, threshold]);
+  }, [
+    parent,
+    page,
+    pageSelector,
+    options.offset,
+    options.callback,
+    options.debounce,
+    threshold,
+  ]);
 
   return page;
+};
+
+/**
+ * 마우스를 Y 방향으로 스크롤 할 경우에도 X 방향으로 스크롤이 될 수 있도록 유도하는 Hook입니다.
+ * @param targetRef 스크롤이 발생하는 요소
+ * @param active 활성화 여부. 주어지지 않으면 기본적으로 true로 설정됩니다.
+ */
+export const useHorizonalSlider = (
+  targetRef: RefObject<HTMLElement>,
+  active = true,
+) => {
+  useEffect(() => {
+    if (!active || !targetRef.current) {
+      return;
+    }
+
+    const target = targetRef.current!;
+
+    const wheelEventHandler = (ev: WheelEvent) => {
+      if (ev.deltaX) {
+        target.scrollBy({
+          left: ev.deltaX,
+        });
+      } else if (ev.deltaY && Math.abs(ev.deltaY) >= 1) {
+        target.scrollBy({
+          left: ev.deltaY,
+        });
+      }
+    };
+
+    target.addEventListener('wheel', wheelEventHandler);
+
+    return () => {
+      target.removeEventListener('wheel', wheelEventHandler);
+    };
+  }, [active, targetRef]);
 };
 
 export const useHorizonalPageScroller = (
@@ -188,7 +245,7 @@ export const useHorizonalPageScroller = (
 ): [boolean, number] => {
   const query = `screen and (max-width: ${threshold}px)`;
   const [active, setActive] = useState<boolean>(
-    !threshold || (process.browser) ? window.matchMedia(query).matches : false
+    !threshold || process.browser ? window.matchMedia(query).matches : false
   );
 
   const [page, setPage] = useState<number>(-1);
