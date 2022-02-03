@@ -202,6 +202,14 @@ export const GomembersSeason2
       },
       image: '',
       links: []
+    },
+    {
+      name: {
+        en: 'Roentgenium',
+        ko: '뢴트게늄'
+      },
+      image: '',
+      links: []
     }
   ]
 }
