@@ -16,7 +16,7 @@
   width: 80%;
   letter-spacing: -1px;
   opacity: 0.5;
-  font-size: 0.95em;
+  font-size: 0.9em;
 
   max-width: $maxPage;
 
@@ -24,12 +24,12 @@
     flex-direction: column;
     gap: 32px;
 
-    font-size: 0.9em;
+    font-size: 0.8em;
     max-width: unset;
   }
 
   @media screen and (max-width: $maxMobile) {
-    font-size: 0.85em;
+    font-size: 0.7em;
   }
 }
 
@@ -43,6 +43,7 @@
 
 .location, .disclaimer {
   margin: auto;
+  margin-top: unset;
   white-space: nowrap;
 }
 

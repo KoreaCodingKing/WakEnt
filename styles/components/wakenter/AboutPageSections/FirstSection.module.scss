@@ -123,7 +123,7 @@
         align-self: center;
 
         font-weight: 300;
-        font-size: 1.18em;
+        font-size: 1.1em;
         letter-spacing: -0.3px;
         line-height: 1.35;
         word-break: keep-all;
@@ -184,31 +184,7 @@
         }
 
         .subtitle {
-          font-size: 1em;
-        }
-      }
-
-      .first_section__img {
-        max-width: none;
-        width: 100%;
-        height: auto;
-        margin-left: none;
-        margin: 0 auto;
-        margin-bottom: 28px;
-      }
-
-      .first_section__introduce {
-        min-width: 200px;
-        max-width: 400px;
-        margin-left: 20px;
-
-        .introduce_title {
-          font-size: 1.5em;
-        }
-
-        .introduce_subtitle {
-          font-size: 0.8em;
-          line-height: 1.55;
+          font-size: 0.9em;
         }
       }
     }

@@ -36,4 +36,9 @@
   @media screen and (max-width: $maxTablet) {
     font-size: 4em;
   }
+
+  @media screen and (max-width: $maxMobile) {
+    white-space: nowrap;
+    font-size: 8vw;
+  }
 }
