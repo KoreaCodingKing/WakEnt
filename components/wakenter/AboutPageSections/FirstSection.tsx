@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import {
   motion,
@@ -14,6 +14,7 @@ import Centerize from '../../common/Centerize';
 
 import styles from '../../../styles/components/wakenter/AboutPageSections/FirstSection.module.scss';
 import { AboutSectionProps } from '../../../pages/about';
+import { isSupportWebM } from '../../../utils/video';
 
 const FirstSection = ({
   className,
@@ -44,6 +45,8 @@ const FirstSection = ({
   });
 
   const coverScaleTemplate = useMotionTemplate`scale(${coverScaleSpring})`;
+
+  const [supportWebM] = useState(isSupportWebM());
 
   /**
    * 스크롤이 발생할 때마다 스크롤 값을 받을 콜백을 지정합니다.
@@ -90,7 +93,11 @@ const FirstSection = ({
       <Centerize>
         <motion.div className={styles.video} style={{ opacity: coverOpacity }}>
           <video autoPlay playsInline muted loop ref={video}>
-            <source src='/videos/wakenter-full.webm'></source>
+            {supportWebM ? (
+              <source src='/videos/wakenter-full.webm'></source>
+            ) : (
+              <source src='/videos/wakenter-full.mp4'></source>
+            )}
           </video>
         </motion.div>
       </Centerize>

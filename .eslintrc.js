@@ -49,7 +49,9 @@ module.exports = {
     'no-extra-semi': 'error',
     'no-console': isProd ? ['error', { allow: ['warn', 'error'] }] : 'off',
     '@typescript-eslint/no-unnecessary-type-constraint': 'off',
-    '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/no-explicit-any': ['error', {
+      ignoreRestArgs: true
+    }],
     '@typescript-eslint/no-non-null-assertion': 'off',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': [
