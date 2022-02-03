@@ -9,12 +9,20 @@ export interface SocialLinks {
   link: string
 }
 
-export interface Member {
+export interface BasicMember {
   name: {
     en: string
     ko: string
   }
   image: string
+  links: SocialLinks[]
+}
+
+export interface GomemMember extends BasicMember {
+  category: GomemUnitID
+}
+
+export interface IsedolMember extends BasicMember {
   signNameImage: string
   signImage: string
   color: string
@@ -39,182 +47,223 @@ export type IsedolMemberID =
   | 'gosegu'
   | 'viichan'
 
-export type GomemUnitID = 'specter' | 'Gomem'
+export type GomemMemberID =
+  | 'Dandap'
+  | 'CallyCarly'
+  | 'Wakpago'
+  | 'BusinessKim'
+  | 'GwakChoonSik'
+  | 'GwonMin'
+  | 'GilHatnimSongi'
+  | 'DrDopamine'
+  | 'FriedShrimp'
+  | 'MitsuneHaku'
+  | 'HaeruSeok'
+  | 'DokgoHyeji'
+  | 'KimchiMandoo'
+  | 'SecretGirl'
+  | 'DeokSuLee'
+  | 'PoongSin'
+  | 'NegativePerson'
+  | 'HikiKing'
+  | 'Sophia'
+  | 'Roentgenium'
 
-export type GomemMemberID = 'roentgenium'
 export type WakMemberID = 'wakgood'
 
 export type WaktaverseMemberID = IsedolMemberID | GomemMemberID | WakMemberID
 
-export const GomembersSeason2
-  :Record<GomemUnitID, Partial<Pick<Member, 'name' | 'image' | 'links'>[]>> = {
-  specter: [
-    {
-      name: {
-        en: 'Dandap',
-        ko: '단답벌레'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Cally Carly Davidson',
-        ko: '캘리칼리 데이비슨'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Wakpago',
-        ko: '왁파고'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Business Kim',
-        ko: '비즈니스 킴'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Gwak Chun Sik',
-        ko: '곽춘식'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Gwon Min',
-        ko: '권민'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Gil Hatnim Song-i',
-        ko: '길햇님송이'
-      },
-      image: '',
-      links: []
-    }
-  ],
-  Gomem: [
-    {
-      name: {
-        en: 'DR. Dopamine',
-        ko: '도파민 박사'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Fried Shrimp',
-        ko: '새우튀김'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Mitsune Haku',
-        ko: '미츠네 하쿠'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'HaeruSeok',
-        ko: '해루석'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Dokgo HyeJi',
-        ko: '독고혜지'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'KimchiManduBEONYeonTaekSASEUGA',
-        ko: '김치만두번영택사스가'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Secret Girl',
-        ko: '비밀소녀'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Grandpa DeokSu Lee',
-        ko: '이덕수할아바이'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Pung Sin',
-        ko: '풍신'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Negative person',
-        ko: '부정형 인간'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Hiki king',
-        ko: '히키킹'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Sophia',
-        ko: '소피아'
-      },
-      image: '',
-      links: []
-    },
-    {
-      name: {
-        en: 'Roentgenium',
-        ko: '뢴트게늄'
-      },
-      image: '',
-      links: []
-    }
-  ]
+export const enum GomemUnit {
+  Specter = 'specter',
+  Gomem = 'gomem',
 }
 
-export const Members: Record<IsedolMemberID, Member> = {
+export type GomemUnitID = 'specter' | 'gomem'
+
+export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
+  Dandap: {
+    name: {
+      en: 'Dandap',
+      ko: '단답벌레',
+    },
+    category: GomemUnit.Specter,
+    image: '',
+    links: [],
+  },
+  CallyCarly: {
+    name: {
+      en: 'Cally Carly Davidson',
+      ko: '캘리칼리 데이비슨',
+    },
+    category: GomemUnit.Specter,
+    image: '',
+    links: [],
+  },
+  Wakpago: {
+    name: {
+      en: 'Wakpago',
+      ko: '왁파고',
+    },
+    category: GomemUnit.Specter,
+    image: '',
+    links: [],
+  },
+  BusinessKim: {
+    name: {
+      en: 'Business Kim',
+      ko: '비즈니스 킴',
+    },
+    category: GomemUnit.Specter,
+    image: '',
+    links: [],
+  },
+  GwakChoonSik: {
+    name: {
+      en: 'Gwak Choon Sik',
+      ko: '곽춘식',
+    },
+    category: GomemUnit.Specter,
+    image: '',
+    links: [],
+  },
+  GwonMin: {
+    name: {
+      en: 'Gwon Min',
+      ko: '권민',
+    },
+    category: GomemUnit.Specter,
+    image: '',
+    links: [],
+  },
+  GilHatnimSongi: {
+    name: {
+      en: 'Gil Hatnim Song-i',
+      ko: '길햇님송이',
+    },
+    category: GomemUnit.Specter,
+    image: '',
+    links: [],
+  },
+  DrDopamine: {
+    name: {
+      en: 'DR. Dopamine',
+      ko: '도파민 박사',
+    },
+    category: GomemUnit.Gomem,
+    image: '',
+    links: [],
+  },
+  FriedShrimp: {
+    name: {
+      en: 'Fried Shrimp',
+      ko: '새우튀김',
+    },
+    category: GomemUnit.Gomem,
+    image: '',
+    links: [],
+  },
+  MitsuneHaku: {
+    name: {
+      en: 'Mitsune Haku',
+      ko: '미츠네 하쿠',
+    },
+    category: GomemUnit.Gomem,
+    image: '',
+    links: [],
+  },
+  HaeruSeok: {
+    name: {
+      en: 'HaeruSeok',
+      ko: '해루석',
+    },
+    category: GomemUnit.Gomem,
+    image: '',
+    links: [],
+  },
+  DokgoHyeji: {
+    name: {
+      en: 'Dokgo HyeJi',
+      ko: '독고혜지',
+    },
+    category: GomemUnit.Gomem,
+    image: '',
+    links: [],
+  },
+  KimchiMandoo: {
+    name: {
+      en: 'KimchiMandooBEONYeonTaekSASEUGA',
+      ko: '김치만두번영택사스가',
+    },
+    category: GomemUnit.Gomem,
+    image: '',
+    links: [],
+  },
+  SecretGirl: {
+    name: {
+      en: 'Secret Girl',
+      ko: '비밀소녀',
+    },
+    category: GomemUnit.Gomem,
+    image: '',
+    links: [],
+  },
+  DeokSuLee: {
+    name: {
+      en: 'Grandpa DeokSu Lee',
+      ko: '이덕수할아바이',
+    },
+    category: GomemUnit.Gomem,
+    image: '',
+    links: [],
+  },
+  PoongSin: {
+    name: {
+      en: 'Poong Sin',
+      ko: '풍신',
+    },
+    category: GomemUnit.Gomem,
+    image: '',
+    links: [],
+  },
+  NegativePerson: {
+    name: {
+      en: 'Negative person',
+      ko: '부정형 인간',
+    },
+    category: GomemUnit.Gomem,
+    image: '',
+    links: [],
+  },
+  HikiKing: {
+    name: {
+      en: 'Hiki king',
+      ko: '히키킹',
+    },
+    category: GomemUnit.Gomem,
+    image: '',
+    links: [],
+  },
+  Sophia: {
+    name: {
+      en: 'Sophia',
+      ko: '소피아',
+    },
+    category: GomemUnit.Gomem,
+    image: '',
+    links: [],
+  },
+  Roentgenium: {
+    name: {
+      en: 'Roentgenium',
+      ko: '뢴트게늄',
+    },
+    category: GomemUnit.Gomem,
+    image: '',
+    links: [],
+  },
+};
+
+export const Members: Record<IsedolMemberID, IsedolMember> = {
   ine: {
     name: {
       en: 'INE',
@@ -300,7 +349,6 @@ export const Members: Record<IsedolMemberID, Member> = {
       fandom: '똥강아지',
     },
     links: [
-
       {
         name: 'Twitch',
         icon: 'twitch',
