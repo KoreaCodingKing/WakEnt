@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { concatClass } from '../../../utils/class';
 import HeaderBase from '../../common/Header';
 
-import styles from '../../styles/components/zaun/ZaunHeader.module.scss';
+import styles from '../../../styles/components/zaun/ZaunHeader.module.scss';
 
 interface WakEnterElementProps {
   className?: string
