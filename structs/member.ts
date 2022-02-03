@@ -39,12 +39,172 @@ export type IsedolMemberID =
   | 'gosegu'
   | 'viichan'
 
-export type GomemUnitID = 'specter' | 'firstQuarter' | 'lastQuarter' | 'science' | 'school'
+export type GomemID = 'specter' | 'Gomem'
 
 export type GomemMemberID = 'roentgenium'
 export type WakMemberID = 'wakgood'
 
 export type WaktaverseMemberID = IsedolMemberID | GomemMemberID | WakMemberID
+
+export const GomembersSeason2
+  :Record<GomemID, Partial<Pick<Member, 'name' | 'image' | 'links'>[]>> = {
+  specter: [
+    {
+      name: {
+        en: 'Dandap',
+        ko: '단답벌레'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Cally Carly Davidson',
+        ko: '캘리칼리 데이비슨'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Wakpago',
+        ko: '왁파고'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Business Kim',
+        ko: '비즈니스 킴'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Gwak Chun Sik',
+        ko: '곽춘식'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Gwon Min',
+        ko: '권민'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Gil Hatnim Song-i',
+        ko: '길햇님송이'
+      },
+      image: '',
+      links: []
+    }
+  ],
+  Gomem: [
+    {
+      name: {
+        en: 'DR. Dopamine',
+        ko: '도파민 박사'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Fried Shrimp',
+        ko: '새우튀김'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Mitsune Haku',
+        ko: '미츠네 하쿠'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'HaeruSeok',
+        ko: '해루석'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Dokgo HyeJi',
+        ko: '독고혜지'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'KimchiManduBEONYeonTaekSASEUGA',
+        ko: '김치만두번영택사스가'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Secret Girl',
+        ko: '비밀소녀'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Grandpa DeokSu Lee',
+        ko: '이덕수할아바이'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Pung Sin',
+        ko: '풍신'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Negative person',
+        ko: '부정형 인간'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Hiki king',
+        ko: '히키킹'
+      },
+      image: '',
+      links: []
+    },
+    {
+      name: {
+        en: 'Sophia',
+        ko: '소피아'
+      },
+      image: '',
+      links: []
+    }
+  ]
+}
 
 export const Members: Record<IsedolMemberID, Member> = {
   ine: {
