@@ -39,7 +39,7 @@ export type IsedolMemberID =
   | 'gosegu'
   | 'viichan'
 
-export type GomemID = 'specter' | 'Gomem'
+export type GomemUnitID = 'specter' | 'Gomem'
 
 export type GomemMemberID = 'roentgenium'
 export type WakMemberID = 'wakgood'
@@ -47,7 +47,7 @@ export type WakMemberID = 'wakgood'
 export type WaktaverseMemberID = IsedolMemberID | GomemMemberID | WakMemberID
 
 export const GomembersSeason2
-  :Record<GomemID, Partial<Pick<Member, 'name' | 'image' | 'links'>[]>> = {
+  :Record<GomemUnitID, Partial<Pick<Member, 'name' | 'image' | 'links'>[]>> = {
   specter: [
     {
       name: {
