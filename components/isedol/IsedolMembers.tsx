@@ -8,10 +8,9 @@ import { IsedolMemberID, Members } from '../../structs/member';
 import { useHorizonalSlider } from '../common/Scroll';
 
 import { useHashState, useNonNullState } from '../../utils/state';
-import { concatClass } from '../../utils/class';
 
 import { WakEnterLogoLink } from '../wakenter/WakEnterHeader';
-import { useIntersectionObserver, useRect } from './Members/Observer';
+import { useIntersectionObserver, useRect, useDebouncer } from './Members/Utils';
 import { useDeviceWidthLimiter } from '../../utils/device';
 
 import MemberCard from './Members/Card';
@@ -33,14 +32,10 @@ export const IsedolMembers: NextPage = () => {
     setCurrentHoverMember,
   ] = useState<IsedolMemberID | null>(null);
 
-  const container = useRef<HTMLDivElement>(null);
-  const member = useRef<HTMLDivElement>(null);
-  const membersCardCache: HTMLElement[] = [];
+  const container = useRef<HTMLDivElement>(null!);
+  const membersList = useRef<HTMLDivElement>(null!);
 
-  const [parentRect, cardRect] = useRect(
-    member,
-    `.${styles.member}.${styles.active}`
-  );
+  const [parentRect, cardRect] = useRect(membersList, `.${styles.member}`);
   const isMobile = useDeviceWidthLimiter(1124);
 
   useHorizonalSlider(container, isMobile && chosenMember === null);
@@ -54,51 +49,36 @@ export const IsedolMembers: NextPage = () => {
   );
 
   const scrollToTop = useCallback(() => {
-    container.current!.scrollTo({
+    container.current.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'smooth',
     });
   }, [container]);
 
+  /**
+   * 멤버가 변경된 경우 스크롤을 맨 처음으로 돌립니다.
+   */
   useEffect(() => {
     scrollToTop();
   }, [chosenMember, scrollToTop]);
 
-  useEffect(() => {
-    if (!isMobile || chosenMember) {
-      return;
-    }
-
-    requestAnimationFrame(() => {
-      const card = member.current!.querySelector(
-        `.${styles.member}:first-child`
-      ) as HTMLElement;
-      card.dataset.active = 'true';
-      setCurrentHoverMember(card.dataset.member as IsedolMemberID);
-    });
-  }, [chosenMember, isMobile]);
-
-  const hoverTimeout = useRef(0!);
+  const [run, cancel] = useDebouncer((id: IsedolMemberID | null) => {
+    setCurrentHoverMember(id);
+  }, 60);
 
   const onMemberCardMouseEnter = useCallback(
     (id: IsedolMemberID) => {
-      if (!isMobile && chosenMember === null) {
-        clearTimeout(hoverTimeout.current);
-      }
-
+      if (isMobile) return;
+      cancel();
       setCurrentHoverMember(id);
     },
-    [chosenMember, isMobile, hoverTimeout]
+    [isMobile, cancel]
   );
 
   const onMemberCardMouseOut = useCallback(() => {
-    if (!isMobile && chosenMember === null) {
-      hoverTimeout.current = (setTimeout(() => {
-        setCurrentHoverMember(null);
-      }, 60) as unknown) as number;
-    }
-  }, [chosenMember, isMobile]);
+    if (isMobile || chosenMember !== null) return;
+    run(null);
+  }, [chosenMember, isMobile, run]);
 
   const onMemberCardClick = useCallback(
     (id: IsedolMemberID) => {
@@ -107,19 +87,16 @@ export const IsedolMembers: NextPage = () => {
         return;
       }
 
-      if (isMobile && container.current) {
-        scrollToTop();
-      }
-
+      scrollToTop();
       setChosenMember(id);
     },
-    [chosenMember, isMobile, scrollToTop, setChosenMember]
+    [chosenMember, scrollToTop, setChosenMember]
   );
 
   const pageMember = currentHoverMember || chosenMember;
 
   return (
-    <div className={styles.isedol_members__container}>
+    <div className={styles.memberPageContainer}>
       <Head>
         <meta
           name='theme-color'
@@ -127,38 +104,29 @@ export const IsedolMembers: NextPage = () => {
         ></meta>
       </Head>
       <div
-        className={concatClass(
-          styles.inner_container,
-          chosenMember !== null && styles.active
-        )}
+        className={styles.container}
+        data-active={chosenMember !== null}
         data-member={pageMember}
         ref={container}
       >
         <div
-          className={concatClass(
-            styles.members_list,
-            chosenMember !== null && styles.chosen,
-            isMobile && styles.mobile
-          )}
-          ref={member}
-          data-member={chosenMember}
+          className={styles.membersList}
+          ref={membersList}
         >
           {(Object.keys(Members) as IsedolMemberID[]).map((id, i) => {
+            const state =
+              chosenMember !== null && chosenMember !== id
+                ? 'disappear'
+                : (!isMobile && pageMember === null) || pageMember === id
+                  ? 'active'
+                  : 'normal';
+
             return (
               <MemberCard
                 key={`member-card-${id}`}
                 id={id}
-                state={
-                  currentHoverMember === null || id === currentHoverMember
-                    ? 'active'
-                    : !!chosenMember && chosenMember !== id
-                      ? 'disappear'
-                      : undefined
-                }
+                state={state}
                 index={i}
-                ref={(element: HTMLDivElement) =>
-                  element && membersCardCache.push(element)
-                }
                 onMouseEnter={onMemberCardMouseEnter}
                 onMouseOut={onMemberCardMouseOut}
                 onClick={onMemberCardClick}
@@ -168,10 +136,7 @@ export const IsedolMembers: NextPage = () => {
         </div>
         {previousMember && (
           <div
-            className={concatClass(
-              styles.member_detail,
-              chosenMember !== null && styles.active
-            )}
+            className={styles.memberDetails}
             style={
               {
                 '--left': parentRect && `${parentRect.left + 32}px`,

@@ -3,14 +3,13 @@ import Image from 'next/image';
 import { Ref, useCallback } from 'react';
 import { IsedolMemberID, Members } from '../../../structs/member';
 import styles from '../../../styles/components/isedol/IsedolMembers.module.scss';
-import { concatClass } from '../../../utils/class';
 import Centerize from '../../common/Centerize';
 
 interface MemberCardProps {
   id: IsedolMemberID
   index: number
-  state?: 'active' | 'disappear'
-  ref: Ref<HTMLDivElement>
+  state?: 'active' | 'disappear' | 'normal'
+  ref?: Ref<HTMLDivElement>
   onMouseEnter?: (id: IsedolMemberID) => void
   onMouseOut?: (id: IsedolMemberID) => void
   onClick?: (id: IsedolMemberID) => void
@@ -39,7 +38,8 @@ export const MemberCard = ({
 
   return (
     <motion.div
-      className={concatClass(styles.member, state && styles[state])}
+      className={styles.member}
+      data-state={state}
       data-member={id}
       ref={ref}
       onMouseEnter={() => onMouseEnter && onMouseEnter(id)}

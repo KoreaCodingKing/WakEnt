@@ -1,11 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { IsedolMemberID } from '../../../structs/member';
 
+/**
+ * `target` 에서 `selector` 에 해당하는 요소를 찾아서 Intersect될 경우 `onIntersect` 에 Intersect된 요소의 멤버 이름을 담아 함수를 실행합니다.
+ * @param target
+ * @param selector
+ * @param active
+ * @param onIntersect
+ */
 export const useIntersectionObserver = (
   target: React.RefObject<HTMLDivElement>,
   selector: string,
   active: boolean,
-  onIntersect?: (id: IsedolMemberID | null) => void
+  onIntersect?: (id: IsedolMemberID | null, elem?: HTMLElement) => void
 ): void => {
   const [observer, setObserver] = useState<IntersectionObserver>(null!);
 
@@ -16,13 +23,16 @@ export const useIntersectionObserver = (
 
     const localObserver = new IntersectionObserver(
       entries => {
-        entries.forEach(entry => {
-          (entry.target as HTMLElement).dataset.active = `${entry.isIntersecting}`;
+        if (!active) {
+          return;
+        }
 
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             onIntersect &&
               onIntersect(
-                (entry.target as HTMLElement).dataset.member as IsedolMemberID
+                (entry.target as HTMLElement).dataset.member as IsedolMemberID,
+                entry.target as HTMLElement
               );
           }
         });
@@ -38,7 +48,7 @@ export const useIntersectionObserver = (
     return () => {
       localObserver.disconnect();
     };
-  }, [onIntersect, target]);
+  }, [active, onIntersect, target]);
 
   useEffect(() => {
     if (!active) {
@@ -58,6 +68,12 @@ export const useIntersectionObserver = (
   }, [active, observer, onIntersect, target, selector]);
 };
 
+/**
+ * (IsedolMembers 전용 Hook) 카드의 Rect 값을 구하기 위해 사용되는 Hook입니다.
+ * @param ref Ref
+ * @param query Query Selector
+ * @returns Rect 값
+ */
 export const useRect = (
   ref: React.RefObject<HTMLDivElement>,
   query: string
@@ -93,4 +109,36 @@ export const useRect = (
   }, [ref, query]);
 
   return rect;
+};
+
+/**
+ * Debounce를 구현하는 Debouncer입니다.
+ * @param func 실행할 함수
+ * @param delay 지연시간
+ * @returns [Debounce가 적용된 함수, Debounce를 취소하는 함수]
+ */
+export const useDebouncer = <T extends (...args: any[]) => unknown>(
+  func: T,
+  delay: number
+): [(...args: Parameters<T>) => void, () => void] => {
+  const timeout = useRef<number>(0);
+
+  const cancel = useCallback(() => {
+    clearTimeout(timeout.current);
+  }, []);
+
+  const run = useCallback(
+    (...args: Parameters<T>) => {
+      if (timeout.current) {
+        cancel();
+      }
+
+      timeout.current = (setTimeout(() => {
+        func(...args);
+      }, delay) as unknown) as number;
+    },
+    [delay, cancel, func]
+  );
+
+  return [run, cancel];
 };

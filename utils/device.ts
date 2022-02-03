@@ -14,8 +14,11 @@ export const useDeviceWidthLimiter = (threshold: number) => {
       return;
     }
 
+    const query = window.matchMedia(`screen and (max-width: ${threshold}px)`);
     const resizeHandler = (ev: MediaQueryListEvent) => setActive(ev.matches);
-    window.matchMedia(`screen and (max-width: ${threshold}px)`).addEventListener('change', resizeHandler);
+    query.addEventListener('change', resizeHandler);
+
+    setActive(query.matches);
   }, [threshold]);
 
   return active;
