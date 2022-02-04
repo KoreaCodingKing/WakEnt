@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { useState } from 'react';
 import { IsedolCover, MemberCover } from '../../structs/cover';
-import { IsedolMemberID, Members } from '../../structs/member';
+import { IsedolMemberID, IsedolMembers } from '../../structs/member';
 import styles from '../../styles/components/isedol/IsedolDiscography.module.scss';
 import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
 import AlbumCard from './AlbumCard';
@@ -51,7 +51,7 @@ export const IsedolDiscography: NextPage = () => {
       {Object.keys(MemberCover).map(member => (
         <section className={styles.section} key={`${member}-section`}>
           <h3 className={styles.sectionTitle}>
-            {Members[member as IsedolMemberID].name.ko}
+            {IsedolMembers[member as IsedolMemberID].name.ko}
           </h3>
           <div className={styles.grid}>
             {MemberCover[member as IsedolMemberID].map(cover => (

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Ref, useCallback } from 'react';
-import { IsedolMemberID, Members } from '../../../structs/member';
+import { IsedolMemberID, IsedolMembers } from '../../../structs/member';
 import styles from '../../../styles/components/isedol/IsedolMembers.module.scss';
 import Centerize from '../../common/Centerize';
 
@@ -24,7 +24,7 @@ export const MemberCard = ({
   onMouseOut,
   onClick,
 }: MemberCardProps) => {
-  const member = Members[id];
+  const member = IsedolMembers[id];
 
   const onClickHandler = useCallback(
     (ev: React.MouseEvent<HTMLDivElement, MouseEvent>) => {

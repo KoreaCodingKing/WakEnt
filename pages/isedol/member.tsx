@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import styles from '../../styles/components/isedol/IsedolIndex.module.scss';
 import IsedolHeader from '../../components/isedol/IsedolHeader';
-import IsedolMembers from '../../components/isedol/IsedolMembers';
+import IsedolMembersPage from '../../components/isedol/IsedolMembers';
 import IsedolMenuOverlay from '../../components/isedol/IsedolMenuOverlay';
 import WakEnterMetadata from '../../components/wakenter/Meta';
 
@@ -27,7 +27,7 @@ const IsedolPage: NextPage = (): JSX.Element => {
         ></IsedolHeader>
       </div>
       <div className={styles.isedol_contents}>
-        <IsedolMembers></IsedolMembers>
+        <IsedolMembersPage></IsedolMembersPage>
       </div>
     </div>
   );

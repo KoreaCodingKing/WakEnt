@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { NoticeSources } from '../../pages/api/notices';
-import { IsedolMemberID, Members, WakMemberID } from '../../structs/member';
+import { IsedolMemberID, IsedolMembers, WakMemberID } from '../../structs/member';
 import { NoticesAPI } from '../../structs/notices';
 
 import styles from '../../styles/components/isedol/IsedolNotices.module.scss';
@@ -49,7 +49,7 @@ const NoticeMember = ({
   member
 }: NoticeMemberText) => {
   const memberId = parseMemberFromString(member);
-  const memberColor = memberId && memberId === 'wakgood' ? '#164532' : Members[memberId as IsedolMemberID].color;
+  const memberColor = memberId && memberId === 'wakgood' ? '#164532' : IsedolMembers[memberId as IsedolMemberID].color;
 
   return <div className={styles.noticeMember} style={{
     '--color': memberColor,

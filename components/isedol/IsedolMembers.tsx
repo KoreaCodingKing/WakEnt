@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 import styles from '../../styles/components/isedol/IsedolMembers.module.scss';
 
-import { IsedolMemberID, Members } from '../../structs/member';
+import { IsedolMemberID, IsedolMembers } from '../../structs/member';
 import { useHorizonalSlider } from '../common/Scroll';
 
 import { useHashState, useNonNullState } from '../../utils/state';
@@ -22,7 +22,7 @@ interface DetailMemberCSS extends React.CSSProperties {
   '--width': string
 }
 
-export const IsedolMembers: NextPage = () => {
+export const IsedolMembersPage: NextPage = () => {
   const [chosenMember, setChosenMember] = useHashState<IsedolMemberID | null>(
     null
   );
@@ -100,7 +100,7 @@ export const IsedolMembers: NextPage = () => {
       <Head>
         <meta
           name='theme-color'
-          content={pageMember ? Members[pageMember].backgroundColor : '#0A0A0B'}
+          content={pageMember ? IsedolMembers[pageMember].backgroundColor : '#0A0A0B'}
         ></meta>
       </Head>
       <div
@@ -113,7 +113,7 @@ export const IsedolMembers: NextPage = () => {
           className={styles.membersList}
           ref={membersList}
         >
-          {(Object.keys(Members) as IsedolMemberID[]).map((id, i) => {
+          {(Object.keys(IsedolMembers) as IsedolMemberID[]).map((id, i) => {
             const state =
               chosenMember !== null && chosenMember !== id
                 ? 'disappear'
@@ -155,4 +155,4 @@ export const IsedolMembers: NextPage = () => {
   );
 };
 
-export default IsedolMembers;
+export default IsedolMembersPage;

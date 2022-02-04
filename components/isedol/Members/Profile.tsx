@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { IsedolMemberID, Members } from '../../../structs/member';
+import { IsedolMemberID, IsedolMembers } from '../../../structs/member';
 import styles from '../../../styles/components/isedol/IsedolMembers.module.scss';
 import ModelSlider from '../../common/ModelSlider';
 import SocialLink from './SocialLink';
@@ -9,7 +9,7 @@ interface MemberProfileProps {
 }
 
 export const MemberProfile = ({ id }: MemberProfileProps) => {
-  const member = Members[id];
+  const member = IsedolMembers[id];
 
   return (
     <div className={styles.profile}>
