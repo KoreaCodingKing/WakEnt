@@ -14,6 +14,10 @@ interface YouTubeCard {
 
 const Cards: YouTubeCard[] = [
   {
+    title: '왕이 된 고세구',
+    id: 'Uj0veiazH_A',
+  },
+  {
     title: 'It\'s Beginning To Look A Lot Like Christmas - ISEGYE IDOL',
     id: 'kNPykP_9wOQ',
   },
