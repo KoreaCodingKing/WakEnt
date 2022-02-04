@@ -47,7 +47,7 @@ export const Gomem3DWithEvents = ({
         return;
       }
 
-      if (Planets[name].isGomemUnit) {
+      if (Planets[name].unit) {
         setActiveState({
           planet: activeState.planet,
           detail: !activeState.detail,

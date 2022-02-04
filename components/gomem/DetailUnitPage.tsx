@@ -1,8 +1,14 @@
-import { AnimatePresence, motion, Variants } from 'framer-motion';
+import {
+  AnimatePresence,
+  AnimateSharedLayout,
+  motion,
+  Variants,
+} from 'framer-motion';
 import Image from 'next/image';
-import { ReactNode, useCallback, useEffect } from 'react';
+import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { gomemActiveState } from '../../states/gomem/active';
+import { GomemSeason2Members, GomemUnits } from '../../structs/member';
 
 import styles from '../../styles/components/gomem/DetailUnitPage.module.scss';
 import { concatClass } from '../../utils/class';
@@ -18,7 +24,12 @@ const variants: Variants = {
   visible: custom => ({
     opacity: 1,
     translateY: 0,
-    transition: { delay: (custom + 1) * 0.06, type: 'spring', stiffness: 100, damping: 10 },
+    transition: {
+      delay: (custom + 1) * 0.06,
+      type: 'spring',
+      stiffness: 100,
+      damping: 10,
+    },
   }),
 };
 
@@ -26,23 +37,29 @@ const cardVariants: Variants = {
   initial: {
     opacity: 0,
     rotateX: 30,
-    rotateY: -20
+    rotateY: -20,
   },
   visible: custom => ({
     opacity: 1,
     rotateX: 0,
     rotateY: 0,
-    transition: { delay: (custom + 1) * 0.06, type: 'spring', stiffness: 100, damping: 6 },
+    transition: {
+      delay: (custom + 1) * 0.06,
+      type: 'spring',
+      stiffness: 100,
+      damping: 6,
+    },
   }),
   hover: {
-    scale: 0.95
-  }
+    scale: 0.95,
+  },
 };
 
 interface CardProps {
   index?: number
   padding?: boolean
   children: ReactNode
+  normalSize?: boolean
   flex?: boolean
   flexColumn?: boolean
   center?: boolean
@@ -55,6 +72,7 @@ const Card = ({
   children,
   padding,
   flex,
+  normalSize,
   flexColumn,
   thumbnail,
   center,
@@ -70,6 +88,7 @@ const Card = ({
         styles.card,
         padding && styles.padding,
         flex && styles.flex,
+        normalSize && styles.normalSize,
         flexColumn && styles.flexColumn,
         thumbnail && styles.thumbnail
       )}
@@ -129,6 +148,14 @@ export const DetailUnit = () => {
 
   const planet = Planets[active.planet];
 
+  const [activeMember, setActiveMember] = useState<number | null>(null);
+
+  useEffect(() => {
+    setActiveMember(null);
+  }, [planet]);
+
+  const unit = planet.unit && GomemUnits[planet.unit];
+
   // TODO : Card Grid에 스크롤바 없이 부드럽게 스크롤할 수 있도록 구현
 
   return (
@@ -162,6 +189,40 @@ export const DetailUnit = () => {
                   {planet.description}
                 </motion.p>
               </div>
+              <div className={styles.members}>
+                {unit &&
+                  unit.members.map((key, index) => {
+                    const member = GomemSeason2Members[key];
+
+                    return (
+                      <motion.div
+                        custom={2 + index}
+                        key={`${key}-button-${active.detail}`}
+                        className={styles.memberButton}
+                        data-active={index === activeMember}
+                        initial='initial'
+                        animate='visible'
+                        variants={variants}
+                        onClick={() =>
+                          setActiveMember(activeMember === index ? null : index)
+                        }
+                      >
+                        <div className={styles.memberImage}>
+                          {member.image && (
+                            <Image
+                              src={member.image}
+                              width={100}
+                              height={100}
+                            />
+                          )}
+                        </div>
+                        <span className={styles.memberName}>
+                          {member.name.ko}
+                        </span>
+                      </motion.div>
+                    );
+                  })}
+              </div>
             </div>
             <div className={styles.unitContents}>
               <motion.div
@@ -170,19 +231,45 @@ export const DetailUnit = () => {
                 key={`grid-${active.detail}`}
               >
                 <Card index={0} padding center>
-                  <Image
-                    src={'/images/wakdoo.png'}
-                    width={145}
-                    height={300}
-                  ></Image>
+                  {unit &&
+                    activeMember !== null &&
+                    GomemSeason2Members[unit.members[activeMember]].image && (
+                    <Image
+                      src={GomemSeason2Members[unit.members[activeMember]].image}
+                      width={145}
+                      height={300}
+                    ></Image>
+                  )}
                 </Card>
-                <Card index={1} flex center>
-                  <div className={styles.memberMeta}>
-                    <h1>Member</h1>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                  </div>
+                <Card index={1} flex center normalSize>
+                  <AnimateSharedLayout>
+                    {unit && activeMember !== null && (
+                      <div className={styles.memberMeta}>
+                        <motion.h1
+                          layout
+                          initial='initial'
+                          animate='visible'
+                          variants={variants}
+                        >
+                          {
+                            GomemSeason2Members[unit.members[activeMember]].name
+                              .ko
+                          }
+                        </motion.h1>
+                        <motion.p
+                          layout
+                          initial='initial'
+                          animate='visible'
+                          variants={variants}
+                        >
+                          {
+                            GomemSeason2Members[unit.members[activeMember]]
+                              .description
+                          }
+                        </motion.p>
+                      </div>
+                    )}
+                  </AnimateSharedLayout>
                 </Card>
                 <Card index={2} padding>
                   <p>Hi</p>

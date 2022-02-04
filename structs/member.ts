@@ -18,7 +18,9 @@ export interface BasicMember {
   links: SocialLinks[]
 }
 
-export type GomemMember = BasicMember
+export interface GomemMember extends BasicMember {
+  description: string
+}
 
 export interface IsedolMember extends BasicMember {
   signNameImage: string
@@ -52,7 +54,6 @@ export type GomemMemberID =
   | 'BusinessKim'
   | 'GwakChoonSik'
   | 'GwonMin'
-  | 'GilHatnimSongi'
   | 'DrDopamine'
   | 'FriedShrimp'
   | 'MitsuneHaku'
@@ -85,11 +86,11 @@ export interface GomemUnitMetadata {
   members: GomemMemberID[]
 }
 
-export const GomemUnitMetadata: Record<GomemUnitID, GomemUnitMetadata> = {
+export const GomemUnits: Record<GomemUnitID, GomemUnitMetadata> = {
   [GomemUnit.Specter]: {
     name: '망령촌',
     description: '고멤이었던 자들의 무덤. 이들은 고멤에 한이 맺혀 망령으로 남아 있다.',
-    members: ['Dandap', 'CallyCarly', 'Wakpago', 'BusinessKim', 'GwakChoonSik', 'GwonMin', 'GilHatnimSongi'],
+    members: ['Dandap', 'CallyCarly', 'Wakpago', 'BusinessKim', 'GwakChoonSik', 'GwonMin'],
   },
   [GomemUnit.Gomem]: {
     name: '고멤 시즌 2',
@@ -109,6 +110,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Dandap',
       ko: '단답벌레',
     },
+    description: '단답.',
     image: '',
     links: [],
   },
@@ -117,6 +119,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Cally Carly Davidson',
       ko: '캘리칼리 데이비슨',
     },
+    description: '캘리칼리.',
     image: '',
     links: [],
   },
@@ -125,6 +128,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Wakpago',
       ko: '왁파고',
     },
+    description: '왁파고.',
     image: '',
     links: [],
   },
@@ -133,6 +137,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Business Kim',
       ko: '비즈니스 킴',
     },
+    description: '비킴.',
     image: '',
     links: [],
   },
@@ -141,6 +146,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Gwak Choon Sik',
       ko: '곽춘식',
     },
+    description: '춘식.',
     image: '',
     links: [],
   },
@@ -149,14 +155,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Gwon Min',
       ko: '권민',
     },
-    image: '',
-    links: [],
-  },
-  GilHatnimSongi: {
-    name: {
-      en: 'Gil Hatnim Song-i',
-      ko: '길햇님송이',
-    },
+    description: '권민.',
     image: '',
     links: [],
   },
@@ -165,6 +164,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'DR. Dopamine',
       ko: '도파민 박사',
     },
+    description: '도파민.',
     image: '',
     links: [],
   },
@@ -173,6 +173,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Fried Shrimp',
       ko: '새우튀김',
     },
+    description: '새우튀김.',
     image: '',
     links: [],
   },
@@ -181,6 +182,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Mitsune Haku',
       ko: '미츠네 하쿠',
     },
+    description: '하쿠.',
     image: '',
     links: [],
   },
@@ -189,6 +191,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'HaeruSeok',
       ko: '해루석',
     },
+    description: '루석.',
     image: '',
     links: [],
   },
@@ -197,6 +200,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Dokgo HyeJi',
       ko: '독고혜지',
     },
+    description: '혜지.',
     image: '',
     links: [],
   },
@@ -205,6 +209,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'KimchiMandooBEONYeonTaekSASEUGA',
       ko: '김치만두번영택사스가',
     },
+    description: '김치만두.',
     image: '',
     links: [],
   },
@@ -213,6 +218,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Secret Girl',
       ko: '비밀소녀',
     },
+    description: '비소.',
     image: '',
     links: [],
   },
@@ -221,6 +227,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Grandpa DeokSu Lee',
       ko: '이덕수할아바이',
     },
+    description: '하라바이.',
     image: '',
     links: [],
   },
@@ -229,6 +236,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Poong Sin',
       ko: '풍신',
     },
+    description: '풍신.',
     image: '',
     links: [],
   },
@@ -237,6 +245,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Negative person',
       ko: '부정형 인간',
     },
+    description: '부정형.',
     image: '',
     links: [],
   },
@@ -245,6 +254,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Hiki king',
       ko: '히키킹',
     },
+    description: '히키킹.',
     image: '',
     links: [],
   },
@@ -253,6 +263,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Sophia',
       ko: '소피아',
     },
+    description: '소피아.',
     image: '',
     links: [],
   },
@@ -261,6 +272,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Roentgenium',
       ko: '뢴트게늄',
     },
+    description: '뢴트.',
     image: '',
     links: [],
   },
