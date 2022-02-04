@@ -62,26 +62,6 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   jingburger: [
     {
-      title: 'ENVY BABY',
-      id: 'JywvDgXRRBM',
-    },
-    {
-      title: 'supercell - 네가 모르는 이야기',
-      id: 'g6U0VzqgKi0',
-    },
-    {
-      title: 'YUI - Rolling Star',
-      id: 'bjp2-eTndZs',
-    },
-    {
-      title: 'うまぴょい伝説',
-      id: 'Rf9WuEMIPmI',
-    },
-    {
-      title: 'Shinra-Bansho - 반짝이는 나머지 대전쟁',
-      id: '5IR-FkBa3Kk',
-    },
-    {
       title: 'PRODUCE 48 - 내꺼야',
       id: 'SQR0tzDvSVU',
     },
@@ -96,6 +76,15 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
     {
       title: '아이유 - 잔소리',
       id: 'KmOMHxhz4t0',
+    },
+    {
+      title: '온유, 이진아 - 밤과 별의 노래',
+      id: 'YJnDwPq2SZc',
+    },
+    {
+      title: 'YEE',
+      thumbnail: 'https://img.youtube.com/vi/5WuQZKT05Vs/mqdefault.jpg',
+      id: '5WuQZKT05Vs'
     },
     {
       title: 'JUST 4 U...',
