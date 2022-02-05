@@ -19,6 +19,7 @@ export const Planets: {
   gomem: {
     name: '고정멤버 시즌 2',
     description: '앙~ 킹아~',
+    unit: 'gomem',
   },
   specter: {
     name: '망령촌',
