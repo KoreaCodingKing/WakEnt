@@ -14,7 +14,7 @@ import {
 } from 'react';
 import { useRecoilState } from 'recoil';
 import { gomemActiveState } from '../../states/gomem/active';
-import { GomemSeason2Members, GomemUnits } from '../../structs/member';
+import { GomemSeason2Members, GomemUnitMetadata, GomemUnits } from '../../structs/member';
 
 import styles from '../../styles/components/gomem/DetailUnitPage.module.scss';
 import { concatClass } from '../../utils/class';
@@ -171,23 +171,24 @@ export const DetailUnit = () => {
     setState(active.detail ? active.planet : null);
   }, [active.planet, active.detail, setState]);
 
+  
   const close = useCallback(() => {
     setActiveState({
       planet: active.planet,
       detail: false,
     });
   }, [active.planet, setActiveState]);
-
+  
   const planet = Planets[active.planet];
-
+  
   const [activeMember, setActiveMember] = useState<number | null>(null);
-
+  const [unit, setUnit] = useState<GomemUnitMetadata | undefined>();
+  
   useEffect(() => {
     setActiveMember(null);
+    setUnit(planet.unit && GomemUnits[planet.unit]);
   }, [planet]);
-
-  const unit = planet.unit && GomemUnits[planet.unit];
-
+  
   // TODO : Card Grid에 스크롤바 없이 부드럽게 스크롤할 수 있도록 구현
 
   return (
@@ -268,8 +269,7 @@ export const DetailUnit = () => {
                   <>
                     <Card index={0} padding center template='1 1 1 6'>
                       {unit &&
-                        GomemSeason2Members[unit.members[activeMember]]
-                          .image && (
+                        GomemSeason2Members[unit.members[activeMember]].image && (
                         <Image
                           src={
                             GomemSeason2Members[unit.members[activeMember]]

@@ -111,7 +111,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '단답벌레',
     },
     description: '단답.',
-    image: '',
+    image: '/images/model/gomem/model_Dandap.png',
     links: [],
   },
   CallyCarly: {
