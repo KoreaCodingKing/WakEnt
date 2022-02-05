@@ -140,12 +140,12 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '비즈니스 킴',
     },
     description: '비킴.',
-    image: '/images/model/gomem/model_BusenessKim.png',
+    image: '/images/model/gomem/model_BusinessKim.png',
     links: [],
   },
   GwakChoonSik: {
     name: {
-      en: 'Gwak Choon Sik',
+      en: 'Gwak Chun Sik',
       ko: '곽춘식',
     },
     description: '춘식.',
@@ -154,11 +154,11 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
   },
   GwonMin: {
     name: {
-      en: 'Gwon Min',
+      en: 'Gown Min',
       ko: '권민',
     },
     description: '권민.',
-    image: '/images/model/gomem/model_Gownmin.png',
+    image: '/images/model/gomem/model_Gowmin.png',
     links: [],
   },
   DrDopamine: {
@@ -239,7 +239,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '풍신',
     },
     description: '풍신.',
-    image: '/images/model/gomem/model_PungSin.png',
+    image: '/images/model/gomem/model_PoogSin.png',
     links: [],
   },
   NegativePerson: {
