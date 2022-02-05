@@ -317,31 +317,31 @@ export const IsedolMembers: Record<IsedolMemberID, IsedolMember> = {
     modelImages: [
       {
         type: 'pose1',
-        image: '/images/model/ine/pose_1.png',
+        image: '/images/model/isedol/ine/pose_1.png',
       },
       {
         type: 'pose2',
-        image: '/images/model/ine/pose_2.png',
+        image: '/images/model/isedol/ine/pose_2.png',
       },
       {
         type: 'pose3',
-        image: '/images/model/ine/pose_3.png',
+        image: '/images/model/isedol/isedol/ine/pose_3.png',
       },
       {
         type: 'front',
-        image: '/images/model/ine/front.png',
+        image: '/images/model/isedol/ine/front.png',
       },
       {
         type: 'left',
-        image: '/images/model/ine/left.png',
+        image: '/images/model/isedol/ine/left.png',
       },
       {
         type: 'back',
-        image: '/images/model/ine/back.png',
+        image: '/images/model/isedol/ine/back.png',
       },
       {
         type: 'right',
-        image: '/images/model/ine/right.png',
+        image: '/images/model/isedol/ine/right.png',
       },
     ],
   },
@@ -388,27 +388,27 @@ export const IsedolMembers: Record<IsedolMemberID, IsedolMember> = {
     modelImages: [
       {
         type: 'pose1',
-        image: '/images/model/jingburger/pose_1.png',
+        image: '/images/model/isedol/jingburger/pose_1.png',
       },
       {
         type: 'pose2',
-        image: '/images/model/jingburger/pose_2.png',
+        image: '/images/model/isedol/jingburger/pose_2.png',
       },
       {
         type: 'front',
-        image: '/images/model/jingburger/front.png',
+        image: '/images/model/isedol/jingburger/front.png',
       },
       {
         type: 'left',
-        image: '/images/model/jingburger/left.png',
+        image: '/images/model/isedol/jingburger/left.png',
       },
       {
         type: 'back',
-        image: '/images/model/jingburger/back.png',
+        image: '/images/model/isedol/jingburger/back.png',
       },
       {
         type: 'right',
-        image: '/images/model/jingburger/right.png',
+        image: '/images/model/isedol/jingburger/right.png',
       },
     ],
   },
@@ -455,23 +455,23 @@ export const IsedolMembers: Record<IsedolMemberID, IsedolMember> = {
     modelImages: [
       {
         type: 'pose1',
-        image: '/images/model/lilpa/pose_1.png',
+        image: '/images/model/isedol/lilpa/pose_1.png',
       },
       {
         type: 'front',
-        image: '/images/model/lilpa/front.png',
+        image: '/images/model/isedol/lilpa/front.png',
       },
       {
         type: 'left',
-        image: '/images/model/lilpa/left.png',
+        image: '/images/model/isedol/lilpa/left.png',
       },
       {
         type: 'back',
-        image: '/images/model/lilpa/back.png',
+        image: '/images/model/isedol/lilpa/back.png',
       },
       {
         type: 'right',
-        image: '/images/model/lilpa/right.png',
+        image: '/images/model/isedol/lilpa/right.png',
       },
     ],
   },
@@ -513,23 +513,23 @@ export const IsedolMembers: Record<IsedolMemberID, IsedolMember> = {
     modelImages: [
       {
         type: 'pose1',
-        image: '/images/model/jururu/pose_1.png',
+        image: '/images/model/isedol/jururu/pose_1.png',
       },
       {
         type: 'front',
-        image: '/images/model/jururu/front.png',
+        image: '/images/model/isedol/jururu/front.png',
       },
       {
         type: 'left',
-        image: '/images/model/jururu/left.png',
+        image: '/images/model/isedol/jururu/left.png',
       },
       {
         type: 'back',
-        image: '/images/model/jururu/back.png',
+        image: '/images/model/isedol/jururu/back.png',
       },
       {
         type: 'right',
-        image: '/images/model/jururu/right.png',
+        image: '/images/model/isedol/jururu/right.png',
       },
     ],
   },
@@ -571,27 +571,27 @@ export const IsedolMembers: Record<IsedolMemberID, IsedolMember> = {
     modelImages: [
       {
         type: 'pose1',
-        image: '/images/model/gosegu/pose_1.png',
+        image: '/images/model/isedol/gosegu/pose_1.png',
       },
       {
         type: 'pose2',
-        image: '/images/model/gosegu/pose_2.png',
+        image: '/images/model/isedol/gosegu/pose_2.png',
       },
       {
         type: 'front',
-        image: '/images/model/gosegu/front.png',
+        image: '/images/model/isedol/gosegu/front.png',
       },
       {
         type: 'left',
-        image: '/images/model/gosegu/left.png',
+        image: '/images/model/isedol/gosegu/left.png',
       },
       {
         type: 'back',
-        image: '/images/model/gosegu/back.png',
+        image: '/images/model/isedol/gosegu/back.png',
       },
       {
         type: 'right',
-        image: '/images/model/gosegu/right.png',
+        image: '/images/model/isedol/gosegu/right.png',
       },
     ],
   },
@@ -643,23 +643,23 @@ export const IsedolMembers: Record<IsedolMemberID, IsedolMember> = {
     modelImages: [
       {
         type: 'pose1',
-        image: '/images/model/viichan/pose_1.png',
+        image: '/images/model/isedol/viichan/pose_1.png',
       },
       {
         type: 'front',
-        image: '/images/model/viichan/front.png',
+        image: '/images/model/isedol/viichan/front.png',
       },
       {
         type: 'left',
-        image: '/images/model/viichan/left.png',
+        image: '/images/model/isedol/viichan/left.png',
       },
       {
         type: 'back',
-        image: '/images/model/viichan/back.png',
+        image: '/images/model/isedol/viichan/back.png',
       },
       {
         type: 'right',
-        image: '/images/model/viichan/right.png',
+        image: '/images/model/isedol/viichan/right.png',
       },
     ],
   },
