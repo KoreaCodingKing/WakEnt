@@ -67,6 +67,8 @@ export type GomemMemberID =
   | 'HikiKing'
   | 'Sophia'
   | 'Roentgenium'
+  | 'DogCat'
+  | 'GilHatnim'
 
 export type WakMemberID = 'wakgood'
 
@@ -276,6 +278,24 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '',
     links: [],
   },
+  DogCat: {
+    name: {
+      en: 'DogCat',
+      ko: '개냥이'
+    },
+    description: '뢴트.',
+    image: '/images/model/gomem/model_DogCat.png',
+    links: [],
+  },
+  GilHatnim: {
+    name: {
+      en: 'Gil HatnimSong-e',
+      ko: '길햇님송이'
+    },
+    description: '길햇님.',
+    image: '',
+    links: [],
+  }
 };
 
 export const IsedolMembers: Record<IsedolMemberID, IsedolMember> = {

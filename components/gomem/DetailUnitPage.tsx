@@ -171,24 +171,24 @@ export const DetailUnit = () => {
     setState(active.detail ? active.planet : null);
   }, [active.planet, active.detail, setState]);
 
-  
+
   const close = useCallback(() => {
     setActiveState({
       planet: active.planet,
       detail: false,
     });
   }, [active.planet, setActiveState]);
-  
+
   const planet = Planets[active.planet];
-  
+
   const [activeMember, setActiveMember] = useState<number | null>(null);
   const [unit, setUnit] = useState<GomemUnitMetadata | undefined>();
-  
+
   useEffect(() => {
     setActiveMember(null);
     setUnit(planet.unit && GomemUnits[planet.unit]);
   }, [planet]);
-  
+
   // TODO : Card Grid에 스크롤바 없이 부드럽게 스크롤할 수 있도록 구현
 
   return (
