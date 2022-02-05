@@ -5,7 +5,13 @@ import {
   Variants,
 } from 'framer-motion';
 import Image from 'next/image';
-import { ReactNode, useCallback, useEffect, useState } from 'react';
+import {
+  CSSProperties,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { useRecoilState } from 'recoil';
 import { gomemActiveState } from '../../states/gomem/active';
 import { GomemSeason2Members, GomemUnits } from '../../structs/member';
@@ -55,10 +61,22 @@ const cardVariants: Variants = {
   },
 };
 
+type ColumnRowType = number | 'auto';
+type CardTemplateString = `${ColumnRowType} ${ColumnRowType} ${ColumnRowType} ${ColumnRowType}`;
+
+interface CardStyles extends CSSProperties {
+  '--cs': string
+  '--ce': string
+  '--rs': string
+  '--re': string
+}
+
 interface CardProps {
   index?: number
   padding?: boolean
   children: ReactNode
+  className?: string
+  template?: CardTemplateString
   normalSize?: boolean
   flex?: boolean
   flexColumn?: boolean
@@ -72,12 +90,16 @@ const Card = ({
   children,
   padding,
   flex,
+  className,
+  template,
   normalSize,
   flexColumn,
   thumbnail,
   center,
   centerColumn,
 }: CardProps) => {
+  const templateArray = template && template.split(' ');
+
   return (
     <motion.div
       custom={index}
@@ -90,9 +112,19 @@ const Card = ({
         flex && styles.flex,
         normalSize && styles.normalSize,
         flexColumn && styles.flexColumn,
-        thumbnail && styles.thumbnail
+        thumbnail && styles.thumbnail,
+        className
       )}
       whileHover='hover'
+      style={
+        templateArray &&
+        ({
+          '--cs': templateArray[0],
+          '--ce': templateArray[1],
+          '--rs': templateArray[2],
+          '--re': templateArray[3],
+        } as CardStyles)
+      }
     >
       {center ? (
         <div
@@ -230,67 +262,81 @@ export const DetailUnit = () => {
                 className={styles.grid}
                 key={`grid-${active.detail}`}
               >
-                <Card index={0} padding center>
-                  {unit &&
-                    activeMember !== null &&
-                    GomemSeason2Members[unit.members[activeMember]].image && (
-                    <Image
-                      src={GomemSeason2Members[unit.members[activeMember]].image}
-                      width={145}
-                      height={300}
-                    ></Image>
-                  )}
-                </Card>
-                <Card index={1} flex center normalSize>
-                  <AnimateSharedLayout>
-                    {unit && activeMember !== null && (
-                      <div className={styles.memberMeta}>
-                        <motion.h1
-                          layout
-                          initial='initial'
-                          animate='visible'
-                          variants={variants}
-                        >
-                          {
-                            GomemSeason2Members[unit.members[activeMember]].name
-                              .ko
-                          }
-                        </motion.h1>
-                        <motion.p
-                          layout
-                          initial='initial'
-                          animate='visible'
-                          variants={variants}
-                        >
-                          {
+                {activeMember === null ? (
+                  <></>
+                ) : (
+                  <>
+                    <Card index={0} padding center template='1 1 1 6'>
+                      {unit &&
+                        GomemSeason2Members[unit.members[activeMember]]
+                          .image && (
+                        <Image
+                          src={
                             GomemSeason2Members[unit.members[activeMember]]
-                              .description
+                              .image
                           }
-                        </motion.p>
-                      </div>
-                    )}
-                  </AnimateSharedLayout>
-                </Card>
-                <Card index={2} padding>
-                  <p>Hi</p>
-                  <p>Hi</p>
-                  <p>Hi</p>
-                </Card>
-                <Card index={3} padding>
-                  <p>Spotify</p>
-                </Card>
-                <Card index={4} padding>
-                  <p>Hi</p>
-                </Card>
-                <Card index={5} padding>
-                  <p>Fi</p>
-                </Card>
-                <Card index={6} thumbnail>
-                  <p>When?</p>
-                </Card>
-                <Card index={7} thumbnail>
-                  <p>When?</p>
-                </Card>
+                          width={145}
+                          height={300}
+                        ></Image>
+                      )}
+                    </Card>
+                    <Card
+                      index={1}
+                      flex
+                      center
+                      normalSize
+                      template='auto auto 1 3'
+                      className={styles.descriptionCard}
+                    >
+                      <AnimateSharedLayout>
+                        {unit && (
+                          <div className={styles.memberMeta}>
+                            <motion.h1
+                              layout
+                              initial='initial'
+                              animate='visible'
+                              variants={variants}
+                            >
+                              {
+                                GomemSeason2Members[unit.members[activeMember]]
+                                  .name.ko
+                              }
+                            </motion.h1>
+                            <motion.p
+                              layout
+                              initial='initial'
+                              animate='visible'
+                              variants={variants}
+                            >
+                              {
+                                GomemSeason2Members[unit.members[activeMember]]
+                                  .description
+                              }
+                            </motion.p>
+                          </div>
+                        )}
+                      </AnimateSharedLayout>
+                    </Card>
+                    <Card index={2} thumbnail template='auto auto 3 6'>
+                      <h3>Image goes here.</h3>
+                      <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing
+                        elit. Sunt ex, fuga quos saepe temporibus culpa
+                        quibusdam aliquam vel ipsa odio quam facere modi quo
+                        quidem deleniti assumenda facilis. Officia, sapiente?
+                      </p>
+                    </Card>
+                    <Card index={3} padding>
+                      <p>Hi</p>
+                    </Card>
+                    <Card index={4} padding>
+                      <p>Fi</p>
+                    </Card>
+                    <Card index={5} padding>
+                      <p>When?</p>
+                    </Card>
+                  </>
+                )}
               </motion.div>
             </div>
           </div>

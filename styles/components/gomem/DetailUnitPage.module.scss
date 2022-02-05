@@ -223,6 +223,8 @@ $default-overlay-color: #1b1f21;
 
   display: flex;
 
+  user-select: none;
+
   transition: 0.23s background cubic-bezier(0.19, 1, 0.22, 1);
 
   background-color: $default-overlay-color;
@@ -290,6 +292,11 @@ $default-overlay-color: #1b1f21;
 
   border-radius: 16px;
 
+  grid-column-start: var(--cs, auto);
+  grid-column-start: var(--ce, auto);
+  grid-row-start: var(--rs, auto);
+  grid-row-end: var(--re, auto);
+
   &.padding {
     padding: 26px 32px;
 
@@ -297,6 +304,8 @@ $default-overlay-color: #1b1f21;
       padding: 13px 16px;
     }
   }
+
+  user-select: none;
 
   &.normalSize {
     min-width: 80%;
@@ -341,4 +350,8 @@ $default-overlay-color: #1b1f21;
   display: flex;
   flex-direction: column;
   max-width: 100%;
+}
+
+.descriptionCard {
+  min-height: 200px;
 }
