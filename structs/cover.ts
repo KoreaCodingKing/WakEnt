@@ -28,58 +28,50 @@ export const IsedolCover: YouTubeVideo[] = [
 export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ine: [
     {
-      title: '아이유 - 봄 안녕 봄',
-      id: 'oUcoC7V6tgw',
-    },
-    {
-      title: '아이유 - 라일락 (Citypop Remix)',
-      id: 'mGEFsIM5TvE',
-    },
-    {
-      title: '아이묭(あいみょん) - 마리골드(マリーゴールド)',
-      id: 'KoNBf6IT0k0',
-    },
-    {
-      title: '연습실 1절 라이브 모음',
-      id: '_klX8vJo4Co',
-    },
-    {
-      title: '라이브 플레이리스트',
-      id: 'H4bhRn2c8Cc',
-    },
-    {
-      title: '"Here Comes a Thought" - Steven Universe',
-      id: 'TeC8sgoCOfc',
+      title: '스즈미야 하루히의 우울 - God knows...',
+      id: '-in8F0zmLcM',
     },
     {
       title: '선우정아 - 고양이 (with 비챤)',
       id: '4xZYZTWH0qk',
     },
     {
-      title: '스즈미야 하루히의 우울 - God knows...',
-      id: '-in8F0zmLcM',
+      title: '"Here Comes a Thought" - Steven Universe',
+      id: 'TeC8sgoCOfc',
     },
+    {
+      title: '라이브 플레이리스트',
+      id: 'H4bhRn2c8Cc',
+    },
+    {
+      title: '연습실 1절 라이브 모음',
+      id: '_klX8vJo4Co',
+    },
+    {
+      title: '아이묭(あいみょん) - 마리골드(マリーゴールド)',
+      id: 'KoNBf6IT0k0',
+    },
+    {
+      title: '아이유 - 라일락 (Citypop Remix)',
+      id: 'mGEFsIM5TvE',
+    },
+    {
+      title: '아이유 - 봄 안녕 봄',
+      id: 'oUcoC7V6tgw',
+    }
   ],
   jingburger: [
     {
-      title: 'PRODUCE 48 - 내꺼야',
-      id: 'SQR0tzDvSVU',
+      title: '킬리만자로의 표범 cover',
+      id: 'vYepDd1QTAs'
     },
     {
-      title: '호쇼마린 - Ahoy!! 우리는 버거해적단☆',
-      id: '7E_cZ9eU3ZE',
+      title: 'Choose me (Korean Cover.)',
+      id: 'G0g3d6b5CZM'
     },
     {
-      title: 'おめシス × YuNi - Happy Halloween',
-      id: 'zjZpfpRkHJs',
-    },
-    {
-      title: '아이유 - 잔소리',
-      id: 'KmOMHxhz4t0',
-    },
-    {
-      title: '온유, 이진아 - 밤과 별의 노래',
-      id: 'YJnDwPq2SZc',
+      title: 'JUST 4 U...',
+      id: 'kUxzmSyxwzQ',
     },
     {
       title: 'YEE',
@@ -87,33 +79,49 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
       id: '5WuQZKT05Vs'
     },
     {
-      title: 'JUST 4 U...',
-      id: 'kUxzmSyxwzQ',
+      title: '온유, 이진아 - 밤과 별의 노래',
+      id: 'YJnDwPq2SZc',
     },
     {
-      title: 'Choose me (Korean Cover.)',
-      id: 'G0g3d6b5CZM'
+      title: '아이유 - 잔소리',
+      id: 'KmOMHxhz4t0',
+    },
+    {
+      title: 'おめシス × YuNi - Happy Halloween',
+      id: 'zjZpfpRkHJs',
+    },
+    {
+      title: '호쇼마린 - Ahoy!! 우리는 버거해적단☆',
+      id: '7E_cZ9eU3ZE',
+    },
+    {
+      title: 'PRODUCE 48 - 내꺼야',
+      id: 'SQR0tzDvSVU',
     }
   ],
   lilpa: [
     {
-      title: 'LiSA - 불꽃 (炎)',
-      id: 'FAEARaip0rM',
-    },
-    {
-      title: 'Chicago - Roxie',
-      id: 'WS-bGFcPf9I',
+      title: 'Never Enough (The Greatest Showman OST)',
+      id: 'oRiQHxft2mY'
     },
     {
       title: '에픽세븐 OST - Promise',
       id: '6hEvgKL0ClA',
     },
     {
-      title: 'Never Enough (The Greatest Showman OST)',
-      id: 'oRiQHxft2mY'
+      title: 'Chicago - Roxie',
+      id: 'WS-bGFcPf9I',
+    },
+    {
+      title: 'LiSA - 불꽃 (炎)',
+      id: 'FAEARaip0rM',
     }
   ],
   jururu: [
+    {
+      title: 'Choose me (Korean Cover.)',
+      id: 'G0g3d6b5CZM'
+    },
     {
       title: 'M@STERPIECE, 아틀란티스 소녀',
       id: 'WItY2T5zz1A',
@@ -121,34 +129,30 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
     {
       title: '호쇼마린 - Ahoy!! 우리는 호쇼해적단☆',
       id: '8kuevWdt01M',
-    },
-    {
-      title: 'Choose me (Korean Cover.)',
-      id: 'G0g3d6b5CZM'
     }
   ],
   gosegu: [
     {
-      title: '사쿠란보로 킹받게 하는 버츄얼 아이돌',
-      thumbnail: 'https://img.youtube.com/vi/7GyW2INMluY/mqdefault.jpg',
-      id: '7GyW2INMluY',
-    },
-    {
-      title: '뢴트게늄 - 노예',
-      id: '_PJvRDp4S5s',
-    },
-    {
-      title: '별이 되지 않아도 돼 - 109',
-      id: 'h5yU8WZsB9g',
+      title: '팬서비스 - mona [HoneyWorks]',
+      id: 'DPEtmqvaKqY',
     },
     {
       title: '천양 다이노스 공식 응원가',
       id: '5aIUBhw7CVc',
     },
     {
-      title: '팬서비스 - mona [HoneyWorks]',
-      id: 'DPEtmqvaKqY',
+      title: '별이 되지 않아도 돼 - 109',
+      id: 'h5yU8WZsB9g',
     },
+    {
+      title: '뢴트게늄 - 노예',
+      id: '_PJvRDp4S5s',
+    },
+    {
+      title: '사쿠란보로 킹받게 하는 버츄얼 아이돌',
+      thumbnail: 'https://img.youtube.com/vi/7GyW2INMluY/mqdefault.jpg',
+      id: '7GyW2INMluY',
+    }
   ],
   viichan: [
     {
