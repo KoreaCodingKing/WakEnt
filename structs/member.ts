@@ -67,6 +67,8 @@ export type GomemMemberID =
   | 'HikiKing'
   | 'Sophia'
   | 'Roentgenium'
+  | 'DogCat'
+  | 'GilHatnim'
 
 export type WakMemberID = 'wakgood'
 
@@ -120,7 +122,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '캘리칼리 데이비슨',
     },
     description: '캘리칼리.',
-    image: '',
+    image: '/images/model/gomem/model_CallyCarly.png',
     links: [],
   },
   Wakpago: {
@@ -129,7 +131,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '왁파고',
     },
     description: '왁파고.',
-    image: '',
+    image: '/images/model/gomem/model_WakPago.png',
     links: [],
   },
   BusinessKim: {
@@ -138,25 +140,25 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '비즈니스 킴',
     },
     description: '비킴.',
-    image: '',
+    image: '/images/model/gomem/model_BusinessKim.png',
     links: [],
   },
   GwakChoonSik: {
     name: {
-      en: 'Gwak Choon Sik',
+      en: 'Gwak Chun Sik',
       ko: '곽춘식',
     },
     description: '춘식.',
-    image: '',
+    image: '/images/model/gomem/model_ChunSik.png',
     links: [],
   },
   GwonMin: {
     name: {
-      en: 'Gwon Min',
+      en: 'Gown Min',
       ko: '권민',
     },
     description: '권민.',
-    image: '',
+    image: '/images/model/gomem/model_Gowmin.png',
     links: [],
   },
   DrDopamine: {
@@ -174,7 +176,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '새우튀김',
     },
     description: '새우튀김.',
-    image: '',
+    image: '/images/model/gomem/model_FriedShrimp.png',
     links: [],
   },
   MitsuneHaku: {
@@ -183,7 +185,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '미츠네 하쿠',
     },
     description: '하쿠.',
-    image: '',
+    image: '/images/model/gomem/model_Haku.png',
     links: [],
   },
   HaeruSeok: {
@@ -192,7 +194,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '해루석',
     },
     description: '루석.',
-    image: '',
+    image: '/images/model/gomem/model_HaeruSeok.png',
     links: [],
   },
   DokgoHyeji: {
@@ -201,7 +203,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '독고혜지',
     },
     description: '혜지.',
-    image: '',
+    image: '/images/model/gomem/model_HyeJi.png',
     links: [],
   },
   KimchiMandoo: {
@@ -210,7 +212,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '김치만두번영택사스가',
     },
     description: '김치만두.',
-    image: '',
+    image: '/images/model/gomem/model_KimchiMandu.png',
     links: [],
   },
   SecretGirl: {
@@ -219,7 +221,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '비밀소녀',
     },
     description: '비소.',
-    image: '',
+    image: '/images/model/gomem/model_SecretGirl.png',
     links: [],
   },
   DeokSuLee: {
@@ -228,7 +230,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '이덕수할아바이',
     },
     description: '하라바이.',
-    image: '',
+    image: '/images/model/gomem/model_DeokSu.png',
     links: [],
   },
   PoongSin: {
@@ -237,7 +239,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '풍신',
     },
     description: '풍신.',
-    image: '',
+    image: '/images/model/gomem/model_PoogSin.png',
     links: [],
   },
   NegativePerson: {
@@ -246,7 +248,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '부정형 인간',
     },
     description: '부정형.',
-    image: '',
+    image: '/images/model/gomem/model_NegativePerson.png',
     links: [],
   },
   HikiKing: {
@@ -255,7 +257,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '히키킹',
     },
     description: '히키킹.',
-    image: '',
+    image: '/images/model/gomem/model_HikiKing.png',
     links: [],
   },
   Sophia: {
@@ -264,7 +266,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '소피아',
     },
     description: '소피아.',
-    image: '',
+    image: '/images/model/gomem/model_Sophia.png',
     links: [],
   },
   Roentgenium: {
@@ -276,6 +278,24 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '',
     links: [],
   },
+  DogCat: {
+    name: {
+      en: 'DogCat',
+      ko: '개냥이'
+    },
+    description: '뢴트.',
+    image: '/images/model/gomem/model_DogCat.png',
+    links: [],
+  },
+  GilHatnim: {
+    name: {
+      en: 'Gil HatnimSong-e',
+      ko: '길햇님송이'
+    },
+    description: '길햇님.',
+    image: '',
+    links: [],
+  }
 };
 
 export const IsedolMembers: Record<IsedolMemberID, IsedolMember> = {
