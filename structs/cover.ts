@@ -62,6 +62,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   jingburger: [
     {
+      title: '킬리만자로의 표범 cover',
+      id: 'vYepDd1QTAs'
+    },
+    {
       title: 'Choose me (Korean Cover.)',
       id: 'G0g3d6b5CZM'
     },
