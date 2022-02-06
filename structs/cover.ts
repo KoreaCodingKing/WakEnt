@@ -115,16 +115,16 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   jururu: [
     {
+      title: 'Choose me (Korean Cover.)',
+      id: 'G0g3d6b5CZM'
+    },
+    {
       title: 'M@STERPIECE, 아틀란티스 소녀',
       id: 'WItY2T5zz1A',
     },
     {
       title: '호쇼마린 - Ahoy!! 우리는 호쇼해적단☆',
       id: '8kuevWdt01M',
-    },
-    {
-      title: 'Choose me (Korean Cover.)',
-      id: 'G0g3d6b5CZM'
     }
   ],
   gosegu: [
