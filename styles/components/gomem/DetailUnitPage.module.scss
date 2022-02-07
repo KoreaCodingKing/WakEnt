@@ -53,6 +53,7 @@ $default-overlay-color: #1b1f21;
       flex-direction: column;
 
       overflow-y: auto;
+      overflow-x: hidden;
     }
   }
 }
@@ -205,6 +206,10 @@ $default-overlay-color: #1b1f21;
 
   & > * {
     margin-top: 15vh;
+
+    @media screen and (max-width: $maxTablet) {
+      margin-top: unset;
+    }
   }
 
   @media screen and (max-width: $maxTablet) {
@@ -287,6 +292,9 @@ $default-overlay-color: #1b1f21;
 .card {
   background: #1b1f21;
 
+  position: relative;
+  overflow: hidden;
+
   min-width: 100px;
   min-height: 100px;
 
@@ -349,9 +357,41 @@ $default-overlay-color: #1b1f21;
   position: relative;
   display: flex;
   flex-direction: column;
-  max-width: 100%;
+  width: 100%;
+
+  h1 {
+    margin-bottom: 0.15em;
+    letter-spacing: -3px;
+  }
+
+  p {
+    margin: auto;
+    max-width: 80%;
+    letter-spacing: -1px;
+    line-height: 1.25;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    h1 {
+      font-size: 1.5em;
+    }
+
+    p {
+      font-size: 0.8em;
+      letter-spacing: -0.5px;
+    }
+  }
 }
 
 .descriptionCard {
   min-height: 200px;
+}
+
+.cardMemberImage {
+  border-radius: 16px;
+  aspect-ratio: 9 / 16;
+}
+
+.center  {
+  margin: auto;
 }

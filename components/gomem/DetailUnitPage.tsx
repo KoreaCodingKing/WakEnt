@@ -5,6 +5,7 @@ import {
   Variants,
 } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   CSSProperties,
   ReactNode,
@@ -14,6 +15,7 @@ import {
 } from 'react';
 import { useRecoilState } from 'recoil';
 import { gomemActiveState } from '../../states/gomem/active';
+import { getLinkType, getYouTubeThumbnailURL, LinkType } from '../../structs/links';
 import { GomemSeason2Members, GomemUnitMetadata, GomemUnits } from '../../structs/member';
 
 import styles from '../../styles/components/gomem/DetailUnitPage.module.scss';
@@ -71,6 +73,10 @@ interface CardStyles extends CSSProperties {
   '--re': string
 }
 
+interface FullImageProps {
+  image: string
+}
+
 interface CardProps {
   index?: number
   padding?: boolean
@@ -84,6 +90,10 @@ interface CardProps {
   thumbnail?: boolean
   centerColumn?: boolean
 }
+
+const FullImage = ({ image }: FullImageProps) => {
+  return <Image src={image} layout='fill'></Image>;
+};
 
 const Card = ({
   index = 0,
@@ -117,13 +127,17 @@ const Card = ({
       )}
       whileHover='hover'
       style={
-        templateArray &&
-        ({
-          '--cs': templateArray[0],
-          '--ce': templateArray[1],
-          '--rs': templateArray[2],
-          '--re': templateArray[3],
-        } as CardStyles)
+        templateArray ?
+          ({
+            'transform': 'translateX(0)',
+            '--cs': templateArray[0],
+            '--ce': templateArray[1],
+            '--rs': templateArray[2],
+            '--re': templateArray[3],
+          } as CardStyles) :
+          {
+            'transform': 'translateX(0)',
+          }
       }
     >
       {center ? (
@@ -261,7 +275,7 @@ export const DetailUnit = () => {
               <motion.div
                 layout
                 className={styles.grid}
-                key={`grid-${active.detail}`}
+                key={`grid-${active.detail}-${activeMember}`}
               >
                 {activeMember === null ? (
                   <></>
@@ -271,12 +285,18 @@ export const DetailUnit = () => {
                       {unit &&
                         GomemSeason2Members[unit.members[activeMember]].image && (
                         <Image
+                          className={styles.cardMemberImage}
+                          blurDataURL={
+                            GomemSeason2Members[unit.members[activeMember]]
+                              .image
+                          }
+                          placeholder='blur'
                           src={
                             GomemSeason2Members[unit.members[activeMember]]
                               .image
                           }
-                          width={145}
-                          height={300}
+                          width={300}
+                          height={600}
                         ></Image>
                       )}
                     </Card>
@@ -326,15 +346,26 @@ export const DetailUnit = () => {
                         quidem deleniti assumenda facilis. Officia, sapiente?
                       </p>
                     </Card>
-                    <Card index={3} padding>
-                      <p>Hi</p>
-                    </Card>
-                    <Card index={4} padding>
-                      <p>Fi</p>
-                    </Card>
-                    <Card index={5} padding>
-                      <p>When?</p>
-                    </Card>
+                    {
+                      unit &&
+                        GomemSeason2Members[unit.members[activeMember]].links.map((link, index) => {
+                          const linkType = getLinkType(link.link);
+
+                          let image = '';
+
+                          if (linkType === LinkType.YouTube) {
+                            image = getYouTubeThumbnailURL(link.link);
+                          }
+
+                          return <Link key={`card-${index}`} href={link.link} passHref>
+                            <a target='_blank'>
+                              <Card  index={3 + index} padding thumbnail={image.length > 0}>
+                                <FullImage image={image}></FullImage>
+                              </Card>
+                            </a>
+                          </Link>;
+                        })
+                    }
                   </>
                 )}
               </motion.div>

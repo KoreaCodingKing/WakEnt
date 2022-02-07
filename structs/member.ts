@@ -113,7 +113,10 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     },
     description: '단답.',
     image: '/images/model/gomem/dandap/body.png',
-    links: [],
+    links: [{
+      name: '불협화음',
+      link: 'https://www.youtube.com/watch?v=pWiiZkgD1Nk',
+    }],
   },
   CallyCarly: {
     name: {
