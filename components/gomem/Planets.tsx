@@ -18,7 +18,7 @@ export const Planets: {
   },
   gomem: {
     name: '고정멤버 시즌 2',
-    description: '앙~ 킹아~',
+    description: '20년 부터 시작된 합방 전용 멤버들의 거주지. 현재 2기 멤버가 거주중이다.',
     unit: 'gomem',
   },
   specter: {
