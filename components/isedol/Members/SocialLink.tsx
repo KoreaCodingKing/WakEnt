@@ -2,20 +2,16 @@ import Link from 'next/link';
 
 import styles from '../../../styles/components/isedol/Members/SocialLink.module.scss';
 
-import InstagramIcon from '../../../public/images/icons/services/instagram.png';
-import SoundCloudIcon from '../../../public/images/icons/services/soundcloud.png';
-import TwitchIcon from '../../../public/images/icons/services/twitch.png';
-import TwitterIcon from '../../../public/images/icons/services/twitter.png';
-import YouTubeIcon from '../../../public/images/icons/services/youtube.png';
 import Image from 'next/image';
 import { SocialLinks } from '../../../structs/member';
 import { concatClass } from '../../../utils/class';
+import { InstagramIcon, SoundCloudIcon, TwitchIcon, TwitterIcon, YouTubeIcon } from '../../common/icons/ServiceProdivers';
 
 interface SocialLinkProps {
   white?: boolean
 }
 
-const SocialIcons: Record<string, StaticImageData> = {
+const SocialIcons: Record<string, string> = {
   instagram: InstagramIcon,
   soundcloud: SoundCloudIcon,
   twitch: TwitchIcon,
