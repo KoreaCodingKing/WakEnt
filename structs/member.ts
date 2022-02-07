@@ -91,12 +91,12 @@ export const GomemUnits: Record<GomemUnitID, GomemUnitMetadata> = {
   [GomemUnit.Specter]: {
     name: '망령촌',
     description: '고멤이었던 자들의 무덤. 이들은 고멤에 한이 맺혀 망령으로 남아 있다.',
-    members: ['Dandap', 'CallyCarly', 'Wakpago', 'BusinessKim', 'GwakChoonSik', 'KwonMin'],
+    members: ['Dandap', 'CallyCarly', 'Wakpago', 'BusinessKim', 'GwakChoonSik', 'KwonMin', 'DogCat'],
   },
   [GomemUnit.Gomem]: {
     name: '고멤 시즌 2',
     description: '고정 멤버 시즌 2',
-    members: []
+    members: ['DrDopamine', 'FriedShrimp', 'MitsuneHaku', 'HaeruSeok', 'DokgoHyeji', 'KimchiMandoo', 'SecretGirl', 'DeokSuLee', 'PoongSin', 'NegativePerson', 'HikiKing', 'Sophia', 'Roentgenium'],
   },
   [GomemUnit.Science]: {
     name: '과학 패밀리',
