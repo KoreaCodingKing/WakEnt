@@ -339,13 +339,7 @@ export const DetailUnit = () => {
                       </AnimateSharedLayout>
                     </Card>
                     <Card index={2} thumbnail template='auto auto 3 6'>
-                      <h3>Image goes here.</h3>
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Sunt ex, fuga quos saepe temporibus culpa
-                        quibusdam aliquam vel ipsa odio quam facere modi quo
-                        quidem deleniti assumenda facilis. Officia, sapiente?
-                      </p>
+                      {/* <ImageSlider></ImageSlider> */}
                     </Card>
                     {
                       unit &&
