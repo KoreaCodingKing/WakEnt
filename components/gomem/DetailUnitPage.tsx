@@ -240,7 +240,6 @@ export const DetailUnit = () => {
                 {unit &&
                   unit.members.map((key, index) => {
                     const member = GomemSeason2Members[key];
-                    console.log(member);
 
                     return (
                       <motion.div
