@@ -18,6 +18,7 @@ import { gomemActiveState } from '../../states/gomem/active';
 import styles from '../../styles/components/gomem/Gomem3D.module.scss';
 import { concatClass } from '../../utils/class';
 import { gomemHoverState } from '../../states/gomem/hover';
+import ISS from './Elements/ISS';
 
 export const Gomem3DWithEvents = ({
   onPlanetHover,
@@ -116,6 +117,7 @@ export const Gomem3D = ({
       <Suspense fallback={null}>
         <PlanetGroup onPointer={onPlanetHover} onClick={onPlanetClick}>
           <GomemGlobe name='gomem' position={[0, 0, 0]} />
+          <ISS name='science' position={[-3, 0, 3]} scale={0.2}></ISS>
           <SpecterPlanet name='specter' position={[3, 0, -3]} scale={0.3} />
           <IsedolGlobe name='isedol' position={[80, 0, 80]} />
           <Sun name='wakgood' position={[0, 0, 80]}></Sun>

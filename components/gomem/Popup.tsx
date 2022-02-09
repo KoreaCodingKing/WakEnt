@@ -87,6 +87,11 @@ export const GomemPopup = () => {
             행성간 이동은 현재 탭에서 진행됩니다.
           </span>
         )}
+        {planet && Planets[planet].unit && (
+          <span>
+            클릭하면 멤버들을 알아볼 수 있습니다.
+          </span>
+        )}
       </motion.p>
     </motion.div>
   );

@@ -75,10 +75,11 @@ export type WaktaverseMemberID = IsedolMemberID | GomemMemberID | WakMemberID
 export const enum GomemUnit {
   Specter = 'specter',
   Gomem = 'gomem',
-  Science = 'science'
+  Science = 'science',
+  School = 'school',
 }
 
-export type GomemUnitID = 'specter' | 'gomem' | 'science'
+export type GomemUnitID = 'specter' | 'gomem' | 'science' | 'school'
 
 export interface GomemUnitMetadata {
   name: string
@@ -95,12 +96,17 @@ export const GomemUnits: Record<GomemUnitID, GomemUnitMetadata> = {
   [GomemUnit.Gomem]: {
     name: '고멤 시즌 2',
     description: '고정 멤버 시즌 2',
-    members: ['DrDopamine', 'FriedShrimp', 'MitsuneHaku', 'HaeruSeok', 'DokgoHyeji', 'KimchiMandoo', 'SecretGirl', 'DeokSuLee', 'PoongSin', 'NegativePerson', 'HikiKing', 'Sophia', 'Roentgenium'],
+    members: ['HaeruSeok', 'DeokSuLee', 'PoongSin', 'NegativePerson', 'Sophia', 'Roentgenium'],
   },
   [GomemUnit.Science]: {
     name: '과학 패밀리',
     description: '왁타버스내 과학자가 모인 패밀리. 원래 한 로봇이 더 있었으나 망령의 길을 걷게 되었다.',
     members: ['DrDopamine', 'FriedShrimp', 'MitsuneHaku']
+  },
+  [GomemUnit.School]: {
+    name: '느그중고교',
+    description: '왁타버스내 느그중고교에 다니는 멤버 패밀리.',
+    members: ['DokgoHyeji', 'KimchiMandoo', 'HikiKing', 'SecretGirl']
   }
 };
 
@@ -168,7 +174,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       ko: '도파민 박사',
     },
     description: '대한민국 최고의 박사라고 주장하는 박사? 메타버스 관련 주 매수 후 수익률 -11%를 찍었다고 한다.',
-    image: '/images/model/gomem/drdophamine/body.png',
+    image: '/images/model/gomem/drdopamine/body.png',
     links: [],
   },
   FriedShrimp: {
