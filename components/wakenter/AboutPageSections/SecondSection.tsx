@@ -7,7 +7,7 @@ import {
 } from 'framer-motion';
 
 import styles from '../../../styles/components/wakenter/AboutPageSections/SecondSection.module.scss';
-import { concatClass } from '../../../utils/class';
+import { classes } from '../../../utils/class';
 import { AboutSectionProps } from '../../../pages/about';
 import Photo from '../Photo';
 
@@ -166,7 +166,7 @@ const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
   };
 
   return (
-    <section className={concatClass(className)} data-index={1}>
+    <section className={classes(className)} data-index={1}>
       <div className={styles.second_section_inner}>
         <div className={styles.inner_wrapper}>
           {images.map((officeImage: OfficeImage, index: number) => {

@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 import ChevronIcon from '../common/icons/Chevron';
 import { PlanetKeysArray } from './Planets';
 
@@ -26,13 +26,13 @@ export const GomemNavigateButton = () => {
   return (
     <>
       <div
-        className={concatClass(styles.navigateButton, styles.left)}
+        className={classes(styles.navigateButton, styles.left)}
         onClick={prev}
       >
         <ChevronIcon width={32} stroke={0}></ChevronIcon>
       </div>
       <div
-        className={concatClass(styles.navigateButton, styles.right)}
+        className={classes(styles.navigateButton, styles.right)}
         onClick={next}
       >
         <ChevronIcon right width={32} stroke={0}></ChevronIcon>

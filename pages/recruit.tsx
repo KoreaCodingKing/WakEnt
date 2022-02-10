@@ -7,7 +7,7 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useDynamicPageScroll, useHorizonalPageScroller } from '../components/common/Scroll';
 import Image from 'next/image';
 import WakEnterMetadata from '../components/wakenter/Meta';
-import { concatClass } from '../utils/class';
+import { classes } from '../utils/class';
 import Footer from '../components/wakenter/WakEnterFooter';
 
 interface SectionProps {
@@ -19,7 +19,7 @@ interface SectionProps {
 const Section = ({ index, children, full }: SectionProps) => {
   return (
     <section
-      className={concatClass(styles.section, full && styles.full)}
+      className={classes(styles.section, full && styles.full)}
       data-index={index}
     >
       {children}
@@ -192,7 +192,7 @@ const About: NextPage = () => {
             <Section index={0} full>
               <div className={styles.background}>
                 <div
-                  className={concatClass(
+                  className={classes(
                     styles.backgroundParallax,
                     isSafari && styles.safari
                   )}

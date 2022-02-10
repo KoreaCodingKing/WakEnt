@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from '../../styles/components/isedol/IsedolMenuOverlay.module.scss';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 import LinkToIcon from '../common/icons/LinkTo';
 import { useBodyLock } from '../common/Scroll';
 import { WakEnterLogoLink } from '../wakenter/WakEnterHeader';
@@ -45,7 +45,7 @@ export const IsedolMenuOverlay = ({ open }: IsedolMenuOverlayProps) => {
   useBodyLock(open);
 
   return (
-    <div className={concatClass(styles.overlay, open && styles.open)}>
+    <div className={classes(styles.overlay, open && styles.open)}>
       {open && (
         <Head>
           <meta name='theme-color' content={'#FFFFFF'}></meta>
@@ -56,7 +56,7 @@ export const IsedolMenuOverlay = ({ open }: IsedolMenuOverlayProps) => {
           {Links.map((v, i) => (
             <Link href={v.page} key={`menu-link-${i}-${v.name}`} passHref>
               <a
-                className={concatClass(
+                className={classes(
                   styles.link,
                   v.page === router.route && styles.current
                 )}

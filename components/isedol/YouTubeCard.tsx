@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from '../../styles/components/isedol/CardBase.module.scss';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 
 interface YouTubeCardProps {
   title: string
@@ -12,7 +12,7 @@ interface YouTubeCardProps {
 export const YouTubeCard = ({ title, id, thumbnail, onClick }: YouTubeCardProps) => {
   return (
     <div
-      className={concatClass(styles.card, onClick && styles.clickable)}
+      className={classes(styles.card, onClick && styles.clickable)}
       onClick={() => onClick && onClick(id)}
     >
       <div className={styles.youtube_wrapper}>

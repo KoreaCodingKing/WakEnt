@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { AboutSectionProps } from '../../../pages/about';
-import { concatClass } from '../../../utils/class';
+import { classes } from '../../../utils/class';
 import styles from '../../../styles/components/wakenter/AboutPageSections/SixthSection.module.scss';
 import YouTubePlayerOverlay from '../../common/YouTubePlayerOverlay';
 import YouTubeCard from '../../isedol/YouTubeCard';
@@ -17,7 +17,7 @@ const SixthSection = ({ className }: AboutSectionProps) => {
   };
 
   return (
-    <section className={concatClass(className)} data-index={5}>
+    <section className={classes(className)} data-index={5}>
       <YouTubePlayerOverlay
         id={youtubeID}
         open={openPlayer}

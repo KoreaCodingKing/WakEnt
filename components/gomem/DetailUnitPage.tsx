@@ -27,7 +27,7 @@ import {
 } from '../../structs/member';
 
 import styles from '../../styles/components/gomem/DetailUnitPage.module.scss';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 import { useHashState } from '../../utils/state';
 import ChevronIcon from '../common/icons/Chevron';
 import { isValidPlanetName, PlanetKeys, Planets } from './Planets';
@@ -125,7 +125,7 @@ const Card = ({
       initial="initial"
       animate="visible"
       variants={cardVariants}
-      className={concatClass(
+      className={classes(
         styles.card,
         padding && styles.padding,
         flex && styles.flex,
@@ -151,7 +151,7 @@ const Card = ({
     >
       {center ? (
         <div
-          className={concatClass(
+          className={classes(
             styles.center,
             centerColumn && styles.centerColumn
           )}
@@ -214,7 +214,7 @@ export const DetailUnit = () => {
   // TODO : Card Grid에 스크롤바 없이 부드럽게 스크롤할 수 있도록 구현
 
   return (
-    <div className={concatClass(styles.page, active.detail && styles.open)}>
+    <div className={classes(styles.page, active.detail && styles.open)}>
       <div className={styles.innerPage}>
         <div className={styles.goBack} onClick={close}>
           <ChevronIcon stroke={1}></ChevronIcon>

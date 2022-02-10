@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import styles from '../../styles/components/Header.module.scss';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 
 export interface HeaderBaseProps {
   fixed?: boolean
@@ -13,7 +13,7 @@ export interface HeaderBaseProps {
 export const HeaderBase = (props: HeaderBaseProps) => {
   return (
     <div
-      className={concatClass(
+      className={classes(
         styles.header,
         props.fixed && styles.fixed,
         props.white && styles.white,

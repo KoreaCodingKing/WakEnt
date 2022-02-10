@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import HeaderBase from '../common/Header';
 import styles from '../../styles/components/isedol/IsedolHeader.module.scss';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 
 interface IsedolHeaderProps {
   white?: boolean
@@ -28,7 +28,7 @@ export const IsedolLogo = ({ big, white }: IsedolLogoProps) => {
 
   return (
     <div
-      className={concatClass(
+      className={classes(
         styles.logo,
         big && styles.big,
         white && styles.white
@@ -55,7 +55,7 @@ export const MenuButton = ({
   return (
     <div
       tabIndex={100}
-      className={concatClass(
+      className={classes(
         styles.menu_wrapper,
         open && styles.open,
         white && styles.white

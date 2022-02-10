@@ -7,7 +7,7 @@ import {
 import { useEffect, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
 import { gomemHoverState } from '../../states/gomem/hover';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 import { clamp } from '../../utils/number';
 import LinkToIcon from '../common/icons/LinkTo';
 
@@ -64,7 +64,7 @@ export const GomemPopup = () => {
 
   return (
     <motion.div
-      className={concatClass(
+      className={classes(
         styles.popup,
         styles.planet,
         hover && styles.show

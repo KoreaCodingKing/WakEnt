@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { motion, useSpring } from "framer-motion";
 import { AboutSectionProps } from "../../../pages/about";
-import { concatClass } from "../../../utils/class";
+import { classes } from "../../../utils/class";
 import styles from '../../../styles/components/wakenter/AboutPageSections/FourthSection.module.scss';
 import Image from "next/image";
 import { clamp } from "../../../utils/number";
@@ -23,7 +23,7 @@ const FourthSection = ({ className, onScroll }: AboutSectionProps) => {
   }, [firstOpacity, onScroll, secondOpacity]);
 
   return (
-    <section className={concatClass(className)} data-index={3}>
+    <section className={classes(className)} data-index={3}>
       <div className={styles.section_container}>
         <div className={styles.contents_wrapper}>
           <motion.div className={styles.infra_introduce}

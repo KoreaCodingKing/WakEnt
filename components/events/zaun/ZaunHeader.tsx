@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { concatClass } from '../../../utils/class';
+import { classes } from '../../../utils/class';
 import HeaderBase from '../../common/Header';
 
 import styles from '../../../styles/components/zaun/ZaunHeader.module.scss';
@@ -37,7 +37,7 @@ const LeagueMenus = () => {
 const ZaunLogo = ({clickable, className}: WakEnterElementProps) => {
   return (
     <div
-      className={concatClass(
+      className={classes(
         styles.logo,
         clickable && styles.clickable,
         className

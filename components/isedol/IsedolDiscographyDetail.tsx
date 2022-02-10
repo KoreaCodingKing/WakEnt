@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ReactNode, useState } from 'react';
 import styles from '../../styles/components/isedol/IsedolDiscographyDetail.module.scss';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 import { textShorten, trimWhitespace } from '../../utils/string';
 import LinkToIcon from '../common/icons/LinkTo';
 import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
@@ -50,7 +50,7 @@ export const IsedolDiscographyDetail = ({ data }: DiscographyDetailProps) => {
         open={openPlayer}
         close={() => setOpenPlayer(false)}
       ></YouTubePlayerOverlay>
-      <section className={concatClass(styles.section, styles.brief)}>
+      <section className={classes(styles.section, styles.brief)}>
         <div className={styles.image}>
           <Image
             src={data.image}
@@ -63,9 +63,9 @@ export const IsedolDiscographyDetail = ({ data }: DiscographyDetailProps) => {
           <div className={styles.description}>{data.description}</div>
         </div>
       </section>
-      <section className={concatClass(styles.section)}>
+      <section className={classes(styles.section)}>
         <h3 className={styles.sectionTitle}>Links</h3>
-        <div className={concatClass(styles.brief_links, styles.grid_links)}>
+        <div className={classes(styles.brief_links, styles.grid_links)}>
           {data.links &&
             data.links.map((v, i) => (
               <Link key={`album-link-${i}`} href={v.link} passHref>
@@ -76,9 +76,9 @@ export const IsedolDiscographyDetail = ({ data }: DiscographyDetailProps) => {
             ))}
         </div>
       </section>
-      <section className={concatClass(styles.section)}>
+      <section className={classes(styles.section)}>
         <h3 className={styles.sectionTitle}>Streaming</h3>
-        <div className={concatClass(styles.brief_links, styles.grid_links)}>
+        <div className={classes(styles.brief_links, styles.grid_links)}>
           {data.streaming &&
             data.streaming.map((v, i) => (
               <Link key={`album-link-${i}`} href={v.link} passHref>
@@ -90,12 +90,12 @@ export const IsedolDiscographyDetail = ({ data }: DiscographyDetailProps) => {
         </div>
       </section>
       {data.lyrics && (
-        <section className={concatClass(styles.section)}>
+        <section className={classes(styles.section)}>
           <h3 className={styles.sectionTitle}>Lyrics</h3>
           <div className={styles.description}>{data.lyrics}</div>
         </section>
       )}
-      <section className={concatClass(styles.section)}>
+      <section className={classes(styles.section)}>
         <h3 className={styles.sectionTitle}>Staff</h3>
         <div className={styles.description}>{data.staff}</div>
       </section>
