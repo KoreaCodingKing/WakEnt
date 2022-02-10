@@ -23,7 +23,6 @@ import {
 } from '../../structs/links';
 import {
   GomemSeason2Members,
-  GomemUnitMetadata,
   GomemUnits,
 } from '../../structs/member';
 
@@ -209,11 +208,10 @@ export const DetailUnit = () => {
   const planet = Planets[active.planet];
 
   const [activeMember, setActiveMember] = useState<number | null>(null);
-  const [unit, setUnit] = useState<GomemUnitMetadata | undefined>();
+  const unit = planet.unit && GomemUnits[planet.unit];
 
   useEffect(() => {
     setActiveMember(null);
-    setUnit(planet.unit && GomemUnits[planet.unit]);
   }, [planet]);
 
   // TODO : Card Grid에 스크롤바 없이 부드럽게 스크롤할 수 있도록 구현
