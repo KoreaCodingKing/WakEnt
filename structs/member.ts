@@ -99,7 +99,6 @@ export const GomemUnits: Record<GomemUnitID, GomemUnitMetadata> = {
       'BusinessKim',
       'GwakChoonSik',
       'KwonMin',
-      'DogCat',
     ],
   },
   [GomemUnit.Gomem]: {
@@ -168,7 +167,12 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     },
     description: '나이 37세. 상남자. 독보적.',
     image: '/images/model/gomem/callycarly/body.png',
-    links: [],
+    links: [
+      {
+        name: '숨겨진 고대의 유적을 발견하였습니다',
+        link: 'https://www.youtube.com/watch?v=-pNVXW8uJOg',
+      },
+    ],
   },
   Wakpago: {
     name: {
@@ -178,7 +182,20 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     description:
       '원래 자신은 우왁굳이 만든 것이라고 주장했지만? 과학 패밀리의 도파민이 만든 것으로 밝혀졌다.',
     image: '/images/model/gomem/wakpago/body.png',
-    links: [],
+    links: [
+      {
+        name: '2021_10_08_가족',
+        link: 'https://www.youtube.com/watch?v=0KWHzL1rLgE',
+      },
+      {
+        name: '사라진 기능',
+        link: 'https://www.youtube.com/watch?v=B8ZnQRsaVvQ',
+      },
+      {
+        name: '풍신과 왁파고의 분노치킨',
+        link: 'https://www.youtube.com/watch?v=eRG2ss2jUlM',
+      },
+    ],
   },
   BusinessKim: {
     name: {
@@ -188,7 +205,28 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     description:
       '미국 버즈니아 출신, 가문으로는 신성 로마제국의 귀족 출신이다.',
     image: '/images/model/gomem/businesskim/body.png',
-    links: [],
+    links: [
+      {
+        name: '비즈니스 킴',
+        link: 'https://www.youtube.com/watch?v=x2cGPxvcERI',
+      },
+      {
+        name: '망령왕의 분노',
+        link: 'https://www.youtube.com/watch?v=5ZRnzQOSukw',
+      },
+      {
+        name: '크리스마스 인사',
+        link: 'https://www.youtube.com/watch?v=Qz3E0bEZuHg',
+      },
+      {
+        name: '펠리스 나비다',
+        link: 'https://www.youtube.com/watch?v=xUq66Jk05RQ',
+      },
+      {
+        name: 'Santa Claus is coming to town',
+        link: 'https://www.youtube.com/watch?v=aRXfz2O0fhI',
+      },
+    ],
   },
   GwakChoonSik: {
     name: {
@@ -198,7 +236,28 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     description:
       '일병 곽춘식. 대대장의 어항 관리가 보직이고 주로 던전앤파이터를 즐겨한다.',
     image: '/images/model/gomem/gwakchoonsik/body.png',
-    links: [],
+    links: [
+      {
+        name: '왁굳형과 상현들에게 보내는 곽춘식의 마지막 영상편지',
+        link: 'https://www.youtube.com/watch?v=MNKXsfog4B4',
+      },
+      {
+        name: 'I WAS THERE (있었는데)',
+        link: 'https://www.youtube.com/watch?v=3DvcRanbpn4',
+      },
+      {
+        name: '"보여줘 너의 모자람이없는실력을" JUST DO IT(하면된다)',
+        link: 'https://www.youtube.com/watch?v=BiaPbQ6EwgM',
+      },
+      {
+        name: '이망령의 편지',
+        link: 'https://www.youtube.com/watch?v=U7w33zYgfNw',
+      },
+      {
+        name: '[PTSMR] 여러분들을재워드립니다 *asmr* (고혈압 시청주의)',
+        link: 'https://www.youtube.com/watch?v=ywlKgDTGsf8',
+      },
+    ],
   },
   KwonMin: {
     name: {
@@ -208,7 +267,16 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     description:
       '컨셉 같은 내추럴의 멤버. 대학교 입학 때 어머니가 사주신 옷을 입는다.',
     image: '/images/model/gomem/Kwonmin/body.png',
-    links: [],
+    links: [
+      {
+        name: '회전모자',
+        link: 'https://www.youtube.com/watch?v=1HyWW4tZcP4',
+      },
+      {
+        name: 'Choose Min',
+        link: 'https://www.youtube.com/watch?v=v155OoztctA',
+      },
+    ],
   },
   DrDopamine: {
     name: {
@@ -218,7 +286,40 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     description:
       '대한민국 최고의 박사라고 주장하는 박사? 메타버스 관련 주 매수 후 수익률 -11%를 찍었다고 한다.',
     image: '/images/model/gomem/drdopamine/body.png',
-    links: [],
+    links: [
+      {
+        name: '히든 도파민',
+        link: 'https://www.youtube.com/watch?v=fGSKU2JHJPE',
+      },
+      {
+        name: '아무리 무서운 공포게임이라도 4명이서 한다면 무섭지 않다?',
+        link: 'https://www.youtube.com/watch?v=DQ9pnOKN-rY',
+      },
+      {
+        name: '이세계 아이도파민',
+        link: 'https://www.youtube.com/watch?v=lZlZ9VVjJVo',
+      },
+      {
+        name: '생일 축하',
+        link: 'https://www.youtube.com/watch?v=3phsOJL8nOs',
+      },
+      {
+        name: '추석 인사',
+        link: 'https://www.youtube.com/watch?v=W-d_hAq0E_A',
+      },
+      {
+        name: '빼빼로 데이',
+        link: 'https://www.youtube.com/watch?v=ioSb7TZrjnI',
+      },
+      {
+        name: '팬 싸인회',
+        link: 'https://www.youtube.com/watch?v=jaIWS5IPRZU',
+      },
+      {
+        name: '공간이동장치',
+        link: 'https://www.youtube.com/watch?v=zJKrDgFSqyI',
+      },
+    ],
   },
   FriedShrimp: {
     name: {
@@ -228,7 +329,32 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     description:
       '도파민 박사 연구실에서 연구하는 대학원생. 새우튀김을 좋아한다.',
     image: '/images/model/gomem/friedshrimp/body.png',
-    links: [],
+    links: [
+      {
+        name: '아무리 무서운 공포게임이라도 4명이서 한다면 무섭지 않다?',
+        link: 'https://www.youtube.com/watch?v=DQ9pnOKN-rY',
+      },
+      {
+        name: '회전모자',
+        link: 'https://www.youtube.com/watch?v=1HyWW4tZcP4',
+      },
+      {
+        name: '고멤이 만들어 온 BMW M340i 광고',
+        link: 'https://www.youtube.com/watch?v=dPmLu8WWWHc',
+      },
+      {
+        name: '이세계아이돌 리와인드 과학팸 홍보영상',
+        link: 'https://www.youtube.com/watch?v=PT22WZByupo',
+      },
+      {
+        name: '공포튀김 1편 연구실',
+        link: 'https://www.youtube.com/watch?v=1eiCbkSunsE',
+      },
+      {
+        name: '공포튀김 2편 층간소음편',
+        link: 'https://www.youtube.com/watch?v=QCwLmdFyRrU',
+      },
+    ],
   },
   MitsuneHaku: {
     name: {
@@ -241,24 +367,28 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     links: [
       {
         name: '급뱅종 선언',
-        link: 'https://www.youtube.com/watch?v=dx5FosATagU'
+        link: 'https://www.youtube.com/watch?v=dx5FosATagU',
       },
       {
         name: '미츠네 하쿠: 춤 연습',
-        link: 'https://www.youtube.com/watch?v=DTIGzCGb7TM'
+        link: 'https://www.youtube.com/watch?v=DTIGzCGb7TM',
       },
       {
         name: 'RHYTHM',
-        link: 'https://www.youtube.com/watch?v=48Cx8MRU5fk'
+        link: 'https://www.youtube.com/watch?v=48Cx8MRU5fk',
       },
       {
         name: '스타 나이트 스노우',
-        link: 'https://www.youtube.com/watch?v=uTVfPC6gfjs'
+        link: 'https://www.youtube.com/watch?v=uTVfPC6gfjs',
       },
       {
         name: '텔레비전에 내가 나왔으면',
-        link: 'https://www.youtube.com/watch?v=nn9G6qWXTks'
-      }
+        link: 'https://www.youtube.com/watch?v=nn9G6qWXTks',
+      },
+      {
+        name: '2021 수능 응원곡 QUEST',
+        link: 'https://www.youtube.com/watch?v=zbUc-rCuXsY',
+      },
     ],
   },
   HaeruSeok: {
@@ -268,7 +398,32 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     },
     description: '왁타버스 내에서 미남 포지션을 맡고 있는 해루석.',
     image: '/images/model/gomem/haeruseok/body.png',
-    links: [],
+    links: [
+      {
+        name: 'IU - 금요일에 만나요 (루비 COVER',
+        link: 'https://www.youtube.com/watch?v=OBSCvhgRgSk',
+      },
+      {
+        name: 'Dream (루비 COVER) - 수지, 백현',
+        link: 'https://www.youtube.com/watch?v=zUc05XknaIk',
+      },
+      {
+        name: '우왁굳이 말하는 해루석연대기',
+        link: 'https://www.youtube.com/watch?v=YE3hwD0nQsg',
+      },
+      {
+        name: '그 눈을 떠',
+        link: 'https://www.youtube.com/watch?v=z3yXn_zzY74',
+      },
+      {
+        name: '나의 고뇌를 본 우왁굳반응',
+        link: 'https://www.youtube.com/watch?v=PCESDfpCsro',
+      },
+      {
+        name: '날 보고 웃는 왁굳 모음',
+        link: 'https://www.youtube.com/watch?v=9SLtMPJp6ik',
+      },
+    ],
   },
   DokgoHyeji: {
     name: {
@@ -278,7 +433,28 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     description:
       '느그고등학교에 다니고 있는 고등학생 혜지. 히키킹의 주장으로는 일진이라고 한다.',
     image: '/images/model/gomem/hyeji/body.png',
-    links: [],
+    links: [
+      {
+        name: '2021 수능 응원곡 QUEST',
+        link: 'https://www.youtube.com/watch?v=zbUc-rCuXsY',
+      },
+      {
+        name: '혜지의 겨울방학 이야기',
+        link: 'https://www.youtube.com/watch?v=Dhoau5HGExE',
+      },
+      {
+        name: '리와인드 (RE:WIND) Dance Cover Challenge',
+        link: 'https://www.youtube.com/watch?v=MgxW9lvdUlQ',
+      },
+      {
+        name: '혜지의 느그중고교 일상',
+        link: 'https://www.youtube.com/watch?v=jrWB8ysAHJw',
+      },
+      {
+        name: '혜지의 느그중고교 쉬는시간',
+        link: 'https://www.youtube.com/watch?v=YdUAehoc4b0',
+      },
+    ],
   },
   KimchiMandoo: {
     name: {
@@ -288,7 +464,20 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     description:
       '느그 초등학교 5학년 김재민. 13남자. 우왁굳처럼 훌륭한 스트리퍼가 되는 것이 꿈이라고 한다.',
     image: '/images/model/gomem/kimchimandoo/body.png',
-    links: [],
+    links: [
+      {
+        name: '빌런 - 길바닥햇님송이 cover',
+        link: 'https://www.youtube.com/watch?v=DyaySl3ZeGg',
+      },
+      {
+        name: '금요일에만나요 - 해루석 x 비밀소녀 "루비" cover의 cover ',
+        link: 'https://www.youtube.com/watch?v=Sy_dZmITItE',
+      },
+      {
+        name: '금요일에만나요 - 해루석 x 비밀소녀 "루비" cover의 cover ',
+        link: 'https://www.youtube.com/watch?v=Sy_dZmITItE',
+      },
+    ],
   },
   SecretGirl: {
     name: {
@@ -298,7 +487,20 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     description:
       '"주님, 정의로운 도둑이 되도록 허락해주세요." 소녀지만 자주 이모로 불린다.',
     image: '/images/model/gomem/secretgirl/body.png',
-    links: [],
+    links: [
+      {
+        name: 'IU - 금요일에 만나요 (루비 COVER',
+        link: 'https://www.youtube.com/watch?v=OBSCvhgRgSk',
+      },
+      {
+        name: 'Dream (루비 COVER) - 수지, 백현',
+        link: 'https://www.youtube.com/watch?v=zUc05XknaIk',
+      },
+      {
+        name: '2021 수능 응원곡 QUEST',
+        link: 'https://www.youtube.com/watch?v=zbUc-rCuXsY',
+      },
+    ],
   },
   DeokSuLee: {
     name: {
@@ -307,7 +509,16 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     },
     description: '1949년생 6월 23일 출생의 상남자 하라바이.',
     image: '/images/model/gomem/deoksulee/body.png',
-    links: [],
+    links: [
+      {
+        name: '독거한 미식가',
+        link: 'https://www.youtube.com/watch?v=RkklH62Wa-Y',
+      },
+      {
+        name: '도둑이 들어왔을 때 현명한 대처법',
+        link: 'https://www.youtube.com/watch?v=IaxzSXWgXiI',
+      },
+    ],
   },
   PoongSin: {
     name: {
@@ -317,7 +528,20 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     description:
       '매직키드마수리가 26대 독자 청정 바람 마법사. 바람 마법을 쓴다.',
     image: '/images/model/gomem/poongsin/body.png',
-    links: [],
+    links: [
+      {
+        name: '풍신의 생일잔치',
+        link: 'https://www.youtube.com/watch?v=cPwBsHSuY3k',
+      },
+      {
+        name: '풍신과 왁파고의 분노치킨',
+        link: 'https://www.youtube.com/watch?v=eRG2ss2jUlM',
+      },
+      {
+        name: '풍신태클 우왁굳반응',
+        link: 'https://www.youtube.com/watch?v=TM8E1n9Ibw0',
+      },
+    ],
   },
   NegativePerson: {
     name: {
@@ -327,7 +551,16 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     description:
       '매사에 부정적인 태도를 가진 멤버. 오디션에서 조차 부정적인 모습을 보여줬다.',
     image: '/images/model/gomem/negativeperson/body.png',
-    links: [],
+    links: [
+      {
+        name: '고멤점프',
+        link: 'https://www.youtube.com/watch?v=KNb-soJil34',
+      },
+      {
+        name: '비챤님 생일축하영상',
+        link: 'https://www.youtube.com/watch?v=Q-TVOTJvN1A',
+      },
+    ],
   },
   HikiKing: {
     name: {
@@ -336,7 +569,32 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     },
     description: '졸열잎 마을에서 온 우치하 일족의 히키킹.',
     image: '/images/model/gomem/hikiking/body.png',
-    links: [],
+    links: [
+      {
+        name: '저세계아이돌 - 리와인드 COVER',
+        link: 'https://www.youtube.com/watch?v=aZObIwRaEm4',
+      },
+      {
+        name: '역대급 포상받은 히키킹',
+        link: 'https://www.youtube.com/watch?v=Otqtl_y0JDM',
+      },
+      {
+        name: '2022 왁타버스 새해 뉴스',
+        link: 'https://www.youtube.com/watch?v=RlwmwWoyqdE',
+      },
+      {
+        name: '이세돌 보다 흥한 히키퀸 불법 팬미팅 현장',
+        link: 'https://www.youtube.com/watch?v=1fHd-Ny3Dqc',
+      },
+      {
+        name: '아무도 오지 않는 히키킹 생일파티',
+        link: 'https://www.youtube.com/watch?v=uhf_Zf57pEA',
+      },
+      {
+        name: '히키킹 소개팅 지원 영상',
+        link: 'https://www.youtube.com/watch?v=yQUIeXHRjDY',
+      },
+    ],
   },
   Sophia: {
     name: {
@@ -346,7 +604,16 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     description:
       '"선량한 시민 소피아라고 합니다." 직업 특성상 가면을 쓰고 있다.',
     image: '/images/model/gomem/sophia/body.png',
-    links: [],
+    links: [
+      {
+        name: '당신이 연애를 못하는 이유',
+        link: 'https://www.youtube.com/watch?v=TwPT2SKNuUU',
+      },
+      {
+        name: 'Santa Claus is coming to town',
+        link: 'https://www.youtube.com/watch?v=aRXfz2O0fhI',
+      },
+    ],
   },
   Roentgenium: {
     name: {
@@ -355,7 +622,28 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     },
     description: '뇌절의 아이콘 뢴트게늄. 이세계 아이돌의 매니저를 맡고 있다.',
     image: '/images/model/gomem/roentgenium/body.png',
-    links: [],
+    links: [
+      {
+        name: 'Wak Miserables',
+        link: 'https://www.youtube.com/watch?v=ys52M8cwuNk',
+      },
+      {
+        name: '노예',
+        link: 'https://www.youtube.com/watch?v=crVqRMDNpuY',
+      },
+      {
+        name: '이세돌들의 구박에 그만...',
+        link: 'https://www.youtube.com/watch?v=QiaM00CQWVc',
+      },
+      {
+        name: '고정멤버 최종합격해 울부짖는 시청자...',
+        link: 'https://www.youtube.com/watch?v=nx6UVWF_TnA',
+      },
+      {
+        name: '코,코,코',
+        link: 'https://www.youtube.com/watch?v=ug4FKxgfdsA',
+      },
+    ],
   },
   DogCat: {
     name: {
@@ -364,7 +652,12 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     },
     description: '내추럴 컨셉의 개냥이 [데이터로만 남아 있고 등재 X]',
     image: '/images/model/gomem/dogcat/body.png',
-    links: [],
+    links: [
+      {
+        name: '일본인 한테 한국인 여자친구 소개시켜주기',
+        link: 'https://www.youtube.com/watch?v=L7LSGiEVDh0',
+      },
+    ],
   },
 };
 

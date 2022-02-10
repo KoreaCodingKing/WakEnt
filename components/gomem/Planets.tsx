@@ -24,7 +24,12 @@ export const Planets: {
     name: '고정멤버 시즌 2',
     description: '20년 부터 시작된 합방 전용 멤버들의 거주지. 현재 2기 멤버가 거주중이다.',
     unit: 'gomem',
-    youtube: []
+    youtube: [
+      {
+        name: '왁타버스 밴드 악당뮤지션',
+        link: 'https://www.youtube.com/watch?v=5TSr1PoiKC0'
+      }
+    ]
   },
   science: {
     name: '과학 패밀리',
