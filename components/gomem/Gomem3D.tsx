@@ -50,8 +50,8 @@ export const Gomem3DWithEvents = ({
 
       if (Planets[name].unit) {
         setActiveState({
-          planet: activeState.planet,
-          detail: !activeState.detail,
+          planet: name,
+          detail: name !== activeState.planet ? false : !activeState.detail,
         });
       }
 
@@ -70,9 +70,7 @@ export const Gomem3DWithEvents = ({
   }, [setActiveState]);
 
   return (
-    <div
-      className={classes(styles.gomem3D, hoverState.hover && styles.hover)}
-    >
+    <div className={classes(styles.gomem3D, hoverState.hover && styles.hover)}>
       <Gomem3D
         planet={activeState.planet}
         onPlanetHover={planetHoverHandler}

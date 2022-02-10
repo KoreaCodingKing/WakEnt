@@ -4,6 +4,7 @@ import {
   motion,
   Variants,
 } from 'framer-motion';
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -29,6 +30,7 @@ import {
 import styles from '../../styles/components/gomem/DetailUnitPage.module.scss';
 import { classes } from '../../utils/class';
 import { useHashState } from '../../utils/state';
+import FadeInImage from '../common/FadeInImage';
 import ChevronIcon from '../common/icons/Chevron';
 import { isValidPlanetName, PlanetKeys, Planets } from './Planets';
 
@@ -80,10 +82,10 @@ interface CardStyles extends CSSProperties {
   '--ce': string
   '--rs': string
   '--re': string
-}
-
-interface FullImageProps {
-  image: string
+  '--csm': string
+  '--cem': string
+  '--rsm': string
+  '--rem': string
 }
 
 interface CardProps {
@@ -92,6 +94,7 @@ interface CardProps {
   children: ReactNode
   className?: string
   template?: CardTemplateString
+  mobileTemplate?: CardTemplateString
   normalSize?: boolean
   flex?: boolean
   flexColumn?: boolean
@@ -100,10 +103,6 @@ interface CardProps {
   centerColumn?: boolean
 }
 
-const FullImage = ({ image }: FullImageProps) => {
-  return <Image src={image} layout="fill"></Image>;
-};
-
 const Card = ({
   index = 0,
   children,
@@ -111,6 +110,7 @@ const Card = ({
   flex,
   className,
   template,
+  mobileTemplate,
   normalSize,
   flexColumn,
   thumbnail,
@@ -118,6 +118,7 @@ const Card = ({
   centerColumn,
 }: CardProps) => {
   const templateArray = template && template.split(' ');
+  const mobileTemplateArray = mobileTemplate && mobileTemplate.split(' ');
 
   return (
     <motion.div
@@ -143,6 +144,10 @@ const Card = ({
             '--ce': templateArray[1],
             '--rs': templateArray[2],
             '--re': templateArray[3],
+            '--csm': mobileTemplateArray && mobileTemplateArray[0],
+            '--cem': mobileTemplateArray && mobileTemplateArray[1],
+            '--rsm': mobileTemplateArray && mobileTemplateArray[2],
+            '--rem': mobileTemplateArray && mobileTemplateArray[3],
           } as CardStyles)
           : {
             transform: 'translateX(0)',
@@ -215,6 +220,9 @@ export const DetailUnit = () => {
 
   return (
     <div className={classes(styles.page, active.detail && styles.open)}>
+      <Head>
+        <meta name='theme-color' content={active.detail ? '#121415' : ''}></meta>
+      </Head>
       <div className={styles.innerPage}>
         <div className={styles.goBack} onClick={close}>
           <ChevronIcon stroke={1}></ChevronIcon>
@@ -289,7 +297,13 @@ export const DetailUnit = () => {
                   <></>
                 ) : (
                   <>
-                    <Card index={0} padding center template="1 1 1 6">
+                    <Card
+                      index={0}
+                      padding
+                      center
+                      template="1 1 1 6"
+                      mobileTemplate="auto auto 1 2"
+                    >
                       {unit &&
                         GomemSeason2Members[unit.members[activeMember]]
                           .image && (
@@ -315,6 +329,7 @@ export const DetailUnit = () => {
                       center
                       normalSize
                       template="auto auto 1 3"
+                      mobileTemplate="1 1 2 3"
                       className={styles.descriptionCard}
                     >
                       <AnimateSharedLayout>
@@ -346,7 +361,12 @@ export const DetailUnit = () => {
                         )}
                       </AnimateSharedLayout>
                     </Card>
-                    <Card index={2} thumbnail template="auto auto 3 6">
+                    <Card
+                      index={2}
+                      thumbnail
+                      template="auto auto 3 6"
+                      mobileTemplate="1 1 3 4"
+                    >
                       {/* <ImageSlider></ImageSlider> */}
                     </Card>
                     {unit &&
@@ -361,21 +381,25 @@ export const DetailUnit = () => {
                           }
 
                           return (
-                            <Link
+                            <Card
                               key={`card-${index}`}
-                              href={link.link}
-                              passHref
+                              index={3 + index}
+                              padding
+                              thumbnail={image.length > 0}
+                              template="auto auto auto auto"
+                              mobileTemplate={`auto auto ${4 + index} ${
+                                5 + index
+                              }`}
                             >
-                              <a target="_blank">
-                                <Card
-                                  index={3 + index}
-                                  padding
-                                  thumbnail={image.length > 0}
-                                >
-                                  <FullImage image={image}></FullImage>
-                                </Card>
-                              </a>
-                            </Link>
+                              <Link href={link.link} passHref>
+                                <a target="_blank">
+                                  <FadeInImage
+                                    src={image}
+                                    layout="fill"
+                                  ></FadeInImage>
+                                </a>
+                              </Link>
+                            </Card>
                           );
                         }
                       )}
