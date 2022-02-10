@@ -15,8 +15,16 @@ import {
 } from 'react';
 import { useRecoilState } from 'recoil';
 import { gomemActiveState } from '../../states/gomem/active';
-import { getLinkType, getYouTubeThumbnailURL, LinkType } from '../../structs/links';
-import { GomemSeason2Members, GomemUnitMetadata, GomemUnits } from '../../structs/member';
+import {
+  getLinkType,
+  getYouTubeThumbnailURL,
+  LinkType,
+} from '../../structs/links';
+import {
+  GomemSeason2Members,
+  GomemUnitMetadata,
+  GomemUnits,
+} from '../../structs/member';
 
 import styles from '../../styles/components/gomem/DetailUnitPage.module.scss';
 import { concatClass } from '../../utils/class';
@@ -25,11 +33,11 @@ import ChevronIcon from '../common/icons/Chevron';
 import { isValidPlanetName, PlanetKeys, Planets } from './Planets';
 
 const variants: Variants = {
-  initial: custom => ({
+  initial: (custom) => ({
     opacity: 0,
     translateY: (custom + 1) * 20,
   }),
-  visible: custom => ({
+  visible: (custom) => ({
     opacity: 1,
     translateY: 0,
     transition: {
@@ -47,7 +55,7 @@ const cardVariants: Variants = {
     rotateX: 30,
     rotateY: -20,
   },
-  visible: custom => ({
+  visible: (custom) => ({
     opacity: 1,
     rotateX: 0,
     rotateY: 0,
@@ -63,8 +71,9 @@ const cardVariants: Variants = {
   },
 };
 
-type ColumnRowType = number | 'auto';
-type CardTemplateString = `${ColumnRowType} ${ColumnRowType} ${ColumnRowType} ${ColumnRowType}`;
+type ColumnRowType = number | 'auto'
+type CardTemplateString =
+  `${ColumnRowType} ${ColumnRowType} ${ColumnRowType} ${ColumnRowType}`
 
 interface CardStyles extends CSSProperties {
   '--cs': string
@@ -92,7 +101,7 @@ interface CardProps {
 }
 
 const FullImage = ({ image }: FullImageProps) => {
-  return <Image src={image} layout='fill'></Image>;
+  return <Image src={image} layout="fill"></Image>;
 };
 
 const Card = ({
@@ -113,8 +122,8 @@ const Card = ({
   return (
     <motion.div
       custom={index}
-      initial='initial'
-      animate='visible'
+      initial="initial"
+      animate="visible"
       variants={cardVariants}
       className={concatClass(
         styles.card,
@@ -125,18 +134,18 @@ const Card = ({
         thumbnail && styles.thumbnail,
         className
       )}
-      whileHover='hover'
+      whileHover="hover"
       style={
-        templateArray ?
-          ({
-            'transform': 'translateX(0)',
+        templateArray
+          ? ({
+            transform: 'translateX(0)',
             '--cs': templateArray[0],
             '--ce': templateArray[1],
             '--rs': templateArray[2],
             '--re': templateArray[3],
-          } as CardStyles) :
-          {
-            'transform': 'translateX(0)',
+          } as CardStyles)
+          : {
+            transform: 'translateX(0)',
           }
       }
     >
@@ -160,7 +169,7 @@ export const DetailUnit = () => {
   const [active, setActiveState] = useRecoilState(gomemActiveState);
   const [_hash, setState] = useHashState<PlanetKeys | null>(
     active.detail ? active.planet : null,
-    s => {
+    (s) => {
       if (!s.length && active.detail) {
         setActiveState({
           planet: active.planet,
@@ -184,7 +193,6 @@ export const DetailUnit = () => {
   useEffect(() => {
     setState(active.detail ? active.planet : null);
   }, [active.planet, active.detail, setState]);
-
 
   const close = useCallback(() => {
     setActiveState({
@@ -218,8 +226,8 @@ export const DetailUnit = () => {
                 <motion.h1
                   key={`name-${active.detail}`}
                   custom={0}
-                  initial='initial'
-                  animate='visible'
+                  initial="initial"
+                  animate="visible"
                   variants={variants}
                   className={styles.title}
                 >
@@ -228,8 +236,8 @@ export const DetailUnit = () => {
                 <motion.p
                   key={`description-${active.detail}`}
                   custom={1}
-                  initial='initial'
-                  animate='visible'
+                  initial="initial"
+                  animate="visible"
                   variants={variants}
                   className={styles.description}
                 >
@@ -247,8 +255,8 @@ export const DetailUnit = () => {
                         key={`${key}-button-${active.detail}`}
                         className={styles.memberButton}
                         data-active={index === activeMember}
-                        initial='initial'
-                        animate='visible'
+                        initial="initial"
+                        animate="visible"
                         variants={variants}
                         onClick={() =>
                           setActiveMember(activeMember === index ? null : index)
@@ -281,16 +289,17 @@ export const DetailUnit = () => {
                   <></>
                 ) : (
                   <>
-                    <Card index={0} padding center template='1 1 1 6'>
+                    <Card index={0} padding center template="1 1 1 6">
                       {unit &&
-                        GomemSeason2Members[unit.members[activeMember]].image && (
+                        GomemSeason2Members[unit.members[activeMember]]
+                          .image && (
                         <Image
                           className={styles.cardMemberImage}
                           blurDataURL={
                             GomemSeason2Members[unit.members[activeMember]]
                               .image
                           }
-                          placeholder='blur'
+                          placeholder="blur"
                           src={
                             GomemSeason2Members[unit.members[activeMember]]
                               .image
@@ -305,7 +314,7 @@ export const DetailUnit = () => {
                       flex
                       center
                       normalSize
-                      template='auto auto 1 3'
+                      template="auto auto 1 3"
                       className={styles.descriptionCard}
                     >
                       <AnimateSharedLayout>
@@ -313,8 +322,8 @@ export const DetailUnit = () => {
                           <div className={styles.memberMeta}>
                             <motion.h1
                               layout
-                              initial='initial'
-                              animate='visible'
+                              initial="initial"
+                              animate="visible"
                               variants={variants}
                             >
                               {
@@ -324,8 +333,8 @@ export const DetailUnit = () => {
                             </motion.h1>
                             <motion.p
                               layout
-                              initial='initial'
-                              animate='visible'
+                              initial="initial"
+                              animate="visible"
                               variants={variants}
                             >
                               {
@@ -337,12 +346,12 @@ export const DetailUnit = () => {
                         )}
                       </AnimateSharedLayout>
                     </Card>
-                    <Card index={2} thumbnail template='auto auto 3 6'>
+                    <Card index={2} thumbnail template="auto auto 3 6">
                       {/* <ImageSlider></ImageSlider> */}
                     </Card>
-                    {
-                      unit &&
-                        GomemSeason2Members[unit.members[activeMember]].links.map((link, index) => {
+                    {unit &&
+                      GomemSeason2Members[unit.members[activeMember]].links.map(
+                        (link, index) => {
                           const linkType = getLinkType(link.link);
 
                           let image = '';
@@ -351,15 +360,25 @@ export const DetailUnit = () => {
                             image = getYouTubeThumbnailURL(link.link);
                           }
 
-                          return <Link key={`card-${index}`} href={link.link} passHref>
-                            <a target='_blank'>
-                              <Card  index={3 + index} padding thumbnail={image.length > 0}>
-                                <FullImage image={image}></FullImage>
-                              </Card>
-                            </a>
-                          </Link>;
-                        })
-                    }
+                          return (
+                            <Link
+                              key={`card-${index}`}
+                              href={link.link}
+                              passHref
+                            >
+                              <a target="_blank">
+                                <Card
+                                  index={3 + index}
+                                  padding
+                                  thumbnail={image.length > 0}
+                                >
+                                  <FullImage image={image}></FullImage>
+                                </Card>
+                              </a>
+                            </Link>
+                          );
+                        }
+                      )}
                   </>
                 )}
               </motion.div>
