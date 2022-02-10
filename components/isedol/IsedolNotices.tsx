@@ -17,6 +17,7 @@ import { useHorizonalPageScroller } from '../common/Scroll';
 import { lighten } from '../../utils/color';
 import ChatIcon from '../common/icons/Chat';
 import LikeIcon from '../common/icons/Like';
+import FadeInImage from '../common/FadeInImage';
 
 const memberMaps: Record<string, IsedolMemberID | WakMemberID> = {
   '우왁굳': 'wakgood',
@@ -56,7 +57,7 @@ const NoticeMember = ({
     '--bg-color': memberColor && lighten(memberColor, 0.8)
   } as MemberColorStyles}>
     <div className={styles.profile}>
-      <Image src={`/images/member/front/${memberId || 'unknown'}.png`} width={128} height={128} />
+      <FadeInImage src={`/images/member/front/${memberId || 'unknown'}.png`} width={128} height={128} />
     </div>
     <span className={styles.name}>
       {member}

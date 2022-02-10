@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import styles from '../../styles/components/isedol/CardBase.module.scss';
 import { classes } from '../../utils/class';
+import FadeInImage from '../common/FadeInImage';
 
 interface YouTubeCardProps {
   title: string
@@ -16,7 +16,7 @@ export const YouTubeCard = ({ title, id, thumbnail, onClick }: YouTubeCardProps)
       onClick={() => onClick && onClick(id)}
     >
       <div className={styles.youtube_wrapper}>
-        <Image src={thumbnail || `https://img.youtube.com/vi/${id}/maxresdefault.jpg`} layout='fill'></Image>
+        <FadeInImage src={thumbnail || `https://img.youtube.com/vi/${id}/maxresdefault.jpg`} layout='fill'></FadeInImage>
       </div>
       <h3 className={styles.title}>{title}</h3>
     </div>
