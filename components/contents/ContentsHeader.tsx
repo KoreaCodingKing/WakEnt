@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { concatClass } from '../../../utils/class';
-import HeaderBase from '../../common/Header';
+import { concatClass } from '../../utils/class';
+import HeaderBase from '../common/Header';
 
 import styles from '../../../styles/components/zaun/ZaunHeader.module.scss';
 
@@ -57,7 +57,7 @@ const ZaunLogo = ({clickable, className}: WakEnterElementProps) => {
   );
 };
 
-export const ZaunHeader = () => {
+export const ContentsHeader = () => {
   const router = useRouter();
 
   const Left = (
@@ -74,4 +74,4 @@ export const ZaunHeader = () => {
   return <HeaderBase left={Left} right={Right}></HeaderBase>;
 };
 
-export default ZaunHeader;
+export default ContentsHeader;

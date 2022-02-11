@@ -116,7 +116,7 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
       en: 'Dandap Bug',
       ko: '단답벌레',
     },
-    description: '단답.',
+    description: 'ㅔ.',
     image: '/images/model/gomem/dandap/body.png',
     links: [{
       name: '불협화음',
