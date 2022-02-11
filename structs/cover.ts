@@ -62,6 +62,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   jingburger: [
     {
+      title: '슈퍼참치(SUPER TUNA) COVER',
+      id: 'Q0LWEyWI8-E',
+    },
+    {
       title: '킬리만자로의 표범 cover',
       id: 'vYepDd1QTAs'
     },
