@@ -1,5 +1,5 @@
 import styles from '../../styles/components/common/PageIndicator.module.scss';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 
 interface PageIndicatorProps {
   page: number
@@ -25,7 +25,7 @@ export const PageIndicator = ({
           onClick={() => setPage && setPage(i)}
         >
           <span
-            className={concatClass(
+            className={classes(
               !slide || !paused ? styles.active : styles.paused,
               typeof slide === 'number' && styles.animation
             )}

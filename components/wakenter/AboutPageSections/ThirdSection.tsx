@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { motion, useMotionTemplate, useSpring } from 'framer-motion';
-import { concatClass } from '../../../utils/class';
+import { classes } from '../../../utils/class';
 import { AboutSectionProps } from '../../../pages/about';
 import styles from '../../../styles/components/wakenter/AboutPageSections/ThirdSection.module.scss';
 import { clamp } from '../../../utils/number';
@@ -31,7 +31,7 @@ const ThirdSection = ({
   }, [letterSpacing, onScroll, opacity, setHeaderWhite]);
 
   return (
-    <section className={concatClass(className)} data-index={2}>
+    <section className={classes(className)} data-index={2}>
       <div className={styles.section_container}>
         <div className={styles.contents_wrapper}>
           <motion.p

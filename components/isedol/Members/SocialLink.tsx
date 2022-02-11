@@ -4,7 +4,7 @@ import styles from '../../../styles/components/isedol/Members/SocialLink.module.
 
 import Image from 'next/image';
 import { SocialLinks } from '../../../structs/member';
-import { concatClass } from '../../../utils/class';
+import { classes } from '../../../utils/class';
 import { InstagramIcon, SoundCloudIcon, TwitchIcon, TwitterIcon, YouTubeIcon } from '../../common/icons/ServiceProdivers';
 
 interface SocialLinkProps {
@@ -28,7 +28,7 @@ export const SocialLink = ({
   return (
     <Link href={link}>
       <a
-        className={concatClass(styles.icon, white && styles.white)}
+        className={classes(styles.icon, white && styles.white)}
         target='_blank'
       >
         {(icon && SocialIcons[icon] && (

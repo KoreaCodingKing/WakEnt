@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import styles from '../../styles/components/common/Pagination.module.scss';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 import { useHorizonalPageScroller } from './Scroll';
 
 interface PaginationProps {
@@ -31,7 +31,7 @@ export const Pagination = ({
       <div className={styles.pagination}>
         {previous && (
           <span
-            className={concatClass(styles.page, styles.next_prev_btn)}
+            className={classes(styles.page, styles.next_prev_btn)}
             onClick={() => movePage && movePage(pages[0] - 1)}
           >
             이전
@@ -49,7 +49,7 @@ export const Pagination = ({
         ))}
         {next && (
           <span
-            className={concatClass(styles.page, styles.next_prev_btn)}
+            className={classes(styles.page, styles.next_prev_btn)}
             onClick={() => movePage && movePage(pages[pages.length - 1] + 1)}
           >
             다음

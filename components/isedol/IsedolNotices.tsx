@@ -1,5 +1,4 @@
 import { NextPage } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { NoticeSources } from '../../pages/api/notices';
@@ -7,7 +6,7 @@ import { IsedolMemberID, IsedolMembers, WakMemberID } from '../../structs/member
 import { NoticesAPI } from '../../structs/notices';
 
 import styles from '../../styles/components/isedol/IsedolNotices.module.scss';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 import { useHashState } from '../../utils/state';
 import Button from '../common/Button';
 import { LoadSpinner } from '../common/LoadSpinner';
@@ -17,6 +16,7 @@ import { useHorizonalPageScroller } from '../common/Scroll';
 import { lighten } from '../../utils/color';
 import ChatIcon from '../common/icons/Chat';
 import LikeIcon from '../common/icons/Like';
+import FadeInImage from '../common/FadeInImage';
 
 const memberMaps: Record<string, IsedolMemberID | WakMemberID> = {
   '우왁굳': 'wakgood',
@@ -56,7 +56,7 @@ const NoticeMember = ({
     '--bg-color': memberColor && lighten(memberColor, 0.8)
   } as MemberColorStyles}>
     <div className={styles.profile}>
-      <Image src={`/images/member/front/${memberId || 'unknown'}.png`} width={128} height={128} />
+      <FadeInImage src={`/images/member/front/${memberId || 'unknown'}.png`} width={128} height={128} />
     </div>
     <span className={styles.name}>
       {member}
@@ -159,18 +159,18 @@ export const Notices: NextPage = () => {
                     <p className={styles.postTitle}>{v.title}</p>
                     <div className={styles.postDetails}>
                       <span
-                        className={concatClass(styles.item, styles.comments)}
+                        className={classes(styles.item, styles.comments)}
                       >
                         <ChatIcon></ChatIcon> {v.comments}
                       </span>
                       {typeof v.likes !== 'undefined' && (
                         <span
-                          className={concatClass(styles.item, styles.likes)}
+                          className={classes(styles.item, styles.likes)}
                         >
                           <LikeIcon></LikeIcon> {v.likes}
                         </span>
                       )}
-                      <span className={concatClass(styles.item, styles.date)}>
+                      <span className={classes(styles.item, styles.date)}>
                         {v.date}
                       </span>
                       <span className={styles.item}>

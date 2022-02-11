@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AboutSectionProps } from "../../../pages/about";
-import { concatClass } from "../../../utils/class";
+import { classes } from "../../../utils/class";
 import styles from "../../../styles/components/wakenter/AboutPageSections/FifthSection.module.scss";
 import Typer from "../../common/Typer";
 
@@ -15,7 +15,7 @@ const FifthSection = ({className, onScroll}: AboutSectionProps) => {
   }, [onScroll]);
 
   return (
-    <section className={concatClass(className, styles.fifth_section)}>
+    <section className={classes(className, styles.fifth_section)}>
       <div className={styles.section_container}>
         <div className={styles.contents_wrapper}>
           <div className={styles.image_wrapper}>

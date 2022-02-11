@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import styles from '../../styles/components/common/YouTubePlayerOverlay.module.scss';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 
 interface YouTubePlayerOverlayProps {
   id: string
@@ -17,7 +17,7 @@ export const YouTubePlayerOverlay = ({
 
   return (
     <div
-      className={concatClass(styles.overlay, open && styles.open)}
+      className={classes(styles.overlay, open && styles.open)}
       onClick={() => close && close()}
       ref={ref}
     >

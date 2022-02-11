@@ -4,7 +4,7 @@ import { useRef, useState } from 'react';
 import Image from 'next/image';
 
 import styles from '../../styles/components/isedol/isedolMain.module.scss';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 import Head from 'next/head';
 import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
 import PageIndicator from '../common/PageIndicator';
@@ -59,7 +59,7 @@ export const Main: NextPage = () => {
       <div className={styles.background}>
         {slides.map((v, i) => (
           <Image
-            className={concatClass(
+            className={classes(
               styles.backgroundImage,
               slide === i && styles.active
             )}

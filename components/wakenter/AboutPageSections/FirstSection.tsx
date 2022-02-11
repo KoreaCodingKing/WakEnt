@@ -8,7 +8,7 @@ import {
 } from 'framer-motion';
 
 import { easeInExpo, easeOutExpo } from '../../../utils/number';
-import { concatClass } from '../../../utils/class';
+import { classes } from '../../../utils/class';
 
 import Centerize from '../../common/Centerize';
 
@@ -89,7 +89,7 @@ const FirstSection = ({
   }, [current]);
 
   return (
-    <section className={concatClass(className)} data-index={0}>
+    <section className={classes(className)} data-index={0}>
       <Centerize>
         <motion.div className={styles.video} style={{ opacity: coverOpacity }}>
           <video autoPlay playsInline muted loop ref={video}>

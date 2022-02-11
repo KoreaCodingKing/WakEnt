@@ -7,7 +7,7 @@ import { IsedolLogo } from '../components/isedol/IsedolHeader';
 
 import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import styles from '../styles/pages/index.module.scss';
-import { concatClass } from '../utils/class';
+import { classes } from '../utils/class';
 import { useScrollPage } from '../components/common/Scroll';
 import { useRef } from 'react';
 import ChevronIcon from '../components/common/icons/Chevron';
@@ -65,7 +65,7 @@ const Home: NextPage = () => {
           <WakEnterHeader white={page === 1}></WakEnterHeader>
         </header>
         <div className={styles.pages} ref={scroll}>
-          <section className={concatClass(styles.page)} data-page={1}>
+          <section className={classes(styles.page)} data-page={1}>
             <div className={styles.representInner}>
               <div className={styles.hero}>
                 <h1>WAKTAVERSE.</h1>
@@ -100,7 +100,7 @@ const Home: NextPage = () => {
             </div>
           </section>
           <section
-            className={concatClass(styles.page, styles.flex, styles.mobileColumn)}
+            className={classes(styles.page, styles.flex, styles.mobileColumn)}
             data-page={2}
           >
             {Groups.map((v, i) => (

@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { CharacterModel } from '../../structs/member';
 import styles from '../../styles/components/common/ModelSlider.module.scss';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
+import FadeInImage from './FadeInImage';
 import { ChevronIcon } from './icons/Chevron';
 import PageIndicator from './PageIndicator';
 
@@ -36,7 +36,7 @@ export const ModelSlider = ({
   }, [initialIndex, models]);
 
   return (
-    <div className={concatClass(styles.model_slider, white && styles.white)}>
+    <div className={classes(styles.model_slider, white && styles.white)}>
       <div className={styles.model_slider_inner}>
         <button className={styles.prev_button} onClick={() => changeIndex(-1)}>
           <ChevronIcon width={22} stroke={1}></ChevronIcon>
@@ -50,13 +50,13 @@ export const ModelSlider = ({
                   className={styles.image_wrapper}
                   data-active={modelIndex === index}
                 >
-                  <Image
+                  <FadeInImage
                     src={model.image}
                     layout='fill'
                     priority
                     placeholder='blur'
                     blurDataURL={model.image}
-                  ></Image>
+                  ></FadeInImage>
                 </div>
               );
             })}

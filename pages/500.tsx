@@ -6,7 +6,7 @@ import LinkToIcon from '../components/common/icons/LinkTo';
 
 import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import styles from '../styles/pages/index.module.scss';
-import { concatClass } from '../utils/class';
+import { classes } from '../utils/class';
 import { useRef } from 'react';
 import Image from 'next/image';
 
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
           <WakEnterHeader></WakEnterHeader>
         </header>
         <div className={styles.pages} ref={scroll}>
-          <section className={concatClass(styles.page)} data-page={1}>
+          <section className={classes(styles.page)} data-page={1}>
             <div className={styles.representInner}>
               <div className={styles.hero}>
                 <h1>500</h1>

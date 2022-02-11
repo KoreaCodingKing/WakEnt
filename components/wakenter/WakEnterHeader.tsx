@@ -3,7 +3,7 @@ import HeaderBase, { HeaderBaseProps } from '../common/Header';
 import Image from 'next/image';
 
 import styles from '../../styles/components/wakenter/WakEnterHeader.module.scss';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -31,7 +31,7 @@ export const WakEnterLogo = ({
 }: WakEnterElementProps) => {
   return (
     <div
-      className={concatClass(
+      className={classes(
         styles.logo,
         white && styles.white,
         clickable && styles.clickable,
@@ -75,7 +75,7 @@ export const WakEnterLogoLink = ({
 
 const WakMenus = ({ white }: WakEnterElementProps) => {
   return (
-    <div className={concatClass(styles.menu, white && styles.white)}>
+    <div className={classes(styles.menu, white && styles.white)}>
       {Menus.map(menu => (
         <Link key={`link-${menu.title}`} href={menu.link}>
           <a className={styles.link}>{menu.title}</a>

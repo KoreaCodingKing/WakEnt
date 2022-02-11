@@ -137,7 +137,7 @@ $default-overlay-color: #1b1f21;
   .title {
     font-size: 1.75em;
     font-weight: 900;
-    letter-spacing: -3px;
+    letter-spacing: -2px;
 
     margin-bottom: 8px;
   }
@@ -286,6 +286,10 @@ $default-overlay-color: #1b1f21;
     grid-row-gap: 12px;
   }
 
+  @media screen and (max-width: $maxMobile) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   padding-bottom: 10vh;
 }
 
@@ -304,6 +308,13 @@ $default-overlay-color: #1b1f21;
   grid-column-start: var(--ce, auto);
   grid-row-start: var(--rs, auto);
   grid-row-end: var(--re, auto);
+
+  @media screen and (max-width: $maxMobile) {
+    grid-column-start: var(--csm, var(--cs, auto));
+    grid-column-start: var(--cem, var(--cs, auto));
+    grid-row-start: var(--rsm, var(--cs, auto));
+    grid-row-end: var(--rem, var(--cs, auto));
+  }
 
   &.padding {
     padding: 26px 32px;

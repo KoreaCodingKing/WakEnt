@@ -16,7 +16,7 @@ import { useRecoilState } from 'recoil';
 import { gomemActiveState } from '../../states/gomem/active';
 
 import styles from '../../styles/components/gomem/Gomem3D.module.scss';
-import { concatClass } from '../../utils/class';
+import { classes } from '../../utils/class';
 import { gomemHoverState } from '../../states/gomem/hover';
 import ISS from './Elements/ISS';
 
@@ -50,8 +50,8 @@ export const Gomem3DWithEvents = ({
 
       if (Planets[name].unit) {
         setActiveState({
-          planet: activeState.planet,
-          detail: !activeState.detail,
+          planet: name,
+          detail: name !== activeState.planet ? false : !activeState.detail,
         });
       }
 
@@ -70,9 +70,7 @@ export const Gomem3DWithEvents = ({
   }, [setActiveState]);
 
   return (
-    <div
-      className={concatClass(styles.gomem3D, hoverState.hover && styles.hover)}
-    >
+    <div className={classes(styles.gomem3D, hoverState.hover && styles.hover)}>
       <Gomem3D
         planet={activeState.planet}
         onPlanetHover={planetHoverHandler}
