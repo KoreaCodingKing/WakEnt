@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { classes } from '../../utils/class';
 
-import styles from '../../../styles/components/zaun/ZaunHeader.module.scss';
+import styles from '../../styles/components/contents/ContentsHeader.module.scss';
 import HeaderBase from '../common/Header';
 
 interface WakEnterElementProps {

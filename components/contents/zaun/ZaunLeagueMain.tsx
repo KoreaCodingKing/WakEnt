@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
 
-import styles from '../../../styles/components/zaun/ZaunMain.module.scss';
+import styles from '../../../styles/components/contents/zaunLeague/ZaunMain.module.scss';
 
 export const Main: NextPage = () => {
   return (

@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 
-import styles from '../../../styles/components/zaun/ZaunIndex.module.scss';
+import styles from '../../../styles/components/contents/zaunLeague/ZaunMain.module.scss';
 import WakEnterMetadata from '../../../components/wakenter/Meta';
 import ZaunMain from '../../../components/contents/zaun/ZaunLeagueMain';
 
