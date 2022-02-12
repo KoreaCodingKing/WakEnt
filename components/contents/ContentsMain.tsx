@@ -5,7 +5,7 @@ export const ContentsMain: NextPage = () => {
     <div>
 
     </div>
-  )
-}
+  );
+};
 
 export default ContentsMain;

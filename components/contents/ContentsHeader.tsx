@@ -11,7 +11,7 @@ interface WakEnterElementProps {
   clickable?: boolean
 }
 
-const Menus: Object[] = [];
+const Menus: unknown[] = [];
 
 const LeagueMenus = () => {
   return (
