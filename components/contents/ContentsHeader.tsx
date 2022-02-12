@@ -11,30 +11,21 @@ interface WakEnterElementProps {
   clickable?: boolean
 }
 
-const Menus = [
-  {
-    title: 'About',
-    link: '/about',
-  },
-  {
-    title: 'Supporters',
-    link: '/supporters',
-  },
-];
+const Menus: Object[] = [];
 
 const LeagueMenus = () => {
   return (
     <div className={styles.menu}>
-      {Menus.map(menu => (
+      {/* {Menus.map(menu => (
         <Link key={`link-${menu.title}`} href={menu.link}>
           <a className={styles.link}>{menu.title}</a>
         </Link>
-      ))}
+      ))} */}
     </div>
   );
 };
 
-const ZaunLogo = ({clickable, className}: WakEnterElementProps) => {
+const Logo = ({clickable, className}: WakEnterElementProps) => {
   return (
     <div
       className={classes(
@@ -45,7 +36,7 @@ const ZaunLogo = ({clickable, className}: WakEnterElementProps) => {
     >
       <div className={styles.logoImage}>
         <Image
-          src='/images/zaun/logo_zaun_white.png'
+          src='/images/wak-enter-centered.png'
           layout='fill'
           alt='zaun'
         ></Image>
@@ -66,7 +57,7 @@ export const ContentsHeader = () => {
         tabIndex={100}
         onKeyDown={ev => ev.key === 'Enter' && router.push('/zaun-league')}
       >
-        <ZaunLogo clickable></ZaunLogo>
+        <Logo clickable></Logo>
       </span>
     </Link>
   );

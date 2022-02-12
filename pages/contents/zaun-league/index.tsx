@@ -2,7 +2,6 @@ import { NextPage } from 'next';
 
 import styles from '../../../styles/components/zaun/ZaunIndex.module.scss';
 import WakEnterMetadata from '../../../components/wakenter/Meta';
-import ContentsHeader from '../../../components/contents/ContentsHeader';
 import ZaunMain from '../../../components/contents/zaun/ZaunLeagueMain';
 
 const ZaunLeague: NextPage = (): JSX.Element => {
@@ -14,9 +13,6 @@ const ZaunLeague: NextPage = (): JSX.Element => {
         description='WAK Entertainment 공식 주관 프로/아마추어 롤 리그'
         image='/images/zaun/thumbnail_zaun.png'
       ></WakEnterMetadata>
-      <div className={styles.zaun_header}>
-        <ContentsHeader></ContentsHeader>
-      </div>
       <div className={styles.zaun_contents}>
         <ZaunMain></ZaunMain>
       </div>
