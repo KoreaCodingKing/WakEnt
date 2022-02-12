@@ -30,14 +30,14 @@ const Groups = [
     name: '이세계 아이돌',
     link: '/isedol',
     image: '/images/bg_rewind.jpg',
-    disabled: false,
+    description: '오디션을 걸쳐 선발된 가상 아이돌 그룹. 활발한 커버송 공개, 음원 발해 및 트위치 방송 활동을 기반으로 여러분들께 기쁨을 선사해드립니다.',
     logo: <IsedolLogo big white></IsedolLogo>,
   },
   {
     name: '고정 멤버',
     link: '/gomem',
     image: '/images/bg_gomem.jpg',
-    disabled: true,
+    description: '왁타버스 세계관의 주력이 되는 그룹. 왁타버스 합동 방송 참여 및 상황극 등 컨텐츠를 개발하여 여러분들에게 즐거움을 선사해드립니다.',
     logo: <h1 className={styles.big}>고정 멤버</h1>,
   },
 ];
