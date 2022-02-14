@@ -9,7 +9,7 @@ import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import styles from '../styles/pages/index.module.scss';
 import { classes } from '../utils/class';
 import { useScrollPage } from '../components/common/Scroll';
-import { useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import ChevronIcon from '../components/common/icons/Chevron';
 import Centerize from '../components/common/Centerize';
 import WakEnterMetadata from '../components/wakenter/Meta';
@@ -46,60 +46,52 @@ const Home: NextPage = () => {
   const scroll = useRef<HTMLDivElement>(null);
   const page = useScrollPage(scroll, process.browser ? window.innerHeight : 1, 0.05);
 
-  const goPage = (index: number) => {
+  const goPage = useCallback((index: number) => {
     if (!scroll.current) {
       return;
     }
 
     scroll.current.scrollTo({
-      top: window.innerHeight * (index - 1),
+      top: window.innerHeight * (index),
       behavior: 'smooth'
     });
-  };
+  }, []);
 
   return (
     <>
       <WakEnterMetadata title='WAKTAVERSE'></WakEnterMetadata>
       <div className={styles.main}>
         <header>
-          <WakEnterHeader white={page === 1}></WakEnterHeader>
+          <WakEnterHeader></WakEnterHeader>
         </header>
         <div className={styles.pages} ref={scroll}>
           <section className={classes(styles.page)} data-page={1}>
             <div className={styles.representInner}>
               <div className={styles.hero}>
+                <p>메타버스의 선두자</p>
+                <p>메타버스의 현재</p>
                 <h1>WAKTAVERSE.</h1>
-                <p>WAK Entertainment, we are break-through.</p>
+                <p>WakEntertainment with Metaverse</p>
               </div>
-              <div className={styles.links}>
-                {Links.map((v, i) => (
-                  <div
-                    key={`main-link-${i}`}
-                    className={styles.link}
-                    tabIndex={100}
-                    onKeyDown={ev =>
-                      ev.key === 'Enter' && (window.location.href = v.link)
-                    }
-                  >
-                    <Link href={v.link} passHref>
-                      <a>
-                        {v.name} <LinkToIcon width={22}></LinkToIcon>
-                      </a>
-                    </Link>
+              <div className={styles.scrollDown} onClick={() => goPage(1)}>
+                <div className={styles.inner}>
+                  <div className={styles.icon}>
+                    <ChevronIcon bottom stroke={1}></ChevronIcon>
                   </div>
-                ))}
-              </div>
-            </div>
-            <div className={styles.scrollDown} onClick={() => goPage(2)}>
-              <div className={styles.inner}>
-                <div className={styles.icon}>
-                  <ChevronIcon bottom stroke={1}></ChevronIcon>
+                  <p>WAKTAVERSE 알아보기</p>
                 </div>
-                <p>밑으로 내려 WAKTAVERSE 알아보기</p>
               </div>
             </div>
           </section>
-          <section
+          {Groups.map((group, i) => {
+            return (
+              <section className={classes(styles.page, styles.flex, styles.mobileColumn)}
+                data-page={i+2}>
+
+              </section>
+            );
+          })}
+          {/* <section
             className={classes(styles.page, styles.flex, styles.mobileColumn)}
             data-page={2}
           >
@@ -119,7 +111,27 @@ const Home: NextPage = () => {
                 </div>
               </Link>
             ))}
-          </section>
+          </section> */}
+        </div>
+        <div className={styles.navigation_box}>
+          <ul className={styles.navigations}>
+            <li className={styles.navigation}
+              onClick={() => goPage(0)}
+              style={{
+                '--backgroundColor': page === 0 ? '#000' : 'none'
+              } as React.CSSProperties}
+            ></li>
+            {Groups.map((_, i) => {
+              return (
+                <li className={styles.navigation}
+                  style={{
+                    '--backgroundColor': page === i+1 ? '#000' : 'none'
+                  } as React.CSSProperties}
+                  onClick={() => goPage(i+1)}
+                ></li>
+              )
+            })}
+          </ul>
         </div>
       </div>
     </>

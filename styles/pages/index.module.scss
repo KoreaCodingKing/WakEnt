@@ -84,12 +84,14 @@
 .representInner {
   padding: 60px 5%;
   box-sizing: border-box;
+  justify-content: center;
 
   width: 100%;
   height: 100%;
 
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 @keyframes iconDown {
@@ -103,10 +105,9 @@
 }
 
 .scrollDown {
-  position: absolute;
-  right: 5vw;
-  bottom: 5vh;
-  
+  width: fit-content;
+  align-self: center;
+
   letter-spacing: -0.05em;
   font-weight: bold;
 
@@ -167,11 +168,14 @@
 .hero {
   display: flex;
   flex-direction: column;
-  margin-top: auto;
-  margin-bottom: 10vh;
+  margin-bottom: 28px;
 
   h1, p {
     margin: 0;
+  }
+
+  p:nth-child(2) {
+    margin-bottom: 14px;
   }
 
   h1 {
@@ -354,4 +358,28 @@ $link-color: #1667e0;
 
 .big {
   font-size: 2em;
+}
+
+.navigation_box {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 2vw;
+
+  .navigations {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  li {
+    list-style: none;
+    width: 5px;
+    height: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: var(--backgroundColor);
+    text-align: center;
+  }
 }
