@@ -42,7 +42,7 @@ const Groups = [
       },
     ],
     image: '/images/bg_rewind.jpg',
-    description: '오디션을 걸쳐 선발된 가상 아이돌 그룹. 활발한 커버송 공개, 음원 발해 및 트위치 방송 활동을 기반으로 여러분들께 기쁨을 선사해드립니다.',
+    description: '오디션을 걸쳐 선발된 가상 아이돌 그룹.\n활발한 커버송 공개, 음원 발해 및 트위치 방송 활동을 기반으로 여러분들께 기쁨을 선사해드립니다.',
     
   },
   {
@@ -61,7 +61,7 @@ const Groups = [
       },
     ],
     image: '/images/bg_gomem.jpg',
-    description: '왁타버스 세계관의 주력이 되는 그룹. 왁타버스 합동 방송 참여 및 상황극 등 컨텐츠를 개발하여 여러분들에게 즐거움을 선사해드립니다.',
+    description: '왁타버스 세계관의 주력이 되는 그룹.\n왁타버스 합동 방송 참여 및 상황극 등 컨텐츠를 개발하여 여러분들에게 즐거움을 선사해드립니다.',
     
   },
 ];
@@ -114,10 +114,10 @@ const Home: NextPage = () => {
                 data-page={i+2}>
                 <div className={classes(styles.representInner, styles.group)}>
                   <div className={styles.section_title}>
-                    <h2>{group.name.ko} <span>{group.name.en}</span></h2>
+                    <h2>{group.name.ko}<span>{group.name.en}</span></h2>
                     <p>{group.description}</p>
                   </div>
-                  <div className={styles.link_box}>
+                  <div className={styles.links}>
                     {group.links.map((v, i) => (
                       <div
                         key={`main-link-${i}`}
@@ -127,7 +127,7 @@ const Home: NextPage = () => {
                           ev.key === 'Enter' && (window.location.href = v.link)
                         }
                       >
-                        <Link href={v.link} passHref={v.link.startsWith('/') ? false : true}>
+                        <Link href={v.link} passHref>
                           <a>
                             {v.name} <LinkToIcon width={22}></LinkToIcon>
                           </a>
@@ -139,27 +139,6 @@ const Home: NextPage = () => {
               </section>
             );
           })}
-          {/* <section
-            className={classes(styles.page, styles.flex, styles.mobileColumn)}
-            data-page={2}
-          >
-            {Groups.map((v, i) => (
-              <Link key={`subsite-link-${i}`} href={v.link} passHref>
-                <div className={styles.card}>
-                  <Centerize>
-                    <div className={styles.background}>
-                      <Image
-                        className={styles.image}
-                        src={v.image}
-                        layout='fill'
-                      />
-                    </div>
-                  </Centerize>
-                  <div className={styles.contents}>{v.logo}</div>
-                </div>
-              </Link>
-            ))}
-          </section> */}
         </div>
         <div className={styles.navigation_box}>
           <ul className={styles.navigations}>
