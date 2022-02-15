@@ -27,18 +27,42 @@ const Links = [
 
 const Groups = [
   {
-    name: '이세계 아이돌',
-    link: '/isedol',
+    name: {
+      ko: '이세계 아이돌',
+      en: 'ISEGYE IDOL'
+    },
+    links: [
+      {
+        name: '이세돌 상세 페이지',
+        link: '/isedol',
+      },
+      {
+        name: '공식 유튜브 채널',
+        link: 'https://www.youtube.com/c/welshcorgimessi',
+      },
+    ],
     image: '/images/bg_rewind.jpg',
     description: '오디션을 걸쳐 선발된 가상 아이돌 그룹. 활발한 커버송 공개, 음원 발해 및 트위치 방송 활동을 기반으로 여러분들께 기쁨을 선사해드립니다.',
-    logo: <IsedolLogo big white></IsedolLogo>,
+    
   },
   {
-    name: '고정 멤버',
-    link: '/gomem',
+    name: {
+      ko: '고정멤버',
+      en: 'SEASON2'
+    },
+    links: [
+      {
+        name: '고정멤버 상세 페이지',
+        link: '/gomem',
+      },
+      {
+        name: '공식 유튜브 채널',
+        link: 'https://www.youtube.com/c/welshcorgimessi',
+      },
+    ],
     image: '/images/bg_gomem.jpg',
     description: '왁타버스 세계관의 주력이 되는 그룹. 왁타버스 합동 방송 참여 및 상황극 등 컨텐츠를 개발하여 여러분들에게 즐거움을 선사해드립니다.',
-    logo: <h1 className={styles.big}>고정 멤버</h1>,
+    
   },
 ];
 
@@ -85,9 +109,33 @@ const Home: NextPage = () => {
           </section>
           {Groups.map((group, i) => {
             return (
-              <section className={classes(styles.page, styles.flex, styles.mobileColumn)}
+              <section key={`group-section-${i}`}
+                className={classes(styles.page, styles.flex, styles.mobileColumn)}
                 data-page={i+2}>
-
+                <div className={classes(styles.representInner, styles.group)}>
+                  <div className={styles.section_title}>
+                    <h2>{group.name.ko} <span>{group.name.en}</span></h2>
+                    <p>{group.description}</p>
+                  </div>
+                  <div className={styles.link_box}>
+                    {group.links.map((v, i) => (
+                      <div
+                        key={`main-link-${i}`}
+                        className={styles.link}
+                        tabIndex={100}
+                        onKeyDown={ev =>
+                          ev.key === 'Enter' && (window.location.href = v.link)
+                        }
+                      >
+                        <Link href={v.link} passHref={v.link.startsWith('/') ? false : true}>
+                          <a>
+                            {v.name} <LinkToIcon width={22}></LinkToIcon>
+                          </a>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </section>
             );
           })}
@@ -123,7 +171,8 @@ const Home: NextPage = () => {
             ></li>
             {Groups.map((_, i) => {
               return (
-                <li className={styles.navigation}
+                <li key={`nav-index-${i}`}
+                  className={styles.navigation}
                   style={{
                     '--backgroundColor': page === i+1 ? '#000' : 'none'
                   } as React.CSSProperties}
