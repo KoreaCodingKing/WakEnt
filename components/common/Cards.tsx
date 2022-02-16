@@ -19,18 +19,19 @@ interface CardStyles extends CSSProperties {
 }
 
 interface CardProps {
-  index?: number
-  padding?: boolean
-  children: ReactNode
-  className?: string
-  template?: CardTemplateString
-  mobileTemplate?: CardTemplateString
-  normalSize?: boolean
-  flex?: boolean
-  flexColumn?: boolean
-  center?: boolean
-  thumbnail?: boolean
-  centerColumn?: boolean
+  index?: number,
+  padding?: boolean,
+  children: ReactNode,
+  className?: string,
+  template?: CardTemplateString,
+  mobileTemplate?: CardTemplateString,
+  normalSize?: boolean,
+  flex?: boolean,
+  flexColumn?: boolean,
+  center?: boolean,
+  thumbnail?: boolean,
+  centerColumn?: boolean,
+  backgroundColor: string
 }
 
 const cardVariants: Variants = {
@@ -67,7 +68,8 @@ export const Card = ({
   flexColumn,
   thumbnail,
   center,
-  centerColumn
+  centerColumn,
+  backgroundColor
 }: CardProps) => {
   const templateArray = template && template.split(' ');
   const mobileTemplateArray = mobileTemplate && mobileTemplate.split(' ');
@@ -92,6 +94,7 @@ export const Card = ({
         templateArray
           ? ({
             transform: 'translateX(0)',
+            background: `${backgroundColor}`,
             '--cs': templateArray[0],
             '--ce': templateArray[1],
             '--rs': templateArray[2],
