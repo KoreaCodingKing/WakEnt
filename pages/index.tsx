@@ -134,6 +134,9 @@ const Home: NextPage = () => {
                   </div>
                 ))}
               </div>
+              <div className={styles.cards_box}>
+
+              </div>
             </div>
           </section>
           <section key={`group-section-${2}`}
@@ -161,6 +164,9 @@ const Home: NextPage = () => {
                     </Link>
                   </div>
                 ))}
+              </div>
+              <div className={styles.cards_box}>
+                
               </div>
             </div>
           </section>
