@@ -407,8 +407,11 @@
 }
 
 .group {
-  max-width: 1000px;
+  max-width: 1440px;
+  height: 100vh;
+  min-height: 1000px;
   margin: 0 auto;
+  margin-bottom: 2vh;
 }
 
 .cards_box {
@@ -435,6 +438,7 @@
 
 .cards_box {
   display: grid;
+  min-width: 675px;
 }
 
 .img_box {
@@ -445,7 +449,7 @@
 }
 
 .album {
-  width: 450px;
-  height: 427px;
+  min-width: 331px;
+  height: 400px;
   aspect-ratio: 9 / 16;
 }
