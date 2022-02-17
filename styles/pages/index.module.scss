@@ -404,3 +404,37 @@
     }
   }
 }
+
+.cards_box {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+
+  @media screen and (max-width: $maxTablet) {
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  padding-bottom: 10vh;
+}
+
+.descriptionCard {
+  min-height: 200px;
+}
+
+.cards_box {
+  display: grid;
+}
+.img_box {
+  position: relative;
+  width: 116px;
+  height: 97px;
+  aspect-ratio: 9 / 16;
+}

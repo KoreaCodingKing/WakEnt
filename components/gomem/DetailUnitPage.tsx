@@ -52,6 +52,7 @@ const variants: Variants = {
 };
 
 export const DetailUnit = () => {
+  const backgroundColor = '#1b1f21';
   const [active, setActiveState] = useRecoilState(gomemActiveState);
   const [_hash, setState] = useHashState<PlanetKeys | null>(
     active.detail ? active.planet : null,
@@ -183,7 +184,7 @@ export const DetailUnit = () => {
                       center
                       template="1 1 1 6"
                       mobileTemplate="auto auto 1 2"
-                      backgroundColor="#1b1f21"
+                      backgroundColor={backgroundColor}
                     >
                       {unit &&
                         GomemSeason2Members[unit.members[activeMember]]
@@ -212,7 +213,7 @@ export const DetailUnit = () => {
                       template="auto auto 1 3"
                       mobileTemplate="1 1 2 3"
                       className={styles.descriptionCard}
-                      backgroundColor="#1b1f21"
+                      backgroundColor={backgroundColor}
                     >
                       <AnimateSharedLayout>
                         {unit && (
@@ -248,7 +249,7 @@ export const DetailUnit = () => {
                       thumbnail
                       template="auto auto 3 6"
                       mobileTemplate="1 1 3 4"
-                      backgroundColor="#1b1f21"
+                      backgroundColor={backgroundColor}
                     >
                       {/* <ImageSlider></ImageSlider> */}
                     </Card>
@@ -273,7 +274,7 @@ export const DetailUnit = () => {
                               mobileTemplate={`auto auto ${4 + index} ${
                                 5 + index
                               }`}
-                              backgroundColor="#1b1f21"
+                              backgroundColor={backgroundColor}
                             >
                               <Link href={link.link} passHref>
                                 <a target="_blank">

@@ -13,6 +13,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import ChevronIcon from '../components/common/icons/Chevron';
 import Centerize from '../components/common/Centerize';
 import WakEnterMetadata from '../components/wakenter/Meta';
+import { Card } from '../components/common/Cards';
 
 const Links = [
   {
@@ -135,7 +136,54 @@ const Home: NextPage = () => {
                 ))}
               </div>
               <div className={styles.cards_box}>
-
+                <Card
+                  index={1}
+                  flex
+                  center
+                  normalSize
+                  template="1 1 1 3"
+                  mobileTemplate="1 1 2 3"
+                  className={styles.descriptionCard}
+                  backgroundColor='#F5F5F5'
+                >
+                  <div className={styles.img_box}>
+                    <Image
+                      src={'/images/logo_isedol.png'}
+                      layout='fill'></Image>
+                  </div>
+                </Card>
+                <Card
+                  index={1}
+                  flex
+                  center
+                  normalSize
+                  template="1 1 3 6"
+                  mobileTemplate="1 1 2 3"
+                  className={styles.descriptionCard}
+                  backgroundColor='#F5F5F5'
+                >
+                  <div className={styles.img_box}>
+                    <Image
+                      src={'/images/logo_isedol.png'}
+                      layout='fill'></Image>
+                  </div>
+                </Card>
+                <Card
+                  index={1}
+                  flex
+                  center
+                  normalSize
+                  template="auto auto 1 6"
+                  mobileTemplate="1 1 2 3"
+                  className={styles.descriptionCard}
+                  backgroundColor='#F5F5F5'
+                >
+                  <div className={styles.img_box}>
+                    <Image
+                      src={'/images/logo_isedol.png'}
+                      layout='fill'></Image>
+                  </div>
+                </Card>
               </div>
             </div>
           </section>
@@ -166,7 +214,7 @@ const Home: NextPage = () => {
                 ))}
               </div>
               <div className={styles.cards_box}>
-                
+
               </div>
             </div>
           </section>
