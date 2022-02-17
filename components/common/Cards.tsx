@@ -31,7 +31,8 @@ interface CardProps {
   center?: boolean,
   thumbnail?: boolean,
   centerColumn?: boolean,
-  backgroundColor: string
+  backgroundColor: string,
+  minHeight: string
 }
 
 const cardVariants: Variants = {
@@ -69,7 +70,8 @@ export const Card = ({
   thumbnail,
   center,
   centerColumn,
-  backgroundColor
+  backgroundColor,
+  minHeight
 }: CardProps) => {
   const templateArray = template && template.split(' ');
   const mobileTemplateArray = mobileTemplate && mobileTemplate.split(' ');
@@ -95,6 +97,7 @@ export const Card = ({
           ? ({
             transform: 'translateX(0)',
             background: `${backgroundColor}`,
+            minHeight: `${minHeight}`,
             '--cs': templateArray[0],
             '--ce': templateArray[1],
             '--rs': templateArray[2],

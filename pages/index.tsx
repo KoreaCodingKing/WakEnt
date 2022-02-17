@@ -43,7 +43,7 @@ const Groups = [
       },
     ],
     image: '/images/bg_rewind.jpg',
-    description: '오디션을 걸쳐 선발된 가상 아이돌 그룹.\n활발한 커버송 공개, 음원 발매 및 트위치 방송 활동을 기반으로 여러분들께 기쁨을 선사해드립니다.',
+    description: '오디션을 걸쳐 선발된 가상 아이돌 그룹.\n활발한 커버송 공개, 음원 발매 및 트위치 방송 활동을 기반으로 여러분들께 기쁨을 선사드립니다.',
     
   },
   {
@@ -62,7 +62,7 @@ const Groups = [
       },
     ],
     image: '/images/bg_gomem.jpg',
-    description: '왁타버스 세계관의 주력이 되는 그룹.\n왁타버스 합동 방송 참여 및 상황극 등 컨텐츠를 개발하여 여러분들에게 즐거움을 선사해드립니다.',
+    description: '왁타버스 세계관의 주력이 되는 그룹.\n왁타버스 합동 방송 참여 및 상황극 등 컨텐츠를 개발하여 여러분들에게 즐거움을 선사드립니다.',
     
   },
 ];
@@ -70,13 +70,13 @@ const Groups = [
 const Home: NextPage = () => {
   const scroll = useRef<HTMLDivElement>(null);
   const page = useScrollPage(scroll, process.browser ? window.innerHeight : 1, 0.05);
+  const minHeight = '224';
 
   const goPage = useCallback((index: number) => {
     if (!scroll.current) {
       return;
     }
 
-    console.log(page)
     scroll.current.scrollTo({
       top: window.innerHeight * (index),
       behavior: 'smooth'
@@ -137,7 +137,7 @@ const Home: NextPage = () => {
               </div>
               <div className={styles.cards_box}>
                 <Card
-                  index={1}
+                  index={0}
                   flex
                   center
                   normalSize
@@ -145,6 +145,7 @@ const Home: NextPage = () => {
                   mobileTemplate="1 1 2 3"
                   className={styles.descriptionCard}
                   backgroundColor='#F5F5F5'
+                  minHeight={minHeight}
                 >
                   <div className={styles.img_box}>
                     <Image
@@ -161,15 +162,16 @@ const Home: NextPage = () => {
                   mobileTemplate="1 1 2 3"
                   className={styles.descriptionCard}
                   backgroundColor='#F5F5F5'
+                  minHeight={minHeight}
                 >
-                  <div className={styles.img_box}>
+                  <div className={classes(styles.img_box, styles.album)}>
                     <Image
-                      src={'/images/logo_isedol.png'}
+                      src={'/images/album/rewind.jpg'}
                       layout='fill'></Image>
                   </div>
                 </Card>
                 <Card
-                  index={1}
+                  index={2}
                   flex
                   center
                   normalSize
@@ -177,6 +179,7 @@ const Home: NextPage = () => {
                   mobileTemplate="1 1 2 3"
                   className={styles.descriptionCard}
                   backgroundColor='#F5F5F5'
+                  minHeight={minHeight}
                 >
                   <div className={styles.img_box}>
                     <Image
@@ -218,38 +221,6 @@ const Home: NextPage = () => {
               </div>
             </div>
           </section>
-          {/* {Groups.map((group, i) => {
-            return (
-              <section key={`group-section-${i}`}
-                className={classes(styles.page, styles.flex, styles.mobileColumn)}
-                data-page={i+2}>
-                <div className={classes(styles.representInner, styles.group)}>
-                  <div className={styles.section_title}>
-                    <h2>{group.name.ko}<span>{group.name.en}</span></h2>
-                    <p>{group.description}</p>
-                  </div>
-                  <div className={styles.links}>
-                    {group.links.map((v, i) => (
-                      <div
-                        key={`main-link-${i}`}
-                        className={styles.link}
-                        tabIndex={100}
-                        onKeyDown={ev =>
-                          ev.key === 'Enter' && (window.location.href = v.link)
-                        }
-                      >
-                        <Link href={v.link} passHref>
-                          <a>
-                            {v.name} <LinkToIcon width={22}></LinkToIcon>
-                          </a>
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-            );
-          })} */}
         </div>
         <div className={styles.navigation_box}>
           <ul className={styles.navigations}>

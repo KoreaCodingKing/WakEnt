@@ -298,7 +298,6 @@ $default-overlay-color: #1b1f21;
   overflow: hidden;
 
   min-width: 100px;
-  min-height: 100px;
 
   border-radius: 16px;
 
@@ -312,6 +311,8 @@ $default-overlay-color: #1b1f21;
     grid-column-start: var(--cem, var(--cs, auto));
     grid-row-start: var(--rsm, var(--cs, auto));
     grid-row-end: var(--rem, var(--cs, auto));
+
+    min-height: 100px;
   }
 
   &.padding {

@@ -53,6 +53,7 @@ const variants: Variants = {
 
 export const DetailUnit = () => {
   const backgroundColor = '#1b1f21';
+  const minHeight = '100';
   const [active, setActiveState] = useRecoilState(gomemActiveState);
   const [_hash, setState] = useHashState<PlanetKeys | null>(
     active.detail ? active.planet : null,
@@ -185,6 +186,7 @@ export const DetailUnit = () => {
                       template="1 1 1 6"
                       mobileTemplate="auto auto 1 2"
                       backgroundColor={backgroundColor}
+                      minHeight={minHeight}
                     >
                       {unit &&
                         GomemSeason2Members[unit.members[activeMember]]
@@ -214,6 +216,7 @@ export const DetailUnit = () => {
                       mobileTemplate="1 1 2 3"
                       className={styles.descriptionCard}
                       backgroundColor={backgroundColor}
+                      minHeight={minHeight}
                     >
                       <AnimateSharedLayout>
                         {unit && (
@@ -250,6 +253,7 @@ export const DetailUnit = () => {
                       template="auto auto 3 6"
                       mobileTemplate="1 1 3 4"
                       backgroundColor={backgroundColor}
+                      minHeight={minHeight}
                     >
                       {/* <ImageSlider></ImageSlider> */}
                     </Card>
@@ -275,6 +279,7 @@ export const DetailUnit = () => {
                                 5 + index
                               }`}
                               backgroundColor={backgroundColor}
+                              minHeight={minHeight}
                             >
                               <Link href={link.link} passHref>
                                 <a target="_blank">

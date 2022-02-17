@@ -351,6 +351,7 @@
   .links {
     display: flex;
     gap: 20%;
+    margin-bottom: 40px;
 
     .link {
       display: flex;
@@ -405,6 +406,11 @@
   }
 }
 
+.group {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 .cards_box {
   display: grid;
 
@@ -421,8 +427,6 @@
   @media screen and (max-width: $maxMobile) {
     grid-template-columns: repeat(1, 1fr);
   }
-
-  padding-bottom: 10vh;
 }
 
 .descriptionCard {
@@ -432,9 +436,16 @@
 .cards_box {
   display: grid;
 }
+
 .img_box {
   position: relative;
   width: 116px;
   height: 97px;
+  aspect-ratio: 9 / 16;
+}
+
+.album {
+  width: 450px;
+  height: 427px;
   aspect-ratio: 9 / 16;
 }
