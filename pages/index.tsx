@@ -14,6 +14,9 @@ import ChevronIcon from '../components/common/icons/Chevron';
 import Centerize from '../components/common/Centerize';
 import WakEnterMetadata from '../components/wakenter/Meta';
 import { Card } from '../components/common/Cards';
+import YouTubeCard from '../components/isedol/YouTubeCard';
+import FadeInImage from '../components/common/FadeInImage';
+import { getLinkType, getYouTubeThumbnailURL, LinkType } from '../structs/links';
 
 const Links = [
   {
@@ -60,6 +63,14 @@ const Groups = [
         name: '공식 유튜브 채널',
         link: 'https://www.youtube.com/c/welshcorgimessi',
       },
+    ],
+    videos: [
+      {
+        link: 'https://www.youtube.com/watch?v=Ru2Mx7xFgRc'
+      },
+      {
+        link: 'https://www.youtube.com/watch?v=Kc85nOaqLwo'
+      }
     ],
     image: '/images/bg_gomem.jpg',
     description: '왁타버스 세계관의 주력이 되는 그룹.\n왁타버스 합동 방송 참여 및 상황극 등 컨텐츠를 개발하여 여러분들에게 즐거움을 선사드립니다.',
@@ -184,7 +195,10 @@ const Home: NextPage = () => {
                   <div className={styles.img_box}>
                     <Image
                       src={'/images/logo_isedol.png'}
-                      layout='fill'></Image>
+                      layout='fill'
+                      blurDataURL={'/images/logo_isedol.png'}
+                      placeholder='blur'
+                      priority></Image>
                   </div>
                 </Card>
               </div>
@@ -217,7 +231,40 @@ const Home: NextPage = () => {
                 ))}
               </div>
               <div className={styles.cards_box}>
+                {Groups[1].videos!.map((link, index) => {
+                  const linkType = getLinkType(link.link);
 
+                  let image = '';
+
+                  if (linkType === LinkType.YouTube) {
+                    image = getYouTubeThumbnailURL(link.link);
+                  }
+
+                  return (
+                    <Card
+                      key={`card-${index}`}
+                      index={3 + index}
+                      padding
+                      thumbnail={image.length > 0}
+                      template="auto auto auto auto"
+                      mobileTemplate={`auto auto ${4 + index} ${
+                        5 + index
+                      }`}
+                      backgroundColor='#000'
+                      minHeight={minHeight}
+                    >
+                      <Link href={link.link} passHref>
+                        <a target="_blank">
+                          <FadeInImage
+                            src={image}
+                            layout="fill"
+                          ></FadeInImage>
+                        </a>
+                      </Link>
+                    </Card>
+                  );
+                })
+                }
               </div>
             </div>
           </section>
