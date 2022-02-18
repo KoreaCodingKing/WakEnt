@@ -101,7 +101,7 @@ const Home: NextPage = () => {
         </header>
         <div className={styles.pages} ref={scroll}>
           <section className={classes(styles.page)} data-page={1}>
-            <div className={styles.representInner}>
+            <div className={classes(styles.representInner, styles.group)}>
               <div className={styles.hero}>
                 <p>메타버스의 선두자</p>
                 <p>메타버스의 현재</p>
