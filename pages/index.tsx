@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import LinkToIcon from '../components/common/icons/LinkTo';
-import { IsedolLogo } from '../components/isedol/IsedolHeader';
 
 import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import styles from '../styles/pages/index.module.scss';
@@ -11,23 +10,22 @@ import { classes } from '../utils/class';
 import { useScrollPage } from '../components/common/Scroll';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import ChevronIcon from '../components/common/icons/Chevron';
-import Centerize from '../components/common/Centerize';
 import WakEnterMetadata from '../components/wakenter/Meta';
 import { Card } from '../components/common/Cards';
-import YouTubeCard from '../components/isedol/YouTubeCard';
 import FadeInImage from '../components/common/FadeInImage';
 import { getLinkType, getYouTubeThumbnailURL, LinkType } from '../structs/links';
 
-const Links = [
-  {
-    name: 'WAKTAVERSE YouTube',
-    link: 'https://www.youtube.com/c/welshcorgimessi',
-  },
-  {
-    name: 'WAKZOO',
-    link: 'https://cafe.naver.com/steamindiegame',
-  },
-];
+// ToDo: remove Achive codes
+// const Links = [
+//   {
+//     name: 'WAKTAVERSE YouTube',
+//     link: 'https://www.youtube.com/c/welshcorgimessi',
+//   },
+//   {
+//     name: 'WAKZOO',
+//     link: 'https://cafe.naver.com/steamindiegame',
+//   },
+// ];
 
 const Groups = [
   {
@@ -47,7 +45,7 @@ const Groups = [
     ],
     image: '/images/bg_rewind.jpg',
     description: '오디션을 걸쳐 선발된 가상 아이돌 그룹.\n활발한 커버송 공개, 음원 발매 및 트위치 방송 활동을 기반으로 여러분들께 기쁨을 선사드립니다.',
-    
+
   },
   {
     name: {
@@ -74,7 +72,7 @@ const Groups = [
     ],
     image: '/images/bg_gomem.jpg',
     description: '왁타버스 세계관의 주력이 되는 그룹.\n왁타버스 합동 방송 참여 및 상황극 등 컨텐츠를 개발하여 여러분들에게 즐거움을 선사드립니다.',
-    
+
   },
 ];
 
@@ -286,7 +284,7 @@ const Home: NextPage = () => {
                   } as React.CSSProperties}
                   onClick={() => goPage(i+1)}
                 ></li>
-              )
+              );
             })}
           </ul>
         </div>
