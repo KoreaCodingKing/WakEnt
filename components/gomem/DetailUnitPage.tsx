@@ -8,8 +8,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  CSSProperties,
-  ReactNode,
   useCallback,
   useEffect,
   useState,
@@ -29,6 +27,7 @@ import {
 import styles from '../../styles/components/gomem/DetailUnitPage.module.scss';
 import { classes } from '../../utils/class';
 import { useHashState } from '../../utils/state';
+import { Card } from '../common/Cards';
 import FadeInImage from '../common/FadeInImage';
 import ChevronIcon from '../common/icons/Chevron';
 import { isValidPlanetName, PlanetKeys, Planets } from './Planets';
@@ -50,126 +49,9 @@ const variants: Variants = {
   }),
 };
 
-const cardVariants: Variants = {
-  initial: {
-    opacity: 0,
-    rotateX: 30,
-    rotateY: -20,
-  },
-  visible: (custom) => ({
-    opacity: 1,
-    rotateX: 0,
-    rotateY: 0,
-    transition: {
-      delay: (custom + 1) * 0.06,
-      type: 'spring',
-      stiffness: 100,
-      damping: 6,
-    },
-  }),
-  hover: {
-    scale: 0.95,
-  },
-};
-
-type ColumnRowType = number | 'auto'
-type CardTemplateString =
-  `${ColumnRowType} ${ColumnRowType} ${ColumnRowType} ${ColumnRowType}`
-
-interface CardStyles extends CSSProperties {
-  '--cs': string
-  '--ce': string
-  '--rs': string
-  '--re': string
-  '--csm': string
-  '--cem': string
-  '--rsm': string
-  '--rem': string
-}
-
-interface CardProps {
-  index?: number
-  padding?: boolean
-  children: ReactNode
-  className?: string
-  template?: CardTemplateString
-  mobileTemplate?: CardTemplateString
-  normalSize?: boolean
-  flex?: boolean
-  flexColumn?: boolean
-  center?: boolean
-  thumbnail?: boolean
-  centerColumn?: boolean
-}
-
-const Card = ({
-  index = 0,
-  children,
-  padding,
-  flex,
-  className,
-  template,
-  mobileTemplate,
-  normalSize,
-  flexColumn,
-  thumbnail,
-  center,
-  centerColumn,
-}: CardProps) => {
-  const templateArray = template && template.split(' ');
-  const mobileTemplateArray = mobileTemplate && mobileTemplate.split(' ');
-
-  return (
-    <motion.div
-      custom={index}
-      initial="initial"
-      animate="visible"
-      variants={cardVariants}
-      className={classes(
-        styles.card,
-        padding && styles.padding,
-        flex && styles.flex,
-        normalSize && styles.normalSize,
-        flexColumn && styles.flexColumn,
-        thumbnail && styles.thumbnail,
-        className
-      )}
-      whileHover="hover"
-      style={
-        templateArray
-          ? ({
-            transform: 'translateX(0)',
-            '--cs': templateArray[0],
-            '--ce': templateArray[1],
-            '--rs': templateArray[2],
-            '--re': templateArray[3],
-            '--csm': mobileTemplateArray && mobileTemplateArray[0],
-            '--cem': mobileTemplateArray && mobileTemplateArray[1],
-            '--rsm': mobileTemplateArray && mobileTemplateArray[2],
-            '--rem': mobileTemplateArray && mobileTemplateArray[3],
-          } as CardStyles)
-          : {
-            transform: 'translateX(0)',
-          }
-      }
-    >
-      {center ? (
-        <div
-          className={classes(
-            styles.center,
-            centerColumn && styles.centerColumn
-          )}
-        >
-          {children}
-        </div>
-      ) : (
-        children
-      )}
-    </motion.div>
-  );
-};
-
 export const DetailUnit = () => {
+  const backgroundColor = '#1b1f21';
+  const minHeight = '100';
   const [active, setActiveState] = useRecoilState(gomemActiveState);
   const [_hash, setState] = useHashState<PlanetKeys | null>(
     active.detail ? active.planet : null,
@@ -301,6 +183,8 @@ export const DetailUnit = () => {
                       center
                       template="1 1 1 6"
                       mobileTemplate="auto auto 1 2"
+                      backgroundColor={backgroundColor}
+                      minHeight={minHeight}
                     >
                       {unit &&
                         GomemSeason2Members[unit.members[activeMember]]
@@ -329,6 +213,8 @@ export const DetailUnit = () => {
                       template="auto auto 1 3"
                       mobileTemplate="1 1 2 3"
                       className={styles.descriptionCard}
+                      backgroundColor={backgroundColor}
+                      minHeight={minHeight}
                     >
                       <AnimateSharedLayout>
                         {unit && (
@@ -364,6 +250,8 @@ export const DetailUnit = () => {
                       thumbnail
                       template="auto auto 3 6"
                       mobileTemplate="1 1 3 4"
+                      backgroundColor={backgroundColor}
+                      minHeight={minHeight}
                     >
                       {/* <ImageSlider></ImageSlider> */}
                     </Card>
@@ -388,6 +276,8 @@ export const DetailUnit = () => {
                               mobileTemplate={`auto auto ${4 + index} ${
                                 5 + index
                               }`}
+                              backgroundColor={backgroundColor}
+                              minHeight={minHeight}
                             >
                               <Link href={link.link} passHref>
                                 <a target="_blank">
