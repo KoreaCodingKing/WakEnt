@@ -55,8 +55,10 @@
 }
 
 .page {
+  overflow: hidden;
   position: relative;
   width: 100%;
+  height: 100vh;
 
   scroll-snap-align: start;
 
@@ -86,7 +88,6 @@
   justify-content: center;
 
   width: 100%;
-  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -321,6 +322,10 @@
 }
 
 .group {
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-bottom: 2vh;
+
   .section_title {
     text-align: left;
 
@@ -403,14 +408,6 @@
       }
     }
   }
-}
-
-.group {
-  max-width: 1440px;
-  height: 100vh;
-  min-height: 1000px;
-  margin: 0 auto;
-  margin-bottom: 2vh;
 }
 
 .cards_box {

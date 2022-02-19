@@ -168,7 +168,7 @@ const Home: NextPage = () => {
                   center
                   normalSize
                   template="1 1 3 6"
-                  mobileTemplate="1 1 2 3"
+                  mobileTemplate="1 1 3 4"
                   className={styles.descriptionCard}
                   backgroundColor='#F5F5F5'
                   minHeight={minHeight}
@@ -185,7 +185,7 @@ const Home: NextPage = () => {
                   center
                   normalSize
                   template="auto auto 1 6"
-                  mobileTemplate="1 1 2 3"
+                  mobileTemplate="auto auto 1 2"
                   className={styles.descriptionCard}
                   backgroundColor='#F5F5F5'
                   minHeight={minHeight}
