@@ -184,7 +184,7 @@ const Home: NextPage = () => {
                   flex
                   center
                   normalSize
-                  template="auto auto 1 6"
+                  template="2 4 1 6"
                   mobileTemplate="auto auto 1 2"
                   className={styles.descriptionCard}
                   backgroundColor='#F5F5F5'

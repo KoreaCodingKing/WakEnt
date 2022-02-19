@@ -302,13 +302,13 @@ $default-overlay-color: #1b1f21;
   border-radius: 16px;
 
   grid-column-start: var(--cs, auto);
-  grid-column-start: var(--ce, auto);
+  grid-column-end: var(--ce, auto);
   grid-row-start: var(--rs, auto);
   grid-row-end: var(--re, auto);
 
   @media screen and (max-width: $maxMobile) {
     grid-column-start: var(--csm, var(--cs, auto));
-    grid-column-start: var(--cem, var(--cs, auto));
+    grid-column-end: var(--cem, var(--cs, auto));
     grid-row-start: var(--rsm, var(--cs, auto));
     grid-row-end: var(--rem, var(--cs, auto));
 

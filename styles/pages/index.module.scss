@@ -55,6 +55,7 @@
 }
 
 .page {
+  display: flex;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -324,7 +325,6 @@
 .group {
   max-width: 1440px;
   margin: 0 auto;
-  margin-bottom: 2vh;
 
   .section_title {
     text-align: left;
@@ -412,8 +412,10 @@
 
 .cards_box {
   display: grid;
+  min-width: 675px;
+  height: 60vh;
 
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
   grid-column-gap: 24px;
   grid-row-gap: 24px;
@@ -429,12 +431,7 @@
 }
 
 .descriptionCard {
-  min-height: 200px;
-}
-
-.cards_box {
-  display: grid;
-  min-width: 675px;
+  min-height: 150px
 }
 
 .img_box {
@@ -445,7 +442,7 @@
 }
 
 .album {
-  min-width: 331px;
+  min-width: 317px;
   height: 400px;
   aspect-ratio: 9 / 16;
 }
