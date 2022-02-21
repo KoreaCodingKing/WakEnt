@@ -1,11 +1,11 @@
 import { NextPage } from 'next';
 import { useState } from 'react';
 
-import styles from '../../styles/components/isedol/IsedolIndex.module.scss';
-import IsedolHeader from '../../components/isedol/IsedolHeader';
-import IsedolNotices from '../../components/isedol/IsedolNotices';
-import IsedolMenuOverlay from '../../components/isedol/IsedolMenuOverlay';
-import WakEnterMetadata from '../../components/wakenter/Meta';
+import styles from '../../../styles/pages/discography.module.scss';
+import IsedolHeader from '../../../components/isedol/IsedolHeader';
+import IsedolMenuOverlay from '../../../components/isedol/IsedolMenuOverlay';
+import IsedolDiscography from '../../../components/isedol/IsedolDiscography';
+import WakEnterMetadata from '../../../components/wakenter/Meta';
 
 const IsedolPage: NextPage = (): JSX.Element => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -13,11 +13,11 @@ const IsedolPage: NextPage = (): JSX.Element => {
   return (
     <div className={styles.isedol__container}>
       <WakEnterMetadata
-        title='NOTICE'
+        title='MUSICS'
         scope='ISEGYE IDOL'
-      >
-        <meta name="robots" content="noindex"></meta>
-      </WakEnterMetadata>
+        description='WAK Entertainment 소속 이세계 아이돌 (ISEGYE IDOL) 의 발매 음반, 커버 곡을 알아보세요.'
+        image='/images/isedol_landing.png'
+      ></WakEnterMetadata>
       <IsedolMenuOverlay open={isOpenMenu}></IsedolMenuOverlay>
       <div className={styles.isedol_header}>
         <IsedolHeader
@@ -26,7 +26,7 @@ const IsedolPage: NextPage = (): JSX.Element => {
         ></IsedolHeader>
       </div>
       <div className={styles.isedol_contents}>
-        <IsedolNotices></IsedolNotices>
+        <IsedolDiscography></IsedolDiscography>
       </div>
     </div>
   );

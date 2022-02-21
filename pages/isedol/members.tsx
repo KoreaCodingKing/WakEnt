@@ -1,11 +1,11 @@
 import { NextPage } from 'next';
 import { useState } from 'react';
 
-import styles from '../../../styles/pages/discography.module.scss';
-import IsedolHeader from '../../../components/isedol/IsedolHeader';
-import IsedolMenuOverlay from '../../../components/isedol/IsedolMenuOverlay';
-import IsedolDiscography from '../../../components/isedol/IsedolDiscography';
-import WakEnterMetadata from '../../../components/wakenter/Meta';
+import styles from '../../styles/components/isedol/IsedolIndex.module.scss';
+import IsedolHeader from '../../components/isedol/IsedolHeader';
+import IsedolMembersPage from '../../components/isedol/IsedolMembers';
+import IsedolMenuOverlay from '../../components/isedol/IsedolMenuOverlay';
+import WakEnterMetadata from '../../components/wakenter/Meta';
 
 const IsedolPage: NextPage = (): JSX.Element => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -13,9 +13,9 @@ const IsedolPage: NextPage = (): JSX.Element => {
   return (
     <div className={styles.isedol__container}>
       <WakEnterMetadata
-        title='DISCOGRAPHY'
+        title='MEMBERS'
         scope='ISEGYE IDOL'
-        description='WAK Entertainment 소속 이세계 아이돌 (ISEGYE IDOL) 의 발매 음반, 커버 곡을 알아보세요.'
+        description='2021년 8월에 결성된 6인조 버츄얼 아이돌 그룹 이세계 아이돌 멤버 (아이네, 징버거, 릴파, 주르르, 고세구, 비챤) 소개 페이지입니다.'
         image='/images/isedol_landing.png'
       ></WakEnterMetadata>
       <IsedolMenuOverlay open={isOpenMenu}></IsedolMenuOverlay>
@@ -23,10 +23,11 @@ const IsedolPage: NextPage = (): JSX.Element => {
         <IsedolHeader
           isOpenMenu={isOpenMenu}
           onMenuClick={() => setIsOpenMenu(!isOpenMenu)}
+          white={!isOpenMenu}
         ></IsedolHeader>
       </div>
       <div className={styles.isedol_contents}>
-        <IsedolDiscography></IsedolDiscography>
+        <IsedolMembersPage></IsedolMembersPage>
       </div>
     </div>
   );

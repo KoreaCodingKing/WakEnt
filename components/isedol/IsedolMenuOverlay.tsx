@@ -13,16 +13,20 @@ interface IsedolMenuOverlayProps {
 
 const Links = [
   {
-    name: 'NOTICE',
-    page: '/isedol/notice',
+    name: 'NEWS',
+    page: '/isedol/news',
   },
   {
-    name: 'MEMBER',
-    page: '/isedol/member',
+    name: 'MEMBERS',
+    page: '/isedol/members',
   },
   {
-    name: 'DISCOGRAPHY',
-    page: '/isedol/discography',
+    name: 'MUSICS',
+    page: '/isedol/musics',
+  },
+  {
+    name: 'GOODS',
+    page: '/isedol/goods',
   },
   {
     name: 'YouTube',
