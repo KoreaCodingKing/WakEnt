@@ -51,6 +51,7 @@
   margin-right: auto;
 
   .sectionTitle {
+    border-radius: 1vw;
     font-size: 1.8em;
 
     @media screen and (max-width: $maxTablet) {
@@ -92,5 +93,31 @@
     grid-column-gap: 20px;
     grid-row-gap: 20px; 
     grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  margin-bottom: 32px;
+  margin-left: 10px;
+  overflow: auto;
+
+  & > div {
+    white-space: nowrap;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media screen and (max-width: $maxTablet) {
+    gap: 8px;
+  }
+
+  p {
+    margin: 0px;
   }
 }
