@@ -28,7 +28,7 @@ const memberMaps: Record<string, IsedolMemberID | WakMemberID> = {
   '주르르': 'jururu'
 };
 
-export const parseMemberFromString = (text: string): IsedolMemberID | WakMemberID | null => {
+const parseMemberFromString = (text: string): IsedolMemberID | WakMemberID | null => {
   if (memberMaps[text]) {
     return memberMaps[text];
   }
