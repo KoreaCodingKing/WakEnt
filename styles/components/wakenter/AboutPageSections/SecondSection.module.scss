@@ -32,7 +32,7 @@
   }
 
   &[data-active="true"] {
-    z-index: 10 !important;
+    z-index: 100 !important;
   }
 
   @media screen and (max-width: $maxTablet) {
