@@ -25,6 +25,13 @@ export const IsedolCover: YouTubeVideo[] = [
   },
 ];
 
+export const IsedolOriginalSong: YouTubeVideo[] = [
+  {
+    title: 'But You Want More',
+    id: 'VcvMQ9MZhF8'
+  }
+]
+
 export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ine: [
     {

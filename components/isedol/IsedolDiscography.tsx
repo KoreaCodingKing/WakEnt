@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import { useRef, useState } from 'react';
-import { IsedolCover, MemberCover } from '../../structs/cover';
+import { IsedolCover, IsedolOriginalSong, MemberCover } from '../../structs/cover';
 import { IsedolMemberID, IsedolMembers } from '../../structs/member';
 import styles from '../../styles/components/isedol/IsedolDiscography.module.scss';
 import { classes } from '../../utils/class';
@@ -52,6 +52,20 @@ export const IsedolDiscography: NextPage = () => {
               title={cover.title}
               thumbnail={cover.thumbnail}
               id={cover.id}
+              onClick={id => openYouTube(id)}
+            ></YouTubeCard>
+          ))}
+        </div>
+      </section>
+      <section className={styles.section}>
+        <h3 className={styles.sectionTitle}>Original Song</h3>
+        <div className={styles.grid}>
+          {IsedolOriginalSong.map(original => (
+            <YouTubeCard
+              key={`cover-${original.id}`}
+              title={original.title}
+              thumbnail={original.thumbnail}
+              id={original.id}
               onClick={id => openYouTube(id)}
             ></YouTubeCard>
           ))}
