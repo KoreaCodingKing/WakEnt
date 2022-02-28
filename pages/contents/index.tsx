@@ -21,15 +21,15 @@ const Contents: NextPage = (): JSX.Element => {
         <ContentsHeader></ContentsHeader>
       </div>
       {!flag && (
-          <div>
-            <PreparePage></PreparePage>
-          </div>
-        )}
-        {flag && (
-          <div className={styles.contens}>
-            <ContentsMain></ContentsMain>
-          </div>
-        )}
+        <div>
+          <PreparePage></PreparePage>
+        </div>
+      )}
+      {flag && (
+        <div className={styles.contens}>
+          <ContentsMain></ContentsMain>
+        </div>
+      )}
     </div>
   );
 };
