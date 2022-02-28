@@ -4,8 +4,11 @@ import styles from '../../styles/components/contents/ContentsMain.module.scss';
 import ContentsHeader from '../../components/contents/ContentsHeader';
 import { ContentsMain } from '../../components/contents/ContentsMain';
 import WakEnterMetadata from '../../components/wakenter/Meta';
+import PreparePage from '../../components/common/PreparePage';
 
 const Contents: NextPage = (): JSX.Element => {
+  const flag = false; // 임시 화면
+
   return (
     <div className={styles.contents__container}>
       <WakEnterMetadata
@@ -17,9 +20,16 @@ const Contents: NextPage = (): JSX.Element => {
       <div className={styles.header}>
         <ContentsHeader></ContentsHeader>
       </div>
-      <div className={styles.contens}>
-        <ContentsMain></ContentsMain>
-      </div>
+      {!flag && (
+          <div>
+            <PreparePage></PreparePage>
+          </div>
+        )}
+        {flag && (
+          <div className={styles.contens}>
+            <ContentsMain></ContentsMain>
+          </div>
+        )}
     </div>
   );
 };

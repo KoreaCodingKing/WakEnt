@@ -2,9 +2,9 @@ import { NextPage } from 'next';
 
 import styles from '../styles/components/wakenter/WakEnterGoods.module.scss';
 import parentStyles from '../styles/pages/index.module.scss';
-import WakEnterMetadata from '../components/wakenter/Meta';
-import WakEnterHeader from '../components/wakenter/WakEnterHeader';
-import PreparePage from '../components/common/PreparePage';
+import WakEnterMetadata from '../../../components/wakenter/Meta';
+import WakEnterHeader from '../../../components/wakenter/WakEnterHeader';
+import PreparePage from '../../../components/common/PreparePage';
 
 const IsedolPage: NextPage = (): JSX.Element => {
   const flag = false; // 임시 화면
