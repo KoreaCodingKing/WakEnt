@@ -144,53 +144,9 @@ const Home: NextPage = () => {
                   </div>
                 ))}
               </div>
-              <div className={styles.cards_box}>
-                <Card
-                  index={0}
-                  flex
-                  center
-                  normalSize
-                  template="1 1 1 3"
-                  mobileTemplate="1 1 2 3"
-                  className={styles.descriptionCard}
-                  backgroundColor='#F5F5F5'
-                  minHeight={minHeight}
-                >
-                  <div className={styles.img_box}>
-                    <Image
-                      src={'/images/logo_isedol.png'}
-                      layout='fill'></Image>
-                  </div>
-                </Card>
-                <Card
-                  index={1}
-                  flex
-                  center
-                  normalSize
-                  template="1 1 3 6"
-                  mobileTemplate="1 1 3 4"
-                  className={styles.descriptionCard}
-                  backgroundColor='#F5F5F5'
-                  minHeight={minHeight}
-                >
-                  <div className={classes(styles.img_box, styles.album)}>
-                    <Image
-                      src={'/images/album/rewind.jpg'}
-                      layout='fill'></Image>
-                  </div>
-                </Card>
-                <Card
-                  index={2}
-                  flex
-                  center
-                  normalSize
-                  template="2 4 1 6"
-                  mobileTemplate="auto auto 1 2"
-                  className={styles.descriptionCard}
-                  backgroundColor='#F5F5F5'
-                  minHeight={minHeight}
-                >
-                  <div className={styles.img_box}>
+              <div className={classes(styles.firstSection_cards, styles.cards_box)}>
+                <div className={styles.card}>
+                  <div className={classes(styles.img_box, styles.logo_img)}>
                     <Image
                       src={'/images/logo_isedol.png'}
                       layout='fill'
@@ -198,7 +154,24 @@ const Home: NextPage = () => {
                       placeholder='blur'
                       priority></Image>
                   </div>
-                </Card>
+                </div>
+                <div className={styles.card}>
+                  <div className={classes(styles.img_box, styles.album)}>
+                    <Image
+                      src={'/images/album/rewind.jpg'}
+                      layout='fill'></Image>
+                  </div>
+                </div>
+                <div className={styles.card}>
+                  <div className={styles.img_box}>
+                    <Image
+                      src={'/images/member/total_member.png'}
+                      layout='fill'
+                      blurDataURL={'/images/member/total_member.png'}
+                      placeholder='blur'
+                      priority></Image>
+                  </div>
+                </div>
               </div>
             </div>
           </section>

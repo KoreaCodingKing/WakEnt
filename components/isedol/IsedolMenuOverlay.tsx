@@ -25,10 +25,6 @@ const Links = [
     page: '/isedol/musics',
   },
   {
-    name: 'GOODS',
-    page: '/isedol/goods',
-  },
-  {
     name: 'YouTube',
     page: 'https://youtube.com/c/welshcorgimessi',
   },
