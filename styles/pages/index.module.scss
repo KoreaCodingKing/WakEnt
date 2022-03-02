@@ -412,11 +412,11 @@
 
 .cards_box {
   display: grid;
-  min-width: 675px;
+  min-width: 595px;
   height: 60vh;
 
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr;
+  grid-template-rows: auto;
   grid-column-gap: 24px;
   grid-row-gap: 24px;
 
@@ -447,6 +447,8 @@
     grid-row-end: 1;
 
     .logo_img {
+      width: 15vw;
+      height: 15vw;
       max-width: 200px;
       max-height: 200px;
       margin: 0 auto;
@@ -491,6 +493,6 @@
 }
 
 .album {
-  min-width: 317px;
+  min-width: 202px;
   aspect-ratio: 9 / 16;
 }
