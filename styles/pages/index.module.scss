@@ -206,93 +206,17 @@
 
   @media screen and (max-width: $maxMobile) {
     h1 {
-      font-size: 3em;
+      font-size: 2em;
       letter-spacing: -2.5px;
     }    
 
     p {
-      font-size: 1.25em;
+      font-size: 1.15em;
       font-weight: normal;
       letter-spacing: -1.5px;
     }
   }
 }
-
-// .card {
-//   position: relative;
-
-//   width: 100%;
-//   height: 100%;
-//   flex: 1;
-//   overflow: hidden;
-//   display: flex;
-//   cursor: pointer;
-
-//   text-decoration: none;
-  
-//   &:hover, &:focus {
-//     .background {
-//       &::before {
-//         background: rgba(0,0,0,0.24);
-//       }
-//     }
-
-//     .contents {
-//       transform: scale(1.05);
-//     }
-//   }
-
-//   &:hover {
-//     .background {
-//       img {
-//         transform: scale(1.05);
-//         filter: saturate(150%);
-//       }
-//     }
-//   }
-
-//   .background {
-//     min-width: 100%;
-//     min-height: 100%;
-//     position: absolute;
-//     aspect-ratio: 16 / 9;
-
-//     img {
-//       transition: 1s transform cubic-bezier(0.19, 1, 0.22, 1), 1s filter cubic-bezier(0.19, 1, 0.22, 1);
-//     }
-
-//     &::before {
-//       position: absolute;
-//       width: 100%;
-//       height: 100%;
-//       z-index: 1;
-//       content: " ";
-//       transition: 0.23s background cubic-bezier(0.19, 1, 0.22, 1);
-//       background: rgba(0,0,0,0.32);
-//     }
-//   }
-
-//   .contents {
-//     margin: auto;
-//     color: white;
-//     z-index: 100;
-
-//     transition: 0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
-
-//     @media screen and (max-width: $maxTablet) {
-//       font-size: 0.8em;
-//     }
-    
-//     @media screen and (max-width: $maxMobile) {
-//       font-size: 0.6em;
-//     }
-//   }
-
-//   .image {
-//     width: auto;
-//     height: 100%;
-//   }
-// }
 
 .big {
   font-size: 2em;
@@ -349,6 +273,40 @@
       font-size: 1.5em;
       font-weight: 500;
     }
+
+    @media screen and (max-width: $maxTablet) {
+      h2 {
+        font-size: 4.5em;
+        letter-spacing: -3px;
+
+        span {
+          display: block;
+        }
+      }
+  
+      p {
+        font-size: 1.5em;
+        font-weight: normal;
+        letter-spacing: -2px;
+      }
+    }
+  
+    @media screen and (max-width: $maxMobile) {
+      h2 {
+        font-size: 2em;
+        letter-spacing: -2.5px;
+
+        span {
+          display: block;
+        }
+      }    
+  
+      p {
+        font-size: 1.15em;
+        font-weight: normal;
+        letter-spacing: -1.5px;
+      }
+    }
   }
 
   $link-color: #1667e0;
@@ -381,7 +339,7 @@
       }
     
       @media screen and (max-width: $maxMobile) {
-        font-size: 1.25em;
+        font-size: 1em;
       }
 
       transition: color 0.23s cubic-bezier(0.19, 1, 0.22, 1);
@@ -426,7 +384,8 @@
   }
 
   @media screen and (max-width: $maxMobile) {
-    grid-template-columns: repeat(1, 1fr);
+    min-width: 200px;
+    grid-template-columns: repeat(1, auto);
   }
 }
 
@@ -438,6 +397,10 @@
     min-height: 150px;
     background: #F5F5F5;
     border-radius: 20px;
+
+    @media screen and (max-width: $maxMobile) {
+      min-height: 60px;
+    }
   }
 
   .card:nth-child(1) {
@@ -457,7 +420,6 @@
   }
 
   .card:nth-child(2) {
-    max-width: 413px;
     max-height: 470px;
     height: 40vw;
 
@@ -472,6 +434,10 @@
       margin: 0 auto;
       align-self: center;
     }
+
+    @media screen and (max-width: $maxMobile) {
+      display: none;
+    }
   }
   .card:nth-child(3) {
     max-width: 850px;
@@ -482,6 +448,13 @@
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 14;
+
+    @media screen and (max-width: $maxMobile) {
+      grid-column-start: 1;
+      grid-column-end: 1;
+      grid-row-start: 2;
+      grid-row-end: 14;
+    }
   }
 }
 
