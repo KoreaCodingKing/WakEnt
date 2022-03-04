@@ -478,6 +478,10 @@
   height: 100%;
   aspect-ratio: 9/16;
 
+  &.cursorPointer {
+    cursor: pointer;
+  }
+
   .image {
     transition: 3s all cubic-bezier(0.19, 1, 0.22, 1);
 
