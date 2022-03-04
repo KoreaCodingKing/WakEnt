@@ -3,7 +3,6 @@ import { useRef, useState } from 'react';
 import { IsedolCover, IsedolOriginalSong, MemberCover } from '../../structs/cover';
 import { IsedolMemberID, IsedolMembers } from '../../structs/member';
 import styles from '../../styles/components/isedol/IsedolDiscography.module.scss';
-import { classes } from '../../utils/class';
 import Button from '../common/Button';
 import { useHorizonalPageScroller } from '../common/Scroll';
 import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
