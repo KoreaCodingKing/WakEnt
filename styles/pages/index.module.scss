@@ -231,18 +231,29 @@
   .navigations {
     display: flex;
     flex-direction: column;
-    cursor: pointer;
+    justify-content: center;
+    width: 10px;
+    height: 90px;
+    align-items: center;
   }
 
   li {
     list-style: none;
-    width: 5px;
-    height: 5px;
-    margin-bottom: 20px;
+    width: 8px;
+    height: 8px;
+    margin: 10px 20px;
     border: 1px solid #000;
     border-radius: 10px;
-    background-color: var(--backgroundColor);
     text-align: center;
+    cursor: pointer;
+  }
+
+  .selected {
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+  
+    transition: 1s background-color cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 }
 

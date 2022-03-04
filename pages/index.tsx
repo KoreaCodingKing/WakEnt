@@ -242,19 +242,13 @@ const Home: NextPage = () => {
         </div>
         <div className={styles.navigation_box}>
           <ul className={styles.navigations}>
-            <li className={styles.navigation}
+            <li className={classes(styles.navigation, page === 0 ? styles.selected : '')}
               onClick={() => goPage(0)}
-              style={{
-                '--backgroundColor': page === 0 ? '#000' : 'none'
-              } as React.CSSProperties}
             ></li>
             {Groups.map((_, i) => {
               return (
                 <li key={`nav-index-${i}`}
-                  className={styles.navigation}
-                  style={{
-                    '--backgroundColor': page === i+1 ? '#000' : 'none'
-                  } as React.CSSProperties}
+                  className={classes(styles.navigation, page === i+1 ? styles.selected : '')}
                   onClick={() => goPage(i+1)}
                 ></li>
               );
