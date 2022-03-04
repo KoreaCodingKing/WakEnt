@@ -14,6 +14,7 @@ import WakEnterMetadata from '../components/wakenter/Meta';
 import { Card } from '../components/common/Cards';
 import FadeInImage from '../components/common/FadeInImage';
 import { getLinkType, getYouTubeThumbnailURL, LinkType } from '../structs/links';
+import { useDebouncer } from '../components/isedol/Members/Utils';
 
 // ToDo: remove Achive codes
 // const Links = [
@@ -43,7 +44,11 @@ const Groups = [
         link: 'https://www.youtube.com/c/welshcorgimessi',
       },
     ],
-    image: '/images/bg_rewind.jpg',
+    albumImage: '/images/album/rewind.jpg',
+    membersImage: [
+      '/images/member/total_member.png',
+      '/images/member/total_member1.png'
+    ],
     description: '오디션을 걸쳐 선발된 가상 아이돌 그룹.\n활발한 커버송 공개, 음원 발매 및 트위치 방송 활동을 기반으로 여러분들께 기쁨을 선사드립니다.',
 
   },
@@ -79,6 +84,7 @@ const Groups = [
 const Home: NextPage = () => {
   const scroll = useRef<HTMLDivElement>(null);
   const page = useScrollPage(scroll, process.browser ? window.innerHeight : 1, 0.05);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const minHeight = '224';
 
   const goPage = useCallback((index: number) => {
@@ -91,6 +97,18 @@ const Home: NextPage = () => {
       behavior: 'smooth'
     });
   }, []);
+
+  const [run, cancel] = useDebouncer((index: number) => {
+    setCurrentImageIndex(index);
+  }, 60)
+
+  const showImageHandler = useCallback((groupsMemberImg: string[]) => {
+    if (currentImageIndex === groupsMemberImg.length - 1) {
+      run(0);
+      return;
+    }
+    run(currentImageIndex + 1);
+  }, [currentImageIndex])
 
   return (
     <>
@@ -158,18 +176,28 @@ const Home: NextPage = () => {
                 <div className={styles.card}>
                   <div className={classes(styles.img_box, styles.album)}>
                     <Image
-                      src={'/images/album/rewind.jpg'}
+                      src={Groups[0].albumImage!}
                       layout='fill'></Image>
                   </div>
                 </div>
-                <div className={styles.card}>
+                <div className={styles.card}
+                  onClick={() => showImageHandler(Groups[0].membersImage!)}>
                   <div className={styles.img_box}>
-                    <Image
-                      src={'/images/member/total_member.png'}
-                      layout='fill'
-                      blurDataURL={'/images/member/total_member.png'}
-                      placeholder='blur'
-                      priority></Image>
+                    {Groups[0].membersImage && Groups[0].membersImage.map(
+                      (v: string, i: number) => (
+                        <Image
+                          className={classes(
+                            styles.image,
+                            currentImageIndex === i && styles.active
+                          )}
+                          src={v}
+                          layout='fill'
+                          blurDataURL={v}
+                          placeholder='blur'
+                          key={`background-image-${i}`}
+                          priority></Image>
+                      ))
+                    }
                   </div>
                 </div>
               </div>
