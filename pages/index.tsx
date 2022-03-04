@@ -186,6 +186,7 @@ const Home: NextPage = () => {
                     {Groups[0].membersImage && Groups[0].membersImage.map(
                       (v: string, i: number) => (
                         <Image
+                          key={`background-image-${i}`}
                           className={classes(
                             styles.image,
                             currentImageIndex === i && styles.active
@@ -194,7 +195,6 @@ const Home: NextPage = () => {
                           layout='fill'
                           blurDataURL={v}
                           placeholder='blur'
-                          key={`background-image-${i}`}
                           priority></Image>
                       ))
                     }
