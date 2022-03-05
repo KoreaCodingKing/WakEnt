@@ -35,6 +35,10 @@ export const IsedolOriginalSong: YouTubeVideo[] = [
 export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ine: [
     {
+      title: '부엉이 フクロウ',
+      id: 'YZoeO3T7hsc'
+    },
+    {
       title: '스즈미야 하루히의 우울 - God knows...',
       id: '-in8F0zmLcM',
     },
@@ -68,6 +72,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
     }
   ],
   jingburger: [
+    {
+      title: 'eight(에잇) - (징버거 x 비밀소녀 x ??? COVER)',
+      id: 'lQIdaZgK56A'
+    },
     {
       title: '슈퍼참치(SUPER TUNA) COVER',
       id: 'Q0LWEyWI8-E',
@@ -111,6 +119,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
     }
   ],
   lilpa: [
+    {
+      title: '세계는 사랑에 빠져있어(世界は恋に落ちている)',
+      id: '1UbyyaDc8x0'
+    },
     {
       title: 'Never Enough (The Greatest Showman OST)',
       id: 'oRiQHxft2mY'
