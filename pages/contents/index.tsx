@@ -17,9 +17,6 @@ const Contents: NextPage = (): JSX.Element => {
         description='WAK Entertainment 공식 주관 프로/아마추어 롤 리그'
         image='/images/zaun/thumbnail_zaun.png'
       ></WakEnterMetadata>
-      <div className={styles.header}>
-        <ContentsHeader></ContentsHeader>
-      </div>
       {!flag && (
         <div>
           <PreparePage></PreparePage>
