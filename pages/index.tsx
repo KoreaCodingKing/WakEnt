@@ -190,7 +190,7 @@ const Home: NextPage = () => {
                   </div>
                 </div>
                 <div className={styles.card}>
-                  <div className={classes(styles.img_box, styles.album)}>
+                  <div className={styles.img_box}>
                     <Image
                       src={Groups[0].albumImage!}
                       layout='fill'></Image>
