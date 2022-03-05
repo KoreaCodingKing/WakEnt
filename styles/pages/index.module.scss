@@ -468,6 +468,8 @@
       grid-row-start: 2;
       grid-row-end: 14;
     }
+
+    cursor: pointer;
   }
 }
 
@@ -478,10 +480,6 @@
   max-height: 586px;
   aspect-ratio: 9/16;
   align-self: center;
-
-  &.cursorPointer {
-    cursor: pointer;
-  }
 
   .image {
     transition: 3s all cubic-bezier(0.19, 1, 0.22, 1);

@@ -198,7 +198,7 @@ const Home: NextPage = () => {
                 </div>
                 <div className={styles.card}
                   onClick={() => showImageHandler(Groups[0].membersImage!)}>
-                  <div className={classes(styles.img_box, styles.cursorPointer)}>
+                  <div className={styles.img_box}>
                     {Groups[0].membersImage && Groups[0].membersImage.map(
                       (v: string, i: number) => (
                         <Image
