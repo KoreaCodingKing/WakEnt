@@ -19,6 +19,10 @@ const Menus = [
     link: '/about',
   },
   {
+    title: 'Contents',
+    link: '/contents'
+  },
+  {
     title: '채용',
     link: '/recruit',
   },

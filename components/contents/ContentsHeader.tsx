@@ -1,49 +1,29 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { classes } from '../../utils/class';
 
 import styles from '../../styles/components/contents/ContentsHeader.module.scss';
 import HeaderBase from '../common/Header';
+import { WakEnterLogo } from '../wakenter/WakEnterHeader';
 
-interface WakEnterElementProps {
-  className?: string
-  clickable?: boolean
-}
+const Menus = [
+  {
+    title: 'Games',
+    link: '/contents/total'
+  },
+  {
+    title: 'Goods',
+    link: '/contents/goods'
+  }
+];
 
-const Menus: unknown[] = [];
-
-const LeagueMenus = () => {
+const RightMenus = () => {
   return (
     <div className={styles.menu}>
-      {/* {Menus.map(menu => (
+      {Menus.map(menu => (
         <Link key={`link-${menu.title}`} href={menu.link}>
           <a className={styles.link}>{menu.title}</a>
         </Link>
-      ))} */}
-    </div>
-  );
-};
-
-const Logo = ({clickable, className}: WakEnterElementProps) => {
-  return (
-    <div
-      className={classes(
-        styles.logo,
-        clickable && styles.clickable,
-        className
-      )}
-    >
-      <div className={styles.logoImage}>
-        <Image
-          src='/images/wak-enter-centered.png'
-          layout='fill'
-          alt='zaun'
-        ></Image>
-      </div>
-      <div className={styles.logoText}>
-        <span>Waktaverse</span>
-      </div>
+      ))}
     </div>
   );
 };
@@ -52,16 +32,16 @@ export const ContentsHeader = () => {
   const router = useRouter();
 
   const Left = (
-    <Link href='/zaun-league' passHref>
+    <Link href='/contents' passHref>
       <span
         tabIndex={100}
-        onKeyDown={ev => ev.key === 'Enter' && router.push('/zaun-league')}
+        onKeyDown={ev => ev.key === 'Enter' && router.push('/contents')}
       >
-        <Logo clickable></Logo>
+        <WakEnterLogo clickable white></WakEnterLogo>
       </span>
     </Link>
   );
-  const Right = <LeagueMenus></LeagueMenus>;
+  const Right = <RightMenus></RightMenus>;
   return <HeaderBase left={Left} right={Right}></HeaderBase>;
 };
 
