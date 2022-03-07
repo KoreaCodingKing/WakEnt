@@ -13,6 +13,10 @@ const Menus = [
   {
     title: 'Goods',
     link: '/contents/goods'
+  },
+  {
+    title: 'Supporters',
+    link: '/contents/supporteers'
   }
 ];
 
