@@ -49,7 +49,7 @@ const Groups = [
       '/images/member/total_member.png',
       '/images/member/total_member1.png'
     ],
-    description: '오디션을 걸쳐 선발된 가상 아이돌 그룹.\n활발한 커버송 공개, 음원 발매 및 트위치 방송 활동을 기반으로 여러분들께 기쁨을 선사드립니다.',
+    description: '오디션을 걸쳐 선발된 가상 아이돌 그룹.\n현재까지 활발히 음반 및 방송 활동을 진행하며 꾸준한 인기를 모으고 있습니다.',
 
   },
   {
@@ -81,7 +81,7 @@ const Groups = [
   {
     name: {
       ko: '컨텐츠',
-      en: 'contents'
+      en: 'CONTENTS'
     },
     links: [
       {
@@ -155,7 +155,7 @@ const Home: NextPage = () => {
             className={classes(styles.page, styles.flex, styles.mobileColumn)}
             data-page={1}>
             <div className={classes(styles.representInner, styles.group)}>
-              <div className={styles.section_title}>
+              <div className={styles.sectionTitle}>
                 <h2>{Groups[0].name.ko}<span>{Groups[0].name.en}</span></h2>
                 <p>{Groups[0].description}</p>
               </div>
@@ -171,7 +171,7 @@ const Home: NextPage = () => {
                   >
                     <Link href={v.link} passHref>
                       <a>
-                        {v.name} <LinkToIcon width={22}></LinkToIcon>
+                        {v.name} <LinkToIcon width={16}></LinkToIcon>
                       </a>
                     </Link>
                   </div>
@@ -222,7 +222,7 @@ const Home: NextPage = () => {
             className={classes(styles.page, styles.flex, styles.mobileColumn)}
             data-page={2}>
             <div className={classes(styles.representInner, styles.group)}>
-              <div className={styles.section_title}>
+              <div className={styles.sectionTitle}>
                 <h2>{Groups[1].name.ko}<span>{Groups[1].name.en}</span></h2>
                 <p>{Groups[1].description}</p>
               </div>
@@ -286,7 +286,7 @@ const Home: NextPage = () => {
             className={classes(styles.page, styles.flex, styles.mobileColumn)}
             data-page={2}>
             <div className={classes(styles.representInner, styles.group)}>
-              <div className={styles.section_title}>
+              <div className={styles.sectionTitle}>
                 <h2>{Groups[2].name.ko}<span>{Groups[2].name.en}</span></h2>
                 <p>{Groups[2].description}</p>
               </div>
