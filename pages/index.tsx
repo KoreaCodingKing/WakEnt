@@ -140,7 +140,6 @@ const Home: NextPage = () => {
                 <p>메타버스의 선두자</p>
                 <p>메타버스의 현재</p>
                 <h1>WAKTAVERSE.</h1>
-                <p>WakEntertainment with Metaverse</p>
               </div>
               <div className={styles.scrollDown} onClick={() => goPage(1)}>
                 <div className={styles.inner}>
