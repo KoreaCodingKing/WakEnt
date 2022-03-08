@@ -13,7 +13,7 @@ const IsedolPage: NextPage = (): JSX.Element => {
   return (
     <div className={styles.isedol__container}>
       <WakEnterMetadata
-        title='MUSICS'
+        title='DISCOGRAPHY'
         scope='ISEGYE IDOL'
         description='WAK Entertainment 소속 이세계 아이돌 (ISEGYE IDOL) 의 발매 음반, 커버 곡을 알아보세요.'
         image='/images/isedol_landing.png'

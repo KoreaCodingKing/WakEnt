@@ -26,7 +26,7 @@ export const IsedolDiscography: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>MUSICS</h1>
+      <h1 className={styles.title}>DISCOGRAPHY</h1>
       <YouTubePlayerOverlay
         id={youtubeID}
         open={openPlayer}

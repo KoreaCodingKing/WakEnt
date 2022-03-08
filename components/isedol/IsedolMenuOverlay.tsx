@@ -21,8 +21,8 @@ const Links = [
     page: '/isedol/members',
   },
   {
-    name: 'MUSICS',
-    page: '/isedol/musics',
+    name: 'DISCOGRAPHY',
+    page: '/isedol/discography',
   },
   {
     name: 'YouTube',
