@@ -18,9 +18,12 @@
 .menu {
   width: fit-content;
 
-  .link:nth-child(1) {
+  .link {
     position: relative;
     margin-right: 20px;
+  }
+  .link:last-child {
+    margin-right: 0px;
   }
 
   a {
