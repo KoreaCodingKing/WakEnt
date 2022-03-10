@@ -7,8 +7,8 @@ import { WakEnterLogo } from '../wakenter/WakEnterHeader';
 
 const Menus = [
   {
-    title: 'Games',
-    link: '/contents/total'
+    title: 'Contents',
+    link: '/contents/list'
   },
   {
     title: 'Goods',

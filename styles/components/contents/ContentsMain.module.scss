@@ -59,13 +59,17 @@
     color: #fff;
 
     h1 {
-      font-size: 5vmin;
+      font-size: 4vmax;
     }
 
     h2 {
       display: flex;
       flex-direction: column;
-      font-size: 3vmin;
+      font-size: 2vmax;
     }
+  }
+
+  .link_box {
+    
   }
 }

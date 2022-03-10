@@ -6,7 +6,7 @@ import WakEnterMetadata from '../../components/wakenter/Meta';
 import WakEnterHeader from '../../components/wakenter/WakEnterHeader';
 import PreparePage from '../../components/common/PreparePage';
 
-const IsedolPage: NextPage = (): JSX.Element => {
+const Goods: NextPage = (): JSX.Element => {
   const flag = false; // 임시 화면
 
   return (
@@ -35,4 +35,4 @@ const IsedolPage: NextPage = (): JSX.Element => {
   );
 };
 
-export default IsedolPage;
+export default Goods;
