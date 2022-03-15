@@ -1,6 +1,6 @@
 @import "../../mixin.scss";
 
-.zaun_main__container {
+.main {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -18,11 +18,12 @@
 }
 
 .background {
+  z-index: -1;
   position: absolute;
   min-height: 100%;
   min-width: 100%;
   aspect-ratio: 16 / 9;
-  pointer-events: none;
+  background: linear-gradient(138deg, #272754 21%, #a51e35 67%);
 
   .backgroundImage {
     transition: 3s all cubic-bezier(0.19, 1, 0.22, 1);
@@ -50,5 +51,21 @@
     background-color: rgba(2, 0, 0, 0.32);
     left: 0;
     top: 0;
+  }
+}
+
+.contents {
+  .title {
+    color: #fff;
+
+    h1 {
+      font-size: 4vmax;
+    }
+
+    h2 {
+      display: flex;
+      flex-direction: column;
+      font-size: 2vmax;
+    }
   }
 }
