@@ -1,12 +1,9 @@
 import { NextPage } from 'next';
 import Link from 'next/link'
-import { useRouter } from 'next/router';
 
 import styles from '../../styles/components/contents/ContentsMain.module.scss';
 
 export const ContentsMain: NextPage = () => {
-  const router = useRouter();
-
   return (
     <div className={styles.main}>
       <div className={styles.background}></div>
