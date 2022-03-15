@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { NextPage } from 'next';
 import Image from 'next/image';
 
 import { ContentsHeader } from "../../components/contents/ContentsHeader";
@@ -6,7 +6,7 @@ import { contents } from "../../structs/contents";
 
 import styles from '../../styles/components/contents/Games/Games.module.scss';
 
-const List: NextPage = () => {
+const Contents: NextPage = () => {
   return (
     <div className={styles.container}>
       <header>
@@ -16,16 +16,16 @@ const List: NextPage = () => {
         <Image src=''></Image>
       </div>
       <div className={styles.contents}>
-        {contents.map((content) => {
+        {contents.map((content, index) => {
           return (
-            <div>
+            <div key={`content-${index}`}>
 
             </div>
-          )
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default List;
+export default Contents;
