@@ -1,0 +1,58 @@
+@import "../../mixin.scss";
+
+.container {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 154px;
+
+  @media screen and (max-width: $maxTablet) {
+    margin-top: calc(80px + 10vh);
+  }
+
+  header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10000;
+  }
+}
+
+.contents {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr; 
+  grid-column-gap: 32px;
+  grid-row-gap: 32px; 
+
+  max-width: 1800px;
+  padding: 0 40px;
+  align-self: center;
+
+
+  @media screen and (max-width: 2000px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @media screen and (max-width: 1800px) {
+    max-width: 1544px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media screen and (max-width: $maxTablet) {
+    max-width: 948px;
+    padding: 0 20px;
+    grid-column-gap: 24px;
+    grid-row-gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    max-width: 500px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

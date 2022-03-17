@@ -2,13 +2,18 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import styles from '../../styles/components/contents/ContentsHeader.module.scss';
+import { classes } from '../../utils/class';
 import HeaderBase from '../common/Header';
 import { WakEnterLogo } from '../wakenter/WakEnterHeader';
+
+interface ContentHeaderProps {
+  white?: boolean;
+}
 
 const Menus = [
   {
     title: 'Contents',
-    link: '/contents/list'
+    link: '/contents/contents'
   },
   {
     title: 'Goods',
@@ -16,13 +21,13 @@ const Menus = [
   },
   {
     title: 'Supporters',
-    link: '/contents/supporteers'
+    link: '/contents/supporters'
   }
 ];
 
-const RightMenus = () => {
+const RightMenus = ({white}: ContentHeaderProps) => {
   return (
-    <div className={styles.menu}>
+    <div className={classes(styles.menu, white && styles.white)}>
       {Menus.map(menu => (
         <Link key={`link-${menu.title}`} href={menu.link}>
           <a className={styles.link}>{menu.title}</a>
@@ -32,7 +37,7 @@ const RightMenus = () => {
   );
 };
 
-export const ContentsHeader = () => {
+export const ContentsHeader = ({white}: ContentHeaderProps) => {
   const router = useRouter();
 
   const Left = (
@@ -41,11 +46,11 @@ export const ContentsHeader = () => {
         tabIndex={100}
         onKeyDown={ev => ev.key === 'Enter' && router.push('/contents')}
       >
-        <WakEnterLogo clickable white></WakEnterLogo>
+        <WakEnterLogo clickable white={white}></WakEnterLogo>
       </span>
     </Link>
   );
-  const Right = <RightMenus></RightMenus>;
+  const Right = <RightMenus white={white}></RightMenus>;
   return <HeaderBase left={Left} right={Right}></HeaderBase>;
 };
 

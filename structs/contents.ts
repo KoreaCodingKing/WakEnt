@@ -99,7 +99,7 @@ export interface Content {
   links: string
 }
 
-export const contents: Content[] = [
+export const contentsList: Content[] = [
   {
     game: 'VRChat',
     date: '2022. 3. 15.',
@@ -999,7 +999,7 @@ export const contents: Content[] = [
       '고정멤버',
       '이세계아이돌'
     ],
-    links: 'tcIaZq4SMfo'
+    links: 'OZzzcZn-zW4'
   },
   {
     game: 'VRChat',
@@ -1276,7 +1276,7 @@ export const contents: Content[] = [
       'wakgood',
       '이세계아이돌',
     ],
-    links: 'D5yxAJzYHUs'
+    links: 'Y-qsjQmBNe0'
   },
   {
     game: 'Minecraft',
@@ -1289,18 +1289,6 @@ export const contents: Content[] = [
       '이세계아이돌',
     ],
     links: 'D5yxAJzYHUs'
-  },
-  {
-    game: 'Minecraft',
-    date: '2021. 9. 7.',
-    content: '왁핑몰',
-    contentName: '왁핑몰 정문 로고 부착 완료 ! - 마인크래프트 왁핑몰 7화',
-    episode: 7,
-    participants: [
-      'wakgood',
-      '시청자들',
-    ],
-    links: 'cGcrHcEFW7Q'
   },
   {
     game: 'Others',
@@ -1624,7 +1612,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: 'LdvM5IKooss'
+    links: 'NJQSsbX4gRg'
   },
   {
     game: 'Minecraft',
@@ -2570,7 +2558,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: '5UZlkegpX2o'
+    links: '3QxX6qE3W4g'
   },
   {
     game: 'Minecraft',
@@ -3086,7 +3074,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: '9W9BEjVSHrw'
+    links: 'MNyPaL3UEp4'
   },
   {
     game: 'Minecraft',
@@ -3110,7 +3098,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: 'YLxl617xy6s'
+    links: 'KvspPg3YIFk'
   },
   {
     game: 'Minecraft',
@@ -3122,7 +3110,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: 'YLxl617xy6s'
+    links: 'ORheTcSEbKI'
   },
   {
     game: 'Minecraft',
@@ -3134,7 +3122,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: 'YLxl617xy6s'
+    links: 'i2vKMonFnoA'
   },
   {
     game: 'Minecraft',
@@ -3170,7 +3158,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: 'YLxl617xy6s'
+    links: 'nxPFZPjVYOI'
   },
   {
     game: 'Minecraft',

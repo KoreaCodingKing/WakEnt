@@ -28,8 +28,21 @@
 
   a {
     text-decoration: none;
-    color: white;
     font-weight: bold;
     font-size: 1.1em;
+    color: #000;
+
+    &:hover {
+      font-size: 1.2em;
+      font-weight: 700;
+
+      transition:0.2s all cubic-bezier(0.6, 0, 0.735, 0.045);
+    }
+  }
+
+  &.white {
+    a {
+      color: #fff;
+    }
   }
 }
