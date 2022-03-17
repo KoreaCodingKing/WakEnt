@@ -26,9 +26,10 @@ const Contents: NextPage = () => {
     setOpenPlayer(true);
   };
 
+  // ToDo: game 및 contentsName 별로 보여주는 컨텐츠리스트 수정
   useEffect(() => {
     setCurrentContents(contentsList.slice(0, 0));
-  }, []);
+  }, [choosenContentType]);
 
   // contentsList에서 추가로 값을 더 가져옴.
   const pageHandler = useCallback((page: number) => {
