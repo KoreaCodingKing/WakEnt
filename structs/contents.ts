@@ -96,10 +96,11 @@ export interface Content {
   contentName: string,
   episode: number,
   participants: string[],
+  thumbnail?: string,
   links: string
 }
 
-export const contents: Content[] = [
+export const contentsList: Content[] = [
   {
     game: 'VRChat',
     date: '2022. 3. 15.',
@@ -999,7 +1000,7 @@ export const contents: Content[] = [
       '고정멤버',
       '이세계아이돌'
     ],
-    links: 'tcIaZq4SMfo'
+    links: 'OZzzcZn-zW4'
   },
   {
     game: 'VRChat',
@@ -1276,7 +1277,7 @@ export const contents: Content[] = [
       'wakgood',
       '이세계아이돌',
     ],
-    links: 'D5yxAJzYHUs'
+    links: 'Y-qsjQmBNe0'
   },
   {
     game: 'Minecraft',
@@ -1289,18 +1290,6 @@ export const contents: Content[] = [
       '이세계아이돌',
     ],
     links: 'D5yxAJzYHUs'
-  },
-  {
-    game: 'Minecraft',
-    date: '2021. 9. 7.',
-    content: '왁핑몰',
-    contentName: '왁핑몰 정문 로고 부착 완료 ! - 마인크래프트 왁핑몰 7화',
-    episode: 7,
-    participants: [
-      'wakgood',
-      '시청자들',
-    ],
-    links: 'cGcrHcEFW7Q'
   },
   {
     game: 'Others',
@@ -1468,7 +1457,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: 'pNVXW8uJOg'
+    links: '-pNVXW8uJOg'
   },
   {
     game: 'VRChat',
@@ -1588,6 +1577,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/IokhScS1hwE/mqdefault.jpg',
     links: 'IokhScS1hwE'
   },
   {
@@ -1624,7 +1614,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: 'LdvM5IKooss'
+    links: 'NJQSsbX4gRg'
   },
   {
     game: 'Minecraft',
@@ -1660,6 +1650,7 @@ export const contents: Content[] = [
       'wakgood',
       '이세계아이돌',
     ],
+    thumbnail: 'https://img.youtube.com/vi/vDU4L3Tvo8Q/mqdefault.jpg',
     links: 'vDU4L3Tvo8Q'
   },
   {
@@ -1791,6 +1782,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/K-V8L2AIzME/mqdefault.jpg',
     links: 'K-V8L2AIzME'
   },
   {
@@ -1898,6 +1890,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/U-cZbz3Qf9o/mqdefault.jpg',
     links: 'U-cZbz3Qf9o'
   },
   {
@@ -1982,6 +1975,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/5RmKWfo8ig4/mqdefault.jpg',
     links: '5RmKWfo8ig4'
   },
   {
@@ -2270,6 +2264,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/eIxvXMPAzpA/mqdefault.jpg',
     links: 'eIxvXMPAzpA'
   },
   {
@@ -2282,6 +2277,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/lfrnzFHrGDQ/mqdefault.jpg',
     links: 'lfrnzFHrGDQ'
   },
   {
@@ -2294,6 +2290,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/mLywj3nU42Y/mqdefault.jpg',
     links: 'mLywj3nU42Y'
   },
   {
@@ -2306,6 +2303,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/i0ECOzlX0NQ/mqdefault.jpg',
     links: 'i0ECOzlX0NQ'
   },
   {
@@ -2318,6 +2316,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/JEKYM3vzaYs/mqdefault.jpg',
     links: 'JEKYM3vzaYs'
   },
   {
@@ -2330,6 +2329,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/kvXuAkB4kfM/mqdefault.jpg',
     links: 'kvXuAkB4kfM'
   },
   {
@@ -2342,6 +2342,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/gfXyargKD2c/mqdefault.jpg',
     links: 'gfXyargKD2c'
   },
   {
@@ -2354,6 +2355,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/1QfCU3N6USQ/mqdefault.jpg',
     links: '1QfCU3N6USQ'
   },
   {
@@ -2366,6 +2368,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/6uJywxGyFEI/mqdefault.jpg',
     links: '6uJywxGyFEI'
   },
   {
@@ -2378,6 +2381,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/ZOmndT8Mflc/mqdefault.jpg',
     links: 'ZOmndT8Mflc'
   },
   {
@@ -2390,6 +2394,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/NpEtm__Q6k0/mqdefault.jpg',
     links: 'NpEtm__Q6k0'
   },
   {
@@ -2402,6 +2407,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/ECRO-KBHyRw/mqdefault.jpg',
     links: 'ECRO-KBHyRw'
   },
   {
@@ -2414,6 +2420,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/rn2q6Ooo8sg/mqdefault.jpg',
     links: 'rn2q6Ooo8sg'
   },
   {
@@ -2426,6 +2433,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/zMrchsC6RjI/mqdefault.jpg',
     links: 'zMrchsC6RjI'
   },
   {
@@ -2438,6 +2446,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/7IZuukGDSrg/mqdefault.jpg',
     links: '7IZuukGDSrg'
   },
   {
@@ -2450,6 +2459,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/nO9DX9LzIjs/mqdefault.jpg',
     links: 'nO9DX9LzIjs'
   },
   {
@@ -2462,6 +2472,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/PTgQcUSsIfQ/mqdefault.jpg',
     links: 'PTgQcUSsIfQ'
   },
   {
@@ -2474,6 +2485,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/0jaJHNUG67o/mqdefault.jpg',
     links: '0jaJHNUG67o'
   },
   {
@@ -2486,6 +2498,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/aLCfM5hRTuc/mqdefault.jpg',
     links: 'aLCfM5hRTuc'
   },
   {
@@ -2498,6 +2511,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/PPlRSWnrDvA/mqdefault.jpg',
     links: 'PPlRSWnrDvA'
   },
   {
@@ -2510,6 +2524,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/ScQ3mdw1IxI/mqdefault.jpg',
     links: 'ScQ3mdw1IxI'
   },
   {
@@ -2522,6 +2537,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/byQhbk3ktEw/mqdefault.jpg',
     links: 'byQhbk3ktEw'
   },
   {
@@ -2534,6 +2550,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/IFBwJyjYvkk/mqdefault.jpg',
     links: 'IFBwJyjYvkk'
   },
   {
@@ -2546,6 +2563,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/fNWwOKxlFx0/mqdefault.jpg',
     links: 'fNWwOKxlFx0'
   },
   {
@@ -2558,6 +2576,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/4cdxwi5Ecw4/mqdefault.jpg',
     links: '4cdxwi5Ecw4'
   },
   {
@@ -2570,7 +2589,8 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: '5UZlkegpX2o'
+    thumbnail: 'https://img.youtube.com/vi/3QxX6qE3W4g/mqdefault.jpg',
+    links: '3QxX6qE3W4g'
   },
   {
     game: 'Minecraft',
@@ -2582,6 +2602,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/nRx2hBjHV6M/mqdefault.jpg',
     links: 'nRx2hBjHV6M'
   },
   {
@@ -2594,6 +2615,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/SabLZ8mo7AA/mqdefault.jpg',
     links: 'SabLZ8mo7AA'
   },
   {
@@ -2606,6 +2628,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/N4pngYsIXzs/mqdefault.jpg',
     links: 'N4pngYsIXzs'
   },
   {
@@ -2618,6 +2641,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/K5MNEawn0Ss/mqdefault.jpg',
     links: 'K5MNEawn0Ss'
   },
   {
@@ -2630,6 +2654,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/b7o3BXsp9IA/mqdefault.jpg',
     links: 'b7o3BXsp9IA'
   },
   {
@@ -2642,6 +2667,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/E97aRqZBrjU/mqdefault.jpg',
     links: 'E97aRqZBrjU'
   },
   {
@@ -2654,6 +2680,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/5UZlkegpX2o/mqdefault.jpg',
     links: '5UZlkegpX2o'
   },
   {
@@ -2666,6 +2693,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/U0ySn0EiVNc/mqdefault.jpg',
     links: 'U0ySn0EiVNc'
   },
   {
@@ -2678,6 +2706,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/VdFQewXbwsw/mqdefault.jpg',
     links: 'VdFQewXbwsw'
   },
   {
@@ -2690,6 +2719,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/cRbBQVrnjt0/mqdefault.jpg',
     links: 'cRbBQVrnjt0'
   },
   {
@@ -2702,6 +2732,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/8JhzZb3B7xc/mqdefault.jpg',
     links: '8JhzZb3B7xc'
   },
   {
@@ -2714,6 +2745,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/uUFcaibsYXw/mqdefault.jpg',
     links: 'uUFcaibsYXw'
   },
   {
@@ -2726,6 +2758,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/KwdrlGLVXEI/mqdefault.jpg',
     links: 'KwdrlGLVXEI'
   },
   {
@@ -2738,6 +2771,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/02It5tgs8Zs/mqdefault.jpg',
     links: '02It5tgs8Zs'
   },
   {
@@ -2750,6 +2784,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/8LMH-mosOug/mqdefault.jpg',
     links: '8LMH-mosOug'
   },
   {
@@ -2762,6 +2797,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/wcMGNqRCVzE/mqdefault.jpg',
     links: 'wcMGNqRCVzE'
   },
   {
@@ -2774,6 +2810,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/i_EoQlPQf_c/mqdefault.jpg',
     links: 'i_EoQlPQf_c'
   },
   {
@@ -2786,6 +2823,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/Kv6ENf7D1Uo/mqdefault.jpg',
     links: 'Kv6ENf7D1Uo'
   },
   {
@@ -2798,7 +2836,8 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: 'oetiWBUi0'
+    thumbnail: 'https://img.youtube.com/vi/3-oetiWBUi0/mqdefault.jpg',
+    links: '3-oetiWBUi0'
   },
   {
     game: 'Minecraft',
@@ -2810,6 +2849,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/KA2m-qSZ5jw/mqdefault.jpg',
     links: 'KA2m-qSZ5jw'
   },
   {
@@ -2822,6 +2862,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/3_eTTLDAE58/mqdefault.jpg',
     links: '3_eTTLDAE58'
   },
   {
@@ -2834,6 +2875,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/ybsLhp0YiHE/mqdefault.jpg',
     links: 'ybsLhp0YiHE'
   },
   {
@@ -2846,6 +2888,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/zAP9--ZhUKI/mqdefault.jpg',
     links: 'zAP9--ZhUKI'
   },
   {
@@ -2858,6 +2901,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/vQfgx8m3o8M/mqdefault.jpg',
     links: 'vQfgx8m3o8M'
   },
   {
@@ -2870,6 +2914,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/w5XAoqI6A4U/mqdefault.jpg',
     links: 'w5XAoqI6A4U'
   },
   {
@@ -2882,6 +2927,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/rKAtvE4b0m8/mqdefault.jpg',
     links: 'rKAtvE4b0m8'
   },
   {
@@ -2894,6 +2940,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/B-co80VPJoM/mqdefault.jpg',
     links: 'B-co80VPJoM'
   },
   {
@@ -2906,6 +2953,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/imRNgIlhRP4/mqdefault.jpg',
     links: 'imRNgIlhRP4'
   },
   {
@@ -2918,6 +2966,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/zBeGZPSmnQU/mqdefault.jpg',
     links: 'zBeGZPSmnQU'
   },
   {
@@ -2930,6 +2979,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/ANF3ctM5GuM/mqdefault.jpg',
     links: 'ANF3ctM5GuM'
   },
   {
@@ -2942,6 +2992,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/aZHFoTTdZr0/mqdefault.jpg',
     links: 'aZHFoTTdZr0'
   },
   {
@@ -2954,6 +3005,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/xIuVy8rx7m0/mqdefault.jpg',
     links: 'xIuVy8rx7m0'
   },
   {
@@ -2966,6 +3018,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/ipPAiGYq9ZI/mqdefault.jpg',
     links: 'ipPAiGYq9ZI'
   },
   {
@@ -2978,6 +3031,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/O8W_d9yqtrY/mqdefault.jpg',
     links: 'O8W_d9yqtrY'
   },
   {
@@ -2990,6 +3044,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/7dRQhAdBq1k/mqdefault.jpg',
     links: '7dRQhAdBq1k'
   },
   {
@@ -3002,6 +3057,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/TDtI7aq1KI4/mqdefault.jpg',
     links: 'TDtI7aq1KI4'
   },
   {
@@ -3014,6 +3070,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/PU2PZHWdbwk/mqdefault.jpg',
     links: 'PU2PZHWdbwk'
   },
   {
@@ -3026,6 +3083,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/6Jxttm7qhXc/mqdefault.jpg',
     links: '6Jxttm7qhXc'
   },
   {
@@ -3038,6 +3096,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/7VW3DNQAWYE/mqdefault.jpg',
     links: '7VW3DNQAWYE'
   },
   {
@@ -3050,6 +3109,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/Zo-MArQ82bw/mqdefault.jpg',
     links: 'Zo-MArQ82bw'
   },
   {
@@ -3062,6 +3122,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/o0ayvb3QYsc/mqdefault.jpg',
     links: 'o0ayvb3QYsc'
   },
   {
@@ -3074,6 +3135,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/557eet-b0-o/mqdefault.jpg',
     links: '557eet-b0-o'
   },
   {
@@ -3086,7 +3148,8 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: '9W9BEjVSHrw'
+    thumbnail: 'https://img.youtube.com/vi/MNyPaL3UEp4/mqdefault.jpg',
+    links: 'MNyPaL3UEp4'
   },
   {
     game: 'Minecraft',
@@ -3098,6 +3161,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/9W9BEjVSHrw/mqdefault.jpg',
     links: '9W9BEjVSHrw'
   },
   {
@@ -3110,7 +3174,8 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: 'YLxl617xy6s'
+    thumbnail: 'https://img.youtube.com/vi/KvspPg3YIFk/mqdefault.jpg',
+    links: 'KvspPg3YIFk'
   },
   {
     game: 'Minecraft',
@@ -3122,7 +3187,8 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: 'YLxl617xy6s'
+    thumbnail: 'https://img.youtube.com/vi/ORheTcSEbKI/mqdefault.jpg',
+    links: 'ORheTcSEbKI'
   },
   {
     game: 'Minecraft',
@@ -3134,7 +3200,8 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: 'YLxl617xy6s'
+    thumbnail: 'https://img.youtube.com/vi/i2vKMonFnoA/mqdefault.jpg',
+    links: 'i2vKMonFnoA'
   },
   {
     game: 'Minecraft',
@@ -3146,6 +3213,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/YLxl617xy6s/mqdefault.jpg',
     links: 'YLxl617xy6s'
   },
   {
@@ -3158,6 +3226,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/fNuPx-b3a5M/mqdefault.jpg',
     links: 'fNuPx-b3a5M'
   },
   {
@@ -3170,7 +3239,8 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: 'YLxl617xy6s'
+    thumbnail: 'https://img.youtube.com/vi/nxPFZPjVYOI/mqdefault.jpg',
+    links: 'nxPFZPjVYOI'
   },
   {
     game: 'Minecraft',
@@ -3182,6 +3252,7 @@ export const contents: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/nSSGMu163F0/mqdefault.jpg',
     links: 'nSSGMu163F0'
   },
 ]

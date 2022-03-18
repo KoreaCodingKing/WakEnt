@@ -18,7 +18,7 @@ const Contents: NextPage = (): JSX.Element => {
       {flag && (
         <div className={styles.main}>
           <header>
-            <ContentsHeader></ContentsHeader>
+            <ContentsHeader white></ContentsHeader>
           </header>
           <ContentsMain></ContentsMain>
         </div>

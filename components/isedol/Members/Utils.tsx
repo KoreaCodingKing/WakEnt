@@ -12,6 +12,7 @@ export const useIntersectionObserver = (
   target: React.RefObject<HTMLDivElement>,
   selector: string,
   active: boolean,
+  contents?: boolean,
   onIntersect?: (id: IsedolMemberID | null, elem?: HTMLElement) => void
 ): void => {
   const [observer, setObserver] = useState<IntersectionObserver>(null!);
@@ -39,7 +40,7 @@ export const useIntersectionObserver = (
       },
       {
         root: target.current,
-        threshold: 0.8,
+        threshold: (contents) ? 0.2 : 0.8,
       }
     );
 

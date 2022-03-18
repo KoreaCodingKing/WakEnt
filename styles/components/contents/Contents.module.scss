@@ -1,0 +1,89 @@
+@import "../../mixin.scss";
+
+.container {
+  position: relative;
+}
+
+.contents_header {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+}
+
+.contents_header::before {
+  position: absolute;
+  content: " ";
+  background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0.982) 15.1%, rgba(255, 255, 255, 0.954) 27.8%, rgba(255, 255, 255, 0.916) 38.3%, rgba(255, 255, 255, 0.869) 47%, rgba(255, 255, 255, 0.814) 54.1%, rgba(255, 255, 255, 0.752) 60%, rgba(255, 255, 255, 0.683) 64.8%, rgba(255, 255, 255, 0.608) 68.8%, rgba(255, 255, 255, 0.529) 72.4%, rgba(255, 255, 255, 0.446) 75.9%, rgba(255, 255, 255, 0.36) 79.4%, rgba(255, 255, 255, 0.271) 83.3%, rgba(255, 255, 255, 0.181) 87.8%, rgba(255, 255, 255, 0.09) 93.3%, rgba(255, 255, 255, 0) 100%);
+  left: 50%;
+  width: 100%;
+  height: 170%;
+  transform: translate(-50%, 0);
+}
+
+.inner_container {
+  position: sticky;
+  overflow: auto;
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 120px;
+
+  @media screen and (max-width: $maxTablet) {
+    margin-top: calc(80px + 10vh);
+  }
+
+  header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10000;
+  }
+}
+
+.inner_container::-webkit-scrollbar {
+  display: none;
+}
+
+
+.contents {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr; 
+  grid-column-gap: 32px;
+  grid-row-gap: 32px; 
+
+  max-width: 1800px;
+  padding: 0 40px;
+  align-self: center;
+
+
+  @media screen and (max-width: 2000px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @media screen and (max-width: 1800px) {
+    max-width: 1544px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media screen and (max-width: $maxTablet) {
+    max-width: 948px;
+    padding: 0 20px;
+    grid-column-gap: 24px;
+    grid-row-gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    max-width: 500px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.emptyCards {
+  width: 100%;
+  margin-top: 32px;
+}
