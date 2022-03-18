@@ -96,6 +96,7 @@ export interface Content {
   contentName: string,
   episode: number,
   participants: string[],
+  thumbnail?: string,
   links: string
 }
 
@@ -1456,7 +1457,7 @@ export const contentsList: Content[] = [
       'wakgood',
       '시청자들',
     ],
-    links: 'pNVXW8uJOg'
+    links: '-pNVXW8uJOg'
   },
   {
     game: 'VRChat',
@@ -1576,6 +1577,7 @@ export const contentsList: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/IokhScS1hwE/mqdefault.jpg',
     links: 'IokhScS1hwE'
   },
   {
@@ -1648,6 +1650,7 @@ export const contentsList: Content[] = [
       'wakgood',
       '이세계아이돌',
     ],
+    thumbnail: 'https://img.youtube.com/vi/vDU4L3Tvo8Q/mqdefault.jpg',
     links: 'vDU4L3Tvo8Q'
   },
   {
@@ -1779,6 +1782,7 @@ export const contentsList: Content[] = [
       'wakgood',
       '시청자들',
     ],
+    thumbnail: 'https://img.youtube.com/vi/K-V8L2AIzME/mqdefault.jpg',
     links: 'K-V8L2AIzME'
   },
   {

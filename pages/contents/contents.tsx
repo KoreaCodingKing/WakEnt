@@ -8,6 +8,8 @@ import { Content, ContentName, contentsList, Game } from "../../structs/contents
 import styles from '../../styles/components/contents/Contents.module.scss';
 import YouTubeCard from '../../components/isedol/YouTubeCard';
 import YouTubePlayerOverlay from '../../components/common/YouTubePlayerOverlay';
+import { useIntersectionObserver } from '../../components/isedol/Members/Utils';
+import { classes } from '../../utils/class';
 
 const Contents: NextPage = () => {
   const [page, setPage] = useState<number>(1);
@@ -17,7 +19,7 @@ const Contents: NextPage = () => {
   const [openPlayer, setOpenPlayer] = useState<boolean>(false);
   const [openSelectOption, setOpenSelectOption] = useState<boolean>(false);
 
-  const containerRef = useRef<HTMLDivElement>(null);
+  const container = useRef<HTMLDivElement>(null!);
 
   const numberOfContentsByPage = 24;
   
@@ -28,26 +30,33 @@ const Contents: NextPage = () => {
 
   // ToDo: game 및 contentsName 별로 보여주는 컨텐츠리스트 수정
   useEffect(() => {
-    setCurrentContents(contentsList.slice(0, 0));
+    setCurrentContents(contentsList.slice(0, numberOfContentsByPage));
   }, [choosenContentType]);
 
-  // contentsList에서 추가로 값을 더 가져옴.
   const pageHandler = useCallback((page: number) => {
+    setPage(prev => prev+1);
     setCurrentContents(
       contentsList.slice(
         0,
-        (contentsList.length >= page*numberOfContentsByPage) ? page*numberOfContentsByPage : contentsList.length)
+        (contentsList.length >= page+2*numberOfContentsByPage) ? (page+2)*numberOfContentsByPage : contentsList.length)
     )
   }, [currentContents]);
-  
-  // ToDo: 스크롤 0이 될때 이벤트 발생 및 page +1 증가 처리 및 pageHandler 호출
-  useEffect(() => {
 
-  }, [])
-
+  useIntersectionObserver(
+    container,
+    `.${styles.emptyCards}`,
+    true,
+    true,
+    useCallback(() => {
+      setTimeout(() => {
+        pageHandler(page);
+      }, 200)
+    }, [page])
+  )
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container}
+      ref={container}>
       <header>
         <ContentsHeader></ContentsHeader>
       </header>
@@ -64,19 +73,32 @@ const Contents: NextPage = () => {
           </div>
         )}
       </div>
-      <div className={styles.contents}
-        ref={containerRef}>
+      <div className={styles.contents}>
         {currentContents.map((content, index) => {
           return (
             <YouTubeCard
               key={`content-${content.links}`}
               title={content.contentName}
+              thumbnail={content.thumbnail}
               id={content.links}
               onClick={id => openYouTube(content.links)}
             ></YouTubeCard>
           );
         })}
       </div>
+      {page <= Math.ceil(contentsList.length / 24) && (
+        <div className={classes(styles.contents, styles.emptyCards)}>
+          {Array(6).fill(0).map((_, index) => {
+            return (
+              <YouTubeCard
+                key={`content-${index}`}
+                title=''
+                id=''
+              ></YouTubeCard>
+            )
+          })}
+        </div>
+      )}
     </div>
   );
 };

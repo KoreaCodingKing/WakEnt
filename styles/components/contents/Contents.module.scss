@@ -1,14 +1,15 @@
 @import "../../mixin.scss";
 
 .container {
-  position: relative;
+  position: sticky;
+  overflow: auto;
+  height: 100vh;
   width: 100%;
-  height: fit-content;
 
   display: flex;
   flex-direction: column;
 
-  margin-top: 154px;
+  margin-top: 100px;
 
   @media screen and (max-width: $maxTablet) {
     margin-top: calc(80px + 10vh);
@@ -20,6 +21,10 @@
     top: 0;
     z-index: 10000;
   }
+}
+
+.container::-webkit-scrollbar {
+  display: none;
 }
 
 .contents {
@@ -55,4 +60,9 @@
     max-width: 500px;
     grid-template-columns: repeat(1, 1fr);
   }
+}
+
+.emptyCards {
+  width: 100%;
+  margin-top: 32px;
 }
