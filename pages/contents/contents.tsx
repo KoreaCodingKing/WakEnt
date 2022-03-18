@@ -55,50 +55,53 @@ const Contents: NextPage = () => {
   )
 
   return (
-    <div className={styles.container}
-      ref={container}>
-      <header>
+    <div className={styles.container}>
+      <div className={styles.contents_header}>
         <ContentsHeader></ContentsHeader>
-      </header>
+      </div>
       <YouTubePlayerOverlay
         id={youtubeID}
         open={openPlayer}
         close={() => setOpenPlayer(false)}
       ></YouTubePlayerOverlay>
-      <div className={styles.select_box}>
-        <div className={styles.select}
-          onClick={() => setOpenSelectOption(true)}></div>
-        {openSelectOption && (
-          <div>
+      <div className={styles.inner_container}
+        ref={container}>
+        <div className={styles.select_box}>
+          <div className={styles.select}
+            onClick={() => setOpenSelectOption(true)}></div>
+          {openSelectOption && (
+            <div>
+            </div>
+          )}
+        </div>
+        <div className={styles.contents}
+          ref={container}>
+          {currentContents.map((content, index) => {
+            return (
+              <YouTubeCard
+                key={`content-${content.links}`}
+                title={content.contentName}
+                thumbnail={content.thumbnail}
+                id={content.links}
+                onClick={id => openYouTube(content.links)}
+              ></YouTubeCard>
+            );
+          })}
+        </div>
+        {page <= Math.ceil(contentsList.length / 24) && (
+          <div className={classes(styles.contents, styles.emptyCards)}>
+            {Array(6).fill(0).map((_, index) => {
+              return (
+                <YouTubeCard
+                  key={`content-${index}`}
+                  title=''
+                  id=''
+                ></YouTubeCard>
+              )
+            })}
           </div>
         )}
       </div>
-      <div className={styles.contents}>
-        {currentContents.map((content, index) => {
-          return (
-            <YouTubeCard
-              key={`content-${content.links}`}
-              title={content.contentName}
-              thumbnail={content.thumbnail}
-              id={content.links}
-              onClick={id => openYouTube(content.links)}
-            ></YouTubeCard>
-          );
-        })}
-      </div>
-      {page <= Math.ceil(contentsList.length / 24) && (
-        <div className={classes(styles.contents, styles.emptyCards)}>
-          {Array(6).fill(0).map((_, index) => {
-            return (
-              <YouTubeCard
-                key={`content-${index}`}
-                title=''
-                id=''
-              ></YouTubeCard>
-            )
-          })}
-        </div>
-      )}
     </div>
   );
 };
