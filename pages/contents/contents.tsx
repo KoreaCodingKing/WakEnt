@@ -1,6 +1,5 @@
 import { NextPage } from 'next';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 
 import { ContentsHeader } from "../../components/contents/ContentsHeader";
 import { Content, ContentName, contentsList, Game } from "../../structs/contents";
@@ -23,7 +22,7 @@ const Contents: NextPage = () => {
 
   const numberOfContentsByPage = 24;
   const contentsPage = true;
-  
+
   const openYouTube = (id: string) => {
     setYoutubeID(id);
     setOpenPlayer(true);
@@ -40,8 +39,8 @@ const Contents: NextPage = () => {
       contentsList.slice(
         0,
         (contentsList.length >= page+2*numberOfContentsByPage) ? (page+2)*numberOfContentsByPage : contentsList.length)
-    )
-  }, [currentContents]);
+    );
+  }, []);
 
   useIntersectionObserver(
     container,
@@ -51,9 +50,9 @@ const Contents: NextPage = () => {
     useCallback(() => {
       setTimeout(() => {
         pageHandler(page);
-      }, 200)
-    }, [page])
-  )
+      }, 200);
+    }, [page, pageHandler])
+  );
 
   return (
     <div className={styles.container}>
@@ -77,14 +76,14 @@ const Contents: NextPage = () => {
         </div>
         <div className={styles.contents}
           ref={container}>
-          {currentContents.map((content, index) => {
+          {currentContents.map((content) => {
             return (
               <YouTubeCard
                 key={`content-${content.links}`}
                 title={content.contentName}
                 thumbnail={content.thumbnail}
                 id={content.links}
-                onClick={id => openYouTube(content.links)}
+                onClick={() => openYouTube(content.links)}
               ></YouTubeCard>
             );
           })}
@@ -98,7 +97,7 @@ const Contents: NextPage = () => {
                   title=''
                   id=''
                 ></YouTubeCard>
-              )
+              );
             })}
           </div>
         )}

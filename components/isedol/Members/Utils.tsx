@@ -12,7 +12,7 @@ export const useIntersectionObserver = (
   target: React.RefObject<HTMLDivElement>,
   selector: string,
   active: boolean,
-  contents?: boolean,
+  contents: boolean,
   onIntersect?: (id: IsedolMemberID | null, elem?: HTMLElement) => void
 ): void => {
   const [observer, setObserver] = useState<IntersectionObserver>(null!);
@@ -49,7 +49,7 @@ export const useIntersectionObserver = (
     return () => {
       localObserver.disconnect();
     };
-  }, [active, onIntersect, target]);
+  }, [active, onIntersect, target, contents]);
 
   useEffect(() => {
     if (!active) {
