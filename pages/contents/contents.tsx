@@ -22,6 +22,7 @@ const Contents: NextPage = () => {
   const container = useRef<HTMLDivElement>(null!);
 
   const numberOfContentsByPage = 24;
+  const contentsPage = true;
   
   const openYouTube = (id: string) => {
     setYoutubeID(id);
@@ -46,7 +47,7 @@ const Contents: NextPage = () => {
     container,
     `.${styles.emptyCards}`,
     true,
-    true,
+    contentsPage,
     useCallback(() => {
       setTimeout(() => {
         pageHandler(page);

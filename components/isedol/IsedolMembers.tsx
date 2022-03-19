@@ -37,12 +37,14 @@ export const IsedolMembersPage: NextPage = () => {
 
   const [parentRect, cardRect] = useRect(membersList, `.${styles.member}`);
   const isMobile = useDeviceWidthLimiter(1124);
+  const contentsPage = false;
 
   useHorizonalSlider(container, isMobile && chosenMember === null);
   useIntersectionObserver(
     container,
     `.${styles.member}`,
     isMobile && chosenMember === null,
+    contentsPage,
     useCallback(id => {
       setCurrentHoverMember(id);
     }, [])
