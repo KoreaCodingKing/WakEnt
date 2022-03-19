@@ -74,8 +74,7 @@ const Contents: NextPage = () => {
             </div>
           )}
         </div>
-        <div className={styles.contents}
-          ref={container}>
+        <div className={styles.contents}>
           {currentContents.map((content) => {
             return (
               <YouTubeCard
