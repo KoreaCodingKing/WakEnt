@@ -9,6 +9,7 @@ import YouTubeCard from '../../components/isedol/YouTubeCard';
 import YouTubePlayerOverlay from '../../components/common/YouTubePlayerOverlay';
 import { useIntersectionObserver } from '../../components/isedol/Members/Utils';
 import { classes } from '../../utils/class';
+import Sidebar from '../../components/contents/sidebar/Sidebar';
 
 const Contents: NextPage = () => {
   const [page, setPage] = useState<number>(1);
@@ -66,20 +67,13 @@ const Contents: NextPage = () => {
       ></YouTubePlayerOverlay>
       <div className={styles.inner_container}
         ref={container}>
-        <div className={styles.select_box}>
-          <div className={styles.select}
-            onClick={() => setOpenSelectOption(true)}></div>
-          {openSelectOption && (
-            <div>
-            </div>
-          )}
-        </div>
+        <Sidebar></Sidebar>
         <div className={styles.contents}>
           {currentContents.map((content) => {
             return (
               <YouTubeCard
                 key={`content-${content.links}`}
-                title={content.contentName}
+                title={content.title}
                 thumbnail={content.thumbnail}
                 id={content.links}
                 onClick={() => openYouTube(content.links)}
