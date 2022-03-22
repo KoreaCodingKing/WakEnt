@@ -61,7 +61,7 @@
   }
 
   @media screen and (max-width: $maxMobile) {
-    font-size: 0.75rem;
+    font-size: 1vmin;
   }
 
   transition: 1s color cubic-bezier(0.19, 1, 0.22, 1);
@@ -74,10 +74,10 @@
 .menu {
   margin-left: auto;
   display: flex;
-  gap: 32px;
+  gap: 20px;
 
-  @media screen and (max-width: $maxTablet) {
-    gap: 16px;
+  @media screen and (max-width: $maxMobile) {
+    gap: 8px;
   }
 
   &.white {
@@ -103,12 +103,8 @@
       opacity: 0.6;
     }
 
-    @media screen and (max-width: $maxTablet) {
-      font-size: 1em;
-    }
-
     @media screen and (max-width: $maxMobile) {
-      font-size: 0.95em;
+      font-size: 1vmin;
     }
   }
 }
