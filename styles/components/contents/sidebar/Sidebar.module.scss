@@ -1,1 +1,48 @@
 @import "../../../mixin.scss";
+
+
+.select_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  width: 88px;
+  height: calc(100vh - 114px);
+  padding: 4px;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 4px 0;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.06);
+    transition: cubic-bezier(0.19, 1, 0.22, 1), 0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  p {
+    margin: 8px 0;
+    text-align: center;
+    font-size: 1em;
+    word-break: keep-all;
+  }
+}
+
+.totalgame_icon {
+  position: relative;
+}
+
+.game_icon {
+  position: relative;
+  width: 40px;
+  height: 40px;;
+
+  .image {
+    aspect-ratio: 9/16;
+  }
+}

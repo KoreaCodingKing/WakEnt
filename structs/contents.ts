@@ -1,8 +1,6 @@
 export type Game =
 | 'Minecraft'
 | 'VRChat'
-| 'LeagueOfLegend'
-| 'Valorant'
 | 'ProsoccerOnline'
 | 'AmongUs'
 | 'Others'
@@ -38,11 +36,14 @@ export enum GameByEnum {
 }
 
 export interface GameContents {
-  contentName: ContentName[]
+  name: string,
+  contentName: ContentName[],
+  image: string
 }
 
 export const ContentByGame: Record<Game, GameContents> = {
   [GameByEnum.Minecraft]: {
+    name: '마인크래프트',
     contentName: [
       '왁핑몰',
       '왁파트',
@@ -51,41 +52,40 @@ export const ContentByGame: Record<Game, GameContents> = {
       '미니모르즈비',
       '마인크래프트X전쟁',
       '기타'
-    ]
+    ],
+    image: '/images/logo/logo_minecraft.png'
   },
   [GameByEnum.VRChat]: {
+    name: 'VRChat',
     contentName: [
       '상황극',
       '소개팅',
       'VR챗 변신맨',
       '고정멤버X이세계아이돌',
       '기타'
-    ]
-  },
-  [GameByEnum.LeagueOfLegend]: {
-    contentName: [
-      '자운리그'
-    ]
-  },
-  [GameByEnum.Valorant]: {
-    contentName: [
-      '자운리그'
-    ]
+    ],
+    image: '/images/logo/logo_vrchat.png'
   },
   [GameByEnum.ProsoccerOnline]: {
+    name: '프로싸커 온라인',
     contentName: [
       '프로싸커온라인 리그'
-    ]
+    ],
+    image: '/images/logo/logo_prosoccer.png'
   },
   [GameByEnum.AmongUs]: {
+    name: '어몽어스',
     contentName: [
       '이세계아이돌합방'
-    ]
+    ],
+    image: '/images/logo/logo_amongus.png'
   },
   [GameByEnum.Others]: {
+    name: '기타',
     contentName: [
       '기타'
-    ]
+    ],
+    image: ''
   },
 }
 
@@ -102,7 +102,7 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
-    game: 'VRChat',
+    game: 'Others',
     date: '2022. 3. 15.',
     content: '고정멤버합방',
     title: '고멤 중 2명이 노예입니다.',
@@ -127,7 +127,7 @@ export const contentsList: Content[] = [
     links: 'v924c_Ao3gM'
   },
   {
-    game: 'VRChat',
+    game: 'Others',
     date: '2022. 3. 10.',
     content: '고정멤버합방',
     title: '나에게 축구는 XX이다...',

@@ -7,17 +7,17 @@ import { Content, ContentName, contentsList, Game } from "../../structs/contents
 import styles from '../../styles/components/contents/Contents.module.scss';
 import YouTubeCard from '../../components/isedol/YouTubeCard';
 import YouTubePlayerOverlay from '../../components/common/YouTubePlayerOverlay';
-import { useIntersectionObserver } from '../../components/isedol/Members/Utils';
+import { useDebouncer, useIntersectionObserver } from '../../components/isedol/Members/Utils';
 import { classes } from '../../utils/class';
 import Sidebar from '../../components/contents/sidebar/Sidebar';
 
 const Contents: NextPage = () => {
   const [page, setPage] = useState<number>(1);
-  const [choosenContentType, setChoosenContentType] = useState<Game|ContentName|string>('전체');
+  const [choosenGame, setChoosenGame] = useState<Game|string>('전체');
+  const [choosenContentType, setChoosenContentType] = useState<ContentName>();
   const [currentContents, setCurrentContents] = useState<Content[]>([]);
   const [youtubeID, setYoutubeID] = useState<string>('');
   const [openPlayer, setOpenPlayer] = useState<boolean>(false);
-  const [openSelectOption, setOpenSelectOption] = useState<boolean>(false);
 
   const container = useRef<HTMLDivElement>(null!);
 
@@ -28,6 +28,10 @@ const Contents: NextPage = () => {
     setYoutubeID(id);
     setOpenPlayer(true);
   };
+
+  const [run] = useDebouncer((res: string) => {
+
+  }, 60)
 
   // ToDo: game 및 contentsName 별로 보여주는 컨텐츠리스트 수정
   useEffect(() => {
@@ -65,35 +69,37 @@ const Contents: NextPage = () => {
         open={openPlayer}
         close={() => setOpenPlayer(false)}
       ></YouTubePlayerOverlay>
-      <div className={styles.inner_container}
-        ref={container}>
-        <Sidebar></Sidebar>
-        <div className={styles.contents}>
-          {currentContents.map((content) => {
-            return (
-              <YouTubeCard
-                key={`content-${content.links}`}
-                title={content.title}
-                thumbnail={content.thumbnail}
-                id={content.links}
-                onClick={() => openYouTube(content.links)}
-              ></YouTubeCard>
-            );
-          })}
-        </div>
-        {page <= Math.ceil(contentsList.length / 24) && (
-          <div className={classes(styles.contents, styles.emptyCards)}>
-            {Array(6).fill(0).map((_, index) => {
+      <div className={styles.inner_container}>
+        <Sidebar selectContents={run}></Sidebar>
+        <div className={styles.contents_wrapper}
+          ref={container}>
+          <div className={styles.contents}>
+            {currentContents.map((content) => {
               return (
                 <YouTubeCard
-                  key={`content-${index}`}
-                  title=''
-                  id=''
+                  key={`content-${content.links}`}
+                  title={content.title}
+                  thumbnail={content.thumbnail}
+                  id={content.links}
+                  onClick={() => openYouTube(content.links)}
                 ></YouTubeCard>
               );
             })}
           </div>
-        )}
+          {page <= Math.ceil(contentsList.length / 24) && (
+            <div className={classes(styles.contents, styles.emptyCards)}>
+              {Array(6).fill(0).map((_, index) => {
+                return (
+                  <YouTubeCard
+                    key={`content-${index}`}
+                    title=''
+                    id=''
+                  ></YouTubeCard>
+                );
+              })}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
