@@ -13,7 +13,12 @@
 }
 
 .inner_container {
+  position: relative;
   display: flex;
+  
+  @media screen and (max-width: $maxTablet) {
+    flex-direction: column;
+  }
 }
 
 .contents_wrapper {
@@ -33,6 +38,10 @@
     top: 0;
     z-index: 1000;
   }
+
+  @media screen and (max-width: $maxMobile) {
+    padding-top: 98px;
+  }
 }
 
 .contents_wrapper::-webkit-scrollbar {
@@ -43,6 +52,17 @@
 .contents_wrapper::-webkit-scrollbar-thumb {
   background: rgb(53, 51, 51);
   border-radius: 20px;
+}
+
+.filter_box {
+  z-index: 9999;
+  display: flex;
+  margin-bottom: 60px;
+  padding: 0 40px;
+
+  @media screen and (max-width: $maxTablet) {
+    padding: 0 20px;
+  }
 }
 
 .contents {

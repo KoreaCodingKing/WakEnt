@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { ContentByGame, Game, GameByEnum, GameContents } from '../../../structs/contents';
 import styles from '../../../styles/components/contents/sidebar/Sidebar.module.scss';
@@ -14,25 +14,31 @@ const Sidebar = ({selectContents}: SidebarProps) => {
     <div className={styles.select_box}>
       <div className={styles.game}>
         <div className={styles.totalgame_icon}>
+          <div className={styles.totalgame}>
+          </div>
         </div>
         <p>전체</p>
       </div>
       {(Object.keys(ContentByGame) as Game[]).map((game, index) => {
         return (
           <div key={`game-${index}`} className={styles.game}>
-            {ContentByGame[game].image && (
-              <div className={styles.game_icon}>
+            <div className={styles.game_icon}>
+              {ContentByGame[game].image && (
                 <Image
                   className={styles.image}
-                  src={ContentByGame[game].image}
+                  src={ContentByGame[game].image || ''}
                   blurDataURL={ContentByGame[game].image}
                   placeholder='blur'
                   layout='fill'
                   priority
                   alt="게임 아이콘"
                 ></Image>
-              </div>
-            )}
+              )}
+              {!ContentByGame[game].image && (
+                <div className={styles.emptyImage}>
+                </div>
+              )}
+            </div>
             <p>{ContentByGame[game].name}</p>
           </div>
         )

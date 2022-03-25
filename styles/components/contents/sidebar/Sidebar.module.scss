@@ -7,8 +7,8 @@
   justify-content: center;
   gap: 40px;
   width: 88px;
-  height: calc(100vh - 114px);
-  padding: 4px;
+  margin: 114px 0;
+  align-self: center;
 }
 
 .game {
@@ -21,6 +21,7 @@
   cursor: pointer;
 
   &:hover {
+    border-radius: 20px;
     background: rgba(0, 0, 0, 0.06);
     transition: cubic-bezier(0.19, 1, 0.22, 1), 0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
   }
@@ -31,6 +32,20 @@
     font-size: 1em;
     word-break: keep-all;
   }
+
+  .emptyImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: rgb(152, 161, 235);
+  }
+
+  .totalgame {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: rgb(75, 89, 199);
+  }
 }
 
 .totalgame_icon {
@@ -40,7 +55,7 @@
 .game_icon {
   position: relative;
   width: 40px;
-  height: 40px;;
+  height: 40px;
 
   .image {
     aspect-ratio: 9/16;

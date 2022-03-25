@@ -38,7 +38,7 @@ export enum GameByEnum {
 export interface GameContents {
   name: string,
   contentName: ContentName[],
-  image: string
+  image?: string
 }
 
 export const ContentByGame: Record<Game, GameContents> = {
@@ -85,7 +85,6 @@ export const ContentByGame: Record<Game, GameContents> = {
     contentName: [
       '기타'
     ],
-    image: ''
   },
 }
 

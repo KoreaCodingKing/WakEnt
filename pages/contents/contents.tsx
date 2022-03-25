@@ -10,6 +10,8 @@ import YouTubePlayerOverlay from '../../components/common/YouTubePlayerOverlay';
 import { useDebouncer, useIntersectionObserver } from '../../components/isedol/Members/Utils';
 import { classes } from '../../utils/class';
 import Sidebar from '../../components/contents/sidebar/Sidebar';
+import { MenuButton } from '../../components/isedol/IsedolHeader';
+import FilterListOverlay from '../../components/contents/overlay/filterListOverlay';
 
 const Contents: NextPage = () => {
   const [page, setPage] = useState<number>(1);
@@ -18,6 +20,8 @@ const Contents: NextPage = () => {
   const [currentContents, setCurrentContents] = useState<Content[]>([]);
   const [youtubeID, setYoutubeID] = useState<string>('');
   const [openPlayer, setOpenPlayer] = useState<boolean>(false);
+  const [showSidebar, setShowSidebar] = useState<boolean>(true);
+  const [openDetail, setOpenDetail] = useState<boolean>(false);
 
   const container = useRef<HTMLDivElement>(null!);
 
@@ -29,14 +33,9 @@ const Contents: NextPage = () => {
     setOpenPlayer(true);
   };
 
-  const [run] = useDebouncer((res: string) => {
-
+  const [run] = useDebouncer(() => {
+    setOpenDetail(!openDetail);
   }, 60)
-
-  // ToDo: game 및 contentsName 별로 보여주는 컨텐츠리스트 수정
-  useEffect(() => {
-    setCurrentContents(contentsList.slice(0, numberOfContentsByPage));
-  }, [choosenContentType]);
 
   const pageHandler = useCallback((page: number) => {
     setPage(prev => prev+1);
@@ -59,6 +58,27 @@ const Contents: NextPage = () => {
     }, [page, pageHandler])
   );
 
+   // ToDo: game 및 contentsName 별로 보여주는 컨텐츠리스트 수정
+   useEffect(() => {
+    setCurrentContents(contentsList.slice(0, numberOfContentsByPage));
+  }, [choosenContentType]);
+
+  useEffect(() => {
+    const updateWindowDimensions = () => {
+      const innerWidth = window.innerWidth;
+      if (innerWidth < 1124) {
+        setShowSidebar(false);
+        return;
+      }
+
+      setShowSidebar(true);
+    };
+
+    window.addEventListener("resize", updateWindowDimensions);
+
+    return () => window.removeEventListener("resize", updateWindowDimensions) 
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.contents_header}>
@@ -70,9 +90,17 @@ const Contents: NextPage = () => {
         close={() => setOpenPlayer(false)}
       ></YouTubePlayerOverlay>
       <div className={styles.inner_container}>
-        <Sidebar selectContents={run}></Sidebar>
+        {showSidebar && (
+          <Sidebar selectContents={run}></Sidebar>
+        )}
         <div className={styles.contents_wrapper}
           ref={container}>
+          {!showSidebar && (
+            <div className={styles.filter_box}>
+              <MenuButton open={openDetail} onClick={run}></MenuButton>
+            </div>
+          )}
+          <FilterListOverlay open={openDetail}></FilterListOverlay>
           <div className={styles.contents}>
             {currentContents.map((content) => {
               return (
