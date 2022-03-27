@@ -38,16 +38,15 @@
     width: 85%;
   }
 
-}
-
-.contents::-webkit-scrollbar {
-  width: 10px;
-  background: none;
-}
-
-.contents::-webkit-scrollbar-thumb {
-  background: rgb(53, 51, 51);
-  border-radius: 20px;
+  &::-webkit-scrollbar {
+    width: 10px;
+    background: none;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgb(53, 51, 51);
+    border-radius: 20px;
+  }
 }
 
 .game {
