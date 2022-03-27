@@ -15,10 +15,6 @@
 .inner_container {
   position: relative;
   display: flex;
-  
-  @media screen and (max-width: $maxTablet) {
-    flex-direction: column;
-  }
 }
 
 .contents_wrapper {
@@ -57,8 +53,11 @@
 .filter_box {
   z-index: 9999;
   display: flex;
-  margin-bottom: 60px;
-  padding: 0 40px;
+  justify-content: center;
+  grid-gap: 40px;
+  gap: 40px;
+  min-width: 20px;
+  align-self: center;
 
   @media screen and (max-width: $maxTablet) {
     padding: 0 20px;

@@ -20,7 +20,7 @@ const Contents: NextPage = () => {
   const [currentContents, setCurrentContents] = useState<Content[]>([]);
   const [youtubeID, setYoutubeID] = useState<string>('');
   const [openPlayer, setOpenPlayer] = useState<boolean>(false);
-  const [showSidebar, setShowSidebar] = useState<boolean>(true);
+  const [showSidebar, setShowSidebar] = useState<boolean>();
   const [openDetail, setOpenDetail] = useState<boolean>(false);
 
   const container = useRef<HTMLDivElement>(null!);
@@ -64,19 +64,20 @@ const Contents: NextPage = () => {
   }, [choosenContentType]);
 
   useEffect(() => {
-    const updateWindowDimensions = () => {
+    const updateSidebar = () => {
       const innerWidth = window.innerWidth;
-      if (innerWidth < 1124) {
+      if (innerWidth <= 1124) {
         setShowSidebar(false);
         return;
       }
 
       setShowSidebar(true);
     };
+    updateSidebar();
 
-    window.addEventListener("resize", updateWindowDimensions);
+    window.addEventListener("resize", updateSidebar);
 
-    return () => window.removeEventListener("resize", updateWindowDimensions) 
+    return () => window.removeEventListener("resize", updateSidebar) 
   }, []);
 
   return (
@@ -93,13 +94,13 @@ const Contents: NextPage = () => {
         {showSidebar && (
           <Sidebar selectContents={run}></Sidebar>
         )}
+        {!showSidebar && (
+          <div className={styles.filter_box}>
+            <MenuButton open={openDetail} onClick={run}></MenuButton>
+          </div>
+        )}
         <div className={styles.contents_wrapper}
           ref={container}>
-          {!showSidebar && (
-            <div className={styles.filter_box}>
-              <MenuButton open={openDetail} onClick={run}></MenuButton>
-            </div>
-          )}
           <FilterListOverlay open={openDetail}></FilterListOverlay>
           <div className={styles.contents}>
             {currentContents.map((content) => {
