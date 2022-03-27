@@ -62,6 +62,10 @@
   @media screen and (max-width: $maxTablet) {
     padding: 0 20px;
   }
+
+  @media screen and (max-width: $maxMobile) {
+    padding: 0px 4px;
+  }
 }
 
 .contents {

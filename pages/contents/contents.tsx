@@ -71,6 +71,7 @@ const Contents: NextPage = () => {
         return;
       }
 
+      setOpenDetail(false);
       setShowSidebar(true);
     };
     updateSidebar();

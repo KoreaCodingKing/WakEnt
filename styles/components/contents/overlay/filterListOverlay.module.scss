@@ -1,3 +1,5 @@
+@import "../../../mixin.scss";
+
 .overlay {
   position: fixed;
   left: 0;
@@ -20,5 +22,153 @@
     pointer-events: auto;
     visibility: visible;
     transition: 0.4s opacity cubic-bezier(0.19, 1, 0.22, 1), 0.4s visibility cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
+
+.contents {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  width: 90%;
+  height: 70%;
+  margin: auto;
+
+  @media screen and (max-width: $maxMobile) {
+    min-width: 85%;
+    width: 85%;
+  }
+
+}
+
+.contents::-webkit-scrollbar {
+  width: 10px;
+  background: none;
+}
+
+.contents::-webkit-scrollbar-thumb {
+  background: rgb(53, 51, 51);
+  border-radius: 20px;
+}
+
+.game {
+  width: fit-content;
+  margin: 0 auto;
+  margin-bottom: 30px;
+
+  .totalgame {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    border-radius: 100%;
+    background: rgb(75, 89, 199);
+
+    @media screen and (max-width: $maxMobile) {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.icon_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    padding-top: 8px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.06);
+    transition: bacground 0.23s cubic-bezier(0.19, 1, 0.22, 1), 0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  p {
+    font-size: 1.5em;
+    
+    @media screen and (max-width: $maxTablet) {
+      font-size: 3vmin;
+      font-weight: 700;
+    }
+  
+    @media screen and (max-width: $maxMobile) {
+      font-size: 5vmin;
+    }
+  }
+}
+
+.dropMenu {
+  width: fit-content;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  text-align: center;
+
+  @media screen and (max-width: $maxTablet) {
+    font-size: 3vmin;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    font-size: 3vmin;
+  }
+}
+
+.game_icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+
+  .image {
+    aspect-ratio: 9/16;
+  }
+
+  .emptyImage {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    border-radius: 100%;
+    background: rgb(152, 161, 235);
+
+    @media screen and (max-width: $maxMobile) {
+      width: 16px;
+      height: 16px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.open {
+  .contents {
+    .game {
+      .contentsName {
+        transform: translateY(0px);
+        animation: contents calc(1320ms * var(--index, 1)) cubic-bezier(0.19, 1, 0.22, 1);
+        cursor: pointer;
+      }
+
+      .icon_wrapper {
+        animation: iconWrapper calc(1320ms * var(--index, 1)) cubic-bezier(0.19, 1, 0.22, 1);
+      }
+    }
+  }
+}
+
+@keyframes iconWrapper {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes contents {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(100px * var(--index, 1)));
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }

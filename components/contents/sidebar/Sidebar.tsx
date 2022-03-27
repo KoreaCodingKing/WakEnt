@@ -15,15 +15,6 @@ const Sidebar = ({selectContents}: SidebarProps) => {
   const isMobile = useDeviceWidthLimiter(1124);
 
   const variants: Variants = {
-    initial: () => ({
-      transform: 'translateY(-5px)'
-    }),
-    animation: () => ({
-      transform: 'translateY(0px)',
-      transition: {
-        type: 'spring'
-      }
-    }),
     hover: () => ({
       color: '#1667e0',
       fontSize: '22px',
@@ -91,13 +82,14 @@ const Sidebar = ({selectContents}: SidebarProps) => {
                 className={styles.dropMenu}>
                 {ContentByGame[game].contentName.map((conentName, index) => {
                   return (<motion.p
+                    key={`contentName-${index}`}
                     className={styles.contentsName}
                     whileHover='hover'
                     variants={variants}
                     style={{
                       '--index': `${(index + 1) / (ContentByGame[game].contentName.length + 1)}`
                     } as React.CSSProperties}>
-                    <span>{conentName}</span>
+                    {conentName}
                   </motion.p>)
                 })}
               </div>
