@@ -12,7 +12,7 @@ const FilterListOverlay = ({open}: FilterListOverlay) => {
   const variants: Variants = {
     hover: () => ({
       color: '#1667e0',
-      fontSize: '38px',
+      fontSize: '32px',
       fontWeight: '500',
       transition: {
         type: 'spring',
