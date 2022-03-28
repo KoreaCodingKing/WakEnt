@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { ContentByGame, Game } from '../../../structs/contents';
 import { classes } from '../../../utils/class';
-import styles from '../../../styles/components/contents/overlay/filterListOverlay.module.scss'
+import styles from '../../../styles/components/contents/overlay/filterListOverlay.module.scss';
 import { motion, Variants } from 'framer-motion';
 
 interface FilterListOverlay {
@@ -19,7 +19,7 @@ const FilterListOverlay = ({open}: FilterListOverlay) => {
         duration: 0.5
       }
     })
-  }
+  };
 
   return (
     <div className={classes(styles.overlay, open && styles.open)}>
@@ -70,15 +70,15 @@ const FilterListOverlay = ({open}: FilterListOverlay) => {
                       '--index': `${(index + 1) / (ContentByGame[game].contentName.length + 1)}`
                     } as React.CSSProperties}>
                     {conentName}
-                  </motion.p>)
+                  </motion.p>);
                 })}
               </div>
             </div>
-          )
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default FilterListOverlay;

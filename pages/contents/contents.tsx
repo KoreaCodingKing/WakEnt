@@ -35,7 +35,7 @@ const Contents: NextPage = () => {
 
   const [run] = useDebouncer(() => {
     setOpenDetail(!openDetail);
-  }, 60)
+  }, 60);
 
   const pageHandler = useCallback((page: number) => {
     setPage(prev => prev+1);
@@ -58,8 +58,8 @@ const Contents: NextPage = () => {
     }, [page, pageHandler])
   );
 
-   // ToDo: game 및 contentsName 별로 보여주는 컨텐츠리스트 수정
-   useEffect(() => {
+  // ToDo: game 및 contentsName 별로 보여주는 컨텐츠리스트 수정
+  useEffect(() => {
     setCurrentContents(contentsList.slice(0, numberOfContentsByPage));
   }, [choosenContentType]);
 
@@ -78,7 +78,7 @@ const Contents: NextPage = () => {
 
     window.addEventListener("resize", updateSidebar);
 
-    return () => window.removeEventListener("resize", updateSidebar) 
+    return () => window.removeEventListener("resize", updateSidebar);
   }, []);
 
   return (

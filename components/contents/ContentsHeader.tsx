@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 
 import styles from '../../styles/components/contents/ContentsHeader.module.scss';
 import { classes } from '../../utils/class';
@@ -48,7 +47,7 @@ export const ContentsHeader = ({white}: ContentHeaderProps) => {
         </Link>
       ))}
     </div>
-  )
+  );
 
   return <HeaderBase left={Left} right={Right}></HeaderBase>;
 };

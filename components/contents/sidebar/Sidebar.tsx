@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Image from 'next/image';
-import { ContentByGame, contentsNameByEnum, Game, GameByEnum, GameContents } from '../../../structs/contents';
+import { ContentByGame, Game } from '../../../structs/contents';
 import styles from '../../../styles/components/contents/sidebar/Sidebar.module.scss';
 import { useDebouncer } from '../../isedol/Members/Utils';
 import { useDeviceWidthLimiter } from '../../../utils/device';
@@ -24,7 +24,7 @@ const Sidebar = ({selectContents}: SidebarProps) => {
         duration: 0.5
       }
     })
-  }
+  };
 
   const [run, cancel] = useDebouncer((id: Game | null) => {
     setHoverGame(id);
@@ -90,15 +90,15 @@ const Sidebar = ({selectContents}: SidebarProps) => {
                       '--index': `${(index + 1) / (ContentByGame[game].contentName.length + 1)}`
                     } as React.CSSProperties}>
                     {conentName}
-                  </motion.p>)
+                  </motion.p>);
                 })}
               </div>
             )}
           </div>
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
 export default Sidebar;
