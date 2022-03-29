@@ -42,7 +42,8 @@ const Contents: NextPage = () => {
     setCurrentContents(
       contentsList.slice(
         0,
-        (contentsList.length >= page+2*numberOfContentsByPage) ? (page+2)*numberOfContentsByPage : contentsList.length)
+        (contentsList.length >= page+2*numberOfContentsByPage) ? (page+2)*numberOfContentsByPage : contentsList.length
+      )
     );
   }, []);
 
@@ -57,6 +58,19 @@ const Contents: NextPage = () => {
       }, 200);
     }, [page, pageHandler])
   );
+
+  const filterContents = useCallback((game: Game|string, contentName?: ContentName) => {
+    if (!container.current) {
+      return;
+    }
+    setPage(1);
+    container.current.scrollTo(0, 0);
+    if (game && !contentName) {
+      console.log('1',game)
+      return;
+    }
+    console.log('2',game, contentName)
+  }, [choosenGame, choosenContentType, page]);
 
   // ToDo: game 및 contentsName 별로 보여주는 컨텐츠리스트 수정
   useEffect(() => {
@@ -93,7 +107,7 @@ const Contents: NextPage = () => {
       ></YouTubePlayerOverlay>
       <div className={styles.inner_container}>
         {showSidebar && (
-          <Sidebar selectContents={run}></Sidebar>
+          <Sidebar selectContents={filterContents}></Sidebar>
         )}
         {!showSidebar && (
           <div className={styles.filter_box}>
@@ -102,7 +116,7 @@ const Contents: NextPage = () => {
         )}
         <div className={styles.contents_wrapper}
           ref={container}>
-          <FilterListOverlay open={openDetail}></FilterListOverlay>
+          <FilterListOverlay open={openDetail} selectContents={filterContents}></FilterListOverlay>
           <div className={styles.contents}>
             {currentContents.map((content) => {
               return (

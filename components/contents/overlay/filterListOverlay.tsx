@@ -1,14 +1,15 @@
 import Image from 'next/image';
-import { ContentByGame, Game } from '../../../structs/contents';
+import { ContentByGame, ContentName, Game } from '../../../structs/contents';
 import { classes } from '../../../utils/class';
 import styles from '../../../styles/components/contents/overlay/filterListOverlay.module.scss';
 import { motion, Variants } from 'framer-motion';
 
 interface FilterListOverlay {
-  open: boolean
+  open: boolean,
+  selectContents: (game: Game|string, contentName?: ContentName) => void,
 }
 
-const FilterListOverlay = ({open}: FilterListOverlay) => {
+const FilterListOverlay = ({open, selectContents}: FilterListOverlay) => {
   const variants: Variants = {
     hover: () => ({
       color: '#1667e0',
@@ -25,7 +26,8 @@ const FilterListOverlay = ({open}: FilterListOverlay) => {
     <div className={classes(styles.overlay, open && styles.open)}>
       <div className={styles.background}></div>
       <div className={styles.contents}>
-        <div className={styles.game}>
+        <div className={styles.game}
+          onClick={() => selectContents('전체')}>
           <div className={styles.icon_wrapper}>
             <div className={styles.game_icon}>
               <div className={styles.totalgame}>
@@ -38,7 +40,8 @@ const FilterListOverlay = ({open}: FilterListOverlay) => {
           return (
             <div key={`game-${index}`}
               className={styles.game}>
-              <div className={styles.icon_wrapper}>
+              <div className={styles.icon_wrapper}
+                onClick={() => selectContents(game)}>
                 <div className={styles.game_icon}>
                   {ContentByGame[game].image && (
                     <Image
@@ -68,7 +71,8 @@ const FilterListOverlay = ({open}: FilterListOverlay) => {
                     variants={variants}
                     style={{
                       '--index': `${(index + 1) / (ContentByGame[game].contentName.length + 1)}`
-                    } as React.CSSProperties}>
+                    } as React.CSSProperties}
+                    onClick={() => selectContents(game, conentName)}>
                     {conentName}
                   </motion.p>);
                 })}

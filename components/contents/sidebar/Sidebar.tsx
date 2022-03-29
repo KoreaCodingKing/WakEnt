@@ -1,13 +1,13 @@
 import React, { useCallback, useState } from 'react';
 import Image from 'next/image';
-import { ContentByGame, Game } from '../../../structs/contents';
+import { ContentByGame, Game, ContentName } from '../../../structs/contents';
 import styles from '../../../styles/components/contents/sidebar/Sidebar.module.scss';
 import { useDebouncer } from '../../isedol/Members/Utils';
 import { useDeviceWidthLimiter } from '../../../utils/device';
 import { motion, Variants } from 'framer-motion';
 
 interface SidebarProps {
-  selectContents: (value: string) => void,
+  selectContents: (game: Game|string, ContentName?: ContentName) => void,
 }
 
 const Sidebar = ({selectContents}: SidebarProps) => {
@@ -46,7 +46,8 @@ const Sidebar = ({selectContents}: SidebarProps) => {
 
   return (
     <div className={styles.select_box}>
-      <div className={styles.game}>
+      <div className={styles.game}
+        onClick={() => selectContents('전체')}>
         <div className={styles.totalgame_icon}>
           <div className={styles.totalgame}>
           </div>
@@ -59,24 +60,27 @@ const Sidebar = ({selectContents}: SidebarProps) => {
             className={styles.game}
             onMouseEnter={() => onGameIconMouseEnter(game)}
             onMouseOut={() => onGameIconMouseOut()}>
-            <div className={styles.game_icon}>
-              {ContentByGame[game].image && (
-                <Image
-                  className={styles.image}
-                  src={ContentByGame[game].image || ''}
-                  blurDataURL={ContentByGame[game].image}
-                  placeholder='blur'
-                  layout='fill'
-                  priority
-                  alt="게임 아이콘"
-                ></Image>
-              )}
-              {!ContentByGame[game].image && (
-                <div className={styles.emptyImage}>
-                </div>
-              )}
+            <div className={styles.game_wrapper}
+              onClick={() => selectContents(game)}>
+              <div className={styles.game_icon}>
+                {ContentByGame[game].image && (
+                  <Image
+                    className={styles.image}
+                    src={ContentByGame[game].image || ''}
+                    blurDataURL={ContentByGame[game].image}
+                    placeholder='blur'
+                    layout='fill'
+                    priority
+                    alt="게임 아이콘"
+                  ></Image>
+                )}
+                {!ContentByGame[game].image && (
+                  <div className={styles.emptyImage}>
+                  </div>
+                )}
+              </div>
+              <p>{ContentByGame[game].name}</p>
             </div>
-            <p>{ContentByGame[game].name}</p>
             {hoverGame && (
               <div
                 className={styles.dropMenu}>
@@ -88,7 +92,8 @@ const Sidebar = ({selectContents}: SidebarProps) => {
                     variants={variants}
                     style={{
                       '--index': `${(index + 1) / (ContentByGame[game].contentName.length + 1)}`
-                    } as React.CSSProperties}>
+                    } as React.CSSProperties}
+                    onClick={() => selectContents(game, conentName)}>
                     {conentName}
                   </motion.p>);
                 })}
