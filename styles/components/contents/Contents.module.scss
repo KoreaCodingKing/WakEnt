@@ -38,6 +38,41 @@
   @media screen and (max-width: $maxMobile) {
     padding-top: 98px;
   }
+
+  .filter_boxes {
+    display: flex;
+    gap: 10px;
+    margin: 20px;
+
+    .filter_game, .filter_contents {
+      position: relative;
+      display: flex;
+      gap: 8px;
+      border-radius: 80px;
+      padding: 12px;
+      color: #fff;
+
+      p {
+        margin: 0;
+      }
+
+      svg {
+        &:hover {
+          fill: aqua;
+          transition: fill 0.23s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+        cursor: pointer;
+      }
+    }
+
+    .filter_game {
+      background: rgb(185, 86, 86);
+    }
+
+    .filter_contents {
+      background: rgb(207, 133, 133);
+    }
+  }
 }
 
 .contents_wrapper::-webkit-scrollbar {

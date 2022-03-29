@@ -16,7 +16,8 @@ import FilterListOverlay from '../../components/contents/overlay/filterListOverl
 const Contents: NextPage = () => {
   const [page, setPage] = useState<number>(1);
   const [choosenGame, setChoosenGame] = useState<Game|string>('전체');
-  const [choosenContentType, setChoosenContentType] = useState<ContentName>();
+  const [choosenContentName, setChoosenContentName] = useState<ContentName|null>();
+  const [contents, setContents] = useState<Content[]>(contentsList);
   const [currentContents, setCurrentContents] = useState<Content[]>([]);
   const [youtubeID, setYoutubeID] = useState<string>('');
   const [openPlayer, setOpenPlayer] = useState<boolean>(false);
@@ -40,9 +41,9 @@ const Contents: NextPage = () => {
   const pageHandler = useCallback((page: number) => {
     setPage(prev => prev+1);
     setCurrentContents(
-      contentsList.slice(
+      contents.slice(
         0,
-        (contentsList.length >= page+2*numberOfContentsByPage) ? (page+2)*numberOfContentsByPage : contentsList.length
+        (contents.length >= page+2*numberOfContentsByPage) ? (page+2)*numberOfContentsByPage : contents.length
       )
     );
   }, []);
@@ -65,17 +66,24 @@ const Contents: NextPage = () => {
     }
     setPage(1);
     container.current.scrollTo(0, 0);
-    if (game && !contentName) {
-      console.log('1',game)
+    setChoosenGame(game);
+    if (game === '전체') {
+      setContents(contentsList);
       return;
     }
-    console.log('2',game, contentName)
-  }, [choosenGame, choosenContentType, page]);
+    if (game && !contentName) {
+      setChoosenContentName(null);
+      setContents(contentsList.filter((content: Content) => content.game === game))
+      return;
+    }
+    setChoosenContentName(contentName);
+    setContents(contentsList.filter((content: Content) => content.game === game && content.content === contentName))
+  }, [choosenGame, contents, page]);
 
   // ToDo: game 및 contentsName 별로 보여주는 컨텐츠리스트 수정
   useEffect(() => {
-    setCurrentContents(contentsList.slice(0, numberOfContentsByPage));
-  }, [choosenContentType]);
+    setCurrentContents(contents.slice(0, numberOfContentsByPage));
+  }, [contents]);
 
   useEffect(() => {
     const updateSidebar = () => {
@@ -116,7 +124,39 @@ const Contents: NextPage = () => {
         )}
         <div className={styles.contents_wrapper}
           ref={container}>
-          <FilterListOverlay open={openDetail} selectContents={filterContents}></FilterListOverlay>
+          <FilterListOverlay open={openDetail}
+            selectContents={filterContents}
+          ></FilterListOverlay>
+          <div className={styles.filter_boxes}>
+            {choosenGame && choosenGame !== '전체' && (
+              <div className={styles.filter_game}>
+                <p>{choosenGame}</p>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                  fill="#fff"
+                  viewBox="0 0 32 32"
+                  width="16px"
+                  height="16px"
+                  onClick={() => filterContents('전체')}>
+                  <path
+                    d="M 7.21875 5.78125 L 5.78125 7.21875 L 14.5625 16 L 5.78125 24.78125 L 7.21875 26.21875 L 16 17.4375 L 24.78125 26.21875 L 26.21875 24.78125 L 17.4375 16 L 26.21875 7.21875 L 24.78125 5.78125 L 16 14.5625 Z"/>
+                </svg>
+              </div>
+            )}
+            {choosenContentName && (
+              <div className={styles.filter_contents}>
+                <p>{choosenContentName}</p>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                  fill="#fff"
+                  viewBox="0 0 32 32"
+                  width="16px"
+                  height="16px"
+                  onClick={() => filterContents(choosenGame)}>
+                  <path
+                    d="M 7.21875 5.78125 L 5.78125 7.21875 L 14.5625 16 L 5.78125 24.78125 L 7.21875 26.21875 L 16 17.4375 L 24.78125 26.21875 L 26.21875 24.78125 L 17.4375 16 L 26.21875 7.21875 L 24.78125 5.78125 L 16 14.5625 Z"/>
+                </svg>
+              </div>
+            )}
+            </div>
           <div className={styles.contents}>
             {currentContents.map((content) => {
               return (
@@ -130,7 +170,7 @@ const Contents: NextPage = () => {
               );
             })}
           </div>
-          {page <= Math.ceil(contentsList.length / 24) && (
+          {page < Math.ceil(contents.length / 24) && (
             <div className={classes(styles.contents, styles.emptyCards)}>
               {Array(6).fill(0).map((_, index) => {
                 return (
