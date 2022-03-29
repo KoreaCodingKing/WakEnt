@@ -15,7 +15,7 @@ import FilterListOverlay from '../../components/contents/overlay/filterListOverl
 
 const Contents: NextPage = () => {
   const [page, setPage] = useState<number>(1);
-  const [choosenGame, setChoosenGame] = useState<Game|string>('전체');
+  const [choosenGame, setChoosenGame] = useState<Game|string|null>('전체');
   const [choosenContentName, setChoosenContentName] = useState<ContentName|null>();
   const [contents, setContents] = useState<Content[]>(contentsList);
   const [currentContents, setCurrentContents] = useState<Content[]>([]);
@@ -38,16 +38,6 @@ const Contents: NextPage = () => {
     setOpenDetail(!openDetail);
   }, 60);
 
-  const pageHandler = useCallback((page: number) => {
-    setPage(prev => prev+1);
-    setCurrentContents(
-      contents.slice(
-        0,
-        (contents.length >= page+2*numberOfContentsByPage) ? (page+2)*numberOfContentsByPage : contents.length
-      )
-    );
-  }, []);
-
   useIntersectionObserver(
     container,
     `.${styles.emptyCards}`,
@@ -55,9 +45,15 @@ const Contents: NextPage = () => {
     contentsPage,
     useCallback(() => {
       setTimeout(() => {
-        pageHandler(page);
+        setPage(page => page+1);
+        setCurrentContents(
+          contents.slice(
+            0,
+            (contents.length >= (page+2)*numberOfContentsByPage) ? (page+2)*numberOfContentsByPage : contents.length
+          )
+        );
       }, 200);
-    }, [page, pageHandler])
+    }, [page, contents])
   );
 
   const filterContents = useCallback((game: Game|string, contentName?: ContentName) => {
@@ -67,7 +63,9 @@ const Contents: NextPage = () => {
     setPage(1);
     container.current.scrollTo(0, 0);
     setChoosenGame(game);
+    setOpenDetail(false);
     if (game === '전체') {
+      setChoosenContentName(null);
       setContents(contentsList);
       return;
     }
@@ -78,9 +76,8 @@ const Contents: NextPage = () => {
     }
     setChoosenContentName(contentName);
     setContents(contentsList.filter((content: Content) => content.game === game && content.content === contentName))
-  }, [choosenGame, contents, page]);
+  }, []);
 
-  // ToDo: game 및 contentsName 별로 보여주는 컨텐츠리스트 수정
   useEffect(() => {
     setCurrentContents(contents.slice(0, numberOfContentsByPage));
   }, [contents]);
@@ -150,7 +147,7 @@ const Contents: NextPage = () => {
                   viewBox="0 0 32 32"
                   width="16px"
                   height="16px"
-                  onClick={() => filterContents(choosenGame)}>
+                  onClick={() => filterContents(choosenGame!)}>
                   <path
                     d="M 7.21875 5.78125 L 5.78125 7.21875 L 14.5625 16 L 5.78125 24.78125 L 7.21875 26.21875 L 16 17.4375 L 24.78125 26.21875 L 26.21875 24.78125 L 17.4375 16 L 26.21875 7.21875 L 24.78125 5.78125 L 16 14.5625 Z"/>
                 </svg>
@@ -158,7 +155,7 @@ const Contents: NextPage = () => {
             )}
             </div>
           <div className={styles.contents}>
-            {currentContents.map((content) => {
+            {contents.slice(0, page * numberOfContentsByPage).map((content) => {
               return (
                 <YouTubeCard
                   key={`content-${content.links}`}

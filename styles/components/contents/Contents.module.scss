@@ -48,20 +48,30 @@
       position: relative;
       display: flex;
       gap: 8px;
-      border-radius: 80px;
       padding: 12px;
+      border-radius: 80px;
+      align-items: center;
       color: #fff;
 
       p {
         margin: 0;
-      }
 
+      }
+      
       svg {
         &:hover {
           fill: aqua;
           transition: fill 0.23s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
         cursor: pointer;
+      }
+
+      @media screen and (max-width: $maxMobile) {
+        gap: 2px;
+
+        p {
+          font-size: 12px;
+        }
       }
     }
 
