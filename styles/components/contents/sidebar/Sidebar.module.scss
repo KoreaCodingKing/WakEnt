@@ -1,0 +1,113 @@
+@import "../../../mixin.scss";
+
+@mixin droupMenu {
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 90px;
+  width: 20vw;
+  max-width: 240px;
+  padding: 16px;
+  border-radius: 20px;
+  background: rgb(237, 237, 237, 0.95);
+  cursor: default;
+
+  p {
+    font-size: 18px;
+    font-family: 500;
+    cursor: pointer;
+  }
+}
+
+.select_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  margin: 114px 4px;
+  align-self: center;
+}
+
+.game {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 4px 0;
+  align-items: center;
+  cursor: pointer;
+
+  .dropMenu {
+    display: none;
+  }
+
+  &:hover {
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.06);
+    transition: bacground 0.23s cubic-bezier(0.19, 1, 0.22, 1), 0.23s transform cubic-bezier(0.19, 1, 0.22, 1);
+
+    .dropMenu {
+      @include droupMenu;
+    }
+  }
+
+  p {
+    margin: 8px 0;
+    text-align: center;
+    font-size: 1em;
+    word-break: keep-all;
+  }
+
+  .emptyImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: rgb(152, 161, 235);
+  }
+
+  .totalgame {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: rgb(75, 89, 199);
+  }
+}
+
+.totalgame_icon {
+  position: relative;
+}
+
+.game_icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+
+  .image {
+    aspect-ratio: 9/16;
+  }
+}
+
+.dropMenu:hover {
+  @include droupMenu;
+}
+
+.contentsName {
+  transform: translateY(0px);
+  animation: contents calc(2000ms * var(--index, 1)) cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes contents {
+  0% {
+    opacity: 0;
+    transform: translateY(calc(16px * var(--index, 1)));
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

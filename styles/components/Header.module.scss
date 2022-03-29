@@ -20,12 +20,8 @@
   }
 
   &.full {
-    min-width: unset;
+    min-width: 252px;
     max-width: unset;
-
-    @media screen and (max-width: 360px) {
-      min-width: 320px;
-    }
   }
 
   @media screen and (max-width: $maxTablet) {
@@ -37,8 +33,6 @@
 
   @media screen and (max-width: $maxMobile) {
     margin: 28px auto;
-    min-width: 85%;
-    width: 85%;
   }
 }
 

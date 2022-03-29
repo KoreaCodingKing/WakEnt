@@ -1,30 +1,14 @@
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+@import "../../mixin.scss";
 
-  .logoImage {
-    position: relative;
-    width: 64px;
-    height: 100px;
-  }
-
-  .logoText {
-    color: white;
-  }
+.sidebar_btn {
+  align-self: center;
+  margin-right: 2vw;
 }
 
 .menu {
+  display: flex;
   width: fit-content;
-
-  .link {
-    position: relative;
-    margin-right: 20px;
-  }
-  .link:last-child {
-    margin-right: 0px;
-  }
+  gap: 20px;
 
   a {
     text-decoration: none;
@@ -43,6 +27,14 @@
   &.white {
     a {
       color: #fff;
+    }
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    gap: 5px;
+
+    a {
+      font-size: 1vmin;
     }
   }
 }

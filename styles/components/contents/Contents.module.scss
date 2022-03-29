@@ -12,16 +12,12 @@
   background: linear-gradient(to bottom, white 0%, rgba(255, 255, 255, 0.982) 50.1%, rgba(255, 255, 255, 0.954) 62.8%, rgba(255, 255, 255, 0.916) 70.3%, rgba(255, 255, 255, 0.869) 78%, rgba(255, 255, 255, 0.814) 85.1%, rgba(255, 255, 255, 0.752) 88%, rgba(255, 255, 255, 0.683) 90.8%, rgba(255, 255, 255, 0.608) 92.8%, rgba(255, 255, 255, 0.529) 94.4%, rgba(255, 255, 255, 0.446) 96.9%, rgba(255, 255, 255, 0.36) 98.4%, rgba(255, 255, 255, 0.271) 99.3%, rgba(255, 255, 255, 0.181) 99.8%, rgba(255, 255, 255, 0.09) 99.9%, rgba(255, 255, 255, 0) 100%);
 }
 
-.contents_header::before {
-  position: absolute;
-  content: " ";
-  left: 50%;
-  width: 100%;
-  height: 170%;
-  transform: translate(-50%, 0);
+.inner_container {
+  position: relative;
+  display: flex;
 }
 
-.inner_container {
+.contents_wrapper {
   position: sticky;
   overflow: auto;
   height: 100vh;
@@ -38,16 +34,83 @@
     top: 0;
     z-index: 1000;
   }
+
+  @media screen and (max-width: $maxMobile) {
+    padding-top: 98px;
+  }
+
+  .filter_boxes {
+    display: flex;
+    gap: 10px;
+    margin: 20px;
+
+    .filter_game, .filter_contents {
+      position: relative;
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      border-radius: 80px;
+      align-items: center;
+      color: #fff;
+
+      p {
+        margin: 0;
+
+      }
+      
+      svg {
+        &:hover {
+          fill: aqua;
+          transition: fill 0.23s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: $maxMobile) {
+        gap: 2px;
+
+        p {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .filter_game {
+      background: rgb(185, 86, 86);
+    }
+
+    .filter_contents {
+      background: rgb(207, 133, 133);
+    }
+  }
 }
 
-.inner_container::-webkit-scrollbar {
+.contents_wrapper::-webkit-scrollbar {
   width: 10px;
   background: none;
 }
 
-.inner_container::-webkit-scrollbar-thumb {
+.contents_wrapper::-webkit-scrollbar-thumb {
   background: rgb(53, 51, 51);
   border-radius: 20px;
+}
+
+.filter_box {
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  grid-gap: 40px;
+  gap: 40px;
+  min-width: 20px;
+  align-self: center;
+
+  @media screen and (max-width: $maxTablet) {
+    padding: 0 20px;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    padding: 0px 4px;
+  }
 }
 
 .contents {
@@ -79,7 +142,7 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media screen and (max-width: $maxMobile) {
+  @media screen and (max-width: 780px) {
     max-width: 500px;
     grid-template-columns: repeat(1, 1fr);
   }
