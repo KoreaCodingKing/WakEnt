@@ -71,11 +71,11 @@ const Contents: NextPage = () => {
     }
     if (game && !contentName) {
       setChoosenContentName(null);
-      setContents(contentsList.filter((content: Content) => content.game === game))
+      setContents(contentsList.filter((content: Content) => content.game === game));
       return;
     }
     setChoosenContentName(contentName);
-    setContents(contentsList.filter((content: Content) => content.game === game && content.content === contentName))
+    setContents(contentsList.filter((content: Content) => content.game === game && content.content === contentName));
   }, []);
 
   useEffect(() => {
@@ -153,9 +153,9 @@ const Contents: NextPage = () => {
                 </svg>
               </div>
             )}
-            </div>
+          </div>
           <div className={styles.contents}>
-            {contents.slice(0, page * numberOfContentsByPage).map((content) => {
+            {currentContents.map((content) => {
               return (
                 <YouTubeCard
                   key={`content-${content.links}`}
