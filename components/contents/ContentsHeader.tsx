@@ -12,10 +12,6 @@ interface ContentHeaderProps {
 
 const Menus = [
   {
-    title: 'Contents',
-    link: '/contents/contents'
-  },
-  {
     title: 'Goods',
     link: '/contents/goods'
   },
