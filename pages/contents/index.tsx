@@ -3,7 +3,6 @@ import { NextPage } from 'next';
 import styles from '../../styles/pages/index.module.scss';
 import ContentsHeader from '../../components/contents/ContentsHeader';
 import ContentsMain from '../../components/contents/ContentsMain';
-import PreparePage from '../../components/common/PreparePage';
 
 const Contents: NextPage = (): JSX.Element => {
 

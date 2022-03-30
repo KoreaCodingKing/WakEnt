@@ -61,7 +61,7 @@
   }
 
   @media screen and (max-width: $maxMobile) {
-    font-size: 1vmin;
+    font-size: 12px;
   }
 
   transition: 1s color cubic-bezier(0.19, 1, 0.22, 1);
@@ -104,7 +104,7 @@
     }
 
     @media screen and (max-width: $maxMobile) {
-      font-size: 1vmin;
+      font-size: 12px;
     }
   }
 }

@@ -40,7 +40,7 @@ const PreparePage: NextPage = () => {
             <div className={styles.representInner}>
               <div className={styles.hero}>
                 <h1>Preparing...</h1>
-                <p>준비중이라네. 얼른 만들어서 보여드리겠따네~</p>
+                <p>준비중이라네. 얼른 만들어서 보여드리겠다네</p>
               </div>
               <div className={styles.links}>
                 {Links.map((v, i) => (

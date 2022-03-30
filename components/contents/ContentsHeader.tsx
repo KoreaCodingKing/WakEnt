@@ -25,10 +25,10 @@ export const ContentsHeader = ({white}: ContentHeaderProps) => {
   const router = useRouter();
 
   const Left = (
-    <Link href='/contents' passHref>
+    <Link href='/' passHref>
       <span
         tabIndex={100}
-        onKeyDown={ev => ev.key === 'Enter' && router.push('/contents')}
+        onKeyDown={ev => ev.key === 'Enter' && router.push('/')}
       >
         <WakEnterLogo clickable white={white}></WakEnterLogo>
       </span>
