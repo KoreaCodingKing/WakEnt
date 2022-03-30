@@ -20,7 +20,7 @@ import {
   LinkType,
 } from '../../structs/links';
 import {
-  GomemSeason2Members,
+  GomemSeasonMembers,
   GomemUnits,
 } from '../../structs/member';
 
@@ -90,7 +90,7 @@ export const DetailUnit = () => {
   const planet = Planets[active.planet];
 
   const [activeMember, setActiveMember] = useState<number | null>(null);
-  const unit = planet.unit && GomemUnits[planet.unit];
+  const unit = planet.planet && GomemUnits[planet.planet];
 
   useEffect(() => {
     setActiveMember(null);
@@ -135,7 +135,7 @@ export const DetailUnit = () => {
               <div className={styles.members}>
                 {unit &&
                   unit.members.map((key, index) => {
-                    const member = GomemSeason2Members[key];
+                    const member = GomemSeasonMembers[key];
 
                     return (
                       <motion.div
@@ -187,17 +187,17 @@ export const DetailUnit = () => {
                       minHeight={minHeight}
                     >
                       {unit &&
-                        GomemSeason2Members[unit.members[activeMember]]
+                        GomemSeasonMembers[unit.members[activeMember]]
                           .image && (
                         <Image
                           className={styles.cardMemberImage}
                           blurDataURL={
-                            GomemSeason2Members[unit.members[activeMember]]
+                            GomemSeasonMembers[unit.members[activeMember]]
                               .image
                           }
                           placeholder="blur"
                           src={
-                            GomemSeason2Members[unit.members[activeMember]]
+                            GomemSeasonMembers[unit.members[activeMember]]
                               .image
                           }
                           width={300}
@@ -226,7 +226,7 @@ export const DetailUnit = () => {
                               variants={variants}
                             >
                               {
-                                GomemSeason2Members[unit.members[activeMember]]
+                                GomemSeasonMembers[unit.members[activeMember]]
                                   .name.ko
                               }
                             </motion.h1>
@@ -237,7 +237,7 @@ export const DetailUnit = () => {
                               variants={variants}
                             >
                               {
-                                GomemSeason2Members[unit.members[activeMember]]
+                                GomemSeasonMembers[unit.members[activeMember]]
                                   .description
                               }
                             </motion.p>
@@ -256,7 +256,7 @@ export const DetailUnit = () => {
                       {/* <ImageSlider></ImageSlider> */}
                     </Card>
                     {unit &&
-                      GomemSeason2Members[unit.members[activeMember]].links.map(
+                      GomemSeasonMembers[unit.members[activeMember]].links.map(
                         (link, index) => {
                           const linkType = getLinkType(link.link);
 

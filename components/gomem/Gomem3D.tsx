@@ -48,7 +48,7 @@ export const Gomem3DWithEvents = ({
         return;
       }
 
-      if (Planets[name].unit) {
+      if (Planets[name].planet) {
         setActiveState({
           planet: name,
           detail: name !== activeState.planet ? false : !activeState.detail,
@@ -115,7 +115,7 @@ export const Gomem3D = ({
       <Suspense fallback={null}>
         <PlanetGroup onPointer={onPlanetHover} onClick={onPlanetClick}>
           <GomemGlobe name='gomem' position={[0, 0, 0]} />
-          <ISS name='science' position={[-3, 0, 3]} scale={0.2}></ISS>
+          <ISS name='contents' position={[-3, 0, 3]} scale={0.2}></ISS>
           <SpecterPlanet name='specter' position={[3, 0, -3]} scale={0.3} />
           <IsedolGlobe name='isedol' position={[80, 0, 80]} />
           <Sun name='wakgood' position={[0, 0, 80]}></Sun>

@@ -1,12 +1,12 @@
-import { GomemUnitID } from "../../structs/member";
+import { planetUnitID } from "../../structs/member";
 
-export type PlanetKeys = 'isedol' | 'gomem' | 'wakgood' | 'science' | 'specter';
+export type PlanetKeys = 'isedol' | 'gomem' | 'wakgood' | 'contents' | 'specter';
 
 export const Planets: {
   [key in PlanetKeys]: {
     name: string
     description: string
-    unit?: GomemUnitID
+    planet?: planetUnitID
     link?: string,
     youtube?: {
       name: string
@@ -21,9 +21,9 @@ export const Planets: {
     link: '/isedol',
   },
   gomem: {
-    name: '고정멤버 시즌 2',
-    description: '20년 부터 시작된 합방 전용 멤버들의 거주지. 현재 2기 멤버가 거주중이다.',
-    unit: 'gomem',
+    name: '고정멤버 시즌 3',
+    description: '20년 부터 시작된 합방 전용 멤버들의 거주지. 현재 3기 멤버가 거주중이다.',
+    planet: 'gomem',
     youtube: [
       {
         name: '왁타버스 밴드 악당뮤지션',
@@ -31,16 +31,16 @@ export const Planets: {
       }
     ]
   },
-  science: {
-    name: '과학 패밀리',
-    description: '왁타버스내 과학자가 모인 패밀리. 원래 한 멤버가 더 있으나 폐기? 되었다.',
-    unit: 'science',
+  contents: {
+    name: '고멤 컨텐츠',
+    description: '고정멤버들의 다양한 컨텐츠를 모은 곳이다.',
+    planet: 'contents',
     youtube: []
   },
   specter: {
     name: '망령촌',
     description: '고멤이었던 자들의 무덤. 이들은 고멤에 한이 맺혀 망령으로 남아 있다.',
-    unit: 'specter',
+    planet: 'specter',
     youtube: []
   },
   wakgood: {

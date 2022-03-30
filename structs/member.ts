@@ -36,7 +36,6 @@ export interface IsedolMember extends BasicMember {
     fandom: string
   }
   modelImages: CharacterModel[],
-
 }
 
 export type IsedolMemberID =
@@ -76,11 +75,10 @@ export type WaktaverseMemberID = IsedolMemberID | GomemMemberID | WakMemberID
 export const enum GomemUnit {
   Specter = 'specter',
   Gomem = 'gomem',
-  Science = 'science',
-  School = 'school',
+  Contents = 'contents'
 }
 
-export type GomemUnitID = 'specter' | 'gomem'
+export type planetUnitID = 'specter' | 'gomem' | 'contents'
 
 export interface GomemUnitMetadata {
   name: string
@@ -88,7 +86,7 @@ export interface GomemUnitMetadata {
   members: GomemMemberID[]
 }
 
-export const GomemUnits: Record<GomemUnitID, GomemUnitMetadata> = {
+export const GomemUnits: Record<planetUnitID, GomemUnitMetadata> = {
   [GomemUnit.Specter]: {
     name: '망령촌',
     description:
@@ -99,7 +97,8 @@ export const GomemUnits: Record<GomemUnitID, GomemUnitMetadata> = {
       'Wakpago',
       'GwakChoonSik',
       'KwonMin',
-      'KimchiMandoo'
+      'KimchiMandoo',
+      'DogCat'
     ],
   },
   [GomemUnit.Gomem]: {
@@ -120,6 +119,32 @@ export const GomemUnits: Record<GomemUnitID, GomemUnitMetadata> = {
       'SecretGirl',
       'BusinessKim',
     ],
+  },
+  [GomemUnit.Contents]: {
+    name: '고멤컨텐츠',
+    description: '고정멤버들의 컨텐츠를 모은 곳이다.',
+    members: [
+      'Dandap',
+      'CallyCarly',
+      'Wakpago',
+      'GwakChoonSik',
+      'KwonMin',
+      'KimchiMandoo',
+      'HaeruSeok',
+      'DeokSuLee',
+      'PoongSin',
+      'NegativePerson',
+      'Sophia',
+      'Roentgenium',
+      'DrDopamine',
+      'FriedShrimp',
+      'MitsuneHaku',
+      'DokgoHyeji',
+      'HikiKing',
+      'SecretGirl',
+      'BusinessKim',
+      'DogCat'
+    ],
   }
 };
 
@@ -138,7 +163,7 @@ export const GomemUnits: Record<GomemUnitID, GomemUnitMetadata> = {
  *
  *   멤버 전체가 나오는 경우에는 멤버 개개인 전체에 링크를 넣지 않고 행성에 링크를 등재합니다.
  */
-export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
+export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
   Dandap: {
     name: {
       en: 'Dandap Bug',
