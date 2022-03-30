@@ -36,6 +36,10 @@
   @media screen and (max-width: $maxMobile) {
     min-width: 85%;
     width: 85%;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
   }
 
   &::-webkit-scrollbar {

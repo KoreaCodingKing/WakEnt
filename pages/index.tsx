@@ -98,8 +98,8 @@ const Groups = [
 ];
 
 const Home: NextPage = () => {
-  const scroll = useRef<HTMLDivElement>(null);
-  const page = useScrollPage(scroll, process.browser ? window.innerHeight : 1, 0.05);
+  const scroll = useRef<HTMLDivElement>(null!);
+  const page = useScrollPage(scroll, process.browser ? window.innerHeight : 1, 0.4);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const minHeight = '224';
 
@@ -112,7 +112,7 @@ const Home: NextPage = () => {
       top: window.innerHeight * (index),
       behavior: 'smooth'
     });
-  }, []);
+  }, [page]);
 
   const [run] = useDebouncer((index: number) => {
     setCurrentImageIndex(index);
