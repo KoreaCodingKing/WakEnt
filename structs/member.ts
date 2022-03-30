@@ -35,7 +35,8 @@ export interface IsedolMember extends BasicMember {
     mbti: string
     fandom: string
   }
-  modelImages: CharacterModel[]
+  modelImages: CharacterModel[],
+
 }
 
 export type IsedolMemberID =
@@ -79,7 +80,7 @@ export const enum GomemUnit {
   School = 'school',
 }
 
-export type GomemUnitID = 'specter' | 'gomem' | 'science' | 'school'
+export type GomemUnitID = 'specter' | 'gomem'
 
 export interface GomemUnitMetadata {
   name: string
@@ -96,14 +97,14 @@ export const GomemUnits: Record<GomemUnitID, GomemUnitMetadata> = {
       'Dandap',
       'CallyCarly',
       'Wakpago',
-      'BusinessKim',
       'GwakChoonSik',
       'KwonMin',
+      'KimchiMandoo'
     ],
   },
   [GomemUnit.Gomem]: {
-    name: '고멤 시즌 2',
-    description: '고정 멤버 시즌 2',
+    name: '고멤 시즌 3',
+    description: '고정 멤버 시즌 3',
     members: [
       'HaeruSeok',
       'DeokSuLee',
@@ -111,19 +112,15 @@ export const GomemUnits: Record<GomemUnitID, GomemUnitMetadata> = {
       'NegativePerson',
       'Sophia',
       'Roentgenium',
+      'DrDopamine',
+      'FriedShrimp',
+      'MitsuneHaku',
+      'DokgoHyeji',
+      'HikiKing',
+      'SecretGirl',
+      'BusinessKim',
     ],
-  },
-  [GomemUnit.Science]: {
-    name: '과학 패밀리',
-    description:
-      '왁타버스내 과학자가 모인 패밀리. 원래 한 로봇이 더 있었으나 망령의 길을 걷게 되었다.',
-    members: ['DrDopamine', 'FriedShrimp', 'MitsuneHaku'],
-  },
-  [GomemUnit.School]: {
-    name: '느그중고교',
-    description: '왁타버스내 느그중고교에 다니는 멤버 패밀리.',
-    members: ['DokgoHyeji', 'KimchiMandoo', 'HikiKing', 'SecretGirl'],
-  },
+  }
 };
 
 /**
@@ -151,12 +148,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/dandap/body.png',
     links: [
       {
-        name: '불협화음',
-        link: 'https://www.youtube.com/watch?v=pWiiZkgD1Nk',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/dandapbug',
       },
       {
-        name: '붉은 노을 커버',
-        link: 'https://www.youtube.com/watch?v=3q3RlwImdGU',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: '',
+      },
+      {
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/dandap_bug/?hl=ko',
       },
     ],
   },
@@ -169,8 +173,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/callycarly/body.png',
     links: [
       {
-        name: '숨겨진 고대의 유적을 발견하였습니다',
-        link: 'https://www.youtube.com/watch?v=-pNVXW8uJOg',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: '',
+      },
+      {
+        name: 'YouTube',
+        icon: 'youtube',
+        link: '',
+      },
+      {
+        name: 'Instagram',
+        icon: 'instagram',
+        link: '',
       },
     ],
   },
@@ -184,16 +199,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/wakpago/body.png',
     links: [
       {
-        name: '2021_10_08_가족',
-        link: 'https://www.youtube.com/watch?v=0KWHzL1rLgE',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/wakphago',
       },
       {
-        name: '사라진 기능',
-        link: 'https://www.youtube.com/watch?v=B8ZnQRsaVvQ',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UC9A98B_w26Ud1VkUfk18D5w',
       },
       {
-        name: '풍신과 왁파고의 분노치킨',
-        link: 'https://www.youtube.com/watch?v=eRG2ss2jUlM',
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/wakphago/?hl=ko',
       },
     ],
   },
@@ -207,24 +225,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/businesskim/body.png',
     links: [
       {
-        name: '비즈니스 킴',
-        link: 'https://www.youtube.com/watch?v=x2cGPxvcERI',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/businesskim111',
       },
       {
-        name: '망령왕의 분노',
-        link: 'https://www.youtube.com/watch?v=5ZRnzQOSukw',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UC48oiqE8cdkle88MwHuSlyw',
       },
       {
-        name: '크리스마스 인사',
-        link: 'https://www.youtube.com/watch?v=Qz3E0bEZuHg',
-      },
-      {
-        name: '펠리스 나비다',
-        link: 'https://www.youtube.com/watch?v=xUq66Jk05RQ',
-      },
-      {
-        name: 'Santa Claus is coming to town',
-        link: 'https://www.youtube.com/watch?v=aRXfz2O0fhI',
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/realbusinesskim/?hl=ko',
       },
     ],
   },
@@ -238,24 +251,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/gwakchoonsik/body.png',
     links: [
       {
-        name: '왁굳형과 상현들에게 보내는 곽춘식의 마지막 영상편지',
-        link: 'https://www.youtube.com/watch?v=MNKXsfog4B4',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/realchunshik',
       },
       {
-        name: 'I WAS THERE (있었는데)',
-        link: 'https://www.youtube.com/watch?v=3DvcRanbpn4',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UCL6FpO3TH3oF_RpPsezrR_Q',
       },
       {
-        name: '"보여줘 너의 모자람이없는실력을" JUST DO IT(하면된다)',
-        link: 'https://www.youtube.com/watch?v=BiaPbQ6EwgM',
-      },
-      {
-        name: '이망령의 편지',
-        link: 'https://www.youtube.com/watch?v=U7w33zYgfNw',
-      },
-      {
-        name: '[PTSMR] 여러분들을재워드립니다 *asmr* (고혈압 시청주의)',
-        link: 'https://www.youtube.com/watch?v=ywlKgDTGsf8',
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/real_chunsik/?hl=ko',
       },
     ],
   },
@@ -269,12 +277,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/Kwonmin/body.png',
     links: [
       {
-        name: '회전모자',
-        link: 'https://www.youtube.com/watch?v=1HyWW4tZcP4',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/kwonmin98',
       },
       {
-        name: 'Choose Min',
-        link: 'https://www.youtube.com/watch?v=v155OoztctA',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UCWG4KinKgHcURLVaTzjCDOQ',
+      },
+      {
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/kwonmin_ipnida/?hl=ko',
       },
     ],
   },
@@ -288,36 +303,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/drdopamine/body.png',
     links: [
       {
-        name: '히든 도파민',
-        link: 'https://www.youtube.com/watch?v=fGSKU2JHJPE',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/dopamine_dr',
       },
       {
-        name: '아무리 무서운 공포게임이라도 4명이서 한다면 무섭지 않다?',
-        link: 'https://www.youtube.com/watch?v=DQ9pnOKN-rY',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UCq0fpz99fngNx1KFloh8p0A',
       },
       {
-        name: '이세계 아이도파민',
-        link: 'https://www.youtube.com/watch?v=lZlZ9VVjJVo',
-      },
-      {
-        name: '생일 축하',
-        link: 'https://www.youtube.com/watch?v=3phsOJL8nOs',
-      },
-      {
-        name: '추석 인사',
-        link: 'https://www.youtube.com/watch?v=W-d_hAq0E_A',
-      },
-      {
-        name: '빼빼로 데이',
-        link: 'https://www.youtube.com/watch?v=ioSb7TZrjnI',
-      },
-      {
-        name: '팬 싸인회',
-        link: 'https://www.youtube.com/watch?v=jaIWS5IPRZU',
-      },
-      {
-        name: '공간이동장치',
-        link: 'https://www.youtube.com/watch?v=zJKrDgFSqyI',
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/dr.dopamine_real/?hl=ko',
       },
     ],
   },
@@ -331,28 +329,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/friedshrimp/body.png',
     links: [
       {
-        name: '아무리 무서운 공포게임이라도 4명이서 한다면 무섭지 않다?',
-        link: 'https://www.youtube.com/watch?v=DQ9pnOKN-rY',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/friedshrimp70',
       },
       {
-        name: '회전모자',
-        link: 'https://www.youtube.com/watch?v=1HyWW4tZcP4',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UCaBUW112KhOa6KQR_uLWdUQ',
       },
       {
-        name: '고멤이 만들어 온 BMW M340i 광고',
-        link: 'https://www.youtube.com/watch?v=dPmLu8WWWHc',
-      },
-      {
-        name: '이세계아이돌 리와인드 과학팸 홍보영상',
-        link: 'https://www.youtube.com/watch?v=PT22WZByupo',
-      },
-      {
-        name: '공포튀김 1편 연구실',
-        link: 'https://www.youtube.com/watch?v=1eiCbkSunsE',
-      },
-      {
-        name: '공포튀김 2편 층간소음편',
-        link: 'https://www.youtube.com/watch?v=QCwLmdFyRrU',
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/fried_shrimp70/?hl=ko',
       },
     ],
   },
@@ -366,28 +355,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/mitsunehaku/body.png',
     links: [
       {
-        name: '급뱅종 선언',
-        link: 'https://www.youtube.com/watch?v=dx5FosATagU',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/mitsune_89',
       },
       {
-        name: '미츠네 하쿠: 춤 연습',
-        link: 'https://www.youtube.com/watch?v=DTIGzCGb7TM',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UCj_tIjTX97Epp_nRcdUOguQ',
       },
       {
-        name: 'RHYTHM',
-        link: 'https://www.youtube.com/watch?v=48Cx8MRU5fk',
-      },
-      {
-        name: '스타 나이트 스노우',
-        link: 'https://www.youtube.com/watch?v=uTVfPC6gfjs',
-      },
-      {
-        name: '텔레비전에 내가 나왔으면',
-        link: 'https://www.youtube.com/watch?v=nn9G6qWXTks',
-      },
-      {
-        name: '2021 수능 응원곡 QUEST',
-        link: 'https://www.youtube.com/watch?v=zbUc-rCuXsY',
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/mitsune89/?hl=ko',
       },
     ],
   },
@@ -400,28 +380,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/haeruseok/body.png',
     links: [
       {
-        name: 'IU - 금요일에 만나요 (루비 COVER',
-        link: 'https://www.youtube.com/watch?v=OBSCvhgRgSk',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/rusuk_',
       },
       {
-        name: 'Dream (루비 COVER) - 수지, 백현',
-        link: 'https://www.youtube.com/watch?v=zUc05XknaIk',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UCCInk1cYisZCc3PG4rAfPmQ',
       },
       {
-        name: '우왁굳이 말하는 해루석연대기',
-        link: 'https://www.youtube.com/watch?v=YE3hwD0nQsg',
-      },
-      {
-        name: '그 눈을 떠',
-        link: 'https://www.youtube.com/watch?v=z3yXn_zzY74',
-      },
-      {
-        name: '나의 고뇌를 본 우왁굳반응',
-        link: 'https://www.youtube.com/watch?v=PCESDfpCsro',
-      },
-      {
-        name: '날 보고 웃는 왁굳 모음',
-        link: 'https://www.youtube.com/watch?v=9SLtMPJp6ik',
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/roooooosk/?hl=ko',
       },
     ],
   },
@@ -435,24 +406,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/hyeji/body.png',
     links: [
       {
-        name: '2021 수능 응원곡 QUEST',
-        link: 'https://www.youtube.com/watch?v=zbUc-rCuXsY',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/dokkhye_',
       },
       {
-        name: '혜지의 겨울방학 이야기',
-        link: 'https://www.youtube.com/watch?v=Dhoau5HGExE',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UC4Ii4PLOKq6brSfF6botIWA',
       },
       {
-        name: '리와인드 (RE:WIND) Dance Cover Challenge',
-        link: 'https://www.youtube.com/watch?v=MgxW9lvdUlQ',
-      },
-      {
-        name: '혜지의 느그중고교 일상',
-        link: 'https://www.youtube.com/watch?v=jrWB8ysAHJw',
-      },
-      {
-        name: '혜지의 느그중고교 쉬는시간',
-        link: 'https://www.youtube.com/watch?v=YdUAehoc4b0',
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/dokkhye_/?hl=ko',
       },
     ],
   },
@@ -466,16 +432,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/kimchimandoo/body.png',
     links: [
       {
-        name: '빌런 - 길바닥햇님송이 cover',
-        link: 'https://www.youtube.com/watch?v=DyaySl3ZeGg',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/cman0327',
       },
       {
-        name: '금요일에만나요 - 해루석 x 비밀소녀 "루비" cover의 cover ',
-        link: 'https://www.youtube.com/watch?v=Sy_dZmITItE',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UCNGOf8bSMnptcQl7aCGYKPA',
       },
       {
-        name: '금요일에만나요 - 해루석 x 비밀소녀 "루비" cover의 cover ',
-        link: 'https://www.youtube.com/watch?v=Sy_dZmITItE',
+        name: 'Instagram',
+        icon: 'instagram',
+        link: '',
       },
     ],
   },
@@ -489,16 +458,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/secretgirl/body.png',
     links: [
       {
-        name: 'IU - 금요일에 만나요 (루비 COVER',
-        link: 'https://www.youtube.com/watch?v=OBSCvhgRgSk',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/secretmemolee',
       },
       {
-        name: 'Dream (루비 COVER) - 수지, 백현',
-        link: 'https://www.youtube.com/watch?v=zUc05XknaIk',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UCyYZDwrnW694s6ofzplgRnw',
       },
       {
-        name: '2021 수능 응원곡 QUEST',
-        link: 'https://www.youtube.com/watch?v=zbUc-rCuXsY',
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/secrettto_/',
       },
     ],
   },
@@ -511,12 +483,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/deoksulee/body.png',
     links: [
       {
-        name: '독거한 미식가',
-        link: 'https://www.youtube.com/watch?v=RkklH62Wa-Y',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/2ducksoo',
       },
       {
-        name: '도둑이 들어왔을 때 현명한 대처법',
-        link: 'https://www.youtube.com/watch?v=IaxzSXWgXiI',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UCmUYh_arTPJ5nnW80TJq52Q',
+      },
+      {
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/leeduksoohalabye/',
       },
     ],
   },
@@ -530,16 +509,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/poongsin/body.png',
     links: [
       {
-        name: '풍신의 생일잔치',
-        link: 'https://www.youtube.com/watch?v=cPwBsHSuY3k',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/pung_sin',
       },
       {
-        name: '풍신과 왁파고의 분노치킨',
-        link: 'https://www.youtube.com/watch?v=eRG2ss2jUlM',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UCFfEKywQ1L2cOjqgxq-zYPA',
       },
       {
-        name: '풍신태클 우왁굳반응',
-        link: 'https://www.youtube.com/watch?v=TM8E1n9Ibw0',
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/realpungsin/',
       },
     ],
   },
@@ -553,12 +535,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/negativeperson/body.png',
     links: [
       {
-        name: '고멤점프',
-        link: 'https://www.youtube.com/watch?v=KNb-soJil34',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/bujungingan',
       },
       {
-        name: '비챤님 생일축하영상',
-        link: 'https://www.youtube.com/watch?v=Q-TVOTJvN1A',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UCDeqkeqG0XhbYKjSbDe4XXA',
+      },
+      {
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/bujungingan/',
       },
     ],
   },
@@ -571,28 +560,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/hikiking/body.png',
     links: [
       {
-        name: '저세계아이돌 - 리와인드 COVER',
-        link: 'https://www.youtube.com/watch?v=aZObIwRaEm4',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/hikiking0',
       },
       {
-        name: '역대급 포상받은 히키킹',
-        link: 'https://www.youtube.com/watch?v=Otqtl_y0JDM',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/c/%ED%9E%88%ED%82%A4%ED%82%B9HikiKing',
       },
       {
-        name: '2022 왁타버스 새해 뉴스',
-        link: 'https://www.youtube.com/watch?v=RlwmwWoyqdE',
-      },
-      {
-        name: '이세돌 보다 흥한 히키퀸 불법 팬미팅 현장',
-        link: 'https://www.youtube.com/watch?v=1fHd-Ny3Dqc',
-      },
-      {
-        name: '아무도 오지 않는 히키킹 생일파티',
-        link: 'https://www.youtube.com/watch?v=uhf_Zf57pEA',
-      },
-      {
-        name: '히키킹 소개팅 지원 영상',
-        link: 'https://www.youtube.com/watch?v=yQUIeXHRjDY',
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/hiki_king/',
       },
     ],
   },
@@ -606,12 +586,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/sophia/body.png',
     links: [
       {
-        name: '당신이 연애를 못하는 이유',
-        link: 'https://www.youtube.com/watch?v=TwPT2SKNuUU',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/ssoph25',
       },
       {
-        name: 'Santa Claus is coming to town',
-        link: 'https://www.youtube.com/watch?v=aRXfz2O0fhI',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UCvu4hozlxAk4r51McWOxTLA',
+      },
+      {
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/citizen_sopia/',
       },
     ],
   },
@@ -624,24 +611,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/roentgenium/body.png',
     links: [
       {
-        name: 'Wak Miserables',
-        link: 'https://www.youtube.com/watch?v=ys52M8cwuNk',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/111roentgenium',
       },
       {
-        name: '노예',
-        link: 'https://www.youtube.com/watch?v=crVqRMDNpuY',
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UCSWG-hKh0u9tFCoZMRfCfuA',
       },
       {
-        name: '이세돌들의 구박에 그만...',
-        link: 'https://www.youtube.com/watch?v=QiaM00CQWVc',
-      },
-      {
-        name: '고정멤버 최종합격해 울부짖는 시청자...',
-        link: 'https://www.youtube.com/watch?v=nx6UVWF_TnA',
-      },
-      {
-        name: '코,코,코',
-        link: 'https://www.youtube.com/watch?v=ug4FKxgfdsA',
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/111_roentgenium/',
       },
     ],
   },
@@ -654,8 +636,19 @@ export const GomemSeason2Members: Record<GomemMemberID, GomemMember> = {
     image: '/images/model/gomem/dogcat/body.png',
     links: [
       {
-        name: '일본인 한테 한국인 여자친구 소개시켜주기',
-        link: 'https://www.youtube.com/watch?v=L7LSGiEVDh0',
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/dogcat0926',
+      },
+      {
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UCRSEg0NN1-7QcAQDDzSIY6Q',
+      },
+      {
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/wak_dogcat/',
       },
     ],
   },
