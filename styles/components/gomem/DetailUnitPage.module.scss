@@ -46,14 +46,12 @@ $default-overlay-color: #1b1f21;
 
     width: 75vw;
     max-width: #{$maxTablet * 2};
+    height: 100vh;
 
     @media screen and (max-width: $maxTablet) {
       margin-top: 5vh;
       width: 90%;
       flex-direction: column;
-
-      overflow-y: auto;
-      overflow-x: hidden;
     }
   }
 }
@@ -123,7 +121,6 @@ $default-overlay-color: #1b1f21;
 .unitBrief {
   position: relative;
 
-  min-width: 450px;
   font-size: 24px;
   margin: auto;
 
@@ -195,14 +192,12 @@ $default-overlay-color: #1b1f21;
 
 .unitContents {
   position: relative;
-  height: 100vh;
   width: 100%;
   max-width: 50vw;
 
   color: $default-color;
 
-  overflow-x: hidden;
-  overflow-y: auto;
+  align-self: center;
 
   & > * {
     margin-top: 15vh;
@@ -404,4 +399,22 @@ $default-overlay-color: #1b1f21;
 
 .center  {
   margin: auto;
+}
+
+.Gomem_socialLinks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  align-items: center;
+
+  p {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .social_link {
+    display: flex;
+    gap: 12px;
+  }
 }

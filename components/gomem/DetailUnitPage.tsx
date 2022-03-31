@@ -30,6 +30,7 @@ import { useHashState } from '../../utils/state';
 import { Card } from '../common/Cards';
 import FadeInImage from '../common/FadeInImage';
 import ChevronIcon from '../common/icons/Chevron';
+import SocialLink from '../isedol/Members/SocialLink';
 import { isValidPlanetName, PlanetKeys, Planets } from './Planets';
 
 const variants: Variants = {
@@ -136,7 +137,6 @@ export const DetailUnit = () => {
                 {unit &&
                   unit.members.map((key, index) => {
                     const member = GomemSeasonMembers[key];
-
                     return (
                       <motion.div
                         custom={2 + index}
@@ -173,9 +173,9 @@ export const DetailUnit = () => {
                 className={styles.grid}
                 key={`grid-${active.detail}-${activeMember}`}
               >
-                {activeMember === null ? (
-                  <></>
-                ) : (
+                {active.planet === 'contents' ? (
+                  <div>111</div>
+                ) : active.planet === 'gomem' ? (
                   <>
                     <Card
                       index={0}
@@ -186,19 +186,16 @@ export const DetailUnit = () => {
                       backgroundColor={backgroundColor}
                       minHeight={minHeight}
                     >
-                      {unit &&
-                        GomemSeasonMembers[unit.members[activeMember]]
-                          .image && (
+                      {unit && (activeMember || activeMember===0) &&
+                        GomemSeasonMembers[unit.members[activeMember]].image && (
                         <Image
                           className={styles.cardMemberImage}
                           blurDataURL={
-                            GomemSeasonMembers[unit.members[activeMember]]
-                              .image
+                            GomemSeasonMembers[unit.members[activeMember]].image
                           }
                           placeholder="blur"
                           src={
-                            GomemSeasonMembers[unit.members[activeMember]]
-                              .image
+                            GomemSeasonMembers[unit.members[activeMember]].image
                           }
                           width={300}
                           height={600}
@@ -217,7 +214,7 @@ export const DetailUnit = () => {
                       minHeight={minHeight}
                     >
                       <AnimateSharedLayout>
-                        {unit && (
+                        {unit && (activeMember || activeMember===0) && (
                           <div className={styles.memberMeta}>
                             <motion.h1
                               layout
@@ -226,8 +223,7 @@ export const DetailUnit = () => {
                               variants={variants}
                             >
                               {
-                                GomemSeasonMembers[unit.members[activeMember]]
-                                  .name.ko
+                                GomemSeasonMembers[unit.members[activeMember]].name.ko
                               }
                             </motion.h1>
                             <motion.p
@@ -237,8 +233,7 @@ export const DetailUnit = () => {
                               variants={variants}
                             >
                               {
-                                GomemSeasonMembers[unit.members[activeMember]]
-                                  .description
+                                GomemSeasonMembers[unit.members[activeMember]].description
                               }
                             </motion.p>
                           </div>
@@ -246,51 +241,135 @@ export const DetailUnit = () => {
                       </AnimateSharedLayout>
                     </Card>
                     <Card
+                      className={styles.Gomem_socialLinks}
                       index={2}
-                      thumbnail
                       template="auto auto 3 6"
                       mobileTemplate="1 1 3 4"
                       backgroundColor={backgroundColor}
                       minHeight={minHeight}
                     >
-                      {/* <ImageSlider></ImageSlider> */}
-                    </Card>
-                    {unit &&
-                      GomemSeasonMembers[unit.members[activeMember]].links.map(
-                        (link, index) => {
-                          const linkType = getLinkType(link.link);
+                      <p>SocialLinks</p>
+                      <div className={styles.social_link}>
+                        {unit && (activeMember || activeMember===0) &&
+                          GomemSeasonMembers[unit.members[activeMember]].links.map(
+                            (link, index) => {
+                              if (link.link.length ===0) {
+                                return;
+                              }
+                              const linkType = getLinkType(link.link);
 
-                          let image = '';
+                              let image = '';
 
-                          if (linkType === LinkType.YouTube) {
-                            image = getYouTubeThumbnailURL(link.link);
-                          }
+                              if (linkType === LinkType.YouTube) {
+                                image = getYouTubeThumbnailURL(link.link);
+                              }
 
-                          return (
-                            <Card
-                              key={`card-${index}`}
-                              index={3 + index}
-                              padding
-                              thumbnail={image.length > 0}
-                              template="auto auto auto auto"
-                              mobileTemplate={`auto auto ${4 + index} ${
-                                5 + index
-                              }`}
-                              backgroundColor={backgroundColor}
-                              minHeight={minHeight}
-                            >
-                              <Link href={link.link} passHref>
-                                <a target="_blank">
-                                  <FadeInImage
-                                    src={image}
-                                    layout="fill"
-                                  ></FadeInImage>
-                                </a>
-                              </Link>
-                            </Card>
-                          );
+                              return (
+                                <SocialLink name={link.name} link={link.link} icon={link.icon} white ></SocialLink>
+                              );
+                            }
+                          )
                         }
-                      )}
+                      </div>
+                    </Card>
+                  </>
+                ) : (
+                  <>
+                  <Card
+                    index={0}
+                    padding
+                    center
+                    template="1 1 1 6"
+                    mobileTemplate="auto auto 1 2"
+                    backgroundColor={backgroundColor}
+                    minHeight={minHeight}
+                  >
+                    {unit && (activeMember || activeMember===0) && 
+                      GomemSeasonMembers[unit.members[activeMember]].image && (
+                      <Image
+                        className={styles.cardMemberImage}
+                        blurDataURL={
+                          GomemSeasonMembers[unit.members[activeMember]].image
+                        }
+                        placeholder="blur"
+                        src={
+                          GomemSeasonMembers[unit.members[activeMember]].image
+                        }
+                        width={300}
+                        height={600}
+                      ></Image>
+                    )}
+                    </Card>
+                    <Card
+                      index={1}
+                      flex
+                      center
+                      normalSize
+                      template="auto auto 1 3"
+                      mobileTemplate="1 1 2 3"
+                      className={styles.descriptionCard}
+                      backgroundColor={backgroundColor}
+                      minHeight={minHeight}
+                    >
+                      <AnimateSharedLayout>
+                        {unit && (activeMember || activeMember===0) && (
+                          <div className={styles.memberMeta}>
+                            <motion.h1
+                              layout
+                              initial="initial"
+                              animate="visible"
+                              variants={variants}
+                            >
+                              {
+                                GomemSeasonMembers[unit.members[activeMember]].name.ko
+                              }
+                            </motion.h1>
+                            <motion.p
+                              layout
+                              initial="initial"
+                              animate="visible"
+                              variants={variants}
+                            >
+                              {
+                                GomemSeasonMembers[unit.members[activeMember]].description
+                              }
+                            </motion.p>
+                          </div>
+                        )}
+                      </AnimateSharedLayout>
+                    </Card>
+                    <Card
+                      className={styles.Gomem_socialLinks}
+                      index={2}
+                      template="auto auto 3 6"
+                      mobileTemplate="1 1 3 4"
+                      backgroundColor={backgroundColor}
+                      minHeight={minHeight}
+                    >
+                      <p>SocialLinks</p>
+                      <div>
+                        {unit && (activeMember || activeMember===0) &&
+                          GomemSeasonMembers[unit.members[activeMember]].links.map(
+                            (link, index) => {
+                              if (link.link.length ===0) {
+                                return;
+                              }
+                              const linkType = getLinkType(link.link);
+
+                              let image = '';
+
+                              if (linkType === LinkType.YouTube) {
+                                image = getYouTubeThumbnailURL(link.link);
+                              }
+
+                              return (
+                                <SocialLink name={link.name} link={link.link} icon={link.icon} white ></SocialLink>
+                              );
+                            }
+                          )
+                        }
+                      </div>
+                    </Card>
                   </>
                 )}
               </motion.div>
