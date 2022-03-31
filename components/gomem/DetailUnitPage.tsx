@@ -6,7 +6,6 @@ import {
 } from 'framer-motion';
 import Head from 'next/head';
 import Image from 'next/image';
-import Link from 'next/link';
 import {
   useCallback,
   useEffect,
@@ -14,11 +13,6 @@ import {
 } from 'react';
 import { useRecoilState } from 'recoil';
 import { gomemActiveState } from '../../states/gomem/active';
-import {
-  getLinkType,
-  getYouTubeThumbnailURL,
-  LinkType,
-} from '../../structs/links';
 import {
   GomemSeasonMembers,
   GomemUnits,
@@ -28,7 +22,6 @@ import styles from '../../styles/components/gomem/DetailUnitPage.module.scss';
 import { classes } from '../../utils/class';
 import { useHashState } from '../../utils/state';
 import { Card } from '../common/Cards';
-import FadeInImage from '../common/FadeInImage';
 import ChevronIcon from '../common/icons/Chevron';
 import SocialLink from '../isedol/Members/SocialLink';
 import { isValidPlanetName, PlanetKeys, Planets } from './Planets';
@@ -253,19 +246,12 @@ export const DetailUnit = () => {
                         {unit && (activeMember || activeMember===0) &&
                           GomemSeasonMembers[unit.members[activeMember]].links.map(
                             (link, index) => {
-                              if (link.link.length ===0) {
+                              if (link.link.length === 0) {
                                 return;
-                              }
-                              const linkType = getLinkType(link.link);
-
-                              let image = '';
-
-                              if (linkType === LinkType.YouTube) {
-                                image = getYouTubeThumbnailURL(link.link);
                               }
 
                               return (
-                                <SocialLink name={link.name} link={link.link} icon={link.icon} white ></SocialLink>
+                                <SocialLink key={`social-link-${index}`} name={link.name} link={link.link} icon={link.icon} white ></SocialLink>
                               );
                             }
                           )
@@ -275,30 +261,30 @@ export const DetailUnit = () => {
                   </>
                 ) : (
                   <>
-                  <Card
-                    index={0}
-                    padding
-                    center
-                    template="1 1 1 6"
-                    mobileTemplate="auto auto 1 2"
-                    backgroundColor={backgroundColor}
-                    minHeight={minHeight}
-                  >
-                    {unit && (activeMember || activeMember===0) && 
+                    <Card
+                      index={0}
+                      padding
+                      center
+                      template="1 1 1 6"
+                      mobileTemplate="auto auto 1 2"
+                      backgroundColor={backgroundColor}
+                      minHeight={minHeight}
+                    >
+                      {unit && (activeMember || activeMember===0) &&
                       GomemSeasonMembers[unit.members[activeMember]].image && (
-                      <Image
-                        className={styles.cardMemberImage}
-                        blurDataURL={
-                          GomemSeasonMembers[unit.members[activeMember]].image
-                        }
-                        placeholder="blur"
-                        src={
-                          GomemSeasonMembers[unit.members[activeMember]].image
-                        }
-                        width={300}
-                        height={600}
-                      ></Image>
-                    )}
+                        <Image
+                          className={styles.cardMemberImage}
+                          blurDataURL={
+                            GomemSeasonMembers[unit.members[activeMember]].image
+                          }
+                          placeholder="blur"
+                          src={
+                            GomemSeasonMembers[unit.members[activeMember]].image
+                          }
+                          width={300}
+                          height={600}
+                        ></Image>
+                      )}
                     </Card>
                     <Card
                       index={1}
@@ -351,19 +337,12 @@ export const DetailUnit = () => {
                         {unit && (activeMember || activeMember===0) &&
                           GomemSeasonMembers[unit.members[activeMember]].links.map(
                             (link, index) => {
-                              if (link.link.length ===0) {
+                              if (link.link.length === 0) {
                                 return;
-                              }
-                              const linkType = getLinkType(link.link);
-
-                              let image = '';
-
-                              if (linkType === LinkType.YouTube) {
-                                image = getYouTubeThumbnailURL(link.link);
                               }
 
                               return (
-                                <SocialLink name={link.name} link={link.link} icon={link.icon} white ></SocialLink>
+                                <SocialLink key={`social-link-${index}`} name={link.name} link={link.link} icon={link.icon} white ></SocialLink>
                               );
                             }
                           )

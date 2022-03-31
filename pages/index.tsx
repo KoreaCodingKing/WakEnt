@@ -8,7 +8,7 @@ import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import styles from '../styles/pages/index.module.scss';
 import { classes } from '../utils/class';
 import { useScrollPage } from '../components/common/Scroll';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import ChevronIcon from '../components/common/icons/Chevron';
 import WakEnterMetadata from '../components/wakenter/Meta';
 import { Card } from '../components/common/Cards';
