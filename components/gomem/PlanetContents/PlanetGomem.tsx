@@ -63,30 +63,28 @@ const PlanetGomem = (
             minHeight={minHeight}
           >
             <AnimateSharedLayout>
-              {unit && (activeMember || activeMember===0) && (
-                <div className={styles.memberMeta}>
-                  <motion.h1
-                    layout
-                    initial="initial"
-                    animate="visible"
-                    variants={variants}
-                  >
-                    {
-                      GomemSeasonMembers[unit.members[activeMember]].name.ko
-                    }
-                  </motion.h1>
-                  <motion.p
-                    layout
-                    initial="initial"
-                    animate="visible"
-                    variants={variants}
-                  >
-                    {
-                      GomemSeasonMembers[unit.members[activeMember]].description
-                    }
-                  </motion.p>
-                </div>
-              )}
+              <div className={styles.memberMeta}>
+                <motion.h1
+                  layout
+                  initial="initial"
+                  animate="visible"
+                  variants={variants}
+                >
+                  {
+                    GomemSeasonMembers[unit.members[activeMember]].name.ko
+                  }
+                </motion.h1>
+                <motion.p
+                  layout
+                  initial="initial"
+                  animate="visible"
+                  variants={variants}
+                >
+                  {
+                    GomemSeasonMembers[unit.members[activeMember]].description
+                  }
+                </motion.p>
+              </div>
             </AnimateSharedLayout>
           </Card>
           <Card
@@ -101,28 +99,26 @@ const PlanetGomem = (
             minHeight={minHeight}
           >
             <AnimateSharedLayout>
-              {unit && (activeMember || activeMember===0) && (
-                <div className={styles.memberMeta}>
-                  <motion.div
-                    className={styles.careers}
-                    layout
-                    initial="initial"
-                    animate="visible"
-                    variants={variants}
-                  >
-                    {
-                      GomemSeasonMembers[unit.members[activeMember]].career.map((v, i) => {
-                        return (
-                          <p>
-                            {v.date}. {v.desc}
-                          </p>
-                        )
-                      }
+              <div className={styles.memberMeta}>
+                <motion.div
+                  className={styles.careers}
+                  layout
+                  initial="initial"
+                  animate="visible"
+                  variants={variants}
+                >
+                  {
+                    GomemSeasonMembers[unit.members[activeMember]].career.map((v, i) => {
+                      return (
+                        <p key={`career-${i}`}>
+                          {v.date}. {v.desc}
+                        </p>
                       )
                     }
-                  </motion.div>
-                </div>
-              )}
+                    )
+                  }
+                </motion.div>
+              </div>
             </AnimateSharedLayout>
           </Card>
           <Card
@@ -133,24 +129,22 @@ const PlanetGomem = (
             backgroundColor={backgroundColor}
             minHeight={minHeight}
           >
-            {unit && (activeMember || activeMember===0) && (
-              <>
-                <p>SocialLinks</p>
-                <div className={styles.social_link}>
-                  {GomemSeasonMembers[unit.members[activeMember]].links.map(
-                    (link, index) => {
-                      if (link.link.length === 0) {
-                        return;
-                      }
-
-                      return (
-                        <SocialLink key={`social-link-${index}`} name={link.name} link={link.link} icon={link.icon} white ></SocialLink>
-                      );
+            <>
+              <p>SocialLinks</p>
+              <div className={styles.social_link}>
+                {GomemSeasonMembers[unit.members[activeMember]].links.map(
+                  (link, index) => {
+                    if (link.link.length === 0) {
+                      return;
                     }
-                  )}
-                </div>
-              </>
-            )}
+
+                    return (
+                      <SocialLink key={`social-link-${index}`} name={link.name} link={link.link} icon={link.icon} white ></SocialLink>
+                    );
+                  }
+                )}
+              </div>
+            </>
           </Card>
         </>
       )}

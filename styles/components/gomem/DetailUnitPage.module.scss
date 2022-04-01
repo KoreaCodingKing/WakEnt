@@ -225,16 +225,24 @@ $default-overlay-color: #1b1f21;
 
   user-select: none;
 
-  transition: 0.23s background cubic-bezier(0.19, 1, 0.22, 1);
+  transition: 0.23s background-color cubic-bezier(0.19, 1, 0.22, 1);
 
   background-color: $default-overlay-color;
   cursor: pointer;
 
   &[data-active='true'] {
     background-color: lighten($default-overlay-color, 10);
+
+    &:hover {
+      background-color: lighten($default-overlay-color, 10);
+    }
   }
 
   border-radius: 16px;
+
+  &:hover {
+    background-color: #2a2f32;
+  }
 
   .memberImage {
     position: relative;
