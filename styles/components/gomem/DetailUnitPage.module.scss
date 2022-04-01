@@ -386,6 +386,18 @@ $default-overlay-color: #1b1f21;
       letter-spacing: -0.5px;
     }
   }
+
+  .careers {
+    display: flex;
+    flex-direction: column;
+    word-break: keep-all;
+    
+    p {
+      max-width: 100%;
+      margin: 0;
+      margin-bottom: 4px;
+    }
+  }
 }
 
 .descriptionCard {

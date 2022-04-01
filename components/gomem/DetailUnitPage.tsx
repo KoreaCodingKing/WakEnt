@@ -24,6 +24,7 @@ import { useHashState } from '../../utils/state';
 import { Card } from '../common/Cards';
 import ChevronIcon from '../common/icons/Chevron';
 import SocialLink from '../isedol/Members/SocialLink';
+import PlanetGomem from './PlanetContents/PlanetGomem';
 import { isValidPlanetName, PlanetKeys, Planets } from './Planets';
 
 const variants: Variants = {
@@ -168,189 +169,14 @@ export const DetailUnit = () => {
               >
                 {active.planet === 'contents' ? (
                   <div>111</div>
-                ) : active.planet === 'gomem' ? (
-                  <>
-                    <Card
-                      index={0}
-                      padding
-                      center
-                      template="1 1 1 6"
-                      mobileTemplate="auto auto 1 2"
-                      backgroundColor={backgroundColor}
-                      minHeight={minHeight}
-                    >
-                      {unit && (activeMember || activeMember===0) &&
-                        GomemSeasonMembers[unit.members[activeMember]].image && (
-                        <Image
-                          className={styles.cardMemberImage}
-                          blurDataURL={
-                            GomemSeasonMembers[unit.members[activeMember]].image
-                          }
-                          placeholder="blur"
-                          src={
-                            GomemSeasonMembers[unit.members[activeMember]].image
-                          }
-                          width={300}
-                          height={600}
-                        ></Image>
-                      )}
-                    </Card>
-                    <Card
-                      index={1}
-                      flex
-                      center
-                      normalSize
-                      template="auto auto 1 3"
-                      mobileTemplate="1 1 2 3"
-                      className={styles.descriptionCard}
-                      backgroundColor={backgroundColor}
-                      minHeight={minHeight}
-                    >
-                      <AnimateSharedLayout>
-                        {unit && (activeMember || activeMember===0) && (
-                          <div className={styles.memberMeta}>
-                            <motion.h1
-                              layout
-                              initial="initial"
-                              animate="visible"
-                              variants={variants}
-                            >
-                              {
-                                GomemSeasonMembers[unit.members[activeMember]].name.ko
-                              }
-                            </motion.h1>
-                            <motion.p
-                              layout
-                              initial="initial"
-                              animate="visible"
-                              variants={variants}
-                            >
-                              {
-                                GomemSeasonMembers[unit.members[activeMember]].description
-                              }
-                            </motion.p>
-                          </div>
-                        )}
-                      </AnimateSharedLayout>
-                    </Card>
-                    <Card
-                      className={styles.Gomem_socialLinks}
-                      index={2}
-                      template="auto auto 3 6"
-                      mobileTemplate="1 1 3 4"
-                      backgroundColor={backgroundColor}
-                      minHeight={minHeight}
-                    >
-                      <p>SocialLinks</p>
-                      <div className={styles.social_link}>
-                        {unit && (activeMember || activeMember===0) &&
-                          GomemSeasonMembers[unit.members[activeMember]].links.map(
-                            (link, index) => {
-                              if (link.link.length === 0) {
-                                return;
-                              }
-
-                              return (
-                                <SocialLink key={`social-link-${index}`} name={link.name} link={link.link} icon={link.icon} white ></SocialLink>
-                              );
-                            }
-                          )
-                        }
-                      </div>
-                    </Card>
-                  </>
-                ) : (
-                  <>
-                    <Card
-                      index={0}
-                      padding
-                      center
-                      template="1 1 1 6"
-                      mobileTemplate="auto auto 1 2"
-                      backgroundColor={backgroundColor}
-                      minHeight={minHeight}
-                    >
-                      {unit && (activeMember || activeMember===0) &&
-                      GomemSeasonMembers[unit.members[activeMember]].image && (
-                        <Image
-                          className={styles.cardMemberImage}
-                          blurDataURL={
-                            GomemSeasonMembers[unit.members[activeMember]].image
-                          }
-                          placeholder="blur"
-                          src={
-                            GomemSeasonMembers[unit.members[activeMember]].image
-                          }
-                          width={300}
-                          height={600}
-                        ></Image>
-                      )}
-                    </Card>
-                    <Card
-                      index={1}
-                      flex
-                      center
-                      normalSize
-                      template="auto auto 1 3"
-                      mobileTemplate="1 1 2 3"
-                      className={styles.descriptionCard}
-                      backgroundColor={backgroundColor}
-                      minHeight={minHeight}
-                    >
-                      <AnimateSharedLayout>
-                        {unit && (activeMember || activeMember===0) && (
-                          <div className={styles.memberMeta}>
-                            <motion.h1
-                              layout
-                              initial="initial"
-                              animate="visible"
-                              variants={variants}
-                            >
-                              {
-                                GomemSeasonMembers[unit.members[activeMember]].name.ko
-                              }
-                            </motion.h1>
-                            <motion.p
-                              layout
-                              initial="initial"
-                              animate="visible"
-                              variants={variants}
-                            >
-                              {
-                                GomemSeasonMembers[unit.members[activeMember]].description
-                              }
-                            </motion.p>
-                          </div>
-                        )}
-                      </AnimateSharedLayout>
-                    </Card>
-                    <Card
-                      className={styles.Gomem_socialLinks}
-                      index={2}
-                      template="auto auto 3 6"
-                      mobileTemplate="1 1 3 4"
-                      backgroundColor={backgroundColor}
-                      minHeight={minHeight}
-                    >
-                      <p>SocialLinks</p>
-                      <div>
-                        {unit && (activeMember || activeMember===0) &&
-                          GomemSeasonMembers[unit.members[activeMember]].links.map(
-                            (link, index) => {
-                              if (link.link.length === 0) {
-                                return;
-                              }
-
-                              return (
-                                <SocialLink key={`social-link-${index}`} name={link.name} link={link.link} icon={link.icon} white ></SocialLink>
-                              );
-                            }
-                          )
-                        }
-                      </div>
-                    </Card>
-                  </>
-                )}
+                ) : active.planet === 'gomem' || active.planet === 'specter' ? (
+                  <PlanetGomem backgroundColor={backgroundColor}
+                    activeMember={activeMember}
+                    minHeight={minHeight}
+                    unit={unit}
+                    variants={variants}
+                  ></PlanetGomem>
+                ) : null}
               </motion.div>
             </div>
           </div>
