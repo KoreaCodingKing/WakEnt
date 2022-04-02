@@ -120,6 +120,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   lilpa: [
     {
+      title: '달의하루 - 너로피어오라',
+      id: '8tJb1YlMHfA'
+    },
+    {
       title: '세계는 사랑에 빠져있어(世界は恋に落ちている)',
       id: '1UbyyaDc8x0'
     },
@@ -141,6 +145,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
     }
   ],
   jururu: [
+    {
+      title: 'TWICE - SCIENTIST (feat. 아이네)',
+      id: 'rFxJjpSeXHI'
+    },
     {
       title: 'Choose me (Korean Cover.)',
       id: 'G0g3d6b5CZM'
@@ -178,6 +186,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
     }
   ],
   viichan: [
+    {
+      title: '취기를 빌려 - 산들',
+      id: 'NVns4yRoTlU'
+    },
     {
       title: 'DAYBREAK FRONTLINE',
       id: '--Go33WYnqw',

@@ -1005,7 +1005,7 @@ export const IsedolMembers: Record<IsedolMemberID, IsedolMember> = {
       birth: '1995.10.08',
       height: 161.9,
       blood: 'B',
-      mbti: 'INFJ',
+      mbti: 'ISFP',
       fandom: '똥강아지',
     },
     links: [
