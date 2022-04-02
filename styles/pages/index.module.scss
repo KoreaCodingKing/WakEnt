@@ -445,11 +445,9 @@
 .cards_box {
   display: grid;
   min-width: 595px;
-  height: 60vh;
-  min-height: 15vh;
 
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
+  grid-template-rows: 3;
   grid-column-gap: 24px;
   grid-row-gap: 24px;
 
@@ -505,7 +503,7 @@
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 2;
-    grid-row-end: 14;
+    grid-row-end: 3;
 
     .logo_img {
       max-width: 200px;
@@ -526,13 +524,13 @@
     grid-column-start: 2;
     grid-column-end: 4;
     grid-row-start: 1;
-    grid-row-end: 14;
+    grid-row-end: 3;
 
     @media screen and (max-width: $maxMobile) {
       grid-column-start: 1;
       grid-column-end: 1;
       grid-row-start: 2;
-      grid-row-end: 14;
+      grid-row-end: 3;
     }
 
     cursor: pointer;

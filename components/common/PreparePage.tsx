@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 import { useRef } from 'react';
 import Image from 'next/image';
-import { useScrollPage } from './Scroll';
 import WakEnterHeader from '../wakenter/WakEnterHeader';
 import { classes } from '../../utils/class';
 import LinkToIcon from './icons/LinkTo';
@@ -23,7 +22,6 @@ const Links = [
 
 const PreparePage: NextPage = () => {
   const scroll = useRef<HTMLDivElement>(null);
-  const page = useScrollPage(scroll, process.browser ? window.innerHeight : 1, 0.05);
 
   return (
     <>
@@ -33,7 +31,7 @@ const PreparePage: NextPage = () => {
       </Head>
       <div className={styles.main}>
         <header>
-          <WakEnterHeader white={page === 1}></WakEnterHeader>
+          <WakEnterHeader></WakEnterHeader>
         </header>
         <div className={styles.pages} ref={scroll}>
           <section className={classes(styles.page)} data-page={1}>

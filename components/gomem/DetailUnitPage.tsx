@@ -1,6 +1,5 @@
 import {
   AnimatePresence,
-  AnimateSharedLayout,
   motion,
   Variants,
 } from 'framer-motion';
@@ -21,9 +20,7 @@ import {
 import styles from '../../styles/components/gomem/DetailUnitPage.module.scss';
 import { classes } from '../../utils/class';
 import { useHashState } from '../../utils/state';
-import { Card } from '../common/Cards';
 import ChevronIcon from '../common/icons/Chevron';
-import SocialLink from '../isedol/Members/SocialLink';
 import PlanetGomem from './PlanetContents/PlanetGomem';
 import { isValidPlanetName, PlanetKeys, Planets } from './Planets';
 
