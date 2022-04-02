@@ -12,6 +12,13 @@ import { usePageTurner } from '../../utils/state';
 
 const slides = [
   {
+    image: '/images/gosegu-down.png',
+    title: '겨울봄',
+    subtitle: '2022.03.11 MV Released',
+    youtube: 'JY-gJkMuJ94',
+    color: '#222121',
+  },
+  {
     image: '/images/bg_rewind.jpg',
     title: 'RE : WIND',
     subtitle: '2021.12.22 MV Released',
@@ -49,7 +56,7 @@ export const Main: NextPage = () => {
   return (
     <div className={styles.isedol_main__container}>
       <Head>
-        <meta name='theme-color' content={slides[slide].color}></meta>
+        <meta name="theme-color" content={slides[slide].color}></meta>
       </Head>
       <YouTubePlayerOverlay
         id={youtubeID}
@@ -64,8 +71,8 @@ export const Main: NextPage = () => {
               slide === i && styles.active
             )}
             blurDataURL={v.image}
-            placeholder='blur'
-            layout='fill'
+            placeholder="blur"
+            layout="fill"
             priority
             key={`background-image-${i}`}
             src={v.image}
@@ -99,7 +106,7 @@ export const Main: NextPage = () => {
           paused={openPlayer}
           page={slide}
           pageCount={slides.length}
-          setPage={to => setSlide(to)}
+          setPage={(to) => setSlide(to)}
           slide={slideRate}
         ></PageIndicator>
       </div>

@@ -44,6 +44,11 @@ export const IsedolDiscography: NextPage = () => {
             image='/images/album/rewind.jpg'
             link='/isedol/discography/rewind'
           ></AlbumCard>
+          <AlbumCard
+            title='겨울봄'
+            image='/images/album/winter-spring.jpg'
+            link='/isedol/discography/winter-spring'
+          ></AlbumCard>
         </div>
       </section>
       <section className={styles.section}>
