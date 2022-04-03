@@ -119,11 +119,14 @@ $default-overlay-color: #1b1f21;
 }
 
 .unitBrief {
+  overflow: auto;
   position: relative;
+  
+  height: 100vh;
 
-  font-size: 24px;
   margin: auto;
-
+  
+  font-size: 24px;
   color: $default-color;
 
   .title,
@@ -153,9 +156,8 @@ $default-overlay-color: #1b1f21;
     flex-wrap: wrap;
     gap: 4px;
 
-    margin-top: 2em;
-
     max-width: 80%;
+    margin-top: 2em;
   }
 
   @media screen and (max-width: $maxTablet) {
@@ -187,6 +189,14 @@ $default-overlay-color: #1b1f21;
   @media screen and (min-width: $maxTablet) and (max-width: #{$maxTablet * 1.25}) {
     min-width: 350px;
     width: 350px;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &::-webkit-scrollbar-track {
+    width: 8px;
+    background: #32393d;
   }
 }
 
@@ -220,15 +230,12 @@ $default-overlay-color: #1b1f21;
 
 .memberButton {
   position: relative;
-
   display: flex;
-
   user-select: none;
-
   transition: 0.23s background-color cubic-bezier(0.19, 1, 0.22, 1);
-
   background-color: $default-overlay-color;
   cursor: pointer;
+  height: fit-content;
 
   &[data-active='true'] {
     background-color: lighten($default-overlay-color, 10);
