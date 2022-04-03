@@ -69,18 +69,19 @@ export const DetailUnit = () => {
   );
 
   useEffect(() => {
+    setActiveMember(null);
     setState(active.detail ? active.planet : null);
   }, [active.planet, active.detail, setState]);
-
+  
   const close = useCallback(() => {
     setActiveState({
       planet: active.planet,
       detail: false,
     });
   }, [active.planet, setActiveState]);
-
+  
   const planet = Planets[active.planet];
-
+  
   const [activeMember, setActiveMember] = useState<number | null>(null);
   const unit = planet.planet && GomemUnits[planet.planet];
 
@@ -102,60 +103,62 @@ export const DetailUnit = () => {
         <AnimatePresence>
           <div className={styles.contents}>
             <div className={styles.unitBrief}>
-              <div className={styles.contents}>
-                <motion.h1
-                  key={`name-${active.detail}`}
-                  custom={0}
-                  initial="initial"
-                  animate="visible"
-                  variants={variants}
-                  className={styles.title}
-                >
-                  {planet.name}
-                </motion.h1>
-                <motion.p
-                  key={`description-${active.detail}`}
-                  custom={1}
-                  initial="initial"
-                  animate="visible"
-                  variants={variants}
-                  className={styles.description}
-                >
-                  {planet.description}
-                </motion.p>
-              </div>
-              <div className={styles.members}>
-                {unit &&
-                  unit.members.map((key, index) => {
-                    const member = GomemSeasonMembers[key];
-                    return (
-                      <motion.div
-                        custom={2 + index}
-                        key={`${key}-button-${active.detail}`}
-                        className={styles.memberButton}
-                        data-active={index === activeMember}
-                        initial="initial"
-                        animate="visible"
-                        variants={variants}
-                        onClick={() =>
-                          setActiveMember(activeMember === index ? null : index)
-                        }
-                      >
-                        <div className={styles.memberImage}>
-                          {member.image && (
-                            <Image
-                              src={member.image}
-                              width={100}
-                              height={100}
-                            />
-                          )}
-                        </div>
-                        <span className={styles.memberName}>
-                          {member.name.ko}
-                        </span>
-                      </motion.div>
-                    );
-                  })}
+              <div className={styles.unitsInner}>
+                <div className={styles.contents}>
+                  <motion.h1
+                    key={`name-${active.detail}`}
+                    custom={0}
+                    initial="initial"
+                    animate="visible"
+                    variants={variants}
+                    className={styles.title}
+                  >
+                    {planet.name}
+                  </motion.h1>
+                  <motion.p
+                    key={`description-${active.detail}`}
+                    custom={1}
+                    initial="initial"
+                    animate="visible"
+                    variants={variants}
+                    className={styles.description}
+                  >
+                    {planet.description}
+                  </motion.p>
+                </div>
+                <div className={styles.members}>
+                  {unit &&
+                    unit.members.map((key, index) => {
+                      const member = GomemSeasonMembers[key];
+                      return (
+                        <motion.div
+                          custom={2 + index}
+                          key={`${key}-button-${active.detail}`}
+                          className={styles.memberButton}
+                          data-active={index === activeMember}
+                          initial="initial"
+                          animate="visible"
+                          variants={variants}
+                          onClick={() =>
+                            setActiveMember(activeMember === index ? null : index)
+                          }
+                        >
+                          <div className={styles.memberImage}>
+                            {member.image && (
+                              <Image
+                                src={member.image}
+                                width={100}
+                                height={100}
+                              />
+                            )}
+                          </div>
+                          <span className={styles.memberName}>
+                            {member.name.ko}
+                          </span>
+                        </motion.div>
+                      );
+                    })}
+                </div>
               </div>
             </div>
             <div className={styles.unitContents}>

@@ -119,84 +119,98 @@ $default-overlay-color: #1b1f21;
 }
 
 .unitBrief {
-  overflow: auto;
   position: relative;
+  display: flex;
+  align-items: center;
   
+  width: fit-content;
   height: 100vh;
-
-  margin: auto;
   
   font-size: 24px;
   color: $default-color;
 
-  .title,
-  .description {
-    margin: 0;
-  }
-
-  .title {
-    font-size: 1.75em;
-    font-weight: 900;
-    letter-spacing: -2px;
-
-    margin-bottom: 8px;
-  }
-
-  .description {
-    font-size: 0.65em;
-    font-weight: 600;
-    letter-spacing: -1px;
-
-    opacity: 0.5;
-  }
-
-  .members {
-    position: relative;
+  .unitsInner {
     display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
 
-    max-width: 80%;
-    margin-top: 2em;
-  }
+    width: fit-content;
+    height: 100%;
 
-  @media screen and (max-width: $maxTablet) {
-    margin-left: 0;
-    margin-right: 0;
-    width: 90vw;
+    margin: auto;
+    justify-content: center;
+
+    .title,
+    .description {
+      margin: 0;
+    }
 
     .title {
-      font-size: 1.5em;
+      font-size: 1.75em;
+      font-weight: 900;
+      letter-spacing: -2px;
+
+      margin-bottom: 8px;
     }
 
     .description {
-      font-size: 0.55em;
+      font-size: 0.65em;
+      font-weight: 600;
       letter-spacing: -1px;
-    }
-  }
 
-  @media screen and (max-width: $maxMobile) {
-    .title {
-      font-size: 1.25em;
+      opacity: 0.5;
     }
 
-    .description {
-      font-size: 0.5em;
-      letter-spacing: -0.5px;
+    .members {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+
+      max-width: 80%;
+      margin-top: 2em;
     }
-  }
 
-  @media screen and (min-width: $maxTablet) and (max-width: #{$maxTablet * 1.25}) {
-    min-width: 350px;
-    width: 350px;
-  }
+    @media screen and (max-width: $maxTablet) {
+      margin-left: 0;
+      margin-right: 0;
+      width: 90vw;
+      height: fit-content;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  &::-webkit-scrollbar-track {
-    width: 8px;
-    background: #32393d;
+      .title {
+        font-size: 1.5em;
+      }
+
+      .description {
+        font-size: 0.55em;
+        letter-spacing: -1px;
+      }
+    }
+
+    @media screen and (max-width: $maxMobile) {
+      .title {
+        font-size: 1.25em;
+      }
+
+      .description {
+        font-size: 0.5em;
+        letter-spacing: -0.5px;
+      }
+    }
+
+    @media screen and (min-width: $maxTablet) and (max-width: #{$maxTablet * 1.25}) {
+      min-width: 350px;
+      width: 350px;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &::-webkit-scrollbar-track {
+      width: 8px;
+      background: #32393d;
+    }
   }
 }
 
