@@ -33,6 +33,15 @@ $default-overlay-color: #1b1f21;
   @media screen and (max-width: $maxTablet) {
     overflow-y: auto;
     height: 100%;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      background: none;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgb(53, 51, 51);
+      border-radius: 20px;
+    }
   }
 
   & > .contents {
