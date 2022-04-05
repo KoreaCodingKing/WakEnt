@@ -22,6 +22,7 @@ import {
 import styles from '../../styles/components/gomem/DetailUnitPage.module.scss';
 import { classes } from '../../utils/class';
 import { useHashState } from '../../utils/state';
+import Button from '../common/Button';
 import { Card } from '../common/Cards';
 import ChevronIcon from '../common/icons/Chevron';
 import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
@@ -52,6 +53,7 @@ export const DetailUnit = () => {
   const [active, setActiveState] = useRecoilState(gomemActiveState);
   const [youtubeID, setYoutubeID] = useState<string>('');
   const [openPlayer, setOpenPlayer] = useState<boolean>(false);
+  const [tab, setTab] = useState<string>('Songs');
   const [_hash, setState] = useHashState<PlanetKeys | null>(
     active.detail ? active.planet : null,
     (s) => {
@@ -183,6 +185,24 @@ export const DetailUnit = () => {
               </div>
             </div>
             <div className={styles.unitContents}>
+              <div className={styles.selectBox}>
+                <Button
+                  onClick={() => {
+                    setTab('Songs');
+                  }}
+                  active={tab === 'Songs'}
+                >
+                  songs
+                </Button>
+                <Button
+                  onClick={() => {
+                    setTab('Contents');
+                  }}
+                  active={tab === 'Contents'}
+                >
+                  contents
+                </Button>
+              </div>
               <motion.div
                 layout
                 className={styles.grid}
@@ -191,7 +211,17 @@ export const DetailUnit = () => {
                 {active.planet === 'contents' ? (
                   <>
                     {unit && (activeMember || activeMember===0) &&
-                      gomemContents[unit.members[activeMember]].map((content: GomemContents) => {
+                      gomemContents[unit.members[activeMember]]
+                      .filter((content: GomemContents) => content.type === tab).length === 0 ?
+                      (
+                        <div>
+                          <p>앗! 컨텐츠를 못찾았습니다.</p>
+                        </div>
+                      ) : 
+                      unit && (activeMember || activeMember===0) &&
+                      gomemContents[unit.members[activeMember]].filter((content: GomemContents) =>
+                        content.type === tab
+                      ).map((content: GomemContents) => {
                         return (
                           <YouTubeCard
                             key={`personal-cover-${content.links}`}
@@ -204,7 +234,8 @@ export const DetailUnit = () => {
                       })
                     }
                   </>
-                ) : active.planet === 'gomem' || active.planet === 'specter' ? (
+                ) : 
+                active.planet === 'gomem' || active.planet === 'specter' ? (
                   <PlanetGomem backgroundColor={backgroundColor}
                     activeMember={activeMember}
                     minHeight={minHeight}
