@@ -113,7 +113,7 @@ const PlanetGomem = (
                         <p key={`career-${i}`}>
                           {v.date}. {v.desc}
                         </p>
-                      )
+                      );
                     }
                     )
                   }
@@ -149,7 +149,7 @@ const PlanetGomem = (
         </>
       )}
     </>
-  )
-}
+  );
+};
 
 export default PlanetGomem;

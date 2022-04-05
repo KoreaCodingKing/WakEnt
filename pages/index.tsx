@@ -112,6 +112,20 @@ const Home: NextPage = () => {
       top: window.innerHeight * (index),
       behavior: 'smooth'
     });
+  }, []);
+
+  useEffect(() => {
+    const pageHandler = () => {
+      scroll.current.scrollTo({
+        top: window.innerHeight * (page),
+        behavior: 'smooth'
+      });
+    };
+    window.addEventListener('resize', pageHandler);
+
+    return () => {
+      window.removeEventListener('resize', pageHandler);
+    };
   }, [page]);
 
   const [run] = useDebouncer((index: number) => {
@@ -154,7 +168,7 @@ const Home: NextPage = () => {
           <section key={`group-section-${1}`}
             className={classes(styles.page, styles.flex, styles.mobileColumn)}
             data-page={1}>
-            <div className={classes(styles.representInner, styles.group)}>
+            <div className={classes(styles.representInner, styles.group, styles.secondSection)}>
               <div className={styles.sectionTitle}>
                 <h2>{Groups[0].name.ko}<span>{Groups[0].name.en}</span></h2>
                 <p>{Groups[0].description}</p>

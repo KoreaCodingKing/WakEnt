@@ -33,6 +33,15 @@ $default-overlay-color: #1b1f21;
   @media screen and (max-width: $maxTablet) {
     overflow-y: auto;
     height: 100%;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      background: none;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgb(53, 51, 51);
+      border-radius: 20px;
+    }
   }
 
   & > .contents {
@@ -54,6 +63,138 @@ $default-overlay-color: #1b1f21;
       flex-direction: column;
     }
   }
+
+  // 컨텐츠 페이지 전용 css 입니다.
+  &.flex_column {
+    overflow-y: unset;
+    margin-left: 10vw;
+
+    .contents {
+      display: flex !important;
+      flex-direction: column !important;
+  
+      overflow: auto;
+
+      width: fit-content;
+      max-width: 2000px;
+  
+      .unitBrief {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: fit-content;
+        height: fit-content !important;
+        margin-top: 15vh;
+        font-size: 24px;
+        color: #bad9e9;
+  
+        .unitsInner {
+          width: fit-content;
+          margin: 0 20px;
+        }
+      }
+  
+      .unitContents {
+        max-width: none;
+
+        > * {
+          margin-top: 0px;
+        }
+
+        .selectBox {
+          display: flex;
+          gap: 10px;
+          padding: 0 20px;
+        }
+        
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          grid-template-rows: 1fr;
+          grid-column-gap: 24px;
+          grid-row-gap: 24px;
+          max-width: 2000px;
+          margin: 100px auto;
+          padding: 0 20px;
+  
+          @media screen and (max-width: 2000px) {
+            grid-template-columns: repeat(6, 1fr);
+          }
+        
+          @media screen and (max-width: 1800px) {
+            max-width: 1400px;
+            grid-template-columns: repeat(4, 1fr);
+          }
+        
+          @media screen and (max-width: 1400px) {
+            max-width: 948px;
+            margin: 100px auto;
+            padding: 0 20px;
+            grid-column-gap: 24px;
+            grid-row-gap: 12px;
+            grid-template-columns: repeat(3, 1fr);
+          }
+        
+          @media screen and (max-width: 780px) {
+            grid-template-columns: repeat(1, 1fr);
+            max-width: 500px;
+            padding: 0 20px;
+          }
+        }
+      }
+  
+      &::-webkit-scrollbar {
+        width: 10px;
+        background: none;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgb(53, 51, 51);
+        border-radius: 20px;
+      }
+    
+      @media screen and (max-width: $maxTablet) {
+        width: fit-content;
+        margin-top: 0px;
+
+        .unitBrief {
+          margin-top: 16px;
+        }
+
+        &::-webkit-scrollbar {
+          width: 6px;
+          background: none;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: rgb(53, 51, 51);
+          border-radius: 20px;
+        }
+      }
+      @media screen and (max-width: $maxMobile) {
+        width: fit-content;
+        padding-top: 0px;
+    
+        .unitBrief {
+          margin-top: 16px;
+        }
+
+        &::-webkit-scrollbar {
+          width: 4px;
+          background: none;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: rgb(53, 51, 51);
+          border-radius: 20px;
+        }
+      }
+    }
+
+    @media screen and (max-width: $maxTablet) {
+      margin-left: 0px;
+    }
+    @media screen and (max-width: $maxMobile) {
+      margin-left: 0px;
+    }
+  }
 }
 
 .goBack {
@@ -67,6 +208,12 @@ $default-overlay-color: #1b1f21;
     position: relative;
     width: 100%;
     height: 15vh;
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    position: relative;
+    width: 100%;
+    height: 8vh;
   }
 
   display: flex;
@@ -120,73 +267,97 @@ $default-overlay-color: #1b1f21;
 
 .unitBrief {
   position: relative;
-
+  display: flex;
+  align-items: center;
+  
+  width: fit-content;
+  height: 100vh;
+  
   font-size: 24px;
-  margin: auto;
-
   color: $default-color;
 
-  .title,
-  .description {
-    margin: 0;
-  }
-
-  .title {
-    font-size: 1.75em;
-    font-weight: 900;
-    letter-spacing: -2px;
-
-    margin-bottom: 8px;
-  }
-
-  .description {
-    font-size: 0.65em;
-    font-weight: 600;
-    letter-spacing: -1px;
-
-    opacity: 0.5;
-  }
-
-  .members {
-    position: relative;
+  .unitsInner {
     display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
 
-    margin-top: 2em;
+    width: fit-content;
+    height: 100%;
 
-    max-width: 80%;
-  }
+    margin: auto;
+    justify-content: center;
 
-  @media screen and (max-width: $maxTablet) {
-    margin-left: 0;
-    margin-right: 0;
-    width: 90vw;
+    .title,
+    .description {
+      margin: 0;
+    }
 
     .title {
-      font-size: 1.5em;
+      font-size: 1.75em;
+      font-weight: 900;
+      letter-spacing: -2px;
+
+      margin-bottom: 8px;
     }
 
     .description {
-      font-size: 0.55em;
+      font-size: 0.65em;
+      font-weight: 600;
       letter-spacing: -1px;
-    }
-  }
 
-  @media screen and (max-width: $maxMobile) {
-    .title {
-      font-size: 1.25em;
+      opacity: 0.5;
     }
 
-    .description {
-      font-size: 0.5em;
-      letter-spacing: -0.5px;
-    }
-  }
+    .members {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
 
-  @media screen and (min-width: $maxTablet) and (max-width: #{$maxTablet * 1.25}) {
-    min-width: 350px;
-    width: 350px;
+      max-width: 80%;
+      margin-top: 2em;
+    }
+
+    @media screen and (max-width: $maxTablet) {
+      margin-left: 0;
+      margin-right: 0;
+      width: 90vw;
+      height: fit-content;
+
+      .title {
+        font-size: 1.5em;
+      }
+
+      .description {
+        font-size: 0.55em;
+        letter-spacing: -1px;
+      }
+    }
+
+    @media screen and (max-width: $maxMobile) {
+      .title {
+        font-size: 1.25em;
+      }
+
+      .description {
+        font-size: 0.5em;
+        letter-spacing: -0.5px;
+      }
+    }
+
+    @media screen and (min-width: $maxTablet) and (max-width: #{$maxTablet * 1.25}) {
+      min-width: 350px;
+      width: 350px;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &::-webkit-scrollbar-track {
+      width: 8px;
+      background: #32393d;
+    }
   }
 }
 
@@ -220,15 +391,12 @@ $default-overlay-color: #1b1f21;
 
 .memberButton {
   position: relative;
-
   display: flex;
-
   user-select: none;
-
   transition: 0.23s background-color cubic-bezier(0.19, 1, 0.22, 1);
-
   background-color: $default-overlay-color;
   cursor: pointer;
+  height: fit-content;
 
   &[data-active='true'] {
     background-color: lighten($default-overlay-color, 10);

@@ -5,14 +5,20 @@ import FadeInImage from '../common/FadeInImage';
 interface YouTubeCardProps {
   title: string
   id: string
-  thumbnail?: string
+  thumbnail?: string,
+  isBlackBG?: boolean,
   onClick?: (id: string) => void
 }
 
-export const YouTubeCard = ({ title, id, thumbnail, onClick }: YouTubeCardProps) => {
+export const YouTubeCard = ({ title, id, thumbnail, onClick, isBlackBG }: YouTubeCardProps) => {
   return (
     <div
-      className={classes(styles.card, onClick && styles.clickable)}
+      className={
+        classes(styles.card,
+          onClick && styles.clickable,
+          isBlackBG && styles.blackBG
+        )
+      }
       onClick={() => onClick && onClick(id)}
     >
       <div className={styles.youtube_wrapper}>

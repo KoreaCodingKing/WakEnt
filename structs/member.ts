@@ -67,6 +67,8 @@ export type GomemMemberID =
   | 'HikiKing'
   | 'Sophia'
   | 'Roentgenium'
+  | 'Freeter'
+  | 'KarnarJungtur'
   | 'DogCat'
 
 export type WakMemberID = 'wakgood'
@@ -119,6 +121,8 @@ export const GomemUnits: Record<planetUnitID, GomemUnitMetadata> = {
       'HikiKing',
       'SecretGirl',
       'BusinessKim',
+      'Freeter',
+      'KarnarJungtur'
     ],
   },
   [GomemUnit.Contents]: {
@@ -165,6 +169,68 @@ export const GomemUnits: Record<planetUnitID, GomemUnitMetadata> = {
  *   멤버 전체가 나오는 경우에는 멤버 개개인 전체에 링크를 넣지 않고 행성에 링크를 등재합니다.
  */
 export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
+  KarnarJungtur: {
+    name: {
+      en: 'Karnar Jungtur',
+      ko: '카르나르 융터르',
+    },
+    description: '전문적인 프로이트식 정신분석으로 여러분들의 무의식을 파악하러 왔다. 하지만 사기혐의 전과가 있는데...',
+    image: '/images/model/gomem/Jungtur/upperbody.png',
+    links: [
+      {
+        name: 'Twitch',
+        icon: 'twitch',
+        link: 'https://www.twitch.tv/carnarjungtur',
+      },
+      {
+        name: 'YouTube',
+        icon: 'youtube',
+        link: '',
+      },
+      {
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/carnar_jungtur/?hl=ko',
+      },
+    ],
+    career: [
+      {
+        date: '22.02.27',
+        desc: 'VRChat 고정멤버 시즌3 합격'
+      }
+    ]
+  },
+  Freeter: {
+    name: {
+      en: 'Freeter',
+      ko: '프리터',
+    },
+    description: '알바를 짤려 일일알바를 하던 와중에 왁타버스에 취업을 하기 위해 왇타버스에 오게 되었다.',
+    image: '/images/model/gomem/freeter/body.png',
+    links: [
+      {
+        name: 'Twitch',
+        icon: 'twitch',
+        link: '',
+      },
+      {
+        name: 'YouTube',
+        icon: 'youtube',
+        link: 'https://www.youtube.com/channel/UC8x1D7iAfnUFYk0FcwW_jkw',
+      },
+      {
+        name: 'Instagram',
+        icon: 'instagram',
+        link: 'https://www.instagram.com/_freeter/?hl=ko',
+      },
+    ],
+    career: [
+      {
+        date: '22.02.27',
+        desc: 'VRChat 고정멤버 시즌3 합격'
+      }
+    ]
+  },
   Dandap: {
     name: {
       en: 'Dandap Bug',
