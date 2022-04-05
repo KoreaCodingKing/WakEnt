@@ -1,6 +1,5 @@
 import {
   AnimatePresence,
-  AnimateSharedLayout,
   motion,
   Variants,
 } from 'framer-motion';
@@ -23,7 +22,6 @@ import styles from '../../styles/components/gomem/DetailUnitPage.module.scss';
 import { classes } from '../../utils/class';
 import { useHashState } from '../../utils/state';
 import Button from '../common/Button';
-import { Card } from '../common/Cards';
 import ChevronIcon from '../common/icons/Chevron';
 import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
 import YouTubeCard from '../isedol/YouTubeCard';
@@ -86,16 +84,16 @@ export const DetailUnit = () => {
     setActiveMember(null);
     setState(active.detail ? active.planet : null);
   }, [active.planet, active.detail, setState]);
-  
+
   const close = useCallback(() => {
     setActiveState({
       planet: active.planet,
       detail: false,
     });
   }, [active.planet, setActiveState]);
-  
+
   const planet = Planets[active.planet];
-  
+
   const [activeMember, setActiveMember] = useState<number | null>(null);
   const unit = planet.planet && GomemUnits[planet.planet];
 
@@ -185,24 +183,26 @@ export const DetailUnit = () => {
               </div>
             </div>
             <div className={styles.unitContents}>
-              <div className={styles.selectBox}>
-                <Button
-                  onClick={() => {
-                    setTab('Songs');
-                  }}
-                  active={tab === 'Songs'}
-                >
-                  songs
-                </Button>
-                <Button
-                  onClick={() => {
-                    setTab('Contents');
-                  }}
-                  active={tab === 'Contents'}
-                >
-                  contents
-                </Button>
-              </div>
+              {unit && active && active.planet === 'contents' && (
+                <div className={styles.selectBox}>
+                  <Button
+                    onClick={() => {
+                      setTab('Songs');
+                    }}
+                    active={tab === 'Songs'}
+                  >
+                    songs
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      setTab('Contents');
+                    }}
+                    active={tab === 'Contents'}
+                  >
+                    contents
+                  </Button>
+                </div>
+              )}
               <motion.div
                 layout
                 className={styles.grid}
@@ -212,12 +212,12 @@ export const DetailUnit = () => {
                   <>
                     {unit && (activeMember || activeMember===0) &&
                       gomemContents[unit.members[activeMember]]
-                      .filter((content: GomemContents) => content.type === tab).length === 0 ?
+                        .filter((content: GomemContents) => content.type === tab).length === 0 ?
                       (
                         <div>
                           <p>앗! 컨텐츠를 못찾았습니다.</p>
                         </div>
-                      ) : 
+                      ) :
                       unit && (activeMember || activeMember===0) &&
                       gomemContents[unit.members[activeMember]].filter((content: GomemContents) =>
                         content.type === tab
@@ -234,15 +234,15 @@ export const DetailUnit = () => {
                       })
                     }
                   </>
-                ) : 
-                active.planet === 'gomem' || active.planet === 'specter' ? (
-                  <PlanetGomem backgroundColor={backgroundColor}
-                    activeMember={activeMember}
-                    minHeight={minHeight}
-                    unit={unit}
-                    variants={variants}
-                  ></PlanetGomem>
-                ) : null}
+                ) :
+                  active.planet === 'gomem' || active.planet === 'specter' ? (
+                    <PlanetGomem backgroundColor={backgroundColor}
+                      activeMember={activeMember}
+                      minHeight={minHeight}
+                      unit={unit}
+                      variants={variants}
+                    ></PlanetGomem>
+                  ) : null}
               </motion.div>
             </div>
           </div>
@@ -253,7 +253,3 @@ export const DetailUnit = () => {
 };
 
 export default DetailUnit;
-function openYouTube(id: string): void {
-  throw new Error('Function not implemented.');
-}
-

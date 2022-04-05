@@ -112,7 +112,7 @@ const Home: NextPage = () => {
       top: window.innerHeight * (index),
       behavior: 'smooth'
     });
-  }, [page]);
+  }, []);
 
   useEffect(() => {
     const pageHandler = () => {
@@ -120,13 +120,13 @@ const Home: NextPage = () => {
         top: window.innerHeight * (page),
         behavior: 'smooth'
       });
-    }
-    window.addEventListener('resize', pageHandler)
+    };
+    window.addEventListener('resize', pageHandler);
 
     return () => {
-      window.removeEventListener('resize', pageHandler)
-    }
-  }, [page])
+      window.removeEventListener('resize', pageHandler);
+    };
+  }, [page]);
 
   const [run] = useDebouncer((index: number) => {
     setCurrentImageIndex(index);
