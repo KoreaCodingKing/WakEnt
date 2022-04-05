@@ -1,5 +1,6 @@
 import {
   AnimatePresence,
+  AnimateSharedLayout,
   motion,
   Variants,
 } from 'framer-motion';
@@ -12,6 +13,7 @@ import {
 } from 'react';
 import { useRecoilState } from 'recoil';
 import { gomemActiveState } from '../../states/gomem/active';
+import { GomemContents, gomemContents } from '../../structs/gomemContents';
 import {
   GomemSeasonMembers,
   GomemUnits,
@@ -20,7 +22,10 @@ import {
 import styles from '../../styles/components/gomem/DetailUnitPage.module.scss';
 import { classes } from '../../utils/class';
 import { useHashState } from '../../utils/state';
+import { Card } from '../common/Cards';
 import ChevronIcon from '../common/icons/Chevron';
+import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
+import YouTubeCard from '../isedol/YouTubeCard';
 import PlanetGomem from './PlanetContents/PlanetGomem';
 import { isValidPlanetName, PlanetKeys, Planets } from './Planets';
 
@@ -45,6 +50,8 @@ export const DetailUnit = () => {
   const backgroundColor = '#1b1f21';
   const minHeight = '100';
   const [active, setActiveState] = useRecoilState(gomemActiveState);
+  const [youtubeID, setYoutubeID] = useState<string>('');
+  const [openPlayer, setOpenPlayer] = useState<boolean>(false);
   const [_hash, setState] = useHashState<PlanetKeys | null>(
     active.detail ? active.planet : null,
     (s) => {
@@ -67,6 +74,11 @@ export const DetailUnit = () => {
       });
     }
   );
+
+  const openYouTube = (id: string) => {
+    setYoutubeID(id);
+    setOpenPlayer(true);
+  };
 
   useEffect(() => {
     setActiveMember(null);
@@ -96,7 +108,16 @@ export const DetailUnit = () => {
       <Head>
         <meta name='theme-color' content={active.detail ? '#121415' : ''}></meta>
       </Head>
-      <div className={styles.innerPage}>
+      <YouTubePlayerOverlay
+        id={youtubeID}
+        open={openPlayer}
+        close={() => setOpenPlayer(false)}
+      ></YouTubePlayerOverlay>
+      <div className={
+        classes(
+          styles.innerPage,
+          planet && planet.planet === 'contents' && styles.flex_column
+        )}>
         <div className={styles.goBack} onClick={close}>
           <ChevronIcon stroke={1}></ChevronIcon>
         </div>
@@ -168,7 +189,21 @@ export const DetailUnit = () => {
                 key={`grid-${active.detail}-${activeMember}`}
               >
                 {active.planet === 'contents' ? (
-                  <div>111</div>
+                  <>
+                    {unit && (activeMember || activeMember===0) &&
+                      gomemContents[unit.members[activeMember]].map((content: GomemContents) => {
+                        return (
+                          <YouTubeCard
+                            key={`personal-cover-${content.links}`}
+                            title={content.title}
+                            id={content.links}
+                            isBlackBG={true}
+                            onClick={id => openYouTube(id)}
+                          ></YouTubeCard>
+                        );
+                      })
+                    }
+                  </>
                 ) : active.planet === 'gomem' || active.planet === 'specter' ? (
                   <PlanetGomem backgroundColor={backgroundColor}
                     activeMember={activeMember}
@@ -187,3 +222,7 @@ export const DetailUnit = () => {
 };
 
 export default DetailUnit;
+function openYouTube(id: string): void {
+  throw new Error('Function not implemented.');
+}
+

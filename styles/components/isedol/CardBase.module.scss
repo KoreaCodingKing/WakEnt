@@ -64,6 +64,11 @@
       background: rgba(0,0,0,0.06);
     }
   }
+
+  &.blackBG:hover {
+    background: rgb(255, 255, 255, 80%) !important;
+    color: #000000 !important;
+  }
 }
 
 .title {

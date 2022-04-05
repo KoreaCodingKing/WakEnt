@@ -4,14 +4,14 @@ export type GomemContentsType =
  | 'Songs'
  | 'Contents'
 
-interface GomemContents {
+export interface GomemContents {
   type: GomemContentsType,
   title: string,
   links: string,
   date: string
 }
 
-const gomemContents: Record<GomemMemberID, GomemContents[]> = {
+export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   SecretGirl: [
     {
       type: 'Songs',
