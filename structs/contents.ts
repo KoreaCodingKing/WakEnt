@@ -131,6 +131,54 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: 'Minecraft',
+    date: '2022. 3. 29.',
+    content: '왁핑몰',
+    title: '그 나무 카페 - 마인크래프트 왁핑몰 24화',
+    episode: 22,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: 'JsxaxK78dKY'
+  },
+  {
+    game: 'Others',
+    date: '2022. 3. 23.',
+    content: '기타',
+    title: 'VR끼고 골프하니까 개 재밌네',
+    episode: 28,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: 'dqPpQB_rGcE'
+  },
+  {
+    game: 'VRChat',
+    date: '2022. 3. 20.',
+    content: '고정멤버합방',
+    title: '첫 고멤 팬미팅',
+    episode: 10,
+    participants: [
+      'wakgood',
+      '고정멤버',
+    ],
+    links: 'G791YHTCvKY'
+  },
+  {
+    game: 'Minecraft',
+    date: '2022. 3. 19.',
+    content: '왁핑몰',
+    title: '빵위에 왕계란을 얹은 카페 - 마인크래프트 왁핑몰 23화',
+    episode: 22,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: 'Wa27V5M7lCg'
+  },
+  {
     game: 'VRChat',
     date: '2022. 3. 19.',
     content: '버터뷰',
@@ -145,7 +193,7 @@ export const contentsList: Content[] = [
   {
     game: 'VRChat',
     date: '2022. 3. 17.',
-    content: '기타',
+    content: '고정멤버합방',
     title: '첫 고멤 팬미팅',
     episode: 9,
     participants: [
