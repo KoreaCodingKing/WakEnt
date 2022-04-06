@@ -3,6 +3,7 @@ export type Game =
   | 'VRChat'
   | 'ProsoccerOnline'
   | 'AmongUs'
+  | 'Valorant'
   | 'Others'
 
 export type ContentName =
@@ -98,6 +99,13 @@ export const ContentByGame: Record<Game, GameContents> = {
       '이세계아이돌합방'
     ],
     image: '/images/logo/logo_amongus.png'
+  },
+  [GameByEnum.Valorant]: {
+    name: '발로란트',
+    contentName: [
+      '자운리그'
+    ],
+    image: '/images/logo/logo_valorant.png'
   },
   [GameByEnum.Others]: {
     name: '기타',
