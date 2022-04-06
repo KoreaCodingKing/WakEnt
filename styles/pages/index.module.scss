@@ -84,7 +84,7 @@
 }
 
 .representInner {
-  padding: 60px 5%;
+  padding: 12px 8%;
   box-sizing: border-box;
   justify-content: center;
 
@@ -102,7 +102,7 @@
     .link {
       display: flex;
       width: fit-content;
-      margin: 18px auto;
+      // margin: 18px auto;
       letter-spacing: -1px;
       font-size: 1.3em;
       font-weight: 600;
@@ -442,14 +442,16 @@
   }
 }
 
+.secondSection {
+  justify-content: flex-start !important;
+}
+
 .cards_box {
   display: grid;
   min-width: 595px;
-  height: 60vh;
-  min-height: 15vh;
 
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
+  grid-template-rows: 3;
   grid-column-gap: 24px;
   grid-row-gap: 24px;
 
@@ -489,8 +491,8 @@
     grid-row-end: 1;
 
     .logo_img {
-      width: 15vw;
-      height: 15vw;
+      width: 12vw;
+      height: 12vw;
       max-width: 200px;
       max-height: 200px;
       margin: 0 auto;
@@ -500,12 +502,12 @@
 
   .card:nth-child(2) {
     max-height: 470px;
-    height: 40vw;
+    height: 30vw;
 
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 2;
-    grid-row-end: 14;
+    grid-row-end: 3;
 
     .logo_img {
       max-width: 200px;
@@ -526,13 +528,13 @@
     grid-column-start: 2;
     grid-column-end: 4;
     grid-row-start: 1;
-    grid-row-end: 14;
+    grid-row-end: 3;
 
     @media screen and (max-width: $maxMobile) {
       grid-column-start: 1;
       grid-column-end: 1;
       grid-row-start: 2;
-      grid-row-end: 14;
+      grid-row-end: 3;
     }
 
     cursor: pointer;

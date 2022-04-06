@@ -1,6 +1,5 @@
 import {
   AnimatePresence,
-  AnimateSharedLayout,
   motion,
   Variants,
 } from 'framer-motion';
@@ -13,6 +12,7 @@ import {
 } from 'react';
 import { useRecoilState } from 'recoil';
 import { gomemActiveState } from '../../states/gomem/active';
+import { GomemContents, gomemContents } from '../../structs/gomemContents';
 import {
   GomemSeasonMembers,
   GomemUnits,
@@ -21,9 +21,10 @@ import {
 import styles from '../../styles/components/gomem/DetailUnitPage.module.scss';
 import { classes } from '../../utils/class';
 import { useHashState } from '../../utils/state';
-import { Card } from '../common/Cards';
+import Button from '../common/Button';
 import ChevronIcon from '../common/icons/Chevron';
-import SocialLink from '../isedol/Members/SocialLink';
+import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
+import YouTubeCard from '../isedol/YouTubeCard';
 import PlanetGomem from './PlanetContents/PlanetGomem';
 import { isValidPlanetName, PlanetKeys, Planets } from './Planets';
 
@@ -48,6 +49,9 @@ export const DetailUnit = () => {
   const backgroundColor = '#1b1f21';
   const minHeight = '100';
   const [active, setActiveState] = useRecoilState(gomemActiveState);
+  const [youtubeID, setYoutubeID] = useState<string>('');
+  const [openPlayer, setOpenPlayer] = useState<boolean>(false);
+  const [tab, setTab] = useState<string>('Songs');
   const [_hash, setState] = useHashState<PlanetKeys | null>(
     active.detail ? active.planet : null,
     (s) => {
@@ -71,7 +75,13 @@ export const DetailUnit = () => {
     }
   );
 
+  const openYouTube = (id: string) => {
+    setYoutubeID(id);
+    setOpenPlayer(true);
+  };
+
   useEffect(() => {
+    setActiveMember(null);
     setState(active.detail ? active.planet : null);
   }, [active.planet, active.detail, setState]);
 
@@ -98,85 +108,141 @@ export const DetailUnit = () => {
       <Head>
         <meta name='theme-color' content={active.detail ? '#121415' : ''}></meta>
       </Head>
-      <div className={styles.innerPage}>
+      <YouTubePlayerOverlay
+        id={youtubeID}
+        open={openPlayer}
+        close={() => setOpenPlayer(false)}
+      ></YouTubePlayerOverlay>
+      <div className={
+        classes(
+          styles.innerPage,
+          planet && planet.planet === 'contents' && styles.flex_column
+        )}>
         <div className={styles.goBack} onClick={close}>
           <ChevronIcon stroke={1}></ChevronIcon>
         </div>
         <AnimatePresence>
           <div className={styles.contents}>
             <div className={styles.unitBrief}>
-              <div className={styles.contents}>
-                <motion.h1
-                  key={`name-${active.detail}`}
-                  custom={0}
-                  initial="initial"
-                  animate="visible"
-                  variants={variants}
-                  className={styles.title}
-                >
-                  {planet.name}
-                </motion.h1>
-                <motion.p
-                  key={`description-${active.detail}`}
-                  custom={1}
-                  initial="initial"
-                  animate="visible"
-                  variants={variants}
-                  className={styles.description}
-                >
-                  {planet.description}
-                </motion.p>
-              </div>
-              <div className={styles.members}>
-                {unit &&
-                  unit.members.map((key, index) => {
-                    const member = GomemSeasonMembers[key];
-                    return (
-                      <motion.div
-                        custom={2 + index}
-                        key={`${key}-button-${active.detail}`}
-                        className={styles.memberButton}
-                        data-active={index === activeMember}
-                        initial="initial"
-                        animate="visible"
-                        variants={variants}
-                        onClick={() =>
-                          setActiveMember(activeMember === index ? null : index)
-                        }
-                      >
-                        <div className={styles.memberImage}>
-                          {member.image && (
-                            <Image
-                              src={member.image}
-                              width={100}
-                              height={100}
-                            />
-                          )}
-                        </div>
-                        <span className={styles.memberName}>
-                          {member.name.ko}
-                        </span>
-                      </motion.div>
-                    );
-                  })}
+              <div className={styles.unitsInner}>
+                <div className={styles.contents}>
+                  <motion.h1
+                    key={`name-${active.detail}`}
+                    custom={0}
+                    initial="initial"
+                    animate="visible"
+                    variants={variants}
+                    className={styles.title}
+                  >
+                    {planet.name}
+                  </motion.h1>
+                  <motion.p
+                    key={`description-${active.detail}`}
+                    custom={1}
+                    initial="initial"
+                    animate="visible"
+                    variants={variants}
+                    className={styles.description}
+                  >
+                    {planet.description}
+                  </motion.p>
+                </div>
+                <div className={styles.members}>
+                  {unit &&
+                    unit.members.map((key, index) => {
+                      const member = GomemSeasonMembers[key];
+                      return (
+                        <motion.div
+                          custom={2 + index}
+                          key={`${key}-button-${active.detail}`}
+                          className={styles.memberButton}
+                          data-active={index === activeMember}
+                          initial="initial"
+                          animate="visible"
+                          variants={variants}
+                          onClick={() =>
+                            setActiveMember(activeMember === index ? null : index)
+                          }
+                        >
+                          <div className={styles.memberImage}>
+                            {member.image && (
+                              <Image
+                                src={member.image}
+                                width={100}
+                                height={100}
+                              />
+                            )}
+                          </div>
+                          <span className={styles.memberName}>
+                            {member.name.ko}
+                          </span>
+                        </motion.div>
+                      );
+                    })}
+                </div>
               </div>
             </div>
             <div className={styles.unitContents}>
+              {unit && active && active.planet === 'contents' && (
+                <div className={styles.selectBox}>
+                  <Button
+                    onClick={() => {
+                      setTab('Songs');
+                    }}
+                    active={tab === 'Songs'}
+                  >
+                    songs
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      setTab('Contents');
+                    }}
+                    active={tab === 'Contents'}
+                  >
+                    contents
+                  </Button>
+                </div>
+              )}
               <motion.div
                 layout
                 className={styles.grid}
                 key={`grid-${active.detail}-${activeMember}`}
               >
                 {active.planet === 'contents' ? (
-                  <div>111</div>
-                ) : active.planet === 'gomem' || active.planet === 'specter' ? (
-                  <PlanetGomem backgroundColor={backgroundColor}
-                    activeMember={activeMember}
-                    minHeight={minHeight}
-                    unit={unit}
-                    variants={variants}
-                  ></PlanetGomem>
-                ) : null}
+                  <>
+                    {unit && (activeMember || activeMember===0) &&
+                      gomemContents[unit.members[activeMember]]
+                        .filter((content: GomemContents) => content.type === tab).length === 0 ?
+                      (
+                        <div>
+                          <p>앗! 컨텐츠를 못찾았습니다.</p>
+                        </div>
+                      ) :
+                      unit && (activeMember || activeMember===0) &&
+                      gomemContents[unit.members[activeMember]].filter((content: GomemContents) =>
+                        content.type === tab
+                      ).map((content: GomemContents) => {
+                        return (
+                          <YouTubeCard
+                            key={`personal-cover-${content.links}`}
+                            title={content.title}
+                            id={content.links}
+                            isBlackBG={true}
+                            onClick={id => openYouTube(id)}
+                          ></YouTubeCard>
+                        );
+                      })
+                    }
+                  </>
+                ) :
+                  active.planet === 'gomem' || active.planet === 'specter' ? (
+                    <PlanetGomem backgroundColor={backgroundColor}
+                      activeMember={activeMember}
+                      minHeight={minHeight}
+                      unit={unit}
+                      variants={variants}
+                    ></PlanetGomem>
+                  ) : null}
               </motion.div>
             </div>
           </div>
