@@ -22,6 +22,7 @@ export type ContentName =
   | '고정멤버합방'
   | '이세계아이돌합방'
   | '고정멤버X이세계아이돌'
+  | '버터뷰'
   | '기타'
 
 export enum GameByEnum {
@@ -52,6 +53,7 @@ export enum contentsNameByEnum {
   '고정멤버합방' = '고정멤버합방',
   '이세계아이돌합방' = '이세계아이돌합방',
   '고정멤버X이세계아이돌' = '고정멤버X이세계아이돌',
+  '버터뷰' = '버터뷰',
   '기타' = '기타',
 }
 
@@ -82,6 +84,7 @@ export const ContentByGame: Record<Game, GameContents> = {
       '소개팅',
       'VR챗 변신맨',
       '고정멤버X이세계아이돌',
+      '버터뷰',
       '기타'
     ],
     image: '/images/logo/logo_vrchat.png'
@@ -127,6 +130,30 @@ export interface Content {
 }
 
 export const contentsList: Content[] = [
+  {
+    game: 'VRChat',
+    date: '2022. 3. 19.',
+    content: '버터뷰',
+    title: '버튜버에게 일침 놓는 히키킹 - 버터뷰 2화',
+    episode: 2,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: 'IyqFDIGZbB4'
+  },
+  {
+    game: 'VRChat',
+    date: '2022. 3. 17.',
+    content: '기타',
+    title: '첫 고멤 팬미팅',
+    episode: 9,
+    participants: [
+      'wakgood',
+      '고정멤버',
+    ],
+    links: '1TDJyhKQjFA'
+  },
   {
     game: 'Others',
     date: '2022. 3. 15.',
@@ -249,6 +276,18 @@ export const contentsList: Content[] = [
       '시청자들'
     ],
     links: 'AC5OABmodqg'
+  },
+  {
+    game: 'VRChat',
+    date: '2022. 2. 26.',
+    content: '버터뷰',
+    title: '한국어로 방송하는 일본인 버튜버가 있다? - 신입 버튜버 인터뷰 컨텐츠 "버.터.뷰"',
+    episode: 1,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: '8Ss0z87JIFs'
   },
   {
     game: 'Minecraft',
