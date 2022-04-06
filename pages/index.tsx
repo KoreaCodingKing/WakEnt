@@ -8,7 +8,7 @@ import WakEnterHeader from '../components/wakenter/WakEnterHeader';
 import styles from '../styles/pages/index.module.scss';
 import { classes } from '../utils/class';
 import { useScrollPage } from '../components/common/Scroll';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import ChevronIcon from '../components/common/icons/Chevron';
 import WakEnterMetadata from '../components/wakenter/Meta';
 import { Card } from '../components/common/Cards';
@@ -77,23 +77,6 @@ const Groups = [
     ],
     image: '/images/bg_gomem.jpg',
     description: '왁타버스 세계관의 주력이 되는 그룹.\n왁타버스 합동 방송 참여 및 상황극 등 컨텐츠를 개발하여 여러분들에게 즐거움을 선사드립니다.',
-  },
-  {
-    name: {
-      ko: '컨텐츠',
-      en: 'CONTENTS'
-    },
-    links: [
-      {
-        name: '컨텐츠 페이지',
-        link: '/contents'
-      },
-      {
-        name: '공식 유튜브 채널',
-        link: 'https://www.youtube.com/c/welshcorgimessi',
-      }
-    ],
-    description: '왁엔터테인먼트를 100배 더 재밌게 즐기는 방법.\n왁엔터테인먼트만의 컨텐츠를 모았습니다.',
   }
 ];
 
@@ -279,36 +262,6 @@ const Home: NextPage = () => {
                   );
                 })
                 }
-              </div>
-            </div>
-          </section>
-          <section key={`group-section-${3}`}
-            className={classes(styles.page, styles.flex, styles.mobileColumn)}
-            data-page={2}>
-            <div className={classes(styles.representInner, styles.group)}>
-              <div className={styles.sectionTitle}>
-                <h2>{Groups[2].name.ko}<span>{Groups[2].name.en}</span></h2>
-                <p>{Groups[2].description}</p>
-              </div>
-              <div className={styles.links}>
-                {Groups[2].links.map((v, i) => (
-                  <div
-                    key={`main-link-${i}`}
-                    className={styles.link}
-                    tabIndex={100}
-                    onKeyDown={ev =>
-                      ev.key === 'Enter' && (window.location.href = v.link)
-                    }
-                  >
-                    <Link href={v.link} passHref>
-                      <a>
-                        {v.name} <LinkToIcon width={22}></LinkToIcon>
-                      </a>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-              <div className={styles.cards_box}>
               </div>
             </div>
           </section>
