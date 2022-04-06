@@ -44,7 +44,7 @@ const Groups = [
         link: 'https://www.youtube.com/c/welshcorgimessi',
       },
     ],
-    albumImage: '/images/album/rewind.jpg',
+    albumImage: '/images/album/winter-spring.jpg',
     membersImage: [
       '/images/member/total_member.png',
       '/images/member/total_member1.png'
