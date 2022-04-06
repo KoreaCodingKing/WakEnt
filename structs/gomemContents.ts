@@ -115,6 +115,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   MitsuneHaku: [
     {
       type: 'Songs',
+      title: '[MV] 하쿠 (새우튀김 x 미츠네하쿠)',
+      links: 'yYHKUyPrc24',
+      date: '22.03.19',
+    },
+    {
+      type: 'Songs',
       title: '그란랜드 : 재미있는 그란투리스모 - [우왁굳 리믹스] 미츠네하쿠 커버',
       links: 'jQaydrlKaCc',
       date: '22.03.19',
@@ -551,6 +557,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   BusinessKim: [
+    {
+      type: 'Contents',
+      title: '신입 융터르의 고민',
+      links: 'HeIE5WD-Vog',
+      date: '22.03.30'
+    },
     {
       type: 'Songs',
       title: '펠리스 나비다',
