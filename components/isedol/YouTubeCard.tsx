@@ -22,7 +22,7 @@ export const YouTubeCard = ({ title, id, thumbnail, onClick, isBlackBG }: YouTub
       onClick={() => onClick && onClick(id)}
     >
       <div className={styles.youtube_wrapper}>
-        <FadeInImage src={thumbnail || `https://img.youtube.com/vi/${id}/maxresdefault.jpg`} layout='fill'></FadeInImage>
+        <FadeInImage src={thumbnail || `https://img.youtube.com/vi/${id}/maxresdefault.jpg`} layout='fill' unoptimized></FadeInImage>
       </div>
       <h3 className={styles.title}>{title}</h3>
     </div>
