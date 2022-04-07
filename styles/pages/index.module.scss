@@ -7,7 +7,7 @@
 
   header {
     position: fixed;
-    width: 100%;
+    width: 99%;
     top: 0;
 
     z-index: 10000;
@@ -558,6 +558,7 @@
     display: flex;
     position: relative;
     height: 50vw;
+    max-height: 550px;
     min-height: 180px;
     background: #F5F5F5;
     border-radius: 20px;

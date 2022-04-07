@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 import { useRef } from 'react';
 import Image from 'next/image';
-import WakEnterHeader from '../wakenter/WakEnterHeader';
 import { classes } from '../../utils/class';
 import LinkToIcon from './icons/LinkTo';
 import styles from '../../styles/pages/index.module.scss';
