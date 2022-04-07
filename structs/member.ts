@@ -148,6 +148,8 @@ export const GomemUnits: Record<planetUnitID, GomemUnitMetadata> = {
       'HikiKing',
       'SecretGirl',
       'BusinessKim',
+      'Freeter',
+      'KarnarJungtur',
       'DogCat'
     ],
   }

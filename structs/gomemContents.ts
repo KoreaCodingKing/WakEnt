@@ -597,6 +597,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   KwonMin: [
     {
       type: 'Songs',
+      title: "[MV] '봄날 (Spring Day)' 왁타버스 COVER - BTS (방탄소년단)",
+      links: 'Mn5ZwEFKBc4',
+      date: '22.04.08'
+    },
+    {
+      type: 'Songs',
       title: '좋니 COVER - 권민x두칠',
       links: 'jjlieSDa1C0',
       date: '22.04.02'
