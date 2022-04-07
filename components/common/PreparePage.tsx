@@ -30,9 +30,6 @@ const PreparePage: NextPage = () => {
         <meta name="robots" content="noindex"></meta>
       </Head>
       <div className={styles.main}>
-        <header>
-          <WakEnterHeader></WakEnterHeader>
-        </header>
         <div className={styles.pages} ref={scroll}>
           <section className={classes(styles.page)} data-page={1}>
             <div className={styles.representInner}>
