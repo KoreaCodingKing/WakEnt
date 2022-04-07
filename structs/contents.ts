@@ -3,7 +3,7 @@ export type Game =
   | 'VRChat'
   | 'ProsoccerOnline'
   | 'AmongUs'
-  | 'Valorant'
+  | 'ZaunLeague'
   | 'Others'
 
 export type ContentName =
@@ -13,7 +13,7 @@ export type ContentName =
   | '미니모르즈비'
   | '마인크래프트X전쟁'
   | '건축콘테스트'
-  | '자운리그'
+  | '자운리그(Valorant)'
   | '프로싸커온라인 리그'
   | '커플대항전'
   | '상황극'
@@ -23,6 +23,7 @@ export type ContentName =
   | '이세계아이돌합방'
   | '고정멤버X이세계아이돌'
   | '버터뷰'
+  | '연말공모전'
   | '기타'
 
 export enum GameByEnum {
@@ -34,6 +35,7 @@ export enum GameByEnum {
   BattleGround = 'BattleGround',
   FIFA20 = 'FIFA20',
   AmongUs = 'AmongUs',
+  ZaunLeague = 'ZaunLeague',
   Others = 'Others',
 }
 
@@ -54,6 +56,7 @@ export enum contentsNameByEnum {
   '이세계아이돌합방' = '이세계아이돌합방',
   '고정멤버X이세계아이돌' = '고정멤버X이세계아이돌',
   '버터뷰' = '버터뷰',
+  '연말공모전' = '연말공모전',
   '기타' = '기타',
 }
 
@@ -103,16 +106,17 @@ export const ContentByGame: Record<Game, GameContents> = {
     ],
     image: '/images/logo/logo_amongus.png'
   },
-  [GameByEnum.Valorant]: {
-    name: '발로란트',
+  [GameByEnum.ZaunLeague]: {
+    name: '자운리그',
     contentName: [
-      '자운리그'
+      '자운리그(Valorant)'
     ],
-    image: '/images/logo/logo_valorant.png'
+    image: '/images/zaun/logo_zaun_black.png'
   },
   [GameByEnum.Others]: {
     name: '기타',
     contentName: [
+      '연말공모전',
       '기타'
     ],
   },
@@ -141,6 +145,19 @@ export const contentsList: Content[] = [
       '고정멤버',
     ],
     links: '2YLjmKcTTdc'
+  },
+  {
+    game: 'ZaunLeague',
+    date: '2022. 3. 30.',
+    content: '자운리그(Valorant)',
+    title: '왁타버스 발로란트 합방',
+    episode: 1,
+    participants: [
+      'wakgood',
+      '고정멤버',
+      '이세계아이돌'
+    ],
+    links: 'n_P6yidFZG0'
   },
   {
     game: 'Minecraft',
@@ -656,6 +673,17 @@ export const contentsList: Content[] = [
     links: 'kraTRdvCYOI'
   },
   {
+    game: 'ProsoccerOnline',
+    date: '2021. 12. 28.',
+    content: '프로싸커온라인 리그',
+    title: '이세돌 축구대회 나가다!',
+    episode: 1,
+    participants: [
+      '이세계아이돌',
+    ],
+    links: 'rQEJIDT2fVE'
+  },
+  {
     game: 'VRChat',
     date: '2021. 12. 28.',
     content: '상황극',
@@ -666,6 +694,106 @@ export const contentsList: Content[] = [
       '시청자들',
     ],
     links: 'CBQ6wk2oDh0'
+  },
+  {
+    game: 'Others',
+    date: '2021. 12. 28.',
+    content: '연말공모전',
+    title: '왁 미제라블 (Wak Miserables) - 우왁굳 반응',
+    episode: 9,
+    participants: [
+      '고정멤버',
+    ],
+    links: 'ys52M8cwuNk'
+  },
+  {
+    game: 'Others',
+    date: '2021. 12. 27.',
+    content: '연말공모전',
+    title: '[2021년 연말공모전] 왁미제라블 Wak Misérables',
+    episode: 8,
+    participants: [
+      '고정멤버',
+    ],
+    links: 'Ru2Mx7xFgRc'
+  },
+  {
+    game: 'Others',
+    date: '2021. 12. 27.',
+    content: '연말공모전',
+    title: '이세계는 아이돌과 함께 OP - (우왁굳반응)',
+    episode: 7,
+    participants: [
+      '시청자들',
+    ],
+    links: 'fP0wUEZeZ-g'
+  },
+  {
+    game: 'Others',
+    date: '2021. 12. 26.',
+    content: '연말공모전',
+    title: '이세계는 아이돌과 함께 OP',
+    episode: 6,
+    participants: [
+      '시청자들',
+    ],
+    links: 'WBQqeBSUM0o'
+  },
+  {
+    game: 'Others',
+    date: '2021. 12. 27.',
+    content: '연말공모전',
+    title: '[2021년 연말공모전] 고멤싸이퍼 2기 (Beat by Vizard Beatz)',
+    episode: 5,
+    participants: [
+      '고정멤버',
+    ],
+    links: 'YdphrnY2KY8'
+  },
+  {
+    game: 'Others',
+    date: '2021. 12. 27.',
+    content: '연말공모전',
+    title: '[2021년 연말공모전] 고멤싸이퍼 1기 (Beat by Vizard Beatz)',
+    episode: 4,
+    participants: [
+      '고정멤버',
+    ],
+    links: 'JGOsGIElUtE'
+  },
+  {
+    game: 'Others',
+    date: '2021. 12. 27.',
+    content: '연말공모전',
+    title: '고멤 사이퍼 2기 (우왁굳 반응) - TEAM JONMOTSSHIPJINOON',
+    episode: 3,
+    participants: [
+      '고정멤버',
+    ],
+    links: '-sUMpmr5-wc'
+  },
+  {
+    game: 'Others',
+    date: '2021. 12. 27.',
+    content: '연말공모전',
+    title: '고멤 사이퍼 1기 (우왁굳 반응) - TEAM JONMOTSSHIPJINOON',
+    episode: 2,
+    participants: [
+      '고정멤버',
+    ],
+    links: 'Pt-r6u2aJMA'
+  },
+  {
+    game: 'Others',
+    date: '2021. 12. 27.',
+    content: '연말공모전',
+    title: '마이 왁타버스 (My WAKTAVERSE) COVER by 왁타버스 - My Universe (Coldplay X BTS)',
+    episode: 1,
+    participants: [
+      '고정멤버',
+      '이세계아이돌',
+    ],
+    links: 'Kc85nOaqLwo'
   },
   {
     game: 'Minecraft',
