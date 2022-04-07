@@ -131,6 +131,18 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: 'VRChat',
+    date: '2022. 4. 07.',
+    content: '고정멤버합방',
+    title: '간수의 눈을 속여라! vs 죄수의 탈출을 막아라! - 감옥탈출 고멤합방',
+    episode: 11,
+    participants: [
+      'wakgood',
+      '고정멤버',
+    ],
+    links: '2YLjmKcTTdc'
+  },
+  {
     game: 'Minecraft',
     date: '2022. 3. 29.',
     content: '왁핑몰',
@@ -155,18 +167,6 @@ export const contentsList: Content[] = [
     links: 'dqPpQB_rGcE'
   },
   {
-    game: 'VRChat',
-    date: '2022. 3. 20.',
-    content: '고정멤버합방',
-    title: '첫 고멤 팬미팅',
-    episode: 10,
-    participants: [
-      'wakgood',
-      '고정멤버',
-    ],
-    links: 'G791YHTCvKY'
-  },
-  {
     game: 'Minecraft',
     date: '2022. 3. 19.',
     content: '왁핑몰',
@@ -189,6 +189,18 @@ export const contentsList: Content[] = [
       '시청자들',
     ],
     links: 'IyqFDIGZbB4'
+  },
+  {
+    game: 'VRChat',
+    date: '2022. 3. 20.',
+    content: '고정멤버합방',
+    title: '고멤을 회전초밥처럼 돌려서 하는 팬미팅',
+    episode: 10,
+    participants: [
+      'wakgood',
+      '고정멤버',
+    ],
+    links: 'G791YHTCvKY'
   },
   {
     game: 'VRChat',

@@ -209,6 +209,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   DrDopamine: [
     {
       type: 'Contents',
+      title: '띠용띠용 으이으이',
+      links: 'p100OXhV2as',
+      date: '22.04.05'
+    },
+    {
+      type: 'Contents',
       title: '예의',
       links: 'nC9iZEE-R5U',
       date: '22.03.21'
@@ -407,6 +413,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     }
   ],
   GwakChoonSik: [
+    {
+      type: 'Songs',
+      title: 'NERD VERSE (너드 벌스) - 곽춘식, 히키킹, 권민',
+      links: 'cWDbKPXZzbw',
+      date: '22.04.07'
+    },
     {
       type: 'Contents',
       title: '내가고멤이될상인가-관상(패러디)',
