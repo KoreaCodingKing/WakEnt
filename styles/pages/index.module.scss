@@ -104,7 +104,6 @@
     .link {
       display: flex;
       width: fit-content;
-      // margin: 18px auto;
       letter-spacing: -1px;
       font-size: 1.3em;
       font-weight: 600;
@@ -540,6 +539,50 @@
     }
 
     cursor: pointer;
+  }
+}
+
+.secondSection_cards {
+  display: grid;
+  min-width: 595px;
+
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: 1;
+
+  @media screen and (max-width: $maxMobile) {
+    min-width: 200px;
+  }
+
+  .card {
+    overflow: auto;
+    display: flex;
+    position: relative;
+    height: 50vw;
+    min-height: 180px;
+    background: #F5F5F5;
+    border-radius: 20px;
+
+    @media screen and (max-width: $maxMobile) {
+      min-height: 60px;
+    }
+
+    transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .card:nth-child(1) {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: 1;
+
+    .logo_img {
+      width: 12vw;
+      height: 12vw;
+      max-width: 200px;
+      max-height: 200px;
+      margin: 0 auto;
+      align-self: center;
+    }
   }
 }
 

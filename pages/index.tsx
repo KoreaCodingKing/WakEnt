@@ -11,9 +11,6 @@ import { useScrollPage } from '../components/common/Scroll';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import ChevronIcon from '../components/common/icons/Chevron';
 import WakEnterMetadata from '../components/wakenter/Meta';
-import { Card } from '../components/common/Cards';
-import FadeInImage from '../components/common/FadeInImage';
-import { getLinkType, getYouTubeThumbnailURL, LinkType } from '../structs/links';
 import { useDebouncer } from '../components/isedol/Members/Utils';
 
 // ToDo: remove Achive codes
@@ -76,6 +73,10 @@ const Groups = [
       }
     ],
     image: '/images/bg_gomem.jpg',
+    membersImage: [
+      '/images/bg_gomem.jpg',
+      '/images/bg_gomem1.jpg'
+    ],
     description: '왁타버스 세계관의 주력이 되는 그룹.\n왁타버스 합동 방송 참여 및 상황극 등 컨텐츠를 개발하여 여러분들에게 즐거움을 선사드립니다.',
   }
 ];
@@ -84,7 +85,6 @@ const Home: NextPage = () => {
   const scroll = useRef<HTMLDivElement>(null!);
   const page = useScrollPage(scroll, process.browser ? window.innerHeight : 1, 0.4);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
-  const minHeight = '224';
 
   const goPage = useCallback((index: number) => {
     if (!scroll.current) {
@@ -241,41 +241,28 @@ const Home: NextPage = () => {
                   </div>
                 ))}
               </div>
-              <div className={styles.cards_box}>
-                {Groups[1].videos!.map((link, index) => {
-                  const linkType = getLinkType(link.link);
-
-                  let image = '';
-
-                  if (linkType === LinkType.YouTube) {
-                    image = getYouTubeThumbnailURL(link.link);
-                  }
-
-                  return (
-                    <Card
-                      key={`card-${index}`}
-                      index={3 + index}
-                      padding
-                      thumbnail={image.length > 0}
-                      template="auto auto auto auto"
-                      mobileTemplate={`auto auto ${4 + index} ${
-                        5 + index
-                      }`}
-                      backgroundColor='#000'
-                      minHeight={minHeight}
-                    >
-                      <Link href={link.link} passHref>
-                        <a target="_blank">
-                          <FadeInImage
-                            src={image}
-                            layout="fill"
-                          ></FadeInImage>
-                        </a>
-                      </Link>
-                    </Card>
-                  );
-                })
-                }
+              <div className={styles.secondSection_cards}>
+                <div className={styles.card}
+                  onClick={() => showImageHandler(Groups[1].membersImage!)}>
+                  <div className={styles.img_box}>
+                    {Groups[1].membersImage && Groups[1].membersImage.map(
+                      (v: string, i: number) => (
+                        <Image
+                          key={`background-image-${i}`}
+                          className={classes(
+                            styles.image,
+                            currentImageIndex === i && styles.active
+                          )}
+                          src={v}
+                          layout='fill'
+                          blurDataURL={v}
+                          placeholder='blur'
+                          priority></Image>
+                        )
+                      )
+                    }
+                  </div>
+                </div>
               </div>
             </div>
           </section>
