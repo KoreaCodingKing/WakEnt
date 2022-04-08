@@ -19,8 +19,8 @@ export interface BasicMember {
 }
 
 export interface GomemMember extends BasicMember {
-  description: string,
-  career: {date: string, desc: string}[]
+  description: string
+  career: { date: string; desc: string }[]
 }
 
 export interface IsedolMember extends BasicMember {
@@ -36,7 +36,7 @@ export interface IsedolMember extends BasicMember {
     mbti: string
     fandom: string
   }
-  modelImages: CharacterModel[],
+  modelImages: CharacterModel[]
 }
 
 export type IsedolMemberID =
@@ -78,7 +78,7 @@ export type WaktaverseMemberID = IsedolMemberID | GomemMemberID | WakMemberID
 export const enum GomemUnit {
   Specter = 'specter',
   Gomem = 'gomem',
-  Contents = 'contents'
+  Contents = 'contents',
 }
 
 export type planetUnitID = 'specter' | 'gomem' | 'contents'
@@ -101,7 +101,7 @@ export const GomemUnits: Record<planetUnitID, GomemUnitMetadata> = {
       'GwakChoonSik',
       'KwonMin',
       'KimchiMandoo',
-      'DogCat'
+      'DogCat',
     ],
   },
   [GomemUnit.Gomem]: {
@@ -122,7 +122,7 @@ export const GomemUnits: Record<planetUnitID, GomemUnitMetadata> = {
       'SecretGirl',
       'BusinessKim',
       'Freeter',
-      'KarnarJungtur'
+      'KarnarJungtur',
     ],
   },
   [GomemUnit.Contents]: {
@@ -150,9 +150,8 @@ export const GomemUnits: Record<planetUnitID, GomemUnitMetadata> = {
       'BusinessKim',
       'Freeter',
       'KarnarJungtur',
-      'DogCat'
     ],
-  }
+  },
 };
 
 /**
@@ -170,13 +169,17 @@ export const GomemUnits: Record<planetUnitID, GomemUnitMetadata> = {
  *
  *   멤버 전체가 나오는 경우에는 멤버 개개인 전체에 링크를 넣지 않고 행성에 링크를 등재합니다.
  */
-export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
+export const GomemSeasonMembers: Record<
+  Exclude<GomemMemberID, 'DogCat'>,
+  GomemMember
+> = {
   KarnarJungtur: {
     name: {
       en: 'Karnar Jungtur',
       ko: '카르나르 융터르',
     },
-    description: '전문적인 프로이트식 정신분석으로 여러분들의 무의식을 파악하러 왔다. 하지만 사기혐의 전과가 있는데...',
+    description:
+      '전문적인 프로이트식 정신분석으로 여러분들의 무의식을 파악하러 왔다. 하지만 사기혐의 전과가 있는데...',
     image: '/images/model/gomem/Jungtur/upperbody.png',
     links: [
       {
@@ -198,16 +201,17 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '22.02.27',
-        desc: 'VRChat 고정멤버 시즌3 합격'
-      }
-    ]
+        desc: 'VRChat 고정멤버 시즌3 합격',
+      },
+    ],
   },
   Freeter: {
     name: {
       en: 'Freeter',
       ko: '프리터',
     },
-    description: '알바를 짤려 일일알바를 하던 와중에 왁타버스에 취업을 하기 위해 왇타버스에 오게 되었다.',
+    description:
+      '알바를 짤려 일일알바를 하던 와중에 왁타버스에 취업을 하기 위해 왇타버스에 오게 되었다.',
     image: '/images/model/gomem/freeter/body.png',
     links: [
       {
@@ -229,9 +233,9 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '22.02.27',
-        desc: 'VRChat 고정멤버 시즌3 합격'
-      }
-    ]
+        desc: 'VRChat 고정멤버 시즌3 합격',
+      },
+    ],
   },
   Dandap: {
     name: {
@@ -260,13 +264,13 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
+        desc: 'VRChat 고정멤버 시즌1 합격',
       },
       {
         date: '21.08.29',
-        desc: '망령 합격'
-      }
-    ]
+        desc: '망령 합격',
+      },
+    ],
   },
   CallyCarly: {
     name: {
@@ -295,13 +299,13 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
+        desc: 'VRChat 고정멤버 시즌1 합격',
       },
       {
         date: '21.08.29',
-        desc: '망령 합격'
-      }
-    ]
+        desc: '망령 합격',
+      },
+    ],
   },
   Wakpago: {
     name: {
@@ -331,13 +335,13 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
+        desc: 'VRChat 고정멤버 시즌1 합격',
       },
       {
         date: '21.08.29',
-        desc: '망령 합격'
-      }
-    ]
+        desc: '망령 합격',
+      },
+    ],
   },
   BusinessKim: {
     name: {
@@ -367,17 +371,17 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
+        desc: 'VRChat 고정멤버 시즌1 합격',
       },
       {
         date: '21.08.29',
-        desc: '망령 합격'
+        desc: '망령 합격',
       },
       {
         date: '22.02.27',
-        desc: '고멤 승급'
-      }
-    ]
+        desc: '고멤 승급',
+      },
+    ],
   },
   GwakChoonSik: {
     name: {
@@ -407,13 +411,13 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
+        desc: 'VRChat 고정멤버 시즌1 합격',
       },
       {
         date: '21.08.29',
-        desc: '망령 합격'
-      }
-    ]
+        desc: '망령 합격',
+      },
+    ],
   },
   KwonMin: {
     name: {
@@ -443,13 +447,13 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
+        desc: 'VRChat 고정멤버 시즌1 합격',
       },
       {
         date: '21.08.29',
-        desc: '망령 합격'
-      }
-    ]
+        desc: '망령 합격',
+      },
+    ],
   },
   DrDopamine: {
     name: {
@@ -479,17 +483,17 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
+        desc: 'VRChat 고정멤버 시즌1 합격',
       },
       {
         date: '21.08.29',
-        desc: 'VRChat 고정멤버 시즌2 합격'
+        desc: 'VRChat 고정멤버 시즌2 합격',
       },
       {
         date: '21.02.27',
-        desc: 'VRChat 고정멤버 시즌3 합격'
-      }
-    ]
+        desc: 'VRChat 고정멤버 시즌3 합격',
+      },
+    ],
   },
   FriedShrimp: {
     name: {
@@ -519,17 +523,17 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
+        desc: 'VRChat 고정멤버 시즌1 합격',
       },
       {
         date: '21.08.29',
-        desc: 'VRChat 고정멤버 시즌2 합격'
+        desc: 'VRChat 고정멤버 시즌2 합격',
       },
       {
         date: '21.02.27',
-        desc: 'VRChat 고정멤버 시즌3 합격'
-      }
-    ]
+        desc: 'VRChat 고정멤버 시즌3 합격',
+      },
+    ],
   },
   MitsuneHaku: {
     name: {
@@ -559,13 +563,13 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.09.12',
-        desc: 'VRChat 고정멤버 시즌2 합격'
+        desc: 'VRChat 고정멤버 시즌2 합격',
       },
       {
         date: '21.02.27',
-        desc: 'VRChat 고정멤버 시즌3 합격'
-      }
-    ]
+        desc: 'VRChat 고정멤버 시즌3 합격',
+      },
+    ],
   },
   HaeruSeok: {
     name: {
@@ -594,17 +598,17 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
+        desc: 'VRChat 고정멤버 시즌1 합격',
       },
       {
         date: '21.08.29',
-        desc: 'VRChat 고정멤버 시즌2 합격'
+        desc: 'VRChat 고정멤버 시즌2 합격',
       },
       {
         date: '21.02.27',
-        desc: 'VRChat 고정멤버 시즌3 합격'
-      }
-    ]
+        desc: 'VRChat 고정멤버 시즌3 합격',
+      },
+    ],
   },
   DokgoHyeji: {
     name: {
@@ -634,13 +638,13 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.09.12',
-        desc: 'VRChat 고정멤버 시즌2 합격'
+        desc: 'VRChat 고정멤버 시즌2 합격',
       },
       {
         date: '21.02.27',
-        desc: 'VRChat 고정멤버 시즌3 합격'
-      }
-    ]
+        desc: 'VRChat 고정멤버 시즌3 합격',
+      },
+    ],
   },
   KimchiMandoo: {
     name: {
@@ -670,17 +674,17 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
+        desc: 'VRChat 고정멤버 시즌1 합격',
       },
       {
         date: '21.08.29',
-        desc: 'VRChat 고정멤버 시즌2 합격'
+        desc: 'VRChat 고정멤버 시즌2 합격',
       },
       {
         date: '22.02.27',
-        desc: '망령 합격'
-      }
-    ]
+        desc: '망령 합격',
+      },
+    ],
   },
   SecretGirl: {
     name: {
@@ -710,17 +714,17 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
+        desc: 'VRChat 고정멤버 시즌1 합격',
       },
       {
         date: '21.08.29',
-        desc: 'VRChat 고정멤버 시즌2 합격'
+        desc: 'VRChat 고정멤버 시즌2 합격',
       },
       {
         date: '21.02.27',
-        desc: 'VRChat 고정멤버 시즌3 합격'
-      }
-    ]
+        desc: 'VRChat 고정멤버 시즌3 합격',
+      },
+    ],
   },
   DeokSuLee: {
     name: {
@@ -749,13 +753,13 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.09.12',
-        desc: 'VRChat 고정멤버 시즌2 합격'
+        desc: 'VRChat 고정멤버 시즌2 합격',
       },
       {
         date: '21.02.27',
-        desc: 'VRChat 고정멤버 시즌3 합격'
-      }
-    ]
+        desc: 'VRChat 고정멤버 시즌3 합격',
+      },
+    ],
   },
   PoongSin: {
     name: {
@@ -785,17 +789,17 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
+        desc: 'VRChat 고정멤버 시즌1 합격',
       },
       {
         date: '21.08.29',
-        desc: 'VRChat 고정멤버 시즌2 합격'
+        desc: 'VRChat 고정멤버 시즌2 합격',
       },
       {
         date: '21.02.27',
-        desc: 'VRChat 고정멤버 시즌3 합격'
-      }
-    ]
+        desc: 'VRChat 고정멤버 시즌3 합격',
+      },
+    ],
   },
   NegativePerson: {
     name: {
@@ -825,13 +829,13 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.09.12',
-        desc: 'VRChat 고정멤버 시즌2 합격'
+        desc: 'VRChat 고정멤버 시즌2 합격',
       },
       {
         date: '21.02.27',
-        desc: 'VRChat 고정멤버 시즌3 합격'
-      }
-    ]
+        desc: 'VRChat 고정멤버 시즌3 합격',
+      },
+    ],
   },
   HikiKing: {
     name: {
@@ -860,17 +864,17 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
+        desc: 'VRChat 고정멤버 시즌1 합격',
       },
       {
         date: '21.08.29',
-        desc: 'VRChat 고정멤버 시즌2 합격'
+        desc: 'VRChat 고정멤버 시즌2 합격',
       },
       {
         date: '21.02.27',
-        desc: 'VRChat 고정멤버 시즌3 합격'
-      }
-    ]
+        desc: 'VRChat 고정멤버 시즌3 합격',
+      },
+    ],
   },
   Sophia: {
     name: {
@@ -900,13 +904,13 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.09.12',
-        desc: 'VRChat 고정멤버 시즌2 합격'
+        desc: 'VRChat 고정멤버 시즌2 합격',
       },
       {
         date: '21.02.27',
-        desc: 'VRChat 고정멤버 시즌3 합격'
-      }
-    ]
+        desc: 'VRChat 고정멤버 시즌3 합격',
+      },
+    ],
   },
   Roentgenium: {
     name: {
@@ -935,53 +939,53 @@ export const GomemSeasonMembers: Record<GomemMemberID, GomemMember> = {
     career: [
       {
         date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
+        desc: 'VRChat 고정멤버 시즌1 합격',
       },
       {
         date: '21.08.29',
-        desc: 'VRChat 고정멤버 시즌2 합격'
+        desc: 'VRChat 고정멤버 시즌2 합격',
       },
       {
         date: '21.02.27',
-        desc: 'VRChat 고정멤버 시즌3 합격'
-      }
-    ]
-  },
-  DogCat: {
-    name: {
-      en: 'DogCat',
-      ko: '개냥이',
-    },
-    description: '내추럴 컨셉의 개냥이 [데이터로만 남아 있고 등재 X]',
-    image: '/images/model/gomem/dogcat/body.png',
-    links: [
-      {
-        name: 'Twitch',
-        icon: 'twitch',
-        link: 'https://www.twitch.tv/dogcat0926',
-      },
-      {
-        name: 'YouTube',
-        icon: 'youtube',
-        link: 'https://www.youtube.com/channel/UCRSEg0NN1-7QcAQDDzSIY6Q',
-      },
-      {
-        name: 'Instagram',
-        icon: 'instagram',
-        link: 'https://www.instagram.com/wak_dogcat/',
+        desc: 'VRChat 고정멤버 시즌3 합격',
       },
     ],
-    career: [
-      {
-        date: '21.05.22',
-        desc: 'VRChat 고정멤버 시즌1 합격'
-      },
-      {
-        date: '21.08.29',
-        desc: 'R.I.P'
-      }
-    ]
   },
+  // DogCat: {
+  //   name: {
+  //     en: 'DogCat',
+  //     ko: '개냥이',
+  //   },
+  //   description: '내추럴 컨셉의 개냥이 [데이터로만 남아 있고 등재 X]',
+  //   image: '/images/model/gomem/dogcat/body.png',
+  //   links: [
+  //     {
+  //       name: 'Twitch',
+  //       icon: 'twitch',
+  //       link: 'https://www.twitch.tv/dogcat0926',
+  //     },
+  //     {
+  //       name: 'YouTube',
+  //       icon: 'youtube',
+  //       link: 'https://www.youtube.com/channel/UCRSEg0NN1-7QcAQDDzSIY6Q',
+  //     },
+  //     {
+  //       name: 'Instagram',
+  //       icon: 'instagram',
+  //       link: 'https://www.instagram.com/wak_dogcat/',
+  //     },
+  //   ],
+  //   career: [
+  //     {
+  //       date: '21.05.22',
+  //       desc: 'VRChat 고정멤버 시즌1 합격'
+  //     },
+  //     {
+  //       date: '21.08.29',
+  //       desc: 'R.I.P'
+  //     }
+  //   ]
+  // },
 };
 
 export const IsedolMemberNameImages: Record<IsedolMemberID, string> = {
@@ -1095,7 +1099,7 @@ export const IsedolMembers: Record<IsedolMemberID, IsedolMember> = {
       {
         name: 'Twitter',
         icon: 'twitter',
-        link: 'https://twitter.com/jingbuger',
+        link: 'https://twitter.com/jing_burger',
       },
     ],
     modelImages: [
