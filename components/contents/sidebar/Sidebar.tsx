@@ -85,17 +85,19 @@ const Sidebar = ({selectContents}: SidebarProps) => {
               <div
                 className={styles.dropMenu}>
                 {ContentByGame[game].contentName.map((conentName, index) => {
-                  return (<motion.p
-                    key={`contentName-${index}`}
-                    className={styles.contentsName}
-                    whileHover='hover'
-                    variants={variants}
-                    style={{
-                      '--index': `${(index + 1) / (ContentByGame[game].contentName.length + 1)}`
-                    } as React.CSSProperties}
-                    onClick={() => selectContents(game, conentName)}>
-                    {conentName}
-                  </motion.p>);
+                  return (
+                    <motion.p
+                      key={`contentName-${index}`}
+                      className={styles.contentsName}
+                      whileHover='hover'
+                      variants={variants}
+                      style={{
+                        '--index': `${(index + 1) / (ContentByGame[game].contentName.length + 1)}`
+                      } as React.CSSProperties}
+                      onClick={() => selectContents(game, conentName)}>
+                      {conentName}
+                    </motion.p>
+                  );
                 })}
               </div>
             )}

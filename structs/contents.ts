@@ -23,7 +23,7 @@ export type ContentName =
   | '이세계아이돌합방'
   | '고정멤버X이세계아이돌'
   | '버터뷰'
-  | '고정멤버X이세계아이돌Songs'
+  | '왁타버스콜라보Songs'
   | '연말공모전'
   | '기타'
 
@@ -57,7 +57,7 @@ export enum contentsNameByEnum {
   '이세계아이돌합방' = '이세계아이돌합방',
   '고정멤버X이세계아이돌' = '고정멤버X이세계아이돌',
   '버터뷰' = '버터뷰',
-  '고정멤버X이세계아이돌Songs' = '고정멤버X이세계아이돌Songs',
+  '왁타버스콜라보Songs' = '왁타버스콜라보Songs',
   '연말공모전' = '연말공모전',
   '기타' = '기타',
 }
@@ -120,7 +120,7 @@ export const ContentByGame: Record<Game, GameContents> = {
     contentName: [
       '연말공모전',
       '고정멤버X이세계아이돌',
-      '고정멤버X이세계아이돌Songs',
+      '왁타버스콜라보Songs',
       '기타'
     ],
   },
@@ -153,7 +153,7 @@ export const contentsList: Content[] = [
   {
     game: 'Others',
     date: '2022. 04. 08.',
-    content: '고정멤버X이세계아이돌Songs',
+    content: '왁타버스콜라보Songs',
     title: '[MV] "봄날 (Spring Day)" 왁타버스 COVER - BTS (방탄소년단)',
     episode: 4,
     participants: [
@@ -372,7 +372,7 @@ export const contentsList: Content[] = [
   {
     game: 'Others',
     date: '2022. 2. 28.',
-    content: '고정멤버X이세계아이돌Songs',
+    content: '왁타버스콜라보Songs',
     title: '[MV] eight(에잇) - (징버거 x 비밀소녀 x ??? COVER) - IU(아이유)',
     episode: 3,
     participants: [
@@ -542,7 +542,7 @@ export const contentsList: Content[] = [
   {
     game: 'Others',
     date: '2022. 2. 7.',
-    content: '고정멤버X이세계아이돌Songs',
+    content: '왁타버스콜라보Songs',
     title: '붉은 노을 (고세구 x 해루석 x 뢴트게늄 x 단답벌레 x 왁컬로이드) COVER',
     episode: 2,
     participants: [
@@ -592,7 +592,7 @@ export const contentsList: Content[] = [
   {
     game: 'Others',
     date: '2022. 1. 28.',
-    content: '고정멤버X이세계아이돌Songs',
+    content: '왁타버스콜라보Songs',
     title: '[MV] 【주르르→??←징버거】 Choose me (Korean Cover.)',
     episode: 1,
     participants: [
