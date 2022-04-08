@@ -1,6 +1,6 @@
-import { GomemMemberID } from "./member"
+import { GomemMemberID } from "./member";
 
-export type GomemContentsType = 
+export type GomemContentsType =
  | 'Songs'
  | 'Contents'
 
@@ -646,5 +646,4 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   KarnarJungtur: [],
   CallyCarly: [],
-  DogCat: []
 };

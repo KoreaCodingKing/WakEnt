@@ -69,7 +69,7 @@ export type GomemMemberID =
   | 'Roentgenium'
   | 'Freeter'
   | 'KarnarJungtur'
-  | 'DogCat'
+  // | 'DogCat'
 
 export type WakMemberID = 'wakgood'
 
@@ -101,7 +101,7 @@ export const GomemUnits: Record<planetUnitID, GomemUnitMetadata> = {
       'GwakChoonSik',
       'KwonMin',
       'KimchiMandoo',
-      'DogCat',
+      // 'DogCat',
     ],
   },
   [GomemUnit.Gomem]: {
@@ -170,7 +170,8 @@ export const GomemUnits: Record<planetUnitID, GomemUnitMetadata> = {
  *   멤버 전체가 나오는 경우에는 멤버 개개인 전체에 링크를 넣지 않고 행성에 링크를 등재합니다.
  */
 export const GomemSeasonMembers: Record<
-  Exclude<GomemMemberID, 'DogCat'>,
+  // Exclude<GomemMemberID, 'DogCat'>,
+  GomemMemberID,
   GomemMember
 > = {
   KarnarJungtur: {
