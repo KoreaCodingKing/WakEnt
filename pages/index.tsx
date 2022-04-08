@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import LinkToIcon from '../components/common/icons/LinkTo';
 
@@ -136,7 +137,7 @@ const Home: NextPage = () => {
             </div>
           </section>
           <section key={`group-section-${1}`}
-            className={classes(styles.page, styles.flex, styles.mobileColumn, styles.shorts)}
+            className={classes(styles.page, styles.flex, styles.mobileColumn)}
             data-page={1}>
             <div className={classes(styles.representInner, styles.group, styles.secondSection)}>
               <div className={styles.sectionTitle}>
@@ -161,7 +162,7 @@ const Home: NextPage = () => {
                   </div>
                 ))}
               </div>
-              {/* <div className={classes(styles.firstSection_cards, styles.cards_box)}>
+              <div className={classes(styles.firstSection_cards, styles.cards_box)}>
                 <div className={styles.card}>
                   <div className={classes(styles.img_box, styles.logo_img)}>
                     <Image
@@ -199,11 +200,11 @@ const Home: NextPage = () => {
                     }
                   </div>
                 </div>
-              </div> */}
+              </div>
             </div>
           </section>
           <section key={`group-section-${2}`}
-            className={classes(styles.page, styles.flex, styles.mobileColumn, styles.shorts)}
+            className={classes(styles.page, styles.flex, styles.mobileColumn)}
             data-page={2}>
             <div className={classes(styles.representInner, styles.group)}>
               <div className={styles.sectionTitle}>
@@ -228,7 +229,7 @@ const Home: NextPage = () => {
                   </div>
                 ))}
               </div>
-              {/* <div className={styles.secondSection_cards}>
+              <div className={styles.secondSection_cards}>
                 <div className={styles.card}
                   onClick={() => showImageHandler(Groups[1].membersImage!)}>
                   <div className={styles.img_box}>
@@ -250,7 +251,7 @@ const Home: NextPage = () => {
                     }
                   </div>
                 </div>
-              </div> */}
+              </div>
             </div>
           </section>
         </div>
