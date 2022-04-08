@@ -258,8 +258,8 @@ const Home: NextPage = () => {
                           blurDataURL={v}
                           placeholder='blur'
                           priority></Image>
-                        )
                       )
+                    )
                     }
                   </div>
                 </div>
