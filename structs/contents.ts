@@ -23,6 +23,7 @@ export type ContentName =
   | '이세계아이돌합방'
   | '고정멤버X이세계아이돌'
   | '버터뷰'
+  | '고정멤버X이세계아이돌Songs'
   | '연말공모전'
   | '기타'
 
@@ -56,6 +57,7 @@ export enum contentsNameByEnum {
   '이세계아이돌합방' = '이세계아이돌합방',
   '고정멤버X이세계아이돌' = '고정멤버X이세계아이돌',
   '버터뷰' = '버터뷰',
+  '고정멤버X이세계아이돌Songs' = '고정멤버X이세계아이돌Songs',
   '연말공모전' = '연말공모전',
   '기타' = '기타',
 }
@@ -117,6 +119,8 @@ export const ContentByGame: Record<Game, GameContents> = {
     name: '기타',
     contentName: [
       '연말공모전',
+      '고정멤버X이세계아이돌',
+      '고정멤버X이세계아이돌Songs',
       '기타'
     ],
   },
@@ -134,6 +138,30 @@ export interface Content {
 }
 
 export const contentsList: Content[] = [
+  {
+    game: 'VRChat',
+    date: '2022. 4. 08.',
+    content: '고정멤버합방',
+    title: '감옥탈출 고멤합방 풀버전',
+    episode: 12,
+    participants: [
+      'wakgood',
+      '고정멤버',
+    ],
+    links: 'Bg-AzaRSfrU'
+  },
+  {
+    game: 'Others',
+    date: '2022. 04. 08.',
+    content: '고정멤버X이세계아이돌Songs',
+    title: '[MV] "봄날 (Spring Day)" 왁타버스 COVER - BTS (방탄소년단)',
+    episode: 4,
+    participants: [
+      '고정멤버',
+      '이세계아이돌',
+    ],
+    links: 'Mn5ZwEFKBc4'
+  },
   {
     game: 'VRChat',
     date: '2022. 4. 07.',
@@ -342,6 +370,18 @@ export const contentsList: Content[] = [
     links: 'd1mA746SigM'
   },
   {
+    game: 'Others',
+    date: '2022. 2. 28.',
+    content: '고정멤버X이세계아이돌Songs',
+    title: '[MV] eight(에잇) - (징버거 x 비밀소녀 x ??? COVER) - IU(아이유)',
+    episode: 3,
+    participants: [
+      '고정멤버',
+      '이세계아이돌',
+    ],
+    links: 'lQIdaZgK56A'
+  },
+  {
     game: 'VRChat',
     date: '2022. 2. 26.',
     content: '소개팅',
@@ -500,6 +540,19 @@ export const contentsList: Content[] = [
     links: 'utvbkxnMSN8'
   },
   {
+    game: 'Others',
+    date: '2022. 2. 7.',
+    content: '고정멤버X이세계아이돌Songs',
+    title: '붉은 노을 (고세구 x 해루석 x 뢴트게늄 x 단답벌레 x 왁컬로이드) COVER',
+    episode: 2,
+    participants: [
+      'wakgood',
+      '고정멤버',
+      '이세계아이돌',
+    ],
+    links: '3q3RlwImdGU'
+  },
+  {
     game: 'Minecraft',
     date: '2022. 2. 4.',
     content: '왁핑몰',
@@ -535,6 +588,18 @@ export const contentsList: Content[] = [
       '시청자들',
     ],
     links: 'e7HIc1PJygQ'
+  },
+  {
+    game: 'Others',
+    date: '2022. 1. 28.',
+    content: '고정멤버X이세계아이돌Songs',
+    title: '[MV] 【주르르→??←징버거】 Choose me (Korean Cover.)',
+    episode: 1,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: 'G0g3d6b5CZM'
   },
   {
     game: 'Others',
@@ -694,6 +759,61 @@ export const contentsList: Content[] = [
       '시청자들',
     ],
     links: 'CBQ6wk2oDh0'
+  },
+  {
+    game: 'Others',
+    date: '2021. 12. 29.',
+    content: '연말공모전',
+    title: '팬치등 (신호등 COVER)- (우왁굳반응)',
+    episode: 14,
+    participants: [
+      '시청자',
+    ],
+    links: 'O9BiszmMPDg'
+  },
+  {
+    game: 'Others',
+    date: '2021. 12. 28.',
+    content: '연말공모전',
+    title: '왁케인 (우왁굳 반응)',
+    episode: 13,
+    participants: [
+      '시청자',
+    ],
+    links: 'BafGzOhz4Dg'
+  },
+  {
+    game: 'Others',
+    date: '2021. 12. 28.',
+    content: '연말공모전',
+    title: 'TEAM JONMOTSSHIPJINOON 단체곡 Twenty Twenty Two',
+    episode: 13,
+    participants: [
+      '고정멤버',
+    ],
+    links: 'xhF5iKwzM2g'
+  },
+  {
+    game: 'Others',
+    date: '2021. 12. 28.',
+    content: '연말공모전',
+    title: '왁케인 WAKCANE',
+    episode: 11,
+    participants: [
+      '시청자',
+    ],
+    links: 'zLM5foKzVtk'
+  },
+  {
+    game: 'Others',
+    date: '2021. 12. 28.',
+    content: '연말공모전',
+    title: 'Apple Quality - 우왁굳 반응',
+    episode: 10,
+    participants: [
+      '시청자',
+    ],
+    links: 'Mj-GjJGp9RU'
   },
   {
     game: 'Others',
