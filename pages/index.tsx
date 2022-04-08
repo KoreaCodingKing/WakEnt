@@ -13,18 +13,6 @@ import ChevronIcon from '../components/common/icons/Chevron';
 import WakEnterMetadata from '../components/wakenter/Meta';
 import { useDebouncer } from '../components/isedol/Members/Utils';
 
-// ToDo: remove Achive codes
-// const Links = [
-//   {
-//     name: 'WAKTAVERSE YouTube',
-//     link: 'https://www.youtube.com/c/welshcorgimessi',
-//   },
-//   {
-//     name: 'WAKZOO',
-//     link: 'https://cafe.naver.com/steamindiegame',
-//   },
-// ];
-
 const Groups = [
   {
     name: {
@@ -258,8 +246,8 @@ const Home: NextPage = () => {
                           blurDataURL={v}
                           placeholder='blur'
                           priority></Image>
-                        )
                       )
+                    )
                     }
                   </div>
                 </div>

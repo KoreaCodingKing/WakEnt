@@ -491,8 +491,8 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   DeokSuLee: [
     {
       type: 'Songs',
-      title: '도둑이 들어왔을 때 현명한 대처법',
-      links: 'O1LIo354L0w',
+      title: '이덕수 할아바이 - Memories of the last night (마지막 밤의 추억)',
+      links: '4G06wJv76Go',
       date: '21.12.30'
     },
     {
