@@ -26,7 +26,7 @@ function MyApp ({ Component, pageProps, router }: AppProps) {
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"/>
           <meta name="msapplication-TileColor" content="#1e3c34" />
           <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
-          <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a540f06d36134302a7e45bee4e17dc38"}'></script>
+          <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "da145f388b1b4b7fb9adc81847cabe15"}'></script>
         </Head>
         <motion.div
           key={router.route}
