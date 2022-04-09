@@ -113,7 +113,7 @@ export const Notices: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>NEWS</h1>
+      <h1 className={styles.title}>Notice</h1>
       <section className={styles.section}>
         <div className={styles.tabs} ref={tabRef}>
           {NoticeSources.map((v, i) => (

@@ -13,7 +13,7 @@ const IsedolPage: NextPage = (): JSX.Element => {
   return (
     <div className={styles.isedol__container}>
       <WakEnterMetadata
-        title='NEWS'
+        title='Notice'
         scope='ISEGYE IDOL'
       >
         <meta name="robots" content="noindex"></meta>

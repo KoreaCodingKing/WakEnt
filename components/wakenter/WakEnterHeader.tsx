@@ -104,7 +104,11 @@ export const WakEnterHeader = (props: HeaderBaseProps) => {
   );
   const Right = <WakMenus white={props.white}></WakMenus>;
 
-  return <HeaderBase {...props} left={Left} right={Right} full></HeaderBase>;
+  return (
+    <div className={styles.wakenter_header}>
+      <HeaderBase {...props} left={Left} right={Right} full></HeaderBase>
+    </div>
+  );
 };
 
 export default WakEnterHeader;

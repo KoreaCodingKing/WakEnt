@@ -13,8 +13,8 @@ interface IsedolMenuOverlayProps {
 
 const Links = [
   {
-    name: 'NEWS',
-    page: '/isedol/news',
+    name: 'Notice',
+    page: '/isedol/notice',
   },
   {
     name: 'MEMBERS',
