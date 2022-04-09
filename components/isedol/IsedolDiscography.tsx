@@ -52,7 +52,7 @@ export const IsedolDiscography: NextPage = () => {
         </div>
       </section>
       <section className={styles.section}>
-        <h3 className={styles.sectionTitle}>Single</h3>
+        <h3 className={styles.sectionTitle}>Original Songs</h3>
         <div className={styles.grid}>
           {IsedolOriginalSong.map(original => (
             <YouTubeCard

@@ -1060,7 +1060,7 @@ export const IsedolMembers: Record<IsedolMemberID, IsedolMember> = {
       },
       {
         type: 'pose3',
-        image: '/images/model/isedol/isedol/ine/pose_3.png',
+        image: '/images/model/isedol/ine/pose_3.png',
       },
       {
         type: 'front',
