@@ -122,7 +122,7 @@ const Home: NextPage = () => {
           <section className={classes(styles.page)} data-page={1}>
             <div className={classes(styles.representInner, styles.group)}>
               <div className={styles.hero}>
-                <p>메타버스의 선두자</p>
+                <p>메타버스의 선구자</p>
                 <p>메타버스의 현재</p>
                 <h1>WAKTAVERSE.</h1>
               </div>
