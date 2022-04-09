@@ -11,7 +11,10 @@ export interface GomemContents {
   date: string
 }
 
-export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
+export const gomemContents: Record<
+  GomemMemberID,
+  GomemContents[]
+> = {
   SecretGirl: [
     {
       type: 'Songs',
@@ -646,4 +649,6 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   KarnarJungtur: [],
   CallyCarly: [],
+  DogCat: [],
+  GilHatnimSongE: []
 };

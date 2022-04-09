@@ -23,6 +23,11 @@ export interface GomemMember extends BasicMember {
   career: { date: string; desc: string }[]
 }
 
+export interface CoffinMember extends BasicMember {
+  description: string
+  career: { date: string; desc: string }[]
+}
+
 export interface IsedolMember extends BasicMember {
   signImage: string
   color: string
@@ -69,7 +74,8 @@ export type GomemMemberID =
   | 'Roentgenium'
   | 'Freeter'
   | 'KarnarJungtur'
-  // | 'DogCat'
+  | 'DogCat'
+  | 'GilHatnimSongE'
 
 export type WakMemberID = 'wakgood'
 
@@ -79,9 +85,10 @@ export const enum GomemUnit {
   Specter = 'specter',
   Gomem = 'gomem',
   Contents = 'contents',
+  Coffin = 'coffin'
 }
 
-export type planetUnitID = 'specter' | 'gomem' | 'contents'
+export type planetUnitID = 'specter' | 'gomem' | 'contents' | 'coffin'
 
 export interface GomemUnitMetadata {
   name: string
@@ -101,7 +108,6 @@ export const GomemUnits: Record<planetUnitID, GomemUnitMetadata> = {
       'GwakChoonSik',
       'KwonMin',
       'KimchiMandoo',
-      // 'DogCat',
     ],
   },
   [GomemUnit.Gomem]: {
@@ -124,6 +130,14 @@ export const GomemUnits: Record<planetUnitID, GomemUnitMetadata> = {
       'Freeter',
       'KarnarJungtur',
     ],
+  },
+  [GomemUnit.Coffin]: {
+    name: '관',
+    description: '더이상 왁타버스에서 볼 수 없는 멤버들이다.',
+    members: [
+      'DogCat',
+      'GilHatnimSongE'
+    ]
   },
   [GomemUnit.Contents]: {
     name: '고멤컨텐츠',
@@ -170,7 +184,6 @@ export const GomemUnits: Record<planetUnitID, GomemUnitMetadata> = {
  *   멤버 전체가 나오는 경우에는 멤버 개개인 전체에 링크를 넣지 않고 행성에 링크를 등재합니다.
  */
 export const GomemSeasonMembers: Record<
-  // Exclude<GomemMemberID, 'DogCat'>,
   GomemMemberID,
   GomemMember
 > = {
@@ -952,41 +965,44 @@ export const GomemSeasonMembers: Record<
       },
     ],
   },
-  // DogCat: {
-  //   name: {
-  //     en: 'DogCat',
-  //     ko: '개냥이',
-  //   },
-  //   description: '내추럴 컨셉의 개냥이 [데이터로만 남아 있고 등재 X]',
-  //   image: '/images/model/gomem/dogcat/body.png',
-  //   links: [
-  //     {
-  //       name: 'Twitch',
-  //       icon: 'twitch',
-  //       link: 'https://www.twitch.tv/dogcat0926',
-  //     },
-  //     {
-  //       name: 'YouTube',
-  //       icon: 'youtube',
-  //       link: 'https://www.youtube.com/channel/UCRSEg0NN1-7QcAQDDzSIY6Q',
-  //     },
-  //     {
-  //       name: 'Instagram',
-  //       icon: 'instagram',
-  //       link: 'https://www.instagram.com/wak_dogcat/',
-  //     },
-  //   ],
-  //   career: [
-  //     {
-  //       date: '21.05.22',
-  //       desc: 'VRChat 고정멤버 시즌1 합격'
-  //     },
-  //     {
-  //       date: '21.08.29',
-  //       desc: 'R.I.P'
-  //     }
-  //   ]
-  // },
+  DogCat: {
+    name: {
+      en: 'DogCat',
+      ko: '개냥이',
+    },
+    description: '내추럴 컨셉의 개냥이 [데이터로만 남아 있고 등재 X]',
+    image: '/images/model/gomem/dogcat/body.png',
+    links: [],
+    career: [
+      {
+        date: '21.05.22',
+        desc: 'VRChat 고정멤버 시즌1 합격'
+      },
+      {
+        date: '21.08.29',
+        desc: 'R.I.P'
+      }
+    ]
+  },
+  GilHatnimSongE: {
+    name: {
+      en: 'GilHatnimSong-E',
+      ko: '길햇님송이',
+    },
+    description: '내추럴 컨셉의 길햇님송이 [데이터로만 남아 있고 등재 X]',
+    image: '',
+    links: [],
+    career: [
+      {
+        date: '21.05.22',
+        desc: 'VRChat 고정멤버 시즌1 합격'
+      },
+      {
+        date: '21.08.29',
+        desc: 'R.I.P'
+      }
+    ]
+  },
 };
 
 export const IsedolMemberNameImages: Record<IsedolMemberID, string> = {

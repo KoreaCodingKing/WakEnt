@@ -43,6 +43,12 @@ export const Planets: {
     planet: 'specter',
     youtube: []
   },
+  // coffin: {
+  //   name: '관',
+  //   description: '왁타버스를 떠난 그들....',
+  //   planet: 'coffin',
+  //   youtube: []
+  // },
   wakgood: {
     name: '왁물원',
     description:
