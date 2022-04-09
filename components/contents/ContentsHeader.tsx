@@ -45,7 +45,11 @@ export const ContentsHeader = ({white}: ContentHeaderProps) => {
     </div>
   );
 
-  return <HeaderBase left={Left} right={Right}></HeaderBase>;
+  return (
+    <div className={styles.contents_header}>
+      <HeaderBase left={Left} right={Right}></HeaderBase>
+    </div>
+  );
 };
 
 export default ContentsHeader;
