@@ -550,7 +550,7 @@
   }
   .card:nth-child(3) {
     max-width: 850px;
-    height: 34vw;
+    height: 50vw;
     max-height: 486px;
     min-height: 230px;
 
@@ -564,6 +564,10 @@
       grid-column-end: 1;
       grid-row-start: 2;
       grid-row-end: 3;
+
+      height: 50vw;
+      max-height: 486px;
+      min-height: 230px;
     }
 
     cursor: pointer;
