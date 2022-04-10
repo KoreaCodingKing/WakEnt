@@ -46,6 +46,115 @@
     height: 50px;
     aspect-ratio: 9/16;
   }
+
+  .mouseOver_desc {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .selected_mouseOver {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &:hover {
+    .mouseOver_desc {
+      visibility: visible;
+      position: absolute;
+      
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      color: rgb(247, 233, 246);
+
+      opacity: 1;
+
+      .office_detail {
+        margin: 10px;
+
+        &.selected {
+          opacity: 0;
+
+          transition: 0.3s opacity cubic-bezier(0.19, 1, 0.22, 1);
+        }
+      }
+
+      transition: 2s opacity cubic-bezier(0.19, 1, 0.22, 1);
+    }
+  }
+  
+    .selected_mouseOver {
+      visibility: visible;
+      z-index: 200 !important;
+      position: absolute;
+
+      top: 5%;
+      right: 3%;
+
+      opacity: 1;
+      font-size: 14px;
+      font-weight: 700;
+      color: rgb(247, 233, 246);
+
+      &:hover {
+        font-size: 15px;
+
+        transition: 0.5s font-size cubic-bezier(0.19, 1, 0.22, 1);
+      }
+
+      transition: 1s opacity cubic-bezier(0.19, 1, 0.22, 1);
+
+      @media screen and (max-width: $maxTablet) {
+        font-size: 12px !important;
+      }
+    
+      @media screen and (max-width: $maxMobile) {
+        font-size: 10px !important;
+      }
+    }
+
+    .detail_desc {
+      background-color: rgb(255, 255, 255, 0.8);
+
+      padding: 4px;
+      border-radius: 12px;
+
+      font-size: 12px !important;
+      color: #333;
+      word-break: keep-all;
+
+      transition: 1s all cubic-bezier(0.19, 1, 0.22, 1);
+
+      @media screen and (max-width: $maxTablet) {
+        width: 30vw;
+
+        .closeicon_cover {
+          width: 18px;
+        }
+        p {
+          margin: 0;
+          margin-bottom: 10px;
+          font-size: 12px !important;
+        }
+      }
+    
+      @media screen and (max-width: $maxMobile) {
+        width: 30vw;
+        .closeicon_cover {
+          width: 12px;
+        }
+
+        p {
+          margin: 0;
+          margin-bottom: 8px;
+          font-size: 10px !important;
+        }
+      }
+    }
 }
 
 .image_inner_container {
