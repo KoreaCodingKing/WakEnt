@@ -1,9 +1,8 @@
 export type Game =
   | 'Minecraft'
   | 'VRChat'
-  | 'ProsoccerOnline'
   | 'AmongUs'
-  | 'ZaunLeague'
+  | 'Leagues'
   | 'Others'
 
 export type ContentName =
@@ -14,6 +13,7 @@ export type ContentName =
   | '마인크래프트X전쟁'
   | '건축콘테스트'
   | '자운리그(Valorant)'
+  | '와크무런 리그'
   | '프로싸커온라인 리그'
   | '커플대항전'
   | '상황극'
@@ -32,11 +32,10 @@ export enum GameByEnum {
   VRChat = 'VRChat',
   LeagueOfLegend = 'LeagueOfLegend',
   Valorant = 'Valorant',
-  ProsoccerOnline = 'ProsoccerOnline',
   BattleGround = 'BattleGround',
   FIFA20 = 'FIFA20',
   AmongUs = 'AmongUs',
-  ZaunLeague = 'ZaunLeague',
+  Leagues = 'Leagues',
   Others = 'Others',
 }
 
@@ -49,6 +48,7 @@ export enum contentsNameByEnum {
   '건축콘테스트' = '건축콘테스트',
   '자운리그' = '자운리그',
   '프로싸커온라인 리그' = '프로싸커온라인 리그',
+  '와크무런 리그' = '와크무런 리그',
   '커플대항전' = '커플대항전',
   '상황극' = '상황극',
   '소개팅' = '소개팅',
@@ -94,13 +94,6 @@ export const ContentByGame: Record<Game, GameContents> = {
     ],
     image: '/images/logo/logo_vrchat.png'
   },
-  [GameByEnum.ProsoccerOnline]: {
-    name: '프로싸커 온라인',
-    contentName: [
-      '프로싸커온라인 리그'
-    ],
-    image: '/images/logo/logo_prosoccer.png'
-  },
   [GameByEnum.AmongUs]: {
     name: '어몽어스',
     contentName: [
@@ -108,10 +101,12 @@ export const ContentByGame: Record<Game, GameContents> = {
     ],
     image: '/images/logo/logo_amongus.png'
   },
-  [GameByEnum.ZaunLeague]: {
-    name: '자운리그',
+  [GameByEnum.Leagues]: {
+    name: '왁타버스 리그/토너먼트',
     contentName: [
-      '자운리그(Valorant)'
+      '자운리그(Valorant)',
+      '프로싸커온라인 리그',
+      '와크무런 리그'
     ],
     image: '/images/zaun/logo_zaun_black.png'
   },
@@ -139,6 +134,18 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: 'Minecraft',
+    date: '2022. 04. 09.',
+    content: '왁핑몰',
+    title: '미용실에서 머리 감겨줄 때 특 - 왁핑몰 25화',
+    episode: 22,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: 'H3KQnxACr2M'
+  },
+  {
     game: 'VRChat',
     date: '2022. 4. 08.',
     content: '고정멤버합방',
@@ -164,7 +171,7 @@ export const contentsList: Content[] = [
   },
   {
     game: 'VRChat',
-    date: '2022. 4. 07.',
+    date: '2022. 04. 07.',
     content: '고정멤버합방',
     title: '간수의 눈을 속여라! vs 죄수의 탈출을 막아라! - 감옥탈출 고멤합방',
     episode: 11,
@@ -175,11 +182,35 @@ export const contentsList: Content[] = [
     links: '2YLjmKcTTdc'
   },
   {
-    game: 'ZaunLeague',
+    game: 'Leagues',
+    date: '2022. 04. 02.',
+    content: '와크무런 리그',
+    title: '기자가...말대꾸?? - 그란7 와크-무런 대회 기자간담회',
+    episode: 4,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: 'UVjz1HqfARU'
+  },
+  {
+    game: 'Leagues',
+    date: '2022. 03. 30.',
+    content: '와크무런 리그',
+    title: '그란투리스모7 와크-무런 리그 조지명식',
+    episode: 3,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: 'qRlth8FoKSk'
+  },
+  {
+    game: 'Leagues',
     date: '2022. 3. 30.',
     content: '자운리그(Valorant)',
     title: '왁타버스 발로란트 합방',
-    episode: 1,
+    episode: 2,
     participants: [
       'wakgood',
       '고정멤버',
@@ -198,6 +229,18 @@ export const contentsList: Content[] = [
       '시청자들',
     ],
     links: 'JsxaxK78dKY'
+  },
+  {
+    game: 'Leagues',
+    date: '2022. 03. 28.',
+    content: '와크무런 리그',
+    title: '그란투리스모7 와크-무런 대회 타임어택 예선',
+    episode: 1,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: '61nRYWcel_o'
   },
   {
     game: 'Others',
@@ -738,7 +781,7 @@ export const contentsList: Content[] = [
     links: 'kraTRdvCYOI'
   },
   {
-    game: 'ProsoccerOnline',
+    game: 'Leagues',
     date: '2021. 12. 28.',
     content: '프로싸커온라인 리그',
     title: '이세돌 축구대회 나가다!',
@@ -940,7 +983,7 @@ export const contentsList: Content[] = [
     links: 'o3_wTcGx3ds'
   },
   {
-    game: 'ProsoccerOnline',
+    game: 'Leagues',
     date: '2021. 12. 21.',
     content: '프로싸커온라인 리그',
     title: '고멤 + 이세돌 참가! 프로싸커 온라인 토너먼트',
@@ -1086,7 +1129,7 @@ export const contentsList: Content[] = [
     links: 'xdEkbikwnnE'
   },
   {
-    game: 'ProsoccerOnline',
+    game: 'Leagues',
     date: '2021. 11. 30.',
     content: '프로싸커온라인 리그',
     title: '역대급 11:11 축구게임이 나왔습니다. 현실감 미쳤음 - 프로싸커 온라인',

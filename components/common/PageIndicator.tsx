@@ -29,7 +29,8 @@ export const PageIndicator = ({
               !slide || !paused ? styles.active : styles.paused,
               typeof slide === 'number' && styles.animation
             )}
-            style={{ animationPlayState: paused ? 'paused' : 'running',
+            style={{
+              animationPlayState: paused ? 'paused' : 'running',
               animationDuration: `${slide}ms` }}
           ></span>
         </button>

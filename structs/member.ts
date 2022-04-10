@@ -440,7 +440,7 @@ export const GomemSeasonMembers: Record<
     },
     description:
       '컨셉 같은 내추럴의 멤버. 대학교 입학 때 어머니가 사주신 옷을 입는다.',
-    image: '/images/model/gomem/Kwonmin/body.png',
+    image: '/images/model/gomem/kwonmin/body.png',
     links: [
       {
         name: 'Twitch',
