@@ -15,7 +15,6 @@ import ChevronIcon from '../../common/icons/Chevron';
 interface OfficeImage {
   path: string
   title: string,
-  desc: string,
 }
 
 interface ImageTransformData {
@@ -34,32 +33,26 @@ const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
     {
       path: '/images/building/entrance.png',
       title: '왁엔터테인먼트 입구',
-      desc: '사무실 입구 앞 입니다. 엘레베이터에 내린 후 바로 볼 수 있습니다.'
     },
     {
       path: '/images/building/entrance_door.png',
       title: '왁엔터테인먼트 입구 현관',
-      desc: '사무실 현관입니다. 바로 안내데스크에서 안내를 받을 수 있습니다.'
     },
     {
       path: '/images/building/recording_room_mixer.png',
       title: '왁엔터테인먼트 스튜디오',
-      desc: '왁엔터테인먼트 최고의 음악 장비들이 있는 곳입니다.'
     },
     {
       path: '/images/building/member_hall.png',
       title: '왁엔터테인먼트 멤버 복도',
-      desc: '왁엔터테인먼트의 아이돌 이세계아이돌 이미지가 있는 복도입니다. 산소 발생기를 설치하여 편히 다닐 수 있습니다.'
     },
     {
       path: '/images/building/dance_room.png',
       title: '왁엔터테인먼트 안무 연습실',
-      desc: '최신 방음벽과 독일제 목재 바닥으로 최고의 컨디션으로 안무를 출 수 있는 곳입니다.'
     },
     {
       path: '/images/building/av_room.png',
       title: '왁엔터테인먼트 시청각실',
-      desc: '왁엔터테인먼트의 시청각실로 최고의 음향과 프로젝터로 시청각 자료를 볼 수 있습니다.'
     },
   ];
 
@@ -208,33 +201,6 @@ const SecondSection = ({ className, onScroll }: AboutSectionProps) => {
                   }
                   >{officeImage.title}</p>
                 </div>
-                {(selectedIndex || selectedIndex===1 || selectedIndex === 0) && selectedIndex === index && (
-                  <div className={styles.selected_mouseOver}>
-
-                    {!isShowDetail && (
-                      <p className={styles.btn_desc}
-                        onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-                          e.stopPropagation();
-                          setIsShowDetail(true);
-                        }
-                      }>클릭하여 상세보기</p>
-                    )}
-
-                    {isShowDetail && (
-                      <div className={styles.detail_desc}>
-                        <div className={styles.closeicon_cover}
-                          onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-                            e.stopPropagation();
-                            setIsShowDetail(false);
-                         }}>
-                          <ChevronIcon stroke={1} right></ChevronIcon>
-                        </div>
-                        <p className={styles.photo_title}>{officeImage.title}</p>
-                        <p className={styles.photo_desc}>{officeImage.desc}</p>
-                      </div>
-                    )}
-                  </div>
-                )}
               </motion.div>
             );
           })}
