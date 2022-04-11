@@ -17,10 +17,6 @@ const variants = {
 
 function MyApp ({ Component, pageProps, router }: AppProps) {
   useEffect(() => {
-    if (process.env.NODE_ENV !== 'production') {
-      return;
-    }
-
     const handleRouteChange = (url: URL) => {
       gtag.pageview(url);
     };
