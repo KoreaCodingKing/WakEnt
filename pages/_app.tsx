@@ -8,6 +8,7 @@ import * as gtag from "../utils/gtag";
 import { motion } from 'framer-motion';
 import { RecoilRoot } from 'recoil';
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const variants = {
   hidden: { opacity: 0 },
@@ -16,15 +17,16 @@ const variants = {
 };
 
 function MyApp ({ Component, pageProps, router }: AppProps) {
+  const getUseRouter = useRouter();
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
       gtag.pageview(url);
     };
-    router.events.on("routeChangeComplete", handleRouteChange);
+    getUseRouter.events.on("routeChangeComplete", handleRouteChange);
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
+      getUseRouter.events.off("routeChangeComplete", handleRouteChange);
     };
-  }, [router.events]);
+  }, [getUseRouter.events]);
 
   return (
     <RecoilRoot>
