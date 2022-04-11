@@ -3,6 +3,7 @@ import 'normalize.css';
 
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import * as gtag from "../utils/gtag";
 
 import { motion } from 'framer-motion';
 import { RecoilRoot } from 'recoil';
@@ -20,16 +21,14 @@ function MyApp ({ Component, pageProps, router }: AppProps) {
       return;
     }
 
-    const handleRouteChange = (url: any) => {
-      window.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
-        page_path: url,
-      })
-    }
-    router.events.on('routeChangeComplete', handleRouteChange)
+    const handleRouteChange = (url: URL) => {
+      gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
     <RecoilRoot>
