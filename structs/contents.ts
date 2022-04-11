@@ -134,6 +134,18 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: 'Leagues',
+    date: '2022. 04. 10.',
+    content: '와크무런 리그',
+    title: '만년 꼴등 히키킹의 반란? + 피로장의 운명은? - 그란투리스모7 와크-무런 대회 4강전',
+    episode: 5,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: 'bunr0n4Af-k'
+  },
+  {
     game: 'Minecraft',
     date: '2022. 04. 09.',
     content: '왁핑몰',
