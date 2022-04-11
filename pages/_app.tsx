@@ -8,7 +8,6 @@ import * as gtag from "../utils/gtag";
 import { motion } from 'framer-motion';
 import { RecoilRoot } from 'recoil';
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 
 const variants = {
   hidden: { opacity: 0 },
