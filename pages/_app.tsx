@@ -17,16 +17,15 @@ const variants = {
 };
 
 function MyApp ({ Component, pageProps, router }: AppProps) {
-  const getUseRouter = useRouter();
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
       gtag.pageview(url);
     };
-    getUseRouter.events.on("routeChangeComplete", handleRouteChange);
+    router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
-      getUseRouter.events.off("routeChangeComplete", handleRouteChange);
+      router.events.off("routeChangeComplete", handleRouteChange);
     };
-  }, [getUseRouter.events]);
+  }, [router.events]);
 
   return (
     <RecoilRoot>
