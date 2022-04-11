@@ -48,6 +48,64 @@
 
   min-width: 40vw;
 
+  $link-color: #1667e0;
+  .link {
+    display: flex;
+    width: fit-content;
+    align-self: center;
+
+    font-size: 1.3em;
+    font-weight: 600;
+    letter-spacing: -1px;
+
+
+    @media screen and (max-width: $maxTablet) {
+      font-size: 1.5em;
+
+      svg {
+        margin-left: 6px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: #000;
+      transition: color 0.23s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    @media screen and (max-width: $maxMobile) {
+      font-size: 1em;
+    }
+
+    transition: color 0.23s cubic-bezier(0.19, 1, 0.22, 1);
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $link-color;
+      cursor: pointer;
+
+      a {
+        color: $link-color;
+      }
+
+      svg {
+        stroke: $link-color;
+
+        transform: scale(1.15);
+      }
+    }
+
+    svg {
+      margin: auto;
+      margin-left: 10px;
+      transition: stroke 0.23s cubic-bezier(0.19, 1, 0.22, 1),
+        transform 0.23s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+  }
+
   .motto_top_quote {
     margin-bottom: 20px;
     align-self: flex-start;
@@ -67,6 +125,7 @@
     color: #999999;
   }
   .motto_desc {
+    margin-bottom: 40px;
     align-self: flex-end;
     font-size: 1em;
     color: #BBBBBB;
@@ -82,6 +141,7 @@
       font-size: 1.5em;
     }
     .motto_desc {
+      margin-bottom: 20px;
       font-size: 0.9em;
     }
   }
@@ -104,6 +164,7 @@
       font-size: 1.5em;
     }
     .motto_desc {
+      margin-bottom: 10px;
       font-size: 0.75em;
     }
   }
