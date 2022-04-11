@@ -6,6 +6,7 @@ import Head from 'next/head';
 
 import { motion } from 'framer-motion';
 import { RecoilRoot } from 'recoil';
+import { useEffect } from 'react';
 
 const variants = {
   hidden: { opacity: 0 },
@@ -14,6 +15,22 @@ const variants = {
 };
 
 function MyApp ({ Component, pageProps, router }: AppProps) {
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'production') {
+      return;
+    }
+
+    const handleRouteChange = (url: any) => {
+      window.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
+        page_path: url,
+      })
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+
   return (
     <RecoilRoot>
       <>
