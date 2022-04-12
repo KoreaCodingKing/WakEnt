@@ -23,6 +23,7 @@ export type ContentName =
   | '이세계아이돌합방'
   | '고정멤버X이세계아이돌'
   | '버터뷰'
+  | '짧타버스'
   | '왁타버스콜라보Songs'
   | '연말공모전'
   | '기타'
@@ -57,6 +58,7 @@ export enum contentsNameByEnum {
   '이세계아이돌합방' = '이세계아이돌합방',
   '고정멤버X이세계아이돌' = '고정멤버X이세계아이돌',
   '버터뷰' = '버터뷰',
+  '짧타버스' = '짧타버스',
   '왁타버스콜라보Songs' = '왁타버스콜라보Songs',
   '연말공모전' = '연말공모전',
   '기타' = '기타',
@@ -90,6 +92,7 @@ export const ContentByGame: Record<Game, GameContents> = {
       'VR챗 변신맨',
       '고정멤버X이세계아이돌',
       '버터뷰',
+      '짧타버스',
       '기타'
     ],
     image: '/images/logo/logo_vrchat.png'
@@ -134,6 +137,19 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: 'VRChat',
+    date: '2022. 04. 12.',
+    content: '기타',
+    title: '루석바 확장공사',
+    episode: 13,
+    participants: [
+      'wakgood',
+      '시청자들',
+      '고정멤버'
+    ],
+    links: 'pfH_KWiOlLY'
+  },
+  {
     game: 'Leagues',
     date: '2022. 04. 10.',
     content: '와크무런 리그',
@@ -156,6 +172,18 @@ export const contentsList: Content[] = [
       '시청자들',
     ],
     links: 'H3KQnxACr2M'
+  },
+  {
+    game: 'VRChat',
+    date: '2022. 04. 09.',
+    content: '짧타버스',
+    title: '좀비 - 짧타버스 #Shorts',
+    episode: 22,
+    participants: [
+      'wakgood',
+      '고정멤버',
+    ],
+    links: 'EBBW2Ylb3ks'
   },
   {
     game: 'VRChat',
