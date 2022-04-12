@@ -138,6 +138,18 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: 'VRChat',
+    date: '2022. 04. 13.',
+    content: '버터뷰',
+    title: '스푼 1위 출신 버튜버? - 버터뷰 3화',
+    episode: 3,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: 'ApJzKKUzQqA'
+  },
+  {
+    game: 'VRChat',
     date: '2022. 04. 12.',
     content: '기타',
     title: '루석바 확장공사',
