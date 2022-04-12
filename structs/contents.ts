@@ -153,13 +153,25 @@ export const contentsList: Content[] = [
     date: '2022. 04. 12.',
     content: '기타',
     title: '루석바 확장공사',
-    episode: 13,
+    episode: 14,
     participants: [
       'wakgood',
       '시청자들',
       '고정멤버'
     ],
     links: 'pfH_KWiOlLY'
+  },
+  {
+    game: 'VRChat',
+    date: '2022. 04. 11.',
+    content: '기타',
+    title: '애니메이션 등급을 정하는 컨텐츠 - 티어게임',
+    episode: 13,
+    participants: [
+      'wakgood',
+      '고정멤버'
+    ],
+    links: 'EOFbEv76ygo'
   },
   {
     game: 'Leagues',
