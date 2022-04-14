@@ -12,6 +12,7 @@ export type ContentName =
   | '미니모르즈비'
   | '마인크래프트X전쟁'
   | '건축콘테스트'
+  | '마인크래프트 배치고사'
   | '자운리그(Valorant)'
   | '와크무런 리그'
   | '프로싸커온라인 리그'
@@ -47,6 +48,7 @@ export enum contentsNameByEnum {
   '미니모르즈비' = '미니모르즈비',
   '마인크래프트X전쟁' = '마인크래프트X전쟁',
   '건축콘테스트' = '건축콘테스트',
+  '마인크래프트 배치고사' = '마인크래프트 배치고사',
   '자운리그' = '자운리그',
   '프로싸커온라인 리그' = '프로싸커온라인 리그',
   '와크무런 리그' = '와크무런 리그',
@@ -136,6 +138,18 @@ export interface Content {
 }
 
 export const contentsList: Content[] = [
+  {
+    game: 'Minecraft',
+    date: '2022. 04. 13.',
+    content: '왁핑몰',
+    title: '건축가들의 작품을 평가하고 롤처럼 등급을 매기는 컨텐츠 - 마인크래프트 배치고사',
+    episode: 1,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: 'mEL2NaCEfRc'
+  },
   {
     game: 'VRChat',
     date: '2022. 04. 13.',
