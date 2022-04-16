@@ -168,6 +168,12 @@ export const gomemContents: Record<
   PoongSin: [
     {
       type: 'Songs',
+      title: '[노래 MV] 느그봄 4K',
+      links: 'PkvXQo8z1nE',
+      date: '22.04.15'
+    },
+    {
+      type: 'Songs',
       title: 'LEON (레옹) - 비밀소녀 x 풍신 COVER - (IU)',
       links: 'U8i637tKoIY',
       date: '22.03.18'
@@ -634,6 +640,12 @@ export const gomemContents: Record<
     },
   ],
   Freeter: [
+    {
+      type: 'Songs',
+      title: '광대 (융터르, 프리터 COVER)',
+      links: 'Ps3vAIB3fYY',
+      date: '22.04.17'
+    },
     {
       type: 'Contents',
       title: '프리터의 합방 대비 훈련',

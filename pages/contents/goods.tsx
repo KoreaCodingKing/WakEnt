@@ -1,36 +1,23 @@
 import { NextPage } from 'next';
 
 import styles from '../../styles/components/contents/Goods.module.scss';
-import parentStyles from '../../styles/pages/index.module.scss';
 import WakEnterMetadata from '../../components/wakenter/Meta';
-import WakEnterHeader from '../../components/wakenter/WakEnterHeader';
-import PreparePage from '../../components/common/PreparePage';
+import GoodsMain from '../../components/contents/GoodsMain';
+import ContentsHeader from '../../components/contents/ContentsHeader';
 
-const Goods: NextPage = (): JSX.Element => {
-  const flag = false; // 임시 화면
-
+const Goods: NextPage = () => {
   return (
-    <div className={styles.isedol__container}>
+    <div className={styles.goods_container}>
       <WakEnterMetadata
         title='WakEnter Goods'
         scope=''
         description='왁엔터테인먼트에서 추억을 쌓으세요.'
-        image='/images/isedol_landing.png'
+        image='/images/landing.png'
       ></WakEnterMetadata>
-      <div className={styles.goods_contents}>
-        <header className={parentStyles.whiteBackground}>
-          <WakEnterHeader></WakEnterHeader>
-        </header>
-        {!flag && (
-          <div>
-            <PreparePage></PreparePage>
-          </div>
-        )}
-        {flag && (
-          <div>
-          </div>
-        )}
-      </div>
+      <header>
+        <ContentsHeader fitHeight={true}></ContentsHeader>
+      </header>
+      <GoodsMain></GoodsMain>
     </div>
   );
 };

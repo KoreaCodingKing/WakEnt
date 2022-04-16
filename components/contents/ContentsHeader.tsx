@@ -7,7 +7,8 @@ import HeaderBase from '../common/Header';
 import { WakEnterLogo } from '../wakenter/WakEnterHeader';
 
 interface ContentHeaderProps {
-  white?: boolean
+  white?: boolean,
+  fitHeight?: boolean
 }
 
 const Menus = [
@@ -21,7 +22,7 @@ const Menus = [
   }
 ];
 
-export const ContentsHeader = ({white}: ContentHeaderProps) => {
+export const ContentsHeader = ({white, fitHeight}: ContentHeaderProps) => {
   const router = useRouter();
 
   const Left = (
@@ -47,7 +48,7 @@ export const ContentsHeader = ({white}: ContentHeaderProps) => {
 
   return (
     <div className={styles.contents_header}>
-      <HeaderBase left={Left} right={Right}></HeaderBase>
+      <HeaderBase left={Left} right={Right} fitHeight={fitHeight}></HeaderBase>
     </div>
   );
 };

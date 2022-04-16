@@ -12,6 +12,10 @@
     position: fixed;
   }
 
+  &.fitHeight {
+    height: fit-content !important;
+  }
+
   width: 90%;
 
   @media screen and (min-width: $maxTablet) {

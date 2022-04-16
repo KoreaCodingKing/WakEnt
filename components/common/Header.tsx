@@ -8,6 +8,7 @@ export interface HeaderBaseProps {
   right?: ReactNode
   white?: boolean
   full?: boolean
+  fitHeight?: boolean
 }
 
 export const HeaderBase = (props: HeaderBaseProps) => {
@@ -17,7 +18,8 @@ export const HeaderBase = (props: HeaderBaseProps) => {
         styles.header,
         props.fixed && styles.fixed,
         props.white && styles.white,
-        props.full && styles.full
+        props.full && styles.full,
+        props.fitHeight && styles.fitHeight
       )}
     >
       <div className={styles.left}>{props.left}</div>
