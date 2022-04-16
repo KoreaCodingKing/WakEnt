@@ -18,7 +18,7 @@ const banners = [
     tab: '전체',
     image: '/images/goods/banner/banner_first_slide.jpg'
   }
-]
+];
 
 export const CustomButton = ({children, active, onClick}: CustomButtonProps): JSX.Element => {
   return (
@@ -27,7 +27,7 @@ export const CustomButton = ({children, active, onClick}: CustomButtonProps): JS
       {children}
     </div>
   );
-}
+};
 
 const GoodsMain: NextPage = () => {
   const [tab, setTab] = useState<string>('전체');
@@ -36,7 +36,7 @@ const GoodsMain: NextPage = () => {
   const tabCache: HTMLElement[] = [];
 
   useHorizonalPageScroller(tabRef, 1000, tabCache);
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.banner_box} ref={tabRef}>
@@ -47,7 +47,7 @@ const GoodsMain: NextPage = () => {
               element && tabCache.push(element)
             }
           >
-            <CustomButton 
+            <CustomButton
               onClick={() => setTab('전체')} active={'전체' === tab}>
               전체
             </CustomButton>
@@ -60,7 +60,7 @@ const GoodsMain: NextPage = () => {
                 element && tabCache.push(element)
               }
             >
-              <CustomButton 
+              <CustomButton
                 onClick={() => setTab(item)} active={item === tab}>
                 {itemCategory[item as GoodsCategory].categoryName}
               </CustomButton>
@@ -70,7 +70,7 @@ const GoodsMain: NextPage = () => {
       </div>
       <div className={styles.banners}>
         <div className={styles.title_box}>
-          <p>이세계아이돌의 막내 <span>" 비챤 "</span> 이</p>
+          <p>이세계아이돌의 막내 <span>&quot; 비챤 &quot;</span> 이</p>
           <p>탐내하는 굿즈들을 모았습니다.</p>
         </div>
         {banners.map((banner, index) => (
@@ -85,12 +85,12 @@ const GoodsMain: NextPage = () => {
             ></Image>
           </div>
         ))}
-        </div>
+      </div>
       <div>
         <p>상품 준비중입니다.</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default GoodsMain;
