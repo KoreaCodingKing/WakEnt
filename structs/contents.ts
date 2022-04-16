@@ -140,10 +140,22 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: 'Minecraft',
+    date: '2022. 04. 16.',
+    content: '건축콘테스트',
+    title: '못한 팀 1팀씩 강퇴하는 컨텐츠 - 마인크래프트 스피드 건축 강퇴 레이스',
+    episode: 77,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: 'mBqcUD5z_Es'
+  },
+  {
+    game: 'Minecraft',
     date: '2022. 04. 13.',
-    content: '왁핑몰',
+    content: '건축콘테스트',
     title: '건축가들의 작품을 평가하고 롤처럼 등급을 매기는 컨텐츠 - 마인크래프트 배치고사',
-    episode: 1,
+    episode: 76,
     participants: [
       'wakgood',
       '시청자들',
