@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import React, { ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import React, { ReactNode, useCallback, useRef, useState } from "react";
 import { GoodsCategory, itemCategory, items } from "../../structs/goods";
 import { useHorizonalPageScroller } from "../common/Scroll";
 
@@ -125,15 +125,15 @@ const GoodsMain: NextPage = () => {
               {banner.title}
             </div>
           )
-        )}
+          )}
       </div>
       <div className={styles.slideBtns}>
-          <div className={classes(styles.slideBtn, styles.prev_button)}
-            onClick={() => sliderPrevHandler()}
-          ></div>
-          <div className={classes(styles.slideBtn, styles.next_button)}
-            onClick={() => sliderNextHandler()}
-          ></div>
+        <div className={classes(styles.slideBtn, styles.prev_button)}
+          onClick={() => sliderPrevHandler()}
+        ></div>
+        <div className={classes(styles.slideBtn, styles.next_button)}
+          onClick={() => sliderNextHandler()}
+        ></div>
       </div>
       <div>
         <p>상품 준비중입니다.</p>
