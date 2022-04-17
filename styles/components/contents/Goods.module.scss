@@ -1,9 +1,12 @@
 @import "../../mixin.scss";
+
 .goods_container {
   position: relative;
 }
 
 .container {
+  overflow: hidden;
+  position: relative;
   width: 100vw;
   max-width: 1000px;
   margin: 0 auto;
@@ -88,10 +91,19 @@
 
 .banners {
   position: relative;
+  display: flex;
+  width: calc(100% * var(--width));
+
+  transform: translateX(var(--location));
+  transition: 1s transform cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.banner {
+  position: relative;
   width: 100%;
   margin: 0 auto;
 
-  .banner {
+  .bannerImage {
     position: relative;
     aspect-ratio: 9/3;
   }
@@ -100,7 +112,17 @@
     z-index: 10;
     position: absolute;
     top: 40%;
-    left: 5%;
+    left: 10%;
+
+    &.background {
+      padding: 10px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      top: 60%;
+      p {
+        color: #333 !important;
+      }
+    }
 
     p {
       font-size: 20px;
@@ -116,7 +138,11 @@
 
   @media screen and (max-width: $maxTablet) {
     font-size: 0.95em;
-
+    .title_box {
+      &.background {
+        padding: 8px !important;
+      }
+    }
 
   }
 
@@ -131,6 +157,113 @@
         span {
           font-size: 18px;
         }
+      }
+
+      .title_box {
+        &.background {
+          padding: 4px !important;
+        }
+      }
+    }
+  }
+}
+
+.slideBtns {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: 48%;
+  transform: translateY(-50%);
+
+  width: 100%;
+  padding: 0 10px;
+  
+  .slideBtn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    
+    border-radius: 20%;
+
+    background: rgba(255, 255, 255, 0.8);
+    
+    cursor: pointer;
+  }
+
+  .prev_button {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 11px;
+      left: 14px;
+
+      width: 40%;
+      height: 40%;
+      border-top: 2px solid #333;
+      border-right: 2px solid #333;
+
+      transform: rotate(225deg);
+    }
+  }
+
+  .next_button {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 11px;
+      left: 8px;
+
+      width: 40%;
+      height: 40%;
+      border-top: 2px solid #333;
+      border-right: 2px solid #333;
+
+      transform: rotate(45deg);
+    }
+  }
+
+  @media screen and (max-width: $maxTablet) {   
+    .slideBtn{
+      width: 34px;
+      height: 34px;
+    }
+
+    .prev_button {
+      &::before {
+        top: 10px;
+        left: 12px;
+      }
+    }
+
+    .next_button {
+      &::before {
+        top: 10px;
+        left: 6px;
+      }
+    }
+  }
+
+  @media screen and (max-width: $maxMobile) {
+    .slideBtn {
+      width: 24px;
+      height: 24px;
+    }
+
+    .prev_button {
+      &::before {
+        top: 8px;
+        left: 8px;
+      }
+    }
+
+    .next_button {
+      &::before {
+        top: 6px;
+        left: 4px;
       }
     }
   }
