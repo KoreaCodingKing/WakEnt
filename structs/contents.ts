@@ -152,6 +152,18 @@ export const contentsList: Content[] = [
   },
   {
     game: 'Minecraft',
+    date: '2022. 04. 17.',
+    content: '건축콘테스트',
+    title: '만우절날 시청자들이 나뭇잎 마을로 초대 했습니다.',
+    episode: 78,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: 'FVL5Snxib9U'
+  },
+  {
+    game: 'Minecraft',
     date: '2022. 04. 16.',
     content: '건축콘테스트',
     title: '못한 팀 1팀씩 강퇴하는 컨텐츠 - 마인크래프트 스피드 건축 강퇴 레이스',
