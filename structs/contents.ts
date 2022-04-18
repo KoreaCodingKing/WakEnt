@@ -139,6 +139,18 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: 'VRChat',
+    date: '2022. 04. 17.',
+    content: '짧타버스',
+    title: '불판 - 짧타버스 #Shorts',
+    episode: 2,
+    participants: [
+      'wakgood',
+      '고정멤버',
+    ],
+    links: '-7-FQ57nfyM'
+  },
+  {
     game: 'Minecraft',
     date: '2022. 04. 16.',
     content: '건축콘테스트',
@@ -228,7 +240,7 @@ export const contentsList: Content[] = [
     date: '2022. 04. 09.',
     content: '짧타버스',
     title: '좀비 - 짧타버스 #Shorts',
-    episode: 22,
+    episode: 1,
     participants: [
       'wakgood',
       '고정멤버',
