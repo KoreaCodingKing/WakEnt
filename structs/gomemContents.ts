@@ -633,9 +633,9 @@ export const gomemContents: Record<
   ],
   Roentgenium: [
     {
-      type: 'Songs',
+      type: 'Contents',
       title: '[짧타버스] 결투',
-      links: 'iuLfx-U60Ow',
+      links: 'ZnluRL8z24Q',
       date: '22.04.01'
     },
   ],

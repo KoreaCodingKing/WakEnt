@@ -3,6 +3,7 @@ export type Game =
   | 'VRChat'
   | 'AmongUs'
   | 'Leagues'
+  | 'WakSiries'
   | 'Others'
 
 export type ContentName =
@@ -27,6 +28,7 @@ export type ContentName =
   | '짧타버스'
   | '왁타버스콜라보Songs'
   | '연말공모전'
+  | '이세돌마스터'
   | '기타'
 
 export enum GameByEnum {
@@ -38,6 +40,7 @@ export enum GameByEnum {
   FIFA20 = 'FIFA20',
   AmongUs = 'AmongUs',
   Leagues = 'Leagues',
+  WakSiries = 'WakSiries',
   Others = 'Others',
 }
 
@@ -63,6 +66,7 @@ export enum contentsNameByEnum {
   '짧타버스' = '짧타버스',
   '왁타버스콜라보Songs' = '왁타버스콜라보Songs',
   '연말공모전' = '연말공모전',
+  '이세돌마스터' = '이세돌마스터',
   '기타' = '기타',
 }
 
@@ -73,6 +77,13 @@ export interface GameContents {
 }
 
 export const ContentByGame: Record<Game, GameContents> = {
+  [GameByEnum.WakSiries]: {
+    name: '왁시리즈',
+    contentName: [
+      '이세돌마스터'
+    ],
+    image: '/images/logo/logo_wak.png'
+  },
   [GameByEnum.Minecraft]: {
     name: '마인크래프트',
     contentName: [
@@ -139,16 +150,50 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: 'WakSiries',
+    date: '2022. 04. 20.',
+    content: '이세돌마스터',
+    title: '이세돌 마스터 1화 - (영상툰)',
+    episode: 1,
+    participants: [
+      'wakgood',
+      '이세계아이돌',
+    ],
+    links: '-XwoIZ58kRg'
+  },
+  {
+    game: 'VRChat',
+    date: '2022. 04. 19.',
+    content: '짧타버스',
+    title: '짧타버스 - 결투 #Shorts',
+    episode: 3,
+    participants: [
+      '고정멤버',
+    ],
+    links: 'ZnluRL8z24Q'
+  },
+  {
     game: 'VRChat',
     date: '2022. 04. 17.',
     content: '짧타버스',
     title: '불판 - 짧타버스 #Shorts',
     episode: 2,
     participants: [
-      'wakgood',
       '고정멤버',
     ],
     links: '-7-FQ57nfyM'
+  },
+  {
+    game: 'Minecraft',
+    date: '2022. 04. 19.',
+    content: '건축콘테스트',
+    title: '눕프로해커 그리고... 갓?? - 만우절 눕프핵 "나루토편" 2화',
+    episode: 79,
+    participants: [
+      'wakgood',
+      '시청자들',
+    ],
+    links: 'CKSA51ZPnbU'
   },
   {
     game: 'Minecraft',

@@ -87,6 +87,10 @@
   height: 40px;
   margin: 0 auto;
 
+  &.wakLogo {
+    overflow: hidden;
+    border-radius: 10px;
+  }
   .image {
     aspect-ratio: 9/16;
   }

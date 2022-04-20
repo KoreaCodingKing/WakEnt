@@ -5,6 +5,7 @@ import styles from '../../../styles/components/contents/sidebar/Sidebar.module.s
 import { useDebouncer } from '../../isedol/Members/Utils';
 import { useDeviceWidthLimiter } from '../../../utils/device';
 import { motion, Variants } from 'framer-motion';
+import { classes } from '../../../utils/class';
 
 interface SidebarProps {
   selectContents: (game: Game|string, ContentName?: ContentName) => void,
@@ -62,7 +63,12 @@ const Sidebar = ({selectContents}: SidebarProps) => {
             onMouseOut={() => onGameIconMouseOut()}>
             <div className={styles.game_wrapper}
               onClick={() => selectContents(game)}>
-              <div className={styles.game_icon}>
+              <div className={
+                classes(
+                  styles.game_icon,
+                  game === 'WakSiries' && styles.wakLogo
+                )
+              }>
                 {ContentByGame[game].image && (
                   <Image
                     className={styles.image}

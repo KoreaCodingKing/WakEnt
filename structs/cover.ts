@@ -35,6 +35,10 @@ export const IsedolOriginalSong: YouTubeVideo[] = [
 export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ine: [
     {
+      title: '[MV] 신호등(Traffic light) Cover by 아이네 INE',
+      id: '7IcafhbXprU'
+    },
+    {
       title: '부엉이 フクロウ',
       id: 'YZoeO3T7hsc'
     },
@@ -72,6 +76,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
     }
   ],
   jingburger: [
+    {
+      title: 'Bob soul (감동주의) - 팬메이드 Remix',
+      id: 'kqP99vROKno'
+    },
     {
       title: 'eight(에잇) - (징버거 x 비밀소녀 x ??? COVER)',
       id: 'lQIdaZgK56A'
@@ -163,6 +171,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
     }
   ],
   gosegu: [
+    {
+      title: '고세구의 출근송',
+      id: '9ZGLN_qT8cE',
+    },
     {
       title: '팬서비스 - mona [HoneyWorks]',
       id: 'DPEtmqvaKqY',

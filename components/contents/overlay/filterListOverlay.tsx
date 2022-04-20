@@ -42,7 +42,12 @@ const FilterListOverlay = ({open, selectContents}: FilterListOverlay) => {
               className={styles.game}>
               <div className={styles.icon_wrapper}
                 onClick={() => selectContents(game)}>
-                <div className={styles.game_icon}>
+                <div className={
+                  classes(
+                    styles.game_icon,
+                    game === 'WakSiries' && styles.wakLogo
+                  )
+                }>
                   {ContentByGame[game].image && (
                     <Image
                       className={styles.image}
