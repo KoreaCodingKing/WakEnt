@@ -566,6 +566,12 @@ export const gomemContents: Record<
   Sophia: [
     {
       type: 'Songs',
+      title: '벚꽃엔딩 - 비소 COVER (버스커버스커)',
+      links: 'JGALcizede8',
+      date: '21.04.21'
+    },
+    {
+      type: 'Songs',
       title: 'Santa Claus is coming to town - 비소 COVER',
       links: 'aRXfz2O0fhI',
       date: '21.12.24'
