@@ -77,6 +77,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   jingburger: [
     {
+      title: "[MV] '봄날 (Spring Day)' 왁타버스 COVER - BTS (방탄소년단)",
+      id: 'Mn5ZwEFKBc4',
+    },
+    {
       title: 'Bob soul (감동주의) - 팬메이드 Remix',
       id: 'kqP99vROKno'
     },
@@ -154,6 +158,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   jururu: [
     {
+      title: '합방이 오잖아 (해루석 X 주르르 COVER) - (원곡 : 눈이오잖아 이무진x헤이즈)',
+      id: 'TQqu1ZsvVFo',
+    },
+    {
       title: 'TWICE - SCIENTIST (feat. 아이네)',
       id: 'rFxJjpSeXHI'
     },
@@ -198,6 +206,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
     }
   ],
   viichan: [
+    {
+      title: "[MV] '봄날 (Spring Day)' 왁타버스 COVER - BTS (방탄소년단)",
+      id: 'Mn5ZwEFKBc4',
+    },
     {
       title: '취기를 빌려 - 산들',
       id: 'NVns4yRoTlU'
