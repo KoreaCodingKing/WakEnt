@@ -81,7 +81,7 @@ export interface GameContents {
 export const ContentByGame: Record<Game, GameContents> = {
   [GameByEnum.WakSiries]: {
     name: "왁시리즈",
-    contentName: ["이세돌마스터", "붉은마을"],
+    contentName: ["이세돌마스터", "붉은마을", "짧타버스"],
     image: "/images/logo/logo_wak.png",
   },
   [GameByEnum.Minecraft]: {
@@ -105,7 +105,6 @@ export const ContentByGame: Record<Game, GameContents> = {
       "VR챗 변신맨",
       "고정멤버X이세계아이돌",
       "버터뷰",
-      "짧타버스",
       "기타",
     ],
     image: "/images/logo/logo_vrchat.png",
@@ -145,6 +144,24 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "WakSiries",
+    date: "2022. 04. 27.",
+    content: "짧타버스",
+    title: "배달 - 짧타버스 #Shorts",
+    episode: 4,
+    participants: ["고정멤버"],
+    links: "VWROG1b--Uk",
+  },
+  {
+    game: "Minecraft",
+    date: "2022. 04. 27.",
+    content: "왁핑몰",
+    title: "감자빵 건물 너무 이쁘다 - 마인크래프트 왁핑몰 26화",
+    episode: 23,
+    participants: ["wakgood", "시청자들"],
+    links: "mPPzt91pSE8",
+  },
+  {
+    game: "WakSiries",
     date: "2022. 04. 24.",
     content: "붉은마을",
     title: "붉은마을 1화 - 왁타버스 웹툰",
@@ -171,7 +188,7 @@ export const contentsList: Content[] = [
     links: "-XwoIZ58kRg",
   },
   {
-    game: "VRChat",
+    game: "WakSiries",
     date: "2022. 04. 19.",
     content: "짧타버스",
     title: "짧타버스 - 결투 #Shorts",
@@ -180,7 +197,7 @@ export const contentsList: Content[] = [
     links: "ZnluRL8z24Q",
   },
   {
-    game: "VRChat",
+    game: "WakSiries",
     date: "2022. 04. 17.",
     content: "짧타버스",
     title: "불판 - 짧타버스 #Shorts",
@@ -273,7 +290,7 @@ export const contentsList: Content[] = [
     links: "H3KQnxACr2M",
   },
   {
-    game: "VRChat",
+    game: "WakSiries",
     date: "2022. 04. 09.",
     content: "짧타버스",
     title: "좀비 - 짧타버스 #Shorts",
