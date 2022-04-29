@@ -170,6 +170,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   PoongSin: [
     {
       type: "Songs",
+      title: "파티피플 풍띤",
+      links: "1PVGHW2xuI4",
+      date: "22.04.29",
+    },
+    {
+      type: "Songs",
       title: "[노래 MV] 느그봄 4K",
       links: "PkvXQo8z1nE",
       date: "22.04.15",
