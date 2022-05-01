@@ -144,6 +144,15 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "WakSiries",
+    date: "2022. 04. 30.",
+    content: "이세돌마스터",
+    title: "연습생 포기? - 이세돌마스터 2화",
+    episode: 2,
+    participants: [],
+    links: "d0Z7dNaJJeI",
+  },
+  {
+    game: "WakSiries",
     date: "2022. 04. 27.",
     content: "짧타버스",
     title: "배달 - 짧타버스 #Shorts",

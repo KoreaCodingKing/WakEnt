@@ -212,6 +212,11 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   viichan: [
     {
+      title:
+        "사랑은 은하수 다방에서 (Love in the Milky Way Café) - Cover by 비챤",
+      id: "fzHJxq37cqI",
+    },
+    {
       title: "[MV] '봄날 (Spring Day)' 왁타버스 COVER - BTS (방탄소년단)",
       id: "Mn5ZwEFKBc4",
     },
