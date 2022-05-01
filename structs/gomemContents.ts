@@ -485,6 +485,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   DokgoHyeji: [
     {
+      type: "Contents",
+      title: "혜지의 광고촬영 브이로그 Vlog",
+      links: "evVXDgMNoNo",
+      date: "22.05.02",
+    },
+    {
       type: "Songs",
       title: "We Ride - 독고혜지 (ft.천양)",
       links: "1CaYJAf97AQ",
