@@ -185,6 +185,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   gosegu: [
     {
+      title: "대한민국 3대 돈까스: 스윙스, 우왁굳, 고세구",
+      id: "mnX-cmDYCh0",
+    },
+    {
       title: "고세구의 출근송",
       id: "9ZGLN_qT8cE",
     },
