@@ -12,6 +12,12 @@ export interface GomemContents {
 export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   SecretGirl: [
     {
+      type: "Contents",
+      title: "공주 - 짧타버스 #Shorts",
+      links: "crn_5z6BDUY",
+      date: "22.04.24",
+    },
+    {
       type: "Songs",
       title: "[비밀소녀] 카드캡터비소 오프닝",
       links: "ByG12DFO9OI",
@@ -169,6 +175,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   PoongSin: [
     {
+      type: "Contents",
+      title: "마법 1",
+      links: "UUUR0OdUeMo",
+      date: "22.04.29",
+    },
+    {
       type: "Songs",
       title: "파티피플 풍띤",
       links: "1PVGHW2xuI4",
@@ -292,6 +304,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   HikiKing: [
+    {
+      type: "Contents",
+      title: "돌아온 히키킹의 생일 파티 (VR챗)",
+      links: "or5-IJgy2nI",
+      date: "22.05.03",
+    },
     {
       type: "Contents",
       title: "우왁굳님 디코좀..노창 (히키킹) sAewoo - Whatever | 가녹음 실패작",
