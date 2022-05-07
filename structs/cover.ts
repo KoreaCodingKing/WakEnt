@@ -162,6 +162,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   jururu: [
     {
+      title: "[MV] M@STERPIECE (Korean Cover.)｜Cover by 주르르",
+      id: "X7cO4xQ5Gqs",
+    },
+    {
       title:
         "합방이 오잖아 (해루석 X 주르르 COVER) - (원곡 : 눈이오잖아 이무진x헤이즈)",
       id: "TQqu1ZsvVFo",
