@@ -77,6 +77,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   FriedShrimp: [
     {
+      type: "Songs",
+      title: "봄이 좋냐 (새우튀김, 부정형인간)",
+      links: "1j1AtA4LGXw",
+      date: "22.05.05",
+    },
+    {
       type: "Contents",
       title: "공포튀김 3편 도플갱어편",
       links: "nbNF4zgs9hA",
@@ -174,6 +180,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   PoongSin: [
+    {
+      type: "Contents",
+      title: "(우왁굳 고멤알람) 일어나 너는 고멤의 자존심이야",
+      links: "eP3J3mruoZQ",
+      date: "22.05.05",
+    },
     {
       type: "Contents",
       title: "마법 1",
@@ -459,6 +471,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   GwakChoonSik: [
     {
+      type: "Contents",
+      title: "심야알바",
+      links: "tlfv9juDWFg",
+      date: "22.05.04",
+    },
+    {
       type: "Songs",
       title: "NERD VERSE (너드 벌스) - 곽춘식, 히키킹, 권민",
       links: "cWDbKPXZzbw",
@@ -609,6 +627,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   Sophia: [
     {
+      type: "Contents",
+      title: "소피아 새로운 아바타 최종 점검",
+      links: "cvWlopT1RcM",
+      date: "22.05.04",
+    },
+    {
       type: "Songs",
       title: "벚꽃엔딩 - 비소 COVER (버스커버스커)",
       links: "JGALcizede8",
@@ -680,6 +704,13 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   Dandap: [
+    {
+      type: "Songs",
+      title:
+        "Space Fantasy - 권박사 X 캘박사 (ft. 단답벌레) [이박사 - Space Fantasy COVER]",
+      links: "EVoctDN7mww",
+      date: "22.05.06",
+    },
     {
       type: "Songs",
       title: "망령즈 - 에잇",

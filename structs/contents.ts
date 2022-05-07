@@ -143,6 +143,25 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "Minecraft",
+    date: "2022. 05. 06.",
+    content: "건축콘테스트",
+    title:
+      "오버워치는 저물고... 이제는 발로란트의 시대 - 눕프로해커 발로란트 편",
+    episode: 80,
+    participants: ["wakgood", "시청자들"],
+    links: "GfZGVtVrjBU",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 05. 05.",
+    content: "상황극",
+    title: "왁루먼쇼 - VR챗 상황극",
+    episode: 19,
+    participants: ["wakgood", "시청자들"],
+    links: "eKE3KIFA-Yo",
+  },
+  {
     game: "VRChat",
     date: "2022. 05. 03.",
     content: "상황극",
@@ -159,6 +178,15 @@ export const contentsList: Content[] = [
     episode: 5,
     participants: ["고정멤버"],
     links: "crn_5z6BDUY",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 05. 02.",
+    content: "기타",
+    title: "그가 복귀하다 - 강해진 칠무해",
+    episode: 16,
+    participants: ["wakgood", "고정멤버"],
+    links: "BMiKsU4T5zo",
   },
   {
     game: "VRChat",

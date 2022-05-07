@@ -8,10 +8,6 @@ interface YouTubeVideo {
 
 export const IsedolCover: YouTubeVideo[] = [
   {
-    title: "이세돌 싸이퍼 - ISEGYE IDOL CYPHER",
-    id: "Empfi8q0aas",
-  },
-  {
     title: "It's Beginning To Look A Lot Like Christmas",
     id: "kNPykP_9wOQ",
   },
@@ -30,6 +26,10 @@ export const IsedolCover: YouTubeVideo[] = [
 ];
 
 export const IsedolOriginalSong: YouTubeVideo[] = [
+  {
+    title: "이세돌 싸이퍼 - ISEGYE IDOL CYPHER",
+    id: "Empfi8q0aas",
+  },
   {
     title: "But You Want More",
     id: "VcvMQ9MZhF8",
