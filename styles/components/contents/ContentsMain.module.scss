@@ -2,18 +2,43 @@
 
 .container {
   position: relative;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .contents_header {
   position: fixed;
   z-index: 9999;
-  width: calc(100vw - 10px);
-  max-width: 100%;
+  width: 100%;
 }
 
 .inner_container {
   position: relative;
   display: flex;
+  width: calc(100vw - 108px);
+
+  header {
+    position: fixed;
+    width: calc(100% - 118px);
+    top: 0;
+    z-index: 1000;
+  }
+
+  @media screen and (max-width: $maxTablet) {
+    width: calc(100vw - 56px);
+
+    header {
+      width: calc(100% - 62px);
+    }
+  }
+  @media screen and (max-width: $maxMobile) {
+    width: calc(100vw - 24px);
+
+    header {
+      width: calc(100% - 28px);
+    }
+  }
 }
 
 .contents_wrapper {
@@ -21,19 +46,13 @@
   overflow: auto;
   height: 100vh;
   width: 100vw;
-
+  
   display: flex;
   flex-direction: column;
-
+  
   padding-top: 98px;
-
-  header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-  }
-
+  
+  
   .filter_boxes {
     display: flex;
     grid-gap: 10px;
@@ -42,7 +61,7 @@
     max-width: 1768px;
     margin: 20px auto;
     padding: 0 20px;
-
+    
     .filter_game, .filter_contents {
       position: relative;
       display: flex;
@@ -51,7 +70,7 @@
       border-radius: 80px;
       align-items: center;
       color: #fff;
-
+      
       p {
         margin: 0;
       }
@@ -63,25 +82,25 @@
         }
         cursor: pointer;
       }
-
+      
       @media screen and (max-width: $maxMobile) {
         gap: 2px;
-
+        
         p {
           font-size: 12px;
         }
       }
     }
-
+    
     .filter_game {
       background: rgb(185, 86, 86);
     }
-
+    
     .filter_contents {
       background: rgb(207, 133, 133);
     }
   }
-
+  
   &::-webkit-scrollbar {
     width: 10px;
     background: none;
@@ -90,7 +109,7 @@
     background: rgb(53, 51, 51);
     border-radius: 20px;
   }
-
+  
   @media screen and (max-width: $maxTablet) {
     &::-webkit-scrollbar {
       width: 6px;
@@ -103,7 +122,7 @@
   }
   @media screen and (max-width: $maxMobile) {
     padding-top: 98px;
-
+    
     &::-webkit-scrollbar {
       width: 4px;
       background: none;
@@ -123,11 +142,11 @@
   gap: 40px;
   min-width: 20px;
   align-self: center;
-
+  
   @media screen and (max-width: $maxTablet) {
     padding: 0 20px;
   }
-
+  
   @media screen and (max-width: $maxMobile) {
     padding: 0px 4px;
   }
@@ -139,21 +158,21 @@
   grid-template-rows: 1fr; 
   grid-column-gap: 32px;
   grid-row-gap: 32px; 
-
+  
   max-width: 1800px;
   padding: 0 40px;
   align-self: center;
-
-
+  
+  
   @media screen and (max-width: 2000px) {
     grid-template-columns: repeat(6, 1fr);
   }
-
+  
   @media screen and (max-width: 1800px) {
     max-width: 1400px;
     grid-template-columns: repeat(4, 1fr);
   }
-
+  
   @media screen and (max-width: $maxTablet) {
     max-width: 948px;
     padding: 0 20px;
@@ -161,7 +180,7 @@
     grid-row-gap: 12px;
     grid-template-columns: repeat(3, 1fr);
   }
-
+  
   @media screen and (max-width: 780px) {
     max-width: 500px;
     grid-template-columns: repeat(1, 1fr);

@@ -20,6 +20,7 @@ import { MenuButton } from "../../components/isedol/IsedolHeader";
 import FilterListOverlay from "../../components/contents/overlay/filterListOverlay";
 
 import styles from "../../styles/components/contents/ContentsMain.module.scss";
+import ContentsHeader from "./ContentsHeader";
 
 const ContentsMain: NextPage = () => {
   const [page, setPage] = useState<number>(1);
@@ -128,13 +129,16 @@ const ContentsMain: NextPage = () => {
         open={openPlayer}
         close={() => setOpenPlayer(false)}
       ></YouTubePlayerOverlay>
+      {showSidebar && <Sidebar selectContents={filterContents}></Sidebar>}
+      {!showSidebar && (
+        <div className={styles.filter_box}>
+          <MenuButton open={openDetail} onClick={run}></MenuButton>
+        </div>
+      )}
       <div className={styles.inner_container}>
-        {showSidebar && <Sidebar selectContents={filterContents}></Sidebar>}
-        {!showSidebar && (
-          <div className={styles.filter_box}>
-            <MenuButton open={openDetail} onClick={run}></MenuButton>
-          </div>
-        )}
+        <header>
+          <ContentsHeader></ContentsHeader>
+        </header>
         <div className={styles.contents_wrapper} ref={container}>
           <FilterListOverlay
             open={openDetail}

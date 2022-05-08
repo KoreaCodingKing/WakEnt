@@ -19,7 +19,7 @@
   width: 90%;
 
   @media screen and (min-width: $maxTablet) {
-    min-width: $maxTablet;
+    min-width: $maxMobile;
     max-width: $maxPage;
   }
 

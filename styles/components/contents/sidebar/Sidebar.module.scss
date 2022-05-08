@@ -1,12 +1,12 @@
 @import "../../../mixin.scss";
 
 @mixin droupMenu {
-  z-index: 999;
+  z-index: 10000;
   display: flex;
   flex-direction: column;
   position: absolute;
   top: 0;
-  left: 122px;
+  left: 92px;
   width: 20vw;
   max-width: 240px;
   padding: 16px;
@@ -27,7 +27,6 @@
   justify-content: center;
   gap: 8px;
   margin: 0 4px;
-  margin-top: 106px;
   align-self: center;
 }
 
