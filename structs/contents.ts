@@ -19,6 +19,7 @@ export type ContentName =
   | "프로싸커온라인 리그"
   | "커플대항전"
   | "상황극"
+  | "22'상반기상황극콘테스트"
   | "소개팅"
   | "VR챗 변신맨"
   | "고정멤버합방"
@@ -69,6 +70,7 @@ export enum contentsNameByEnum {
   "연말공모전" = "연말공모전",
   "이세돌마스터" = "이세돌마스터",
   "붉은마을" = "붉은마을",
+  "22'상반기상황극콘테스트" = "22'상반기상황극콘테스트",
   "기타" = "기타",
 }
 
@@ -105,6 +107,7 @@ export const ContentByGame: Record<Game, GameContents> = {
       "VR챗 변신맨",
       "고정멤버X이세계아이돌",
       "버터뷰",
+      "22'상반기상황극콘테스트",
       "기타",
     ],
     image: "/images/logo/logo_vrchat.png",
@@ -143,6 +146,33 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "VRChat",
+    date: "2022. 05. 08.",
+    content: "22'상반기상황극콘테스트",
+    title: "마피아 게임을 실제로 한다면... 밤에 실제로 사람이.. - VR챗 상황극",
+    episode: 6,
+    participants: ["wakgood", "시청자들"],
+    links: "HnuGvmkZl-4",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 05. 08.",
+    content: "22'상반기상황극콘테스트",
+    title: "위기의 회사원 - VR챗 상황극",
+    episode: 5,
+    participants: ["wakgood", "시청자들"],
+    links: "h3I_-p6mwSo",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 05. 08.",
+    content: "22'상반기상황극콘테스트",
+    title: "감옥... 탈출....? - VR챗 상황극",
+    episode: 4,
+    participants: ["wakgood", "시청자들"],
+    links: "CL-AhdC1N9M",
+  },
+  {
     game: "Minecraft",
     date: "2022. 05. 06.",
     content: "건축콘테스트",
@@ -155,18 +185,18 @@ export const contentsList: Content[] = [
   {
     game: "VRChat",
     date: "2022. 05. 05.",
-    content: "상황극",
+    content: "22'상반기상황극콘테스트",
     title: "왁루먼쇼 - VR챗 상황극",
-    episode: 19,
+    episode: 3,
     participants: ["wakgood", "시청자들"],
     links: "eKE3KIFA-Yo",
   },
   {
     game: "VRChat",
     date: "2022. 05. 03.",
-    content: "상황극",
+    content: "22'상반기상황극콘테스트",
     title: "종이마을 - VR챗 상황극",
-    episode: 18,
+    episode: 2,
     participants: ["wakgood", "시청자들"],
     links: "TvBRrmXM6vw",
   },
@@ -191,9 +221,9 @@ export const contentsList: Content[] = [
   {
     game: "VRChat",
     date: "2022. 05. 02.",
-    content: "상황극",
+    content: "22'상반기상황극콘테스트",
     title: "양아치가 건달이 되는 이유 - VR챗 상황극 콘테스트",
-    episode: 17,
+    episode: 1,
     participants: ["wakgood", "시청자들"],
     links: "YO0koBONhFU",
   },
