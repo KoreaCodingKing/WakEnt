@@ -56,19 +56,6 @@
 .game {
   margin: 0 auto;
   margin-bottom: 30px;
-
-  .totalgame {
-    width: 30px;
-    height: 30px;
-    margin: 0 auto;
-    border-radius: 100%;
-    background: rgb(75, 89, 199);
-
-    @media screen and (max-width: $maxMobile) {
-      width: 16px;
-      height: 16px;
-    }
-  }
 }
 
 .icon_wrapper {
