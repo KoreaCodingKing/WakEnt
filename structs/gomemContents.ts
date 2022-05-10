@@ -319,7 +319,7 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     {
       type: "Contents",
       title: "돌아온 히키킹의 생일 파티 (VR챗)",
-      links: "or5-IJgy2nI",
+      links: "Leu7WphtCbQ",
       date: "22.05.03",
     },
     {
@@ -727,6 +727,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   Freeter: [
+    {
+      type: "Contents",
+      title: "프리터 꼬리 떼기",
+      links: "Ac8WuBzw5w8",
+      date: "22.04.29",
+    },
     {
       type: "Songs",
       title: "광대 (융터르, 프리터 COVER)",

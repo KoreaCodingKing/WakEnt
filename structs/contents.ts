@@ -147,6 +147,33 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 05. 10.",
+    content: "22'상반기상황극콘테스트",
+    title: "산적이 되었다 - VR챗 상황극",
+    episode: 7,
+    participants: ["wakgood", "시청자들"],
+    links: "KF-8I3Lx__8",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 05. 10.",
+    content: "기타",
+    title: "사진 1장보고 지구상의 어디인지 맞추기",
+    episode: 17,
+    participants: ["wakgood", "고정멤버"],
+    links: "Q-j6YhlcjfU",
+  },
+  {
+    game: "Leagues",
+    date: "2022. 05. 09.",
+    content: "와크무런 리그",
+    title: "와크-무런 그란7 결승전",
+    episode: 6,
+    participants: ["wakgood", "시청자들"],
+    links: "iEaVra-5fiE",
+  },
+  {
+    game: "VRChat",
     date: "2022. 05. 08.",
     content: "22'상반기상황극콘테스트",
     title: "마피아 게임을 실제로 한다면... 밤에 실제로 사람이.. - VR챗 상황극",
