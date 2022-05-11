@@ -147,6 +147,15 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 05. 11.",
+    content: "22'상반기상황극콘테스트",
+    title: "마피아가 된 나 - VR챗 상황극",
+    episode: 7,
+    participants: ["wakgood", "시청자들"],
+    links: "62OC91YTgoQ",
+  },
+  {
+    game: "VRChat",
     date: "2022. 05. 10.",
     content: "22'상반기상황극콘테스트",
     title: "산적이 되었다 - VR챗 상황극",
