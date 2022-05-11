@@ -5,7 +5,7 @@
 }
 
 .section_container {
-  padding-top: 30vh;
+  padding-top: 62vh;
   padding-bottom: 30vh;
 
   .contents_wrapper {
@@ -32,11 +32,16 @@
 }
 
 .image_wrapper {
+  // position: relative;
+  // width: 20vw;
+  // max-width: 284px;
+  // margin-right: 12%;
+  // aspect-ratio: 10/16;
   position: relative;
-  width: 20vw;
-  max-width: 284px;
+  width: 100%;
+  max-width: 330px;
   margin-right: 12%;
-  aspect-ratio: 10/16;
+  aspect-ratio: 17/16;
 }
 
 .motto_container {
