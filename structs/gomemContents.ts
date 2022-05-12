@@ -33,7 +33,7 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
       type: "Songs",
       title:
         "저세계아이돌 - 이세돌 리와인드 (이세계아이돌 RE:WIND) | 왁타버스 VR챗(VRChat) MV",
-      links: "aZObIwRaEm4",
+      links: "QC1LTWTFNwg",
       date: "22.02.10",
     },
     {
@@ -470,6 +470,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   GwakChoonSik: [
+    {
+      type: "Songs",
+      title: "곽춘식-화면을 봤네(M/V)",
+      links: "zF6rKEyEhMs",
+      date: "22.05.11",
+    },
     {
       type: "Contents",
       title: "심야알바",
