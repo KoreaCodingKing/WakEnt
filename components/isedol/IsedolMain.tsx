@@ -1,44 +1,44 @@
-import { NextPage } from 'next';
-import { useRef, useState } from 'react';
+import { NextPage } from "next";
+import { useRef, useState } from "react";
 
-import Image from 'next/image';
+import Image from "next/image";
 
-import styles from '../../styles/components/isedol/isedolMain.module.scss';
-import { classes } from '../../utils/class';
-import Head from 'next/head';
-import YouTubePlayerOverlay from '../common/YouTubePlayerOverlay';
-import PageIndicator from '../common/PageIndicator';
-import { usePageTurner } from '../../utils/state';
+import styles from "../../styles/components/isedol/isedolMain.module.scss";
+import { classes } from "../../utils/class";
+import Head from "next/head";
+import YouTubePlayerOverlay from "../common/YouTubePlayerOverlay";
+import PageIndicator from "../common/PageIndicator";
+import { usePageTurner } from "../../utils/state";
 
 const slides = [
   {
-    image: '/images/gosegu-down.png',
-    title: '겨울봄',
-    subtitle: '2022.03.11 MV Released',
-    youtube: 'JY-gJkMuJ94',
-    color: '#222121',
+    image: "/images/gosegu-down.png",
+    title: "겨울봄",
+    subtitle: "2022.03.11 MV Released",
+    youtube: "JY-gJkMuJ94",
+    color: "#222121",
   },
   {
-    image: '/images/bg_rewind.jpg',
-    title: 'RE : WIND',
-    subtitle: '2021.12.22 MV Released',
-    youtube: 'fgSXAKsq-Vo',
-    color: '#222121',
+    image: "/images/bg_rewind.jpg",
+    title: "RE : WIND",
+    subtitle: "2021.12.22 MV Released",
+    youtube: "fgSXAKsq-Vo",
+    color: "#222121",
   },
-  {
-    image: '/images/bg_christmas_cover.jpg',
-    title: `It's Beginning To Look A Lot Like Christmas`,
-    subtitle: '2021.12.23 Christmas Special Cover',
-    youtube: 'kNPykP_9wOQ',
-    color: '#221511',
-  },
+  // {
+  //   image: '/images/bg_christmas_cover.jpg',
+  //   title: `It's Beginning To Look A Lot Like Christmas`,
+  //   subtitle: '2021.12.23 Christmas Special Cover',
+  //   youtube: 'kNPykP_9wOQ',
+  //   color: '#221511',
+  // },
 ];
 
 const slideRate = 7500;
 
 export const Main: NextPage = () => {
   const [openPlayer, setOpenPlayer] = useState<boolean>(false);
-  const [youtubeID, setYoutubeID] = useState<string>('');
+  const [youtubeID, setYoutubeID] = useState<string>("");
 
   const openYouTube = (id: string) => {
     setYoutubeID(id);
