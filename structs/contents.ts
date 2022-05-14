@@ -147,6 +147,15 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 05. 14.",
+    content: "22'상반기상황극콘테스트",
+    title: "아스테리아 - VR챗 상황극",
+    episode: 9,
+    participants: ["wakgood", "시청자들"],
+    links: "47-nNZAeMwE",
+  },
+  {
+    game: "VRChat",
     date: "2022. 05. 12.",
     content: "22'상반기상황극콘테스트",
     title: "러브레터를 보낸건... 4명중 누구지..? - VR챗 상황극",
