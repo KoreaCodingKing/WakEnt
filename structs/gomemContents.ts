@@ -479,7 +479,7 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     {
       type: "Contents",
       title: "심야알바",
-      links: "tlfv9juDWFg",
+      links: "1-CTNDOaHpw",
       date: "22.05.04",
     },
     {

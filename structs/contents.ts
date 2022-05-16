@@ -147,6 +147,24 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 05. 16.",
+    content: "22'상반기상황극콘테스트",
+    title: "수련 - VR챗 상황극",
+    episode: 11,
+    participants: ["wakgood", "시청자들"],
+    links: "eBj9kHXtnbY",
+  },
+  {
+    game: "Leagues",
+    date: "2022. 05. 09.",
+    content: "와크무런 리그",
+    title: "왁문철의 몇대몇 - 그란7 와크-무런 대회 핫클립",
+    episode: 7,
+    participants: ["wakgood", "시청자들"],
+    links: "WMjuxd3H30A",
+  },
+  {
+    game: "VRChat",
     date: "2022. 05. 15.",
     content: "22'상반기상황극콘테스트",
     title: "[찐계륵님 팬 아니면 함부로 시청 주의] 전생 - VR챗 상황극",

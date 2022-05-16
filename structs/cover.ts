@@ -162,6 +162,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   jururu: [
     {
+      title: `"Ju. T'aime" - 주르르의 10만 기념 언리얼 콘서트`,
+      id: "wmbN3BPIUbQ",
+    },
+    {
       title: "[MV] M@STERPIECE (Korean Cover.)｜Cover by 주르르",
       id: "X7cO4xQ5Gqs",
     },
