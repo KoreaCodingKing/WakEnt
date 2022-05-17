@@ -43,6 +43,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
       id: "7IcafhbXprU",
     },
     {
+      title: "[Audio] 그냥노창 - 없는계절 (Feat. 아이네, C JAMM, YUNHWAY)",
+      id: "NVm8Uzai9HY",
+    },
+    {
       title: "부엉이 フクロウ",
       id: "YZoeO3T7hsc",
     },

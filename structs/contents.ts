@@ -146,6 +146,25 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "Others",
+    date: "2022. 05. 17.",
+    content: "기타",
+    title: "누가 가장 쫄보일까?? - 이세돌 파피 플레이타임 모음집",
+    episode: 6,
+    participants: ["이세계아이돌"],
+    links: "qSebJ36rUrs",
+  },
+  {
+    game: "Minecraft",
+    date: "2022. 05. 17.",
+    content: "건축콘테스트",
+    title:
+      "원피스 몰라서 나루토만 했었는데... 처음으로 하는 - 마인크래프트 눕프로해커 '원피스 편'",
+    episode: 81,
+    participants: ["wakgood", "시청자들"],
+    links: "80usuUvfolk",
+  },
+  {
     game: "VRChat",
     date: "2022. 05. 16.",
     content: "22'상반기상황극콘테스트",
