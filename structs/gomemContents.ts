@@ -528,6 +528,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   DokgoHyeji: [
     {
       type: "Contents",
+      title: "But You Want More 안무연습 비하인드 혜지x릴파",
+      links: "zpHa0_AQnZ4",
+      date: "22.05.16",
+    },
+    {
+      type: "Contents",
       title: "혜지의 광고촬영 브이로그 Vlog",
       links: "evVXDgMNoNo",
       date: "22.05.02",
@@ -564,6 +570,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   DeokSuLee: [
+    {
+      type: "Songs",
+      title: "TL&D",
+      links: "Z6RyC3cWkD4",
+      date: "22.05.17",
+    },
     {
       type: "Songs",
       title: "이덕수 할아바이 - Memories of the last night (마지막 밤의 추억)",
@@ -632,6 +644,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   Sophia: [
+    {
+      type: "Contents",
+      title: "이세돌 릴레이댄스 소피아 후기",
+      links: "nxMO8ufrRG0",
+      date: "22.05.17",
+    },
     {
       type: "Contents",
       title: "소피아 새로운 아바타 최종 점검",
@@ -733,6 +751,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   Freeter: [
+    {
+      type: "Songs",
+      title: "히키킹 헌정영상",
+      links: "DCejdNBBjrk",
+      date: "22.05.17",
+    },
     {
       type: "Contents",
       title: "프리터 꼬리 떼기",

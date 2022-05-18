@@ -147,6 +147,19 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "Others",
+    date: "2022. 1. 20.",
+    content: "고정멤버X이세계아이돌",
+    title: "[릴레이댄스] 이세계아이돌X고멤 - TT (Twice)",
+    episode: 5,
+    participants: [
+      "wakgood",
+      "고정멤버(비즈니스킴, 프리터, 소피아)",
+      "이세계아이돌(주르르, 고세구, 릴파)",
+    ],
+    links: "jCJnw2ZpIOM",
+  },
+  {
+    game: "Others",
     date: "2022. 05. 17.",
     content: "기타",
     title: "누가 가장 쫄보일까?? - 이세돌 파피 플레이타임 모음집",
