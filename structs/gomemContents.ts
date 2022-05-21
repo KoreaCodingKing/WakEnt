@@ -572,8 +572,8 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   DeokSuLee: [
     {
       type: "Songs",
-      title: "TL&D",
-      links: "Z6RyC3cWkD4",
+      title: "TL&D 틀앤디 (이덕수 & 독고혜지)",
+      links: "YV0xUoUnv_o",
       date: "22.05.17",
     },
     {

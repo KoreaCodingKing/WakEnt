@@ -146,6 +146,24 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "VRChat",
+    date: "2022. 05. 21.",
+    content: "22'상반기상황극콘테스트",
+    title: "[진짜 노잼 계륵팬도 주의] 내일은 스시킹",
+    episode: 13,
+    participants: ["wakgood", "시청자들"],
+    links: "3BmJuO7HEEs",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 05. 20.",
+    content: "22'상반기상황극콘테스트",
+    title: "납치 당했습니다 - VR챗 상황극",
+    episode: 12,
+    participants: ["wakgood", "시청자들"],
+    links: "jvDwU0LUSrc",
+  },
+  {
     game: "Others",
     date: "2022. 1. 20.",
     content: "고정멤버X이세계아이돌",
