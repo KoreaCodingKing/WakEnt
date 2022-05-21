@@ -205,6 +205,14 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
       id: "mnX-cmDYCh0",
     },
     {
+      title: "시청자 24000명과 함께한 VR 콘서트!",
+      id: "KdWPnX7HVCY",
+    },
+    {
+      title: "고세구의 롤모델송",
+      id: "txw3CmawGd0",
+    },
+    {
       title: "고세구의 출근송",
       id: "9ZGLN_qT8cE",
     },
