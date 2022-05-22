@@ -197,6 +197,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   gosegu: [
     {
+      title: "[MV] 귀멸의사춘기 _ Naman, Hong(나만, 홍련화)｜COVER by 고세구",
+      id: "SAJrAQGvOHE",
+    },
+    {
       title: "[FAN ANIME] 후라이의 꿈 - 고세구",
       id: "gT3HKgVJuRQ",
     },
