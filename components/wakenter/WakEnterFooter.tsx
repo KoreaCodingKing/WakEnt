@@ -22,6 +22,9 @@ const Footer = () => {
           <p>
             본 페이지는 팬 제작 페이지로 소속된 인물들의 생각을 대변하지 않습니다.
           </p>
+          <p>
+            개발자 문의(contact): dudfhr132@naver.com
+          </p>
         </div>
       </div>
     </div>
