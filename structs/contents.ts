@@ -147,6 +147,15 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 05. 22.",
+    content: "기타",
+    title: "합방 망해서 바지락 캔 날",
+    episode: 18,
+    participants: ["wakgood", "고정멤버"],
+    links: "T-8FgAOLFLU",
+  },
+  {
+    game: "VRChat",
     date: "2022. 05. 21.",
     content: "22'상반기상황극콘테스트",
     title: "미지의 행성에서 발견한 이상한 물질 - VR챗 상황극",
