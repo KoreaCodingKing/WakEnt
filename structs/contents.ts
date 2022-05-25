@@ -147,6 +147,15 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 05. 24.",
+    content: "기타",
+    title: "퀄리티 진짜 개미쳤습니다 - 주르르영화관",
+    episode: 19,
+    participants: ["wakgood", "시청자"],
+    links: "Ny7V3HQYhgU",
+  },
+  {
+    game: "VRChat",
     date: "2022. 05. 22.",
     content: "기타",
     title: "합방 망해서 바지락 캔 날",
