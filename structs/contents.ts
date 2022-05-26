@@ -146,6 +146,33 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "Minecraft",
+    date: "2022. 05. 26.",
+    content: "건축콘테스트",
+    title: "사자 살아있는 줄...;; - 마인크래프트 눕프로해커",
+    episode: 82,
+    participants: ["wakgood", "시청자들"],
+    links: "TVZFuEL51Vs",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 05. 26.",
+    content: "22'상반기상황극콘테스트",
+    title: "배신 - VR챗 상황극",
+    episode: 16,
+    participants: ["wakgood", "시청자들"],
+    links: "PVX9gdzDq2E",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 05. 26.",
+    content: "22'상반기상황극콘테스트",
+    title: "은행강도가 되었습니다 - VR챗 상황극",
+    episode: 15,
+    participants: ["wakgood", "시청자들"],
+    links: "gOd6UsopqPA",
+  },
+  {
     game: "VRChat",
     date: "2022. 05. 24.",
     content: "기타",

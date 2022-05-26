@@ -458,6 +458,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   Wakpago: [
     {
       type: "Contents",
+      title: "아기상어 - 과학패밀리 COVER",
+      links: "PrIJIOrldko",
+      date: "22.05.26",
+    },
+    {
+      type: "Contents",
       title: "고멤들은 크리스마스에 뭘 했을까",
       links: "m9JF2qyRtVc",
       date: "21.12.27",
