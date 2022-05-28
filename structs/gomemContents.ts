@@ -735,6 +735,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   Dandap: [
     {
+      type: "Contents",
+      title: "Bad - Ssipssang guys COVER (Christopher)",
+      links: "kktjoH-LuKo",
+      date: "22.05.28",
+    },
+    {
       type: "Songs",
       title:
         "Space Fantasy - 권박사 X 캘박사 (ft. 단답벌레) [이박사 - Space Fantasy COVER]",
