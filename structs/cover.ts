@@ -85,6 +85,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   jingburger: [
     {
+      title: '[MV] ( )I-DLE - "TOMBOY "ㅣCover by 징버거(feat. 고세구)',
+      id: "kra0f71EIgc",
+    },
+    {
       title: "[MV] '봄날 (Spring Day)' 왁타버스 COVER - BTS (방탄소년단)",
       id: "Mn5ZwEFKBc4",
     },
