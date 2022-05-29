@@ -12,6 +12,12 @@ export interface GomemContents {
 export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   SecretGirl: [
     {
+      type: "Songs",
+      title: "올드 타운 로드 - 풍신 X 캘리칼리데이비슨 COVER",
+      links: "k3KYfaN_rlM",
+      date: "22.05.28",
+    },
+    {
       type: "Contents",
       title: "공주 - 짧타버스 #Shorts",
       links: "crn_5z6BDUY",
@@ -126,6 +132,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   MitsuneHaku: [
+    {
+      type: "Songs",
+      title: "🎵미츠네 하쿠 - 너만 있으면 (Cover)",
+      links: "Zkk2k1NVj4Q",
+      date: "22.05.28",
+    },
     {
       type: "Songs",
       title: "[MV] 하쿠 (새우튀김 x 미츠네하쿠)",
