@@ -134,7 +134,7 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   MitsuneHaku: [
     {
       type: "Songs",
-      title: "【5K】 🌞SUMMER TIME😎 - 미츠네 하쿠",
+      title: "【5K】 🌞SUMMER TIME😎 - [미츠네 하쿠 x 왁컬로이두]",
       links: "-ZFDUHgF48U",
       date: "22.05.31",
     },
