@@ -146,6 +146,19 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "Others",
+    date: "2022. 5. 30.",
+    content: "고정멤버X이세계아이돌",
+    title: "우왁굳 vs 고세구 - 프로미넌스 포커 합방",
+    episode: 6,
+    participants: [
+      "wakgood",
+      "고정멤버(융터르, 풍신, 해루석)",
+      "이세계아이돌(징버거, 고세구)",
+    ],
+    links: "RY5vp5VtbQY",
+  },
+  {
     game: "VRChat",
     date: "2022. 05. 30.",
     content: "기타",
