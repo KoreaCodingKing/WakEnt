@@ -14,7 +14,7 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     {
       type: "Songs",
       title: "올드 타운 로드 - 풍신 X 캘리칼리데이비슨 COVER",
-      links: "k3KYfaN_rlM",
+      links: "fYMeb2ODFUE",
       date: "22.05.28",
     },
     {
