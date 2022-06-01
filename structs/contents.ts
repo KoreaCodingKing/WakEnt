@@ -146,6 +146,15 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "VRChat",
+    date: "2022. 06. 01.",
+    content: "기타",
+    title: "[신 맵 소개] 왁두 아일랜드",
+    episode: 21,
+    participants: ["wakgood", "시청자"],
+    links: "4U1qSMVr34k",
+  },
+  {
     game: "Others",
     date: "2022. 5. 30.",
     content: "고정멤버X이세계아이돌",
