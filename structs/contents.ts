@@ -155,6 +155,15 @@ export const contentsList: Content[] = [
     links: "4U1qSMVr34k",
   },
   {
+    game: "VRChat",
+    date: "2022. 05. 31.",
+    content: "22'상반기상황극콘테스트",
+    title: "쥬라기 파라다이스 - VR챗 상황극",
+    episode: 18,
+    participants: ["wakgood", "시청자들"],
+    links: "XGqhg7E1u7s",
+  },
+  {
     game: "Others",
     date: "2022. 5. 30.",
     content: "고정멤버X이세계아이돌",
