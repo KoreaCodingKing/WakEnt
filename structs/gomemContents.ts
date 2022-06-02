@@ -495,6 +495,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   GwakChoonSik: [
     {
+      type: "Contents",
+      title: "마지막재회...?!",
+      links: "nzlqtkvQ6lY",
+      date: "22.06.01",
+    },
+    {
       type: "Songs",
       title: "곽춘식-화면을 봤네(M/V)",
       links: "zF6rKEyEhMs",
