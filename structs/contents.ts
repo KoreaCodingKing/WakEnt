@@ -146,6 +146,15 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "Others",
+    date: "2022. 06. 03.",
+    content: "왁타버스콜라보Songs",
+    title: "봄여름가을겨울 - (BIGBANG Still Life COVER)",
+    episode: 5,
+    participants: ["고정멤버"],
+    links: "3vcr_W0tHeQ",
+  },
+  {
     game: "VRChat",
     date: "2022. 06. 01.",
     content: "기타",
