@@ -146,6 +146,18 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "WakSiries",
+    date: "2022. 06. 03.",
+    content: "짧타버스",
+    title: "카페 - 짧타버스 #Shorts",
+    episode: 6,
+    participants: [
+      "고정멤버(프리터, 김치만두번영택사스가)",
+      "이세계아이돌(주르르)",
+    ],
+    links: "71l8ixSayUc",
+  },
+  {
     game: "Others",
     date: "2022. 06. 03.",
     content: "왁타버스콜라보Songs",
