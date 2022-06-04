@@ -147,6 +147,15 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 06. 04.",
+    content: "고정멤버합방",
+    title: "테슬라 vs 에디슨 방탈출 - VR챗 고멤합방",
+    episode: 13,
+    participants: ["wakgood", "고정멤버"],
+    links: "6ig-vNm05hs",
+  },
+  {
+    game: "VRChat",
     date: "2022. 06. 03.",
     content: "22'상반기상황극콘테스트",
     title: "악귀 - VR챗 상황극",
@@ -170,7 +179,8 @@ export const contentsList: Content[] = [
     game: "Others",
     date: "2022. 06. 03.",
     content: "왁타버스콜라보Songs",
-    title: "봄여름가을겨울 - (BIGBANG Still Life COVER)",
+    title:
+      "봄여름가을겨울 - (이덕수할아바이,뢴트게늄,곽춘식,천양 COVER) (BIGBANG Still Life)",
     episode: 5,
     participants: ["고정멤버"],
     links: "3vcr_W0tHeQ",

@@ -602,6 +602,13 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   DeokSuLee: [
     {
       type: "Songs",
+      title:
+        "봄여름가을겨울 - (이덕수할아바이,뢴트게늄,곽춘식,천양 COVER) (BIGBANG Still Life)",
+      links: "3vcr_W0tHeQ",
+      date: "22. 06. 03.",
+    },
+    {
+      type: "Songs",
       title: "TL&D 틀앤디 (이덕수 & 독고혜지)",
       links: "YV0xUoUnv_o",
       date: "22.05.17",
