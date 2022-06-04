@@ -101,6 +101,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
       id: "lQIdaZgK56A",
     },
     {
+      title: "I love you 3000 🥰🍫 Cover #Shorts",
+      id: "lQeFEbYfsQk",
+    },
+    {
       title: "슈퍼참치(SUPER TUNA) COVER",
       id: "Q0LWEyWI8-E",
     },
