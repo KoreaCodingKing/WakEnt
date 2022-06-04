@@ -662,6 +662,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   NegativePerson: [
     {
       type: "Songs",
+      title: "고멤 사이퍼 3기 (프리터, 융터르, 비지니스킴) - WoH",
+      links: "aQhFdAnDDyM",
+      date: "22.06.04",
+    },
+    {
+      type: "Songs",
       title: "[MV]META Verse",
       links: "Ah3YCCLy67A",
       date: "22.02.17",
