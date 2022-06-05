@@ -149,6 +149,15 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "Others",
+    date: "2022. 06. 05.",
+    content: "왁타버스콜라보Songs",
+    title: "[던파OST] 마지막 재회 - cover by LILPA",
+    episode: 6,
+    participants: ["고정멤버(뢴트게늄)", "이세계아이돌(릴파)"],
+    links: "K-5WdjbCYnk",
+  },
+  {
     game: "Minecraft",
     date: "2022. 06. 05.",
     content: "건축콘테스트",

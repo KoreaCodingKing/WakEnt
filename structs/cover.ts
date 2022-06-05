@@ -148,6 +148,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   lilpa: [
     {
+      title: "[던파OST] 마지막 재회 - cover by LILPA",
+      id: "K-5WdjbCYnk",
+    },
+    {
       title: "달의하루 - 너로피어오라",
       id: "8tJb1YlMHfA",
     },
