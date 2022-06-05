@@ -152,7 +152,7 @@ export const contentsList: Content[] = [
     game: "Minecraft",
     date: "2022. 06. 05.",
     content: "건축콘테스트",
-    title: "태일아 진화시켜줘 ~~~ - 마인크래프트 눕프로해커 "그레이몬"",
+    title: '태일아 진화시켜줘 ~~~ - 마인크래프트 눕프로해커 "그레이몬"',
     episode: 83,
     participants: ["wakgood", "시청자들"],
     links: "3KtlP1-6e9I",
