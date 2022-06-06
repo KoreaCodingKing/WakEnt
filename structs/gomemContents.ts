@@ -84,6 +84,13 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   FriedShrimp: [
     {
       type: "Songs",
+      title:
+        "[나는 나비] 자동차 노래방 (드래프트 어필영상) 무저작권(새우튀김 고멤가요 어필)",
+      links: "-kkJuMcrPsU",
+      date: "22.06.06",
+    },
+    {
+      type: "Songs",
       title: "봄이 좋냐 (새우튀김, 부정형인간)",
       links: "1j1AtA4LGXw",
       date: "22.05.05",
@@ -132,6 +139,13 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   MitsuneHaku: [
+    {
+      type: "Songs",
+      title:
+        "[ 고멤가요제 ] 미츠네하쿠 드래프트 어필 영상(미츠네 하쿠 고멤가요제 어필)",
+      links: "X-7l1vGxy3Q",
+      date: "22.06.06",
+    },
     {
       type: "Songs",
       title: "【5K】 🌞SUMMER TIME😎 - [미츠네 하쿠 x 왁컬로이두]",
@@ -198,6 +212,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   PoongSin: [
+    {
+      type: "Songs",
+      title: "우왁굳 고정멤버 가요제 드래프트 어필용(풍신 고멤가요제 어필)",
+      links: "m326wXPW8H8",
+      date: "22.06.06",
+    },
     {
       type: "Contents",
       title: "(우왁굳 고멤알람) 일어나 너는 고멤의 자존심이야",
@@ -476,6 +496,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   Wakpago: [
     {
       type: "Contents",
+      title: "고멤가요제 어필영상 [실패작](왁파고 고멤가요제 어필)",
+      links: "2aY864dkzDs",
+      date: "22.06.06",
+    },
+    {
+      type: "Contents",
       title: "아기상어 - 과학패밀리 COVER",
       links: "PrIJIOrldko",
       date: "22.05.26",
@@ -494,6 +520,13 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   GwakChoonSik: [
+    {
+      type: "Songs",
+      title:
+        "상병화 [고멤 가요제 어필영상] (상사화 cover)(곽춘식 고멤가요제 어필)",
+      links: "eZWyxSxCPPM",
+      date: "22.06.06",
+    },
     {
       type: "Contents",
       title: "마지막재회...?!",
@@ -558,6 +591,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   DokgoHyeji: [
     {
       type: "Contents",
+      title: "고멤 가요제 드래프트 어필 영상(독고혜지 고멤가요제 어필)",
+      links: "qqlvYkeIXVE",
+      date: "22.06.06",
+    },
+    {
+      type: "Contents",
       title: "But You Want More 안무연습 비하인드 혜지x릴파",
       links: "zpHa0_AQnZ4",
       date: "22.05.16",
@@ -600,6 +639,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   DeokSuLee: [
+    {
+      type: "Contents",
+      title: "고정멤버.가요제.드래프트(이덕수할아바이 고멤가요제 어필)",
+      links: "7iIPEWO-CjY",
+      date: "22. 06. 06.",
+    },
     {
       type: "Songs",
       title:
@@ -662,6 +707,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   NegativePerson: [
     {
       type: "Songs",
+      title: "부정형인간 스토커-어필영상(부정형인간 고멤가요제 어필)",
+      links: "4AEXnkG1Z0A",
+      date: "22.06.06",
+    },
+    {
+      type: "Songs",
       title: "고멤 사이퍼 3기 (프리터, 융터르, 비지니스킴) - WoH",
       links: "aQhFdAnDDyM",
       date: "22.06.04",
@@ -687,6 +738,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   Sophia: [
+    {
+      type: "Songs",
+      title: "크립(소피아 고멤 가요제 어필)",
+      links: "kfsWbc9NCIg",
+      date: "22.06.06",
+    },
     {
       type: "Contents",
       title: "이세돌 릴레이댄스 소피아 후기",
@@ -719,6 +776,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   BusinessKim: [
+    {
+      type: "Songs",
+      title: "이브의 경고(비즈니스 킴 고멤가요제 어필)",
+      links: "JsaWVJK8sMw",
+      date: "22.06.06",
+    },
     {
       type: "Contents",
       title: "배달",
@@ -772,6 +835,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   Dandap: [
     {
+      type: "Songs",
+      title: "어필(단답벌레 고멤가요제 어필)",
+      links: "fqte63UEKgY",
+      date: "22.06.06",
+    },
+    {
       type: "Contents",
       title: "Bad - Ssipssang guys COVER (Christopher)",
       links: "kktjoH-LuKo",
@@ -794,12 +863,24 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   Roentgenium: [
     {
       type: "Contents",
+      title: "뢴트게늄 고멤가요제 어필영상",
+      links: "8-OasSTsqJg",
+      date: "22.06.06",
+    },
+    {
+      type: "Contents",
       title: "[짧타버스] 결투",
       links: "ZnluRL8z24Q",
       date: "22.04.01",
     },
   ],
   Freeter: [
+    {
+      type: "Songs",
+      title: "프리터 고멤가요제 어필영상(프리터 고멤가요제 어필)",
+      links: "nGup9bG8Ejc",
+      date: "22.06.06",
+    },
     {
       type: "Songs",
       title: "히키킹 헌정영상",
@@ -832,7 +913,14 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
       date: "22.03.17",
     },
   ],
-  KarnarJungtur: [],
+  KarnarJungtur: [
+    {
+      type: "Songs",
+      title: "[Misty Mountains Cold] (카르나르 융터르 고멤가요제 어필영상)",
+      links: "dTX57-6CA1w",
+      date: "22.06.06",
+    },
+  ],
   CallyCarly: [],
   DogCat: [],
   GilHatnimSongE: [],
