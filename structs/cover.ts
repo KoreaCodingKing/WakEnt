@@ -209,7 +209,7 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   gosegu: [
     {
-      title: "[MV] 귀멸의사춘기 _ Naman, Hong(나만, 홍련화)｜COVER by 고세구",
+      title: "[MV] BOL4(볼빨간사춘기) _ Bom(나만, 봄)｜COVER by 고세구",
       id: "SAJrAQGvOHE",
     },
     {
