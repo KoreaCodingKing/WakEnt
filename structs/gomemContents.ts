@@ -746,6 +746,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
     {
       type: "Contents",
+      title: "10만원으로 미국 여행을 갈 수 있다고? (관광 + 호텔 + 항공편 까지)",
+      links: "NsCQev6AIc4",
+      date: "22.06.07",
+    },
+    {
+      type: "Contents",
       title: "이세돌 릴레이댄스 소피아 후기",
       links: "nxMO8ufrRG0",
       date: "22.05.17",
