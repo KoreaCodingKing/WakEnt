@@ -152,6 +152,15 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "VRChat",
+    date: "2022. 06. 09.",
+    content: "고멤가요제",
+    title: "고멤가요제 드래프트 거부권 획득을 위한 - 도끼 토너먼트",
+    episode: 0,
+    participants: ["wakgood", "고정멤버(전체)"],
+    links: "6SiQCPIN5tE",
+  },
+  {
     game: "Others",
     date: "2022. 06. 05.",
     content: "왁타버스콜라보Songs",
