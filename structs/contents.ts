@@ -152,6 +152,15 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "WakSiries",
+    date: "2022. 06. 09.",
+    content: "이세돌마스터",
+    title: "아이돌 답다는 건? - 이세돌마스터 3화",
+    episode: 3,
+    participants: [],
+    links: "hKNoTzhj_QE",
+  },
+  {
     game: "VRChat",
     date: "2022. 06. 09.",
     content: "고멤가요제",
