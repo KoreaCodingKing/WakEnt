@@ -256,6 +256,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   viichan: [
     {
+      title: "[MV] BTS (방탄소년단) 'Butter' | Cover by 비챤 (feat. 릴파)",
+      id: "nWJB1U7cQVs",
+    },
+    {
       title:
         "사랑은 은하수 다방에서 (Love in the Milky Way Café) - Cover by 비챤",
       id: "fzHJxq37cqI",

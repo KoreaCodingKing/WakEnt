@@ -680,6 +680,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   KimchiMandoo: [
     {
       type: "Contents",
+      title: "이세계아이돌 주르르 생일 기념 3D 피규어 프로젝트",
+      links: "A6YJSG4RBFw",
+      date: "22.06.10",
+    },
+    {
+      type: "Contents",
       title: "제 1회 [망령대통령] 선거 결과 발표",
       links: "3BQu0QPT0oQ",
       date: "22.03.10",
