@@ -880,6 +880,13 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   Roentgenium: [
     {
+      type: "Songs",
+      title:
+        "「내가 죽으려고 생각한 것은 / 僕が死のうと思ったのは」┃Cover by Roentgenium",
+      links: "I5sIwg3z-Yo",
+      date: "22.06.12",
+    },
+    {
       type: "Contents",
       title: "뢴트게늄 고멤가요제 어필영상",
       links: "8-OasSTsqJg",
