@@ -13,6 +13,13 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   SecretGirl: [
     {
       type: "Songs",
+      title:
+        "사랑하긴 했었나요 스쳐가는 인연이었나요 짧지않은 우리 함께했던 시간들이 자꾸 COVER (1절)",
+      links: "1cJb_AXWWOE",
+      date: "22.06.06",
+    },
+    {
+      type: "Songs",
       title: "올드 타운 로드 - 풍신 X 캘리칼리데이비슨 COVER",
       links: "fYMeb2ODFUE",
       date: "22.05.28",
