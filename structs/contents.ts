@@ -153,6 +153,15 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 06. 14.",
+    content: "기타",
+    title: "가장 좋아요를 많이 받은 댓글이 주르르의 커버곡이 됩니다",
+    episode: 23,
+    participants: ["wakgood", "고정멤버"],
+    links: "eY30SH6Q_MQ",
+  },
+  {
+    game: "VRChat",
     date: "2022. 06. 13.",
     content: "고정멤버합방",
     title: "사이버 친구들과 함께 볼링장에 놀러 갔어요",
