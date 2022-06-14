@@ -155,7 +155,7 @@ export const contentsList: Content[] = [
     game: "VRChat",
     date: "2022. 06. 14.",
     content: "기타",
-    title: "가장 좋아요를 많이 받은 댓글이 주르르의 커버곡이 됩니다",
+    title: "릴파의 마지막재회를 보고 분노한 히키킹 반응",
     episode: 23,
     participants: ["wakgood", "고정멤버"],
     links: "eY30SH6Q_MQ",
@@ -174,7 +174,7 @@ export const contentsList: Content[] = [
     date: "2022. 06. 13.",
     content: "고멤가요제",
     title:
-      '무한도전 가요제가 기억나십니까? - 왁타버스 멤버 총출동! 고멤가요제 1화 "참가자 소개"',
+      "무한도전 가요제가 기억나십니까? - 왁타버스 멤버 총출동! 고멤가요제 1화 '참가자 소개'",
     episode: 2,
     participants: ["wakgood", "고정멤버(전체)"],
     links: "6SiQCPIN5tE",
@@ -253,16 +253,6 @@ export const contentsList: Content[] = [
     episode: 0,
     participants: ["wakgood", "고정멤버(왁파고)"],
     links: "PrIJIOrldko",
-  },
-  {
-    game: "VRChat",
-    date: "2022. 06. 06.",
-    content: "고멤가요제",
-    title:
-      "상병화 [고멤 가요제 어필영상] (상사화 cover)(곽춘식 고멤가요제 어필)",
-    episode: 0,
-    participants: ["wakgood", "고정멤버(곽춘식)"],
-    links: "eZWyxSxCPPM",
   },
   {
     game: "VRChat",
