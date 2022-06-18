@@ -152,6 +152,26 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "Minecraft",
+    date: "2022. 06. 17.",
+    content: "건축콘테스트",
+    title:
+      "#범죄도시2 #마동석 #천만관객돌파 #광고아님 - 마인크래프트 눕프로해커",
+    episode: 84,
+    participants: ["wakgood", "시청자들"],
+    links: "t4VzedKg2ic",
+  },
+  {
+    game: "Others",
+    date: "2022. 06. 15.",
+    content: "기타",
+    title:
+      "오징어 게임처럼 참가자들을 내맘대로.. ㅎㅎㅎ 할 수 있는 게임 - 데드사이드 클럽",
+    episode: 7,
+    participants: ["wakgood", "시청자들"],
+    links: "UbiZOMmawHY",
+  },
+  {
     game: "VRChat",
     date: "2022. 06. 14.",
     content: "기타",
