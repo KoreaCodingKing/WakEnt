@@ -28,7 +28,7 @@ export type ContentName =
   | "버터뷰"
   | "짧타버스"
   | "왁타버스콜라보Songs"
-  | "연말공모전"
+  | "22'연말공모전"
   | "이세돌마스터"
   | "붉은마을"
   | "고멤가요제"
@@ -69,7 +69,7 @@ export enum contentsNameByEnum {
   "버터뷰" = "버터뷰",
   "짧타버스" = "짧타버스",
   "왁타버스콜라보Songs" = "왁타버스콜라보Songs",
-  "연말공모전" = "연말공모전",
+  "22'연말공모전" = "22'연말공모전",
   "이세돌마스터" = "이세돌마스터",
   "붉은마을" = "붉은마을",
   "쇼케이스/시사회" = "쇼케이스/시사회",
@@ -131,7 +131,7 @@ export const ContentByGame: Record<Game, GameContents> = {
   [GameByEnum.Others]: {
     name: "기타",
     contentName: [
-      "연말공모전",
+      "22'연말공모전",
       "고정멤버X이세계아이돌",
       "왁타버스콜라보Songs",
       "기타",
@@ -1499,7 +1499,7 @@ export const contentsList: Content[] = [
   {
     game: "Others",
     date: "2021. 12. 29.",
-    content: "연말공모전",
+    content: "22'연말공모전",
     title: "팬치등 (신호등 COVER)- (우왁굳반응)",
     episode: 14,
     participants: ["시청자"],
@@ -1508,7 +1508,7 @@ export const contentsList: Content[] = [
   {
     game: "Others",
     date: "2021. 12. 28.",
-    content: "연말공모전",
+    content: "22'연말공모전",
     title: "왁케인 (우왁굳 반응)",
     episode: 13,
     participants: ["시청자"],
@@ -1517,7 +1517,7 @@ export const contentsList: Content[] = [
   {
     game: "Others",
     date: "2021. 12. 28.",
-    content: "연말공모전",
+    content: "22'연말공모전",
     title: "TEAM JONMOTSSHIPJINOON 단체곡 Twenty Twenty Two",
     episode: 13,
     participants: ["고정멤버"],
@@ -1526,7 +1526,7 @@ export const contentsList: Content[] = [
   {
     game: "Others",
     date: "2021. 12. 28.",
-    content: "연말공모전",
+    content: "22'연말공모전",
     title: "왁케인 WAKCANE",
     episode: 11,
     participants: ["시청자"],
@@ -1535,7 +1535,7 @@ export const contentsList: Content[] = [
   {
     game: "Others",
     date: "2021. 12. 28.",
-    content: "연말공모전",
+    content: "22'연말공모전",
     title: "Apple Quality - 우왁굳 반응",
     episode: 10,
     participants: ["시청자"],
@@ -1544,7 +1544,7 @@ export const contentsList: Content[] = [
   {
     game: "Others",
     date: "2021. 12. 28.",
-    content: "연말공모전",
+    content: "22'연말공모전",
     title: "왁 미제라블 (Wak Miserables) - 우왁굳 반응",
     episode: 9,
     participants: ["고정멤버"],
@@ -1553,7 +1553,7 @@ export const contentsList: Content[] = [
   {
     game: "Others",
     date: "2021. 12. 27.",
-    content: "연말공모전",
+    content: "22'연말공모전",
     title: "[2021년 연말공모전] 왁미제라블 Wak Misérables",
     episode: 8,
     participants: ["고정멤버"],
@@ -1562,7 +1562,7 @@ export const contentsList: Content[] = [
   {
     game: "Others",
     date: "2021. 12. 27.",
-    content: "연말공모전",
+    content: "22'연말공모전",
     title: "이세계는 아이돌과 함께 OP - (우왁굳반응)",
     episode: 7,
     participants: ["시청자들"],
@@ -1571,7 +1571,7 @@ export const contentsList: Content[] = [
   {
     game: "Others",
     date: "2021. 12. 26.",
-    content: "연말공모전",
+    content: "22'연말공모전",
     title: "이세계는 아이돌과 함께 OP",
     episode: 6,
     participants: ["시청자들"],
@@ -1580,7 +1580,7 @@ export const contentsList: Content[] = [
   {
     game: "Others",
     date: "2021. 12. 27.",
-    content: "연말공모전",
+    content: "22'연말공모전",
     title: "[2021년 연말공모전] 고멤싸이퍼 2기 (Beat by Vizard Beatz)",
     episode: 5,
     participants: ["고정멤버"],
@@ -1589,7 +1589,7 @@ export const contentsList: Content[] = [
   {
     game: "Others",
     date: "2021. 12. 27.",
-    content: "연말공모전",
+    content: "22'연말공모전",
     title: "[2021년 연말공모전] 고멤싸이퍼 1기 (Beat by Vizard Beatz)",
     episode: 4,
     participants: ["고정멤버"],
@@ -1598,7 +1598,7 @@ export const contentsList: Content[] = [
   {
     game: "Others",
     date: "2021. 12. 27.",
-    content: "연말공모전",
+    content: "22'연말공모전",
     title: "고멤 사이퍼 2기 (우왁굳 반응) - TEAM JONMOTSSHIPJINOON",
     episode: 3,
     participants: ["고정멤버"],
@@ -1607,7 +1607,7 @@ export const contentsList: Content[] = [
   {
     game: "Others",
     date: "2021. 12. 27.",
-    content: "연말공모전",
+    content: "22'연말공모전",
     title: "고멤 사이퍼 1기 (우왁굳 반응) - TEAM JONMOTSSHIPJINOON",
     episode: 2,
     participants: ["고정멤버"],
@@ -1616,7 +1616,7 @@ export const contentsList: Content[] = [
   {
     game: "Others",
     date: "2021. 12. 27.",
-    content: "연말공모전",
+    content: "22'연말공모전",
     title:
       "마이 왁타버스 (My WAKTAVERSE) COVER by 왁타버스 - My Universe (Coldplay X BTS)",
     episode: 1,
