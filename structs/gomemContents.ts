@@ -362,6 +362,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   HikiKing: [
     {
+      type: "Contents",
+      title: "볼링치고 짜장면 먹기",
+      links: "yUT8CclEhCQ",
+      date: "22.06.16",
+    },
+    {
       type: "Songs",
       title: "[4K] BTS 방탄소년단 'Butter'ㅣCover by 히키킹",
       links: "22Gguht_plk",
