@@ -152,6 +152,16 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "VRChat",
+    date: "2022. 06. 20.",
+    content: "고멤가요제",
+    title:
+      '가장 먼저 뽑히는 고멤은 누구일까? - 고멤가요제 2화 "팀 드래프트 시작"',
+    episode: 17,
+    participants: ["wakgood", "고정멤버(전체)", "이세계아이돌"],
+    links: "v67Fs-m_DzI",
+  },
+  {
     game: "Minecraft",
     date: "2022. 06. 17.",
     content: "건축콘테스트",
