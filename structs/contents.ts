@@ -153,6 +153,15 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 06. 21.",
+    content: "22'상반기상황극콘테스트",
+    title: "(최초) 제 8회 상황극 콘테스트 시상식",
+    episode: 21,
+    participants: ["wakgood", "시청자들"],
+    links: "FnnlW8jN5Ys",
+  },
+  {
+    game: "VRChat",
     date: "2022. 06. 20.",
     content: "고멤가요제",
     title:
