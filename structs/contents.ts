@@ -33,6 +33,7 @@ export type ContentName =
   | "붉은마을"
   | "고멤가요제"
   | "쇼케이스/시사회/팬미팅"
+  | "해커의 손길"
   | "기타";
 
 export enum GameByEnum {
@@ -75,6 +76,7 @@ export enum contentsNameByEnum {
   "쇼케이스/시사회" = "쇼케이스/시사회",
   "22'상반기상황극콘테스트" = "22'상반기상황극콘테스트",
   "고멤가요제" = "고멤가요제",
+  "해커의 손길" = "해커의 손길",
   "기타" = "기타",
 }
 
@@ -99,6 +101,7 @@ export const ContentByGame: Record<Game, GameContents> = {
       "왁트모르즈비",
       "미니모르즈비",
       "마인크래프트X전쟁",
+      "해커의 손길",
       "기타",
     ],
     image: "/images/logo/logo_minecraft.png",
@@ -151,6 +154,16 @@ export interface Content {
 }
 
 export const contentsList: Content[] = [
+  {
+    game: "Minecraft",
+    date: "2022. 06. 24.",
+    content: "해커의 손길",
+    title:
+      "초보의 집을 고수가 리모델링 해 준다면? - 마인크래프트 '해커의 손길'",
+    episode: 1,
+    participants: ["wakgood", "시청자들"],
+    links: "IdxtbGDSYtE",
+  },
   {
     game: "VRChat",
     date: "2022. 06. 21.",
