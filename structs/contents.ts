@@ -155,6 +155,20 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "VRChat",
+    date: "2022. 06. 24.",
+    content: "고멤가요제",
+    title:
+      '고멤가요제에서 가장 견제되는 팀이 있다면? - 우왁굳의 기습방문 "1팀"',
+    episode: 18,
+    participants: [
+      "wakgood",
+      "고정멤버(곽춘식, 비밀소녀, 이덕수할아바이)",
+      "시청자들",
+    ],
+    links: "UJYB_nuJzro",
+  },
+  {
     game: "Minecraft",
     date: "2022. 06. 24.",
     content: "해커의 손길",
@@ -180,7 +194,7 @@ export const contentsList: Content[] = [
     title:
       '가장 먼저 뽑히는 고멤은 누구일까? - 고멤가요제 2화 "팀 드래프트 시작"',
     episode: 17,
-    participants: ["wakgood", "고정멤버(전체)", "이세계아이돌"],
+    participants: ["wakgood", "고정멤버(전체)", "이세계아이돌", "시청자들"],
     links: "v67Fs-m_DzI",
   },
   {
