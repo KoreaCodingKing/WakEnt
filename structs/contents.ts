@@ -155,6 +155,15 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "Others",
+    date: "2022. 06. 24.",
+    content: "기타",
+    title: "눈치보는 그 게임이 멀티가 나왔습니다 - 쿠키요미 온라인",
+    episode: 8,
+    participants: ["wakgood", "시청자들"],
+    links: "_ckd0EON0q0",
+  },
+  {
     game: "VRChat",
     date: "2022. 06. 24.",
     content: "고멤가요제",

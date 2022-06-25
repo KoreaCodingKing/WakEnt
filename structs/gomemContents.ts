@@ -463,6 +463,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   HaeruSeok: [
     {
+      type: "Contents",
+      title: "고백으로 혼내주기 지원영상",
+      links: "d6cWpB_nGoA",
+      date: "22.06.24",
+    },
+    {
       type: "Songs",
       title: "치즈 - Mood Indigo ( 비밀소녀x해루석 cover )",
       links: "M7CvycHOizg",
