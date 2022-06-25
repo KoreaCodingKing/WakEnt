@@ -155,6 +155,15 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "VRChat",
+    date: "2022. 06. 25.",
+    content: "고멤가요제",
+    title: "2팀의 비밀병기 - 우왁굳의 기습방문 2팀 (고멤가요제 4화)",
+    episode: 19,
+    participants: ["wakgood", "고정멤버(해루석, 권민, 히키킹, )", "시청자들"],
+    links: "PWW9fR5ji9Y",
+  },
+  {
     game: "Others",
     date: "2022. 06. 24.",
     content: "기타",
