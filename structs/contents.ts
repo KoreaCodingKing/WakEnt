@@ -156,11 +156,30 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 06. 28.",
+    content: "고멤가요제",
+    title: "메보 싸움 - 고멤가요제 5화",
+    episode: 20,
+    participants: ["wakgood", "고정멤버(풍신, 소피아, 도파민박사)", "시청자들"],
+    links: "2JOLhYvBb_8",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 06. 28.",
+    content: "기타",
+    title:
+      "28명이 모이면 그 중 생일이 같은 사람이 나올 확률은 65% 이상이다? - 생일의 역설",
+    episode: 24,
+    participants: ["wakgood", "시청자들"],
+    links: "H00a8FIXolk",
+  },
+  {
+    game: "VRChat",
     date: "2022. 06. 25.",
     content: "고멤가요제",
     title: "2팀의 비밀병기 - 우왁굳의 기습방문 2팀 (고멤가요제 4화)",
     episode: 19,
-    participants: ["wakgood", "고정멤버(해루석, 권민, 히키킹, )", "시청자들"],
+    participants: ["wakgood", "고정멤버(해루석, 권민, 히키킹)", "시청자들"],
     links: "PWW9fR5ji9Y",
   },
   {

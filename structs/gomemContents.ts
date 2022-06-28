@@ -469,6 +469,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   HaeruSeok: [
     {
+      type: "Songs",
+      title: "윤종신 - 지친하루(with 곽진언, 김필) 해루석 Cover",
+      links: "H_W_u4q5KuQ",
+      date: "22.06.28",
+    },
+    {
       type: "Contents",
       title: "고백으로 혼내주기 지원영상",
       links: "d6cWpB_nGoA",
