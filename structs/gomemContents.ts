@@ -12,6 +12,12 @@ export interface GomemContents {
 export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   SecretGirl: [
     {
+      type: "Songs",
+      title: "에픽하이 - 우산 COVER",
+      links: "2T2WGSCbaWM",
+      date: "22.06.28",
+    },
+    {
       type: "Contents",
       title: "소피아님은 절도 하고 싶어",
       links: "IxWytqffgMs",
