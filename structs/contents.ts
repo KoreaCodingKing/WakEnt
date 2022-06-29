@@ -155,6 +155,24 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "Minecraft",
+    date: "2022. 06. 29.",
+    content: "건축콘테스트",
+    title: "아우 깜짝 놀랐네. 역대급 얼굴 표현 - 마인크래프트 눕프로해커",
+    episode: 85,
+    participants: ["wakgood", "시청자들"],
+    links: "RdavlTwGa1M",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 06. 29.",
+    content: "고멤가요제",
+    title: "OYT팀 데모송 유출?? - 고멤가요제 6화",
+    episode: 21,
+    participants: ["wakgood", "고정멤버(풍신, 소피아, 도파민박사)", "시청자들"],
+    links: "zO1UXT0-5DI",
+  },
+  {
     game: "VRChat",
     date: "2022. 06. 28.",
     content: "고멤가요제",
