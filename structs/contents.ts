@@ -155,6 +155,16 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "VRChat",
+    date: "2022. 07. 01.",
+    content: "소개팅",
+    title:
+      "여자한테 고백하고 고백 점수 평가받는 컨텐츠 - VR챗 고백으로 혼내주기",
+    episode: 7,
+    participants: ["wakgood", "시청자들"],
+    links: "nrftV_34owk",
+  },
+  {
     game: "Minecraft",
     date: "2022. 06. 29.",
     content: "건축콘테스트",
