@@ -14,7 +14,7 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     {
       type: "Songs",
       title: "에픽하이 - 우산 COVER",
-      links: "2T2WGSCbaWM",
+      links: "T84CDxlwsXw",
       date: "22.06.28",
     },
     {
