@@ -39,6 +39,11 @@ export const IsedolOriginalSong: YouTubeVideo[] = [
 export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ine: [
     {
+      title:
+        "BTS (방탄소년단) - 전하지 못한 진심 (The Truth Untold)' (해루석,??,????,???) COVER",
+      id: "pl38om066m0",
+    },
+    {
       title: "[MV] 신호등(Traffic light) Cover by 아이네 INE",
       id: "7IcafhbXprU",
     },
@@ -148,6 +153,11 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   lilpa: [
     {
+      title:
+        "BTS (방탄소년단) - 전하지 못한 진심 (The Truth Untold)' (해루석,??,????,???) COVER",
+      id: "pl38om066m0",
+    },
+    {
       title: "[던파OST] 마지막 재회 - cover by LILPA",
       id: "K-5WdjbCYnk",
     },
@@ -255,6 +265,11 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
     },
   ],
   viichan: [
+    {
+      title:
+        "BTS (방탄소년단) - 전하지 못한 진심 (The Truth Untold)' (해루석,??,????,???) COVER",
+      id: "pl38om066m0",
+    },
     {
       title: "[MV] BTS (방탄소년단) 'Butter' | Cover by 비챤 (feat. 릴파)",
       id: "nWJB1U7cQVs",

@@ -155,6 +155,16 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "Others",
+    date: "2022. 07. 02.",
+    content: "왁타버스콜라보Songs",
+    title:
+      "BTS (방탄소년단) - 전하지 못한 진심 (The Truth Untold)' (해루석,??,????,???) COVER",
+    episode: 7,
+    participants: ["고정멤버(해루석)", "이세계아이돌(아이네, 릴파, 비챤)"],
+    links: "pl38om066m0",
+  },
+  {
     game: "VRChat",
     date: "2022. 07. 01.",
     content: "소개팅",

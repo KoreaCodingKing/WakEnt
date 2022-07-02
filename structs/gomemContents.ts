@@ -307,6 +307,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   DrDopamine: [
     {
       type: "Contents",
+      title: "도루",
+      links: "B69akupWCEs",
+      date: "22.07.02",
+    },
+    {
+      type: "Contents",
       title: "띠용띠용 으이으이",
       links: "p100OXhV2as",
       date: "22.04.05",
