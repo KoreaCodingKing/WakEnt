@@ -117,6 +117,7 @@ export const ContentByGame: Record<Game, GameContents> = {
       "22'상반기상황극콘테스트",
       "고멤가요제",
       "쇼케이스/시사회/팬미팅",
+      "고정멤버합방",
       "기타",
     ],
     image: "/images/logo/logo_vrchat.png",
@@ -155,11 +156,50 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "VRChat",
+    date: "2022. 07. 04.",
+    content: "고정멤버합방",
+    title: "물건 모른채로 판매하기 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+    episode: 14,
+    participants: [
+      "wakgood",
+      "고정멤버(프리터, 독고혜지, 풍신, 해루석, 히키킹, 미츠네 하쿠, 비밀소녀)",
+    ],
+    links: "A7JiNM1bUm4",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 07. 04.",
+    content: "고멤가요제",
+    title: "단답벌레의 노래실력은? - 고멤가요제 8화",
+    episode: 23,
+    participants: [
+      "wakgood",
+      "고정멤버(비즈니스 킴, 단답벌레, 독고혜지)",
+      "이세계아이돌(릴파)",
+      "시청자들",
+    ],
+    links: "LhG00jwiGQ4",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 07. 04.",
+    content: "고멤가요제",
+    title: "이세돌 RE:WIND 작곡가의 새로운 노래 소식?? - 고멤가요제 7화",
+    episode: 22,
+    participants: [
+      "wakgood",
+      "고정멤버(비즈니스 킴, 단답벌레, 독고혜지)",
+      "시청자들",
+    ],
+    links: "xeP5Dv-pFYo",
+  },
+  {
     game: "Others",
     date: "2022. 07. 02.",
     content: "왁타버스콜라보Songs",
     title:
-      "BTS (방탄소년단) - 전하지 못한 진심 (The Truth Untold)' (해루석,??,????,???) COVER",
+      "BTS - 전하지 못한 진심 (이세계아이돌 x 해루석 COVER) [The Truth Untold]",
     episode: 7,
     participants: ["고정멤버(해루석)", "이세계아이돌(아이네, 릴파, 비챤)"],
     links: "pl38om066m0",
