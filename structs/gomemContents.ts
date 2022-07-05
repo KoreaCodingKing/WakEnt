@@ -233,6 +233,13 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   PoongSin: [
     {
       type: "Songs",
+      title:
+        "왁물원 프리터 (이태원 프리덤 COVER) - BF (비지니스킴,프리터) (ft.천양)",
+      links: "2e8DKHpyoQ8",
+      date: "22.07.05",
+    },
+    {
+      type: "Songs",
       title: "우왁굳 고정멤버 가요제 드래프트 어필용(풍신 고멤가요제 어필)",
       links: "m326wXPW8H8",
       date: "22.06.06",
