@@ -156,6 +156,15 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "Others",
+    date: "2022. 07. 06.",
+    content: "기타",
+    title: "징버거님과 같은 차를 타고 전쟁에 나선다 - 헬렛루즈",
+    episode: 9,
+    participants: ["wakgood", "이세계아이돌(징버거)", "시청자들"],
+    links: "O30JRK3xeXs",
+  },
+  {
     game: "VRChat",
     date: "2022. 07. 04.",
     content: "고정멤버합방",
