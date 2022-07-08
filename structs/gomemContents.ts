@@ -697,6 +697,18 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   DeokSuLee: [
     {
       type: "Contents",
+      title: "발로란트 화면전환",
+      links: "v0wP-y9x2qA",
+      date: "22. 07. 07.",
+    },
+    {
+      type: "Contents",
+      title: "발로란트 팀원소개",
+      links: "4sFN-gUtSZ4",
+      date: "22. 07. 07.",
+    },
+    {
+      type: "Contents",
       title: "고정멤버.가요제.드래프트(이덕수할아바이 고멤가요제 어필)",
       links: "7iIPEWO-CjY",
       date: "22. 06. 06.",

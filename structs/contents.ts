@@ -156,6 +156,29 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "VRChat",
+    date: "2022. 07. 09.",
+    content: "고멤가요제",
+    title: "맵 퀄리티 미쳤음 - 고멤가요제 9화",
+    episode: 24,
+    participants: [
+      "wakgood",
+      "고정멤버(미츠네 하쿠, 왁파고, 융터르)",
+      "시청자들",
+    ],
+    links: "sgYW3TqmNWw",
+  },
+  {
+    game: "Minecraft",
+    date: "2022. 07. 07.",
+    content: "해커의 손길",
+    title:
+      "ㄹㅇ 감탄했습니다. 초보가 만든 버섯집을 고수가 리모델링 했더니? - 마인크래프트 해커의 손길",
+    episode: 86,
+    participants: ["wakgood", "시청자들"],
+    links: "SFm8pVKH8QE",
+  },
+  {
     game: "Others",
     date: "2022. 07. 06.",
     content: "기타",
