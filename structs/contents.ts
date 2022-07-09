@@ -159,6 +159,16 @@ export const contentsList: Content[] = [
     game: "VRChat",
     date: "2022. 07. 09.",
     content: "고멤가요제",
+    title:
+      "[몰래카메라 유출] 바람난 오빠들 이세돌 대항마 피처링 가수 유출 ??? - 고멤가요제 10화",
+    episode: 25,
+    participants: ["wakgood", "고정멤버(해루석, 권민, 히키킹)", "시청자들"],
+    links: "Eg3qgMgqZJ4",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 07. 09.",
+    content: "고멤가요제",
     title: "맵 퀄리티 미쳤음 - 고멤가요제 9화",
     episode: 24,
     participants: [
