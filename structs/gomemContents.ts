@@ -13,6 +13,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   SecretGirl: [
     {
       type: "Songs",
+      title: "해루석 X 비밀소녀 - 2cm (COVER) [민서 X 폴킴]",
+      links: "Q2Cc8XoqMpM",
+      date: "22.07.11",
+    },
+    {
+      type: "Songs",
       title: "에픽하이 - 우산 COVER",
       links: "T84CDxlwsXw",
       date: "22.06.28",
@@ -101,6 +107,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   FriedShrimp: [
+    {
+      type: "Contents",
+      title: "[우왁굳 반응] 새우튀김의 우마무스메",
+      links: "ocdl_DM4iWY",
+      date: "22.07.10",
+    },
     {
       type: "Songs",
       title:
