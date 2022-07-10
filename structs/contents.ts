@@ -157,6 +157,15 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 07. 11.",
+    content: "소개팅",
+    title: "여자들이 싫어하는 고백 행동 - 고백으로 혼내주기 2화 (완)",
+    episode: 7,
+    participants: ["wakgood", "시청자들"],
+    links: "xR9slNh9a6M",
+  },
+  {
+    game: "VRChat",
     date: "2022. 07. 09.",
     content: "고멤가요제",
     title:
