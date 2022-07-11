@@ -158,6 +158,19 @@ export const contentsList: Content[] = [
   {
     game: "VRChat",
     date: "2022. 07. 11.",
+    content: "고멤가요제",
+    title: "여기가... 팀 사무실...?? - 고멤가요제 11화",
+    episode: 26,
+    participants: [
+      "wakgood",
+      "고정멤버(뢴트게늄, 김치만두번영택사스가, 부정형인간)",
+      "시청자들",
+    ],
+    links: "cDjUyZXu7A4",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 07. 11.",
     content: "소개팅",
     title: "여자들이 싫어하는 고백 행동 - 고백으로 혼내주기 2화 (완)",
     episode: 7,
