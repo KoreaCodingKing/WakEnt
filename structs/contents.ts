@@ -157,6 +157,18 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 07. 12.",
+    content: "고정멤버합방",
+    title: "팀원을 팔아버린 할아바이 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+    episode: 15,
+    participants: [
+      "wakgood",
+      "고정멤버(프리터, 독고혜지, 풍신, 해루석, 히키킹, 미츠네 하쿠, 비밀소녀)",
+    ],
+    links: "WNV0Ki0HOvo",
+  },
+  {
+    game: "VRChat",
     date: "2022. 07. 11.",
     content: "고멤가요제",
     title: "여기가... 팀 사무실...?? - 고멤가요제 11화",
