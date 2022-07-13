@@ -507,6 +507,13 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   HaeruSeok: [
     {
       type: "Songs",
+      title:
+        "BTS - 전하지 못한 진심 (이세계아이돌 x 해루석 COVER) [The Truth Untold]",
+      links: "pl38om066m0",
+      date: "22.07.02",
+    },
+    {
+      type: "Songs",
       title: "윤종신 - 지친하루(with 곽진언, 김필) 해루석 Cover",
       links: "H_W_u4q5KuQ",
       date: "22.06.28",

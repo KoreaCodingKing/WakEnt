@@ -40,7 +40,7 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ine: [
     {
       title:
-        "BTS (방탄소년단) - 전하지 못한 진심 (The Truth Untold)' (해루석,??,????,???) COVER",
+        "BTS - 전하지 못한 진심 (이세계아이돌 x 해루석 COVER) [The Truth Untold]",
       id: "pl38om066m0",
     },
     {
@@ -154,7 +154,7 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   lilpa: [
     {
       title:
-        "BTS (방탄소년단) - 전하지 못한 진심 (The Truth Untold)' (해루석,??,????,???) COVER",
+        "BTS - 전하지 못한 진심 (이세계아이돌 x 해루석 COVER) [The Truth Untold]",
       id: "pl38om066m0",
     },
     {
@@ -266,8 +266,12 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   viichan: [
     {
+      title: "오니가 없는 사이에 - Cover by VIichan",
+      id: "xfKON1-5HAw",
+    },
+    {
       title:
-        "BTS (방탄소년단) - 전하지 못한 진심 (The Truth Untold)' (해루석,??,????,???) COVER",
+        "BTS - 전하지 못한 진심 (이세계아이돌 x 해루석 COVER) [The Truth Untold]",
       id: "pl38om066m0",
     },
     {
