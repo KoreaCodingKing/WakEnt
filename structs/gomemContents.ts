@@ -933,13 +933,19 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   Dandap: [
     {
+      type: "Contents",
+      title: "고멤은 좋겠다",
+      links: "IDP9Guv5y-k",
+      date: "22.07.13",
+    },
+    {
       type: "Songs",
       title: "어필(단답벌레 고멤가요제 어필)",
       links: "fqte63UEKgY",
       date: "22.06.06",
     },
     {
-      type: "Contents",
+      type: "Songs",
       title: "Bad - Ssipssang guys COVER (Christopher)",
       links: "kktjoH-LuKo",
       date: "22.05.28",

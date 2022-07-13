@@ -157,6 +157,18 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 07. 13.",
+    content: "기타",
+    title: "고멤은 좋겠다",
+    episode: 25,
+    participants: [
+      "wakgood",
+      "고정멤버(부정형인간, 비밀소녀, 풍신, 해루석, 단답벌레)",
+    ],
+    links: "IDP9Guv5y-k",
+  },
+  {
+    game: "VRChat",
     date: "2022. 07. 12.",
     content: "고정멤버합방",
     title: "팀원을 팔아버린 할아바이 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
