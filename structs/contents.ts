@@ -156,6 +156,35 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "Others",
+    date: "2022. 07. 15.",
+    content: "왁타버스콜라보Songs",
+    title: "고정멤버 1주년 기념 - 추억의 만화영화 메들리",
+    episode: 8,
+    participants: ["고정멤버(전체)"],
+    links: "iG3vgmADfZ0",
+  },
+  {
+    game: "VRChat",
+    date: "2022. 07. 15.",
+    content: "기타",
+    title: "잔잔 vr챗 맵탐방",
+    episode: 26,
+    participants: ["wakgood", "시청자들"],
+    links: "Ix3wtlH78tk",
+  },
+  {
+    game: "WakSiries",
+    date: "2022. 07. 15.",
+    content: "짧타버스",
+    title: "육권분립",
+    episode: 7,
+    participants: [
+      "고정멤버(캘리칼리 데이비슨, 단답벌레, 왁파고, 곽춘식, 김치만두번영택사스가, 권민)",
+    ],
+    links: "vvR0D1uXMLg",
+  },
+  {
     game: "VRChat",
     date: "2022. 07. 13.",
     content: "기타",

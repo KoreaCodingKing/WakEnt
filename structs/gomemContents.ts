@@ -244,6 +244,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   PoongSin: [
     {
+      type: "Contents",
+      title: "왁물원 프리터 티저",
+      links: "KzsOkAtYQG0",
+      date: "22.07.05",
+    },
+    {
       type: "Songs",
       title:
         "왁물원 프리터 (이태원 프리덤 COVER) - BF (비지니스킴,프리터) (ft.천양)",
@@ -939,6 +945,18 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
     },
   ],
   Dandap: [
+    {
+      type: "Songs",
+      title: "고정멤버 1주년 기념 - 추억의 만화영화 메들리",
+      links: "iG3vgmADfZ0",
+      date: "22.07.15",
+    },
+    {
+      type: "Contents",
+      title: "육권분립",
+      links: "vvR0D1uXMLg",
+      date: "22.07.15",
+    },
     {
       type: "Contents",
       title: "고멤은 좋겠다",
