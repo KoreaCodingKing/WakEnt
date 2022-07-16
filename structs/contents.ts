@@ -156,6 +156,20 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "VRChat",
+    date: "2022. 07. 15.",
+    content: "고정멤버X이세계아이돌",
+    title: "이세돌 vs 왁파고 바둑대결 - 세기의 대결",
+    episode: 27,
+    participants: [
+      "wakgood",
+      "이세계아이돌(고세구)",
+      "고정멤버(왁파고)",
+      "시청자들",
+    ],
+    links: "m2oef8JhV9s",
+  },
+  {
     game: "Others",
     date: "2022. 07. 15.",
     content: "왁타버스콜라보Songs",
