@@ -156,6 +156,15 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "Minecraft",
+    date: "2022. 07. 17.",
+    content: "건축콘테스트",
+    title: "국민 여가수 아이유 3단 진화 - 마인크래프트 눕프로해커",
+    episode: 86,
+    participants: ["wakgood", "시청자들"],
+    links: "jN4IWQHh89U",
+  },
+  {
     game: "VRChat",
     date: "2022. 07. 15.",
     content: "고정멤버X이세계아이돌",
