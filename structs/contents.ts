@@ -157,6 +157,19 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 07. 18.",
+    content: "고멤가요제",
+    title: "팀 이름이 뭐 이래 ㅋㅋㅋㅋㅋㅋㅋㅋ - 고멤가요제 13화",
+    episode: 28,
+    participants: [
+      "wakgood",
+      "고정멤버(프리터, 캘리칼리데이비슨, 새우튀김)",
+      "시청자들",
+    ],
+    links: "K27ZCix7HWs",
+  },
+  {
+    game: "VRChat",
     date: "2022. 07. 17.",
     content: "고멤가요제",
     title: "이게... 회의?? - 고멤가요제 12화",
