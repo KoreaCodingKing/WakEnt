@@ -811,6 +811,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   ],
   NegativePerson: [
     {
+      type: "Contents",
+      title: "부정형 인간극장 (우왁굳 반응)",
+      links: "1dOYEZA12Qo",
+      date: "22.07.19",
+    },
+    {
       type: "Songs",
       title: "부정형인간 스토커-어필영상(부정형인간 고멤가요제 어필)",
       links: "4AEXnkG1Z0A",

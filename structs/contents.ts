@@ -34,6 +34,7 @@ export type ContentName =
   | "고멤가요제"
   | "쇼케이스/시사회/팬미팅"
   | "해커의 손길"
+  | "단편영화콘테스트"
   | "기타";
 
 export enum GameByEnum {
@@ -77,6 +78,7 @@ export enum contentsNameByEnum {
   "22'상반기상황극콘테스트" = "22'상반기상황극콘테스트",
   "고멤가요제" = "고멤가요제",
   "해커의 손길" = "해커의 손길",
+  "단편영화콘테스트" = "단편영화콘테스트",
   "기타" = "기타",
 }
 
@@ -118,6 +120,7 @@ export const ContentByGame: Record<Game, GameContents> = {
       "고멤가요제",
       "쇼케이스/시사회/팬미팅",
       "고정멤버합방",
+      "단편영화콘테스트",
       "기타",
     ],
     image: "/images/logo/logo_vrchat.png",
@@ -155,6 +158,15 @@ export interface Content {
 }
 
 export const contentsList: Content[] = [
+  {
+    game: "VRChat",
+    date: "2022. 07. 19.",
+    content: "단편영화콘테스트",
+    title: "교실에서 일어난 일... - 살인마 (VR챗 단편영화)",
+    episode: 1,
+    participants: ["시청자들"],
+    links: "OgtGH4qdfVY",
+  },
   {
     game: "VRChat",
     date: "2022. 07. 18.",
