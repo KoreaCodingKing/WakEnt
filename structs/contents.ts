@@ -160,6 +160,15 @@ export interface Content {
 export const contentsList: Content[] = [
   {
     game: "VRChat",
+    date: "2022. 07. 21.",
+    content: "단편영화콘테스트",
+    title: "15분 후 나에게서 전화가 걸려왔다...",
+    episode: 2,
+    participants: ["시청자들"],
+    links: "Zq5OnHjQvuY",
+  },
+  {
+    game: "VRChat",
     date: "2022. 07. 19.",
     content: "단편영화콘테스트",
     title: "교실에서 일어난 일... - 살인마 (VR챗 단편영화)",

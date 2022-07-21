@@ -609,6 +609,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   GwakChoonSik: [
     {
       type: "Songs",
+      title: "곽춘식 - 고멤 (빈첸 - 유재석 COVER)",
+      links: "PChvXQ24QLQ",
+      date: "22.07.21",
+    },
+    {
+      type: "Songs",
       title:
         "상병화 [고멤 가요제 어필영상] (상사화 cover)(곽춘식 고멤가요제 어필)",
       links: "eZWyxSxCPPM",
