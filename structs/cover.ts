@@ -266,6 +266,10 @@ export const MemberCover: Record<IsedolMemberID, YouTubeVideo[]> = {
   ],
   viichan: [
     {
+      title: "왁타버스 디즈니 메들리 - 비챤 X 고정멤버 (Disney Medley)",
+      id: "N2Tj_FMqlX8",
+    },
+    {
       title: "오니가 없는 사이에 - Cover by VIichan",
       id: "xfKON1-5HAw",
     },

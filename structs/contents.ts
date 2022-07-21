@@ -159,6 +159,17 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "Others",
+    date: "2022. 07. 22.",
+    content: "왁타버스콜라보Songs",
+    title: "왁타버스 디즈니 메들리 - 비챤 X 고정멤버 (Disney Medley)",
+    episode: 9,
+    participants: [
+      "고정멤버(해루석, 캘리칼리 데이비슨, 비밀소녀, 풍신), 이세계아이돌(비챤)",
+    ],
+    links: "N2Tj_FMqlX8",
+  },
+  {
     game: "VRChat",
     date: "2022. 07. 21.",
     content: "단편영화콘테스트",
