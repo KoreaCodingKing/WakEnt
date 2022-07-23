@@ -406,6 +406,12 @@ export const gomemContents: Record<GomemMemberID, GomemContents[]> = {
   HikiKing: [
     {
       type: "Contents",
+      title: "왁타버스 커버곡 4황",
+      links: "XSp_zt5kr0s",
+      date: "22.07.22",
+    },
+    {
+      type: "Contents",
       title: "무시무시한 요즘 잼민이들 #shorts",
       links: "1RVxBZ7POp0",
       date: "22.07.11",
