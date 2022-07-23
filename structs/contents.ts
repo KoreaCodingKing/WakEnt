@@ -159,6 +159,15 @@ export interface Content {
 
 export const contentsList: Content[] = [
   {
+    game: "VRChat",
+    date: "2022. 07. 23.",
+    content: "소개팅",
+    title: "VR챗 고백으로 혼내주기 뒷풀이",
+    episode: 8,
+    participants: ["wakgood", "시청자들"],
+    links: "iMljaqPqh5g",
+  },
+  {
     game: "Others",
     date: "2022. 07. 22.",
     content: "왁타버스콜라보Songs",
